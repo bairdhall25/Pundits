@@ -1,6 +1,13 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { Call, Pundit, PunditRecord } from "./types";
+import type {
+  Call,
+  Event,
+  EventsFile,
+  Pundit,
+  PunditRecord,
+  Side,
+} from "./types";
 
 export function accuracyPct(wins: number, losses: number): number {
   const n = wins + losses;
@@ -70,4 +77,66 @@ export function loadPundits(): Pundit[] {
 
 export function loadCalls(): Call[] {
   return readJson<Call[]>("data/calls.json");
+}
+
+export function loadEventsFile(): EventsFile {
+  return readJson<EventsFile>("data/events.json");
+}
+
+export function loadEvents(): Event[] {
+  return loadEventsFile().events;
+}
+
+export function isMapped(call: Call): boolean {
+  return Boolean(call.eventSlug && call.side);
+}
+
+export function mappedCalls(calls: Call[]): Call[] {
+  return calls.filter(isMapped);
+}
+
+export function callsForEvent(
+  slug: string,
+  calls: Call[],
+  side?: Side
+): Call[] {
+  return mappedCalls(calls).filter((c) => {
+    if (c.eventSlug !== slug) return false;
+    if (side && c.side !== side) return false;
+    return true;
+  });
+}
+
+export function eventHasFight(slug: string, calls: Call[]): boolean {
+  return (
+    callsForEvent(slug, calls, "yes").length > 0 &&
+    callsForEvent(slug, calls, "no").length > 0
+  );
+}
+
+export function getHomeEvents(events: Event[], calls: Call[]): Event[] {
+  return events
+    .filter((e) => e.onHome)
+    .sort((a, b) => {
+      const fa = eventHasFight(a.slug, calls) ? 1 : 0;
+      const fb = eventHasFight(b.slug, calls) ? 1 : 0;
+      return fb - fa;
+    });
+}
+
+export function getEvent(slug: string, events: Event[]): Event | null {
+  return events.find((e) => e.slug === slug) ?? null;
+}
+
+export function formatCents(cents: number | null): string {
+  if (cents == null) return "—";
+  return `${cents}¢`;
+}
+
+export function impliedOpenDollars(punditId: string, calls: Call[]): number {
+  return (
+    mappedCalls(calls).filter(
+      (c) => c.punditId === punditId && c.status === "pending"
+    ).length * 100
+  );
 }

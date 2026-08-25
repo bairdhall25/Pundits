@@ -1,169 +1,130 @@
 # Pundits — Preseason Prototype Design
 
 Date: 2026-08-24
-Status: Draft for review
+Status: Current — supersedes the earlier leaderboard-first draft
 
 ## Problem
 
-Sports media rewards heat, not accuracy. Pundits do not carry a public record. Closest-to-the-work “experts” can be bad predictors, and nothing scores the call after the game.
+Sports media rewards heat, not accuracy. Pundits do not carry a public record. A take is an unpriced bet. Prediction markets (Kalshi) already price the same outcomes. Pundits never have to put the money down.
 
-Pundits is a public analytics site that captures what college football pundits predict and shows the book: live calls waiting to be validated, and a record once games exist.
+## What this is
 
-This document is the **fun prototype**, not a long-term platform. No commitment to historical backfill, auto-update, or taking the product further.
+A **fun public analytics site** for college football pundits. Not a Kalshi clone, not an exchange, not a Twitter account.
+
+Kalshi is the **ruler**: a frozen snapshot of real Yes/No prices. Clear leans from the roster map onto those contracts as **implied $100 bets**. Ranking is still W–L. Dollars live on the profile as “if they’d been filled.”
+
+Twitter / a friend lands on an **event card**: one upcoming market, faces on YES and faces on NO.
 
 ## Goals
 
-- A public site fans would actually open, the way they check scores.
-- Eight national CFB voices with real photos and profile pages.
-- Capture hard *and* soft takes from web + shows. Score only hard calls.
-- First publish is the **preseason book** (almost all pending) plus estimated 2025 records so the leaderboard is not empty.
-- Re-runnable on demand. No cron. Later runs (when asked) add calls and grade resolved games.
-- Looks like broadcast CFB: College GameDay-adjacent, black field, electric green accent.
+- A site a sports fan would actually open from a shared link.
+- Homepage = **active bets**: popular, timely CFB events, each with opposing sides (one-sided cards are OK).
+- Leaderboard = **gamification** (who’s supposed to be good).
+- The Book = **detail** (every captured take).
+- Event permalinks you can text (`/bets/indiana-title`).
+- Eight national CFB voices, real photos, GameDay-adjacent look.
+- Capture hard and soft takes. Only **clear leans** become Kalshi rows. Soft / weasel stays speech.
+- First publish is preseason: almost all pending, invented 2025 records on the table (backdate later if we care).
+- Re-runnable on demand. No cron.
 
-## Non-goals (this prototype)
+## Non-goals
 
-- X / social posting
-- Accounts, comments, or an admin UI
-- A Saturday (or any) automatic job
-- Scoring soft takes (“they’re done,” “he’s washed”)
-- Live in-show transcription
-- Betting lines as a first-class object
-- Sports other than FBS college football
-- Accurate 2025 history (estimates are fine; replace later only if we care)
-- Dispute/moderation product (fix the ledger and republish)
+- X / social posting (a URL is the share)
+- User betting, play-money, or “Bet this”
+- Live Kalshi API
+- Order books, spreads, totals as first-class homepage objects
+- Scoring soft takes
+- Accounts, comments, admin UI
+- Sports other than FBS CFB
+- Accurate 2025 history (estimates are fine)
 
 ## Who it’s for
 
-One public ledger. Fans, media, and bettors can all use it. V0 success is **fans looking at it a lot** — the site has to be worth lingering on, not a clever archive.
+Fans first. Media and bettors can use the same ledger. Success = people look at the **event cards** and send a link. The table is a second visit.
 
-Operator is a non-engineer co-founder. Agents do capture, ledger updates, and publish. The founder only steps in if something is wrong.
+Operator is a non-engineer co-founder. Agents capture, map, freeze, publish. Founder only steps in on a bad mapping.
 
-## Prototype shape
+## Information architecture
 
-Ledger-first static-enough site. No database.
+| Surface | Job |
+|---|---|
+| **Bets (home)** | Popular upcoming events. Each card: title, Kalshi freeze, YES column, NO column, faces + a quote. Collisions (both sides) sort first. One-sided is OK. |
+| **Leaderboard** | Rank by estimated 2025 accuracy. 2026 starts 0–0. No dollar column. |
+| **The Book** | Full take feed, hard and soft. Mapped calls show the Kalshi strip. |
+| **Event permalink** | Same card as home, one event. This is the tweet/text object. Not a nav tab. |
+| **Pundit profile** | Photo, 2025 est., 2026 0–0, implied book ($100 each, open at risk, settled $0), then full book. |
 
-```
-data/pundits.json    roster, photos, estimated 2025, 2026 W-L
-data/calls.json      the book (hard and soft)
-public/photos/       headshots, one per pundit
-app pages            leaderboard, pundit profile, call feed
-```
+## Homepage events
 
-A **run** is an agent pass: pull sources → write JSON → republish. First run = this moment (late August 2026, preseason). Week 0 games begin 2026-08-29; the interesting object is still the pending 2026 book, not grades.
+Editorial, not exhaustive. Only **popular and timely** CFB markets: national title, CFP make for relevant teams, SEC / Big Ten / ACC / Big 12 champs, Heisman, a hot coaching seat if it’s in the discourse.
 
-Host: public Vercel URL. Open it like a fan.
+Do not dump every mapped longshot on home (e.g. West Virginia to win the title stays in The Book unless it becomes a real story).
+
+One-sided cards stay if the event itself is big.
+
+## Mapping rules
+
+A take becomes an implied bet only when:
+
+1. It is a **clear side** on a **named outcome** that has (or is) a Kalshi Yes/No, and
+2. A reasonable listener would say they are on that side.
+
+Weasels, vibes, and “could / if healthy / I don’t know if they win it all” stay **soft** in The Book. They do not get a homepage face.
+
+If two clear leans collide on the same contract, that card is the shareable object.
+
+## Call + implied bet
+
+Call fields stay: id, punditId, claim, source, sourceUrl, sourceDate, kind (`hard` \| `soft`), subject, paysOn, status (`pending` \| `hit` \| `miss`).
+
+Optional implied-bet fields (only if mapped):
+
+- `venue`: `kalshi`
+- `contractId` / contract name
+- `side`: `yes` \| `no`
+- `priceCents` at freeze
+- `eventSlug` for the permalink
+
+**$100 rule (profile only):** each mapped pending call is $100 at risk on that side. Settled later: +$100 hit / −$100 miss. Crude on purpose. Leaderboard does not rank on this.
 
 ## Roster
 
-Mix of GameDay faces (draw) and weekday/studio voices (volume). Eight people:
-
-| id | Name | Outlet | Role on the board |
-|---|---|---|---|
-| herbstreit | Kirk Herbstreit | College GameDay | Marquee |
-| mcafee | Pat McAfee | GameDay / McAfee Show | Marquee + midday volume |
-| saban | Nick Saban | ESPN / GameDay | Marquee |
-| finebaum | Paul Finebaum | Finebaum / ESPN | Midday take factory |
-| mcfarland | Booger McFarland | ESPN studio desk | Saturday picks |
-| mcelroy | Greg McElroy | ESPN | Numbers on teams |
-| coughlin | Stanford Steve Coughlin | College GameDay | Picks are the job |
-| thamel | Pete Thamel | ESPN | Insider claims that resolve |
-
-Do not add Rece Davis or Desmond Howard in V0 (host/vibes, thinner books). Do not add Corso. Swap only if a source pass comes up empty for someone.
-
-## Site
-
-Three pages. No fourth (no per-game “everyone’s pick” page).
-
-**Leaderboard (home).** Default sort: estimated 2025 accuracy, high to low. Each row: headshot, name, outlet, estimated 2025 accuracy, 2026 record (starts 0–0), pending call count. Rows link to the profile. It should read like a broadcast graphic, not a spreadsheet.
-
-**Pundit profile.** The destination. Large photo, name, outlet, estimated 2025 + 2026 0–0, then the **book**: every live call, hard and soft, with what it pays on. Hard calls wait for a result. Soft takes stay so the page sounds like them. This is “active picks coming up for validation.”
-
-**Call feed.** Recent takes across the eight, so discourse is not buried in profiles. Preseason mix: win totals, playoff/CFP, Week 1 (and Week 0) games, Heisman, overrated/underrated, coaching/CFP bids.
-
-No login. No share-to-X. No comments.
+Same eight: Herbstreit, McAfee, Saban, Finebaum, McFarland, McElroy, Coughlin, Thamel.
 
 ## Look
 
-- Black field (`#0A0A0A` background, near-black cards).
-- Electric green `#39FF14` as the only loud color: rank, accuracy, hits, pending pulse, hover, key numbers.
-- White / light gray for reading. No third accent.
-- GameDay-adjacent: big faces, big type, broadcast graphics, Saturday-morning personality. Not terminal, not a blog.
-- Real headshots on every leaderboard row and every profile. Profiles should feel like a player page, not an article byline. Store one public press photo per pundit in `public/photos/{id}.jpg` (or `.png`). Do not generate fake faces.
-
-## Call model
-
-A call is one claim from one pundit.
-
-| Field | Rule |
-|---|---|
-| `id` | Stable string |
-| `pundit_id` | One of the eight |
-| `claim` | Quote or clean paraphrase |
-| `source` | Show or article name + date + URL when we have one |
-| `kind` | `hard` or `soft` |
-| `subject` | Team, player, award, or job |
-| `pays_on` | What resolves it (e.g. `2026-08-29 TCU vs UNC`, `2026 CFP`, `2026 Heisman`, `2026 SEC title`) |
-| `status` | `pending` \| `hit` \| `miss` |
-
-**Hard:** game winner, win total, playoff/CFP bid, championship, Heisman, coaching job, “X happens by date.” These get `hit` / `miss` on a later run.
-
-**Soft:** “this team is done,” “overrated,” “he’s the best coach,” vibes. Logged, shown on the profile, never scored in this prototype.
-
-First run: almost all `pending`. `hit`/`miss` only if something has already resolved (unlikely before Week 0).
-
-Estimated 2025 W-L and accuracy live on the pundit, not on individual 2025 calls. Inventing a 2025 call ledger is out of scope. The 2025 numbers are plausible inventions so the board looks alive — they do not need a citation, a disclaimer, or a later backfill plan.
-
-## On-demand run
-
-No clock. Someone asks to run it (founder, via agents).
-
-1. Pull recent public web + shows for the eight: GameDay clips/recaps, McAfee Show, Finebaum, College Football Live / ESPN studio, columns (Thamel, McElroy).
-2. Extract takes into `calls.json`. Tag `hard`/`soft`, source, `pays_on`.
-3. First run: seed estimated 2025 records on each pundit so the leaderboard has numbers. 2026 records start 0–0. The 2026 book must be real extracted takes from current preseason shows/columns — not lorem ipsum and not a crafted fake slate.
-4. Deploy the site to Vercel.
-5. Later run: merge new calls; for hard calls whose `pays_on` has a result, set `hit` or `miss` and bump 2026 W-L.
-
-Wrong extraction: edit the JSON (or rerun) and republish. That is the editorial loop.
-
-Capture is **not** live TV. YouTube, official recaps, show pages, and articles only.
-
-## Components
-
-| Unit | Does | Depends on |
-|---|---|---|
-| Ledger (`data/*.json`) | Source of truth for pundits and calls | Nothing |
-| Photos (`public/photos/`) | Headshots referenced by pundit id | Ledger `photo` paths |
-| Site | Renders leaderboard, profile, feed from the ledger | Ledger + photos |
-| Run (agents) | Capture → write ledger → republish | Public web/shows, ledger, host |
-
-The site never invents records at request time. If the JSON doesn’t have it, it isn’t on the page.
+Black `#0A0A0A`, electric green `#39FF14` only accent, white/gray reading. GameDay-adjacent: big faces, big type, broadcast graphics. Real headshots. Not terminal, not a sportsbook wall of moneylines.
 
 ## Stack
 
-Small Next.js app (App Router) on Vercel. JSON in-repo, no CMS, no database, no auth. Each run updates the JSON (and photos if needed) and deploys. The live site is always the latest ledger snapshot.
+Small Next.js app on Vercel. JSON ledger in-repo. Kalshi prices frozen into that JSON (one snapshot per run). No database, no auth.
 
-This is enough to look like a product and to rerun without standing up infrastructure.
+A **run**: pull shows/web for the eight → extract takes → map only clear leans onto the editorial event list → freeze Kalshi prices → publish.
 
-## Errors and empty states
+## Honesty
 
-- Pundit with zero calls: profile still works; book shows “No calls yet.”
-- Missing photo: do not ship that pundit until there is a headshot.
-- Ambiguous take: store as `soft` rather than force a hard grade.
-- Unresolvable hard call (game cancelled, weasel): leave `pending` or drop it on a rerun. No `void` status in V0.
-- Failed source pull for one pundit: still publish the other seven.
+Footer on every page, short: hypothetical $100, Kalshi snapshot not live, not affiliated with Kalshi or the pundits, they did not place these bets.
 
-No user-facing error product. If the site is wrong, we fix data.
+## Errors
 
-## Testing (prototype bar)
+- No matching contract → take stays in The Book only.
+- Ambiguous → `soft`.
+- Pundit with zero mapped bets: profile and book still work.
+- Missing photo: do not ship that pundit.
+- Failed source for one pundit: still publish the rest.
 
-No test suite required. Before calling it done:
+## Prototype done-check
 
-- Leaderboard renders eight people with photos, estimated 2025 numbers, 0–0, pending counts.
-- Each profile opens, photo is large, book lists hard and soft calls with `pays_on`.
-- Call feed shows mixed claims, not only one pundit.
-- Desktop and phone both look like a broadcast board, not a broken article.
-- Electric green is the only accent; background is black.
+- Home is event cards with YES/NO faces; collisions first; popular/timely only.
+- One-sided cards allowed on those events.
+- Leaderboard exists as a second view; 2026 0–0; 2025 estimates OK.
+- The Book lists hard and soft.
+- Event URL opens that card alone.
+- Profile shows implied $100 book.
+- Footer honesty line.
+- Desktop and phone: YES/NO readable (stack on phone).
+- Black + electric green only.
 
-## Later (not this prototype)
+## Later
 
-Only if the snapshot is interesting: real 2025 backfill, in-season grading as a habit, X as a megaphone, more roster, soft-take scoring, a per-game picks board. None of that is implied by shipping V0.
+Live prices, weekly GameDay moneylines, more roster, real 2025 backfill, X posting, comments. None implied by this prototype.

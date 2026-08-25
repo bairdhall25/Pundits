@@ -10,6 +10,24 @@ export type Pundit = {
   estimated2025: { wins: number; losses: number };
 };
 
+export type Side = "yes" | "no";
+
+export type Event = {
+  slug: string;
+  title: string;
+  contractName: string;
+  yesCents: number | null;
+  noCents: number | null;
+  onHome: boolean;
+};
+
+export type EventsFile = {
+  freezeDate: string;
+  venue: "kalshi";
+  source: string;
+  events: Event[];
+};
+
 export type Call = {
   id: string;
   punditId: string;
@@ -21,6 +39,8 @@ export type Call = {
   subject: string;
   paysOn: string;
   status: CallStatus;
+  eventSlug?: string;
+  side?: Side;
 };
 
 export type PunditRecord = Pundit & {

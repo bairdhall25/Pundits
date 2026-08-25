@@ -1,0 +1,71 @@
+{
+  "freezeDate": "2026-08-25",
+  "venue": "kalshi",
+  "source": "Kalshi CFB championship/conference pages and contemporaneous SI/OddsShopper reprints",
+  "events": [
+    {
+      "slug": "indiana-title",
+      "title": "Indiana wins the national title",
+      "contractName": "National Champion — Indiana",
+      "yesCents": 14,
+      "noCents": 86,
+      "onHome": true
+    },
+    {
+      "slug": "nd-title",
+      "title": "Notre Dame wins the national title",
+      "contractName": "National Champion — Notre Dame",
+      "yesCents": 13,
+      "noCents": 87,
+      "onHome": true
+    },
+    {
+      "slug": "sec-title",
+      "title": "The SEC wins the national title",
+      "contractName": "Conference to win the title — SEC",
+      "yesCents": 38,
+      "noCents": 62,
+      "onHome": true
+    },
+    {
+      "slug": "texas-sec",
+      "title": "Texas wins the SEC",
+      "contractName": "SEC Champion — Texas",
+      "yesCents": 16,
+      "noCents": 84,
+      "onHome": true
+    },
+    {
+      "slug": "lsu-title",
+      "title": "LSU wins the national title",
+      "contractName": "National Champion — LSU",
+      "yesCents": 6,
+      "noCents": 94,
+      "onHome": true
+    },
+    {
+      "slug": "texas-cfp",
+      "title": "Texas makes the Playoff",
+      "contractName": "CFP Qualifier — Texas",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": true
+    },
+    {
+      "slug": "tech-cfp",
+      "title": "Texas Tech makes the Playoff",
+      "contractName": "CFP Qualifier — Texas Tech",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": true
+    },
+    {
+      "slug": "indiana-cfp",
+      "title": "Indiana makes the Playoff",
+      "contractName": "CFP Qualifier — Indiana",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": true
+    }
+  ]
+}

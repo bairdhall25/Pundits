@@ -6,7 +6,7 @@
     "source": "The Pat McAfee Show",
     "sourceUrl": "https://www.si.com/fannation/college/cfb-hq/picks/college-football-kirk-herbstreit-national-championship-prediction-2026",
     "sourceDate": "2026-07-22",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Notre Dame",
     "paysOn": "2026 CFP national championship",
     "status": "pending"
@@ -21,7 +21,9 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "2026 CFP field",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "texas-cfp",
+    "side": "yes"
   },
   {
     "id": "herbstreit-tech-cfp",
@@ -33,7 +35,9 @@
     "kind": "hard",
     "subject": "Texas Tech",
     "paysOn": "2026 CFP field",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "tech-cfp",
+    "side": "yes"
   },
   {
     "id": "herbstreit-michigan-b1g",
@@ -42,7 +46,7 @@
     "source": "Nonstop podcast",
     "sourceUrl": "https://www.essentiallysports.com/ncaa-college-football-news-osu-legend-kirk-herbstreit-says-kyle-whittinghams-michigan-can-win-big-ten-title-under-only-one-condition/",
     "sourceDate": "2026-08-24",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Michigan",
     "paysOn": "2026 Big Ten championship",
     "status": "pending"
@@ -66,7 +70,7 @@
     "source": "The Pat McAfee Show",
     "sourceUrl": "https://bleacherreport.com/articles/25481106-nick-saban-says-alabama-could-sneak-people-2026-hypes-georgia-texas-cfp-runs",
     "sourceDate": "2026-08-21",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Georgia / Texas",
     "paysOn": "2026 CFP",
     "status": "pending"
@@ -78,7 +82,7 @@
     "source": "The Pat McAfee Show",
     "sourceUrl": "https://bleacherreport.com/articles/25481106-nick-saban-says-alabama-could-sneak-people-2026-hypes-georgia-texas-cfp-runs",
     "sourceDate": "2026-08-21",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Alabama",
     "paysOn": "2026 CFP field",
     "status": "pending"
@@ -105,7 +109,9 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "2026 CFP national championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "indiana-title",
+    "side": "no"
   },
   {
     "id": "finebaum-indiana-cfp",
@@ -117,7 +123,9 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "2026 CFP field",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "indiana-cfp",
+    "side": "yes"
   },
   {
     "id": "finebaum-cignetti-best",
@@ -141,7 +149,9 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "2026 SEC championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "texas-sec",
+    "side": "yes"
   },
   {
     "id": "finebaum-kiffin-no-title",
@@ -153,7 +163,9 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "2026 CFP national championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "lsu-title",
+    "side": "no"
   },
   {
     "id": "finebaum-sec-drought",
@@ -165,7 +177,9 @@
     "kind": "hard",
     "subject": "SEC",
     "paysOn": "2026 CFP national championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "sec-title",
+    "side": "no"
   },
   {
     "id": "finebaum-beamer-seat",
@@ -189,7 +203,9 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "2026 CFP national championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "indiana-title",
+    "side": "yes"
   },
   {
     "id": "thamel-usc-binary",
@@ -198,7 +214,7 @@
     "source": "College GameDay Podcast",
     "sourceUrl": "https://www.on3.com/news/pete-thamel-usc-could-make-the-playoff-or-lincoln-riley-could-get-fired-in-2026/",
     "sourceDate": "2026-07-28",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Lincoln Riley / USC",
     "paysOn": "2026 CFP field or USC coaching job",
     "status": "pending"
@@ -234,7 +250,7 @@
     "source": "Always College Football",
     "sourceUrl": "https://www.on3.com/news/greg-mcelroy-reveals-preseason-top-25-rankings-entering-2026-college-football-season/",
     "sourceDate": "2026-08-13",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Oklahoma",
     "paysOn": "2026 CFP national championship",
     "status": "pending"
@@ -246,7 +262,7 @@
     "source": "Always College Football",
     "sourceUrl": "https://www.on3.com/news/greg-mcelroy-reveals-preseason-top-25-rankings-entering-2026-college-football-season/",
     "sourceDate": "2026-08-13",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Georgia",
     "paysOn": "2026 Georgia win total",
     "status": "pending"
@@ -258,7 +274,7 @@
     "source": "Always College Football ACC Tiers",
     "sourceUrl": "https://www.youtube.com/watch?v=E083RLhm7vY",
     "sourceDate": "2026-08-06",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Miami",
     "paysOn": "2026 CFP national championship",
     "status": "pending"
@@ -273,7 +289,9 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "2026 CFP national championship",
-    "status": "pending"
+    "status": "pending",
+    "eventSlug": "nd-title",
+    "side": "yes"
   },
   {
     "id": "coughlin-wvu-b12",
@@ -330,7 +348,7 @@
     "source": "ESPN with Christine Williamson",
     "sourceUrl": "https://www.si.com/fannation/college/cfb-hq/news/why-booger-mcfarland-warning-sec-young-college-football-powerhouse-georgia-bulldogs",
     "sourceDate": "2026-08-05",
-    "kind": "hard",
+    "kind": "soft",
     "subject": "Georgia",
     "paysOn": "2026 CFP",
     "status": "pending"
