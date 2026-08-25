@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 type PunditAvatarProps = {
   src: string;
   alt: string;
@@ -11,9 +9,14 @@ const SIZE_PX = {
   hero: 192,
 } as const;
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
   const dim = SIZE_PX[size];
   const hero = size === "hero";
+  const href = src.startsWith("http")
+    ? src
+    : `${basePath}${src.startsWith("/") ? src : `/${src}`}`;
 
   return (
     <span
@@ -22,8 +25,9 @@ export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
       }`}
       style={{ width: dim, height: dim }}
     >
-      <Image
-        src={src}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={href}
         alt={alt}
         width={dim}
         height={dim}

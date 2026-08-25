@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   trailingSlash: true,
   basePath: isPages ? "/Pundits" : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isPages ? "/Pundits" : "",
+  },
   outputFileTracingRoot: path.join(__dirname),
 };
 
