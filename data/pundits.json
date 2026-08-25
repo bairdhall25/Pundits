@@ -54,5 +54,26 @@
     "outlet": "Finebaum / ESPN",
     "photo": "/photos/finebaum.jpg",
     "estimated2025": { "wins": 21, "losses": 24 }
+  },
+  {
+    "id": "skip",
+    "name": "Skip Bayless",
+    "outlet": "The Arena / Skip Bayless Show",
+    "photo": "/photos/skip.jpg",
+    "estimated2025": { "wins": 28, "losses": 22 }
+  },
+  {
+    "id": "hawk",
+    "name": "A.J. Hawk",
+    "outlet": "The Pat McAfee Show",
+    "photo": "/photos/hawk.jpg",
+    "estimated2025": { "wins": 21, "losses": 24 }
+  },
+  {
+    "id": "butler",
+    "name": "Darius Butler",
+    "outlet": "The Pat McAfee Show",
+    "photo": "/photos/butler.jpg",
+    "estimated2025": { "wins": 23, "losses": 22 }
   }
 ]

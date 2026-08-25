@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { loadPundits } from "./data";
 
-const IDS = [
+const CFB_IDS = [
   "herbstreit",
   "mcafee",
   "saban",
@@ -14,10 +14,12 @@ const IDS = [
   "thamel",
 ] as const;
 
+const NFL_IDS = ["skip", "hawk", "butler"] as const;
+
 describe("roster", () => {
-  it("has exactly the eight spec ids", () => {
+  it("keeps the eight CFB voices and adds NFL voices with first-person Super Bowl leans", () => {
     const ids = loadPundits().map((p) => p.id).sort();
-    expect(ids).toEqual([...IDS].sort());
+    expect(ids).toEqual([...CFB_IDS, ...NFL_IDS].sort());
   });
 
   it("has a photo file for every pundit", () => {

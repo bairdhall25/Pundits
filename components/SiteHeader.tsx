@@ -13,6 +13,12 @@ export function SiteHeader() {
         <Link href="/" className="px-2.5 py-2 hover:text-[var(--green)]">
           Bets
         </Link>
+        <Link href="/#ncaaf" className="px-2.5 py-2 hover:text-[var(--green)]">
+          NCAAF
+        </Link>
+        <Link href="/#nfl" className="px-2.5 py-2 hover:text-[var(--green)]">
+          NFL
+        </Link>
         <Link
           href="/leaderboard"
           className="px-2.5 py-2 hover:text-[var(--green)]"

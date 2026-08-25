@@ -12,6 +12,8 @@ export type Pundit = {
 
 export type Side = "yes" | "no";
 
+export type Sport = "ncaaf" | "nfl";
+
 export type Event = {
   slug: string;
   title: string;
@@ -19,6 +21,8 @@ export type Event = {
   yesCents: number | null;
   noCents: number | null;
   onHome: boolean;
+  sport: Sport;
+  homeRank: number;
 };
 
 export type EventsFile = {

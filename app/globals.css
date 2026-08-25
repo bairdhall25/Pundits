@@ -29,6 +29,20 @@ h1, h2, .type-broadcast {
 .shell { max-width: 1080px; margin: 0 auto; padding: 20px 20px 48px; }
 .eyebrow { letter-spacing: 0.18em; color: var(--green); font-size: 18px; }
 .lede { color: var(--muted); max-width: 560px; line-height: 1.5; margin-bottom: 24px; }
+.board-jump { display: flex; gap: 8px; margin: 0 0 28px; }
+.board-jump a {
+  border: 1px solid #2a2a2a;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.board-jump a:hover { color: var(--green); border-color: #245c18; }
+.board { margin-bottom: 40px; scroll-margin-top: 16px; }
+.board-kicker { color: var(--green); font-size: 13px; letter-spacing: 0.18em; }
+.board-title { font-size: clamp(28px, 4vw, 40px); margin: 2px 0 16px; }
 .event { background: var(--card); border: 1px solid #2a2a2a; margin-bottom: 14px; }
 .event.fight { border-color: #245c18; }
 .event-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px 10px; border-bottom: 1px solid #2a2a2a; }

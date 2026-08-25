@@ -1,7 +1,7 @@
 {
   "freezeDate": "2026-08-25",
   "venue": "kalshi",
-  "source": "Kalshi CFB championship/conference pages and contemporaneous SI/OddsShopper reprints",
+  "source": "Kalshi CFB championship/conference freeze plus CBS Sports Kalshi Super Bowl 61 board and Chiefs Wire Kalshi reprint, all dated 2026-08-25. CFP qualifier cents left null where we had no freeze.",
   "events": [
     {
       "slug": "indiana-title",
@@ -9,7 +9,9 @@
       "contractName": "National Champion — Indiana",
       "yesCents": 14,
       "noCents": 86,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 1
     },
     {
       "slug": "nd-title",
@@ -17,7 +19,29 @@
       "contractName": "National Champion — Notre Dame",
       "yesCents": 13,
       "noCents": 87,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 2
+    },
+    {
+      "slug": "osu-title",
+      "title": "Ohio State wins the national title",
+      "contractName": "National Champion — Ohio State",
+      "yesCents": 13,
+      "noCents": 87,
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 3
+    },
+    {
+      "slug": "georgia-title",
+      "title": "Georgia wins the national title",
+      "contractName": "National Champion — Georgia",
+      "yesCents": 10,
+      "noCents": 90,
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 4
     },
     {
       "slug": "sec-title",
@@ -25,7 +49,9 @@
       "contractName": "Conference to win the title — SEC",
       "yesCents": 38,
       "noCents": 62,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 5
     },
     {
       "slug": "texas-sec",
@@ -33,15 +59,9 @@
       "contractName": "SEC Champion — Texas",
       "yesCents": 16,
       "noCents": 84,
-      "onHome": true
-    },
-    {
-      "slug": "lsu-title",
-      "title": "LSU wins the national title",
-      "contractName": "National Champion — LSU",
-      "yesCents": 6,
-      "noCents": 94,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 6
     },
     {
       "slug": "texas-cfp",
@@ -49,15 +69,9 @@
       "contractName": "CFP Qualifier — Texas",
       "yesCents": null,
       "noCents": null,
-      "onHome": true
-    },
-    {
-      "slug": "tech-cfp",
-      "title": "Texas Tech makes the Playoff",
-      "contractName": "CFP Qualifier — Texas Tech",
-      "yesCents": null,
-      "noCents": null,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 7
     },
     {
       "slug": "indiana-cfp",
@@ -65,7 +79,149 @@
       "contractName": "CFP Qualifier — Indiana",
       "yesCents": null,
       "noCents": null,
-      "onHome": true
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 8
+    },
+    {
+      "slug": "osu-cfp",
+      "title": "Ohio State makes the Playoff",
+      "contractName": "CFP Qualifier — Ohio State",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 9
+    },
+    {
+      "slug": "georgia-cfp",
+      "title": "Georgia makes the Playoff",
+      "contractName": "CFP Qualifier — Georgia",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": true,
+      "sport": "ncaaf",
+      "homeRank": 10
+    },
+    {
+      "slug": "lsu-title",
+      "title": "LSU wins the national title",
+      "contractName": "National Champion — LSU",
+      "yesCents": 6,
+      "noCents": 94,
+      "onHome": false,
+      "sport": "ncaaf",
+      "homeRank": 11
+    },
+    {
+      "slug": "tech-cfp",
+      "title": "Texas Tech makes the Playoff",
+      "contractName": "CFP Qualifier — Texas Tech",
+      "yesCents": null,
+      "noCents": null,
+      "onHome": false,
+      "sport": "ncaaf",
+      "homeRank": 12
+    },
+    {
+      "slug": "rams-sb",
+      "title": "Rams win the Super Bowl",
+      "contractName": "2027 NFL Champion — LA Rams",
+      "yesCents": 16,
+      "noCents": 86,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 1
+    },
+    {
+      "slug": "bills-sb",
+      "title": "Bills win the Super Bowl",
+      "contractName": "2027 NFL Champion — BUF Bills",
+      "yesCents": 8,
+      "noCents": 93,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 2
+    },
+    {
+      "slug": "seahawks-sb",
+      "title": "Seahawks win the Super Bowl",
+      "contractName": "2027 NFL Champion — SEA Seahawks",
+      "yesCents": 8,
+      "noCents": 93,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 3
+    },
+    {
+      "slug": "ravens-sb",
+      "title": "Ravens win the Super Bowl",
+      "contractName": "2027 NFL Champion — BAL Ravens",
+      "yesCents": 7,
+      "noCents": 93,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 4
+    },
+    {
+      "slug": "chiefs-sb",
+      "title": "Chiefs win the Super Bowl",
+      "contractName": "2027 NFL Champion — KC Chiefs",
+      "yesCents": 6,
+      "noCents": 94,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 5
+    },
+    {
+      "slug": "bengals-sb",
+      "title": "Bengals win the Super Bowl",
+      "contractName": "2027 NFL Champion — CIN Bengals",
+      "yesCents": 5,
+      "noCents": 95,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 6
+    },
+    {
+      "slug": "chargers-sb",
+      "title": "Chargers win the Super Bowl",
+      "contractName": "2027 NFL Champion — LA Chargers",
+      "yesCents": 5,
+      "noCents": 95,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 7
+    },
+    {
+      "slug": "patriots-sb",
+      "title": "Patriots win the Super Bowl",
+      "contractName": "2027 NFL Champion — NE Patriots",
+      "yesCents": 5,
+      "noCents": 95,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 8
+    },
+    {
+      "slug": "49ers-sb",
+      "title": "49ers win the Super Bowl",
+      "contractName": "2027 NFL Champion — SF 49ers",
+      "yesCents": 5,
+      "noCents": 95,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 9
+    },
+    {
+      "slug": "eagles-sb",
+      "title": "Eagles win the Super Bowl",
+      "contractName": "2027 NFL Champion — PHI Eagles",
+      "yesCents": 5,
+      "noCents": 95,
+      "onHome": true,
+      "sport": "nfl",
+      "homeRank": 10
     }
   ]
 }

@@ -7,6 +7,7 @@ import type {
   Pundit,
   PunditRecord,
   Side,
+  Sport,
 } from "./types";
 
 export function accuracyPct(wins: number, losses: number): number {
@@ -120,7 +121,24 @@ export function getHomeEvents(events: Event[], calls: Call[]): Event[] {
     .sort((a, b) => {
       const fa = eventHasFight(a.slug, calls) ? 1 : 0;
       const fb = eventHasFight(b.slug, calls) ? 1 : 0;
-      return fb - fa;
+      if (fb !== fa) return fb - fa;
+      if (a.sport !== b.sport) return a.sport.localeCompare(b.sport);
+      return a.homeRank - b.homeRank;
+    });
+}
+
+export function getBoard(
+  sport: Sport,
+  events: Event[],
+  calls: Call[]
+): Event[] {
+  return events
+    .filter((e) => e.onHome && e.sport === sport)
+    .sort((a, b) => {
+      const fa = eventHasFight(a.slug, calls) ? 0 : 1;
+      const fb = eventHasFight(b.slug, calls) ? 0 : 1;
+      if (fa !== fb) return fa - fb;
+      return a.homeRank - b.homeRank;
     });
 }
 

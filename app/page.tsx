@@ -1,11 +1,42 @@
 import { EventCard } from "@/components/EventCard";
-import { getHomeEvents, loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { getBoard, loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import type { Event, Call, Pundit, Sport } from "@/lib/types";
+
+function Board({
+  id,
+  label,
+  events,
+  calls,
+  pundits,
+}: {
+  id: Sport;
+  label: string;
+  events: Event[];
+  calls: Call[];
+  pundits: Pundit[];
+}) {
+  return (
+    <section id={id} className="board">
+      <div className="board-kicker type-broadcast">Top 10</div>
+      <h2 className="board-title type-broadcast">{label}</h2>
+      {events.map((event) => (
+        <EventCard
+          key={event.slug}
+          event={event}
+          calls={calls}
+          pundits={pundits}
+        />
+      ))}
+    </section>
+  );
+}
 
 export default function HomePage() {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const home = getHomeEvents(events, calls);
+  const ncaaf = getBoard("ncaaf", events, calls);
+  const nfl = getBoard("nfl", events, calls);
 
   return (
     <main className="shell">
@@ -16,17 +47,27 @@ export default function HomePage() {
         what.
       </h1>
       <p className="lede">
-        Each card is a real contract. Faces on the left implied YES. Faces on
-        the right implied NO.
+        Two boards. Ten popular contracts each. Faces on the left implied YES.
+        Faces on the right implied NO.
       </p>
-      {home.map((event) => (
-        <EventCard
-          key={event.slug}
-          event={event}
-          calls={calls}
-          pundits={pundits}
-        />
-      ))}
+      <div className="board-jump">
+        <a href="#ncaaf">NCAAF</a>
+        <a href="#nfl">NFL</a>
+      </div>
+      <Board
+        id="ncaaf"
+        label="NCAAF"
+        events={ncaaf}
+        calls={calls}
+        pundits={pundits}
+      />
+      <Board
+        id="nfl"
+        label="NFL"
+        events={nfl}
+        calls={calls}
+        pundits={pundits}
+      />
     </main>
   );
 }
