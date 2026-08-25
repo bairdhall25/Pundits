@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "PUNDITS",
-  description: "Who’s on what. Top 10 NCAAF and NFL bets, mapped from pundit takes.",
+  description: "Who’s on what. Top 10 NCAAF and NFL picks, mapped from pundit takes.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

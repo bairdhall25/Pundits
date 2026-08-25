@@ -4,4 +4,4 @@ Public CFB pundit analytics. Homepage is Kalshi-mapped event cards (YES vs NO). 
 
 Live: https://bairdhall25.github.io/Pundits/
 
-Hypothetical $100. Kalshi snapshot, not live. Not affiliated with Kalshi or these pundits. They did not place these bets.
+Hypothetical $100. Kalshi snapshot, not live. Not affiliated with Kalshi or these pundits. These are mapped picks, not bets they placed.

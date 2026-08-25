@@ -40,7 +40,7 @@ export default function HomePage() {
 
   return (
     <main className="shell">
-      <div className="eyebrow type-broadcast">Active bets · Kalshi freeze</div>
+      <div className="eyebrow type-broadcast">Active picks · Kalshi freeze</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92] tracking-wide">
         Who’s on
         <br />

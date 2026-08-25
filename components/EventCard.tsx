@@ -65,7 +65,7 @@ export function EventCard({
   const no = callsForEvent(event.slug, calls, "no");
   const fight = eventHasFight(event.slug, calls);
   const title = permalink ? (
-    <Link href={`/bets/${event.slug}`} className="hover:text-[var(--green)]">
+    <Link href={`/picks/${event.slug}`} className="hover:text-[var(--green)]">
       {event.title}
     </Link>
   ) : (

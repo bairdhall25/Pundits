@@ -19,7 +19,7 @@ export default function BookPage() {
       </h1>
       <p className="lede">
         Hard and soft. Mapped calls carry the Kalshi strip. This is the detail
-        behind the bets.
+        behind the picks.
       </p>
       {calls.map((c) => {
         const p = pundits[c.punditId];

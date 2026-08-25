@@ -36,7 +36,7 @@ export default async function PunditPage({
         href="/"
         className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"
       >
-        ← Bets
+        ← Picks
       </Link>
       <div className="mb-8 grid items-center gap-6 md:grid-cols-[160px_1fr]">
         <PunditAvatar src={p.photo} alt={p.name} size="hero" />

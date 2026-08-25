@@ -11,7 +11,7 @@ export function SiteHeader() {
       </Link>
       <nav className="flex flex-wrap items-center gap-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
         <Link href="/" className="px-2.5 py-2 hover:text-[var(--green)]">
-          Bets
+          Picks
         </Link>
         <Link href="/#ncaaf" className="px-2.5 py-2 hover:text-[var(--green)]">
           NCAAF

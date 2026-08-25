@@ -6,7 +6,7 @@ export function generateStaticParams() {
   return loadEvents().map((e) => ({ slug: e.slug }));
 }
 
-export default async function EventPage({
+export default async function PickPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
