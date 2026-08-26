@@ -1,7 +1,7 @@
 {
   "freezeDate": "2026-08-25",
   "venue": "kalshi",
-  "source": "Kalshi CFB championship/conference freeze plus CBS Sports Kalshi Super Bowl 61 board and Chiefs Wire Kalshi reprint, all dated 2026-08-25. CFP qualifier cents left null where we had no freeze.",
+  "source": "Kalshi CFB championship/conference freeze plus CBS Sports Kalshi Super Bowl 61 board (2026-08-25). Game moneylines: Clemson/LSU 24/78 (Blue Chip Kalshi reprint), Wisconsin/ND 8/93 (Kalshi market page), Patriots/Seahawks 38/62 (Kalshi team pages), 49ers/Rams 38/62 (PMP Kalshi mid 2026-08-25). CFP qualifier and remaining game cents left null where we had no freeze.",
   "events": [
     {
       "slug": "clemson-at-lsu",
@@ -12,8 +12,8 @@
       "homeTeam": "LSU",
       "kickoff": "Sat 7:30 ET",
       "network": "ABC",
-      "yesCents": null,
-      "noCents": null,
+      "yesCents": 24,
+      "noCents": 78,
       "onHome": true,
       "sport": "ncaaf",
       "homeRank": 1
@@ -27,8 +27,8 @@
       "homeTeam": "Notre Dame",
       "kickoff": "Sun 7:30 ET",
       "network": "NBC · Lambeau",
-      "yesCents": null,
-      "noCents": null,
+      "yesCents": 8,
+      "noCents": 93,
       "onHome": true,
       "sport": "ncaaf",
       "homeRank": 2
@@ -72,8 +72,8 @@
       "homeTeam": "Seahawks",
       "kickoff": "Wed 8:20 ET",
       "network": "NBC · Kickoff",
-      "yesCents": null,
-      "noCents": null,
+      "yesCents": 38,
+      "noCents": 62,
       "onHome": true,
       "sport": "nfl",
       "homeRank": 1
@@ -87,8 +87,8 @@
       "homeTeam": "Rams",
       "kickoff": "Thu 8:35 ET",
       "network": "Netflix · Melbourne",
-      "yesCents": null,
-      "noCents": null,
+      "yesCents": 38,
+      "noCents": 62,
       "onHome": true,
       "sport": "nfl",
       "homeRank": 2

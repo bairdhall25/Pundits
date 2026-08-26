@@ -21,8 +21,8 @@ export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
 
   return (
     <span
-      className={`inline-block overflow-hidden rounded-full ${
-        hero ? "ring-1 ring-[var(--green)]" : ""
+      className={`inline-block overflow-hidden ${
+        hero ? "rounded-full ring-1 ring-[var(--green)]" : ""
       }`}
       style={{ width: dim, height: dim }}
     >

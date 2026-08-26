@@ -55,13 +55,42 @@ h1, h2, .type-broadcast {
 .event { background: var(--card); border: 1px solid #2a2a2a; margin-bottom: 10px; }
 .event.fight { border-color: #245c18; }
 .event-head { padding: 12px 14px 10px; border-bottom: 1px solid #2a2a2a; }
+.kalshi-tag {
+  display: inline-block;
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
 .event-head h2 { font-size: clamp(18px, 5vw, 26px); letter-spacing: 0.04em; margin: 0 0 4px; }
 .event-head .meta { color: #6b6b6b; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
 .sides { display: grid; grid-template-columns: 1fr; }
-.col { padding: 12px 14px; min-width: 0; }
+.col { padding: 12px 14px 16px; min-width: 0; }
 .col.yes { background: #0d1a0c; border-bottom: 1px solid #2a2a2a; }
+.px { font-size: clamp(36px, 8vw, 52px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 6px; color: var(--muted); }
+.px-yes { color: var(--green); }
 .col .lab { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
 .col.no .lab { color: var(--muted); }
+.tape {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.tape > div {
+  background: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  padding: 8px 10px;
+}
+.tape span {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+.tape b { display: block; font-size: 28px; line-height: 1; margin-top: 2px; }
 .empty { color: #6b6b6b; font-size: 13px; }
 .person {
   display: grid;

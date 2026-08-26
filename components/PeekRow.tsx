@@ -41,17 +41,27 @@ export function FuturePeek({
       href={`/picks/${event.slug}`}
       className={`peek ${fight ? "fight" : ""}`}
     >
+      <div className="kalshi-tag type-broadcast">Kalshi</div>
       <h3 className="type-broadcast ph">{event.title}</h3>
+      <div className="tape">
+        <div>
+          <span>Yes</span>
+          <b className="type-broadcast px-yes">{formatCents(event.yesCents)}</b>
+        </div>
+        <div>
+          <span>No</span>
+          <b className="type-broadcast">{formatCents(event.noCents)}</b>
+        </div>
+      </div>
       <div className="faces">
         {unique.slice(0, 4).map((p) => (
           <PunditAvatar key={p.id} src={p.photo} alt={p.name} size="peek" />
         ))}
       </div>
       <div className="sub">
-        YES {formatCents(event.yesCents)}
         {unique.length
-          ? ` · ${unique.map((p) => p.name.split(" ").slice(-1)[0]).join(", ")}`
-          : " · nobody mapped yet"}
+          ? unique.map((p) => p.name.split(" ").slice(-1)[0]).join(" · ")
+          : "Nobody mapped yet"}
       </div>
     </Link>
   );

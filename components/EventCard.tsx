@@ -23,9 +23,11 @@ function SideCol({
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   return (
     <div className={`col ${tone}`}>
+      <div className={`px type-broadcast ${tone === "yes" ? "px-yes" : ""}`}>
+        {formatCents(cents)}
+      </div>
       <div className="lab">
-        {label} · {formatCents(cents)} · {calls.length} pundit
-        {calls.length === 1 ? "" : "s"}
+        {label} · {calls.length} pundit{calls.length === 1 ? "" : "s"}
       </div>
       {calls.length === 0 ? (
         <div className="empty">Nobody on this side yet</div>
@@ -34,11 +36,7 @@ function SideCol({
           const p = byId[c.punditId];
           if (!p) return null;
           return (
-            <Link
-              key={c.id}
-              href={`/pundits/${p.id}`}
-              className="person"
-            >
+            <Link key={c.id} href={`/pundits/${p.id}`} className="person">
               <PunditAvatar src={p.photo} alt={p.name} size="row" />
               <div>
                 <div className="nm type-broadcast">{p.name}</div>
@@ -77,15 +75,16 @@ export function EventCard({
     event.title
   );
   const meta = game
-    ? [event.kickoff, event.network, `Kalshi ${formatCents(event.yesCents)} / ${formatCents(event.noCents)}`]
-        .filter(Boolean)
-        .join(" · ")
-    : `Kalshi · ${event.contractName} · YES ${formatCents(event.yesCents)} · NO ${formatCents(event.noCents)}`;
+    ? [event.kickoff, event.network].filter(Boolean).join(" · ")
+    : event.contractName;
 
   return (
     <article className={`event ${fight ? "fight" : ""}`}>
       <div className="event-head">
-        <h2 className="type-broadcast">{title}</h2>
+        <div>
+          <div className="kalshi-tag type-broadcast">Kalshi</div>
+          <h2 className="type-broadcast">{title}</h2>
+        </div>
         <div className="meta">{meta}</div>
       </div>
       <div className="sides">

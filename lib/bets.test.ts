@@ -131,6 +131,16 @@ describe("weekend home", () => {
     );
   });
 
+  it("freezes Kalshi moneylines on the marquee games we could source", () => {
+    const bySlug = Object.fromEntries(loadEvents().map((e) => [e.slug, e]));
+    expect(bySlug["clemson-at-lsu"].yesCents).toBe(24);
+    expect(bySlug["clemson-at-lsu"].noCents).toBe(78);
+    expect(bySlug["wisconsin-vs-nd"].yesCents).toBe(8);
+    expect(bySlug["wisconsin-vs-nd"].noCents).toBe(93);
+    expect(bySlug["patriots-at-seahawks"].noCents).toBe(62);
+    expect(bySlug["49ers-vs-rams"].noCents).toBe(62);
+  });
+
   it("does not invent game leans from title futures", () => {
     const calls = loadCalls();
     expect(callsForEvent("clemson-at-lsu", calls)).toHaveLength(0);

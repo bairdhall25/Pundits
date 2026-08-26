@@ -73,8 +73,8 @@ export default function HomePage() {
         what.
       </h1>
       <p className="lede">
-        Games get the big treatment. Futures, the table, and The Book are rows
-        you peek, then tap into.
+        Each card is a Kalshi market. Faces are implied picks. Games first,
+        futures underneath.
       </p>
       <div className="board-jump">
         <a href="#ncaaf">NCAAF weekend</a>
