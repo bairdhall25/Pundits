@@ -542,5 +542,45 @@
     "status": "pending",
     "eventSlug": "rams-sb",
     "side": "yes"
+  },
+  {
+    "id": "pate-clemson-lsu-20260512",
+    "punditId": "pate",
+    "claim": "I think it would surprise me a little bit more, Clemson winning by seven... there's a world where an LSU 20-point win is 27-6 or something like that. Clemson's offense is just non-functional, and LSU grinds out a win.",
+    "source": "Yahoo Sports (Late Kick)",
+    "sourceUrl": "https://sports.yahoo.com/articles/josh-pate-early-preview-clemson-145554145.html",
+    "sourceDate": "2026-05-12",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "Clemson at LSU (Week 1)",
+    "status": "pending",
+    "eventSlug": "clemson-at-lsu",
+    "side": "no"
+  },
+  {
+    "id": "eisen-49ers-rams-20260513",
+    "punditId": "eisen",
+    "claim": "Rams. They're number one on my power rankings list.",
+    "source": "The Rich Eisen Show",
+    "sourceUrl": "https://richeisenshow.com/read/rich-eisen-plays-the-win-loss-game-for-the-nfls-8-international-games-this-fall",
+    "sourceDate": "2026-05-13",
+    "kind": "hard",
+    "subject": "Rams",
+    "paysOn": "49ers at Rams (Week 1, Melbourne)",
+    "status": "pending",
+    "eventSlug": "49ers-vs-rams",
+    "side": "no"
+  },
+  {
+    "id": "mcelroy-clemson-20260811",
+    "punditId": "mcelroy",
+    "claim": "The offensive line has just two starters back, which is a real concern, and they open at LSU on September 5, which is gonna be a really good team.",
+    "source": "Always College Football",
+    "sourceUrl": "https://www.theclemsoninsider.com/2026/08/11/mcelroy-more-bullish-on-clemson-than-coaches-poll/",
+    "sourceDate": "2026-08-11",
+    "kind": "soft",
+    "subject": "Clemson",
+    "paysOn": "2026 season outlook",
+    "status": "pending"
   }
 ]
