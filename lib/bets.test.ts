@@ -12,6 +12,7 @@ import {
   loadEvents,
   mappedCalls,
 } from "./data";
+import type { Call, Event } from "./types";
 
 describe("v1 mapped book", () => {
   it("maps the Indiana title fight both ways", () => {
@@ -140,10 +141,33 @@ describe("weekend home", () => {
   });
 
   it("does not invent game leans from title futures", () => {
-    const calls = loadCalls();
-    expect(callsForEvent("clemson-at-lsu", calls)).toHaveLength(0);
-    expect(callsForEvent("wisconsin-vs-nd", calls)).toHaveLength(0);
-    expect(callsForEvent("patriots-at-seahawks", calls)).toHaveLength(0);
+    // Self-contained fixture (not live data — capture runs legitimately grow
+    // mapped game calls over time, so this must test behavior, not a
+    // snapshot count). A pundit's mapped futures/title pick on a team, plus
+    // an unmapped soft take about that same team, must never leak onto that
+    // team's actual game event just because the team/pundit overlaps.
+    const gameEvent: Event = {
+      slug: "avent-at-bteam", kind: "game", title: "A at B",
+      contractName: "A vs B — moneyline", awayTeam: "A", homeTeam: "B",
+      yesCents: 50, noCents: 50, sourceUrl: "https://example.com", sourcedAt: "2026-08-25",
+      onHome: true, sport: "ncaaf", homeRank: 1,
+    };
+    const futuresCall: Call = {
+      id: "x1", punditId: "finebaum",
+      claim: "A is going to win the national championship this year, no doubt about it.",
+      source: "t", sourceUrl: "https://example.com/a", sourceDate: "2026-08-20",
+      kind: "hard", subject: "A", paysOn: "2026 CFP national championship", status: "pending",
+      eventSlug: "a-title", side: "yes",
+    };
+    const softCall: Call = {
+      id: "x2", punditId: "finebaum",
+      claim: "A looks really good heading into the opener against B this year.",
+      source: "t", sourceUrl: "https://example.com/b", sourceDate: "2026-08-21",
+      kind: "soft", subject: "A", paysOn: "2026 season", status: "pending",
+    };
+    const calls = [futuresCall, softCall];
+    expect(callsForEvent(gameEvent.slug, calls)).toHaveLength(0);
+    expect(eventHasFight(gameEvent.slug, calls)).toBe(false);
   });
 
   it("peeks a short futures strip that still prefers fights", () => {
