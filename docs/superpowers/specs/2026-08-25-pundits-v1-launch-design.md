@@ -35,7 +35,7 @@ Kalshi is the ruler. Clear first-person leans map onto frozen Yes/No prices as i
 | Surface | Job |
 |---|---|
 | Home (`/`) | This-weekend games first (NCAAF, then NFL), each card YES faces vs NO faces with frozen cents; then futures peek row, The Table peek, The Book peek. |
-| Event permalink (`/bets/[slug]`) | One card alone — the shareable object. |
+| Event permalink (`/picks/[slug]`) | One card alone — the shareable object. (The app's committed copy decision is "picks, not bets"; the legacy `/bets/[slug]` route is removed.) |
 | Leaderboard | Live-activity board (mapped picks, pending counts). 2026 all 0–0 at launch. |
 | The Book | Every captured take, hard and soft; mapped calls show the Kalshi strip. |
 | Pundit profile (`/pundits/[id]`) | Photo, sport tag, implied $100 book (pending at risk), full book. ×~40. |
