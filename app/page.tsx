@@ -76,7 +76,7 @@ export default function HomePage() {
   return (
     <main className="shell">
       <div className="eyebrow type-broadcast">Active picks · opening weekend</div>
-      <h1 className="mb-2 mt-1 text-[clamp(36px,11vw,68px)] leading-[0.92] tracking-wide lg:text-[128px]">
+      <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
         Who’s picking
         <br />
         what.
