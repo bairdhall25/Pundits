@@ -3,6 +3,7 @@ import path from "node:path";
 import type {
   ActivityRecord,
   Call,
+  CardSide,
   Event,
   EventsFile,
   Pundit,
@@ -97,6 +98,22 @@ export function callsForEvent(
     if (side && c.side !== side) return false;
     return true;
   });
+}
+
+export function sidesForCard(event: Event, calls: Call[]): [CardSide, CardSide] {
+  const yes: CardSide = {
+    side: "yes",
+    label: event.awayTeam ?? "YES",
+    cents: event.yesCents,
+    calls: callsForEvent(event.slug, calls, "yes"),
+  };
+  const no: CardSide = {
+    side: "no",
+    label: event.homeTeam ?? "NO",
+    cents: event.noCents,
+    calls: callsForEvent(event.slug, calls, "no"),
+  };
+  return no.calls.length > yes.calls.length ? [no, yes] : [yes, no];
 }
 
 export function eventHasFight(slug: string, calls: Call[]): boolean {

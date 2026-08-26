@@ -10,7 +10,7 @@ export function SiteHeader() {
       >
         PUNDITS<span className="text-[var(--ink)]">.</span>
       </Link>
-      <nav className="flex gap-1 overflow-x-auto text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <nav className="flex gap-1 overflow-x-auto text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-md:[mask-image:linear-gradient(90deg,#000_85%,transparent)] max-md:[-webkit-mask-image:linear-gradient(90deg,#000_85%,transparent)]">
         <Link href="/" className="px-2.5 py-2 hover:text-[var(--green)]">
           Picks
         </Link>

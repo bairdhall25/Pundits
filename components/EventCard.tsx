@@ -1,26 +1,28 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import {
-  callsForEvent,
-  eventHasFight,
-  formatCents,
-} from "@/lib/data";
-import type { Call, Event, Pundit } from "@/lib/types";
+import { eventHasFight, formatCents, sidesForCard } from "@/lib/data";
+import type { Call, CardSide, Event, Pundit } from "@/lib/types";
 
 function SideCol({
-  label,
-  cents,
-  calls,
+  side,
   pundits,
-  tone,
+  collapsed,
 }: {
-  label: string;
-  cents: number | null;
-  calls: Call[];
+  side: CardSide;
   pundits: Pundit[];
-  tone: "yes" | "no";
+  collapsed: boolean;
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
+  const { label, cents, calls, side: tone } = side;
+
+  if (collapsed) {
+    return (
+      <div className={`col ${tone} col-empty`}>
+        {label} · {formatCents(cents)} · nobody on this side yet
+      </div>
+    );
+  }
+
   return (
     <div className={`col ${tone}`}>
       <div className={`px type-broadcast ${tone === "yes" ? "px-yes" : ""}`}>
@@ -61,12 +63,10 @@ export function EventCard({
   pundits: Pundit[];
   permalink?: boolean;
 }) {
-  const yes = callsForEvent(event.slug, calls, "yes");
-  const no = callsForEvent(event.slug, calls, "no");
+  const [first, second] = sidesForCard(event, calls);
   const fight = eventHasFight(event.slug, calls);
   const game = event.kind === "game";
-  const leftLabel = game ? (event.awayTeam ?? "Away") : "Yes";
-  const rightLabel = game ? (event.homeTeam ?? "Home") : "No";
+  const collapseSecond = second.calls.length === 0 && first.calls.length > 0;
   const title = permalink ? (
     <Link href={`/picks/${event.slug}`} className="hover:text-[var(--green)]">
       {event.title}
@@ -87,21 +87,9 @@ export function EventCard({
         </div>
         <div className="meta">{meta}</div>
       </div>
-      <div className="sides">
-        <SideCol
-          label={leftLabel}
-          cents={event.yesCents}
-          calls={yes}
-          pundits={pundits}
-          tone="yes"
-        />
-        <SideCol
-          label={rightLabel}
-          cents={event.noCents}
-          calls={no}
-          pundits={pundits}
-          tone="no"
-        />
+      <div className={`sides ${collapseSecond ? "sides-collapsed" : ""}`}>
+        <SideCol side={first} pundits={pundits} collapsed={false} />
+        <SideCol side={second} pundits={pundits} collapsed={collapseSecond} />
       </div>
     </article>
   );

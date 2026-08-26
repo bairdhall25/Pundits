@@ -63,3 +63,10 @@ export type ActivityRecord = Pundit & {
   mappedPending: number;
   totalCalls: number;
 };
+
+export type CardSide = {
+  side: Side;
+  label: string;
+  cents: number | null;
+  calls: Call[];
+};

@@ -4,8 +4,9 @@ import {
   getActivityBoard,
   getPundit,
   callsForPundit,
+  sidesForCard,
 } from "./data";
-import type { Call, Pundit } from "./types";
+import type { Call, Event, Pundit } from "./types";
 
 const pundits: Pundit[] = [
   { id: "saban", name: "Nick Saban", outlet: "ESPN / GameDay", photo: "/photos/saban.jpg", sport: "ncaaf" },
@@ -99,5 +100,33 @@ describe("callsForPundit", () => {
   it("returns that pundit’s calls newest sourceDate first", () => {
     const list = callsForPundit("finebaum", calls);
     expect(list.map((c) => c.id)).toEqual(["c1", "c2"]);
+  });
+});
+
+describe("sidesForCard", () => {
+  const event: Event = {
+    slug: "clemson-at-lsu", kind: "game", title: "Clemson at LSU",
+    contractName: "Clemson vs LSU — moneyline", awayTeam: "Clemson", homeTeam: "LSU",
+    yesCents: 24, noCents: 78, sourceUrl: "https://example.com", sourcedAt: "2026-08-25",
+    onHome: true, sport: "ncaaf", homeRank: 1,
+  };
+  const lsuCall: Call = {
+    id: "x1", punditId: "finebaum", claim: "Night game in Baton Rouge means the Tigers win this one.",
+    source: "t", sourceUrl: "https://example.com/a", sourceDate: "2026-09-04",
+    kind: "hard", subject: "LSU", paysOn: "Clemson at LSU", status: "pending",
+    eventSlug: "clemson-at-lsu", side: "no",
+  };
+
+  it("puts the populated side first", () => {
+    const [first, second] = sidesForCard(event, [lsuCall]);
+    expect(first.side).toBe("no");
+    expect(first.label).toBe("LSU");
+    expect(second.calls).toHaveLength(0);
+  });
+
+  it("keeps yes/away first on a tie", () => {
+    const [first] = sidesForCard(event, []);
+    expect(first.side).toBe("yes");
+    expect(first.label).toBe("Clemson");
   });
 });
