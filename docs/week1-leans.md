@@ -180,3 +180,34 @@ ncsu-at-uva: no roster lean, no freeze.
 - unc-vs-tcu (propose onHome): YES empty. NO finebaum (new).
 - wisconsin-vs-nd: fully empty, stays off home.
 - ncsu-at-uva: fully empty, stays off home.
+
+## Scout run 2026-08-26 late (Grok Bot)
+
+Fresh capture off updated `bots/scout.md`. Search by event. Priority: wisconsin-vs-nd, ncsu-at-uva, empty YES sides. Did not restage Finebaum `unc-vs-tcu` or the morning eight. Did not touch `data/`.
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|
+| *(empty)* | | | | | | | |
+
+### Dropped
+
+- wisconsin-vs-nd — no first-person Lambeau SU. Title stretches not restaged. Off-roster scores stay dropped.
+- ncsu-at-uva — no roster-voice winner. Herbstreit is Bailey hype only. Hummer/Crawford NC State SU stay off-roster. Cover 3 Week 0 clip has no extractable Kanell quote. Leave off home.
+- Empty YES (Clemson, Patriots, 49ers, Bills, UNC) — no new roster away-team winner.
+- Eisen Seahawks opener — still paraphrase. Simms Patriots = AFC East. Klatt UNC-TCU = 2025 Chapel Hill. 2025 GameDay Clemson-LSU = wrong year.
+
+### Freeze
+
+none
+
+### Home cards
+
+- clemson-at-lsu: YES empty. NO pate, finebaum.
+- patriots-at-seahawks: YES empty. NO cowherd.
+- 49ers-vs-rams: YES empty. NO eisen, cowherd.
+- bills-at-texans: YES empty. NO cowherd.
+- unc-vs-tcu: YES empty. NO finebaum.
+- wisconsin-vs-nd: fully empty, stays off home.
+- ncsu-at-uva: fully empty, stays off home.
