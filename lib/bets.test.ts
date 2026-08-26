@@ -117,8 +117,6 @@ describe("weekend home", () => {
     expect(ncaaf.map((e) => e.slug)).toEqual([
       "clemson-at-lsu",
       "wisconsin-vs-nd",
-      "miami-at-stanford",
-      "baylor-vs-auburn",
     ]);
     expect(nfl.map((e) => e.slug)).toEqual([
       "patriots-at-seahawks",

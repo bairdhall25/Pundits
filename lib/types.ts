@@ -24,6 +24,8 @@ export type Event = {
   contractName: string;
   yesCents: number | null;
   noCents: number | null;
+  sourceUrl: string | null;
+  sourcedAt: string | null;
   onHome: boolean;
   sport: Sport;
   homeRank: number;
