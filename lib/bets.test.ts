@@ -115,10 +115,7 @@ describe("weekend home", () => {
     const events = loadEvents();
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
-    expect(ncaaf.map((e) => e.slug)).toEqual([
-      "clemson-at-lsu",
-      "wisconsin-vs-nd",
-    ]);
+    expect(ncaaf.map((e) => e.slug)).toEqual(["clemson-at-lsu"]);
     expect(nfl.map((e) => e.slug)).toEqual([
       "patriots-at-seahawks",
       "49ers-vs-rams",
@@ -128,6 +125,14 @@ describe("weekend home", () => {
     expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
       true
     );
+  });
+
+  it("does not put a faceless game on the weekend board", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    for (const e of [...getWeekend("ncaaf", events), ...getWeekend("nfl", events)]) {
+      expect(callsForEvent(e.slug, calls).length, e.slug).toBeGreaterThan(0);
+    }
   });
 
   it("freezes Kalshi moneylines on the marquee games we could source", () => {

@@ -146,13 +146,20 @@ export function getFuturesPeek(
 }
 
 export function latestCalls(calls: Call[], limit = 6): Call[] {
-  return [...calls]
-    .sort((a, b) => {
-      if (a.sourceDate < b.sourceDate) return 1;
-      if (a.sourceDate > b.sourceDate) return -1;
-      return 0;
-    })
-    .slice(0, limit);
+  const newest = [...calls].sort((a, b) => {
+    if (a.sourceDate < b.sourceDate) return 1;
+    if (a.sourceDate > b.sourceDate) return -1;
+    return 0;
+  });
+  const seen = new Set<string>();
+  const out: Call[] = [];
+  for (const c of newest) {
+    if (seen.has(c.punditId)) continue;
+    seen.add(c.punditId);
+    out.push(c);
+    if (out.length === limit) break;
+  }
+  return out;
 }
 
 export function getHomeEvents(events: Event[], calls: Call[]): Event[] {

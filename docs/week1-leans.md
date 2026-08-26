@@ -133,7 +133,7 @@ OddsShopper CFB board still last rebuilt Aug 3. Did not overwrite the 2026-08-26
 ### Home cards
 
 - clemson-at-lsu: YES empty. NO pate (book), finebaum (new).
-- wisconsin-vs-nd: YES empty. NO empty. **Fully empty.**
+- wisconsin-vs-nd: YES empty. NO empty. Demoted off home 2026-08-26 (empty card; cents kept). Permalink still at `/picks/wisconsin-vs-nd`.
 - patriots-at-seahawks: YES empty. NO cowherd (new).
 - 49ers-vs-rams: YES empty. NO eisen (book), cowherd (new).
 - bills-at-texans: YES empty. NO cowherd (new).

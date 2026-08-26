@@ -5,6 +5,7 @@ import {
   getPundit,
   callsForPundit,
   sidesForCard,
+  latestCalls,
 } from "./data";
 import type { Call, Event, Pundit } from "./types";
 
@@ -128,5 +129,23 @@ describe("sidesForCard", () => {
     const [first] = sidesForCard(event, []);
     expect(first.side).toBe("yes");
     expect(first.label).toBe("Clemson");
+  });
+});
+
+describe("latestCalls", () => {
+  it("peeks one call per pundit, newest first", () => {
+    const peek = latestCalls(
+      [
+        ...calls,
+        {
+          ...calls[0],
+          id: "c1-later",
+          sourceDate: "2026-08-25",
+          claim: "Indiana still isn't winning it, even later in the month.",
+        },
+      ],
+      6
+    );
+    expect(peek.map((c) => c.id)).toEqual(["c1-later", "c3"]);
   });
 });
