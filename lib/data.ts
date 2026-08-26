@@ -113,7 +113,7 @@ export function sidesForCard(event: Event, calls: Call[]): [CardSide, CardSide] 
     cents: event.noCents,
     calls: callsForEvent(event.slug, calls, "no"),
   };
-  return no.calls.length > yes.calls.length ? [no, yes] : [yes, no];
+  return [yes, no];
 }
 
 export function eventHasFight(slug: string, calls: Call[]): boolean {

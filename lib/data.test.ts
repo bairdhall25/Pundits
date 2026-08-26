@@ -119,17 +119,20 @@ describe("sidesForCard", () => {
     eventSlug: "clemson-at-lsu", side: "no",
   };
 
-  it("puts the populated side first", () => {
+  it("always returns YES then NO regardless of call counts", () => {
     const [first, second] = sidesForCard(event, [lsuCall]);
-    expect(first.side).toBe("no");
-    expect(first.label).toBe("LSU");
-    expect(second.calls).toHaveLength(0);
-  });
-
-  it("keeps yes/away first on a tie", () => {
-    const [first] = sidesForCard(event, []);
     expect(first.side).toBe("yes");
     expect(first.label).toBe("Clemson");
+    expect(first.calls).toHaveLength(0);
+    expect(second.side).toBe("no");
+    expect(second.label).toBe("LSU");
+    expect(second.calls).toHaveLength(1);
+  });
+
+  it("keeps team labels when a side is empty", () => {
+    const [yes, no] = sidesForCard(event, []);
+    expect(yes.label).toBe("Clemson");
+    expect(no.label).toBe("LSU");
   });
 });
 

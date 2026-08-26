@@ -146,6 +146,8 @@ h1, h2, .type-broadcast {
   color: #6b6b6b;
 }
 .src-meta a { color: var(--green); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
+.person-block { margin-bottom: 10px; }
+.person-block .person { margin-bottom: 4px; }
 .person {
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr);
