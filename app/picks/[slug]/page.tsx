@@ -1,10 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EventCard } from "@/components/EventCard";
 import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { eventShare } from "@/lib/share";
+import { pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
   return loadEvents().map((e) => ({ slug: e.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const event = getEvent(slug, loadEvents());
+  if (!event) return pageMeta("Pick", "Kalshi market.");
+  const share = eventShare(event, loadCalls(), loadPundits());
+  return pageMeta(share.title, share.description, `/picks/${slug}`);
 }
 
 export default async function PickPage({

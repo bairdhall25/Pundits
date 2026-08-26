@@ -1,5 +1,12 @@
 import { BookLedger } from "@/components/BookLedger";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { pageMeta } from "@/lib/site";
+
+export const metadata = pageMeta(
+  "The Book",
+  "Every take. Hard and soft. Mapped calls carry the Kalshi strip.",
+  "/book"
+);
 
 export default function BookPage() {
   const calls = [...loadCalls()].sort((a, b) =>

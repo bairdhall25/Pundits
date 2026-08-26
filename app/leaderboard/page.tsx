@@ -1,5 +1,12 @@
 import { LeaderboardClient } from "@/components/LeaderboardClient";
 import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
+import { pageMeta } from "@/lib/site";
+
+export const metadata = pageMeta(
+  "The table",
+  "Everyone starts 0–0. The board ranks who’s actually on record this week.",
+  "/leaderboard"
+);
 
 export default function LeaderboardPage() {
   const board = getActivityBoard(loadPundits(), loadCalls());

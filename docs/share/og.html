@@ -1,0 +1,164 @@
+<!-- 1200x630 share card. Re-render:
+  chrome --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=10000 --screenshot=../../public/og.png docs/share/og.html
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PUNDITS OG</title>
+    <style>
+      @font-face {
+        font-family: Oswald;
+        src: url("./oswald.woff2") format("woff2");
+        font-weight: 500 700;
+        font-style: normal;
+        font-display: block;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        background: #0a0a0a;
+        color: #f5f5f5;
+        overflow: hidden;
+      }
+      .card {
+        box-sizing: border-box;
+        width: 1200px;
+        height: 630px;
+        padding: 44px 56px 40px;
+        display: flex;
+        flex-direction: column;
+        border-top: 8px solid #39ff14;
+        background:
+          linear-gradient(180deg, #101010 0%, #0a0a0a 42%),
+          #0a0a0a;
+      }
+      .kicker {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-family: Oswald, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #39ff14;
+      }
+      .kicker span:last-child {
+        color: #a3a3a3;
+        letter-spacing: 0.18em;
+      }
+      .mark {
+        margin: 28px 0 0;
+        font-family: Oswald, sans-serif;
+        font-size: 92px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        line-height: 0.86;
+        color: #39ff14;
+        text-transform: uppercase;
+      }
+      .mark i {
+        font-style: normal;
+        color: #f5f5f5;
+      }
+      h1 {
+        margin: 18px 0 0;
+        font-family: Oswald, sans-serif;
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+      .sides {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: auto;
+        border: 1px solid #2a2a2a;
+        background: #141414;
+      }
+      .col {
+        padding: 18px 22px 16px;
+        min-width: 0;
+      }
+      .col.yes {
+        background: #0d1a0c;
+        border-right: 1px solid #2a2a2a;
+      }
+      .lab {
+        font-family: Oswald, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #39ff14;
+      }
+      .col.no .lab {
+        color: #a3a3a3;
+      }
+      .empty,
+      .faces {
+        margin-top: 10px;
+        font-family: Oswald, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #a3a3a3;
+      }
+      .pips {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .pips i {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #2a2a2a;
+        box-shadow: inset 0 0 0 1px #3a3a3a;
+        display: block;
+      }
+      .pips i:nth-child(1) {
+        background: #245c18;
+      }
+      .pips i:nth-child(2) {
+        background: #1c3d16;
+      }
+      .foot {
+        margin-top: 22px;
+        font-family: Oswald, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #a3a3a3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="kicker">
+        <span>Active picks · opening weekend</span>
+        <span>Kalshi freeze</span>
+      </div>
+      <div class="mark">Pundits<i>.</i></div>
+      <h1>Who’s picking<br />what.</h1>
+      <div class="sides">
+        <div class="col yes">
+          <div class="lab">Yes · away</div>
+          <div class="empty">Nobody on this side yet</div>
+        </div>
+        <div class="col no">
+          <div class="lab">No · home</div>
+          <div class="faces">Pundits on the record</div>
+          <div class="pips" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="foot">Each card is a Kalshi market. Hypothetical $100 at the freeze.</div>
+    </div>
+  </body>
+</html>

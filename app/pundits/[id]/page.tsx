@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CallCard } from "@/components/CallCard";
@@ -12,9 +13,25 @@ import {
   loadPundits,
   otherTakes,
 } from "@/lib/data";
+import { punditShare } from "@/lib/share";
+import { pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
   return loadPundits().map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const calls = loadCalls();
+  const p = getPundit(id, loadPundits(), calls);
+  if (!p) return pageMeta("Pundit", "Pundit on the PUNDITS board.");
+  const latest = callsForPundit(p.id, calls)[0];
+  const share = punditShare(p, latest);
+  return pageMeta(share.title, share.description, `/pundits/${id}`);
 }
 
 export default async function PunditPage({
