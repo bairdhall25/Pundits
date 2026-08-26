@@ -136,8 +136,12 @@ describe("weekend home", () => {
     expect(bySlug["clemson-at-lsu"].noCents).toBe(78);
     expect(bySlug["wisconsin-vs-nd"].yesCents).toBe(8);
     expect(bySlug["wisconsin-vs-nd"].noCents).toBe(93);
-    expect(bySlug["patriots-at-seahawks"].noCents).toBe(62);
-    expect(bySlug["49ers-vs-rams"].noCents).toBe(62);
+    expect(bySlug["patriots-at-seahawks"].yesCents).toBe(38.5);
+    expect(bySlug["patriots-at-seahawks"].noCents).toBe(62.5);
+    expect(bySlug["49ers-vs-rams"].yesCents).toBe(36.5);
+    expect(bySlug["49ers-vs-rams"].noCents).toBe(62.5);
+    expect(bySlug["bills-at-texans"].yesCents).toBe(48.5);
+    expect(bySlug["bills-at-texans"].noCents).toBe(50);
   });
 
   it("does not invent game leans from title futures", () => {

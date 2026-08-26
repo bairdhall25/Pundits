@@ -85,7 +85,7 @@ Re-price attempt (2026-08-26): searched Kalshi/OddsShopper/Robinhood-Kalshi for 
 
 ## Scout run 2026-08-26 (Grok Bot)
 
-Staged only. Do not treat as promoted into `data/`.
+Promoted to `data/calls.json` 2026-08-26 (Grok Build): all 8 hard rows below. Soft rows (meyer, brandt) stay staging-only. Three NFL Kalshi freezes applied to `data/events.json` from the Stokastic board (same URL, half-cents as printed).
 
 ### Intake
 
