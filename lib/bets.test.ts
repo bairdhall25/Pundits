@@ -116,7 +116,7 @@ describe("weekend home", () => {
     const events = loadEvents();
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
-    expect(ncaaf.map((e) => e.slug)).toEqual(["clemson-at-lsu"]);
+    expect(ncaaf.map((e) => e.slug)).toEqual(["unc-vs-tcu", "clemson-at-lsu"]);
     expect(nfl.map((e) => e.slug)).toEqual([
       "patriots-at-seahawks",
       "49ers-vs-rams",

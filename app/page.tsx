@@ -97,7 +97,7 @@ export default function HomePage() {
         id="ncaaf"
         kicker="Opening weekend"
         label="NCAAF"
-        when="Week 1 · Sep 3–7 · cards with a real face"
+        when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · cards with a real face"
         href="/ncaaf"
         events={ncaaf}
         calls={calls}

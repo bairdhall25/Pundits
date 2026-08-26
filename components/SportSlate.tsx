@@ -17,7 +17,7 @@ const COPY: Record<
   ncaaf: {
     kicker: "College football",
     title: "NCAAF",
-    when: "Week 1 · Sep 3–7",
+    when: "Week 0 Sat Aug 29 · Week 1 Sep 3–7",
   },
   nfl: {
     kicker: "Pro football",

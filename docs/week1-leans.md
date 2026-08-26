@@ -142,7 +142,7 @@ Week 0 (`unc-vs-tcu`, `ncsu-at-uva`): no roster lean. Leave `onHome` false.
 
 ## Scout run 2026-08-26 PM (Grok Bot)
 
-Afternoon capture. Priority: Week 0, wisconsin-vs-nd, empty YES sides. Staged only. Do not touch `data/`.
+Promoted to `data/` 2026-08-26 (Grok Build): finebaum → `unc-vs-tcu` no. Week 0 gate: `unc-vs-tcu` onHome with OddsShopper Kalshi freeze 27/75 (Aug 16 vintage, sourced 2026-08-26). Kickoff noon ET ESPN Dublin confirmed on that page. `ncsu-at-uva` and `wisconsin-vs-nd` stay off home. Morning eight not restaged.
 
 ### Intake
 

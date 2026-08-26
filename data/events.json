@@ -395,13 +395,13 @@
       "homeTeam": "TCU",
       "kickoff": "Sat 12:00 ET",
       "network": "ESPN · Dublin",
-      "yesCents": null,
-      "noCents": null,
-      "sourceUrl": null,
-      "sourcedAt": null,
-      "onHome": false,
+      "yesCents": 27,
+      "noCents": 75,
+      "sourceUrl": "https://www.oddsshopper.com/articles/expert-picks/college-football-week-0-odds",
+      "sourcedAt": "2026-08-26",
+      "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 99
+      "homeRank": 0
     },
     {
       "slug": "ncsu-at-uva",

@@ -694,5 +694,19 @@
     "status": "pending",
     "eventSlug": "bengals-sb",
     "side": "no"
+  },
+  {
+    "id": "finebaum-unc-tcu-20260825",
+    "punditId": "finebaum",
+    "claim": "It is mass chaos in Chapel Hill. I don't believe they'll win this game in Ireland, and I don't think Bill Belichick is going to survive until the end of the season.",
+    "source": "First Take via Awful Announcing",
+    "sourceUrl": "https://awfulannouncing.com/college-football/paul-finebaum-bill-belichick-down-in-flames.html",
+    "sourceDate": "2026-08-25",
+    "kind": "hard",
+    "subject": "TCU",
+    "paysOn": "North Carolina vs TCU (Week 0, Dublin)",
+    "status": "pending",
+    "eventSlug": "unc-vs-tcu",
+    "side": "no"
   }
 ]
