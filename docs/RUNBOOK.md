@@ -1,6 +1,7 @@
 # Capture run
 
 A run is on-demand. Target cadence launch week: Wed, Thu, Fri, Sat morning.
+Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook is the shared checklist; those files are what each Bot reads.
 
 ## Steps
 1. CAPTURE — mine shows/columns/podcasts for roster voices' picks on the
