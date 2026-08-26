@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { callsForEvent, eventHasFight, formatCents } from "@/lib/data";
-import type { Call, Event, Pundit, PunditRecord } from "@/lib/types";
+import type { ActivityRecord, Call, Event, Pundit } from "@/lib/types";
 
 export function PeekRow({
   children,
@@ -67,14 +67,17 @@ export function FuturePeek({
   );
 }
 
-export function TablePeek({ p }: { p: PunditRecord }) {
+export function TablePeek({ p }: { p: ActivityRecord }) {
   return (
     <Link href={`/pundits/${p.id}`} className="peek table-card">
       <PunditAvatar src={p.photo} alt={p.name} size="row" />
       <div className="nm type-broadcast">{p.name.split(" ").slice(-1)[0]}</div>
-      <div className="pct type-broadcast">{p.accuracy2025}%</div>
+      <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+        Live
+      </div>
+      <div className="pct type-broadcast">{p.mappedPending}</div>
       <div className="wl">
-        2025 est · 2026 {p.season2026.wins}–{p.season2026.losses}
+        2026 {p.season2026.wins}–{p.season2026.losses}
       </div>
     </Link>
   );

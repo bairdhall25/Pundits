@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { getLeaderboard, loadCalls, loadPundits } from "@/lib/data";
+import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
 
 export default function LeaderboardPage() {
-  const board = getLeaderboard(loadPundits(), loadCalls());
+  const board = getActivityBoard(loadPundits(), loadCalls());
 
   return (
     <main className="shell">
-      <div className="eyebrow type-broadcast">Gamification</div>
+      <div className="eyebrow type-broadcast">The table</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         The table.
       </h1>
       <p className="lede">
-        Who’s supposed to be good. 2026 is 0–0 until games land. Dollars stay
-        on the profile.
+        Everyone starts 0–0. The board ranks who’s actually on record this
+        week.
       </p>
       <div className="flex flex-col gap-2">
         {board.map((p, i) => (
@@ -34,18 +34,18 @@ export default function LeaderboardPage() {
             </div>
             <div className="text-right">
               <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
-                2025 est.
+                Live picks
               </div>
               <div className="type-broadcast text-2xl text-[var(--green)]">
-                {p.accuracy2025}%
+                {p.mappedPending}
               </div>
             </div>
             <div className="text-right">
-              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
-                2026
-              </div>
               <div className="type-broadcast text-2xl">
-                {p.season2026.wins}–{p.season2026.losses}
+                2026 {p.season2026.wins}–{p.season2026.losses}
+              </div>
+              <div className="text-[11px] uppercase tracking-wider text-[var(--muted)]">
+                {p.totalCalls} calls
               </div>
             </div>
           </Link>

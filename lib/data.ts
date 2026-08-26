@@ -1,20 +1,14 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import type {
+  ActivityRecord,
   Call,
   Event,
   EventsFile,
   Pundit,
-  PunditRecord,
   Side,
   Sport,
 } from "./types";
-
-export function accuracyPct(wins: number, losses: number): number {
-  const n = wins + losses;
-  if (n === 0) return 0;
-  return Math.round((wins / n) * 100);
-}
 
 export function seasonFromCalls(
   punditId: string,
@@ -28,33 +22,30 @@ export function seasonFromCalls(
   };
 }
 
-export function toRecord(pundit: Pundit, calls: Call[]): PunditRecord {
+export function toActivityRecord(pundit: Pundit, calls: Call[]): ActivityRecord {
+  const mine = calls.filter((c) => c.punditId === pundit.id);
   return {
     ...pundit,
-    accuracy2025: accuracyPct(
-      pundit.estimated2025.wins,
-      pundit.estimated2025.losses
-    ),
     season2026: seasonFromCalls(pundit.id, calls),
+    mappedPending: mine.filter((c) => isMapped(c) && c.status === "pending").length,
+    totalCalls: mine.length,
   };
 }
 
-export function getLeaderboard(
-  pundits: Pundit[],
-  calls: Call[]
-): PunditRecord[] {
+export function getActivityBoard(pundits: Pundit[], calls: Call[]): ActivityRecord[] {
   return pundits
-    .map((p) => toRecord(p, calls))
-    .sort((a, b) => b.accuracy2025 - a.accuracy2025);
+    .map((p) => toActivityRecord(p, calls))
+    .sort(
+      (a, b) =>
+        b.mappedPending - a.mappedPending ||
+        b.totalCalls - a.totalCalls ||
+        a.name.localeCompare(b.name)
+    );
 }
 
-export function getPundit(
-  id: string,
-  pundits: Pundit[],
-  calls: Call[]
-): PunditRecord | null {
+export function getPundit(id: string, pundits: Pundit[], calls: Call[]): ActivityRecord | null {
   const p = pundits.find((x) => x.id === id);
-  return p ? toRecord(p, calls) : null;
+  return p ? toActivityRecord(p, calls) : null;
 }
 
 export function callsForPundit(id: string, calls: Call[]): Call[] {

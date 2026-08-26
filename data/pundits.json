@@ -1,79 +1,13 @@
 [
-  {
-    "id": "saban",
-    "name": "Nick Saban",
-    "outlet": "ESPN / GameDay",
-    "photo": "/photos/saban.jpg",
-    "estimated2025": { "wins": 31, "losses": 18 }
-  },
-  {
-    "id": "mcelroy",
-    "name": "Greg McElroy",
-    "outlet": "ESPN",
-    "photo": "/photos/mcelroy.jpg",
-    "estimated2025": { "wins": 34, "losses": 22 }
-  },
-  {
-    "id": "herbstreit",
-    "name": "Kirk Herbstreit",
-    "outlet": "College GameDay",
-    "photo": "/photos/herbstreit.jpg",
-    "estimated2025": { "wins": 29, "losses": 21 }
-  },
-  {
-    "id": "coughlin",
-    "name": "Stanford Steve Coughlin",
-    "outlet": "College GameDay",
-    "photo": "/photos/coughlin.jpg",
-    "estimated2025": { "wins": 38, "losses": 28 }
-  },
-  {
-    "id": "thamel",
-    "name": "Pete Thamel",
-    "outlet": "ESPN",
-    "photo": "/photos/thamel.jpg",
-    "estimated2025": { "wins": 22, "losses": 18 }
-  },
-  {
-    "id": "mcfarland",
-    "name": "Booger McFarland",
-    "outlet": "ESPN studio desk",
-    "photo": "/photos/mcfarland.jpg",
-    "estimated2025": { "wins": 27, "losses": 23 }
-  },
-  {
-    "id": "mcafee",
-    "name": "Pat McAfee",
-    "outlet": "GameDay / McAfee Show",
-    "photo": "/photos/mcafee.jpg",
-    "estimated2025": { "wins": 24, "losses": 23 }
-  },
-  {
-    "id": "finebaum",
-    "name": "Paul Finebaum",
-    "outlet": "Finebaum / ESPN",
-    "photo": "/photos/finebaum.jpg",
-    "estimated2025": { "wins": 21, "losses": 24 }
-  },
-  {
-    "id": "skip",
-    "name": "Skip Bayless",
-    "outlet": "The Arena / Skip Bayless Show",
-    "photo": "/photos/skip.jpg",
-    "estimated2025": { "wins": 28, "losses": 22 }
-  },
-  {
-    "id": "hawk",
-    "name": "A.J. Hawk",
-    "outlet": "The Pat McAfee Show",
-    "photo": "/photos/hawk.jpg",
-    "estimated2025": { "wins": 21, "losses": 24 }
-  },
-  {
-    "id": "butler",
-    "name": "Darius Butler",
-    "outlet": "The Pat McAfee Show",
-    "photo": "/photos/butler.jpg",
-    "estimated2025": { "wins": 23, "losses": 22 }
-  }
+  { "id": "herbstreit", "name": "Kirk Herbstreit", "outlet": "College GameDay", "photo": "/photos/herbstreit.jpg", "sport": "ncaaf" },
+  { "id": "mcafee", "name": "Pat McAfee", "outlet": "GameDay / McAfee Show", "photo": "/photos/mcafee.jpg", "sport": "both" },
+  { "id": "saban", "name": "Nick Saban", "outlet": "ESPN / GameDay", "photo": "/photos/saban.jpg", "sport": "ncaaf" },
+  { "id": "finebaum", "name": "Paul Finebaum", "outlet": "Finebaum / ESPN", "photo": "/photos/finebaum.jpg", "sport": "ncaaf" },
+  { "id": "mcelroy", "name": "Greg McElroy", "outlet": "ESPN / Always College Football", "photo": "/photos/mcelroy.jpg", "sport": "ncaaf" },
+  { "id": "coughlin", "name": "Stanford Steve Coughlin", "outlet": "College GameDay", "photo": "/photos/coughlin.jpg", "sport": "ncaaf" },
+  { "id": "thamel", "name": "Pete Thamel", "outlet": "ESPN", "photo": "/photos/thamel.jpg", "sport": "ncaaf" },
+  { "id": "mcfarland", "name": "Booger McFarland", "outlet": "ESPN studio desk", "photo": "/photos/mcfarland.jpg", "sport": "ncaaf" },
+  { "id": "skip", "name": "Skip Bayless", "outlet": "The Skip Bayless Show", "photo": "/photos/skip.jpg", "sport": "nfl" },
+  { "id": "hawk", "name": "A.J. Hawk", "outlet": "The Pat McAfee Show", "photo": "/photos/hawk.jpg", "sport": "nfl" },
+  { "id": "butler", "name": "Darius Butler", "outlet": "The Pat McAfee Show", "photo": "/photos/butler.jpg", "sport": "nfl" }
 ]

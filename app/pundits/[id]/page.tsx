@@ -47,21 +47,32 @@ export default async function PunditPage({
           <h1 className="mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
             {p.name}
           </h1>
+          <div className="mt-2 inline-block border border-[#2a2a2a] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--muted)]">
+            {p.sport}
+          </div>
           <div className="mt-3 flex flex-wrap gap-6">
-            <div>
-              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
-                2025 est.
-              </div>
-              <div className="type-broadcast text-2xl text-[var(--green)]">
-                {p.accuracy2025}%
-              </div>
-            </div>
             <div>
               <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
                 2026
               </div>
               <div className="type-broadcast text-2xl">
                 {p.season2026.wins}–{p.season2026.losses}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+                Live picks
+              </div>
+              <div className="type-broadcast text-2xl text-[var(--green)]">
+                {p.mappedPending}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+                At risk
+              </div>
+              <div className="type-broadcast text-2xl text-[var(--green)]">
+                ${open}
               </div>
             </div>
           </div>

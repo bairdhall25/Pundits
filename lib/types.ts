@@ -2,12 +2,14 @@ export type CallKind = "hard" | "soft";
 
 export type CallStatus = "pending" | "hit" | "miss";
 
+export type PunditSport = "ncaaf" | "nfl" | "both";
+
 export type Pundit = {
   id: string;
   name: string;
   outlet: string;
   photo: string;
-  estimated2025: { wins: number; losses: number };
+  sport: PunditSport;
 };
 
 export type Side = "yes" | "no";
@@ -54,7 +56,8 @@ export type Call = {
   side?: Side;
 };
 
-export type PunditRecord = Pundit & {
-  accuracy2025: number;
+export type ActivityRecord = Pundit & {
   season2026: { wins: number; losses: number; pending: number };
+  mappedPending: number;
+  totalCalls: number;
 };

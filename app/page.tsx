@@ -6,8 +6,8 @@ import {
   TablePeek,
 } from "@/components/PeekRow";
 import {
+  getActivityBoard,
   getFuturesPeek,
-  getLeaderboard,
   getWeekend,
   latestCalls,
   loadCalls,
@@ -60,7 +60,7 @@ export default function HomePage() {
     ...getFuturesPeek("ncaaf", events, calls, 3),
     ...getFuturesPeek("nfl", events, calls, 2),
   ];
-  const table = getLeaderboard(pundits, calls).slice(0, 6);
+  const table = getActivityBoard(pundits, calls).slice(0, 6);
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
 
