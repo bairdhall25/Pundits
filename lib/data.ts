@@ -115,6 +115,38 @@ export function eventHasFight(slug: string, calls: Call[]): boolean {
   );
 }
 
+export function eventKind(event: Event): "game" | "future" {
+  return event.kind ?? "future";
+}
+
+export function getWeekend(
+  sport: Sport,
+  events: Event[]
+): Event[] {
+  return events
+    .filter((e) => e.onHome && e.sport === sport && eventKind(e) === "game")
+    .sort((a, b) => a.homeRank - b.homeRank);
+}
+
+export function getFuturesPeek(
+  sport: Sport,
+  events: Event[],
+  calls: Call[],
+  limit = 5
+): Event[] {
+  return getBoard(sport, events, calls).slice(0, limit);
+}
+
+export function latestCalls(calls: Call[], limit = 6): Call[] {
+  return [...calls]
+    .sort((a, b) => {
+      if (a.sourceDate < b.sourceDate) return 1;
+      if (a.sourceDate > b.sourceDate) return -1;
+      return 0;
+    })
+    .slice(0, limit);
+}
+
 export function getHomeEvents(events: Event[], calls: Call[]): Event[] {
   return events
     .filter((e) => e.onHome)
@@ -133,7 +165,9 @@ export function getBoard(
   calls: Call[]
 ): Event[] {
   return events
-    .filter((e) => e.onHome && e.sport === sport)
+    .filter(
+      (e) => e.onHome && e.sport === sport && eventKind(e) === "future"
+    )
     .sort((a, b) => {
       const fa = eventHasFight(a.slug, calls) ? 0 : 1;
       const fb = eventHasFight(b.slug, calls) ? 0 : 1;

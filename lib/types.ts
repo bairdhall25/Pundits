@@ -14,6 +14,8 @@ export type Side = "yes" | "no";
 
 export type Sport = "ncaaf" | "nfl";
 
+export type EventKind = "game" | "future";
+
 export type Event = {
   slug: string;
   title: string;
@@ -23,6 +25,11 @@ export type Event = {
   onHome: boolean;
   sport: Sport;
   homeRank: number;
+  kind?: EventKind;
+  awayTeam?: string;
+  homeTeam?: string;
+  kickoff?: string;
+  network?: string;
 };
 
 export type EventsFile = {

@@ -2,8 +2,11 @@ import { describe, expect, it } from "vitest";
 import {
   callsForEvent,
   eventHasFight,
+  eventKind,
   getBoard,
+  getFuturesPeek,
   getHomeEvents,
+  getWeekend,
   impliedOpenDollars,
   loadCalls,
   loadEvents,
@@ -103,5 +106,42 @@ describe("Top 10 boards", () => {
     expect(callsForEvent("tech-cfp", loadCalls(), "yes").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
+  });
+});
+
+describe("weekend home", () => {
+  it("lists Week 1 games separately from futures", () => {
+    const events = loadEvents();
+    const ncaaf = getWeekend("ncaaf", events);
+    const nfl = getWeekend("nfl", events);
+    expect(ncaaf.map((e) => e.slug)).toEqual([
+      "clemson-at-lsu",
+      "wisconsin-vs-nd",
+      "miami-at-stanford",
+      "baylor-vs-auburn",
+    ]);
+    expect(nfl.map((e) => e.slug)).toEqual([
+      "patriots-at-seahawks",
+      "49ers-vs-rams",
+      "bills-at-texans",
+    ]);
+    expect(ncaaf.every((e) => eventKind(e) === "game")).toBe(true);
+    expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
+      true
+    );
+  });
+
+  it("does not invent game leans from title futures", () => {
+    const calls = loadCalls();
+    expect(callsForEvent("clemson-at-lsu", calls)).toHaveLength(0);
+    expect(callsForEvent("wisconsin-vs-nd", calls)).toHaveLength(0);
+    expect(callsForEvent("patriots-at-seahawks", calls)).toHaveLength(0);
+  });
+
+  it("peeks a short futures strip that still prefers fights", () => {
+    const peek = getFuturesPeek("ncaaf", loadEvents(), loadCalls(), 5);
+    expect(peek).toHaveLength(5);
+    expect(peek[0].slug).toBe("indiana-title");
+    expect(peek.every((e) => eventKind(e) === "future")).toBe(true);
   });
 });

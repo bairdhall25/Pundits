@@ -12,15 +12,17 @@ function SideCol({
   cents,
   calls,
   pundits,
+  tone,
 }: {
-  label: "Yes" | "No";
+  label: string;
   cents: number | null;
   calls: Call[];
   pundits: Pundit[];
+  tone: "yes" | "no";
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   return (
-    <div className={`col ${label === "Yes" ? "yes" : "no"}`}>
+    <div className={`col ${tone}`}>
       <div className="lab">
         {label} · {formatCents(cents)} · {calls.length} pundit
         {calls.length === 1 ? "" : "s"}
@@ -64,6 +66,9 @@ export function EventCard({
   const yes = callsForEvent(event.slug, calls, "yes");
   const no = callsForEvent(event.slug, calls, "no");
   const fight = eventHasFight(event.slug, calls);
+  const game = event.kind === "game";
+  const leftLabel = game ? (event.awayTeam ?? "Away") : "Yes";
+  const rightLabel = game ? (event.homeTeam ?? "Home") : "No";
   const title = permalink ? (
     <Link href={`/picks/${event.slug}`} className="hover:text-[var(--green)]">
       {event.title}
@@ -71,19 +76,33 @@ export function EventCard({
   ) : (
     event.title
   );
+  const meta = game
+    ? [event.kickoff, event.network, `Kalshi ${formatCents(event.yesCents)} / ${formatCents(event.noCents)}`]
+        .filter(Boolean)
+        .join(" · ")
+    : `Kalshi · ${event.contractName} · YES ${formatCents(event.yesCents)} · NO ${formatCents(event.noCents)}`;
 
   return (
     <article className={`event ${fight ? "fight" : ""}`}>
       <div className="event-head">
         <h2 className="type-broadcast">{title}</h2>
-        <div className="meta">
-          Kalshi · {event.contractName} · YES {formatCents(event.yesCents)} · NO{" "}
-          {formatCents(event.noCents)}
-        </div>
+        <div className="meta">{meta}</div>
       </div>
       <div className="sides">
-        <SideCol label="Yes" cents={event.yesCents} calls={yes} pundits={pundits} />
-        <SideCol label="No" cents={event.noCents} calls={no} pundits={pundits} />
+        <SideCol
+          label={leftLabel}
+          cents={event.yesCents}
+          calls={yes}
+          pundits={pundits}
+          tone="yes"
+        />
+        <SideCol
+          label={rightLabel}
+          cents={event.noCents}
+          calls={no}
+          pundits={pundits}
+          tone="no"
+        />
       </div>
     </article>
   );
