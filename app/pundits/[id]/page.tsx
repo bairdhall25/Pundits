@@ -8,6 +8,7 @@ import {
   impliedOpenDollars,
   isMapped,
   loadCalls,
+  loadEvents,
   loadPundits,
   otherTakes,
 } from "@/lib/data";
@@ -30,9 +31,10 @@ export default async function PunditPage({
   const implied = callsForPundit(p.id, calls).filter(isMapped);
   const rest = otherTakes(p.id, calls);
   const open = impliedOpenDollars(p.id, calls);
+  const events = loadEvents();
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <Link
         href="/"
         className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"
@@ -53,7 +55,7 @@ export default async function PunditPage({
           </div>
           <div className="mt-3 flex flex-wrap gap-6">
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 2026
               </div>
               <div className="type-broadcast text-2xl">
@@ -61,7 +63,7 @@ export default async function PunditPage({
               </div>
             </div>
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 Live picks
               </div>
               <div className="type-broadcast text-2xl text-[var(--green)]">
@@ -69,7 +71,7 @@ export default async function PunditPage({
               </div>
             </div>
             <div>
-              <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 At risk
               </div>
               <div className="type-broadcast text-2xl text-[var(--green)]">
@@ -85,7 +87,7 @@ export default async function PunditPage({
       </h2>
       <div className="mb-4 flex gap-7 border border-[#245c18] bg-[#10200c] px-5 py-4">
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
             Open at risk
           </div>
           <div className="type-broadcast text-2xl text-[var(--green)]">
@@ -93,14 +95,14 @@ export default async function PunditPage({
           </div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
             Settled
           </div>
           <div className="type-broadcast text-2xl">$0</div>
         </div>
       </div>
       {implied.length ? (
-        implied.map((c) => <CallCard key={c.id} call={c} />)
+        implied.map((c) => <CallCard key={c.id} call={c} events={events} />)
       ) : (
         <p className="lede">No mapped Kalshi lean yet.</p>
       )}
@@ -109,7 +111,7 @@ export default async function PunditPage({
         Other takes
       </h2>
       {rest.length ? (
-        rest.map((c) => <CallCard key={c.id} call={c} />)
+        rest.map((c) => <CallCard key={c.id} call={c} events={events} />)
       ) : (
         <p className="lede">No unmapped takes on file.</p>
       )}

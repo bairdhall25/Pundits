@@ -17,13 +17,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "PUNDITS",
-  description: "Who’s on what. Top 10 NCAAF and NFL picks, mapped from pundit takes.",
+  description: "Who’s picking what. Pundit takes mapped onto Kalshi markets.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
       <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <SiteHeader />
         {children}
         <SiteFooter />

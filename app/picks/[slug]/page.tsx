@@ -18,7 +18,7 @@ export default async function PickPage({
   const slate = event.sport === "nfl" ? "/nfl" : "/ncaaf";
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <Link
         href={slate}
         className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"

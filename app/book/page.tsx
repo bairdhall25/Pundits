@@ -1,5 +1,5 @@
 import { BookLedger } from "@/components/BookLedger";
-import { loadCalls, loadPundits } from "@/lib/data";
+import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 
 export default function BookPage() {
   const calls = [...loadCalls()].sort((a, b) =>
@@ -7,7 +7,7 @@ export default function BookPage() {
   );
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <div className="eyebrow type-broadcast">The Book</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         Every
@@ -18,7 +18,7 @@ export default function BookPage() {
         Hard and soft. Mapped calls carry the Kalshi strip. This is the detail
         behind the picks.
       </p>
-      <BookLedger calls={calls} pundits={loadPundits()} />
+      <BookLedger calls={calls} pundits={loadPundits()} events={loadEvents()} />
     </main>
   );
 }

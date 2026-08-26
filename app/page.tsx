@@ -74,7 +74,7 @@ export default function HomePage() {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <div className="eyebrow type-broadcast">Active picks · opening weekend</div>
       <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
         Who’s picking

@@ -5,7 +5,7 @@ export default function LeaderboardPage() {
   const board = getActivityBoard(loadPundits(), loadCalls());
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <div className="eyebrow type-broadcast">The table</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         The table.

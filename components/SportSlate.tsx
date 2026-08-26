@@ -35,7 +35,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
   const copy = COPY[sport];
 
   return (
-    <main className="shell">
+    <main id="main" className="shell">
       <Link
         href="/"
         className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"

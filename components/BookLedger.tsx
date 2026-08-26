@@ -4,9 +4,9 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CallCard } from "@/components/CallCard";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { emptyBookFilter, filterBook } from "@/lib/data";
-import type { BookFilter } from "@/lib/data";
-import type { Call, Pundit } from "@/lib/types";
+import { emptyBookFilter, filterBook } from "@/lib/book-filter";
+import type { BookFilter } from "@/lib/book-filter";
+import type { Call, Event, Pundit } from "@/lib/types";
 
 function Select({
   label,
@@ -36,9 +36,11 @@ function Select({
 export function BookLedger({
   calls,
   pundits,
+  events,
 }: {
   calls: Call[];
   pundits: Pundit[];
+  events: Event[];
 }) {
   const [f, setF] = useState<BookFilter>(emptyBookFilter);
   const byId = useMemo(
@@ -116,7 +118,7 @@ export function BookLedger({
                   <div className="lb-outlet">{p.outlet}</div>
                 </div>
               </Link>
-              <CallCard call={c} />
+              <CallCard call={c} events={events} />
             </div>
           );
         })

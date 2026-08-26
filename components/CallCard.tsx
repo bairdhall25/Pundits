@@ -1,9 +1,16 @@
-import { formatCents, getEvent, loadEvents } from "@/lib/data";
-import type { Call } from "@/lib/types";
+import { formatCents } from "@/lib/format";
+import type { Call, Event } from "@/lib/types";
 
-export function CallCard({ call }: { call: Call }) {
-  const events = loadEvents();
-  const event = call.eventSlug ? getEvent(call.eventSlug, events) : null;
+export function CallCard({
+  call,
+  events = [],
+}: {
+  call: Call;
+  events?: Event[];
+}) {
+  const event = call.eventSlug
+    ? events.find((e) => e.slug === call.eventSlug) ?? null
+    : null;
   const cents =
     event && call.side
       ? call.side === "yes"
@@ -28,7 +35,7 @@ export function CallCard({ call }: { call: Call }) {
         </span>
       </div>
       <p className="mb-2 text-base leading-relaxed">{call.claim}</p>
-      <div className="text-xs text-[#6b6b6b]">
+      <div className="text-xs text-[var(--muted)]">
         {call.source}
         {call.sourceDate ? ` · ${call.sourceDate}` : ""}
         {call.sourceUrl ? (

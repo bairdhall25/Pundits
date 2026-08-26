@@ -72,7 +72,7 @@ export function TablePeek({ p }: { p: ActivityRecord }) {
     <Link href={`/pundits/${p.id}`} className="peek table-card">
       <PunditAvatar src={p.photo} alt={p.name} size="row" />
       <div className="nm type-broadcast">{p.name.split(" ").slice(-1)[0]}</div>
-      <div className="text-[10px] uppercase tracking-widest text-[#6b6b6b]">
+      <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
         Live
       </div>
       <div className="pct type-broadcast">{p.mappedPending}</div>

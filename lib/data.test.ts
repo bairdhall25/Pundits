@@ -8,9 +8,8 @@ import {
   latestCalls,
   formatAsOf,
   otherTakes,
-  filterBook,
-  emptyBookFilter,
 } from "./data";
+import { filterBook, emptyBookFilter } from "./book-filter";
 import type { Call, Event, Pundit } from "./types";
 
 const pundits: Pundit[] = [

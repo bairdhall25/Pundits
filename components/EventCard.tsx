@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { eventHasFight, formatAsOf, formatCents, sidesForCard } from "@/lib/data";
-import type { CardSide, Event, Pundit } from "@/lib/types";
+import type { Call, CardSide, Event, Pundit } from "@/lib/types";
 
 function sideLab(side: CardSide): string {
   const tone = side.side.toUpperCase();
