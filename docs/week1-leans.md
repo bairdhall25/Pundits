@@ -55,6 +55,28 @@ Caveat: Crawford's picks are from a March 2026 "early picks" piece — clear fir
 - Cody Nagel (CBS) Colorado–Georgia Tech — dated Aug 2025, the 2025 opener.
 - On3 Crain & Cone / J.D. PicKell picks — On3 returned 403; quotes couldn't be verified.
 
+## 2026-08-26 capture run addendum
+
+Promoted to calls.json this run:
+- Josh Pate, Clemson at LSU → `clemson-at-lsu` no (seed, verified above).
+- Rich Eisen, 49ers at Rams (Melbourne) → `49ers-vs-rams` no. "Rams. They're number one on my power rankings list." Rich Eisen Show, https://richeisenshow.com/read/rich-eisen-plays-the-win-loss-game-for-the-nfls-8-international-games-this-fall, 2026-05-13.
+- Greg McElroy on Clemson's O-line/LSU trip (soft, no mapping): "The offensive line has just two starters back, which is a real concern, and they open at LSU on September 5, which is gonna be a really good team." Always College Football via TheClemsonInsider, https://www.theclemsoninsider.com/2026/08/11/mcelroy-more-bullish-on-clemson-than-coaches-poll/, 2026-08-11.
+
+Dropped this run (verified wrong year — 2025 season, not 2026):
+- Joel Klatt LSU-Clemson picks (saturdaydownsouth.com and si.com "Expert Predictions" pieces, both dated Aug 2025; Klatt picked Clemson 27-21 for the **2025** meeting where Clemson was home).
+- Greg McElroy "Clemson wins the game" quote in the si.com "Expert Predictions" piece — same Aug 2025 article, wrong year.
+- Colin Cowherd Clemson-LSU pick (awfulannouncing.com, Aug 31 2025 recap of his 2025 picks).
+- CBS Sports GameDay-adjacent LSU-Clemson picks (Neuheisel/Taylor/Jones, Corso/Howard/Saban/McAfee) — all confirmed 2025-season College GameDay panel picks (Clemson was home team, Cade Klubnik at QB); not usable for the 2026 LSU-home rematch.
+- Chris Fallica Bear Bets Week 1 picks (foxsports.com) — confirmed Aug 29 2025 article (Missouri State-USC, Notre Dame-Miami slate); no current 2026 Week 1 picks column found yet.
+- Josh Pate's "Auburn's gonna win" Baylor-Auburn quote (si.com, flywareagle.com) — confirmed Aug 27 2025 article about the Waco meeting, not the 2026 Atlanta game.
+- Joel Klatt Week 1 Picks & Previews podcast episode — confirmed released Aug 28 2025 (LSU at #9 traveling to #4 Clemson — 2025 seeding).
+- Rich Eisen "Seahawks beat Patriots" line — general-season commentary, not a dated Week 1 pick; not captured as hard.
+- Florio/Simms "23-20 Patriots / 21-17 Seahawks" picks — these are their Super Bowl LX picks (Feb 2026), not a Week 1 2026 rematch pick; no PFT Week 1 2026 picks column published yet (checked nbcsports.com directly, 404).
+- No roster-voice picks found (after direct verification attempts) for Miami-at-Stanford, Baylor-vs-Auburn, Wisconsin-vs-Notre-Dame, Bills-at-Texans, or Patriots-at-Seahawks from: Klatt, Fallica, Kanell, Staples, Wasserman, Feldman, Meyer, Herbstreit, Thamel, Davis, Stephen A. Smith, Orlovsky, Kimes, Simmons, Burleson, Adams, Sharpe.
+- No roster-voice leans found on Week 0 games (unc-vs-tcu, ncsu-at-uva) this run; all Week 0 pick columns found are non-roster betting-site staff. Note for tomorrow's Thursday gate: OddsShopper's Week 0 article (https://www.oddsshopper.com/articles/expert-picks/college-football-week-0-odds, dated 2026-08-26) lists Kalshi prices TCU 75c/UNC 27c and Virginia 66c/NC State 37c if the gate needs cents on hand.
+
+Re-price attempt (2026-08-26): searched Kalshi/OddsShopper/Robinhood-Kalshi for `miami-at-stanford` and `baylor-vs-auburn` game markets. OddsShopper's live "Kalshi College Football Picks" board (same source used for clemson-at-lsu/wisconsin-vs-nd) does not list either game as of today. No Kalshi moneyline market found for either. Both remain demoted (onHome: false, no cents) — no events.json changes.
+
 ## Marquee slate reference
 
 - **Week 0 (Sat 8/29):** UNC vs. TCU (Dublin, TCU -7.5); NC State at Virginia (UVA -5.5)
