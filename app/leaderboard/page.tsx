@@ -1,4 +1,4 @@
-import { LeaderboardBoard } from "@/components/LeaderboardBoard";
+import { LeaderboardClient } from "@/components/LeaderboardClient";
 import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
 
 export default function LeaderboardPage() {
@@ -14,7 +14,7 @@ export default function LeaderboardPage() {
         Everyone starts 0–0. The board ranks who’s actually on record this
         week.
       </p>
-      <LeaderboardBoard board={board} showAll />
+      <LeaderboardClient board={board} />
     </main>
   );
 }

@@ -7,6 +7,9 @@ import {
   sidesForCard,
   latestCalls,
   formatAsOf,
+  otherTakes,
+  filterBook,
+  emptyBookFilter,
 } from "./data";
 import type { Call, Event, Pundit } from "./types";
 
@@ -133,6 +136,31 @@ describe("sidesForCard", () => {
     const [yes, no] = sidesForCard(event, []);
     expect(yes.label).toBe("Clemson");
     expect(no.label).toBe("LSU");
+  });
+});
+
+describe("otherTakes", () => {
+  it("returns only unmapped calls for a pundit", () => {
+    const rest = otherTakes("finebaum", calls);
+    expect(rest.map((c) => c.id)).toEqual(["c2"]);
+    expect(rest.every((c) => !c.eventSlug)).toBe(true);
+  });
+});
+
+describe("filterBook", () => {
+  it("composes sport, kind, mapping, and query", () => {
+    const nflSoft = filterBook(calls, pundits, {
+      ...emptyBookFilter,
+      sport: "nfl",
+      kind: "soft",
+    });
+    expect(nflSoft).toHaveLength(0);
+    const mappedIndiana = filterBook(calls, pundits, {
+      ...emptyBookFilter,
+      mapping: "mapped",
+      q: "indiana",
+    });
+    expect(mappedIndiana.map((c) => c.id)).toEqual(["c1"]);
   });
 });
 

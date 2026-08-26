@@ -1,10 +1,7 @@
-import Link from "next/link";
-import { CallCard } from "@/components/CallCard";
-import { PunditAvatar } from "@/components/PunditAvatar";
+import { BookLedger } from "@/components/BookLedger";
 import { loadCalls, loadPundits } from "@/lib/data";
 
 export default function BookPage() {
-  const pundits = Object.fromEntries(loadPundits().map((p) => [p.id, p]));
   const calls = [...loadCalls()].sort((a, b) =>
     a.sourceDate < b.sourceDate ? 1 : a.sourceDate > b.sourceDate ? -1 : 0
   );
@@ -21,27 +18,7 @@ export default function BookPage() {
         Hard and soft. Mapped calls carry the Kalshi strip. This is the detail
         behind the picks.
       </p>
-      {calls.map((c) => {
-        const p = pundits[c.punditId];
-        if (!p) return null;
-        return (
-          <div key={c.id} className="mb-2">
-            <Link
-              href={`/pundits/${p.id}`}
-              className="mb-1 flex items-center gap-3 px-1"
-            >
-              <PunditAvatar src={p.photo} alt="" size="row" />
-              <div>
-                <div className="type-broadcast text-xl">{p.name}</div>
-                <div className="text-[11px] uppercase tracking-wider text-[var(--muted)]">
-                  {p.outlet}
-                </div>
-              </div>
-            </Link>
-            <CallCard call={c} />
-          </div>
-        );
-      })}
+      <BookLedger calls={calls} pundits={loadPundits()} />
     </main>
   );
 }

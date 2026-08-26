@@ -9,6 +9,7 @@ import {
   isMapped,
   loadCalls,
   loadPundits,
+  otherTakes,
 } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -26,8 +27,8 @@ export default async function PunditPage({
   const p = getPundit(id, pundits, calls);
   if (!p) notFound();
 
-  const mine = callsForPundit(p.id, calls);
-  const implied = mine.filter(isMapped);
+  const implied = callsForPundit(p.id, calls).filter(isMapped);
+  const rest = otherTakes(p.id, calls);
   const open = impliedOpenDollars(p.id, calls);
 
   return (
@@ -100,19 +101,17 @@ export default async function PunditPage({
       </div>
       {implied.length ? (
         implied.map((c) => <CallCard key={c.id} call={c} />)
-      ) : mine.length ? (
-        <p className="lede">No clear Kalshi lean yet. Takes still live below.</p>
       ) : (
-        <p className="lede">No clear Kalshi lean yet.</p>
+        <p className="lede">No mapped Kalshi lean yet.</p>
       )}
 
       <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
-        The book
+        Other takes
       </h2>
-      {mine.length ? (
-        mine.map((c) => <CallCard key={c.id} call={c} />)
+      {rest.length ? (
+        rest.map((c) => <CallCard key={c.id} call={c} />)
       ) : (
-        <p className="lede">No calls yet.</p>
+        <p className="lede">No unmapped takes on file.</p>
       )}
     </main>
   );
