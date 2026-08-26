@@ -6,6 +6,7 @@ import {
   callsForPundit,
   sidesForCard,
   latestCalls,
+  formatAsOf,
 } from "./data";
 import type { Call, Event, Pundit } from "./types";
 
@@ -129,6 +130,13 @@ describe("sidesForCard", () => {
     const [first] = sidesForCard(event, []);
     expect(first.side).toBe("yes");
     expect(first.label).toBe("Clemson");
+  });
+});
+
+describe("formatAsOf", () => {
+  it("prints a freeze date without a timezone shift", () => {
+    expect(formatAsOf("2026-08-26")).toBe("as of Aug 26, 2026");
+    expect(formatAsOf(null)).toBeNull();
   });
 });
 

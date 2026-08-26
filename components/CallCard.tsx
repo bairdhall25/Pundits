@@ -31,6 +31,19 @@ export function CallCard({ call }: { call: Call }) {
       <div className="text-xs text-[#6b6b6b]">
         {call.source}
         {call.sourceDate ? ` · ${call.sourceDate}` : ""}
+        {call.sourceUrl ? (
+          <>
+            {" · "}
+            <a
+              href={call.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-extrabold uppercase tracking-wider text-[var(--green)]"
+            >
+              Source →
+            </a>
+          </>
+        ) : null}
       </div>
       {event && call.side ? (
         <div className="mt-2.5 border-l-[3px] border-[var(--green)] bg-[#111] px-3.5 py-3 text-[13px]">

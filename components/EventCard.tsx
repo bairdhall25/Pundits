@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { eventHasFight, formatCents, sidesForCard } from "@/lib/data";
+import { eventHasFight, formatAsOf, formatCents, sidesForCard } from "@/lib/data";
 import type { Call, CardSide, Event, Pundit } from "@/lib/types";
 
 function SideCol({
@@ -67,9 +67,12 @@ export function EventCard({
   const fight = eventHasFight(event.slug, calls);
   const game = event.kind === "game";
   const collapseSecond = second.calls.length === 0 && first.calls.length > 0;
-  const meta = game
-    ? [event.kickoff, event.network].filter(Boolean).join(" · ")
-    : event.contractName;
+  const meta = [
+    game ? [event.kickoff, event.network].filter(Boolean).join(" · ") : event.contractName,
+    permalink ? formatAsOf(event.sourcedAt) : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <article className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""}`}>
