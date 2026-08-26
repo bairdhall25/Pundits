@@ -91,12 +91,15 @@ export function BookPeek({
   pundit: Pundit;
 }) {
   return (
-    <Link href={`/pundits/${pundit.id}`} className="peek">
-      <div className="faces">
+    <Link href={`/pundits/${pundit.id}`} className="peek book-card">
+      <div className="book-quote">“{call.claim}”</div>
+      <div className="book-by">
         <PunditAvatar src={pundit.photo} alt={pundit.name} size="peek" />
+        <div>
+          <div className="nm type-broadcast">{pundit.name.split(" ").slice(-1)[0]}</div>
+          <div className="sub">{call.source}</div>
+        </div>
       </div>
-      <h3 className="type-broadcast ph">{pundit.name.split(" ").slice(-1)[0]}</h3>
-      <div className="sub">“{call.claim}”</div>
     </Link>
   );
 }

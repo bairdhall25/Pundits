@@ -52,7 +52,10 @@ h1, h2, .type-broadcast {
 .board-kicker { color: var(--green); font-size: 11px; letter-spacing: 0.18em; }
 .board-title { font-size: clamp(24px, 6vw, 38px); margin: 2px 0 4px; }
 .when { color: #6b6b6b; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-.event { background: var(--card); border: 1px solid #2a2a2a; margin-bottom: 10px; }
+.event { position: relative; background: var(--card); border: 1px solid #2a2a2a; margin-bottom: 10px; }
+.event-link:hover { border-color: var(--green); }
+.event-hit { position: absolute; inset: 0; z-index: 0; }
+.person-hit { position: relative; z-index: 1; }
 .event.fight { border-color: #245c18; }
 .event-head { padding: 12px 14px 10px; border-bottom: 1px solid #2a2a2a; }
 .kalshi-tag {
@@ -144,6 +147,21 @@ h1, h2, .type-broadcast {
 .table-card { flex-basis: min(46vw, 180px); text-align: center; display: flex; flex-direction: column; align-items: center; }
 .pct { color: var(--green); font-size: 26px; }
 .wl { color: #6b6b6b; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  border-left: 3px solid var(--green);
+}
+.book-quote {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.book-by { display: flex; align-items: center; gap: 8px; }
+.book-by .sub { margin: 0; }
 @media (min-width: 720px) {
   .shell { padding: 20px 20px 48px; }
   .eyebrow { font-size: 16px; }
@@ -163,6 +181,7 @@ h1, h2, .type-broadcast {
 }
 @media (min-width: 1024px) {
   .hint { display: none; }
+  .shell { max-width: 1400px; padding: 24px 32px 56px; }
   .scroller {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -21,6 +21,7 @@ function Weekend({
   kicker,
   label,
   when,
+  href,
   events,
   calls,
   pundits,
@@ -29,15 +30,23 @@ function Weekend({
   kicker: string;
   label: string;
   when: string;
+  href: string;
   events: Event[];
   calls: Call[];
   pundits: Pundit[];
 }) {
   return (
     <section id={id} className="board">
-      <div className="board-kicker type-broadcast">{kicker}</div>
-      <h2 className="board-title type-broadcast">{label}</h2>
-      <div className="when">{when}</div>
+      <div className="row-head">
+        <div>
+          <div className="board-kicker type-broadcast">{kicker}</div>
+          <h2 className="board-title type-broadcast">{label}</h2>
+          <div className="when">{when}</div>
+        </div>
+        <a className="see" href={href}>
+          Full {label} slate →
+        </a>
+      </div>
       {events.map((event) => (
         <EventCard
           key={event.slug}
@@ -60,35 +69,36 @@ export default function HomePage() {
     ...getFuturesPeek("ncaaf", events, calls, 3),
     ...getFuturesPeek("nfl", events, calls, 2),
   ];
-  const table = getActivityBoard(pundits, calls).slice(0, 6);
+  const table = getActivityBoard(pundits, calls).slice(0, 10);
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
 
   return (
     <main className="shell">
-      <div className="eyebrow type-broadcast">Active picks · this weekend first</div>
+      <div className="eyebrow type-broadcast">Active picks · opening weekend</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,11vw,68px)] leading-[0.92] tracking-wide lg:text-[128px]">
-        Who’s on
+        Who’s picking
         <br />
         what.
       </h1>
       <p className="lede lg:text-lg">
-        Each card is a Kalshi market. Faces are implied picks. Games first,
-        futures underneath.
+        Each card is a Kalshi market. Faces are pundits on that side.
+        Hypothetical $100 at the freeze.
       </p>
       <div className="board-jump">
-        <a href="#ncaaf">NCAAF weekend</a>
-        <a href="#nfl">NFL week 1</a>
-        <a href="#futures">Futures</a>
-        <a href="#table">The table</a>
+        <a href="#ncaaf">NCAAF</a>
+        <a href="#nfl">NFL</a>
+        <a href="#futures">Hottest fights</a>
+        <a href="#table">Leaderboard</a>
         <a href="#book">The Book</a>
       </div>
 
       <Weekend
         id="ncaaf"
-        kicker="This weekend"
+        kicker="Opening weekend"
         label="NCAAF"
-        when="Week 1 · Sep 3–7 · marquee first"
+        when="Week 1 · Sep 3–7 · cards with a real face"
+        href="/ncaaf"
         events={ncaaf}
         calls={calls}
         pundits={pundits}
@@ -98,6 +108,7 @@ export default function HomePage() {
         kicker="Up next"
         label="NFL"
         when="Week 1 · Sep 9–14 · regular season, not preseason"
+        href="/nfl"
         events={nfl}
         calls={calls}
         pundits={pundits}
@@ -109,9 +120,14 @@ export default function HomePage() {
             <div className="board-kicker type-broadcast">Still open</div>
             <h2 className="board-title type-broadcast">Hottest fights</h2>
           </div>
-          <a className="see" href="/leaderboard">
-            See all →
-          </a>
+          <span className="flex gap-3">
+            <a className="see" href="/ncaaf">
+              NCAAF →
+            </a>
+            <a className="see" href="/nfl">
+              NFL →
+            </a>
+          </span>
         </div>
         <PeekRow>
           {futures.map((event) => (
@@ -128,8 +144,8 @@ export default function HomePage() {
       <section id="table" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Gamification</div>
-            <h2 className="board-title type-broadcast">The table</h2>
+            <div className="board-kicker type-broadcast">The leaderboard</div>
+            <h2 className="board-title type-broadcast">Top 10</h2>
           </div>
           <a className="see" href="/leaderboard">
             Full leaderboard →
@@ -145,8 +161,8 @@ export default function HomePage() {
       <section id="book" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">The archive</div>
-            <h2 className="board-title type-broadcast">Latest from The Book</h2>
+            <div className="board-kicker type-broadcast">The Book</div>
+            <h2 className="board-title type-broadcast">Fresh takes</h2>
           </div>
           <a className="see" href="/book">
             Open The Book →

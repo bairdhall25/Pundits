@@ -136,6 +136,15 @@ export function getWeekend(
     .sort((a, b) => a.homeRank - b.homeRank);
 }
 
+export function getSlateGames(sport: Sport, events: Event[]): Event[] {
+  return events
+    .filter((e) => e.sport === sport && eventKind(e) === "game")
+    .sort(
+      (a, b) =>
+        Number(b.onHome) - Number(a.onHome) || a.homeRank - b.homeRank
+    );
+}
+
 export function getFuturesPeek(
   sport: Sport,
   events: Event[],

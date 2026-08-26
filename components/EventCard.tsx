@@ -38,7 +38,7 @@ function SideCol({
           const p = byId[c.punditId];
           if (!p) return null;
           return (
-            <Link key={c.id} href={`/pundits/${p.id}`} className="person">
+            <Link key={c.id} href={`/pundits/${p.id}`} className="person person-hit">
               <PunditAvatar src={p.photo} alt={p.name} size="row" />
               <div>
                 <div className="nm type-broadcast">{p.name}</div>
@@ -67,23 +67,23 @@ export function EventCard({
   const fight = eventHasFight(event.slug, calls);
   const game = event.kind === "game";
   const collapseSecond = second.calls.length === 0 && first.calls.length > 0;
-  const title = permalink ? (
-    <Link href={`/picks/${event.slug}`} className="hover:text-[var(--green)]">
-      {event.title}
-    </Link>
-  ) : (
-    event.title
-  );
   const meta = game
     ? [event.kickoff, event.network].filter(Boolean).join(" · ")
     : event.contractName;
 
   return (
-    <article className={`event ${fight ? "fight" : ""}`}>
+    <article className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""}`}>
+      {permalink ? (
+        <Link
+          href={`/picks/${event.slug}`}
+          className="event-hit"
+          aria-label={event.title}
+        />
+      ) : null}
       <div className="event-head">
         <div>
           <div className="kalshi-tag type-broadcast">Kalshi</div>
-          <h2 className="type-broadcast">{title}</h2>
+          <h2 className="type-broadcast">{event.title}</h2>
         </div>
         <div className="meta">{meta}</div>
       </div>

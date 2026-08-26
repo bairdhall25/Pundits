@@ -6,6 +6,7 @@ import {
   getBoard,
   getFuturesPeek,
   getHomeEvents,
+  getSlateGames,
   getWeekend,
   impliedOpenDollars,
   loadCalls,
@@ -125,6 +126,12 @@ describe("weekend home", () => {
     expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
       true
     );
+  });
+
+  it("keeps off-home games on the full sport slate", () => {
+    const ncaaf = getSlateGames("ncaaf", loadEvents());
+    expect(ncaaf[0].onHome).toBe(true);
+    expect(ncaaf.map((e) => e.slug)).toContain("wisconsin-vs-nd");
   });
 
   it("does not put a faceless game on the weekend board", () => {
