@@ -78,6 +78,7 @@ h1, h2, .type-broadcast {
   background: transparent;
 }
 .sides-collapsed .col.yes:not(.col-empty) { border-right: 0; border-bottom: 1px solid #2a2a2a; }
+.sides-collapsed .col.no:not(.col-empty) { border-bottom: 1px solid #2a2a2a; }
 .px { font-size: clamp(36px, 8vw, 52px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 6px; color: var(--ink); }
 .px-yes { color: var(--green); }
 .col .lab { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
