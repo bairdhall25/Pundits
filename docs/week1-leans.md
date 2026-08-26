@@ -139,3 +139,44 @@ OddsShopper CFB board still last rebuilt Aug 3. Did not overwrite the 2026-08-26
 - bills-at-texans: YES empty. NO cowherd (new).
 
 Week 0 (`unc-vs-tcu`, `ncsu-at-uva`): no roster lean. Leave `onHome` false.
+
+## Scout run 2026-08-26 PM (Grok Bot)
+
+Afternoon capture. Priority: Week 0, wisconsin-vs-nd, empty YES sides. Staged only. Do not touch `data/`.
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|
+| finebaum | unc-vs-tcu | no | It is mass chaos in Chapel Hill. I don't believe they'll win this game in Ireland, and I don't think Bill Belichick is going to survive until the end of the season. | First Take (Awful Announcing) | https://awfulannouncing.com/college-football/paul-finebaum-bill-belichick-down-in-flames.html | 2026-08-25 | hard |
+
+### Dropped
+
+- ncsu-at-uva — no roster-voice winner. Leave off home.
+- wisconsin-vs-nd — still no first-person Lambeau SU. Stays off home.
+- Empty YES sides (Clemson, Patriots, 49ers, Bills) — no new roster first-person away-team winner.
+- Fallica UNC Under 4.5 — win total, not a Dublin winner.
+- Cover 3 Week 0 videos — no extractable Kanell quote.
+- Off-roster Week 0 staff (Hummer/Crawford, SportsLine, Dalzell, Kenyon, Covers/BettingPros).
+- Eisen Seahawks opener — still no verbatim first-person page.
+- Simms Patriots lean — AFC East, not Week 1 at Seattle.
+
+### Freeze
+
+Propose `onHome: true` on `unc-vs-tcu` (Week 0 gate: verified roster lean).
+
+Kalshi reprint, both sides printed (not forced to 100). Page prices read the morning of August 16, 2026; fetched 2026-08-26.
+
+- unc-vs-tcu: yesCents 27 (UNC), noCents 75 (TCU). https://www.oddsshopper.com/articles/expert-picks/college-football-week-0-odds sourcedAt 2026-08-26
+
+ncsu-at-uva: no roster lean, no freeze.
+
+### Home cards
+
+- clemson-at-lsu: YES empty. NO pate, finebaum.
+- patriots-at-seahawks: YES empty. NO cowherd.
+- 49ers-vs-rams: YES empty. NO eisen, cowherd.
+- bills-at-texans: YES empty. NO cowherd.
+- unc-vs-tcu (propose onHome): YES empty. NO finebaum (new).
+- wisconsin-vs-nd: fully empty, stays off home.
+- ncsu-at-uva: fully empty, stays off home.
