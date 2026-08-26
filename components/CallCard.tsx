@@ -1,0 +1,44 @@
+import { formatCents, getEvent, loadEvents } from "@/lib/data";
+import type { Call } from "@/lib/types";
+
+export function CallCard({ call }: { call: Call }) {
+  const events = loadEvents();
+  const event = call.eventSlug ? getEvent(call.eventSlug, events) : null;
+  const cents =
+    event && call.side
+      ? call.side === "yes"
+        ? event.yesCents
+        : event.noCents
+      : null;
+
+  return (
+    <article className="mb-2 border border-[#2a2a2a] bg-[var(--card)] p-4">
+      <div className="mb-2">
+        <span
+          className={`mr-1.5 border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+            call.kind === "hard"
+              ? "border-[var(--green)] text-[var(--green)]"
+              : "border-[#6b6b6b] text-[var(--muted)]"
+          }`}
+        >
+          {call.kind}
+        </span>
+        <span className="bg-[#12380c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--green)]">
+          {call.status}
+        </span>
+      </div>
+      <p className="mb-2 text-base leading-relaxed">{call.claim}</p>
+      <div className="text-xs text-[#6b6b6b]">
+        {call.source}
+        {call.sourceDate ? ` · ${call.sourceDate}` : ""}
+      </div>
+      {event && call.side ? (
+        <div className="mt-2.5 border-l-[3px] border-[var(--green)] bg-[#111] px-3.5 py-3 text-[13px]">
+          {event.title} ·{" "}
+          <b className="text-[var(--green)]">{call.side.toUpperCase()}</b> @{" "}
+          {formatCents(cents)} · $100 at risk
+        </div>
+      ) : null}
+    </article>
+  );
+}
