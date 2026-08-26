@@ -82,3 +82,60 @@ Re-price attempt (2026-08-26): searched Kalshi/OddsShopper/Robinhood-Kalshi for 
 - **Week 0 (Sat 8/29):** UNC vs. TCU (Dublin, TCU -7.5); NC State at Virginia (UVA -5.5)
 - **Week 1:** Thu 9/3 Colorado at Georgia Tech (GT -7.5) · Sat 9/5 Clemson at LSU (Kiffin's LSU debut, GameDay's 500th road show, LSU -11.5), Baylor vs. Auburn (Atlanta, Auburn -7.5), Boise State at Oregon (Oregon -24.5) · Ole Miss vs. Louisville (Nashville; sources conflict Sat/Sun) · Sun 9/6 Notre Dame vs. Wisconsin (Lambeau) · Mon 9/7 SMU at Florida State
 - **NFL Week 1 (verified 2026-08-25):** Wed 9/9 Patriots at Seahawks (NBC Kickoff — Wednesday is real, moved off Rosh Hashanah) · Thu 9/10 49ers vs. Rams (Melbourne, Netflix, Rams home) · Sun 9/13 Bills at Texans (CBS 1:00), Commanders at Eagles (FOX 4:25), Cowboys at Giants (SNF) · Mon 9/14 Broncos at Chiefs (MNF) — named-pundit picks not yet published.
+
+## Scout run 2026-08-26 (Grok Bot)
+
+Staged only. Do not treat as promoted into `data/`.
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|
+| cowherd | patriots-at-seahawks | no | So New England and Seattle, rematch of the Super Bowl, I would take the home team. | The Herd Hour 3 | https://podscripts.co/podcasts/the-herd-with-colin-cowherd/the-herd-hour-3-bears-offense-is-elite-lions-are-juggernauts | 2026-08-24 | hard |
+| cowherd | 49ers-vs-rams | no | San Francisco, Rams in Australia. I think we'd both lean Los Angeles with that. I think what the number is, but yeah, Rams. | The Herd Hour 3 | https://podscripts.co/podcasts/the-herd-with-colin-cowherd/the-herd-hour-3-bears-offense-is-elite-lions-are-juggernauts | 2026-08-24 | hard |
+| cowherd | bills-at-texans | no | Bills, Texans. Texans? I think I'd take the Texans there. And I love the bills. | The Herd Hour 3 | https://podscripts.co/podcasts/the-herd-with-colin-cowherd/the-herd-hour-3-bears-offense-is-elite-lions-are-juggernauts | 2026-08-24 | hard |
+| finebaum | clemson-at-lsu | no | It's hard for me to believe that Clemson, with a new quarterback, is going to go into Baton Rouge and win that game. | The Paul Finebaum Show (TigerNet) | https://www.tigernet.com/clemson-football/news/paul-finebaum-offers-2026-clemson-season-forecast-lsu-opener-outlook-49055 | 2026-06-23 | hard |
+| davis | texas-sec | no | Georgia and Texas. Georgia wins because that's what Georgia does. They win the SEC. Until Texas beats them, I'll need to see it to believe it. | College GameDay podcast (SI) | https://www.si.com/fannation/college/cfb-hq/picks/rece-davis-bold-sec-championship-prediction-college-football-powerhouse-georgia-bulldogs-texas-longhorns | 2026-08-18 | hard |
+| klatt | nd-title | yes | My national champ in my very first bracket prediction: Notre Dame Fighting Irish. | The Joel Klatt Show (SI) | https://www.si.com/fannation/college/cfb-hq/picks/joel-klatt-finally-announces-national-championship-pick-2026-season-oregon-notre-dame | 2026-08-24 | hard |
+| orlovsky | rams-sb | yes | I'm going Bengals-Rams. I feel passionate about the Cincinnati Bengals. I think this offensive line is going to slightly improve. This offense is going to push scoring 30-plus points. Joe stays healthy. And the best team in football last year, arguably, did not win the Super Bowl. I think they'll be back, and I think we get Joe-Stafford; Stafford wins it, and retires. | Get Up (Stripe Hype) | https://stripehype.com/dan-orlovsky-super-bowl-prediction-will-amp-up-bengals-fans-in-more-ways-than-one | 2026-05-15 | hard |
+| orlovsky | bengals-sb | no | I'm going Bengals-Rams. … I think we get Joe-Stafford; Stafford wins it, and retires. | Get Up (Stripe Hype) | https://stripehype.com/dan-orlovsky-super-bowl-prediction-will-amp-up-bengals-fans-in-more-ways-than-one | 2026-05-15 | hard |
+| meyer | | | If they stay healthy, I pick the Buckeyes. If someone gets dinged, I'm going Notre Dame. | SI / College Football HQ | https://www.si.com/fannation/college/cfb-hq/picks/college-football-2026-national-championship-prediction-urban-meyer-ohio-state-notre-dame | 2026-08-25 | soft |
+| brandt | | | I want Detroit/Buffalo. One of these teams is going to win the Super Bowl. | Get Up (Buffalo Wdown) | https://buffalowdown.com/kyle-brandt-tabs-bills-for-super-bowl-showdown-with-2026-opponent-01krnq2gy3jp | 2026-05-15 | soft |
+
+### Dropped
+
+- Finebaum "Oh yeah, oh yeah" to a caller's LSU blowout — weasel already captured; the first-person Baton Rouge quote above is the one to promote.
+- Eisen Seahawks Week 1 opener — recaps only; unverifiable first-person at a page opened this run.
+- Eisen + 49ers-vs-rams — already in the book.
+- Pate + clemson-at-lsu — already in the book.
+- Klatt CFP bracket mappings other than nd-title — journalist paraphrase, not first-person quotes opened this run.
+- Klatt undefeated stretched onto wisconsin-vs-nd — season take, not a Lambeau winner.
+- Cowherd AFC Bills lean — not bills-sb.
+- Cowherd May 29 Sharp or Square — Millman / Hunter, off-roster.
+- Orlovsky title take stretched onto 49ers-vs-rams — never.
+- Florio/Simms 23-20 / 21-17 — Super Bowl LX, not Week 1.
+- Week 0 staff columns — off-roster.
+- Wrong-year 2025 Klatt/Fallica/Staples/GameDay Clemson-LSU and Week 1 pods.
+- unc-vs-tcu, ncsu-at-uva — no roster-voice winner. Week 0 stays off home.
+- wisconsin-vs-nd, miami-at-stanford, baylor-vs-auburn — no roster SU pick.
+- GameDay / Big Noon / First Take / McAfee / Kanell / Fallica / Staples 2026 Week 0–1 game cards — not published yet.
+
+### Freeze
+
+Re-sourced from Stokastic Kalshi board, fetched 2026-08-26 2:17 AM ET. Both sides printed (not forced to 100).
+
+- patriots-at-seahawks: yesCents 38.5 (NE), noCents 62.5 (SEA). https://www.stokastic.com/articles/prediction-markets/nfl-week-1-predictions sourcedAt 2026-08-26
+- 49ers-vs-rams: yesCents 36.5 (SF), noCents 62.5 (LAR). same URL, sourcedAt 2026-08-26
+- bills-at-texans: yesCents 48.5 (BUF), noCents 50.0 (HOU). same URL, sourcedAt 2026-08-26
+
+OddsShopper CFB board still last rebuilt Aug 3. Did not overwrite the 2026-08-26 CFB freeze with that vintage. No Kalshi moneyline found for miami-at-stanford or baylor-vs-auburn.
+
+### Home cards
+
+- clemson-at-lsu: YES empty. NO pate (book), finebaum (new).
+- wisconsin-vs-nd: YES empty. NO empty. **Fully empty.**
+- patriots-at-seahawks: YES empty. NO cowherd (new).
+- 49ers-vs-rams: YES empty. NO eisen (book), cowherd (new).
+- bills-at-texans: YES empty. NO cowherd (new).
+
+Week 0 (`unc-vs-tcu`, `ncsu-at-uva`): no roster lean. Leave `onHome` false.
