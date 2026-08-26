@@ -2,10 +2,12 @@ import { describe, expect, it } from "vitest";
 import { loadEvents } from "./data";
 
 describe("kalshi freeze", () => {
-  it("prices and sources every home event", () => {
+  it("prices and sources every home event, and sources every priced event", () => {
     for (const e of loadEvents().filter((e) => e.onHome)) {
       expect(e.yesCents, e.slug).not.toBeNull();
       expect(e.noCents, e.slug).not.toBeNull();
+    }
+    for (const e of loadEvents().filter((e) => e.yesCents != null)) {
       expect(e.sourceUrl, e.slug).toMatch(/^https?:\/\//);
       expect(e.sourcedAt, e.slug).toMatch(/^2026-\d{2}-\d{2}/);
     }

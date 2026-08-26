@@ -100,16 +100,20 @@ export default async function PunditPage({
       </div>
       {implied.length ? (
         implied.map((c) => <CallCard key={c.id} call={c} />)
-      ) : (
+      ) : mine.length ? (
         <p className="lede">No clear Kalshi lean yet. Takes still live below.</p>
+      ) : (
+        <p className="lede">No clear Kalshi lean yet.</p>
       )}
 
       <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
         The book
       </h2>
-      {mine.map((c) => (
-        <CallCard key={c.id} call={c} />
-      ))}
+      {mine.length ? (
+        mine.map((c) => <CallCard key={c.id} call={c} />)
+      ) : (
+        <p className="lede">No calls yet.</p>
+      )}
     </main>
   );
 }
