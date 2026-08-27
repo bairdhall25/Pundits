@@ -1,1 +1,1 @@
-PLACEHOLDER
+{{FILE:/workspace/pundits-scout/mcp_content.txt}}
