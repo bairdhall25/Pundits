@@ -1,13 +1,13 @@
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import { StoryFeed } from "@/components/StoryFeed";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
-import { breadcrumbList, mappedTakes, pickStory, takePath } from "@/lib/seo";
+import { breadcrumbList, mappedTakes } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Pick stories",
-  "Who picked what. One story per mapped expert take, written from the ledger.",
+  "Who picked what. Faces, quotes, and the Kalshi freeze. Newest first.",
   "/stories"
 );
 
@@ -20,9 +20,7 @@ export default function StoriesPage() {
   return (
     <main id="main" className="shell">
       <JsonLd
-        data={breadcrumbList([
-          { name: "Stories", path: "/stories" },
-        ])}
+        data={breadcrumbList([{ name: "Stories", path: "/stories" }])}
       />
       <Breadcrumbs items={[{ name: "Picks", href: "/" }, { name: "Stories" }]} />
       <div className="eyebrow type-broadcast">Pick stories</div>
@@ -32,26 +30,9 @@ export default function StoriesPage() {
         what.
       </h1>
       <p className="lede">
-        Scout verifies the quote. Promote maps it. This page is the index —
-        one URL per mapped expert take, templated from the ledger. Hypothetical
-        $100 at the freeze.
+        Newest mapped takes, as a feed. Face, quote, freeze. Hypothetical $100.
       </p>
-      <ul className="take-list">
-        {takes.map((take) => {
-          const story = pickStory(take, calls, pundits);
-          return (
-            <li key={`${take.event.slug}-${take.pundit.id}`}>
-              <Link href={takePath(take.event.slug, take.pundit.id)}>
-                {story.headline}
-                <span>
-                  {take.call.source}
-                  {take.call.sourceDate ? ` · ${take.call.sourceDate}` : ""}
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <StoryFeed takes={takes} />
     </main>
   );
 }

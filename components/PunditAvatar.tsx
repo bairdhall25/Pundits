@@ -1,13 +1,14 @@
 type PunditAvatarProps = {
   src: string;
   alt: string;
-  size: "row" | "hero" | "peek";
+  size: "row" | "hero" | "peek" | "feed";
 };
 
 const SIZE_PX = {
   row: 56,
   hero: 192,
   peek: 36,
+  feed: 72,
 } as const;
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
