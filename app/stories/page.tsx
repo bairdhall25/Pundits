@@ -32,8 +32,9 @@ export default function StoriesPage() {
         what.
       </h1>
       <p className="lede">
-        One story per mapped take. Scout sources it. The app writes the page.
-        Hypothetical $100 at the freeze.
+        Scout verifies the quote. Promote maps it. This page is the index —
+        one URL per mapped expert take, templated from the ledger. Hypothetical
+        $100 at the freeze.
       </p>
       <ul className="take-list">
         {takes.map((take) => {

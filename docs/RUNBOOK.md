@@ -17,8 +17,13 @@ Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook i
    price gets sourceUrl + sourcedAt. If a source publishes only one
    side's probability, record the complement (noCents = 100 − yesCents)
    and note in the run report that this convention is in use.
-5. PUBLISH — `npx vitest run` && `npx next build` green, commit, push,
-   verify live site.
+5. PUBLISH — promote verified hard rows into `data/calls.json` (unique
+   `punditId` + `eventSlug` + `side` + quote + sourceUrl + sourceDate).
+   The next build mints a pick story at `/picks/{eventSlug}/{punditId}/`
+   and lists it on `/stories/`. Do not paste article copy into JSON.
+   `npx vitest run` && `npx next build` green, commit, push, verify
+   the story URL on https://pundits.pro/. If the URL set grew, resubmit
+   https://pundits.pro/sitemap.xml in Search Console / Bing.
 
 ## Intake table schema (staging docs, e.g. docs/week1-leans.md)
 | pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
@@ -34,5 +39,6 @@ network against a source and record that source URL in the run report.
 
 ## After every run, report
 - new hard mapped calls (count, by event)
+- story paths minted (`/picks/{slug}/{pundit}/`)
 - which home cards still have an empty side
 - any demoted/benched data (no source, no photo)

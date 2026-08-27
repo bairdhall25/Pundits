@@ -8,7 +8,18 @@ Three named Bots. No backend. JSON in this repo is the record.
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
 
-Scout does not grade. Grader does not hunt new takes. Recap does not keep its own scorebook.
+Scout does not grade. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+
+## Pick stories (SEO)
+
+The web app, not the bots, writes crawlable stories.
+
+1. Scout stages a **story-ready** hard row (first-person, `eventSlug`, `side`, verbatim quote, source URL, date).
+2. A human / Grok Build promotes it into `data/calls.json`.
+3. The next static build mints `/picks/{eventSlug}/{punditId}/` via `lib/seo.ts` `pickStory()` — headline like “Finebaum picks TCU over North Carolina,” underdog from Kalshi cents, then the quote.
+4. `/stories/` lists every minted story. Sitemap `lastmod` is the call’s `sourceDate`.
+
+Do not paste essay copy into `docs/`. If the quote is not first-person and on a listed event, there is no story. Soft rows stay in The Book only.
 
 ## Point a Grok Bot at its file
 

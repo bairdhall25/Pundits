@@ -83,6 +83,24 @@ export function TablePeek({ p }: { p: ActivityRecord }) {
   );
 }
 
+export function StoryPeek({
+  href,
+  headline,
+  kicker,
+}: {
+  href: string;
+  headline: string;
+  kicker: string;
+}) {
+  return (
+    <Link href={href} className="peek">
+      <div className="kalshi-tag type-broadcast">Pick story</div>
+      <h3 className="type-broadcast ph">{headline}</h3>
+      <div className="sub">{kicker}</div>
+    </Link>
+  );
+}
+
 export function BookPeek({
   call,
   pundit,
@@ -90,8 +108,12 @@ export function BookPeek({
   call: Call;
   pundit: Pundit;
 }) {
+  const href =
+    call.eventSlug && call.side
+      ? `/picks/${call.eventSlug}/${pundit.id}`
+      : `/pundits/${pundit.id}`;
   return (
-    <Link href={`/pundits/${pundit.id}`} className="peek book-card">
+    <Link href={href} className="peek book-card">
       <div className="book-quote">“{call.claim}”</div>
       <div className="book-by">
         <PunditAvatar src={pundit.photo} alt={pundit.name} size="peek" />

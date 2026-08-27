@@ -41,6 +41,18 @@ describe("mapped takes", () => {
     const keys = takes.map((t) => `${t.event.slug}/${t.pundit.id}`);
     expect(new Set(keys).size).toBe(keys.length);
   });
+
+  it("mints an over/under headline for every mapped game take", () => {
+    const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
+    const games = takes.filter((t) => t.event.awayTeam && t.event.homeTeam);
+    expect(games.length).toBeGreaterThan(0);
+    for (const take of games) {
+      const h = takeHeadline(take.pundit, take.event, take.call);
+      expect(h, take.call.id).toMatch(/ picks .+ over /);
+      const story = pickStory(take);
+      expect(story.paragraphs.join(" "), take.call.id).toContain(take.call.claim);
+    }
+  });
 });
 
 describe("pick stories", () => {

@@ -32,6 +32,8 @@ Then a one-line tally: `N hit / M miss / still pending`.
 
 If you can write to the repo, append that table under a dated heading in `docs/runs/YYYY-MM-DD-grade.md`. Never touch `data/`.
 
+Pick story URLs do not change when you grade. You only propose `hit` / `miss`. Do not ask Scout to rewrite the article.
+
 ## Stop
 
 Do not edit `calls.json`. The publish pass does that, then `npx vitest run`.

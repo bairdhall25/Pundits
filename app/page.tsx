@@ -3,6 +3,7 @@ import {
   BookPeek,
   FuturePeek,
   PeekRow,
+  StoryPeek,
   TablePeek,
 } from "@/components/PeekRow";
 import {
@@ -14,6 +15,7 @@ import {
   loadEvents,
   loadPundits,
 } from "@/lib/data";
+import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import type { Event, Call, Pundit } from "@/lib/types";
 
 function Weekend({
@@ -72,6 +74,7 @@ export default function HomePage() {
   const table = getActivityBoard(pundits, calls).slice(0, 10);
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
+  const stories = mappedTakes(calls, events, pundits).slice(0, 8);
 
   return (
     <main id="main" className="shell">
@@ -88,6 +91,7 @@ export default function HomePage() {
       <div className="board-jump">
         <a href="#ncaaf">NCAAF</a>
         <a href="#nfl">NFL</a>
+        <a href="#stories">Stories</a>
         <a href="#futures">Hottest fights</a>
         <a href="#table">Leaderboard</a>
         <a href="#book">The Book</a>
@@ -113,6 +117,31 @@ export default function HomePage() {
         calls={calls}
         pundits={pundits}
       />
+
+      <section id="stories" className="board">
+        <div className="row-head">
+          <div>
+            <div className="board-kicker type-broadcast">Pick stories</div>
+            <h2 className="board-title type-broadcast">Who picked what</h2>
+          </div>
+          <a className="see" href="/stories/">
+            All stories →
+          </a>
+        </div>
+        <PeekRow>
+          {stories.map((take) => {
+            const story = pickStory(take, calls, pundits);
+            return (
+              <StoryPeek
+                key={`${take.event.slug}-${take.pundit.id}`}
+                href={takePath(take.event.slug, take.pundit.id)}
+                headline={story.headline}
+                kicker={`${take.call.source}${take.call.sourceDate ? ` · ${take.call.sourceDate}` : ""}`}
+              />
+            );
+          })}
+        </PeekRow>
+      </section>
 
       <section id="futures" className="board">
         <div className="row-head">

@@ -2,7 +2,7 @@
 
 > Pundit takes mapped onto Kalshi markets. Hypothetical $100 at the freeze. Not affiliated with Kalshi or the pundits.
 
-PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi YES/NO contract. Faces are named pundits on that side.
+PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi YES/NO contract. Faces are named pundits on that side. Pick stories are generated from mapped hard rows; they are not freehand essays.
 
 ## Site
 - https://pundits.pro/
