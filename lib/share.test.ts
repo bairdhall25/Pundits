@@ -15,7 +15,7 @@ const pundits: Pundit[] = [
 ];
 
 const event: Event = {
-  slug: "unc-vs-tcu",
+  slug: "unc-vs-tcu-2026",
   title: "North Carolina vs TCU",
   contractName: "North Carolina vs TCU",
   yesCents: 27,
@@ -42,7 +42,7 @@ const calls: Call[] = [
     subject: "TCU",
     paysOn: "UNC vs TCU",
     status: "pending",
-    eventSlug: "unc-vs-tcu",
+    eventSlug: "unc-vs-tcu-2026",
     side: "no",
   },
 ];
@@ -76,7 +76,7 @@ describe("share copy", () => {
   });
 
   it("matches the live Dublin row", () => {
-    const live = loadEvents().find((e) => e.slug === "unc-vs-tcu");
+    const live = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026");
     expect(live).toBeTruthy();
     const share = eventShare(live!, loadCalls(), loadPundits());
     expect(share.description).toContain("NO: Paul Finebaum");

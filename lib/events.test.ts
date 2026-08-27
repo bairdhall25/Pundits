@@ -27,9 +27,12 @@ describe("kalshi freeze", () => {
     }
   });
 
-  it("has unique slugs", () => {
+  it("has unique slugs that end in the season", () => {
     const slugs = loadEvents().map((e) => e.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
+    for (const e of loadEvents()) {
+      expect(e.slug, e.title).toMatch(new RegExp(`-${e.season}$`));
+    }
   });
 
   it("dates every game and seasons every event", () => {
@@ -39,7 +42,7 @@ describe("kalshi freeze", () => {
         expect(e.kickoffDate, e.slug).toMatch(/^2026-\d{2}-\d{2}$/);
       }
     }
-    const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu")!;
+    const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     expect(formatGameWhen(clemson)).toContain("Sep 5, 2026");
     expect(formatGameWhen(clemson)).toContain("7:30 ET");
   });

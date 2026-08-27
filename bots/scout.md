@@ -19,18 +19,18 @@ From https://github.com/bairdhall25/Pundits (main):
 
 Search **by event**, not by whoever ranks on the first query. **Game SU rows first** — those mint SEO stories of the form `{Name} picks {team} over {other}`. Futures mint weaker “takes / against {title}” pages. Empty YES sides on home games are missing stories, not a shrug.
 
-For every `onHome` game plus Week 0 and any faceless marquee (`wisconsin-vs-nd`): query `{pundit name} {away} {home} 2026 pick` for the high-yield voices (Finebaum, Herbstreit, Klatt, Pate, Cowherd, Fallica, Kanell, McElroy, Eisen, Florio, Simms, McAfee — name the speaker). Then mine that day's First Take / The Herd / GameDay podcast / Big Noon.
+For every `onHome` game plus Week 0 and any faceless marquee (`wisconsin-vs-nd-2026`): query `{pundit name} {away} {home} 2026 pick` for the high-yield voices (Finebaum, Herbstreit, Klatt, Pate, Cowherd, Fallica, Kanell, McElroy, Eisen, Florio, Simms, McAfee — name the speaker). Then mine that day's First Take / The Herd / GameDay podcast / Big Noon.
 
 1. Roster voices only. Off-roster Week 0 staff stays in Dropped.
-2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Same teams next year is a **new event**, not this slug. If you cannot open it, drop it.
+2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Copy `eventSlug` from `events.json` — slugs always end in `-{season}` (`clemson-at-lsu-2026`). Same teams next year is a **new event**, not this slug. If you cannot open it, drop it.
 3. Classify:
    - Clear first-person lean on a listed **game** dated in the last ~21 days → `hard`, fill `eventSlug` + `side` (`yes` = away).
    - Same lean but older than 21 days → still hard if it is clearly this season's meeting, and mark **vintage** in Dropped or a note column. Prefer a fresher quote if one exists.
    - Weasel, hypothetical, season-record, or "I like them" with no game → `soft`, leave event/side blank.
    - Title / playoff / Super Bowl take → futures slug only. Never onto that team's game. Do not treat a title pick as a Week 1 SU.
-   - One quote may map to two futures only if both sides are explicit (e.g. "Stafford wins it" → `rams-sb` yes and `bengals-sb` no). Mark `same quote` on the second row so it is not two discoveries.
+   - One quote may map to two futures only if both sides are explicit (e.g. "Stafford wins it" → `rams-sb-2026` yes and `bengals-sb-2026` no). Mark `same quote` on the second row so it is not two discoveries.
 4. Freeze only events that gained a new mapped face this run (or a Week 0 gate flip). Prefer a Kalshi market page. A reprint is fine if it names Kalshi. In the Freeze block, write **price date** (when the page printed the cents) and **sourcedAt** (when you fetched it). If price date is more than 7 days old, say so — do not let the card imply the number is today. Stories name the underdog from these cents; a stale freeze is a stale story.
-5. Week 0 (`unc-vs-tcu`, `ncsu-at-uva`): a verified roster lean means propose `onHome: true` plus freeze. No roster lean → leave off home. Re-search Week 0 every run until Saturday; a morning miss is not a closed case.
+5. Week 0 (`unc-vs-tcu-2026`, `ncsu-at-uva-2026`): a verified roster lean means propose `onHome: true` plus freeze. No roster lean → leave off home. Re-search Week 0 every run until Saturday; a morning miss is not a closed case.
 
 A hard row is **story-ready** only if all of these are filled: `pundit` id, `eventSlug` in `events.json`, `side`, verbatim first-person quote, `source`, `sourceUrl`, `sourceDate`. Missing any of those → drop or keep soft. You do not write the story body. The app templates it on promote.
 

@@ -13,8 +13,10 @@ Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook i
 3. CLASSIFY + MAP — clear first-person lean on a listed event → hard +
    eventSlug + side (yes=away). Weasel or season-long take → soft, no
    mapping. Futures picks map to futures slugs only — never onto a game.
-   Games carry `kickoffDate` and `season`. Next year's Clemson-LSU is a
-   new slug (`clemson-at-lsu-2027`), not an overwrite.
+   Games carry `kickoffDate` and `season`. Event slugs always end in
+   `-{season}` (`clemson-at-lsu-2026`). Next year's Clemson-LSU is a
+   new slug (`clemson-at-lsu-2027`), not an overwrite. Bare pre-season
+   URLs 301 via `public/_redirects`.
 4. FREEZE — refresh Kalshi cents for events whose picks changed; every
    price gets sourceUrl + sourcedAt. If a source publishes only one
    side's probability, record the complement (noCents = 100 − yesCents)
@@ -34,7 +36,7 @@ Promotion: only verified hard rows become calls.json entries. The row's
 pundit must exist in data/pundits.json; the eventSlug in data/events.json.
 
 ## Week 0 gate (Thursday 2026-08-27)
-If a roster voice has a verified lean on unc-vs-tcu or ncsu-at-uva:
+If a roster voice has a verified lean on unc-vs-tcu-2026 or ncsu-at-uva-2026:
 freeze those cents, set onHome true, map the calls. Otherwise Week 0
 stays off home. Before flipping onHome, verify kickoff time and
 network against a source and record that source URL in the run report.

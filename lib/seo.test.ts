@@ -12,14 +12,35 @@ import {
   articleJsonLd,
 } from "./seo";
 import { canonicalUrl } from "./site";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 
 describe("canonical URLs", () => {
   it("always points at pundits.pro", () => {
     expect(canonicalUrl("/")).toBe("https://pundits.pro/");
-    expect(canonicalUrl("/picks/unc-vs-tcu")).toBe(
-      "https://pundits.pro/picks/unc-vs-tcu/"
+    expect(canonicalUrl("/picks/unc-vs-tcu-2026")).toBe(
+      "https://pundits.pro/picks/unc-vs-tcu-2026/"
     );
     expect(canonicalUrl("/og.png")).toBe("https://pundits.pro/og.png");
+  });
+
+  it("301s pre-season pick URLs onto the 2026 slug", () => {
+    const redirects = readFileSync(
+      path.join(process.cwd(), "public", "_redirects"),
+      "utf8"
+    );
+    expect(redirects).toContain(
+      "/picks/clemson-at-lsu /picks/clemson-at-lsu-2026/ 301"
+    );
+    expect(redirects).toContain(
+      "/picks/clemson-at-lsu/* /picks/clemson-at-lsu-2026/:splat 301"
+    );
+    expect(redirects).toContain(
+      "/picks/texas-cfp /picks/texas-cfp-2026/ 301"
+    );
+    for (const e of loadEvents()) {
+      expect(e.slug.endsWith(`-${e.season}`), e.slug).toBe(true);
+    }
   });
 });
 
@@ -27,14 +48,14 @@ describe("mapped takes", () => {
   it("includes Finebaum on Dublin as a unique take", () => {
     const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
     const dublin = takes.find(
-      (t) => t.event.slug === "unc-vs-tcu" && t.pundit.id === "finebaum"
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     );
     expect(dublin).toBeTruthy();
     expect(takeHeadline(dublin!.pundit, dublin!.event, dublin!.call)).toBe(
       "Paul Finebaum picks TCU over North Carolina"
     );
-    expect(takePath("unc-vs-tcu", "finebaum")).toBe(
-      "/picks/unc-vs-tcu/finebaum"
+    expect(takePath("unc-vs-tcu-2026", "finebaum")).toBe(
+      "/picks/unc-vs-tcu-2026/finebaum"
     );
   });
 
@@ -60,7 +81,7 @@ describe("mapped takes", () => {
 describe("pick stories", () => {
   it("announces Finebaum on Dublin from the ledger only", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "unc-vs-tcu" && t.pundit.id === "finebaum"
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     );
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
@@ -72,13 +93,13 @@ describe("pick stories", () => {
 
   it("does not print YES · YES on futures chips", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "texas-cfp" && t.pundit.id === "fallica"
+      (t) => t.event.slug === "texas-cfp-2026" && t.pundit.id === "fallica"
     );
     expect(take).toBeTruthy();
     expect(sideChip(take!.event, "no")).toBe("NO");
     expect(toStoryCard(take!).sideChip).toBe("NO");
     const dublin = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "unc-vs-tcu"
+      (t) => t.event.slug === "unc-vs-tcu-2026"
     )!;
     expect(toStoryCard(dublin).sideChip).toBe("NO · TCU");
   });
@@ -86,7 +107,7 @@ describe("pick stories", () => {
 
 describe("pick copy", () => {
   it("says so when a market has no mapped face", () => {
-    const event = loadEvents().find((e) => e.slug === "ncsu-at-uva");
+    const event = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026");
     expect(event).toBeTruthy();
     expect(pickLede(event!, loadCalls(), loadPundits())).toMatch(/no roster-voice/i);
   });
@@ -102,7 +123,7 @@ describe("json-ld", () => {
 
   it("marks a take as an Article with an author", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "unc-vs-tcu"
+      (t) => t.event.slug === "unc-vs-tcu-2026"
     );
     expect(take).toBeTruthy();
     const json = articleJsonLd(take!);

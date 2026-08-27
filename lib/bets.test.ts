@@ -18,23 +18,23 @@ import type { Call, Event } from "./types";
 describe("v1 mapped book", () => {
   it("maps the Indiana title fight both ways", () => {
     const calls = loadCalls();
-    expect(eventHasFight("indiana-title", calls)).toBe(true);
-    expect(callsForEvent("indiana-title", calls, "yes").map((c) => c.punditId)).toContain(
+    expect(eventHasFight("indiana-title-2026", calls)).toBe(true);
+    expect(callsForEvent("indiana-title-2026", calls, "yes").map((c) => c.punditId)).toContain(
       "thamel"
     );
-    expect(callsForEvent("indiana-title", calls, "no").map((c) => c.punditId)).toEqual(
+    expect(callsForEvent("indiana-title-2026", calls, "no").map((c) => c.punditId)).toEqual(
       expect.arrayContaining(["finebaum", "herbstreit"])
     );
   });
 
   it("maps Fallica miss-CFP opposite Herbstreit on Texas", () => {
     const calls = loadCalls();
-    expect(eventHasFight("texas-cfp", calls)).toBe(true);
-    expect(callsForEvent("texas-cfp", calls, "yes").map((c) => c.punditId)).toContain(
+    expect(eventHasFight("texas-cfp-2026", calls)).toBe(true);
+    expect(callsForEvent("texas-cfp-2026", calls, "yes").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
-    expect(callsForEvent("texas-cfp", calls, "no").map((c) => c.punditId)).toEqual(["fallica"]);
-    expect(calls.filter((c) => c.punditId === "herbstreit" && c.eventSlug === "texas-cfp")).toHaveLength(1);
+    expect(callsForEvent("texas-cfp-2026", calls, "no").map((c) => c.punditId)).toEqual(["fallica"]);
+    expect(calls.filter((c) => c.punditId === "herbstreit" && c.eventSlug === "texas-cfp-2026")).toHaveLength(1);
   });
 
   it("does not map weasels onto the board", () => {
@@ -49,7 +49,7 @@ describe("v1 mapped book", () => {
 
   it("puts fights first on the home list", () => {
     const home = getHomeEvents(loadEvents(), loadCalls());
-    expect(home[0].slug).toBe("indiana-title");
+    expect(home[0].slug).toBe("indiana-title-2026");
     expect(home.every((e) => e.onHome)).toBe(true);
   });
 
@@ -76,46 +76,46 @@ describe("Top 10 boards", () => {
 
   it("maps Herbstreit's Nonstop title bracket as clear leans", () => {
     const calls = loadCalls();
-    expect(callsForEvent("nd-title", calls, "yes").map((c) => c.punditId)).toEqual(
+    expect(callsForEvent("nd-title-2026", calls, "yes").map((c) => c.punditId)).toEqual(
       expect.arrayContaining(["coughlin", "herbstreit"])
     );
-    expect(callsForEvent("osu-title", calls, "no").map((c) => c.punditId)).toContain(
+    expect(callsForEvent("osu-title-2026", calls, "no").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
-    expect(callsForEvent("georgia-title", calls, "no").map((c) => c.punditId)).toContain(
+    expect(callsForEvent("georgia-title-2026", calls, "no").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
-    expect(callsForEvent("osu-cfp", calls, "yes").map((c) => c.punditId)).toContain(
+    expect(callsForEvent("osu-cfp-2026", calls, "yes").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
-    expect(callsForEvent("georgia-cfp", calls, "yes").map((c) => c.punditId)).toContain(
+    expect(callsForEvent("georgia-cfp-2026", calls, "yes").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
   });
 
   it("maps first-person NFL Super Bowl leans, not McAfee-show guests as Pat", () => {
     const calls = loadCalls();
-    expect(eventHasFight("rams-sb", calls)).toBe(true);
-    expect(callsForEvent("rams-sb", calls, "yes").map((c) => c.punditId)).toContain(
+    expect(eventHasFight("rams-sb-2026", calls)).toBe(true);
+    expect(callsForEvent("rams-sb-2026", calls, "yes").map((c) => c.punditId)).toContain(
       "butler"
     );
-    expect(callsForEvent("rams-sb", calls, "no").map((c) => c.punditId)).toContain("hawk");
-    expect(callsForEvent("bills-sb", calls, "yes").map((c) => c.punditId)).toEqual(
+    expect(callsForEvent("rams-sb-2026", calls, "no").map((c) => c.punditId)).toContain("hawk");
+    expect(callsForEvent("bills-sb-2026", calls, "yes").map((c) => c.punditId)).toEqual(
       expect.arrayContaining(["skip", "hawk"])
     );
     expect(
-      mappedCalls(calls).filter((c) => c.punditId === "mcafee" && c.eventSlug?.endsWith("-sb"))
+      mappedCalls(calls).filter((c) => c.punditId === "mcafee" && /-sb-\d{4}$/.test(c.eventSlug ?? ""))
     ).toHaveLength(0);
   });
 
   it("keeps LSU title and Tech CFP off the Top 10 even when mapped", () => {
     const ncaaf = getBoard("ncaaf", loadEvents(), loadCalls());
-    expect(ncaaf.map((e) => e.slug)).not.toContain("lsu-title");
-    expect(ncaaf.map((e) => e.slug)).not.toContain("tech-cfp");
-    expect(callsForEvent("lsu-title", loadCalls(), "no").map((c) => c.punditId)).toContain(
+    expect(ncaaf.map((e) => e.slug)).not.toContain("lsu-title-2026");
+    expect(ncaaf.map((e) => e.slug)).not.toContain("tech-cfp-2026");
+    expect(callsForEvent("lsu-title-2026", loadCalls(), "no").map((c) => c.punditId)).toContain(
       "finebaum"
     );
-    expect(callsForEvent("tech-cfp", loadCalls(), "yes").map((c) => c.punditId)).toContain(
+    expect(callsForEvent("tech-cfp-2026", loadCalls(), "yes").map((c) => c.punditId)).toContain(
       "herbstreit"
     );
   });
@@ -126,11 +126,11 @@ describe("weekend home", () => {
     const events = loadEvents();
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
-    expect(ncaaf.map((e) => e.slug)).toEqual(["unc-vs-tcu", "clemson-at-lsu"]);
+    expect(ncaaf.map((e) => e.slug)).toEqual(["unc-vs-tcu-2026", "clemson-at-lsu-2026"]);
     expect(nfl.map((e) => e.slug)).toEqual([
-      "patriots-at-seahawks",
-      "49ers-vs-rams",
-      "bills-at-texans",
+      "patriots-at-seahawks-2026",
+      "49ers-vs-rams-2026",
+      "bills-at-texans-2026",
     ]);
     expect(ncaaf.every((e) => eventKind(e) === "game")).toBe(true);
     expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
@@ -141,7 +141,7 @@ describe("weekend home", () => {
   it("keeps off-home games on the full sport slate", () => {
     const ncaaf = getSlateGames("ncaaf", loadEvents());
     expect(ncaaf[0].onHome).toBe(true);
-    expect(ncaaf.map((e) => e.slug)).toContain("wisconsin-vs-nd");
+    expect(ncaaf.map((e) => e.slug)).toContain("wisconsin-vs-nd-2026");
   });
 
   it("does not put a faceless game on the weekend board", () => {
@@ -154,16 +154,16 @@ describe("weekend home", () => {
 
   it("freezes Kalshi moneylines on the marquee games we could source", () => {
     const bySlug = Object.fromEntries(loadEvents().map((e) => [e.slug, e]));
-    expect(bySlug["clemson-at-lsu"].yesCents).toBe(24);
-    expect(bySlug["clemson-at-lsu"].noCents).toBe(78);
-    expect(bySlug["wisconsin-vs-nd"].yesCents).toBe(8);
-    expect(bySlug["wisconsin-vs-nd"].noCents).toBe(93);
-    expect(bySlug["patriots-at-seahawks"].yesCents).toBe(38.5);
-    expect(bySlug["patriots-at-seahawks"].noCents).toBe(62.5);
-    expect(bySlug["49ers-vs-rams"].yesCents).toBe(36.5);
-    expect(bySlug["49ers-vs-rams"].noCents).toBe(62.5);
-    expect(bySlug["bills-at-texans"].yesCents).toBe(48.5);
-    expect(bySlug["bills-at-texans"].noCents).toBe(50);
+    expect(bySlug["clemson-at-lsu-2026"].yesCents).toBe(24);
+    expect(bySlug["clemson-at-lsu-2026"].noCents).toBe(78);
+    expect(bySlug["wisconsin-vs-nd-2026"].yesCents).toBe(8);
+    expect(bySlug["wisconsin-vs-nd-2026"].noCents).toBe(93);
+    expect(bySlug["patriots-at-seahawks-2026"].yesCents).toBe(38.5);
+    expect(bySlug["patriots-at-seahawks-2026"].noCents).toBe(62.5);
+    expect(bySlug["49ers-vs-rams-2026"].yesCents).toBe(36.5);
+    expect(bySlug["49ers-vs-rams-2026"].noCents).toBe(62.5);
+    expect(bySlug["bills-at-texans-2026"].yesCents).toBe(48.5);
+    expect(bySlug["bills-at-texans-2026"].noCents).toBe(50);
   });
 
   it("does not invent game leans from title futures", () => {
@@ -199,7 +199,7 @@ describe("weekend home", () => {
   it("peeks a short futures strip that still prefers fights", () => {
     const peek = getFuturesPeek("ncaaf", loadEvents(), loadCalls(), 5);
     expect(peek).toHaveLength(5);
-    expect(peek[0].slug).toBe("indiana-title");
+    expect(peek[0].slug).toBe("indiana-title-2026");
     expect(peek.every((e) => eventKind(e) === "future")).toBe(true);
   });
 });

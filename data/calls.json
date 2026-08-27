@@ -22,7 +22,7 @@
     "subject": "Texas",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "texas-cfp",
+    "eventSlug": "texas-cfp-2026",
     "side": "yes"
   },
   {
@@ -36,7 +36,7 @@
     "subject": "Texas Tech",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "tech-cfp",
+    "eventSlug": "tech-cfp-2026",
     "side": "yes"
   },
   {
@@ -110,7 +110,7 @@
     "subject": "Indiana",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "indiana-title",
+    "eventSlug": "indiana-title-2026",
     "side": "no"
   },
   {
@@ -124,7 +124,7 @@
     "subject": "Indiana",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "indiana-cfp",
+    "eventSlug": "indiana-cfp-2026",
     "side": "yes"
   },
   {
@@ -150,7 +150,7 @@
     "subject": "Texas",
     "paysOn": "2026 SEC championship",
     "status": "pending",
-    "eventSlug": "texas-sec",
+    "eventSlug": "texas-sec-2026",
     "side": "yes"
   },
   {
@@ -164,7 +164,7 @@
     "subject": "LSU",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "lsu-title",
+    "eventSlug": "lsu-title-2026",
     "side": "no"
   },
   {
@@ -178,7 +178,7 @@
     "subject": "SEC",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "sec-title",
+    "eventSlug": "sec-title-2026",
     "side": "no"
   },
   {
@@ -204,7 +204,7 @@
     "subject": "Indiana",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "indiana-title",
+    "eventSlug": "indiana-title-2026",
     "side": "yes"
   },
   {
@@ -290,7 +290,7 @@
     "subject": "Notre Dame",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "nd-title",
+    "eventSlug": "nd-title-2026",
     "side": "yes"
   },
   {
@@ -400,7 +400,7 @@
     "subject": "Notre Dame",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "nd-title",
+    "eventSlug": "nd-title-2026",
     "side": "yes"
   },
   {
@@ -414,7 +414,7 @@
     "subject": "Indiana",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "indiana-title",
+    "eventSlug": "indiana-title-2026",
     "side": "no"
   },
   {
@@ -428,7 +428,7 @@
     "subject": "Ohio State",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "osu-title",
+    "eventSlug": "osu-title-2026",
     "side": "no"
   },
   {
@@ -442,7 +442,7 @@
     "subject": "Ohio State",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "osu-cfp",
+    "eventSlug": "osu-cfp-2026",
     "side": "yes"
   },
   {
@@ -456,7 +456,7 @@
     "subject": "Indiana",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "indiana-cfp",
+    "eventSlug": "indiana-cfp-2026",
     "side": "yes"
   },
   {
@@ -470,7 +470,7 @@
     "subject": "Georgia",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "georgia-title",
+    "eventSlug": "georgia-title-2026",
     "side": "no"
   },
   {
@@ -484,7 +484,7 @@
     "subject": "Georgia",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "georgia-cfp",
+    "eventSlug": "georgia-cfp-2026",
     "side": "yes"
   },
   {
@@ -498,7 +498,7 @@
     "subject": "Buffalo Bills",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "bills-sb",
+    "eventSlug": "bills-sb-2026",
     "side": "yes"
   },
   {
@@ -512,7 +512,7 @@
     "subject": "Buffalo Bills",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "bills-sb",
+    "eventSlug": "bills-sb-2026",
     "side": "yes"
   },
   {
@@ -526,7 +526,7 @@
     "subject": "Los Angeles Rams",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "rams-sb",
+    "eventSlug": "rams-sb-2026",
     "side": "no"
   },
   {
@@ -540,7 +540,7 @@
     "subject": "Los Angeles Rams",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "rams-sb",
+    "eventSlug": "rams-sb-2026",
     "side": "yes"
   },
   {
@@ -554,7 +554,7 @@
     "subject": "LSU",
     "paysOn": "Clemson at LSU (Week 1)",
     "status": "pending",
-    "eventSlug": "clemson-at-lsu",
+    "eventSlug": "clemson-at-lsu-2026",
     "side": "no"
   },
   {
@@ -568,7 +568,7 @@
     "subject": "Rams",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
     "status": "pending",
-    "eventSlug": "49ers-vs-rams",
+    "eventSlug": "49ers-vs-rams-2026",
     "side": "no"
   },
   {
@@ -594,7 +594,7 @@
     "subject": "Seahawks",
     "paysOn": "Patriots at Seahawks (Week 1)",
     "status": "pending",
-    "eventSlug": "patriots-at-seahawks",
+    "eventSlug": "patriots-at-seahawks-2026",
     "side": "no"
   },
   {
@@ -608,7 +608,7 @@
     "subject": "Rams",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
     "status": "pending",
-    "eventSlug": "49ers-vs-rams",
+    "eventSlug": "49ers-vs-rams-2026",
     "side": "no"
   },
   {
@@ -622,7 +622,7 @@
     "subject": "Texans",
     "paysOn": "Bills at Texans (Week 1)",
     "status": "pending",
-    "eventSlug": "bills-at-texans",
+    "eventSlug": "bills-at-texans-2026",
     "side": "no"
   },
   {
@@ -636,7 +636,7 @@
     "subject": "LSU",
     "paysOn": "Clemson at LSU (Week 1)",
     "status": "pending",
-    "eventSlug": "clemson-at-lsu",
+    "eventSlug": "clemson-at-lsu-2026",
     "side": "no"
   },
   {
@@ -650,7 +650,7 @@
     "subject": "Texas",
     "paysOn": "2026 SEC championship",
     "status": "pending",
-    "eventSlug": "texas-sec",
+    "eventSlug": "texas-sec-2026",
     "side": "no"
   },
   {
@@ -664,7 +664,7 @@
     "subject": "Notre Dame",
     "paysOn": "2026 CFP national championship",
     "status": "pending",
-    "eventSlug": "nd-title",
+    "eventSlug": "nd-title-2026",
     "side": "yes"
   },
   {
@@ -678,7 +678,7 @@
     "subject": "Los Angeles Rams",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "rams-sb",
+    "eventSlug": "rams-sb-2026",
     "side": "yes"
   },
   {
@@ -692,7 +692,7 @@
     "subject": "Cincinnati Bengals",
     "paysOn": "Super Bowl LXI",
     "status": "pending",
-    "eventSlug": "bengals-sb",
+    "eventSlug": "bengals-sb-2026",
     "side": "no"
   },
   {
@@ -706,7 +706,7 @@
     "subject": "TCU",
     "paysOn": "North Carolina vs TCU (Week 0, Dublin)",
     "status": "pending",
-    "eventSlug": "unc-vs-tcu",
+    "eventSlug": "unc-vs-tcu-2026",
     "side": "no"
   },
   {
@@ -720,7 +720,7 @@
     "subject": "Texas",
     "paysOn": "2026 CFP field",
     "status": "pending",
-    "eventSlug": "texas-cfp",
+    "eventSlug": "texas-cfp-2026",
     "side": "no"
   }
 ]

@@ -70,7 +70,7 @@ Owned here so the files do not fork them.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.
 6. **Kalshi is the ruler.** Cents come from a Kalshi page or a Kalshi reprint, each with `sourceUrl` + `sourcedAt`. Do not convert sportsbook moneylines.
-7. **Wrong season → drop.** Same teams in a prior year is not this event.
+7. **Wrong season → drop.** Same teams in a prior year is not this event. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`); a 2027 rematch is a new slug.
 8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
