@@ -1,16 +1,19 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { TeamChip } from "@/components/TeamChip";
 import {
   eventHasFight,
   formatAsOf,
   formatCents,
   formatGameWhen,
+  getTeam,
+  loadTeams,
   seasonLabel,
   settledLabel,
   sidesForCard,
 } from "@/lib/data";
 import { statusLabel } from "@/lib/format";
-import type { Call, CardSide, Event, Pundit } from "@/lib/types";
+import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
 
 function FaceRow({
   call,
@@ -56,21 +59,27 @@ function FaceRow({
 function SideCol({
   side,
   pundits,
+  teams,
   detail,
   game,
 }: {
   side: CardSide;
   pundits: Pundit[];
+  teams: Team[];
   detail: boolean;
   game: boolean;
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const vacant = side.calls.length === 0;
+  const team = getTeam(side.teamId, teams);
   return (
     <div className={`col ${side.side} ${vacant ? "col-vacant" : ""}`}>
       <div className="scan-team">
-        <div className="scan-name type-broadcast">{side.label}</div>
-        <div className={`px type-broadcast ${side.side === "yes" ? "px-yes" : ""}`}>
+        <div className="who">
+          {team ? <TeamChip team={team} /> : null}
+          <div className="scan-name type-broadcast">{side.label}</div>
+        </div>
+        <div className={`px type-broadcast ${detail && side.side === "yes" ? "px-yes" : ""}`}>
           {formatCents(side.cents)}
         </div>
       </div>
@@ -116,6 +125,8 @@ export function EventCard({
   const detailMeta = [when, !game ? seasonLabel(event.season) : null, asOf]
     .filter(Boolean)
     .join(" · ");
+  const teams = loadTeams();
+  const futureTeam = !game ? getTeam(event.teamId, teams) : null;
 
   return (
     <article
@@ -131,7 +142,18 @@ export function EventCard({
       <div className="event-head">
         <div>
           <div className="kalshi-tag type-broadcast">Kalshi</div>
-          {detail ? null : <h2 className="type-broadcast">{event.title}</h2>}
+          {detail ? null : (
+            <h2 className="type-broadcast event-title">
+              {futureTeam ? <TeamChip team={futureTeam} /> : null}
+              {event.title}
+            </h2>
+          )}
+          {detail && futureTeam ? (
+            <div className="who event-future-team">
+              <TeamChip team={futureTeam} />
+              <span className="scan-name type-broadcast">{futureTeam.name}</span>
+            </div>
+          ) : null}
           <div className="meta">{detail ? detailMeta : scanMeta}</div>
         </div>
         {detail && event.sourceUrl ? (
@@ -149,8 +171,8 @@ export function EventCard({
         <div className="event-final type-broadcast">Final · {finalLabel}</div>
       ) : null}
       <div className="sides">
-        <SideCol side={yes} pundits={pundits} detail={detail} game={game} />
-        <SideCol side={no} pundits={pundits} detail={detail} game={game} />
+        <SideCol side={yes} pundits={pundits} teams={teams} detail={detail} game={game} />
+        <SideCol side={no} pundits={pundits} teams={teams} detail={detail} game={game} />
       </div>
       {detail ? (
         <details className="market-details">

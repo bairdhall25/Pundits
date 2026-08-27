@@ -9,6 +9,7 @@ import type {
   Pundit,
   Side,
   Sport,
+  Team,
 } from "./types";
 
 export function seasonFromCalls(
@@ -80,6 +81,15 @@ export function loadEvents(): Event[] {
   return loadEventsFile().events;
 }
 
+export function loadTeams(): Team[] {
+  return readJson<Team[]>("data/teams.json");
+}
+
+export function getTeam(id: string | undefined, teams: Team[] = loadTeams()): Team | null {
+  if (!id) return null;
+  return teams.find((t) => t.id === id) ?? null;
+}
+
 export function isMapped(call: Call): boolean {
   return Boolean(call.eventSlug && call.side);
 }
@@ -106,12 +116,14 @@ export function sidesForCard(event: Event, calls: Call[]): [CardSide, CardSide] 
     label: event.awayTeam ?? "YES",
     cents: event.yesCents,
     calls: callsForEvent(event.slug, calls, "yes"),
+    teamId: event.awayTeamId,
   };
   const no: CardSide = {
     side: "no",
     label: event.homeTeam ?? "NO",
     cents: event.noCents,
     calls: callsForEvent(event.slug, calls, "no"),
+    teamId: event.homeTeamId,
   };
   return [yes, no];
 }

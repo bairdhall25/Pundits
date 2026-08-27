@@ -18,6 +18,15 @@ export type Sport = "ncaaf" | "nfl";
 
 export type EventKind = "game" | "future";
 
+export type Team = {
+  id: string;
+  name: string;
+  abbr: string;
+  primary: string;
+  ink: string;
+  sport: Sport;
+};
+
 export type Event = {
   slug: string;
   title: string;
@@ -32,6 +41,9 @@ export type Event = {
   kind?: EventKind;
   awayTeam?: string;
   homeTeam?: string;
+  awayTeamId?: string;
+  homeTeamId?: string;
+  teamId?: string;
   kickoff?: string;
   kickoffDate?: string;
   network?: string;
@@ -72,4 +84,5 @@ export type CardSide = {
   label: string;
   cents: number | null;
   calls: Call[];
+  teamId?: string;
 };

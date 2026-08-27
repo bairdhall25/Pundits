@@ -402,16 +402,44 @@ h1, h2, .type-broadcast {
 .sides.sides-collapsed { grid-template-columns: 1fr; }
 .col { padding: 12px 14px 16px; min-width: 0; }
 .col.yes { background: #0d1a0c; border-bottom: 1px solid #2a2a2a; }
+.event-scan .col.yes { background: transparent; }
 .col.col-vacant { background: transparent; }
+.who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.team-chip {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.team-chip.long { font-size: 10px; letter-spacing: 0.02em; }
+.team-chip.inline { width: 28px; height: 28px; font-size: 9px; }
+.event-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.event-future-team { margin: 8px 0 4px; }
 .scan-team {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
 }
 .scan-name { font-size: clamp(16px, 4vw, 22px); margin: 0; }
-.event-scan .px { font-size: clamp(28px, 6vw, 40px); margin: 0; }
+.event-scan .px { font-size: clamp(28px, 6vw, 40px); margin: 0; color: var(--ink); }
 .event-final {
   padding: 8px 14px;
   background: #12380c;
@@ -659,6 +687,7 @@ h1, h2, .type-broadcast {
 }
 .peek.fight { border-color: #245c18; }
 .peek .ph { font-size: 16px; margin: 0 0 8px; }
+.peek .event-title { margin: 0 0 8px; }
 .faces { display: flex; gap: 6px; margin-bottom: 8px; align-items: center; }
 .peek .sub { color: var(--muted); font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }
 .table-card { flex-basis: min(46vw, 180px); text-align: center; display: flex; flex-direction: column; align-items: center; }

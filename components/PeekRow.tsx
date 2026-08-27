@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { callsForEvent, eventHasFight, formatCents } from "@/lib/data";
+import { TeamChip } from "@/components/TeamChip";
+import { callsForEvent, eventHasFight, formatCents, getTeam, loadTeams } from "@/lib/data";
 import type { ActivityRecord, Call, Event, Pundit } from "@/lib/types";
 
 export function PeekRow({
@@ -31,6 +32,7 @@ export function FuturePeek({
   const yes = callsForEvent(event.slug, calls, "yes");
   const no = callsForEvent(event.slug, calls, "no");
   const fight = eventHasFight(event.slug, calls);
+  const team = getTeam(event.teamId, loadTeams());
   const names = (side: Call[]) => {
     const list = side
       .map((c) => pundits.find((p) => p.id === c.punditId)?.name.split(" ").slice(-1)[0])
@@ -44,7 +46,10 @@ export function FuturePeek({
       className={`peek ${fight ? "fight" : ""}`}
     >
       <div className="kalshi-tag type-broadcast">Kalshi</div>
-      <h3 className="type-broadcast ph">{event.title}</h3>
+      <h3 className="type-broadcast ph event-title">
+        {team ? <TeamChip team={team} size="inline" /> : null}
+        {event.title}
+      </h3>
       <div className="tape">
         <div>
           <span>Yes</span>

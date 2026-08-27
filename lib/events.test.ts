@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadEvents } from "./data";
+import { loadEvents, loadTeams } from "./data";
 import { formatGameWhen, seasonLabel, seasonSpan, statusLabel } from "./format";
 
 describe("kalshi freeze", () => {
@@ -66,5 +66,29 @@ describe("kalshi freeze", () => {
     expect(statusLabel("pending")).toBe("Live");
     expect(statusLabel("hit")).toBe("Hit");
     expect(statusLabel("miss")).toBe("Miss");
+  });
+
+  it("keys chips from stable team ids, not display names", () => {
+    const teams = loadTeams();
+    const ids = teams.map((t) => t.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const t of teams) {
+      expect(t.abbr.length, t.id).toBeGreaterThanOrEqual(2);
+      expect(t.abbr.length, t.id).toBeLessThanOrEqual(4);
+      expect(t.primary, t.id).toMatch(/^#[0-9A-Fa-f]{6}$/);
+      expect(t.ink, t.id).toMatch(/^#[0-9A-Fa-f]{6}$/);
+    }
+    const byId = Object.fromEntries(teams.map((t) => [t.id, t]));
+    for (const e of loadEvents()) {
+      if (e.kind === "game") {
+        expect(byId[e.awayTeamId!], e.slug).toBeTruthy();
+        expect(byId[e.homeTeamId!], e.slug).toBeTruthy();
+      } else {
+        expect(byId[e.teamId!], e.slug).toBeTruthy();
+      }
+    }
+    const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
+    expect(clemson.awayTeamId).toBe("clemson");
+    expect(clemson.homeTeamId).toBe("lsu");
   });
 });
