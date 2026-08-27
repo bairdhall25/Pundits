@@ -27,6 +27,16 @@ describe("v1 mapped book", () => {
     );
   });
 
+  it("maps Fallica miss-CFP opposite Herbstreit on Texas", () => {
+    const calls = loadCalls();
+    expect(eventHasFight("texas-cfp", calls)).toBe(true);
+    expect(callsForEvent("texas-cfp", calls, "yes").map((c) => c.punditId)).toContain(
+      "herbstreit"
+    );
+    expect(callsForEvent("texas-cfp", calls, "no").map((c) => c.punditId)).toEqual(["fallica"]);
+    expect(calls.filter((c) => c.punditId === "herbstreit" && c.eventSlug === "texas-cfp")).toHaveLength(1);
+  });
+
   it("does not map weasels onto the board", () => {
     const slugs = new Set(mappedCalls(loadCalls()).map((c) => c.id));
     expect(slugs.has("herbstreit-nd-title-lean")).toBe(false);

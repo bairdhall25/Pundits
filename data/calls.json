@@ -708,5 +708,19 @@
     "status": "pending",
     "eventSlug": "unc-vs-tcu",
     "side": "no"
+  },
+  {
+    "id": "fallica-texas-cfp-20260825",
+    "punditId": "fallica",
+    "claim": "I think 9-3 feels like a pretty common landing spot when you go through Texas' schedule.",
+    "source": "FOX Sports / Bear Bets",
+    "sourceUrl": "https://www.foxsports.com/stories/college-football/chris-the-bear-fallicas-5-college-football-futures-best-bets",
+    "sourceDate": "2026-08-25",
+    "kind": "hard",
+    "subject": "Texas",
+    "paysOn": "2026 CFP field",
+    "status": "pending",
+    "eventSlug": "texas-cfp",
+    "side": "no"
   }
 ]
