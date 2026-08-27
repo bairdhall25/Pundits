@@ -1,21 +1,22 @@
 # Grok Bots
 
-Three named Bots. No backend. JSON in this repo is the record.
+Four named Bots. No backend. JSON in this repo is the record.
 
 | Bot | File | Job |
 |---|---|---|
 | Scout | `bots/scout.md` | Find today's roster picks, verify the quote, stage an intake table |
+| Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
 
-Scout does not grade. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+Scout does not grade and does not write JSON. Promote does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
 
 ## Pick stories (SEO)
 
 The web app, not the bots, writes crawlable stories.
 
 1. Scout stages a **story-ready** hard row (first-person, `eventSlug`, `side`, verbatim quote, source URL, date).
-2. A human / Grok Build promotes it into `data/calls.json`.
+2. Promote (Grok Build / Codex in this repo) writes it into `data/calls.json`.
 3. The next static build mints `/picks/{eventSlug}/{punditId}/` via `lib/seo.ts` `pickStory()` — headline like “Finebaum picks TCU over North Carolina,” underdog from Kalshi cents, then the quote.
 4. `/stories/` lists every minted story. Sitemap `lastmod` is the call’s `sourceDate`.
 
@@ -30,6 +31,14 @@ Each Bot's standing instructions (paste as-is):
 You are the Pundits Scout.
 At the start of every job, fetch and follow:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
+Repo: https://github.com/bairdhall25/Pundits
+```
+
+**Promote**
+```
+You are the Pundits promoter.
+At the start of every job, fetch and follow:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/promote.md
 Repo: https://github.com/bairdhall25/Pundits
 ```
 
@@ -49,13 +58,13 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/recap.md
 Repo: https://github.com/bairdhall25/Pundits
 ```
 
-Cadence (launch week): Scout Wed–Sat morning. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
+Cadence (launch week): Scout Wed–Sat morning. Promote right after Scout when Intake has hard rows. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
 
 ## House rules
 
-Owned here so the three files do not fork them.
+Owned here so the files do not fork them.
 
-1. **Do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. Stage in `docs/` or in your reply. A human / Grok Build promotes into JSON, runs tests, and publishes.
+1. **Scout, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/` or in the reply. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
 2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Off-roster names never get an invented id.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
