@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "NCAAF",
-  "College football cards with a real face. Week 0 and Week 1 Kalshi markets.",
+  "College football Week 0 and Week 1 picks from named pundits, mapped onto Kalshi markets.",
   "/ncaaf"
 );
 

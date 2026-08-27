@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallCard } from "@/components/CallCard";
+import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import {
   callsForPundit,
@@ -13,6 +14,7 @@ import {
   loadPundits,
   otherTakes,
 } from "@/lib/data";
+import { breadcrumbList, personJsonLd } from "@/lib/seo";
 import { punditShare } from "@/lib/share";
 import { pageMeta } from "@/lib/site";
 
@@ -52,12 +54,16 @@ export default async function PunditPage({
 
   return (
     <main id="main" className="shell">
-      <Link
-        href="/"
-        className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"
-      >
-        ← Picks
-      </Link>
+      <JsonLd data={personJsonLd(p)} />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Picks", path: "/" },
+          { name: p.name, path: `/pundits/${p.id}` },
+        ])}
+      />
+      <Breadcrumbs
+        items={[{ name: "Picks", href: "/" }, { name: p.name }]}
+      />
       <div className="mb-8 grid items-center gap-6 md:grid-cols-[160px_1fr]">
         <PunditAvatar src={p.photo} alt={p.name} size="hero" />
         <div>

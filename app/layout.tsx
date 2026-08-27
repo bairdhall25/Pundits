@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter, Oswald } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { organizationGraph } from "@/lib/seo";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,
-  absoluteUrl,
+  canonicalUrl,
   ogImage,
   publicPath,
   siteOrigin,
@@ -39,13 +41,14 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
+  alternates: { canonical: canonicalUrl("/") },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: SITE_NAME,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    url: absoluteUrl("/"),
+    url: canonicalUrl("/"),
     images: [image],
   },
   twitter: {
@@ -69,6 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         <SiteHeader />
+        <JsonLd data={organizationGraph()} />
         {children}
         <SiteFooter />
       </body>

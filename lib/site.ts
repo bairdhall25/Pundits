@@ -10,8 +10,27 @@ export const SITE_DESCRIPTION =
 export const OG_ALT = "PUNDITS. Who’s picking what.";
 
 export function siteOrigin(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bairdhall25.github.io";
+  const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pundits.pro";
   return raw.replace(/\/+$/, "");
+}
+
+export function canonicalOrigin(): string {
+  const raw = process.env.NEXT_PUBLIC_CANONICAL_URL ?? "https://pundits.pro";
+  return raw.replace(/\/+$/, "");
+}
+
+function withTrailingSlash(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (/\.[a-z0-9]+$/i.test(normalized)) return normalized;
+  return normalized.endsWith("/") ? normalized : `${normalized}/`;
+}
+
+export function canonicalUrl(path = "/"): string {
+  return `${canonicalOrigin()}${withTrailingSlash(path)}`;
+}
+
+export function takePath(eventSlug: string, punditId: string): string {
+  return `/picks/${eventSlug}/${punditId}`;
 }
 
 export function siteBasePath(): string {
@@ -25,13 +44,12 @@ export function publicPath(path: string): string {
 }
 
 export function absoluteUrl(path = "/"): string {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${siteOrigin()}${siteBasePath()}${normalized}`;
+  return `${siteOrigin()}${siteBasePath()}${withTrailingSlash(path)}`;
 }
 
 export function ogImage() {
   return {
-    url: absoluteUrl("/og.png"),
+    url: canonicalUrl("/og.png"),
     width: 1200,
     height: 630,
     alt: OG_ALT,
@@ -45,7 +63,7 @@ export function pageMeta(
   path?: string
 ): Metadata {
   const image = ogImage();
-  const url = path ? absoluteUrl(path.endsWith("/") ? path : `${path}/`) : undefined;
+  const url = path ? canonicalUrl(path) : undefined;
   return {
     title,
     description,

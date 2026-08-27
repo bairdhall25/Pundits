@@ -21,6 +21,55 @@ body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
+.crumbs {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.crumbs li:not(:last-child)::after {
+  content: "/";
+  margin: 0 8px;
+  color: #3a3a3a;
+}
+.crumbs a { color: var(--green); }
+.take-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #2a2a2a;
+}
+.take-list li + li { border-top: 1px solid #2a2a2a; }
+.take-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  min-height: 44px;
+}
+.take-list a:hover { background: #101010; }
+.take-list span {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.take-quote {
+  background: var(--card);
+  border: 1px solid #2a2a2a;
+  padding: 14px;
+  margin-bottom: 10px;
+}
 .skip-link {
   position: absolute;
   left: -999px;

@@ -50,7 +50,7 @@ const calls: Call[] = [
 describe("share copy", () => {
   it("names sides and freeze on a game card", () => {
     const share = eventShare(event, calls, pundits);
-    expect(share.title).toBe("North Carolina vs TCU");
+    expect(share.title).toBe("North Carolina vs TCU picks");
     expect(share.description).toContain("YES North Carolina 27¢");
     expect(share.description).toContain("NO TCU 75¢");
     expect(share.description).toContain("YES: nobody yet");
@@ -95,8 +95,8 @@ describe("share copy", () => {
 });
 
 describe("site urls", () => {
-  it("defaults origin to GitHub Pages", () => {
-    expect(siteOrigin()).toBe("https://bairdhall25.github.io");
+  it("defaults origin to the production domain", () => {
+    expect(siteOrigin()).toBe("https://pundits.pro");
     expect(absoluteUrl("/og.png")).toMatch(/\/og\.png$/);
   });
 });

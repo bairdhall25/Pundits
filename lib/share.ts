@@ -44,7 +44,7 @@ export function eventShare(
   ]
     .filter(Boolean)
     .join(". ");
-  return { title: event.title, description };
+  return { title: `${event.title} picks`, description };
 }
 
 export function punditShare(

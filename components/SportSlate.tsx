@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import {
@@ -36,12 +36,9 @@ export function SportSlate({ sport }: { sport: Sport }) {
 
   return (
     <main id="main" className="shell">
-      <Link
-        href="/"
-        className="mb-4 inline-block text-xs uppercase tracking-widest text-[var(--green)]"
-      >
-        ← Picks
-      </Link>
+      <Breadcrumbs
+        items={[{ name: "Picks", href: "/" }, { name: copy.title }]}
+      />
       <div className="eyebrow type-broadcast">{copy.kicker}</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         {copy.title}

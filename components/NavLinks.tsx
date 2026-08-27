@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 
 const LINKS = [
   { href: "/", label: "Picks", match: (p: string) => p === "/" || p.startsWith("/picks") },
-  { href: "/ncaaf", label: "NCAAF", match: (p: string) => p === "/ncaaf" || p.startsWith("/ncaaf/") },
-  { href: "/nfl", label: "NFL", match: (p: string) => p === "/nfl" || p.startsWith("/nfl/") },
-  { href: "/leaderboard", label: "Leaderboard", match: (p: string) => p.startsWith("/leaderboard") },
-  { href: "/book", label: "The Book", match: (p: string) => p.startsWith("/book") },
+  { href: "/ncaaf/", label: "NCAAF", match: (p: string) => p === "/ncaaf" || p.startsWith("/ncaaf/") },
+  { href: "/nfl/", label: "NFL", match: (p: string) => p === "/nfl" || p.startsWith("/nfl/") },
+  { href: "/leaderboard/", label: "Leaderboard", match: (p: string) => p.startsWith("/leaderboard") },
+  { href: "/book/", label: "The Book", match: (p: string) => p.startsWith("/book") },
 ];
 
 export function NavLinks() {

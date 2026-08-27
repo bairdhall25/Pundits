@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "The Book",
-  "Every take. Hard and soft. Mapped calls carry the Kalshi strip.",
+  "Every mapped and unmapped pundit take. Hard calls carry the Kalshi freeze.",
   "/book"
 );
 

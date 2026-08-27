@@ -2,7 +2,9 @@
 
 Public CFB pundit analytics. Homepage is Kalshi-mapped event cards (YES vs NO). Leaderboard is the table. The Book is every take.
 
-Live: https://bairdhall25.github.io/Pundits/
+Live: https://pundits.pro/
+
+Deploy to the existing Cloudflare Pages project with `npm run deploy`.
 
 Grok Bot instructions: `bots/`.
 

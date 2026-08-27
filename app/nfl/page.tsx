@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "NFL",
-  "NFL Week 1 cards with a real face. Regular season, not preseason.",
+  "NFL Week 1 picks from named pundits, mapped onto Kalshi markets. Regular season, not preseason.",
   "/nfl"
 );
 

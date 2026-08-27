@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { formatCents } from "@/lib/format";
+import { takePath } from "@/lib/site";
 import type { Call, Event } from "@/lib/types";
 
 export function CallCard({
@@ -54,9 +56,11 @@ export function CallCard({
       </div>
       {event && call.side ? (
         <div className="mt-2.5 border-l-[3px] border-[var(--green)] bg-[#111] px-3.5 py-3 text-[13px]">
-          {event.title} ·{" "}
-          <b className="text-[var(--green)]">{call.side.toUpperCase()}</b> @{" "}
-          {formatCents(cents)} · $100 at risk
+          <Link href={takePath(event.slug, call.punditId)}>
+            {event.title} ·{" "}
+            <b className="text-[var(--green)]">{call.side.toUpperCase()}</b> @{" "}
+            {formatCents(cents)} · $100 at risk
+          </Link>
         </div>
       ) : null}
     </article>

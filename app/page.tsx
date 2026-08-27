@@ -98,7 +98,7 @@ export default function HomePage() {
         kicker="Opening weekend"
         label="NCAAF"
         when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · cards with a real face"
-        href="/ncaaf"
+        href="/ncaaf/"
         events={ncaaf}
         calls={calls}
         pundits={pundits}
@@ -108,7 +108,7 @@ export default function HomePage() {
         kicker="Up next"
         label="NFL"
         when="Week 1 · Sep 9–14 · regular season, not preseason"
-        href="/nfl"
+        href="/nfl/"
         events={nfl}
         calls={calls}
         pundits={pundits}
@@ -121,10 +121,10 @@ export default function HomePage() {
             <h2 className="board-title type-broadcast">Hottest fights</h2>
           </div>
           <span className="flex gap-3">
-            <a className="see" href="/ncaaf">
+            <a className="see" href="/ncaaf/">
               NCAAF →
             </a>
-            <a className="see" href="/nfl">
+            <a className="see" href="/nfl/">
               NFL →
             </a>
           </span>
@@ -147,7 +147,7 @@ export default function HomePage() {
             <div className="board-kicker type-broadcast">The leaderboard</div>
             <h2 className="board-title type-broadcast">Top 10</h2>
           </div>
-          <a className="see" href="/leaderboard">
+          <a className="see" href="/leaderboard/">
             Full leaderboard →
           </a>
         </div>
@@ -164,7 +164,7 @@ export default function HomePage() {
             <div className="board-kicker type-broadcast">The Book</div>
             <h2 className="board-title type-broadcast">Fresh takes</h2>
           </div>
-          <a className="see" href="/book">
+          <a className="see" href="/book/">
             Open The Book →
           </a>
         </div>

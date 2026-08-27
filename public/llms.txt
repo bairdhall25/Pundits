@@ -1,0 +1,19 @@
+# PUNDITS
+
+> Pundit takes mapped onto Kalshi markets. Hypothetical $100 at the freeze. Not affiliated with Kalshi or the pundits.
+
+PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi YES/NO contract. Faces are named pundits on that side.
+
+## Site
+- https://pundits.pro/
+- https://pundits.pro/ncaaf/
+- https://pundits.pro/nfl/
+- https://pundits.pro/book/
+- https://pundits.pro/leaderboard/
+- https://pundits.pro/sitemap.xml
+
+## How to read it
+- `/picks/{event}` is the market page (game or future).
+- `/picks/{event}/{pundit}` is one mapped expert take.
+- `/pundits/{id}` is that voice's book.
+- Quotes are verified first-person. Soft takes stay in The Book until they map.
