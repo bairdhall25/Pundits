@@ -33,6 +33,25 @@ YES = away. Each of these is a missing `{Name} picks {away} over {home}` story.
 
 Cowherd is already on three NFL home cards. Prefer a *different* voice on the empty YES.
 
+## Hunt existing podcast voices first (do not grow the roster)
+
+We already have podcast/hybrid ids. They are idle on Week 1 games. Query these **before** any new outlet:
+
+| id | Name | Show | Use on |
+|---|---|---|---|
+| `simmons` | Bill Simmons | The Bill Simmons Podcast / Ringer | NFL P0 (Pats, 49ers, Bills). Already on the roster. Zero mapped picks. |
+| `kanell` | Danny Kanell | Cover 3 | CFB P0 (Clemson, Dublin) and P1 Lambeau. Totals ≠ SU. |
+| `mcafee` | Pat McAfee | McAfee Show / GameDay | Only if **Pat** says the SU. Guests stay `hawk`, `butler`, … never `mcafee`. 50-burger already dropped. |
+| `florio` | Mike Florio | PFT Live | NFL P0. Super Bowl score ≠ Week 1. |
+| `simms` | Chris Simms | Unbuttoned / PFT | NFL P0. AFC East lean ≠ Patriots–Seahawks. |
+| `clark` | Ryan Clark | The Pivot | NFL P0. |
+| `adams` | Kay Adams | Up & Adams | NFL P0. |
+| `pate` | Josh Pate | YouTube | Already LSU. Only if he now takes **Clemson**. |
+
+Do **not** invent Barstool or extra Ringer ids this run. “The show likes the Bills” is not a pick. Name the speaker. No photo / off-roster → Dropped, do not mint an id.
+
+If those shows still have no SU, say so in Dropped. Do not pad with futures.
+
 ## P1 — faceless marquee (not on home yet)
 
 | Event | Why | Rule |

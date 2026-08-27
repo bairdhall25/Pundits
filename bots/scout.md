@@ -20,9 +20,11 @@ From https://github.com/bairdhall25/Pundits (main):
 
 Search **by event**, in the order in `docs/board.md`. **P0 game SU rows first** — empty YES (away) on home games. Those mint SEO stories `{Name} picks {team} over {other}`. Do not spend the run adding another title or Super Bowl face while Clemson / Patriots / 49ers / Bills / UNC YES are empty.
 
-For each P0/P1 event: query `{pundit name} {away} {home} 2026 pick` using the idle high-yield voices listed in `docs/board.md`. Then that day's First Take / The Herd / GameDay / Big Noon / Cover 3. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
+For each P0/P1 event: query `{pundit name} {away} {home} 2026 pick` using the idle high-yield voices in `docs/board.md`. **Podcasts already on the roster first:** Simmons (Ringer), Kanell (Cover 3), McAfee (Pat only — name the speaker), Florio, Simms, Clark, Kay Adams. Then that day's First Take / The Herd / GameDay / Big Noon / Cover 3 / PFT / Simmons feed. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
 
-1. Roster voices only. Off-roster Week 0 staff stays in Dropped.
+Do not add Barstool or extra Ringer ids. Off-roster podcasters stay in Dropped.
+
+1. Roster voices only. Off-roster Week 0 staff and unnamed “the show” takes stay in Dropped. Never mint a new `punditId`.
 2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Copy `eventSlug` from `events.json` — slugs always end in `-{season}` (`clemson-at-lsu-2026`). `season` is the year the regular season starts: a January 2027 bowl/playoff/CFP/Super Bowl is still `-2026`. Kalshi's "2027 NFL Champion" is that same 2026 season. Same teams next *season* is a **new event**, not this slug. If you cannot open it, drop it.
 3. Classify:
    - Clear first-person lean on a listed **game** dated in the last ~21 days → `hard`, fill `eventSlug` + `side` (`yes` = away).
