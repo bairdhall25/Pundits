@@ -11,7 +11,9 @@ import {
   breadcrumbList,
   mappedTakes,
   pickStory,
+  takeHeadline,
   takePath,
+  toStoryCard,
 } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
@@ -54,6 +56,15 @@ export default async function TakePage({
   const slate = event.sport === "nfl" ? "/nfl" : "/ncaaf";
   const sportLabel = event.sport === "nfl" ? "NFL" : "NCAAF";
   const story = pickStory(take, calls, pundits);
+  const feed = mappedTakes(calls, events, pundits);
+  const idx = feed.findIndex(
+    (t) => t.event.slug === event.slug && t.pundit.id === take.pundit.id
+  );
+  const prev = idx > 0 ? feed[idx - 1] : null;
+  const next = idx >= 0 && idx < feed.length - 1 ? feed[idx + 1] : null;
+  const others = feed.filter(
+    (t) => t.event.slug === event.slug && t.pundit.id !== take.pundit.id
+  );
 
   return (
     <main id="main" className="shell">
@@ -119,6 +130,46 @@ export default async function TakePage({
         permalink={false}
         detail
       />
+
+      {others.length ? (
+        <section className="mt-8">
+          <h2 className="type-broadcast mb-3 text-[22px] tracking-widest">
+            Also on this market
+          </h2>
+          <ul className="take-list">
+            {others.map((t) => {
+              const card = toStoryCard(t);
+              return (
+                <li key={card.href}>
+                  <Link href={card.href}>
+                    {card.headline}
+                    <span>
+                      {card.sideChip} · {card.outlet}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
+
+      <nav className="story-next" aria-label="More stories">
+        {prev ? (
+          <Link href={takePath(prev.event.slug, prev.pundit.id)}>
+            <span>Previous</span>
+            {takeHeadline(prev.pundit, prev.event, prev.call)}
+          </Link>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <Link href={takePath(next.event.slug, next.pundit.id)}>
+            <span>Next</span>
+            {takeHeadline(next.pundit, next.event, next.call)}
+          </Link>
+        ) : null}
+      </nav>
     </main>
   );
 }

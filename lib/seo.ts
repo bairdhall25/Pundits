@@ -2,6 +2,7 @@ import { isMapped, sidesForCard } from "./data";
 import { formatAsOf, formatCents, formatShortDate } from "./format";
 import { eventShare } from "./share";
 import { SITE_DESCRIPTION, SITE_NAME, canonicalUrl, takePath } from "./site";
+import type { StoryCard } from "./story-card";
 import type { Call, Event, Pundit } from "./types";
 
 export type MappedTake = {
@@ -82,6 +83,36 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
   if (game) return `${pundit.name} picks ${game.picked} over ${game.other}`;
   if (call.side === "no") return `${pundit.name} against ${event.title}`;
   return `${pundit.name} takes ${event.title}`;
+}
+
+export function sideChip(event: Event, side: "yes" | "no"): string {
+  if (side === "yes" && event.awayTeam) return `YES · ${event.awayTeam}`;
+  if (side === "no" && event.homeTeam) return `NO · ${event.homeTeam}`;
+  return side === "yes" ? "YES" : "NO";
+}
+
+export function toStoryCard(take: MappedTake): StoryCard {
+  const { pundit, event, call } = take;
+  const side = call.side ?? "no";
+  return {
+    href: takePath(event.slug, pundit.id),
+    headline: takeHeadline(pundit, event, call),
+    quote: call.claim,
+    name: pundit.name,
+    photo: pundit.photo,
+    outlet: pundit.outlet,
+    date: formatShortDate(call.sourceDate),
+    sport: event.sport,
+    kind: event.kind ?? "future",
+    eventTitle: event.title,
+    kickoff: event.kickoff ?? null,
+    side,
+    sideChip: sideChip(event, side),
+    cents: side === "yes" ? event.yesCents : event.noCents,
+    status: call.status,
+    eventSlug: event.slug,
+    punditId: pundit.id,
+  };
 }
 
 export function pickStory(

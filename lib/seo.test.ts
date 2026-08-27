@@ -4,8 +4,10 @@ import {
   mappedTakes,
   pickLede,
   pickStory,
+  sideChip,
   takeHeadline,
   takePath,
+  toStoryCard,
   organizationGraph,
   articleJsonLd,
 } from "./seo";
@@ -66,6 +68,19 @@ describe("pick stories", () => {
     expect(story.dek).toContain("North Carolina is the underdog at 27¢");
     expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
+  });
+
+  it("does not print YES · YES on futures chips", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "texas-cfp" && t.pundit.id === "fallica"
+    );
+    expect(take).toBeTruthy();
+    expect(sideChip(take!.event, "no")).toBe("NO");
+    expect(toStoryCard(take!).sideChip).toBe("NO");
+    const dublin = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu"
+    )!;
+    expect(toStoryCard(dublin).sideChip).toBe("NO · TCU");
   });
 });
 

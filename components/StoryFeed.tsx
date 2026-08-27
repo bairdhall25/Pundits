@@ -1,56 +1,51 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { formatCents, formatShortDate } from "@/lib/format";
-import { pickStory, takePath, type MappedTake } from "@/lib/seo";
+import { formatCents } from "@/lib/format";
+import type { StoryCard } from "@/lib/story-card";
 
-function sideLabel(take: MappedTake): string {
-  if (take.call.side === "yes") return take.event.awayTeam ?? "YES";
-  return take.event.homeTeam ?? "NO";
-}
-
-function sideCents(take: MappedTake): number | null {
-  return take.call.side === "yes" ? take.event.yesCents : take.event.noCents;
-}
-
-export function StoryFeed({ takes }: { takes: MappedTake[] }) {
+export function StoryFeed({ cards }: { cards: StoryCard[] }) {
+  if (!cards.length) {
+    return <p className="lede">No stories on this filter yet.</p>;
+  }
   return (
     <ol className="feed">
-      {takes.map((take) => {
-        const story = pickStory(take);
-        const tone = take.call.side ?? "no";
-        const href = takePath(take.event.slug, take.pundit.id);
-        const when = formatShortDate(take.call.sourceDate);
-        return (
-          <li key={`${take.event.slug}-${take.pundit.id}`} className={`feed-post ${tone}`}>
-            <Link href={href} className="feed-hit" aria-label={story.headline} />
-            <PunditAvatar
-              src={take.pundit.photo}
-              alt={take.pundit.name}
-              size="feed"
-            />
-            <div className="feed-main">
-              <div className="feed-top">
-                <div>
-                  <div className="nm type-broadcast">{take.pundit.name}</div>
-                  <div className="feed-by">
-                    {take.pundit.outlet}
-                    {when ? ` · ${when}` : ""}
-                  </div>
-                </div>
-                <div className={`px type-broadcast ${tone === "yes" ? "px-yes" : ""}`}>
-                  {formatCents(sideCents(take))}
+      {cards.map((card) => (
+        <li
+          key={`${card.eventSlug}-${card.punditId}`}
+          className={`feed-post ${card.side}`}
+        >
+          <Link href={card.href} className="feed-hit" aria-label={card.headline} />
+          <PunditAvatar src={card.photo} alt={card.name} size="feed" />
+          <div className="feed-main">
+            <div className="feed-kicker">
+              <span>{card.sport === "nfl" ? "NFL" : "NCAAF"}</span>
+              <span>{card.kind === "game" ? "Game" : "Future"}</span>
+              {card.kickoff ? <span>{card.kickoff}</span> : null}
+              <span>{card.status === "pending" ? "Live" : card.status}</span>
+            </div>
+            <div className="feed-top">
+              <div>
+                <div className="nm type-broadcast">{card.name}</div>
+                <div className="feed-by">
+                  {card.outlet}
+                  {card.date ? ` · ${card.date}` : ""}
                 </div>
               </div>
-              <h2 className="feed-hd type-broadcast">{story.headline}</h2>
-              <p className="feed-qt">“{take.call.claim}”</p>
-              <div className="feed-meta">
-                {tone.toUpperCase()} · {sideLabel(take)}
-                <span>{take.event.title}</span>
+              <div
+                className={`px type-broadcast ${card.side === "yes" ? "px-yes" : ""}`}
+              >
+                {formatCents(card.cents)}
               </div>
             </div>
-          </li>
-        );
-      })}
+            <h2 className="feed-hd type-broadcast">{card.headline}</h2>
+            <p className="feed-qt">“{card.quote}”</p>
+            <div className="feed-meta">
+              {card.sideChip}
+              <span>{card.eventTitle}</span>
+            </div>
+          </div>
+        </li>
+      ))}
     </ol>
   );
 }

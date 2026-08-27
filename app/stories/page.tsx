@@ -1,21 +1,20 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { StoryFeed } from "@/components/StoryFeed";
+import { StoryBoard } from "@/components/StoryBoard";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
-import { breadcrumbList, mappedTakes } from "@/lib/seo";
+import { breadcrumbList, mappedTakes, toStoryCard } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Pick stories",
-  "Who picked what. Faces, quotes, and the Kalshi freeze. Newest first.",
+  "Who picked what. Verified first-person takes with the Kalshi freeze. Newest first.",
   "/stories"
 );
 
 export default function StoriesPage() {
-  const calls = loadCalls();
-  const events = loadEvents();
-  const pundits = loadPundits();
-  const takes = mappedTakes(calls, events, pundits);
+  const cards = mappedTakes(loadCalls(), loadEvents(), loadPundits()).map(
+    toStoryCard
+  );
 
   return (
     <main id="main" className="shell">
@@ -30,9 +29,10 @@ export default function StoriesPage() {
         what.
       </h1>
       <p className="lede">
-        Newest mapped takes, as a feed. Face, quote, freeze. Hypothetical $100.
+        Verified expert picks, with the quote and the Kalshi number. Filter by
+        league or search a name. Hypothetical $100.
       </p>
-      <StoryFeed takes={takes} />
+      <StoryBoard cards={cards} />
     </main>
   );
 }
