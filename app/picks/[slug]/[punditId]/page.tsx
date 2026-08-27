@@ -6,13 +6,11 @@ import { EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
-import { formatAsOf, formatCents } from "@/lib/format";
 import {
   articleJsonLd,
   breadcrumbList,
   mappedTakes,
-  takeDescription,
-  takeHeadline,
+  pickStory,
   takePath,
 } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
@@ -33,12 +31,9 @@ export async function generateMetadata({
   const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
     (t) => t.event.slug === slug && t.pundit.id === punditId
   );
-  if (!take) return pageMeta("Take", "Mapped pundit pick.");
-  return pageMeta(
-    takeHeadline(take.pundit, take.event, take.call),
-    takeDescription(take.pundit, take.event, take.call),
-    takePath(slug, punditId)
-  );
+  if (!take) return pageMeta("Pick story", "Mapped pundit pick.");
+  const story = pickStory(take);
+  return pageMeta(story.headline, story.dek, takePath(slug, punditId));
 }
 
 export default async function TakePage({
@@ -48,53 +43,46 @@ export default async function TakePage({
 }) {
   const { slug, punditId } = await params;
   const events = loadEvents();
+  const calls = loadCalls();
+  const pundits = loadPundits();
   const event = getEvent(slug, events);
-  const take = mappedTakes(loadCalls(), events, loadPundits()).find(
+  const take = mappedTakes(calls, events, pundits).find(
     (t) => t.event.slug === slug && t.pundit.id === punditId
   );
   if (!event || !take) notFound();
 
   const slate = event.sport === "nfl" ? "/nfl" : "/ncaaf";
   const sportLabel = event.sport === "nfl" ? "NFL" : "NCAAF";
-  const headline = takeHeadline(take.pundit, event, take.call);
-  const sideLabel =
-    take.call.side === "yes"
-      ? (event.awayTeam ?? "YES")
-      : (event.homeTeam ?? "NO");
-  const cents =
-    take.call.side === "yes" ? event.yesCents : event.noCents;
-  const asOf = formatAsOf(event.sourcedAt);
+  const story = pickStory(take, calls, pundits);
 
   return (
     <main id="main" className="shell">
-      <JsonLd data={articleJsonLd(take)} />
+      <JsonLd data={articleJsonLd(take, calls, pundits)} />
       <JsonLd
         data={breadcrumbList([
-          { name: "Picks", path: "/" },
+          { name: "Stories", path: "/stories" },
           { name: sportLabel, path: slate },
           { name: event.title, path: `/picks/${event.slug}` },
-          { name: take.pundit.name, path: takePath(event.slug, take.pundit.id) },
+          { name: story.headline, path: takePath(event.slug, take.pundit.id) },
         ])}
       />
       <Breadcrumbs
         items={[
-          { name: "Picks", href: "/" },
+          { name: "Stories", href: "/stories" },
           { name: sportLabel, href: slate },
           { name: event.title, href: `/picks/${event.slug}` },
           { name: take.pundit.name },
         ]}
       />
-      <div className="eyebrow type-broadcast">
-        {take.call.source}
-        {take.call.sourceDate ? ` · ${take.call.sourceDate}` : ""}
-      </div>
+      <div className="eyebrow type-broadcast">Pick story</div>
       <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {headline}
+        {story.headline}
       </h1>
-      <p className="lede">
-        {take.pundit.name} is on {sideLabel} at {formatCents(cents)}
-        {asOf ? ` ${asOf}` : ""}. Hypothetical $100 at the Kalshi freeze.
-      </p>
+      <div className="story">
+        {story.paragraphs.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+      </div>
 
       <article className="take-quote">
         <Link href={`/pundits/${take.pundit.id}`} className="person person-hit">
@@ -126,8 +114,8 @@ export default async function TakePage({
       </h2>
       <EventCard
         event={event}
-        calls={loadCalls()}
-        pundits={loadPundits()}
+        calls={calls}
+        pundits={pundits}
         permalink={false}
         detail
       />

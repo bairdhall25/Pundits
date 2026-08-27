@@ -3,6 +3,7 @@ import { loadCalls, loadEvents, loadPundits } from "./data";
 import {
   mappedTakes,
   pickLede,
+  pickStory,
   takeHeadline,
   takePath,
   organizationGraph,
@@ -28,7 +29,7 @@ describe("mapped takes", () => {
     );
     expect(dublin).toBeTruthy();
     expect(takeHeadline(dublin!.pundit, dublin!.event, dublin!.call)).toBe(
-      "Paul Finebaum picks TCU"
+      "Paul Finebaum picks TCU over North Carolina"
     );
     expect(takePath("unc-vs-tcu", "finebaum")).toBe(
       "/picks/unc-vs-tcu/finebaum"
@@ -39,6 +40,20 @@ describe("mapped takes", () => {
     const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
     const keys = takes.map((t) => `${t.event.slug}/${t.pundit.id}`);
     expect(new Set(keys).size).toBe(keys.length);
+  });
+});
+
+describe("pick stories", () => {
+  it("announces Finebaum on Dublin from the ledger only", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu" && t.pundit.id === "finebaum"
+    );
+    expect(take).toBeTruthy();
+    const story = pickStory(take!, loadCalls(), loadPundits());
+    expect(story.headline).toBe("Paul Finebaum picks TCU over North Carolina");
+    expect(story.dek).toContain("North Carolina is the underdog at 27¢");
+    expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
+    expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
 });
 
@@ -65,7 +80,7 @@ describe("json-ld", () => {
     expect(take).toBeTruthy();
     const json = articleJsonLd(take!);
     expect(json["@type"]).toBe("Article");
-    expect(json.headline).toBe("Paul Finebaum picks TCU");
+    expect(json.headline).toBe("Paul Finebaum picks TCU over North Carolina");
     expect(json.author).toMatchObject({ name: "Paul Finebaum" });
   });
 });

@@ -64,6 +64,16 @@ body {
   text-transform: uppercase;
   color: var(--muted);
 }
+.story {
+  max-width: 640px;
+  margin: 0 0 22px;
+}
+.story p {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
 .take-quote {
   background: var(--card);
   border: 1px solid #2a2a2a;

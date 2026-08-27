@@ -1,5 +1,5 @@
 import { isMapped, sidesForCard } from "./data";
-import { formatAsOf, formatCents } from "./format";
+import { formatAsOf, formatCents, formatShortDate } from "./format";
 import { eventShare } from "./share";
 import { SITE_DESCRIPTION, SITE_NAME, canonicalUrl, takePath } from "./site";
 import type { Call, Event, Pundit } from "./types";
@@ -38,15 +38,108 @@ export function mappedTakes(
 
 export { takePath };
 
+export type PickStory = {
+  headline: string;
+  dek: string;
+  paragraphs: string[];
+};
+
+function gamePick(event: Event, call: Call): {
+  picked: string;
+  other: string;
+  pickedCents: number | null;
+  otherCents: number | null;
+} | null {
+  if (!event.awayTeam || !event.homeTeam || !call.side) return null;
+  if (call.side === "yes") {
+    return {
+      picked: event.awayTeam,
+      other: event.homeTeam,
+      pickedCents: event.yesCents,
+      otherCents: event.noCents,
+    };
+  }
+  return {
+    picked: event.homeTeam,
+    other: event.awayTeam,
+    pickedCents: event.noCents,
+    otherCents: event.yesCents,
+  };
+}
+
+function underdogLine(event: Event): string | null {
+  if (event.yesCents == null || event.noCents == null) return null;
+  if (!event.awayTeam || !event.homeTeam) return null;
+  if (event.yesCents === event.noCents) return null;
+  const dog = event.yesCents < event.noCents ? event.awayTeam : event.homeTeam;
+  const cents = Math.min(event.yesCents, event.noCents);
+  const asOf = formatAsOf(event.sourcedAt);
+  return `${dog} is the underdog at ${formatCents(cents)} on Kalshi${asOf ? `, ${asOf}` : ""}.`;
+}
+
 export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
-  if (call.side === "yes" && event.awayTeam) {
-    return `${pundit.name} picks ${event.awayTeam}`;
-  }
-  if (call.side === "no" && event.homeTeam) {
-    return `${pundit.name} picks ${event.homeTeam}`;
-  }
+  const game = gamePick(event, call);
+  if (game) return `${pundit.name} picks ${game.picked} over ${game.other}`;
   if (call.side === "no") return `${pundit.name} against ${event.title}`;
-  return `${pundit.name}: ${event.title}`;
+  return `${pundit.name} takes ${event.title}`;
+}
+
+export function pickStory(
+  take: MappedTake,
+  allCalls: Call[] = [],
+  pundits: Pundit[] = []
+): PickStory {
+  const { pundit, event, call } = take;
+  const headline = takeHeadline(pundit, event, call);
+  const game = gamePick(event, call);
+  const dog = underdogLine(event);
+  const when = [event.kickoff, event.network].filter(Boolean).join(" · ");
+  const day = formatShortDate(call.sourceDate);
+
+  const paragraphs: string[] = [];
+  if (game) {
+    paragraphs.push(`${pundit.name} picks ${game.picked} over ${game.other}.`);
+  } else if (call.side === "no") {
+    paragraphs.push(`${pundit.name} is against ${event.title}.`);
+  } else {
+    paragraphs.push(`${pundit.name} takes ${event.title}.`);
+  }
+
+  const marketBits = [
+    dog,
+    when ? `Listed ${when}.` : null,
+    "Hypothetical $100 at the freeze.",
+  ].filter(Boolean);
+  paragraphs.push(marketBits.join(" "));
+
+  const said = day
+    ? `On ${call.source} (${day}), ${pundit.name} said: “${call.claim}”`
+    : `On ${call.source}, ${pundit.name} said: “${call.claim}”`;
+  paragraphs.push(said);
+
+  const others = allCalls.filter(
+    (c) =>
+      isMapped(c) &&
+      c.eventSlug === event.slug &&
+      c.punditId !== pundit.id
+  );
+  if (others.length && pundits.length) {
+    const names = [...new Set(
+      others
+        .map((c) => pundits.find((p) => p.id === c.punditId)?.name)
+        .filter((n): n is string => Boolean(n))
+    )];
+    if (names.length) {
+      paragraphs.push(
+        names.length === 1
+          ? `${names[0]} is also mapped on this market.`
+          : `Also mapped: ${names.join(", ")}.`
+      );
+    }
+  }
+
+  const dek = [headline + ".", dog].filter(Boolean).join(" ");
+  return { headline, dek, paragraphs };
 }
 
 export function takeDescription(
@@ -54,19 +147,7 @@ export function takeDescription(
   event: Event,
   call: Call
 ): string {
-  const [yes, no] = sidesForCard(event, [call]);
-  const side = call.side === "yes" ? yes : no;
-  const tape =
-    event.awayTeam && event.homeTeam
-      ? `${side.label} ${formatCents(side.cents)}`
-      : `${call.side?.toUpperCase()} ${formatCents(side.cents)}`;
-  const asOf = formatAsOf(event.sourcedAt);
-  return [
-    `${pundit.name} (${pundit.outlet}) on ${event.title}.`,
-    `“${call.claim}”`,
-    `${call.source}${call.sourceDate ? ` · ${call.sourceDate}` : ""}.`,
-    `Kalshi ${tape}${asOf ? ` · ${asOf}` : ""}.`,
-  ].join(" ");
+  return pickStory({ pundit, event, call }).dek;
 }
 
 export function pickLede(
@@ -173,16 +254,18 @@ export function personJsonLd(pundit: Pundit) {
   };
 }
 
-export function articleJsonLd(take: MappedTake) {
+export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: Pundit[] = []) {
   const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
+  const story = pickStory(take, allCalls, pundits);
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: takeHeadline(take.pundit, take.event, take.call),
+    headline: story.headline,
     datePublished: isoDay(take.call.sourceDate),
     url,
     mainEntityOfPage: url,
-    description: takeDescription(take.pundit, take.event, take.call),
+    description: story.dek,
+    articleBody: story.paragraphs.join(" "),
     author: {
       "@type": "Person",
       name: take.pundit.name,
