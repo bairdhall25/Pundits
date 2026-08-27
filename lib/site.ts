@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "PUNDITS";
 
-export const SITE_TITLE = "PUNDITS — Who’s picking what";
+export const SITE_TITLE = "PUNDITS — Expert CFB and NFL picks";
 
 export const SITE_DESCRIPTION =
-  "Each card is a Kalshi market. Faces are pundits on that side. Hypothetical $100 at the freeze.";
+  "See which teams the TV experts are picking in college football and the NFL. Quote, source, and the market price. Hypothetical $100 — not a bet they placed.";
 
-export const OG_ALT = "PUNDITS. Who’s picking what.";
+export const OG_ALT = "PUNDITS. Expert CFB and NFL picks.";
 
 export function siteOrigin(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pundits.pro";

@@ -86,16 +86,17 @@ export default function HomePage() {
         what.
       </h1>
       <p className="lede lg:text-lg">
-        Named voices, mapped onto a frozen Kalshi price. Both teams stay on
-        the card — empty means no verified pick yet. Hypothetical $100.
+        Expert college football and NFL picks from named TV voices. See who
+        they’re taking, the quote, and the market price. Empty means we have
+        not captured a verified pick yet.
       </p>
       <details className="how">
         <summary>How it works</summary>
         <p>
-          Faces are roster pundits with a first-person lean. The cents are a
-          Kalshi freeze, not a live line and not a bet they placed. Open a
-          card for the quote, source, and YES/NO mapping (YES is the away
-          team). After the game, hits and misses land on the same card.
+          These are public comments from named experts, not bets they placed.
+          The number is a frozen Kalshi price, not a live sportsbook line.
+          Open a card for the quote and source. After the game we mark who was
+          right.
         </p>
       </details>
       <SportFilter current="all" />
@@ -111,7 +112,7 @@ export default function HomePage() {
       <Weekend
         id="ncaaf"
         kicker="Opening weekend"
-        label="NCAAF"
+        label="College football"
         when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · cards with a real face"
         href="/ncaaf/"
         events={ncaaf}

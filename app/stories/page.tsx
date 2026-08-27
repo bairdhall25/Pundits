@@ -7,8 +7,8 @@ import { breadcrumbList, mappedTakes, toStoryCard } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "Takes",
-  "Who picked what. Verified first-person takes with the Kalshi freeze. Newest first.",
+  "Expert picks",
+  "Verified expert CFB and NFL picks: who they’re taking, the quote, and the market price. Newest first.",
   "/stories"
 );
 
@@ -30,8 +30,8 @@ export default function StoriesPage() {
         what.
       </h1>
       <p className="lede">
-        Verified expert picks, with the quote and the Kalshi number. The Book
-        is the same takes as a dense ledger. Hypothetical $100.
+        Verified expert picks: who they’re taking, the quote, and the price.
+        The Book is the same takes as a dense list.
       </p>
       <TakesViews current="feed" />
       <StoryBoard cards={cards} />

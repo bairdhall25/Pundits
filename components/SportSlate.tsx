@@ -17,7 +17,7 @@ const COPY: Record<
 > = {
   ncaaf: {
     kicker: "College football",
-    title: "NCAAF",
+    title: "College football",
     when: "Week 0 Sat Aug 29 · Week 1 Sep 3–7",
   },
   nfl: {
@@ -45,8 +45,8 @@ export function SportSlate({ sport }: { sport: Sport }) {
         {copy.title}
       </h1>
       <p className="lede">
-        Full slate. Home cards first. Games without a roster face stay on this
-        page until they earn a spot on home.
+        Expert picks on this week’s games. Cards on the home page have a
+        verified face. The rest stay here until someone takes a side.
       </p>
       <SportFilter current={sport} />
       <div className="when">{copy.when}</div>

@@ -1,8 +1,9 @@
 export function SiteFooter() {
   return (
     <p className="mx-auto max-w-[1400px] px-5 pb-10 text-xs text-[var(--muted)]">
-      Hypothetical $100. Kalshi snapshot, not live. Not affiliated with Kalshi
-      or these pundits. They did not place these picks.
+      Expert picks for fans and anyone tracking the number. Hypothetical $100
+      at a frozen Kalshi price — not live odds, not a bet they placed. Not
+      affiliated with Kalshi or these pundits.
     </p>
   );
 }

@@ -2,8 +2,8 @@ import { SportSlate } from "@/components/SportSlate";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "NFL",
-  "NFL Week 1 picks from named pundits, mapped onto Kalshi markets. Regular season, not preseason.",
+  "NFL Week 1 picks",
+  "Expert NFL picks for Week 1. Who the TV voices are taking in the regular-season openers, with the market price.",
   "/nfl"
 );
 

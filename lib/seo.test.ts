@@ -96,12 +96,12 @@ describe("pick stories", () => {
       (t) => t.event.slug === "texas-cfp-2026" && t.pundit.id === "fallica"
     );
     expect(take).toBeTruthy();
-    expect(sideChip(take!.event, "no")).toBe("NO");
-    expect(toStoryCard(take!).sideChip).toBe("NO");
+    expect(sideChip(take!.event, "no")).toBe("Against");
+    expect(toStoryCard(take!).sideChip).toBe("Against");
     const dublin = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "unc-vs-tcu-2026"
     )!;
-    expect(toStoryCard(dublin).sideChip).toBe("NO · TCU");
+    expect(toStoryCard(dublin).sideChip).toBe("TCU");
   });
 });
 
@@ -109,7 +109,7 @@ describe("pick copy", () => {
   it("says so when a market has no mapped face", () => {
     const event = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026");
     expect(event).toBeTruthy();
-    expect(pickLede(event!, loadCalls(), loadPundits())).toMatch(/no roster-voice/i);
+    expect(pickLede(event!, loadCalls(), loadPundits())).toMatch(/no verified expert pick/i);
   });
 });
 

@@ -30,7 +30,7 @@ export async function generateMetadata({
   const { id } = await params;
   const calls = loadCalls();
   const p = getPundit(id, loadPundits(), calls);
-  if (!p) return pageMeta("Pundit", "Pundit on the PUNDITS board.");
+  if (!p) return pageMeta("Expert picks", "Named expert on PUNDITS.");
   const latest = callsForPundit(p.id, calls)[0];
   const share = punditShare(p, latest);
   return pageMeta(share.title, share.description, `/pundits/${id}`);

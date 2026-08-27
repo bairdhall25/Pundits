@@ -86,9 +86,9 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
 }
 
 export function sideChip(event: Event, side: "yes" | "no"): string {
-  if (side === "yes" && event.awayTeam) return `YES · ${event.awayTeam}`;
-  if (side === "no" && event.homeTeam) return `NO · ${event.homeTeam}`;
-  return side === "yes" ? "YES" : "NO";
+  if (side === "yes" && event.awayTeam) return event.awayTeam;
+  if (side === "no" && event.homeTeam) return event.homeTeam;
+  return side === "yes" ? "Takes it" : "Against";
 }
 
 export function toStoryCard(take: MappedTake): StoryCard {
@@ -161,10 +161,11 @@ export function pickStory(
         .filter((n): n is string => Boolean(n))
     )];
     if (names.length) {
+      const place = event.awayTeam ? "this game" : "this pick";
       paragraphs.push(
         names.length === 1
-          ? `${names[0]} is also mapped on this market.`
-          : `Also mapped: ${names.join(", ")}.`
+          ? `${names[0]} is also on ${place}.`
+          : `Also on ${place}: ${names.join(", ")}.`
       );
     }
   }
@@ -190,9 +191,9 @@ export function pickLede(
   const [yes, no] = sidesForCard(event, calls);
   const n = yes.calls.length + no.calls.length;
   if (n === 0) {
-    return `${event.title} is on the Kalshi board. No roster-voice winner is mapped yet.`;
+    return `No verified expert pick on ${event.title} yet.`;
   }
-  return `Named pundits on the ${event.title} Kalshi market. ${share.description}.`;
+  return share.description.endsWith(".") ? share.description : `${share.description}.`;
 }
 
 export function isoDay(value: string | null | undefined): string | undefined {
@@ -226,6 +227,8 @@ export function organizationGraph() {
         name: SITE_NAME,
         url,
         description: SITE_DESCRIPTION,
+        inLanguage: "en-US",
+        about: { "@type": "Thing", name: "College football and NFL expert picks" },
         publisher: { "@id": `${url}#org` },
       },
     ],

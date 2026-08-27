@@ -2,8 +2,8 @@ import { SportSlate } from "@/components/SportSlate";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "NCAAF",
-  "College football Week 0 and Week 1 picks from named pundits, mapped onto Kalshi markets.",
+  "College football picks",
+  "Expert CFB picks for Week 0 and Week 1. See who the TV voices are taking, with the market price next to each take.",
   "/ncaaf"
 );
 

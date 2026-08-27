@@ -15,8 +15,16 @@ function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
   return out;
 }
 
-function list(names: string[]): string {
-  return names.length ? names.join(", ") : "nobody yet";
+function andList(names: string[]): string {
+  if (names.length === 1) return names[0];
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+}
+
+function picksLine(names: string[], team: string): string | null {
+  if (!names.length) return null;
+  const verb = names.length === 1 ? "picks" : "pick";
+  return `${andList(names)} ${verb} ${team}`;
 }
 
 function clipClaim(claim: string, max = 180): string {
@@ -31,26 +39,55 @@ export function eventShare(
   pundits: Pundit[]
 ): { title: string; description: string } {
   const [yes, no] = sidesForCard(event, calls);
-  const tape =
-    event.awayTeam && event.homeTeam
-      ? `YES ${event.awayTeam} ${formatCents(yes.cents)} · NO ${event.homeTeam} ${formatCents(no.cents)}`
-      : `${event.contractName} · Yes ${formatCents(event.yesCents)} · No ${formatCents(event.noCents)}`;
   const asOf = formatAsOf(event.sourcedAt);
+  const when = event.kickoffDate
+    ? formatGameDate(event.kickoffDate)
+    : seasonSpan(event.season);
+  const title = when
+    ? `${event.title} expert picks · ${when}`
+    : `${event.title} expert picks`;
+
+  const yesNames = namesOn(yes.calls, pundits);
+  const noNames = namesOn(no.calls, pundits);
+
+  if (event.awayTeam && event.homeTeam) {
+    const who = [
+      picksLine(noNames, event.homeTeam),
+      picksLine(yesNames, event.awayTeam),
+    ].filter(Boolean);
+    if (!yesNames.length) who.push(`Nobody on ${event.awayTeam} yet`);
+    if (!noNames.length && yesNames.length) who.push(`Nobody on ${event.homeTeam} yet`);
+    if (!yesNames.length && !noNames.length) {
+      who.length = 0;
+      who.push("No verified expert picks yet");
+    }
+    const description = [
+      ...who,
+      `${event.homeTeam} ${formatCents(no.cents)}, ${event.awayTeam} ${formatCents(yes.cents)} on Kalshi`,
+      asOf,
+    ]
+      .filter(Boolean)
+      .join(". ");
+    return { title, description };
+  }
+
+  const who = [
+    yesNames.length
+      ? `${andList(yesNames)} ${yesNames.length === 1 ? "takes" : "take"} ${event.title}`
+      : null,
+    noNames.length
+      ? `${andList(noNames)} ${noNames.length === 1 ? "is" : "are"} against`
+      : null,
+  ].filter(Boolean);
+  if (!who.length) who.push("No verified expert picks yet");
   const description = [
-    tape,
-    `YES: ${list(namesOn(yes.calls, pundits))}`,
-    `NO: ${list(namesOn(no.calls, pundits))}`,
+    ...who,
+    `${formatCents(event.yesCents)} / ${formatCents(event.noCents)} on Kalshi`,
     asOf,
   ]
     .filter(Boolean)
     .join(". ");
-  const when = event.kickoffDate
-    ? formatGameDate(event.kickoffDate)
-    : seasonSpan(event.season);
-  return {
-    title: when ? `${event.title} picks · ${when}` : `${event.title} picks`,
-    description,
-  };
+  return { title, description };
 }
 
 export function punditShare(
@@ -58,12 +95,13 @@ export function punditShare(
   latest?: Call
 ): { title: string; description: string } {
   const bits = [
+    `${pundit.name} expert picks`,
     pundit.outlet,
-    `2026 ${pundit.season2026.wins}–${pundit.season2026.losses}`,
+    `2026 record ${pundit.season2026.wins}–${pundit.season2026.losses}`,
     pundit.mappedPending
       ? `${pundit.mappedPending} live pick${pundit.mappedPending === 1 ? "" : "s"}`
       : null,
     latest ? `Latest: “${clipClaim(latest.claim)}”` : null,
   ].filter(Boolean);
-  return { title: pundit.name, description: `${bits.join(". ")}.` };
+  return { title: `${pundit.name} picks`, description: `${bits.join(". ")}.` };
 }

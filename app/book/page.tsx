@@ -4,8 +4,8 @@ import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "The Book",
-  "Every mapped and unmapped pundit take. Hard calls carry the Kalshi freeze.",
+  "The Book — every expert take",
+  "Every tracked expert comment — locked-in picks and softer takes. Mapped picks carry the market price.",
   "/book"
 );
 
@@ -23,8 +23,8 @@ export default function BookPage() {
         take.
       </h1>
       <p className="lede">
-        Hard and soft. Mapped calls carry the Kalshi strip. Feed is the
-        fan view of the same objects.
+        Every tracked expert comment. Locked-in picks show the market price.
+        The feed is the same takes, written for scanning.
       </p>
       <TakesViews current="book" />
       <BookLedger calls={calls} pundits={loadPundits()} events={loadEvents()} />

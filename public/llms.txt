@@ -1,8 +1,8 @@
 # PUNDITS
 
-> Pundit takes mapped onto Kalshi markets. Hypothetical $100 at the freeze. Not affiliated with Kalshi or the pundits.
+> Expert college football and NFL picks from named TV voices. Quote, source, and the market price. Hypothetical $100 at a freeze. Not affiliated with Kalshi or the pundits.
 
-PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi YES/NO contract. Faces are named pundits on that side. Pick stories are generated from mapped hard rows; they are not freehand essays.
+PUNDITS tracks who credible sports voices are picking. Faces are named experts. The number next to a take is a frozen Kalshi price, not a sportsbook line and not a bet they placed.
 
 ## Site
 - https://pundits.pro/
@@ -14,8 +14,8 @@ PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi Y
 - https://pundits.pro/sitemap.xml
 
 ## How to read it
-- `/stories` is the Takes feed (index of pick stories). The Book at `/book/` is the same objects as a ledger.
-- `/picks/{event}-{season}` is the market page (game or future). `season` is the year the regular season starts (`clemson-at-lsu-2026`, `rams-sb-2026`), even when the game or Super Bowl is in January/February 2027. The page labels that span `2026–27`.
-- `/picks/{event}-{season}/{pundit}` is the pick story: who picked whom, underdog, quote, freeze.
+- `/stories` is the expert-picks feed. `/book/` is the same takes as a dense ledger.
+- `/picks/{event}-{season}` is the game or futures page (e.g. `/picks/clemson-at-lsu-2026/`).
+- `/picks/{event}-{season}/{pundit}` is the pick story: who picked whom, underdog, quote, price.
 - `/pundits/{id}` is that voice's book.
-- Quotes are verified first-person. Soft takes stay in The Book until they map.
+- Quotes are verified first-person. Soft takes stay in The Book until they map to a game or future.

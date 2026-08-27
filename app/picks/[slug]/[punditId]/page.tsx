@@ -33,7 +33,7 @@ export async function generateMetadata({
   const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
     (t) => t.event.slug === slug && t.pundit.id === punditId
   );
-  if (!take) return pageMeta("Pick story", "Mapped pundit pick.");
+  if (!take) return pageMeta("Expert pick", "A verified expert pick with the quote and the price.");
   const story = pickStory(take);
   return pageMeta(story.headline, story.dek, takePath(slug, punditId));
 }

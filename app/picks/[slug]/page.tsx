@@ -34,7 +34,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const event = getEvent(slug, loadEvents());
-  if (!event) return pageMeta("Pick", "Kalshi market.");
+  if (!event) return pageMeta("Expert picks", "Who the experts are taking.");
   const share = eventShare(event, loadCalls(), loadPundits());
   return pageMeta(share.title, share.description, `/picks/${slug}`);
 }

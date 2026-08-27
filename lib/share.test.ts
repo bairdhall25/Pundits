@@ -50,11 +50,12 @@ const calls: Call[] = [
 describe("share copy", () => {
   it("names sides and freeze on a game card", () => {
     const share = eventShare(event, calls, pundits);
-    expect(share.title).toBe("North Carolina vs TCU picks");
-    expect(share.description).toContain("YES North Carolina 27¢");
-    expect(share.description).toContain("NO TCU 75¢");
-    expect(share.description).toContain("YES: nobody yet");
-    expect(share.description).toContain("NO: Paul Finebaum");
+    expect(share.title).toBe("North Carolina vs TCU expert picks");
+    expect(share.description).toContain("Paul Finebaum picks TCU");
+    expect(share.description).toContain("Nobody on North Carolina yet");
+    expect(share.description).toContain("TCU 75¢");
+    expect(share.description).toContain("North Carolina 27¢");
+    expect(share.description).not.toMatch(/\bYES\b/);
     expect(share.description).toContain("as of Aug 26, 2026");
   });
 
@@ -68,7 +69,7 @@ describe("share copy", () => {
       },
       calls[0]
     );
-    expect(share.title).toBe("Paul Finebaum");
+    expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description).toContain("Finebaum / ESPN");
     expect(share.description).toContain("2 live picks");
     expect(share.description).toContain("I don't believe they'll win this game in Ireland");
@@ -79,15 +80,17 @@ describe("share copy", () => {
     const live = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026");
     expect(live).toBeTruthy();
     const share = eventShare(live!, loadCalls(), loadPundits());
-    expect(share.description).toContain("NO: Paul Finebaum");
+    expect(share.description).toContain("Paul Finebaum picks TCU");
     expect(share.description).not.toContain("wisconsin");
   });
 
   it("names Super Bowl futures by the 2026–27 season, not Kalshi's 2027 champion year", () => {
     const rams = loadEvents().find((e) => e.slug === "rams-sb-2026")!;
     const share = eventShare(rams, loadCalls(), loadPundits());
-    expect(share.title).toBe("Rams win the Super Bowl picks · 2026–27");
-    expect(share.description).toContain("2027 NFL Champion");
+    expect(share.title).toBe("Rams win the Super Bowl expert picks · 2026–27");
+    expect(share.description).toMatch(/take Rams win the Super Bowl/i);
+    expect(share.description).toMatch(/against/i);
+    expect(share.description).not.toContain("2027 NFL Champion");
   });
 
   it("keeps Finebaum's live profile description first-person", () => {
@@ -96,7 +99,7 @@ describe("share copy", () => {
     expect(p).toBeTruthy();
     const latest = callsLive.find((c) => c.punditId === "finebaum");
     const share = punditShare(p!, latest);
-    expect(share.title).toBe("Paul Finebaum");
+    expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description.length).toBeGreaterThan(20);
   });
 });

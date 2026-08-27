@@ -3,8 +3,8 @@ import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
-  "The table",
-  "Everyone starts 0–0. The board ranks who’s actually on record this week.",
+  "Expert pick records",
+  "Who’s actually on the record this season. Hits, misses, and live expert picks — everyone starts 0–0.",
   "/leaderboard"
 );
 
@@ -18,8 +18,8 @@ export default function LeaderboardPage() {
         The table.
       </h1>
       <p className="lede">
-        Everyone starts 0–0. The board ranks who’s actually on record this
-        week.
+        Who’s actually on the record. Everyone starts 0–0. Hits and misses
+        land after the games.
       </p>
       <LeaderboardClient board={board} />
     </main>
