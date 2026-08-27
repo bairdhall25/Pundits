@@ -17,7 +17,7 @@ export default function StoriesPage() {
   );
 
   return (
-    <main id="main" className="shell">
+    <main id="main" className="shell shell-wide">
       <JsonLd
         data={breadcrumbList([{ name: "Stories", path: "/stories" }])}
       />

@@ -47,18 +47,24 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 680px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 800px) {
+  .feed { grid-template-columns: 1fr 1fr; }
 }
 .feed-post {
   position: relative;
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
   gap: 12px 14px;
-  padding: 18px 4px 20px;
-  border-bottom: 1px solid #2a2a2a;
+  padding: 16px;
   align-items: start;
+  background: var(--card);
+  border: 1px solid #2a2a2a;
 }
-.feed-post:hover { background: #101010; }
+.feed-post:hover { border-color: var(--green); background: #101010; }
 .feed-hit { position: absolute; inset: 0; z-index: 0; }
 .feed-main { position: relative; z-index: 1; min-width: 0; }
 .feed-top {
@@ -121,14 +127,15 @@ body {
   border-color: var(--green);
   color: var(--green);
 }
+.feed-search { flex: 1 1 220px; min-width: 180px; }
 .feed-search input {
+  width: 100%;
   background: var(--card);
   color: var(--ink);
   border: 1px solid #2a2a2a;
   min-height: 40px;
   padding: 0 12px;
   font-size: 14px;
-  min-width: 180px;
 }
 .feed-count {
   color: var(--muted);
@@ -243,7 +250,7 @@ body {
 .feed-post.no .feed-meta { color: var(--muted); }
 .feed-meta span { color: var(--muted); font-weight: 700; }
 @media (max-width: 520px) {
-  .feed-post { grid-template-columns: 56px minmax(0, 1fr); padding-left: 0; padding-right: 0; }
+  .feed-post { grid-template-columns: 56px minmax(0, 1fr); }
 }
 .take-list {
   list-style: none;
@@ -344,6 +351,7 @@ h1, h2, .type-broadcast {
 }
 
 .shell { max-width: 1080px; margin: 0 auto; padding: 16px 16px 48px; }
+.shell-wide { max-width: 1400px; }
 .eyebrow { letter-spacing: 0.16em; color: var(--green); font-size: 13px; }
 .lede { color: var(--muted); max-width: 560px; line-height: 1.5; margin-bottom: 18px; }
 .board-jump {
