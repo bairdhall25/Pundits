@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import type { ReactNode } from "react";
 import { Inter, Oswald } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
@@ -69,21 +68,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
-      <body>
-        {process.env.NODE_ENV === "production" ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
+      {process.env.NODE_ENV === "production" ? (
+        <head>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-            </Script>
-          </>
-        ) : null}
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+            }}
+          />
+        </head>
+      ) : null}
+      <body>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
