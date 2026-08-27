@@ -4,7 +4,23 @@ Public CFB pundit analytics. Homepage is Kalshi-mapped event cards (YES vs NO). 
 
 Live: https://pundits.pro/
 
-Deploy to the existing Cloudflare Pages project with `npm run deploy`.
+## Development
+
+- `npm run dev` starts the local Next.js server.
+- `npm test` runs the data, ledger, and SEO test suite.
+- `npm run check` runs tests, builds the production static export, and verifies routes, canonical URLs, the sitemap, and Cloudflare redirects.
+- `npm run verify:live` checks the deployed routes and a representative 301 redirect.
+
+## Deployment
+
+Production is the existing Cloudflare Pages project `pundits`. GitHub Actions is CI-only and does not deploy.
+
+1. Run `npm run check`.
+2. Confirm the current branch is the intended Cloudflare deployment branch (`main` for production; any other branch creates a preview).
+3. Run `npm run deploy`.
+4. Run `npm run verify:live` and complete the release checks in `docs/RUNBOOK.md`.
+
+The deploy command uploads the generated `out/` directory with Wrangler. `GITHUB_PAGES` must remain unset so canonical paths do not gain the retired `/Pundits` prefix.
 
 Grok Bot instructions: `bots/`.
 

@@ -29,9 +29,35 @@ Grok Bot standing instructions: `bots/` (Scout / Audit / Promote / Grader / Reca
    `punditId` + `eventSlug` + `side` + quote + sourceUrl + sourceDate).
    The next build mints a pick story at `/picks/{eventSlug}/{punditId}/`
    and lists it on `/stories/`. Do not paste article copy into JSON.
-   `npx vitest run` && `npx next build` green, commit, push, verify
+   `npm run check` green, commit, push, deploy with `npm run deploy`, verify
    the story URL on https://pundits.pro/. If the URL set grew, resubmit
    https://pundits.pro/sitemap.xml in Search Console / Bing.
+
+## Release verification
+
+Cloudflare Pages project: `pundits`. GitHub Actions runs CI only; it does not deploy.
+
+Before deployment:
+
+1. Confirm the working tree contains only the intended release changes.
+2. Run `npm run check` with `GITHUB_PAGES` unset.
+3. Review the generated `out/_redirects` and `out/sitemap.xml` when routes changed.
+4. Run `npm run deploy` from `main` for production or another branch for a preview.
+
+After deployment, run `npm run verify:live`, then spot-check:
+
+- `/`
+- `/stories/`
+- `/book/`
+- `/leaderboard/`
+- `/ncaaf/` and `/nfl/`
+- one event page
+- one take story
+- one pundit profile
+- `/sitemap.xml`
+- one bare pre-season URL redirect from `public/_redirects`
+
+Do not set `GITHUB_PAGES` on Cloudflare or for a production-style local build.
 
 ## Intake table schema (staging docs, e.g. docs/week1-leans.md)
 | pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |

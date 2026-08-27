@@ -4,6 +4,7 @@ import path from "node:path";
 const isPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   output: "export",
   images: { unoptimized: true },
   trailingSlash: true,
