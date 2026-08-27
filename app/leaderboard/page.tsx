@@ -13,7 +13,7 @@ export default function LeaderboardPage() {
 
   return (
     <main id="main" className="shell">
-      <div className="eyebrow type-broadcast">The table</div>
+      <div className="eyebrow type-broadcast">Pundits</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         The table.
       </h1>

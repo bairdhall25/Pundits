@@ -123,6 +123,27 @@ export function eventHasFight(slug: string, calls: Call[]): boolean {
   );
 }
 
+/** Infer the winning side from graded mapped calls. No new event field. */
+export function settledSide(event: Event, calls: Call[]): Side | null {
+  const mapped = callsForEvent(event.slug, calls);
+  if (!mapped.length || mapped.some((c) => c.status === "pending")) return null;
+  const inferred = new Set<Side>();
+  for (const c of mapped) {
+    if (!c.side) continue;
+    if (c.status === "hit") inferred.add(c.side);
+    else inferred.add(c.side === "yes" ? "no" : "yes");
+  }
+  if (inferred.size !== 1) return null;
+  return [...inferred][0];
+}
+
+export function settledLabel(event: Event, calls: Call[]): string | null {
+  const side = settledSide(event, calls);
+  if (!side) return null;
+  const [yes, no] = sidesForCard(event, calls);
+  return side === "yes" ? yes.label : no.label;
+}
+
 export function eventKind(event: Event): "game" | "future" {
   return event.kind ?? "future";
 }
@@ -204,7 +225,7 @@ export function getEvent(slug: string, events: Event[]): Event | null {
   return events.find((e) => e.slug === slug) ?? null;
 }
 
-export { formatCents, formatAsOf, formatGameWhen, seasonLabel, seasonSpan } from "./format";
+export { formatCents, formatAsOf, formatGameWhen, seasonLabel, seasonSpan, statusLabel } from "./format";
 
 export function impliedOpenDollars(punditId: string, calls: Call[]): number {
   return (

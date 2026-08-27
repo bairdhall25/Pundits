@@ -3,6 +3,12 @@ const MONTHS = [
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
+export function statusLabel(status: "pending" | "hit" | "miss"): string {
+  if (status === "hit") return "Hit";
+  if (status === "miss") return "Miss";
+  return "Live";
+}
+
 export function formatCents(cents: number | null): string {
   if (cents == null) return "—";
   return `${cents}¢`;

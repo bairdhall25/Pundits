@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatCents } from "@/lib/format";
+import { formatCents, statusLabel } from "@/lib/format";
 import { takePath } from "@/lib/site";
 import type { Call, Event } from "@/lib/types";
 
@@ -33,7 +33,7 @@ export function CallCard({
           {call.kind}
         </span>
         <span className="bg-[#12380c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--green)]">
-          {call.status}
+          {statusLabel(call.status)}
         </span>
       </div>
       <p className="mb-2 text-base leading-relaxed">{call.claim}</p>

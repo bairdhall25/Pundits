@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadEvents } from "./data";
-import { formatGameWhen, seasonLabel, seasonSpan } from "./format";
+import { formatGameWhen, seasonLabel, seasonSpan, statusLabel } from "./format";
 
 describe("kalshi freeze", () => {
   it("prices and sources every home event, and sources every priced event", () => {
@@ -63,5 +63,8 @@ describe("kalshi freeze", () => {
     expect(rams.season).toBe(2026);
     expect(rams.contractName).toMatch(/2027/);
     expect(formatGameWhen(rams)).toBe("2026–27 season");
+    expect(statusLabel("pending")).toBe("Live");
+    expect(statusLabel("hit")).toBe("Hit");
+    expect(statusLabel("miss")).toBe("Miss");
   });
 });

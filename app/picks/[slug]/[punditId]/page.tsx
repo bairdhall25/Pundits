@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { getEvent, loadCalls, loadEvents, loadPundits, statusLabel } from "@/lib/data";
 import {
   articleJsonLd,
   breadcrumbList,
@@ -85,7 +85,9 @@ export default async function TakePage({
           { name: take.pundit.name },
         ]}
       />
-      <div className="eyebrow type-broadcast">Pick story</div>
+      <div className="eyebrow type-broadcast">
+        Take · {statusLabel(take.call.status)}
+      </div>
       <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         {story.headline}
       </h1>

@@ -1,4 +1,5 @@
 import { EventCard } from "@/components/EventCard";
+import { SportFilter } from "@/components/SportFilter";
 import {
   BookPeek,
   FuturePeek,
@@ -85,15 +86,25 @@ export default function HomePage() {
         what.
       </h1>
       <p className="lede lg:text-lg">
-        Each card is a Kalshi market. Faces are pundits on that side.
-        Hypothetical $100 at the freeze.
+        Named voices, mapped onto a frozen Kalshi price. Both teams stay on
+        the card — empty means no verified pick yet. Hypothetical $100.
       </p>
+      <details className="how">
+        <summary>How it works</summary>
+        <p>
+          Faces are roster pundits with a first-person lean. The cents are a
+          Kalshi freeze, not a live line and not a bet they placed. Open a
+          card for the quote, source, and YES/NO mapping (YES is the away
+          team). After the game, hits and misses land on the same card.
+        </p>
+      </details>
+      <SportFilter current="all" />
       <div className="board-jump">
-        <a href="#ncaaf">NCAAF</a>
+        <a href="#ncaaf">College</a>
         <a href="#nfl">NFL</a>
-        <a href="#stories">Stories</a>
-        <a href="#futures">Hottest fights</a>
-        <a href="#table">Leaderboard</a>
+        <a href="#takes">Takes</a>
+        <a href="#futures">Fights</a>
+        <a href="#table">Pundits</a>
         <a href="#book">The Book</a>
       </div>
 
@@ -118,14 +129,14 @@ export default function HomePage() {
         pundits={pundits}
       />
 
-      <section id="stories" className="board">
+      <section id="takes" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Pick stories</div>
+            <div className="board-kicker type-broadcast">Takes</div>
             <h2 className="board-title type-broadcast">Who picked what</h2>
           </div>
           <a className="see" href="/stories/">
-            All stories →
+            All takes →
           </a>
         </div>
         <PeekRow>
@@ -173,7 +184,7 @@ export default function HomePage() {
       <section id="table" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">The leaderboard</div>
+            <div className="board-kicker type-broadcast">Pundits</div>
             <h2 className="board-title type-broadcast">Top 10</h2>
           </div>
           <a className="see" href="/leaderboard/">

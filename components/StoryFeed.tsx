@@ -21,7 +21,7 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
               <span>{card.sport === "nfl" ? "NFL" : "NCAAF"}</span>
               <span>{card.kind === "game" ? "Game" : "Future"}</span>
               {card.kickoff ? <span>{card.kickoff}</span> : null}
-              <span>{card.status === "pending" ? "Live" : card.status}</span>
+              <span>{card.status === "pending" ? "Live" : card.status === "hit" ? "Hit" : "Miss"}</span>
             </div>
             <div className="feed-top">
               <div>

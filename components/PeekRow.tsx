@@ -30,11 +30,13 @@ export function FuturePeek({
 }) {
   const yes = callsForEvent(event.slug, calls, "yes");
   const no = callsForEvent(event.slug, calls, "no");
-  const faces = [...yes, ...no]
-    .map((c) => pundits.find((p) => p.id === c.punditId))
-    .filter((p): p is Pundit => Boolean(p));
-  const unique = [...new Map(faces.map((p) => [p.id, p])).values()];
   const fight = eventHasFight(event.slug, calls);
+  const names = (side: Call[]) => {
+    const list = side
+      .map((c) => pundits.find((p) => p.id === c.punditId)?.name.split(" ").slice(-1)[0])
+      .filter(Boolean);
+    return list.length ? list.join(" · ") : "No pick yet";
+  };
 
   return (
     <Link
@@ -47,21 +49,13 @@ export function FuturePeek({
         <div>
           <span>Yes</span>
           <b className="type-broadcast px-yes">{formatCents(event.yesCents)}</b>
+          <div className="sub">{names(yes)}</div>
         </div>
         <div>
           <span>No</span>
           <b className="type-broadcast">{formatCents(event.noCents)}</b>
+          <div className="sub">{names(no)}</div>
         </div>
-      </div>
-      <div className="faces">
-        {unique.slice(0, 4).map((p) => (
-          <PunditAvatar key={p.id} src={p.photo} alt={p.name} size="peek" />
-        ))}
-      </div>
-      <div className="sub">
-        {unique.length
-          ? unique.map((p) => p.name.split(" ").slice(-1)[0]).join(" · ")
-          : "Nobody mapped yet"}
       </div>
     </Link>
   );

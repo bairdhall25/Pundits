@@ -1,6 +1,7 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
+import { SportFilter } from "@/components/SportFilter";
 import {
   getBoard,
   getSlateGames,
@@ -47,6 +48,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
         Full slate. Home cards first. Games without a roster face stay on this
         page until they earn a spot on home.
       </p>
+      <SportFilter current={sport} />
       <div className="when">{copy.when}</div>
 
       <section className="board">

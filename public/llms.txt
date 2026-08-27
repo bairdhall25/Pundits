@@ -14,7 +14,7 @@ PUNDITS is a public ledger of first-person sports picks. Each card is a Kalshi Y
 - https://pundits.pro/sitemap.xml
 
 ## How to read it
-- `/stories` is the index of pick stories.
+- `/stories` is the Takes feed (index of pick stories). The Book at `/book/` is the same objects as a ledger.
 - `/picks/{event}-{season}` is the market page (game or future). `season` is the year the regular season starts (`clemson-at-lsu-2026`, `rams-sb-2026`), even when the game or Super Bowl is in January/February 2027. The page labels that span `2026–27`.
 - `/picks/{event}-{season}/{pundit}` is the pick story: who picked whom, underdog, quote, freeze.
 - `/pundits/{id}` is that voice's book.

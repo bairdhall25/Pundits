@@ -110,7 +110,8 @@ body {
   display: flex;
   gap: 4px;
 }
-.feed-tabs button {
+.feed-tabs button,
+.feed-tabs a {
   border: 1px solid #2a2a2a;
   background: transparent;
   color: var(--muted);
@@ -121,12 +122,17 @@ body {
   min-height: 40px;
   padding: 0 12px;
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 .feed-tabs button.on,
-.feed-tabs button:hover {
+.feed-tabs button:hover,
+.feed-tabs a.on,
+.feed-tabs a:hover {
   border-color: var(--green);
   color: var(--green);
 }
+.sport-filter { margin: 0 0 16px; }
 .feed-search { flex: 1 1 220px; min-width: 180px; }
 .feed-search input {
   width: 100%;
@@ -396,17 +402,80 @@ h1, h2, .type-broadcast {
 .sides.sides-collapsed { grid-template-columns: 1fr; }
 .col { padding: 12px 14px 16px; min-width: 0; }
 .col.yes { background: #0d1a0c; border-bottom: 1px solid #2a2a2a; }
-.col.col-empty {
-  padding: 10px 14px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 0;
-  background: transparent;
+.col.col-vacant { background: transparent; }
+.scan-team {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
 }
-.sides-collapsed .col.yes:not(.col-empty) { border-right: 0; border-bottom: 1px solid #2a2a2a; }
-.sides-collapsed .col.no:not(.col-empty) { border-bottom: 1px solid #2a2a2a; }
+.scan-name { font-size: clamp(16px, 4vw, 22px); margin: 0; }
+.event-scan .px { font-size: clamp(28px, 6vw, 40px); margin: 0; }
+.event-final {
+  padding: 8px 14px;
+  background: #12380c;
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+.result-chip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border: 1px solid currentColor;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+}
+.result-chip.hit { color: var(--green); }
+.result-chip.miss { color: var(--muted); }
+.see-why {
+  position: relative;
+  z-index: 1;
+  padding: 8px 14px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.market-details {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid #2a2a2a;
+  padding: 8px 14px 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.market-details summary {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+.market-details p { margin: 8px 0 0; line-height: 1.45; }
+.how {
+  max-width: 560px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.how summary {
+  cursor: pointer;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-height: 36px;
+}
+.how p { margin: 8px 0 0; line-height: 1.5; }
 .px { font-size: clamp(36px, 8vw, 52px); line-height: 0.9; letter-spacing: 0.02em; margin-bottom: 6px; color: var(--ink); }
 .px-yes { color: var(--green); }
 .col .lab { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }

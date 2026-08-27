@@ -5,6 +5,8 @@ import {
   getPundit,
   callsForPundit,
   sidesForCard,
+  settledLabel,
+  settledSide,
   latestCalls,
   formatAsOf,
   otherTakes,
@@ -135,6 +137,38 @@ describe("sidesForCard", () => {
     const [yes, no] = sidesForCard(event, []);
     expect(yes.label).toBe("Clemson");
     expect(no.label).toBe("LSU");
+  });
+});
+
+describe("settledSide", () => {
+  const event: Event = {
+    slug: "clemson-at-lsu", kind: "game", title: "Clemson at LSU",
+    contractName: "Clemson vs LSU — moneyline", awayTeam: "Clemson", homeTeam: "LSU",
+    yesCents: 24, noCents: 78, sourceUrl: "https://example.com", sourcedAt: "2026-08-25",
+    onHome: true, sport: "ncaaf", homeRank: 1,
+  };
+  const noLive: Call = {
+    id: "n1", punditId: "finebaum", claim: "LSU wins this one in Death Valley at night.",
+    source: "t", sourceUrl: "https://example.com/a", sourceDate: "2026-09-04",
+    kind: "hard", subject: "LSU", paysOn: "Clemson at LSU", status: "pending",
+    eventSlug: "clemson-at-lsu", side: "no",
+  };
+
+  it("stays open while any mapped call is pending", () => {
+    expect(settledSide(event, [noLive])).toBeNull();
+    expect(settledLabel(event, [noLive])).toBeNull();
+  });
+
+  it("treats a hit on NO as the home team", () => {
+    const hit = { ...noLive, status: "hit" as const };
+    expect(settledSide(event, [hit])).toBe("no");
+    expect(settledLabel(event, [hit])).toBe("LSU");
+  });
+
+  it("treats a miss on NO as the away team, without a new event field", () => {
+    const miss = { ...noLive, status: "miss" as const };
+    expect(settledSide(event, [miss])).toBe("yes");
+    expect(settledLabel(event, [miss])).toBe("Clemson");
   });
 });
 
