@@ -18,7 +18,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 1
+      "homeRank": 1,
+      "season": 2026,
+      "kickoffDate": "2026-09-05"
     },
     {
       "slug": "wisconsin-vs-nd",
@@ -35,7 +37,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 2
+      "homeRank": 2,
+      "season": 2026,
+      "kickoffDate": "2026-09-06"
     },
     {
       "slug": "miami-at-stanford",
@@ -52,7 +56,9 @@
       "sourcedAt": null,
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 3
+      "homeRank": 3,
+      "season": 2026,
+      "kickoffDate": "2026-09-04"
     },
     {
       "slug": "baylor-vs-auburn",
@@ -69,7 +75,9 @@
       "sourcedAt": null,
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 4
+      "homeRank": 4,
+      "season": 2026,
+      "kickoffDate": "2026-09-05"
     },
     {
       "slug": "patriots-at-seahawks",
@@ -86,7 +94,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 1
+      "homeRank": 1,
+      "season": 2026,
+      "kickoffDate": "2026-09-09"
     },
     {
       "slug": "49ers-vs-rams",
@@ -103,7 +113,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 2
+      "homeRank": 2,
+      "season": 2026,
+      "kickoffDate": "2026-09-10"
     },
     {
       "slug": "bills-at-texans",
@@ -120,7 +132,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 3
+      "homeRank": 3,
+      "season": 2026,
+      "kickoffDate": "2026-09-13"
     },
     {
       "slug": "indiana-title",
@@ -132,7 +146,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 1
+      "homeRank": 1,
+      "season": 2026
     },
     {
       "slug": "nd-title",
@@ -144,7 +159,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 2
+      "homeRank": 2,
+      "season": 2026
     },
     {
       "slug": "osu-title",
@@ -156,7 +172,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 3
+      "homeRank": 3,
+      "season": 2026
     },
     {
       "slug": "georgia-title",
@@ -168,7 +185,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 4
+      "homeRank": 4,
+      "season": 2026
     },
     {
       "slug": "sec-title",
@@ -180,7 +198,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 5
+      "homeRank": 5,
+      "season": 2026
     },
     {
       "slug": "texas-sec",
@@ -192,7 +211,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 6
+      "homeRank": 6,
+      "season": 2026
     },
     {
       "slug": "texas-cfp",
@@ -204,7 +224,8 @@
       "sourcedAt": "2026-08-27",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 7
+      "homeRank": 7,
+      "season": 2026
     },
     {
       "slug": "indiana-cfp",
@@ -216,7 +237,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 8
+      "homeRank": 8,
+      "season": 2026
     },
     {
       "slug": "osu-cfp",
@@ -228,7 +250,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 9
+      "homeRank": 9,
+      "season": 2026
     },
     {
       "slug": "georgia-cfp",
@@ -240,7 +263,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 10
+      "homeRank": 10,
+      "season": 2026
     },
     {
       "slug": "lsu-title",
@@ -252,7 +276,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 11
+      "homeRank": 11,
+      "season": 2026
     },
     {
       "slug": "tech-cfp",
@@ -264,7 +289,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 12
+      "homeRank": 12,
+      "season": 2026
     },
     {
       "slug": "rams-sb",
@@ -276,7 +302,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 1
+      "homeRank": 1,
+      "season": 2026
     },
     {
       "slug": "bills-sb",
@@ -288,7 +315,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 2
+      "homeRank": 2,
+      "season": 2026
     },
     {
       "slug": "seahawks-sb",
@@ -300,7 +328,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 3
+      "homeRank": 3,
+      "season": 2026
     },
     {
       "slug": "ravens-sb",
@@ -312,7 +341,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 4
+      "homeRank": 4,
+      "season": 2026
     },
     {
       "slug": "chiefs-sb",
@@ -324,7 +354,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 5
+      "homeRank": 5,
+      "season": 2026
     },
     {
       "slug": "bengals-sb",
@@ -336,7 +367,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 6
+      "homeRank": 6,
+      "season": 2026
     },
     {
       "slug": "chargers-sb",
@@ -348,7 +380,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 7
+      "homeRank": 7,
+      "season": 2026
     },
     {
       "slug": "patriots-sb",
@@ -360,7 +393,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 8
+      "homeRank": 8,
+      "season": 2026
     },
     {
       "slug": "49ers-sb",
@@ -372,7 +406,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 9
+      "homeRank": 9,
+      "season": 2026
     },
     {
       "slug": "eagles-sb",
@@ -384,7 +419,8 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "nfl",
-      "homeRank": 10
+      "homeRank": 10,
+      "season": 2026
     },
     {
       "slug": "unc-vs-tcu",
@@ -401,7 +437,9 @@
       "sourcedAt": "2026-08-26",
       "onHome": true,
       "sport": "ncaaf",
-      "homeRank": 0
+      "homeRank": 0,
+      "season": 2026,
+      "kickoffDate": "2026-08-29"
     },
     {
       "slug": "ncsu-at-uva",
@@ -418,7 +456,9 @@
       "sourcedAt": null,
       "onHome": false,
       "sport": "ncaaf",
-      "homeRank": 98
+      "homeRank": 98,
+      "season": 2026,
+      "kickoffDate": "2026-08-29"
     }
   ]
 }

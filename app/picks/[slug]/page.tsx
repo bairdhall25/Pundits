@@ -19,6 +19,7 @@ import {
   takeHeadline,
   takePath,
 } from "@/lib/seo";
+import { formatGameWhen } from "@/lib/format";
 import { eventShare } from "@/lib/share";
 import { pageMeta } from "@/lib/site";
 
@@ -72,10 +73,16 @@ export default async function PickPage({
         ])}
       />
       <Breadcrumbs items={crumbs} />
-      <div className="eyebrow type-broadcast">Kalshi market</div>
-      <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
+      <div className="eyebrow type-broadcast">
+        {event.sport === "nfl" ? "NFL" : "NCAAF"}
+        {event.season ? ` · ${event.season}` : ""}
+      </div>
+      <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         {event.title}
       </h1>
+      <p className="when">
+        {formatGameWhen(event) ?? (event.season ? `${event.season} season` : "Kalshi market")}
+      </p>
       <p className="lede">{pickLede(event, calls, pundits)}</p>
       <EventCard
         event={event}

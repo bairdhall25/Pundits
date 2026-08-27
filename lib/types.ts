@@ -33,7 +33,9 @@ export type Event = {
   awayTeam?: string;
   homeTeam?: string;
   kickoff?: string;
+  kickoffDate?: string;
   network?: string;
+  season?: number;
 };
 
 export type EventsFile = {

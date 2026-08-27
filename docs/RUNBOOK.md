@@ -13,6 +13,8 @@ Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook i
 3. CLASSIFY + MAP — clear first-person lean on a listed event → hard +
    eventSlug + side (yes=away). Weasel or season-long take → soft, no
    mapping. Futures picks map to futures slugs only — never onto a game.
+   Games carry `kickoffDate` and `season`. Next year's Clemson-LSU is a
+   new slug (`clemson-at-lsu-2027`), not an overwrite.
 4. FREEZE — refresh Kalshi cents for events whose picks changed; every
    price gets sourceUrl + sourcedAt. If a source publishes only one
    side's probability, record the complement (noCents = 100 − yesCents)

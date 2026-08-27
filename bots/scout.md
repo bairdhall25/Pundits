@@ -9,7 +9,7 @@ Also follow `bots/README.md` house rules.
 From https://github.com/bairdhall25/Pundits (main):
 
 - `data/pundits.json` — legal speakers (`id` is the pundit cell)
-- `data/events.json` — legal `eventSlug`s, sides, `onHome`, kickoff
+- `data/events.json` — legal `eventSlug`s, sides, `onHome`, `kickoffDate`, `season`
 - `data/calls.json` — skip claims already in the book (same pundit + event, or same URL)
 - `docs/RUNBOOK.md` — search list and Week 0 gate
 - `docs/week1-leans.md` — prior staging; do not re-promote dropped rows
@@ -22,7 +22,7 @@ Search **by event**, not by whoever ranks on the first query. **Game SU rows fir
 For every `onHome` game plus Week 0 and any faceless marquee (`wisconsin-vs-nd`): query `{pundit name} {away} {home} 2026 pick` for the high-yield voices (Finebaum, Herbstreit, Klatt, Pate, Cowherd, Fallica, Kanell, McElroy, Eisen, Florio, Simms, McAfee — name the speaker). Then mine that day's First Take / The Herd / GameDay podcast / Big Noon.
 
 1. Roster voices only. Off-roster Week 0 staff stays in Dropped.
-2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json`). If you cannot open it, drop it.
+2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Same teams next year is a **new event**, not this slug. If you cannot open it, drop it.
 3. Classify:
    - Clear first-person lean on a listed **game** dated in the last ~21 days → `hard`, fill `eventSlug` + `side` (`yes` = away).
    - Same lean but older than 21 days → still hard if it is clearly this season's meeting, and mark **vintage** in Dropped or a note column. Prefer a fresher quote if one exists.

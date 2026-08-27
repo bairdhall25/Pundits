@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadEvents } from "./data";
+import { formatGameWhen } from "./format";
 
 describe("kalshi freeze", () => {
   it("prices and sources every home event, and sources every priced event", () => {
@@ -29,5 +30,17 @@ describe("kalshi freeze", () => {
   it("has unique slugs", () => {
     const slugs = loadEvents().map((e) => e.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
+  it("dates every game and seasons every event", () => {
+    for (const e of loadEvents()) {
+      expect(e.season, e.slug).toBe(2026);
+      if (e.kind === "game") {
+        expect(e.kickoffDate, e.slug).toMatch(/^2026-\d{2}-\d{2}$/);
+      }
+    }
+    const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu")!;
+    expect(formatGameWhen(clemson)).toContain("Sep 5, 2026");
+    expect(formatGameWhen(clemson)).toContain("7:30 ET");
   });
 });

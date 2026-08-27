@@ -1,5 +1,5 @@
 import { isMapped, sidesForCard } from "./data";
-import { formatAsOf, formatCents, formatShortDate } from "./format";
+import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
 import { eventShare } from "./share";
 import { SITE_DESCRIPTION, SITE_NAME, canonicalUrl, takePath } from "./site";
 import type { StoryCard } from "./story-card";
@@ -105,7 +105,7 @@ export function toStoryCard(take: MappedTake): StoryCard {
     sport: event.sport,
     kind: event.kind ?? "future",
     eventTitle: event.title,
-    kickoff: event.kickoff ?? null,
+    kickoff: formatGameWhen(event),
     side,
     sideChip: sideChip(event, side),
     cents: side === "yes" ? event.yesCents : event.noCents,
@@ -124,7 +124,7 @@ export function pickStory(
   const headline = takeHeadline(pundit, event, call);
   const game = gamePick(event, call);
   const dog = underdogLine(event);
-  const when = [event.kickoff, event.network].filter(Boolean).join(" · ");
+  const when = formatGameWhen(event);
   const day = formatShortDate(call.sourceDate);
 
   const paragraphs: string[] = [];
@@ -262,6 +262,9 @@ export function eventJsonLd(
     description: share.description,
     sport: "American football",
   };
+  if (event.kickoffDate) {
+    base.startDate = event.kickoffDate;
+  }
   if (event.awayTeam) {
     base.awayTeam = { "@type": "SportsTeam", name: event.awayTeam };
   }
