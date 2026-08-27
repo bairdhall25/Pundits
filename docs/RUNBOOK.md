@@ -1,7 +1,7 @@
 # Capture run
 
 A run is on-demand. Target cadence launch week: Wed, Thu, Fri, Sat morning.
-Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook is the shared checklist; those files are what each Bot reads.
+Grok Bot standing instructions: `bots/` (Scout / Audit / Promote / Grader / Recap). This runbook is the shared checklist; those files are what each Bot reads. The mailbox is `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
 
 ## Steps
 1. CAPTURE — mine shows/columns/podcasts for roster voices' picks on the
@@ -24,7 +24,8 @@ Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook i
    price gets sourceUrl + sourcedAt. If a source publishes only one
    side's probability, record the complement (noCents = 100 − yesCents)
    and note in the run report that this convention is in use.
-5. PUBLISH — promote verified hard rows into `data/calls.json` (unique
+5. AUDIT — re-open new hard URLs (`bots/audit.md`). Failures stay out of JSON.
+6. PUBLISH — promote verified hard rows into `data/calls.json` (unique
    `punditId` + `eventSlug` + `side` + quote + sourceUrl + sourceDate).
    The next build mints a pick story at `/picks/{eventSlug}/{punditId}/`
    and lists it on `/stories/`. Do not paste article copy into JSON.

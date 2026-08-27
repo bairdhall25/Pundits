@@ -60,8 +60,16 @@ Reply with five blocks, nothing else.
 
 `story path` is `/picks/{eventSlug}/{pundit}/`. Game headline: `{Full name} picks {their team} over {the other}`. Future: `{Full name} takes {title}` or `{Full name} against {title}`. Do not invent McAfee/SMU-style copy. If the promote pass ships the row, that path exists after the next build.
 
-If you can write to the repo, append the same five blocks under a dated heading in `docs/week1-leans.md` (or `docs/runs/YYYY-MM-DD.md` once week 1 is over). Never touch `data/`.
+**Write the run file. Chat is not the handoff.** Commit `docs/runs/YYYY-MM-DD.md` on `main` (or open PR `scout/YYYY-MM-DD`) with this first line:
+
+```
+<!-- pundits-run date=YYYY-MM-DD hard=N audit=pending promoted=false -->
+```
+
+`hard=N` is the count of **new** hard mapped Intake rows (not already in `calls.json`). Then the five blocks. Also append those blocks under a dated heading in `docs/week1-leans.md` while Week 1 is open. Never touch `data/`.
+
+Promote and Audit read this file from GitHub. Do not rely on anyone pasting your reply.
 
 ## Stop
 
-Do not add calls, do not commit JSON, do not run tests, do not deploy. Ping the operator: "ready to promote N hard rows."
+Do not add calls, do not commit JSON, do not run tests, do not deploy. After the run file is on GitHub: "ready to audit N hard rows."

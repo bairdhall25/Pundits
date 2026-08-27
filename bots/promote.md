@@ -9,7 +9,8 @@ Also follow `bots/README.md` house rules 2–8.
 From https://github.com/bairdhall25/Pundits (main):
 
 - `bots/scout.md` — what Scout already verified (you do not re-mine)
-- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` (today, else yesterday) or the newest dated heading in `docs/week1-leans.md`
+- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` on GitHub `main` (today, else the newest file). Do not wait for a chat paste.
+- Matching Audit: `docs/runs/YYYY-MM-DD-audit.md`. Prefer promoting only rows Audit marked `ok`. If Audit has not run and the operator asked you to ship anyway, say so in the commit.
 - `data/pundits.json` — legal `punditId`s
 - `data/events.json` — legal `eventSlug`s, YES = away
 - `data/calls.json` — skip same pundit + event, or same `sourceUrl`
@@ -26,7 +27,9 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Publish
 
-`npx vitest run` && `npx next build` green, then commit and push (or open a PR). A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+`npx vitest run` && `npx next build` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+
+Set the Scout run comment to `promoted=true` in the same commit (keep `hard=N`).
 
 ## Stop
 

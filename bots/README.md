@@ -8,8 +8,20 @@ Four named Bots. No backend. JSON in this repo is the record.
 | Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
+| Audit | `bots/audit.md` | Re-open Scout URLs and spot-check mapping; no JSON |
 
-Scout does not grade and does not write JSON. Promote does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+
+## Pipeline (no chat paste)
+
+Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
+
+1. **Scout** commits `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`). Never `data/`.
+2. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
+3. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
+4. **Grader** after kickoff. **Recap** after Grader.
+
+Launch-week cadence: Scout morning. Audit as soon as the run file lands (or a scheduled sweep). Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
 
 ## Pick stories (SEO)
 
@@ -58,13 +70,21 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/recap.md
 Repo: https://github.com/bairdhall25/Pundits
 ```
 
-Cadence (launch week): Scout Wed–Sat morning. Promote right after Scout when Intake has hard rows. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
+**Audit**
+```
+You are the Pundits Audit.
+At the start of every job, fetch and follow:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/audit.md
+Repo: https://github.com/bairdhall25/Pundits
+```
+
+Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md`. Audit as soon as that file lands, or a scheduled sweep. Promote when Audit is `ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
 
 ## House rules
 
 Owned here so the files do not fork them.
 
-1. **Scout, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/` or in the reply. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
+1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
 2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Off-roster names never get an invented id.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
