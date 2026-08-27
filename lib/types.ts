@@ -35,6 +35,7 @@ export type Event = {
   kickoff?: string;
   kickoffDate?: string;
   network?: string;
+  /** Year the regular season starts — not kickoff calendar year, not Kalshi's champion year. 2026 NFL Super Bowl is Feb 2027; season is still 2026. */
   season?: number;
 };
 

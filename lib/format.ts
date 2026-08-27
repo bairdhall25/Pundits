@@ -42,6 +42,17 @@ export function kickoffClock(kickoff: string | null | undefined): string | null 
   return clock || null;
 }
 
+/** 2026 NFL/CFB regular season plays into 2027. Never a single calendar year. */
+export function seasonSpan(season: number | null | undefined): string | null {
+  if (season == null || !Number.isFinite(season)) return null;
+  return `${season}–${String(season + 1).slice(-2)}`;
+}
+
+export function seasonLabel(season: number | null | undefined): string | null {
+  const span = seasonSpan(season);
+  return span ? `${span} season` : null;
+}
+
 export function formatGameWhen(event: {
   kickoffDate?: string | null;
   kickoff?: string | null;
@@ -52,6 +63,5 @@ export function formatGameWhen(event: {
   const clock = kickoffClock(event.kickoff);
   const bits = [date, clock, event.network].filter(Boolean);
   if (bits.length) return bits.join(" · ");
-  if (event.season) return `${event.season} season`;
-  return null;
+  return seasonLabel(event.season);
 }

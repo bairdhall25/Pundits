@@ -83,6 +83,13 @@ describe("share copy", () => {
     expect(share.description).not.toContain("wisconsin");
   });
 
+  it("names Super Bowl futures by the 2026–27 season, not Kalshi's 2027 champion year", () => {
+    const rams = loadEvents().find((e) => e.slug === "rams-sb-2026")!;
+    const share = eventShare(rams, loadCalls(), loadPundits());
+    expect(share.title).toBe("Rams win the Super Bowl picks · 2026–27");
+    expect(share.description).toContain("2027 NFL Champion");
+  });
+
   it("keeps Finebaum's live profile description first-person", () => {
     const callsLive = loadCalls();
     const p = getPundit("finebaum", loadPundits(), callsLive);

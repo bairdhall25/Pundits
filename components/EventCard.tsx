@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { eventHasFight, formatAsOf, formatCents, formatGameWhen, sidesForCard } from "@/lib/data";
+import { eventHasFight, formatAsOf, formatCents, formatGameWhen, seasonLabel, sidesForCard } from "@/lib/data";
 import type { Call, CardSide, Event, Pundit } from "@/lib/types";
 
 function sideLab(side: CardSide): string {
@@ -91,7 +91,7 @@ export function EventCard({
   const game = event.kind === "game";
   const asOf = formatAsOf(event.sourcedAt);
   const when = game ? formatGameWhen(event) : event.contractName;
-  const meta = [when, event.season && !game ? `${event.season} season` : null, asOf]
+  const meta = [when, !game ? seasonLabel(event.season) : null, asOf]
     .filter(Boolean)
     .join(" · ");
 

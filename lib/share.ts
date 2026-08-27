@@ -1,5 +1,5 @@
 import { sidesForCard } from "./data";
-import { formatAsOf, formatCents, formatGameDate } from "./format";
+import { formatAsOf, formatCents, formatGameDate, seasonSpan } from "./format";
 import type { ActivityRecord, Call, Event, Pundit } from "./types";
 
 function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
@@ -46,9 +46,7 @@ export function eventShare(
     .join(". ");
   const when = event.kickoffDate
     ? formatGameDate(event.kickoffDate)
-    : event.season
-      ? String(event.season)
-      : null;
+    : seasonSpan(event.season);
   return {
     title: when ? `${event.title} picks · ${when}` : `${event.title} picks`,
     description,

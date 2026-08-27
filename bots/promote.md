@@ -21,7 +21,7 @@ From https://github.com/bairdhall25/Pundits (main):
 2. Match existing `calls.json` shape. `punditId` must exist. `eventSlug` must exist. `side` is `yes` or `no`. `kind: hard`, `status: pending`. Id pattern like `fallica-texas-cfp-20260825` (pundit-slug-date, unique).
 3. Freeze cents **only** for events that gained a new mapped face this run (or a Week 0 gate flip). Use Scout's Freeze block: Kalshi page or Kalshi reprint, `sourceUrl` + `sourcedAt`, both sides as printed. Do not convert Vegas. If price date is more than 7 days old, keep Scout's note in the commit message.
 4. Do not restage already-booked rows. Do not invent quotes. Do not map title/playoff takes onto games.
-5. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`, `texas-cfp-2026`). Copy them from `events.json`. A rematch next season is a **new event** — add `clemson-at-lsu-2027` with its own `kickoffDate` and `season`. Never mint a bare matchup URL. Games need `kickoffDate` (`YYYY-MM-DD`). Every event needs `season`. If you rename a published slug, add 301s in `public/_redirects`.
+5. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`, `texas-cfp-2026`, `rams-sb-2026`). `season` is the year the **regular season starts**, not the kickoff calendar year and not Kalshi's champion year. A January 2027 bowl / playoff / CFP / Super Bowl of the 2026 season stays on `-2026` even if `kickoffDate` is `2027-01-…` and Kalshi says "2027 NFL Champion". Next season's rematch is `clemson-at-lsu-2027`. Never mint a bare matchup URL. Games need `kickoffDate` (`YYYY-MM-DD`). Every event needs `season`. If you rename a published slug, add 301s in `public/_redirects`.
 6. Empty Intake → no-op. Say so. Do not touch `data/`.
 
 ## Publish

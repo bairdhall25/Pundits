@@ -14,7 +14,7 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Do
 
-1. List pending mapped calls whose event is over (final score, or Kalshi contract resolved). Skip everything still in play.
+1. List pending mapped calls whose event is over (final score, or Kalshi contract resolved). Skip everything still in play. A 2026-season playoff/bowl/Super Bowl in January–February 2027 still grades the `-2026` slug.
 2. Confirm the result from a primary source (ESPN / NFL.com / school site) **and** Kalshi resolution when the contract exists. Kalshi wins if they disagree.
 3. Map the result onto the event's side:
    - Game: away win → `yes` hits, `no` misses. Home win → the reverse. Neutral-site still uses the event's `awayTeam` / `homeTeam` fields.

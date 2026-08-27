@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadEvents } from "./data";
-import { formatGameWhen } from "./format";
+import { formatGameWhen, seasonLabel, seasonSpan } from "./format";
 
 describe("kalshi freeze", () => {
   it("prices and sources every home event, and sources every priced event", () => {
@@ -45,5 +45,23 @@ describe("kalshi freeze", () => {
     const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     expect(formatGameWhen(clemson)).toContain("Sep 5, 2026");
     expect(formatGameWhen(clemson)).toContain("7:30 ET");
+  });
+
+  it("uses the regular-season start year, not kickoff or Kalshi champion year", () => {
+    expect(seasonSpan(2026)).toBe("2026–27");
+    expect(seasonLabel(2026)).toBe("2026–27 season");
+    // A 2026-season playoff game in January 2027 still belongs on the 2026 slug.
+    expect(
+      formatGameWhen({
+        season: 2026,
+        kickoffDate: "2027-01-10",
+        kickoff: "Sun 1:00 ET",
+        network: "CBS",
+      })
+    ).toBe("Sun Jan 10, 2027 · 1:00 ET · CBS");
+    const rams = loadEvents().find((e) => e.slug === "rams-sb-2026")!;
+    expect(rams.season).toBe(2026);
+    expect(rams.contractName).toMatch(/2027/);
+    expect(formatGameWhen(rams)).toBe("2026–27 season");
   });
 });

@@ -14,9 +14,12 @@ Grok Bot standing instructions: `bots/` (Scout / Grader / Recap). This runbook i
    eventSlug + side (yes=away). Weasel or season-long take → soft, no
    mapping. Futures picks map to futures slugs only — never onto a game.
    Games carry `kickoffDate` and `season`. Event slugs always end in
-   `-{season}` (`clemson-at-lsu-2026`). Next year's Clemson-LSU is a
-   new slug (`clemson-at-lsu-2027`), not an overwrite. Bare pre-season
-   URLs 301 via `public/_redirects`.
+   `-{season}` (`clemson-at-lsu-2026`). `season` is the year the
+   regular season starts, not the kickoff calendar year: a January 2027
+   playoff/bowl/CFP/Super Bowl of the 2026 season stays `-2026` (Kalshi
+   "2027 NFL Champion" is that same season). Next season's Clemson-LSU
+   is `clemson-at-lsu-2027`, not an overwrite. Bare pre-season URLs 301
+   via `public/_redirects`. Display the span as `2026–27`.
 4. FREEZE — refresh Kalshi cents for events whose picks changed; every
    price gets sourceUrl + sourcedAt. If a source publishes only one
    side's probability, record the complement (noCents = 100 − yesCents)

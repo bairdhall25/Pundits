@@ -204,7 +204,7 @@ export function getEvent(slug: string, events: Event[]): Event | null {
   return events.find((e) => e.slug === slug) ?? null;
 }
 
-export { formatCents, formatAsOf, formatGameWhen } from "./format";
+export { formatCents, formatAsOf, formatGameWhen, seasonLabel, seasonSpan } from "./format";
 
 export function impliedOpenDollars(punditId: string, calls: Call[]): number {
   return (
