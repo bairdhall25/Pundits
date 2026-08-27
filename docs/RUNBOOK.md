@@ -1,7 +1,7 @@
 # Capture run
 
 A run is on-demand. Target cadence launch week: Wed, Thu, Fri, Sat morning.
-Grok Bot standing instructions: `bots/` (Scout / Audit / Promote / Grader / Recap). This runbook is the shared checklist; those files are what each Bot reads. The mailbox is `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
+Grok Bot standing instructions: `bots/` (Scout / Audit / Promote / Grader / Recap). Hunt order: `docs/board.md`. The mailbox is `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
 
 ## Steps
 1. CAPTURE — mine shows/columns/podcasts for roster voices' picks on the

@@ -11,15 +11,16 @@ From https://github.com/bairdhall25/Pundits (main):
 - `data/pundits.json` — legal speakers (`id` is the pundit cell)
 - `data/events.json` — legal `eventSlug`s, sides, `onHome`, `kickoffDate`, `season`
 - `data/calls.json` — skip claims already in the book (same pundit + event, or same URL)
+- `docs/board.md` — **hunt order**. P0 empty YES on home games before futures. Do-not-touch list. If this file and `data/` disagree, `data/` wins.
 - `docs/RUNBOOK.md` — search list and Week 0 gate
 - `docs/week1-leans.md` — prior staging; do not re-promote dropped rows
 - Live stories: https://pundits.pro/stories/ — a mapped pair already has a page; do not restage it
 
 ## Do
 
-Search **by event**, not by whoever ranks on the first query. **Game SU rows first** — those mint SEO stories of the form `{Name} picks {team} over {other}`. Futures mint weaker “takes / against {title}” pages. Empty YES sides on home games are missing stories, not a shrug.
+Search **by event**, in the order in `docs/board.md`. **P0 game SU rows first** — empty YES (away) on home games. Those mint SEO stories `{Name} picks {team} over {other}`. Do not spend the run adding another title or Super Bowl face while Clemson / Patriots / 49ers / Bills / UNC YES are empty.
 
-For every `onHome` game plus Week 0 and any faceless marquee (`wisconsin-vs-nd-2026`): query `{pundit name} {away} {home} 2026 pick` for the high-yield voices (Finebaum, Herbstreit, Klatt, Pate, Cowherd, Fallica, Kanell, McElroy, Eisen, Florio, Simms, McAfee — name the speaker). Then mine that day's First Take / The Herd / GameDay podcast / Big Noon.
+For each P0/P1 event: query `{pundit name} {away} {home} 2026 pick` using the idle high-yield voices listed in `docs/board.md`. Then that day's First Take / The Herd / GameDay / Big Noon / Cover 3. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
 
 1. Roster voices only. Off-roster Week 0 staff stays in Dropped.
 2. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Copy `eventSlug` from `events.json` — slugs always end in `-{season}` (`clemson-at-lsu-2026`). `season` is the year the regular season starts: a January 2027 bowl/playoff/CFP/Super Bowl is still `-2026`. Kalshi's "2027 NFL Champion" is that same 2026 season. Same teams next *season* is a **new event**, not this slug. If you cannot open it, drop it.

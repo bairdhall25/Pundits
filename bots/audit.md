@@ -12,10 +12,11 @@ From https://github.com/bairdhall25/Pundits (main):
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
 - Live stories: https://pundits.pro/stories/
 - `bots/scout.md` house rules (season, YES = away, name the speaker)
+- `docs/board.md` — do-not-touch and game-first
 
 ## Do
 
-Re-open every **hard** Intake row and every mapped hard call promoted since the previous audit.
+Re-open every **hard** Intake row and every mapped hard call promoted since the previous audit. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
 
 For each row, confirm all of:
 

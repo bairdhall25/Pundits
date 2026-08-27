@@ -12,6 +12,7 @@ From https://github.com/bairdhall25/Pundits (main):
 - `data/calls.json`
 - `data/events.json`
 - `lib/data.ts` — copy `getActivityBoard` ranking and `seasonFromCalls` (hard calls only)
+- `docs/board.md` — hunt order; say whether P0 empty YES is still empty
 
 Live check: https://pundits.pro/leaderboard/ and https://pundits.pro/stories/
 

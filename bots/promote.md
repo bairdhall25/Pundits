@@ -14,11 +14,12 @@ From https://github.com/bairdhall25/Pundits (main):
 - `data/pundits.json` — legal `punditId`s
 - `data/events.json` — legal `eventSlug`s, YES = away
 - `data/calls.json` — skip same pundit + event, or same `sourceUrl`
+- `docs/board.md` — do-not-touch list; promote **game** `ok` rows before new futures
 - `docs/RUNBOOK.md`
 
 ## Do
 
-1. Promote **only new hard mapped rows** from Intake. Soft rows stay staging-only / unmapped. Dropped rows stay out.
+1. Promote **only new hard mapped rows** from Intake that Audit marked `ok` (or say if Audit has not run). Soft rows stay staging-only / unmapped. Dropped rows stay out. **Game SU rows before futures.** Do not restage the do-not-touch list in `docs/board.md`. Do not set `onHome: true` on `ncsu-at-uva-2026` or `wisconsin-vs-nd-2026` unless this run’s Scout Intake includes a verified roster SU and proposes the flip.
 2. Match existing `calls.json` shape. `punditId` must exist. `eventSlug` must exist. `side` is `yes` or `no`. `kind: hard`, `status: pending`. Id pattern like `fallica-texas-cfp-20260825` (pundit-slug-date, unique).
 3. Freeze cents **only** for events that gained a new mapped face this run (or a Week 0 gate flip). Use Scout's Freeze block: Kalshi page or Kalshi reprint, `sourceUrl` + `sourcedAt`, both sides as printed. Do not convert Vegas. If price date is more than 7 days old, keep Scout's note in the commit message.
 4. Do not restage already-booked rows. Do not invent quotes. Do not map title/playoff takes onto games.
