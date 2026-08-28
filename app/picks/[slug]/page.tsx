@@ -97,12 +97,6 @@ export default async function PickPage({
         permalink={false}
         detail
       />
-      <EmailInterestForm
-        placement="pick_detail"
-        scope="event"
-        scopeId={event.slug}
-        subjectName={event.title}
-      />
       {takes.length ? (
         <section className="mt-8">
           <h2 className="type-broadcast mb-3 text-[22px] tracking-widest">
@@ -125,6 +119,12 @@ export default async function PickPage({
           </ul>
         </section>
       ) : null}
+      <EmailInterestForm
+        placement="pick_detail"
+        scope="event"
+        scopeId={event.slug}
+        subjectName={event.title}
+      />
     </main>
   );
 }

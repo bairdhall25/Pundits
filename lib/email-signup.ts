@@ -137,7 +137,7 @@ export function copyForPlacement(
   }
   return {
     kicker,
-    heading: "Never miss a verified pick.",
+    heading: "Get new picks — with the receipt.",
     body: "Join the early list for email alerts when new pundit picks are published. Alerts are not live yet.",
     button,
   };

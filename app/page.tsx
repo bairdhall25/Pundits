@@ -77,40 +77,60 @@ export default function HomePage() {
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
+  const marquee =
+    ncaaf.find((e) => calls.some((c) => c.eventSlug === e.slug)) ?? ncaaf[0];
+  const ncaafRest = marquee ? ncaaf.filter((e) => e !== marquee) : ncaaf;
 
   return (
     <main id="main" className="shell">
-      <div className="eyebrow type-broadcast">Active picks · opening weekend</div>
-      <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
-        Who’s picking
-        <br />
-        what.
-      </h1>
-      <p className="lede lg:text-lg">
-        Expert college football and NFL picks from named TV voices. See who
-        they’re taking, the quote, and the market price. Empty means we have
-        not captured a verified pick yet.
-      </p>
+      <div className="hero">
+        <div className="hero-copy">
+          <div className="eyebrow type-broadcast">
+            Active picks · opening weekend
+          </div>
+          <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
+            Who’s picking
+            <br />
+            what.
+          </h1>
+          <p className="lede lg:text-lg">
+            Expert college football and NFL picks from named TV voices. See
+            who they’re taking, the quote, and the market price.
+          </p>
+          <ul className="trust-bar">
+            <li>Real quotes, linked to source</li>
+            <li>Prices frozen from Kalshi</li>
+            <li>After the game, we mark who was right</li>
+          </ul>
+        </div>
+        {marquee ? (
+          <div className="hero-card">
+            <div className="hero-card-kicker type-broadcast">
+              Marquee · College football
+            </div>
+            <EventCard event={marquee} calls={calls} pundits={pundits} />
+          </div>
+        ) : null}
+      </div>
       <details className="how">
         <summary>How it works</summary>
         <p>
           These are public comments from named experts, not bets they placed.
           The number is a frozen Kalshi price, not a live sportsbook line.
           Open a card for the quote and source. After the game we mark who was
-          right.
+          right. An empty side means no verified pick has been captured yet.
         </p>
       </details>
       <SportFilter current="all" />
-      <div className="board-jump">
+      <nav className="board-jump" aria-label="Jump to section">
+        <span className="board-jump-label">Jump to</span>
         <a href="#ncaaf">College</a>
         <a href="#nfl">NFL</a>
-        <a href="#takes">Takes</a>
         <a href="#futures">Fights</a>
+        <a href="#takes">Takes</a>
         <a href="#table">Pundits</a>
         <a href="#book">The Book</a>
-      </div>
-
-      <EmailInterestForm placement="home" scope="all" />
+      </nav>
 
       <Weekend
         id="ncaaf"
@@ -118,7 +138,7 @@ export default function HomePage() {
         label="College football"
         when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · cards with a real face"
         href="/ncaaf/"
-        events={ncaaf}
+        events={ncaafRest}
         calls={calls}
         pundits={pundits}
       />
@@ -132,6 +152,35 @@ export default function HomePage() {
         calls={calls}
         pundits={pundits}
       />
+
+      <section id="futures" className="board">
+        <div className="row-head">
+          <div>
+            <div className="board-kicker type-broadcast">Pundit vs pundit</div>
+            <h2 className="board-title type-broadcast">Hottest fights</h2>
+          </div>
+          <span className="flex gap-3">
+            <a className="see" href="/ncaaf/">
+              NCAAF →
+            </a>
+            <a className="see" href="/nfl/">
+              NFL →
+            </a>
+          </span>
+        </div>
+        <PeekRow>
+          {futures.map((event) => (
+            <FuturePeek
+              key={event.slug}
+              event={event}
+              calls={calls}
+              pundits={pundits}
+            />
+          ))}
+        </PeekRow>
+      </section>
+
+      <EmailInterestForm placement="home" scope="all" variant="band" />
 
       <section id="takes" className="board">
         <div className="row-head">
@@ -155,33 +204,6 @@ export default function HomePage() {
               />
             );
           })}
-        </PeekRow>
-      </section>
-
-      <section id="futures" className="board">
-        <div className="row-head">
-          <div>
-            <div className="board-kicker type-broadcast">Still open</div>
-            <h2 className="board-title type-broadcast">Hottest fights</h2>
-          </div>
-          <span className="flex gap-3">
-            <a className="see" href="/ncaaf/">
-              NCAAF →
-            </a>
-            <a className="see" href="/nfl/">
-              NFL →
-            </a>
-          </span>
-        </div>
-        <PeekRow>
-          {futures.map((event) => (
-            <FuturePeek
-              key={event.slug}
-              event={event}
-              calls={calls}
-              pundits={pundits}
-            />
-          ))}
         </PeekRow>
       </section>
 
@@ -220,6 +242,8 @@ export default function HomePage() {
           })}
         </PeekRow>
       </section>
+
+      <EmailInterestForm placement="home" scope="all" />
     </main>
   );
 }

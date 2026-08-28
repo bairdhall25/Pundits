@@ -2,6 +2,7 @@ import { parseSignupFields } from "../../lib/email-signup";
 
 type Env = {
   PUNDITS_EMAIL: KVNamespace;
+  EMAIL_NOTIFY?: Fetcher;
 };
 
 function json(body: unknown, status = 200): Response {
@@ -53,6 +54,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           submittedAt: row.submittedAt,
         },
       });
+      const notify = context.env.EMAIL_NOTIFY;
+      if (notify) {
+        context.waitUntil(
+          notify
+            .fetch("https://email-notify/", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(row),
+            })
+            .catch(() => {})
+        );
+      }
     }
   } catch {
     return json({ ok: false, error: "provider" }, 500);

@@ -12,7 +12,7 @@ import {
   settledLabel,
   sidesForCard,
 } from "@/lib/data";
-import { statusLabel } from "@/lib/format";
+import { americanOdds, kickoffTag, statusLabel } from "@/lib/format";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
 
 function FaceRow({
@@ -72,6 +72,7 @@ function SideCol({
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const vacant = side.calls.length === 0;
   const team = getTeam(side.teamId, teams);
+  const odds = game ? americanOdds(side.cents) : null;
   return (
     <div className={`col ${side.side} ${vacant ? "col-vacant" : ""}`}>
       <div className="scan-team">
@@ -79,14 +80,16 @@ function SideCol({
           {team ? <TeamChip team={team} /> : null}
           <div className="scan-name type-broadcast">{side.label}</div>
         </div>
-        <div className={`px type-broadcast ${detail && side.side === "yes" ? "px-yes" : ""}`}>
-          {formatCents(side.cents)}
+        <div className="px-wrap">
+          <div className={`px type-broadcast ${detail && side.side === "yes" ? "px-yes" : ""}`}>
+            {formatCents(side.cents)}
+          </div>
+          {odds ? <div className="px-odds">≈ {odds}</div> : null}
         </div>
       </div>
       {detail ? (
         <div className="lab">
-          {side.side.toUpperCase()}
-          {game ? (side.side === "yes" ? " · away" : " · home") : ""}
+          {game ? (side.side === "yes" ? "Away" : "Home") : side.side.toUpperCase()}
         </div>
       ) : null}
       {vacant ? (
@@ -127,6 +130,7 @@ export function EventCard({
     .join(" · ");
   const teams = loadTeams();
   const futureTeam = !game ? getTeam(event.teamId, teams) : null;
+  const tag = game && !finalLabel ? kickoffTag(event.kickoffDate, new Date()) : null;
 
   return (
     <article
@@ -154,7 +158,10 @@ export function EventCard({
               <span className="scan-name type-broadcast">{futureTeam.name}</span>
             </div>
           ) : null}
-          <div className="meta">{detail ? detailMeta : scanMeta}</div>
+          <div className="meta">
+            {tag ? <span className="kick-tag type-broadcast">{tag}</span> : null}
+            {detail ? detailMeta : scanMeta}
+          </div>
         </div>
         {detail && event.sourceUrl ? (
           <a

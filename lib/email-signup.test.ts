@@ -98,7 +98,7 @@ describe("email signup payload", () => {
   });
 
   it("uses the approved headings", () => {
-    expect(copyForPlacement("home").heading).toBe("Never miss a verified pick.");
+    expect(copyForPlacement("home").heading).toBe("Get new picks — with the receipt.");
     expect(copyForPlacement("pick_detail").heading).toBe("Get the next verified pick.");
     expect(copyForPlacement("pundit_profile", "Danny Kanell").heading).toBe(
       "Get new Danny Kanell picks."

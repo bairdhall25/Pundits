@@ -106,13 +106,6 @@ export default async function PunditPage({
         </div>
       </div>
 
-      <EmailInterestForm
-        placement="pundit_profile"
-        scope="pundit"
-        scopeId={p.id}
-        subjectName={p.name}
-      />
-
       <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
         Implied book
       </h2>
@@ -146,6 +139,13 @@ export default async function PunditPage({
       ) : (
         <p className="lede">No unmapped takes on file.</p>
       )}
+
+      <EmailInterestForm
+        placement="pundit_profile"
+        scope="pundit"
+        scopeId={p.id}
+        subjectName={p.name}
+      />
     </main>
   );
 }

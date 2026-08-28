@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
 import {
+  formatGameWhen,
   getBoard,
   getSlateGames,
   loadCalls,
@@ -34,6 +36,8 @@ export function SportSlate({ sport }: { sport: Sport }) {
   const games = getSlateGames(sport, events);
   const futures = getBoard(sport, events, calls);
   const copy = COPY[sport];
+  const active = games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
+  const waiting = games.filter((e) => !calls.some((c) => c.eventSlug === e.slug));
 
   return (
     <main id="main" className="shell">
@@ -54,7 +58,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
       <section className="board">
         <div className="board-kicker type-broadcast">Games</div>
         <h2 className="board-title type-broadcast">The slate</h2>
-        {games.map((event) => (
+        {active.map((event) => (
           <EventCard
             key={event.slug}
             event={event}
@@ -62,6 +66,26 @@ export function SportSlate({ sport }: { sport: Sport }) {
             pundits={pundits}
           />
         ))}
+        {waiting.length ? (
+          <>
+            <h3 className="wait-head type-broadcast">
+              Waiting for a verified pick
+            </h3>
+            <ul className="wait-list">
+              {waiting.map((event) => (
+                <li key={event.slug}>
+                  <Link href={`/picks/${event.slug}`} className="wait-row">
+                    <span className="wait-title type-broadcast">
+                      {event.title}
+                    </span>
+                    <span className="wait-when">{formatGameWhen(event)}</span>
+                    <span className="wait-cta">No pick yet →</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
       </section>
 
       <section className="board">

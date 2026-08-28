@@ -1,0 +1,22 @@
+# Signup-notification worker. Pages Functions cannot use the send_email
+# binding directly, so the Pages function calls this worker over a service
+# binding (EMAIL_NOTIFY in the root wrangler.toml).
+#
+# One-time setup before deploying:
+#   1. Cloudflare dashboard -> pundits.pro zone -> Email -> Email Routing: enable it.
+#   2. Add your Gmail as a destination address and click its verification email.
+#   3. Set NOTIFY_TO below to that same Gmail.
+# Deploy with: npm run notify:deploy
+name = "pundits-email-notify"
+main = "src/index.ts"
+compatibility_date = "2026-08-28"
+# No public URL — reachable only through the Pages service binding.
+workers_dev = false
+
+[[send_email]]
+name = "SEND_EMAIL"
+
+[vars]
+NOTIFY_FROM = "alerts@pundits.pro"
+# Your verified Email Routing destination address:
+NOTIFY_TO = "bairdhall25@gmail.com"

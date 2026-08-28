@@ -5,3 +5,7 @@ pages_build_output_dir = "out"
 [[kv_namespaces]]
 binding = "PUNDITS_EMAIL"
 id = "cda9bfd1f31f441297a3082a8875363b"
+
+[[services]]
+binding = "EMAIL_NOTIFY"
+service = "pundits-email-notify"

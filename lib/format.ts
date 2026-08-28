@@ -14,6 +14,14 @@ export function formatCents(cents: number | null): string {
   return `${cents}¢`;
 }
 
+/** Kalshi cents ≈ implied win probability. Translate to sportsbook-style American odds. */
+export function americanOdds(cents: number | null | undefined): string | null {
+  if (cents == null || cents <= 0 || cents >= 100) return null;
+  const p = cents / 100;
+  if (p > 0.5) return `-${Math.round((p / (1 - p)) * 100)}`;
+  return `+${Math.round(((1 - p) / p) * 100)}`;
+}
+
 export function formatShortDate(iso: string | null | undefined): string | null {
   if (!iso) return null;
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);
@@ -57,6 +65,24 @@ export function seasonSpan(season: number | null | undefined): string | null {
 export function seasonLabel(season: number | null | undefined): string | null {
   const span = seasonSpan(season);
   return span ? `${span} season` : null;
+}
+
+function easternDate(at: Date): string {
+  // en-CA gives YYYY-MM-DD, matching kickoffDate's format
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+  }).format(at);
+}
+
+export function kickoffTag(
+  kickoffDate: string | null | undefined,
+  now: Date
+): "Today" | "Tomorrow" | null {
+  if (!kickoffDate) return null;
+  if (kickoffDate === easternDate(now)) return "Today";
+  const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+  if (kickoffDate === easternDate(tomorrow)) return "Tomorrow";
+  return null;
 }
 
 export function formatGameWhen(event: {

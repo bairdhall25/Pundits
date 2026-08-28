@@ -18,6 +18,8 @@ type EmailInterestFormProps = {
   scope: EmailSignupScope;
   scopeId?: string;
   subjectName?: string;
+  /** "panel" is the full boxed form; "band" is the slimmer inline strip. */
+  variant?: "panel" | "band";
 };
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -27,6 +29,7 @@ export function EmailInterestForm({
   scope,
   scopeId,
   subjectName,
+  variant = "panel",
 }: EmailInterestFormProps) {
   const copy = copyForPlacement(placement, subjectName);
   const config = getEmailSignupConfig();
@@ -147,7 +150,11 @@ export function EmailInterestForm({
   const disabled = !config.active || status === "submitting";
 
   return (
-    <section ref={rootRef} className="email-interest" data-placement={placement}>
+    <section
+      ref={rootRef}
+      className={`email-interest${variant === "band" ? " email-interest-band" : ""}`}
+      data-placement={placement}
+    >
       <div className="email-interest-kicker type-broadcast">{copy.kicker}</div>
       <h2 className="email-interest-heading type-broadcast">{copy.heading}</h2>
       <p className="email-interest-body">{copy.body}</p>

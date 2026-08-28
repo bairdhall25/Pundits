@@ -12,7 +12,8 @@
     "verify:live": "node scripts/verify-live.mjs",
     "check": "npm test && npm run build && npm run verify:static",
     "deploy": "npm run check && wrangler pages deploy out --project-name pundits",
-    "email:dump": "wrangler kv key list --namespace-id cda9bfd1f31f441297a3082a8875363b --remote"
+    "email:dump": "wrangler kv key list --namespace-id cda9bfd1f31f441297a3082a8875363b --remote",
+    "notify:deploy": "wrangler deploy -c workers/email-notify/wrangler.toml"
   },
   "dependencies": {
     "next": "16.3.3",
