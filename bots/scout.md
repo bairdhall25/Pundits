@@ -27,6 +27,8 @@ Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” 
 
 Kanell’s Wolfpack ML came from Cover 3 LOCKS captions, not a headline. Copy that method.
 
+**Tokens are not scarce.** Grok Heavy, Grok Bots, Codex, and Claude have a lot of monthly headroom. The constraint is a verified first-person SU, not spend. Open extra episodes. Jump the locks / moneyline block. Search **both** teams. A first empty query is not the end of the hunt. Do not invent a pick to fill a hole.
+
 ## Bar (do not loosen)
 
 - **SU** = they pick the **winner**. “Give me the Wolfpack in Charlottesville” is SU. Spread, total, “tough game,” “I like them this year” are not.
@@ -37,7 +39,7 @@ YES = away. Copy slugs from JSON (`clemson-at-lsu-2026`). Wrong year → drop. T
 
 **Intake** = existing `punditId` only. **Candidates** = off-roster named SU (Barstool/Ringer/etc.). Never write `data/`. Never mint an id. Unnamed show take → Dropped.
 
-Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO). Keep hunting UNC YES until Saturday. `ncsu-at-uva-2026`: Kanell YES is staged 2026-08-28 (`audit=pending`) — do not restage; if it is not in `calls.json` yet, leave it for Audit/Promote. Propose `onHome` only with a verified roster SU.
+Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO). Keep hunting UNC YES until Saturday. `ncsu-at-uva-2026` is on home (Kanell YES, promoted). Do not restage Kanell. Chip Patterson stays off the roster. Propose `onHome` only with a verified roster SU.
 
 Freeze only events that gained a **new mapped face** this run (or an onHome flip). Kalshi page or Kalshi reprint. Write price date and sourcedAt.
 

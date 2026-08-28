@@ -66,10 +66,10 @@ Promotion: only verified hard rows become calls.json entries. The row's
 pundit must exist in data/pundits.json; the eventSlug in data/events.json.
 
 ## Week 0 gate (Thursday 2026-08-27)
-If a roster voice has a verified lean on unc-vs-tcu-2026 or ncsu-at-uva-2026:
-freeze those cents, set onHome true, map the calls. Otherwise Week 0
-stays off home. Before flipping onHome, verify kickoff time and
+Done for both: Finebaum Dublin (`unc-vs-tcu-2026`) and Kanell Charlottesville (`ncsu-at-uva-2026`).
+Before flipping onHome, verify kickoff time and
 network against a source and record that source URL in the run report.
+Chip Patterson UNC ML stays off roster until the operator says otherwise.
 
 ## After every run, report
 - new hard mapped calls (count, by event)

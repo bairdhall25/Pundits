@@ -110,7 +110,7 @@ ready to promote 1 hard row.
 
 ## Scout run 2026-08-28 (see [`docs/runs/2026-08-28.md`](./runs/2026-08-28.md))
 
-`hard=1` `candidates=1` `audit=pending`. Did not touch `data/`.
+`hard=1` `candidates=1` `audit=ok` `promoted=true`. Kanell YES shipped; Chip Patterson stays off roster.
 
 ### Intake
 

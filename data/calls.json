@@ -722,5 +722,19 @@
     "status": "pending",
     "eventSlug": "texas-cfp-2026",
     "side": "no"
+  },
+  {
+    "id": "kanell-ncsu-uva-20260827",
+    "punditId": "kanell",
+    "claim": "I'll go. Uh, give me the Wolfpack. Give me get it done in Charlottesville against Virginia.",
+    "source": "Cover 3 Week 0 LOCKS",
+    "sourceUrl": "https://www.youtube.com/watch?v=hhgxVGYo6Cc",
+    "sourceDate": "2026-08-27",
+    "kind": "hard",
+    "subject": "NC State",
+    "paysOn": "NC State at Virginia (Week 0)",
+    "status": "pending",
+    "eventSlug": "ncsu-at-uva-2026",
+    "side": "yes"
   }
 ]

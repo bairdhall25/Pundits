@@ -59,6 +59,20 @@ describe("mapped takes", () => {
     );
   });
 
+  it("includes Kanell on NC State at Virginia", () => {
+    const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
+    const ncsu = takes.find(
+      (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "kanell"
+    );
+    expect(ncsu).toBeTruthy();
+    expect(takeHeadline(ncsu!.pundit, ncsu!.event, ncsu!.call)).toBe(
+      "Danny Kanell picks NC State over Virginia"
+    );
+    expect(takePath("ncsu-at-uva-2026", "kanell")).toBe(
+      "/picks/ncsu-at-uva-2026/kanell"
+    );
+  });
+
   it("is unique per event and pundit", () => {
     const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
     const keys = takes.map((t) => `${t.event.slug}/${t.pundit.id}`);
@@ -91,6 +105,18 @@ describe("pick stories", () => {
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
 
+  it("announces Kanell on NC State from the ledger only", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "kanell"
+    );
+    expect(take).toBeTruthy();
+    const story = pickStory(take!, loadCalls(), loadPundits());
+    expect(story.headline).toBe("Danny Kanell picks NC State over Virginia");
+    expect(story.dek).toContain("NC State is the underdog at 34¢");
+    expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
+    expect(story.paragraphs.join(" ")).not.toMatch(/Chip Patterson|Tarheels/i);
+  });
+
   it("does not print YES · YES on futures chips", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "texas-cfp-2026" && t.pundit.id === "fallica"
@@ -107,7 +133,7 @@ describe("pick stories", () => {
 
 describe("pick copy", () => {
   it("says so when a market has no mapped face", () => {
-    const event = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026");
+    const event = loadEvents().find((e) => e.slug === "wisconsin-vs-nd-2026");
     expect(event).toBeTruthy();
     expect(pickLede(event!, loadCalls(), loadPundits())).toMatch(/no verified expert pick/i);
   });

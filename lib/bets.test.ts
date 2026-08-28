@@ -126,7 +126,11 @@ describe("weekend home", () => {
     const events = loadEvents();
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
-    expect(ncaaf.map((e) => e.slug)).toEqual(["unc-vs-tcu-2026", "clemson-at-lsu-2026"]);
+    expect(ncaaf.map((e) => e.slug)).toEqual([
+      "unc-vs-tcu-2026",
+      "ncsu-at-uva-2026",
+      "clemson-at-lsu-2026",
+    ]);
     expect(nfl.map((e) => e.slug)).toEqual([
       "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
@@ -156,6 +160,8 @@ describe("weekend home", () => {
     const bySlug = Object.fromEntries(loadEvents().map((e) => [e.slug, e]));
     expect(bySlug["clemson-at-lsu-2026"].yesCents).toBe(24);
     expect(bySlug["clemson-at-lsu-2026"].noCents).toBe(78);
+    expect(bySlug["ncsu-at-uva-2026"].yesCents).toBe(34);
+    expect(bySlug["ncsu-at-uva-2026"].noCents).toBe(66);
     expect(bySlug["wisconsin-vs-nd-2026"].yesCents).toBe(8);
     expect(bySlug["wisconsin-vs-nd-2026"].noCents).toBe(93);
     expect(bySlug["patriots-at-seahawks-2026"].yesCents).toBe(38.5);

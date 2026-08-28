@@ -12,10 +12,11 @@ Already booked. Restaging is a miss.
 
 - Finebaum `unc-vs-tcu-2026` no
 - Fallica `texas-cfp-2026` no
+- Kanell `ncsu-at-uva-2026` yes (promoted 2026-08-28). Do not restage.
 - The morning-eight and other mapped hard rows already in `calls.json`
-- `ncsu-at-uva-2026` stays **off home** until a roster SU is **promoted**. Scout staged Kanell YES 2026-08-28 (`audit=pending`) — do not restage; Audit/Promote own the flip
+- Chip Patterson stays **off the roster** until the operator says otherwise. UNC ML sprinkle is a Candidate only.
 - `wisconsin-vs-nd-2026` stays **off home** until a roster SU exists — then propose `onHome: true` plus freeze
-- McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
+- McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals / ATS +4.5, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
 
 Empty sides stay empty if nothing verifies. Do not invent.
 
@@ -40,7 +41,7 @@ We already have podcast/hybrid ids. They are idle on Week 1 games. Query these *
 | id | Name | Show | Use on |
 |---|---|---|---|
 | `simmons` | Bill Simmons | The Bill Simmons Podcast / Ringer | NFL P0 (Pats, 49ers, Bills). Already on the roster. Zero mapped picks. |
-| `kanell` | Danny Kanell | Cover 3 | CFB P0 (Clemson, Dublin) and P1 Lambeau. Totals ≠ SU. |
+| `kanell` | Danny Kanell | Cover 3 | Already NC State YES. Still hunt Clemson, Dublin, Lambeau. Totals/ATS ≠ SU. Do not restage Wolfpack ML. |
 | `mcafee` | Pat McAfee | McAfee Show / GameDay | Only if **Pat** says the SU. Guests stay `hawk`, `butler`, … never `mcafee`. 50-burger already dropped. |
 | `florio` | Mike Florio | PFT Live | NFL P0. Super Bowl score ≠ Week 1. |
 | `simms` | Chris Simms | Unbuttoned / PFT | NFL P0. AFC East lean ≠ Patriots–Seahawks. |
@@ -76,7 +77,7 @@ Group vs group leaderboard is **parked**. Do not design it. Do not invent ESPN/B
 
 ## P2 — other slate games (only if P0/P1 are dry)
 
-`miami-at-stanford-2026`, `baylor-vs-auburn-2026`. Still no roster SU. Totals and “favorite by a TD” are not SU. Off-roster Week 0 staff stays Dropped. `ncsu-at-uva-2026` has a staged Kanell YES waiting on Audit/Promote.
+`miami-at-stanford-2026`, `baylor-vs-auburn-2026`. Still no roster SU. Totals and “favorite by a TD” are not SU. Off-roster Week 0 staff stays Dropped. `ncsu-at-uva-2026` is **on home** (Kanell YES). Virginia NO is empty — not P0 (P0 is empty away).
 
 ## P3 — futures (do not hunt these to look busy)
 
@@ -86,7 +87,7 @@ Only map a future if it is a new first-person lean **and** P0 produced nothing t
 
 ## Idle high-yield voices (use them on P0, not on more titles)
 
-CFB, no mapped Week 1 SU: `saban`, `mcafee` (name the speaker on his show), `mcelroy`, `howard`, `tebow`, `meyer`, `leinart`, `quinn`, `ingram`, `kanell`, `feldman`, `staples`, `wasserman`, `mcfarland`. Herbstreit/Klatt/Coughlin/Davis are mapped on **futures** — still ask them about Clemson–LSU and Lambeau.
+CFB, no mapped Week 1 SU: `saban`, `mcafee` (name the speaker on his show), `mcelroy`, `howard`, `tebow`, `meyer`, `leinart`, `quinn`, `ingram`, `feldman`, `staples`, `wasserman`, `mcfarland`. Kanell is mapped on NC State (Week 0) — still ask him about Clemson and Dublin. Herbstreit/Klatt/Coughlin/Davis are mapped on **futures** — still ask them about Clemson–LSU and Lambeau.
 
 NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `brandt`, `burleson`, `simmons`, `newton`, `adams`, `spears`, `clark`.
 
@@ -99,6 +100,6 @@ NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `
 
 ## Snapshot (from `data/` 2026-08-27)
 
-Home games, all one-sided: Clemson empty / LSU pate+finebaum; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd; UNC empty / TCU finebaum.
+Home games, still one-sided: Clemson empty / LSU pate+finebaum; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd; UNC empty / TCU finebaum; **NC State kanell / Virginia empty**.
 
-Mapped hard: 32. Roster with zero mapped hard: 26 of 40. Fights (both sides): four, all futures.
+Mapped hard: 33. Roster with zero mapped hard: 25 of 40. Fights (both sides): four, all futures.
