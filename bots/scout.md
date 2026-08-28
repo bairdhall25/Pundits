@@ -22,8 +22,8 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” grid. Hunt **shows**, then name the speaker. For **each** event in `docs/board.md` P0, then P1, run these buckets. If you skip a bucket, say so on that event in Dropped.
 
 1. **Locks shows that dropped** (see `docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show locks, Picks Central, Pick Em, Bear Bets, Pate winners, GameDay/Big Noon only in their Saturday window. Jump the locks / moneyline / “I’ll take” chapter.
-2. Then idle roster voices **if their pick window is open** (`kanell`, `patterson`, `walker`, `pate`, `coughlin`, `fallica`, plus NFL desks the week of the game).
-3. **Named off-roster speakers on those same shows** (not “the show”): Fornelli, Elliott, Big Cat, Portnoy, PFT Commenter, Cousin Sal, Riggs. Other **named** speakers if they clearly pick a listed game.
+2. Then idle roster voices **if their pick window is open** (`kanell`, `patterson`, `walker`, `bigcat`, `portnoy`, `pft`, `sal`, `kapadia`, `ruiz`, `pate`, `coughlin`, `fallica`, plus NFL desks the week of the game).
+3. **Named off-roster speakers on those same shows** (not “the show”): Fornelli, Elliott, Rico Bosco (photo still needed). Other **named** speakers if they clearly pick a listed game.
 4. Open the episode. Captions count. Search **both** teams, last ~7 days, **2026 only**.
 
 PMT is comedy + guests, not a locks show. Stanford Steve on PMT is `coughlin`. Big Cat’s card is Pick Em / Picks Central / Barstool CFB Show, not PMT.

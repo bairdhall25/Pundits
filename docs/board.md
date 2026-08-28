@@ -40,7 +40,7 @@ Do not lead with `{famous face} {game} 2026 pick`. Open the locks show, jump the
 
 **Open every run if they dropped:** Cover 3 LOCKS, BFW Saturday, Barstool CFB Show locks, Picks Central, Pick Em, Bear Bets, Pate winners. GameDay / Big Noon only on Saturday of that game.
 
-Roster pick factories now on the ledger: `kanell`, `patterson`, `walker`, `pate`, `fallica`, `coughlin`. `walker` has no mapped game yet.
+Roster pick factories now on the ledger: `kanell`, `patterson`, `walker`, `bigcat`, `portnoy`, `pft`, `sal`, `kapadia`, `ruiz`, `pate`, `fallica`, `coughlin`. Barstool/Ringer ids have **no mapped games yet** — Intake when Pick Em / Ringer NFL / Barstool CFB Show actually drops. Do not invent.
 
 Idle NFL desks (`simmons`, `florio`, `simms`, `clark`, `adams`) — hunt the week of the game, not today.
 
@@ -70,7 +70,7 @@ Only map a future if it is a new first-person lean **and** P0 produced nothing t
 
 CFB, no mapped Week 1 SU: `walker` (BFW Sat / Barstool CFB Show), `saban`, `mcafee` (name the speaker on his show), `mcelroy`, `howard`, `tebow`, `meyer`, `leinart`, `quinn`, `ingram`, `feldman`, `staples`, `wasserman`, `mcfarland`. Kanell is mapped on NC State; Patterson on Dublin UNC — still ask them about Clemson and Lambeau. Herbstreit/Klatt/Coughlin/Davis are mapped on **futures** — still ask them about Clemson–LSU and Lambeau. On3 *PICKING* UNC–TCU 8/25 is ATS cover, not SU.
 
-NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `brandt`, `burleson`, `simmons`, `newton`, `adams`, `spears`, `clark`.
+NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `brandt`, `burleson`, `simmons`, `newton`, `adams`, `spears`, `clark`, `pft`, `sal`, `kapadia`, `ruiz`. Barstool `bigcat` / `portnoy` are `both` — NFL P0 and CFB locks shows.
 
 ## Other bots
 

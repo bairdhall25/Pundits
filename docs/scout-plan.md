@@ -17,7 +17,7 @@ Success (in order):
 1. At least one verified **away** pick on each remaining empty-YES home game (Clemson, Patriots, 49ers, Bills). Dublin UNC YES is Patterson — **done**. Do not restage.
 2. Kanell NC State (`ncsu-at-uva-2026` yes) — **done** 2026-08-28. Do not restage.
 3. One Lambeau SU → propose `wisconsin-vs-nd-2026` on home.
-4. Hunt **pick shows** (`docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em. `walker` is rostered; get him a game SU from those shows, do not invent one.
+4. Hunt **pick shows** (`docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em, Ringer NFL. `walker`, `bigcat`, `portnoy`, `pft`, `sal`, `kapadia`, `ruiz` are rostered with no mapped games — Intake when they pick, do not invent.
 
 Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboard (parked).
 

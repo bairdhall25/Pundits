@@ -38,6 +38,12 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | kanell | Danny Kanell | dannykanell |
 | patterson | Chip Patterson | Chip_Patterson |
 | walker | Brandon Walker | BFW |
+| bigcat | Big Cat | BarstoolBigCat |
+| portnoy | Dave Portnoy | stoolpresidente |
+| pft | PFT Commenter | PFTCommenter |
+| sal | Cousin Sal | TheCousinSal |
+| kapadia | Sheil Kapadia | SheilKapadia |
+| ruiz | Steven Ruiz | theStevenRuiz |
 | pate | Josh Pate | JoshPateCFB |
 | mcafee | Pat McAfee | PatMcAfeeShow |
 | herbstreit | Kirk Herbstreit | KirkHerbstreit |
@@ -56,19 +62,15 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | kimes | Mina Kimes | find official |
 | sharpe | Shannon Sharpe | find official |
 
-Pat McAfee Show guests are the **guest**, never `mcafee`. `patterson` and `walker` are Intake.
+Pat McAfee Show guests are the **guest**, never `mcafee`. Barstool/Ringer ids above are Intake. Name the speaker on PMT / Pick Em / Ringer NFL.
 
 **Candidates (do not mint, do not tag):**
 
 | name | handle | group |
 |---|---|---|
-| PFT Commenter | PFTCommenter | barstool |
-| Big Cat | BarstoolBigCat | barstool |
-| Dave Portnoy | find official | barstool |
+| Rico Bosco | Return_Of_RB | barstool |
 | Tom Fornelli | find official | other |
 | Bud Elliott | find official | other |
-| Cousin Sal | TheCousinSal | ringer |
-| Sheil Kapadia | find official | ringer |
 
 P0 right now: empty YES on `clemson-at-lsu-2026` (Clemson), `patriots-at-seahawks-2026` (Patriots), `49ers-vs-rams-2026` (49ers), `bills-at-texans-2026` (Bills). Dublin UNC YES is Patterson (do not restage). P1: `wisconsin-vs-nd-2026`. Do not restage Kanell NC State, Finebaum Dublin, Patterson Dublin, or the morning eight.
 

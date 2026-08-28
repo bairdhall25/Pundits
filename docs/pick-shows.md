@@ -24,9 +24,9 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Bear Bets / FOX | `fallica` | column + Big Noon | bylined best bets | Futures OK only after P0 is dry. |
 | GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | Guest on PMT is `coughlin`, never `mcafee`. |
 | BFW Show | `walker` | Mon / Thu / **Sat** in-season | Saturday recap + locks; midweek is often conference/Top 25 | 8/24 B1G+ACC and 8/27 SEC+Big 12 were **conference** preds, not Week 0 SU. Hunt Saturday. YouTube `UC9v6icpVdER0VGQpA3uUUsQ`. |
-| Barstool College Football Show | `walker`, Big Cat, Portnoy, Kayce (name the speaker) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. |
-| Picks Central | `walker`, Big Cat, Portnoy (rotation) | daily | moneylines / locks | Walker hosts. Big Cat/Portnoy takes are theirs. |
-| Barstool Pick Em | Big Cat, Portnoy, Rico | weekly once CFB is on | the card | Not PMT. 2026 Week 0 episode may not have dropped yet. |
+| Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
+| Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
+| Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
 | The Herd / Sharp or Square | `cowherd`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
 | Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
 
@@ -38,8 +38,9 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | `meyer`, `klatt`, `quinn`, `leinart`, `ingram`, `fallica` | Big Noon Saturday pregame | Title/undefeated stretches stay futures |
 | `stephena`, `kimes`, `orlovsky`, `spears` | ESPN NFL expert grid **Tue–Sat of that NFL week** | Week 1 grid was still No Pick as of 8/28 |
 | `eisen`, `florio`, `simms` | show + weekly column | AFC East lean ≠ Patriots–Seahawks. SB score ≠ Week 1 |
-| `simmons`, Cousin Sal | Ringer NFL / gambling pods | Win totals ≠ Week 1 SU |
-| Big Cat / Portnoy / PFT Commenter | Pick Em, Picks Central, Barstool CFB Show | **Do not** treat PMT bits as a pick show |
+| `simmons`, `sal` | Ringer gambling pods / Cousin Sal | Win totals ≠ Week 1 SU. Hunt the week of NFL games. |
+| `kapadia`, `ruiz` | Ringer NFL Show | Kapadia hosts. Ruiz is a regular. Analysis ≠ SU until they name a winner. |
+| `bigcat`, `portnoy`, `pft` | Pick Em, Picks Central, Barstool CFB Show, PMT only if **they** pick | **Do not** treat PMT bits as a pick show. PFT is the guest/host, never `bigcat`. |
 
 ## Already-rostered talkers (open the actual *PICKING* episode)
 
@@ -65,9 +66,14 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 |---|---|
 | `patterson` | Chip_Patterson |
 | `walker` | BFW (person), BFWshow (show — clips only if the post is him) |
+| `bigcat` | BarstoolBigCat |
+| `portnoy` | stoolpresidente |
+| `pft` | PFTCommenter |
+| `sal` | TheCousinSal |
+| `kapadia` | SheilKapadia |
+| `ruiz` | theStevenRuiz |
 | `kanell` | dannykanell |
 | `pate` | JoshPateCFB |
-| Big Cat | BarstoolBigCat |
 
 ## Do not
 

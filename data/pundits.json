@@ -26,6 +26,8 @@
   { "id": "kanell", "name": "Danny Kanell", "outlet": "CBS / Cover 3", "photo": "/photos/kanell.jpg", "sport": "ncaaf" },
   { "id": "patterson", "name": "Chip Patterson", "outlet": "CBS / Cover 3", "photo": "/photos/patterson.jpg", "sport": "ncaaf" },
   { "id": "walker", "name": "Brandon Walker", "outlet": "Barstool / BFW Show", "photo": "/photos/walker.jpg", "sport": "ncaaf" },
+  { "id": "bigcat", "name": "Big Cat", "outlet": "Barstool / PMT", "photo": "/photos/bigcat.jpg", "sport": "both" },
+  { "id": "portnoy", "name": "Dave Portnoy", "outlet": "Barstool", "photo": "/photos/portnoy.jpg", "sport": "both" },
   { "id": "feldman", "name": "Bruce Feldman", "outlet": "FOX / The Athletic", "photo": "/photos/feldman.png", "sport": "ncaaf" },
 
   { "id": "stephena", "name": "Stephen A. Smith", "outlet": "First Take", "photo": "/photos/stephena.jpg", "sport": "nfl" },
@@ -42,5 +44,9 @@
   { "id": "simms", "name": "Chris Simms", "outlet": "NBC / Unbuttoned", "photo": "/photos/simms.jpg", "sport": "nfl" },
   { "id": "burleson", "name": "Nate Burleson", "outlet": "CBS The NFL Today", "photo": "/photos/burleson.jpg", "sport": "nfl" },
   { "id": "simmons", "name": "Bill Simmons", "outlet": "The Ringer", "photo": "/photos/simmons.jpg", "sport": "nfl" },
+  { "id": "pft", "name": "PFT Commenter", "outlet": "Barstool / PMT", "photo": "/photos/pft.jpg", "sport": "nfl" },
+  { "id": "sal", "name": "Cousin Sal", "outlet": "The Ringer", "photo": "/photos/sal.jpg", "sport": "nfl" },
+  { "id": "kapadia", "name": "Sheil Kapadia", "outlet": "The Ringer", "photo": "/photos/kapadia.jpg", "sport": "nfl" },
+  { "id": "ruiz", "name": "Steven Ruiz", "outlet": "The Ringer", "photo": "/photos/ruiz.jpg", "sport": "nfl" },
   { "id": "newton", "name": "Cam Newton", "outlet": "4th&1", "photo": "/photos/newton.jpg", "sport": "nfl" }
 ]
