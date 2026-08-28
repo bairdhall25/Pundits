@@ -9,6 +9,14 @@ export const SITE_DESCRIPTION =
 
 export const OG_ALT = "PUNDITS. Expert CFB and NFL picks.";
 
+export const LEGAL_NAME = "Indie Labs LLC";
+
+export const CONTACT_HREF = "mailto:bairdhall25@gmail.com";
+
+export const TWITTER_URL = "https://x.com/Pundits_";
+
+export const COPYRIGHT_YEAR = 2026;
+
 export function siteOrigin(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pundits.pro";
   return raw.replace(/\/+$/, "");

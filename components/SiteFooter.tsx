@@ -1,3 +1,5 @@
+import { CONTACT_HREF, COPYRIGHT_YEAR, LEGAL_NAME } from "@/lib/site";
+
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -7,10 +9,13 @@ export function SiteFooter() {
             <div className="type-broadcast site-footer-mark">
               PUNDITS<span>.</span>
             </div>
-            <p>Created by Indie Labs LLC.</p>
+            <p>{`Created by ${LEGAL_NAME}. © ${COPYRIGHT_YEAR} ${LEGAL_NAME}.`}</p>
           </div>
           <nav className="site-footer-nav" aria-label="Footer">
+            <a href="/about/">About</a>
+            <a href={CONTACT_HREF}>Contact</a>
             <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
           </nav>
         </div>
         <p className="site-footer-legal">

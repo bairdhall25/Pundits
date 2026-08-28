@@ -11,6 +11,9 @@ PUNDITS tracks who credible sports voices are picking. Faces are named experts. 
 - https://pundits.pro/book/
 - https://pundits.pro/stories/
 - https://pundits.pro/leaderboard/
+- https://pundits.pro/about/
+- https://pundits.pro/privacy/
+- https://pundits.pro/terms/
 - https://pundits.pro/sitemap.xml
 
 ## How to read it

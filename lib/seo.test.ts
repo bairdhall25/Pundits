@@ -145,6 +145,12 @@ describe("json-ld", () => {
     const types = graph["@graph"].map((n: { "@type": string }) => n["@type"]);
     expect(types).toContain("Organization");
     expect(types).toContain("WebSite");
+    const org = graph["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization") as {
+      legalName: string;
+      sameAs: string[];
+    };
+    expect(org.legalName).toBe("Indie Labs LLC");
+    expect(org.sameAs).toContain("https://x.com/Pundits_");
   });
 
   it("marks a take as an Article with an author", () => {

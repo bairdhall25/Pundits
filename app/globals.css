@@ -786,6 +786,11 @@ h1, h2, .type-broadcast {
   font-size: 13px;
   color: var(--muted);
 }
+.site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
 .site-footer-nav a {
   color: var(--green);
   font-size: 12px;
@@ -803,6 +808,7 @@ h1, h2, .type-broadcast {
 
 .privacy-copy p { margin: 0 0 14px; color: var(--ink); }
 .privacy-copy p:last-child { margin-bottom: 0; }
+.privacy-copy a { color: var(--green); }
 
 .email-interest {
   margin: 18px 0 22px;

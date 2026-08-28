@@ -17,6 +17,8 @@ const requiredFiles = [
   "picks/ncsu-at-uva-2026/kanell/index.html",
   "pundits/herbstreit/index.html",
   "privacy/index.html",
+  "about/index.html",
+  "terms/index.html",
   "og/takes/unc-vs-tcu-2026--finebaum.png",
   "og/takes/ncsu-at-uva-2026--kanell.png",
   "og/events/unc-vs-tcu-2026.png",
@@ -36,7 +38,12 @@ for (const relative of requiredFiles) {
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
 assert.match(home, /<title>PUNDITS\b/);
-assert.match(home, /Created by Indie Labs LLC\./);
+assert.match(home, /Created by Indie Labs LLC\. © 2026 Indie Labs LLC\./);
+assert.match(home, /mailto:bairdhall25@gmail.com/);
+assert.match(home, />Contact</);
+assert.doesNotMatch(home, />bairdhall25@gmail.com</);
+assert.match(home, /"legalName":"Indie Labs LLC"/);
+assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
@@ -64,6 +71,23 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/privacy\/"/
 );
 assert.match(privacy, /Pundits on Cloudflare/);
+assert.match(privacy, /Google Analytics/);
+assert.match(privacy, /mailto:bairdhall25@gmail.com/);
+assert.doesNotMatch(privacy, />bairdhall25@gmail.com</);
+
+const about = await readFile(path.join(out, "about/index.html"), "utf8");
+assert.match(about, /project of Indie Labs LLC/);
+assert.match(
+  about,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/about\/"/
+);
+
+const terms = await readFile(path.join(out, "terms/index.html"), "utf8");
+assert.match(terms, /not a sportsbook/);
+assert.match(
+  terms,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/terms\/"/
+);
 assert.match(
   story,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png"/
@@ -95,6 +119,8 @@ for (const url of [
   "https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/",
   "https://pundits.pro/pundits/herbstreit/",
   "https://pundits.pro/privacy/",
+  "https://pundits.pro/about/",
+  "https://pundits.pro/terms/",
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }

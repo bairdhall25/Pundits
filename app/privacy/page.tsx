@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getEmailSignupConfig } from "@/lib/email-signup";
-import { pageMeta } from "@/lib/site";
+import { CONTACT_HREF, LEGAL_NAME, pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta(
   "Privacy",
-  "How Pundits handles early-access email signups for pick alerts.",
+  "How Pundits handles analytics and the early-access email list.",
   "/privacy"
 );
 
@@ -17,31 +17,34 @@ export default function PrivacyPage() {
       <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">Privacy</h1>
       <div className="privacy-copy lede" style={{ maxWidth: 720 }}>
         <p>
-          Pundits is testing interest in email alerts when new verified pundit
-          picks are published. Those alerts are not live yet.
+          {`Pundits is a project of ${LEGAL_NAME}. This page covers how the site handles analytics and the early-access email list.`}
         </p>
         <p>
-          If you join the early list, we collect your email address, the page
-          you signed up from (homepage, a pick, or a pundit), and a timestamp.
-          We use that only to measure interest and to contact you about Pundits
-          pick-alert updates. We do not sell the address or add it to unrelated
-          marketing lists.
+          We use Google Analytics to see which pages people open. That tool
+          collects typical usage data (pages, device, approximate location).
+          Our own analytics events for the email form never include your
+          address or other personal information.
         </p>
         {config.active ? (
           <>
             <p>
-              Submissions are stored by {config.provider}. {config.retention}
+              If you join the early list, we collect your email address, the
+              page you signed up from (homepage, a pick, or a pundit), and a
+              timestamp. Submissions are stored by {config.provider}.{" "}
+              {config.retention} We do not sell the address or add it to
+              unrelated marketing lists. Pick alerts are not live yet.
             </p>
             <p>
-              To request deletion, open an issue at {config.contact}
-              {config.contact.includes("@") ? ` or email ${config.contact}` : ""}.
+              To request deletion of an early-list address,{" "}
+              <a href={CONTACT_HREF}>contact us</a>.
             </p>
           </>
         ) : (
-          <p>
-            Email collection is not active on this site right now.
-          </p>
+          <p>Email collection is not active on this site right now.</p>
         )}
+        <p>
+          Questions: <a href={CONTACT_HREF}>Contact</a>.
+        </p>
       </div>
     </main>
   );

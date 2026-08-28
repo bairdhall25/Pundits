@@ -1,7 +1,14 @@
 import { isMapped, sidesForCard } from "./data";
 import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
 import { eventShare } from "./share";
-import { SITE_DESCRIPTION, SITE_NAME, canonicalUrl, takePath } from "./site";
+import {
+  LEGAL_NAME,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  TWITTER_URL,
+  canonicalUrl,
+  takePath,
+} from "./site";
 import type { StoryCard } from "./story-card";
 import type { Call, Event, Pundit } from "./types";
 
@@ -217,9 +224,11 @@ export function organizationGraph() {
         "@type": "Organization",
         "@id": `${url}#org`,
         name: SITE_NAME,
+        legalName: LEGAL_NAME,
         url,
         logo: canonicalUrl("/og.png"),
         description: SITE_DESCRIPTION,
+        sameAs: [TWITTER_URL],
       },
       {
         "@type": "WebSite",

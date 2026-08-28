@@ -14,6 +14,8 @@ const routes = [
   "/og/takes/ncsu-at-uva-2026--kanell.png",
   "/pundits/herbstreit/",
   "/privacy/",
+  "/about/",
+  "/terms/",
   "/sitemap.xml",
 ];
 
@@ -27,6 +29,11 @@ for (const route of routes) {
 
 const home = await (await fetch(`${origin}/`, { signal: AbortSignal.timeout(15_000) })).text();
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
+assert.match(home, /Created by Indie Labs LLC\. © 2026 Indie Labs LLC\./);
+assert.match(home, /mailto:bairdhall25@gmail.com/);
+assert.match(home, />Contact</);
+assert.doesNotMatch(home, />bairdhall25@gmail.com</);
+assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert(!home.includes("/Pundits/"), "live output must not contain the retired GitHub Pages base path");
 
 const redirect = await fetch(`${origin}/picks/unc-vs-tcu/`, {
