@@ -24,4 +24,19 @@ The deploy command uploads the generated `out/` directory with Wrangler. `GITHUB
 
 Grok Bot instructions: `bots/`.
 
+## Email early-access list
+
+The homepage, pick-detail, and pundit-profile pages can collect emails for a future pick-alert product. Alerts are not live. There is no Pundits backend; a third-party form collector stores submissions.
+
+Set these **public** build-time values (never put secrets in `NEXT_PUBLIC_*`):
+
+```
+NEXT_PUBLIC_EMAIL_SIGNUP_ENDPOINT=https://provider.example/form-id
+NEXT_PUBLIC_EMAIL_SIGNUP_PROVIDER=Provider name
+NEXT_PUBLIC_EMAIL_SIGNUP_RETENTION=Retention and deletion statement
+NEXT_PUBLIC_PRIVACY_CONTACT=owner@example.com
+```
+
+If any of those are missing, the form stays disabled and shows `Email signup is temporarily unavailable.` It will not fake a successful signup. Unset the endpoint to deactivate collection after a build/deploy.
+
 Hypothetical $100. Kalshi snapshot, not live. Not affiliated with Kalshi or these pundits. These are mapped picks, not bets they placed.

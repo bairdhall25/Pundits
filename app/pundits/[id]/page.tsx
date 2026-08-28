@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallCard } from "@/components/CallCard";
+import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import {
@@ -104,6 +105,13 @@ export default async function PunditPage({
           </div>
         </div>
       </div>
+
+      <EmailInterestForm
+        placement="pundit_profile"
+        scope="pundit"
+        scopeId={p.id}
+        subjectName={p.name}
+      />
 
       <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
         Implied book

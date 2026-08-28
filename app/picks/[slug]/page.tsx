@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -95,6 +96,12 @@ export default async function PickPage({
         pundits={pundits}
         permalink={false}
         detail
+      />
+      <EmailInterestForm
+        placement="pick_detail"
+        scope="event"
+        scopeId={event.slug}
+        subjectName={event.title}
       />
       {takes.length ? (
         <section className="mt-8">

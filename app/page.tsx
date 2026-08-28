@@ -1,3 +1,4 @@
+import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
 import { SportFilter } from "@/components/SportFilter";
 import {
@@ -108,6 +109,8 @@ export default function HomePage() {
         <a href="#table">Pundits</a>
         <a href="#book">The Book</a>
       </div>
+
+      <EmailInterestForm placement="home" scope="all" />
 
       <Weekend
         id="ncaaf"

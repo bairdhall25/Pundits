@@ -13,6 +13,7 @@ const routes = [
   "/picks/ncsu-at-uva-2026/kanell/",
   "/og/takes/ncsu-at-uva-2026--kanell.png",
   "/pundits/herbstreit/",
+  "/privacy/",
   "/sitemap.xml",
 ];
 

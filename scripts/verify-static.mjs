@@ -16,6 +16,7 @@ const requiredFiles = [
   "picks/unc-vs-tcu-2026/finebaum/index.html",
   "picks/ncsu-at-uva-2026/kanell/index.html",
   "pundits/herbstreit/index.html",
+  "privacy/index.html",
   "og/takes/unc-vs-tcu-2026--finebaum.png",
   "og/takes/ncsu-at-uva-2026--kanell.png",
   "og/events/unc-vs-tcu-2026.png",
@@ -35,6 +36,8 @@ for (const relative of requiredFiles) {
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
 assert.match(home, /<title>PUNDITS\b/);
+assert.match(home, /Never miss a verified pick\./);
+assert.match(home, /Email signup is temporarily unavailable\./);
 assert(!home.includes("/Pundits/"), "production output must not contain the GitHub Pages base path");
 
 const story = await readFile(
@@ -46,6 +49,19 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/unc-vs-tcu-2026\/finebaum\/"/
 );
 assert.match(story, /Paul Finebaum picks TCU over North Carolina/);
+
+const pickDetail = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
+assert.match(pickDetail, /Get the next verified pick\./);
+
+const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
+assert.match(punditProfile, /Get new Danny Kanell picks\./);
+
+const privacy = await readFile(path.join(out, "privacy/index.html"), "utf8");
+assert.match(
+  privacy,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/privacy\/"/
+);
+assert.match(privacy, /Email collection is not active/);
 assert.match(
   story,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png"/
@@ -76,6 +92,7 @@ for (const url of [
   "https://pundits.pro/picks/unc-vs-tcu-2026/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/",
   "https://pundits.pro/pundits/herbstreit/",
+  "https://pundits.pro/privacy/",
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }

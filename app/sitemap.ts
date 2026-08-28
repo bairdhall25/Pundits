@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: canonicalUrl("/book/"), lastModified: latestDay(calls.map((c) => c.sourceDate)), changeFrequency: "daily", priority: 0.8 },
     { url: canonicalUrl("/stories/"), lastModified: latestDay(calls.map((c) => c.sourceDate)), changeFrequency: "daily", priority: 0.9 },
     { url: canonicalUrl("/leaderboard/"), lastModified: freeze, changeFrequency: "weekly", priority: 0.6 },
+    { url: canonicalUrl("/privacy/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.2 },
   ];
 
   const picks: MetadataRoute.Sitemap = events.map((event) => {
