@@ -48,9 +48,20 @@ We already have podcast/hybrid ids. They are idle on Week 1 games. Query these *
 | `adams` | Kay Adams | Up & Adams | NFL P0. |
 | `pate` | Josh Pate | YouTube | Already LSU. Only if he now takes **Clemson**. |
 
-Do **not** invent Barstool or extra Ringer ids this run. “The show likes the Bills” is not a pick. Name the speaker. No photo / off-roster → Dropped, do not mint an id.
+Fans follow **shows**, not only the ESPN desk. After the idle roster table above, hunt **named** Barstool and Ringer voices on the same P0/P1 games. Do not mint ids. Put verified first-person SU in **Candidates** (Scout output). “The show likes the Bills” / “we’re on the Pack” is not a pick.
 
-If those shows still have no SU, say so in Dropped. Do not pad with futures.
+Search (name the speaker):
+
+| group | Who to query | Not this |
+|---|---|---|
+| ringer | Bill Simmons (already `simmons`), Cousin Sal, Ringer NFL (named host — Ruiz, Solak, etc.) | A Ringer article with no first-person winner |
+| barstool | PFT Commenter, Big Cat, Dave Portnoy if he actually picks a *game* | Pardon My Take as a blob, the Yak pile-on, “Stoolies are on X” |
+
+Need: verbatim first-person, URL, date, proposed slug (`pft`, `bigcat`, `sal`, …), and a real photo URL. No photo → Dropped, not a candidate.
+
+Do not add 15 stoolies. Two or three story-ready game SUs beat a bench of empty profiles.
+
+Group comparison (ESPN vs Barstool vs Ringer vs FOX) is the product goal. It only works once those groups have mapped **game** picks on the same slate. Scout fills the holes; do not invent a leaderboard row.
 
 ## P1 — faceless marquee (not on home yet)
 

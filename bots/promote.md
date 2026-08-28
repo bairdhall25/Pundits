@@ -25,6 +25,7 @@ From https://github.com/bairdhall25/Pundits (main):
 4. Do not restage already-booked rows. Do not invent quotes. Do not map title/playoff takes onto games.
 5. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`, `texas-cfp-2026`, `rams-sb-2026`). `season` is the year the **regular season starts**, not the kickoff calendar year and not Kalshi's champion year. A January 2027 bowl / playoff / CFP / Super Bowl of the 2026 season stays on `-2026` even if `kickoffDate` is `2027-01-…` and Kalshi says "2027 NFL Champion". Next season's rematch is `clemson-at-lsu-2027`. Never mint a bare matchup URL. Games need `kickoffDate` (`YYYY-MM-DD`). Every event needs `season`. If you rename a published slug, add 301s in `public/_redirects`.
 6. Empty Intake → no-op. Say so. Do not touch `data/`.
+7. **Candidates are not auto-rostered.** Do not invent `pundits.json` ids from Scout’s Candidates table unless the operator explicitly asked this Promote pass to add them. Need a real photo in `public/photos/` and a story-ready hard row. If Candidates is non-empty and you were not asked to roster, list them in the commit message and leave `data/pundits.json` alone.
 
 ## Publish
 
