@@ -14,97 +14,24 @@ Date: 2026-08-25. Verified first-person picks.
 
 Full Intake/Dropped/Freeze/Home for the morning-eight promote, Finebaum Dublin PM, and the empty late Scout are in git: `git show f2aabdc:docs/week1-leans.md` (blob `1e914f4b`). Those hard rows are already in `data/calls.json`.
 
-## Scout run 2026-08-26 late (Grok Bot)
+## Scout run 2026-08-28 (see [`docs/runs/2026-08-28.md`](./runs/2026-08-28.md))
 
-No new hard rows from the 2026-08-26 late Scout. Fresh capture off updated `bots/scout.md`. Search by event. Priority: wisconsin-vs-nd-2026, ncsu-at-uva-2026, empty YES sides. Did not restage Finebaum `unc-vs-tcu-2026` or the morning eight. `ncsu-at-uva-2026` and `wisconsin-vs-nd-2026` stay off home. Did not touch `data/`.
-
-### Intake
-
-| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|
-| *(empty)* | | | | | | | |
-
-### Dropped
-
-- Finebaum `unc-vs-tcu-2026` — already in the book (PM promote). Not restaged.
-- Morning eight — already promoted. Not restaged.
-- wisconsin-vs-nd-2026 — no first-person Lambeau SU. Title stretches not restaged. Off-roster scores stay dropped. Leave off home.
-- ncsu-at-uva-2026 — no roster-voice winner. Herbstreit is Bailey hype only. Hummer/Crawford NC State SU stay off-roster. Cover 3 Week 0 clip has no extractable Kanell quote. Leave off home.
-- Empty YES (Clemson, Patriots, 49ers, Bills, UNC) — no new roster away-team winner.
-- Eisen Seahawks opener — still paraphrase. Simms Patriots = AFC East. Klatt UNC-TCU = 2025 Chapel Hill. 2025 GameDay Clemson-LSU = wrong year.
-
-### Freeze
-
-none
-
-### Home cards
-
-- clemson-at-lsu-2026: YES empty. NO pate, finebaum.
-- patriots-at-seahawks-2026: YES empty. NO cowherd.
-- 49ers-vs-rams-2026: YES empty. NO eisen, cowherd.
-- bills-at-texans-2026: YES empty. NO cowherd.
-- unc-vs-tcu-2026: YES empty. NO finebaum. Dublin stays on home.
-- wisconsin-vs-nd-2026: fully empty, stays off home.
-- ncsu-at-uva-2026: fully empty, stays off home.
-
-## Scout run 2026-08-27 morning (Grok Bot)
-
-Thursday Week 0 gate re-search. Search by event. Priority: empty YES sides, `ncsu-at-uva-2026`, `wisconsin-vs-nd-2026`, Week 0 Dublin. Did not restage Finebaum `unc-vs-tcu-2026`, morning eight, or prior softs. Did not touch `data/`. Ready to promote 1 hard row.
+`hard=1` `candidates=1` `audit=pending`. Did not touch `data/`.
 
 ### Intake
 
 | pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
 |---|---|---|---|---|---|---|---|
-| fallica | texas-cfp-2026 | no | I think 9-3 feels like a pretty common landing spot when you go through Texas' schedule. | FOX Sports / Bear Bets | https://www.foxsports.com/stories/college-football/chris-the-bear-fallicas-5-college-football-futures-best-bets | 2026-08-25 | hard |
+| kanell | ncsu-at-uva-2026 | yes | I'll go. Uh, give me the Wolfpack. Give me get it done in Charlottesville against Virginia. | Cover 3 Week 0 LOCKS | https://www.youtube.com/watch?v=hhgxVGYo6Cc | 2026-08-27 | hard |
 
-Note: Fallica's bylined pick on that page is labeled **Texas to Miss CFP (+180)**. Maps to `texas-cfp-2026` no. Opposite face from Herbstreit (book, yes).
+Propose `onHome: true` on `ncsu-at-uva-2026` once Audit/Promote ship it.
 
-### Dropped
+### Candidates
 
-- Finebaum `unc-vs-tcu-2026` — already in the book. Not restaged. Live Yahoo/Awful Announcing still the same Ireland quote.
-- Morning eight + prior hard mapped rows — already in `calls.json`. Not restaged.
-- `ncsu-at-uva-2026` — no roster-voice winner. Herbstreit is CJ Bailey underrated-QB hype only (broadcast analyst Sat, not a pick). Hummer/Crawford NC State SU stay off-roster. Cover 3 Week 0 breakdown — no extractable Kanell first-person. Leave off home.
-- `wisconsin-vs-nd-2026` — no first-person Lambeau SU. Klatt undefeated/title stretches not restaged. Jesse Nelson (local radio) off-roster. Leave off home.
-- Empty YES (Clemson, Patriots, 49ers, Bills, UNC) — no new roster away-team winner this run.
-- McAfee "that could be a 50-burger" (Clemson at LSU, Aug 5 PMS) — weasel/hypothetical; not a clear first-person SU. Verified at clemsonsportsmedia.com. Soft coaching take, not staged.
-- Fallica Clemson skepticism ("double-digit dog in Baton Rouge") — line/outlook, not a SU pick. Alabama Under 8.5 / NDSU Under — no listed events.
-- Kanell Baylor Under 6.5 — win total, not `baylor-vs-auburn-2026`.
-- Pate Auburn "little over a touchdown favorite against [Baylor]" — describes the line, not a first-person winner.
-- Klatt "They open with LSU. That's going to be tough" — pressure note, not a SU lean.
-- Off-roster Week 0 staff (Hummer/Crawford, Covers, BettingPros, Sporting News, SportsLine).
-- Eisen Seahawks opener — still no verbatim first-person page.
-- Simms Patriots lean — AFC East, not Week 1 at Seattle.
-- Florio/Simms 23-20 / 21-17 — Super Bowl LX, not Week 1.
-- Wrong-year 2025 Klatt/Fallica/GameDay Clemson-LSU and Week 1 pods — not re-promoted.
-- `miami-at-stanford-2026`, `baylor-vs-auburn-2026` — still no roster SU; stay demoted.
-- First Take / The Herd / GameDay / Big Noon / Cover 3 extractable Week 0–1 game cards for Aug 26–27 — none found beyond what is already booked.
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|
+| chip-patterson | Chip Patterson | other | CBS / Cover 3 | unc-vs-tcu-2026 | yes | hark the sound. Wouldn't it be hilarious if Bill actually won? … This is what a sprinkle's for. I'll go Tarheels to come back with the win. | https://www.youtube.com/watch?v=hhgxVGYo6Cc | 2026-08-27 | needed |
 
-### Freeze
+Do not mint. Do not pin on kanell. Promote does not auto-roster.
 
-New mapped face on `texas-cfp-2026` → re-sourced live Kalshi order book.
-
-- texas-cfp-2026: yesCents 63 (Texas make), noCents 37 (miss). Last trade 63¢; yes 62–65 book. https://kalshi.com/markets/kxncaafplayoff/college-football-playoff/kxncaafplayoff-26-tex (ticker KXNCAAFPLAYOFF-26-TEX). Price date / sourcedAt 2026-08-27.
-
-No new game faces → no NFL/CFB game freezes this run. Stokastic NFL board refreshed Aug 27 4:31 AM ET (midpoints close to Aug 26 freeze: NE 37.5/SEA 62.5, SF 36.5/LAR 61.5, BUF 48.5/HOU 49.5) — noted, not applied. Live Kalshi UNC/TCU 26/75 (vs book 27/75) — no new Dublin face, no overwrite. OddsShopper Week 0 page still Aug 16 vintage (>7 days).
-
-### Home cards
-
-- clemson-at-lsu-2026: YES empty. NO pate, finebaum.
-- patriots-at-seahawks-2026: YES empty. NO cowherd.
-- 49ers-vs-rams-2026: YES empty. NO eisen, cowherd.
-- bills-at-texans-2026: YES empty. NO cowherd.
-- unc-vs-tcu-2026: YES empty. NO finebaum. Dublin stays on home.
-- texas-cfp-2026: YES herbstreit. NO fallica (new).
-- wisconsin-vs-nd-2026: fully empty, stays off home.
-- ncsu-at-uva-2026: fully empty, stays off home.
-
-### Stories this would mint
-
-| pundit | eventSlug | story path | headline |
-|---|---|---|---|
-| fallica | texas-cfp-2026 | /picks/texas-cfp-2026/fallica/ | Chris "The Bear" Fallica against Texas makes the Playoff |
-
-ready to promote 1 hard row.
-
-
-> Also at [`docs/runs/2026-08-27.md`](./runs/2026-08-27.md).
+Late-morning pass: no new roster SU on empty YES (Clemson, UNC, Patriots, 49ers, Bills). Lambeau stays off home. ESPN Week 1 grid still No Pick. PMS Fri 8/28 starts ~noon ET — next live window for Dublin UNC YES.
