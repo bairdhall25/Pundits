@@ -48,20 +48,25 @@ We already have podcast/hybrid ids. They are idle on Week 1 games. Query these *
 | `adams` | Kay Adams | Up & Adams | NFL P0. |
 | `pate` | Josh Pate | YouTube | Already LSU. Only if he now takes **Clemson**. |
 
-Fans follow **shows**, not only the ESPN desk. After the idle roster table above, hunt **named** Barstool and Ringer voices on the same P0/P1 games. Do not mint ids. Put verified first-person SU in **Candidates** (Scout output). “The show likes the Bills” / “we’re on the Pack” is not a pick.
+Fans follow **shows**. After roster podcasts, hunt **named** Barstool and Ringer people on the same P0/P1 games. Be aggressive on search; stay strict on speaker. Do not mint ids. Story-ready off-roster SU → **Candidates**. “The show likes the Bills” is still not a pick.
 
-Search (name the speaker):
+**How to hunt (do not stop at `{pundit} {away} {home} 2026 pick`):**
 
-| group | Who to query | Not this |
-|---|---|---|
-| ringer | Bill Simmons (already `simmons`), Cousin Sal, Ringer NFL (named host — Ruiz, Solak, etc.) | A Ringer article with no first-person winner |
-| barstool | PFT Commenter, Big Cat, Dave Portnoy if he actually picks a *game* | Pardon My Take as a blob, the Yak pile-on, “Stoolies are on X” |
+- Show + game: `Pardon My Take Clemson LSU`, `Big Cat LSU pick`, `Cousin Sal Patriots Seahawks`, `Ringer NFL 49ers Rams`.
+- Segment words: `locks`, `I'll take`, `give me`, `moneyline`, `straight up`, `I'm on`.
+- Open the episode (YouTube/Barstool/Ringer). Use captions. Jump the locks/picks block — that is how Kanell’s Wolfpack ML showed up.
+- Search **both** teams, last ~7 days, this season only.
+- Named X/social is fine if the URL opens and the speaker is clear.
+- ESPN staff “No Pick” grids are not the end of the hunt.
 
-Need: verbatim first-person, URL, date, proposed slug (`pft`, `bigcat`, `sal`, …), and a real photo URL. No photo → Dropped, not a candidate.
+**Named people to query** (not a roster, a search list):
 
-Do not add 15 stoolies. Two or three story-ready game SUs beat a bench of empty profiles.
+- Ringer: Bill Simmons (`simmons` if it is him), Cousin Sal, Sheil Kapadia, Steven Ruiz, Kevin Clark (Ringer NFL), Van Lathan if he actually picks a game.
+- Barstool: PFT Commenter, Big Cat, Dave Portnoy, Brandon Walker (CFB), Riggs, KFC if it is a game SU.
 
-Group comparison (ESPN vs Barstool vs Ringer vs FOX) is the product goal. It only works once those groups have mapped **game** picks on the same slate. Scout fills the holes; do not invent a leaderboard row.
+**Story-ready bar** (see Scout): **SU + URL**. Photo is required to *roster*, not to *stage*. If the pick is real and you cannot find a photo, still Candidate with `photoUrl` = `needed`.
+
+Group vs group leaderboard is **parked**. Do not design it. Do not invent ESPN/Barstool records. Fill game cards first.
 
 ## P1 — faceless marquee (not on home yet)
 

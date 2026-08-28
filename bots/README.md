@@ -85,7 +85,7 @@ Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md
 Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/board.md`. Roster podcasts first, then **named** Barstool/Ringer voices as Candidates — never “the show.” Scout does not mint ids. Promote does not auto-roster Candidates.
+2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/board.md`. Hunt hard (show + matchup + locks, open the episode). Named Barstool/Ringer speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.

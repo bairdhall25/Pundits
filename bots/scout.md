@@ -20,13 +20,19 @@ From https://github.com/bairdhall25/Pundits (main):
 
 Search **by event**, in the order in `docs/board.md`. **P0 game SU rows first** — empty YES (away) on home games. Those mint SEO stories `{Name} picks {team} over {other}`. Do not spend the run adding another title or Super Bowl face while Clemson / Patriots / 49ers / Bills / UNC YES are empty.
 
-For each P0/P1 event: query `{pundit name} {away} {home} 2026 pick`.
+For each P0/P1 event, hunt hard. Do not stop after one Google snippet or an ESPN “No Pick” grid.
 
 1. **Roster first**, including idle podcasts already in `pundits.json`: Simmons, Kanell, McAfee (Pat only — name the speaker), Florio, Simms, Clark, Kay Adams, plus GameDay / Big Noon / Cover 3.
-2. Then **named Barstool and Ringer voices** on the same games (Cousin Sal, PFT Commenter, Big Cat, named Ringer NFL hosts). See `docs/board.md`. Off-roster Week 0 staff stays Dropped.
-3. Then that day's First Take / The Herd / GameDay / PFT / Simmons / PMT / Ringer feeds. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
+2. Then **named Barstool and Ringer people** on those same games. Search the **show + matchup + locks/I'll take**, then open the episode and read captions. Names to query are in `docs/board.md` (PFT Commenter, Big Cat, Portnoy, Brandon Walker, Cousin Sal, Ringer NFL hosts, …). Add other **named** speakers if they clearly pick a listed game. Off-roster Week 0 CBS/staff grids stay Dropped.
+3. Then that day's First Take / The Herd / GameDay / PFT / Simmons / PMT / Ringer / Barstool feeds. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
 
-Never write `data/pundits.json`. Never mint an id. Story-ready off-roster SU goes in **Candidates**, not Intake. Unnamed “the show likes X” → Dropped.
+**SU + URL + photo:**
+
+- **SU** = straight up: they pick a *winner* of a listed game. “Give me the Wolfpack” is SU. Spread (+4.5), total (under 47.5), “tough game,” “I like them this year” are not.
+- **URL** = a page or clip you opened, where that speaker says that quote, this season.
+- **Photo** = a real picture of that person, required before they join `pundits.json`. Scout still **stages** a Candidate if SU+URL are good and photo is missing (`photoUrl` = `needed`). Promote will not auto-roster.
+
+Never write `data/pundits.json`. Never mint an id. Story-ready off-roster SU → **Candidates**. Unnamed “the show likes X” → Dropped.
 
 4. Intake `pundit` must already exist in `pundits.json`. Off-roster Week 0 staff and unnamed show takes stay in Dropped.
 5. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Copy `eventSlug` from `events.json` — slugs always end in `-{season}` (`clemson-at-lsu-2026`). `season` is the year the regular season starts: a January 2027 bowl/playoff/CFP/Super Bowl is still `-2026`. Kalshi's "2027 NFL Champion" is that same 2026 season. Same teams next *season* is a **new event**, not this slug. If you cannot open it, drop it.
@@ -39,7 +45,7 @@ Never write `data/pundits.json`. Never mint an id. Story-ready off-roster SU goe
 7. Freeze only events that gained a new mapped face this run (or a Week 0 gate flip). Prefer a Kalshi market page. A reprint is fine if it names Kalshi. In the Freeze block, write **price date** (when the page printed the cents) and **sourcedAt** (when you fetched it). If price date is more than 7 days old, say so — do not let the card imply the number is today. Stories name the underdog from these cents; a stale freeze is a stale story.
 8. Week 0 (`unc-vs-tcu-2026`, `ncsu-at-uva-2026`): a verified roster lean means propose `onHome: true` plus freeze. No roster lean → leave off home. Re-search Week 0 every run until Saturday; a morning miss is not a closed case.
 
-A hard row is **story-ready** only if all of these are filled: `pundit` id (or a Candidate `proposedId`), `eventSlug` in `events.json`, `side`, verbatim first-person quote, `source`, `sourceUrl`, `sourceDate`. Candidates also need a real `photoUrl`. Missing any of those → drop or keep soft. You do not write the story body. The app templates it on promote.
+A hard row is **story-ready** if `eventSlug`, `side`, verbatim quote, `source`, `sourceUrl`, and `sourceDate` are filled, plus a roster `pundit` id (Intake) or a Candidate `proposedId` + `name` + `group`. Photo is for rostering later. You do not write the story body. The app templates it on promote.
 
 ## Output
 
@@ -59,7 +65,7 @@ Reply with these blocks, nothing else.
 | proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
 ```
 
-`group` is `barstool`, `ringer`, `espn`, `fox`, or `other`. `proposedId` is a slug guess (`pft`, `bigcat`, `sal`). Photo must load. No photo → Dropped, not a candidate.
+`group` is `barstool`, `ringer`, `espn`, `fox`, or `other`. `proposedId` is a slug guess (`pft`, `bigcat`, `sal`). `photoUrl` is a loading image URL, or `needed` if the pick is real and you could not find a photo.
 
 **Dropped** — each with one reason (wrong year, unverifiable, off-roster staff, weasel, “the show” with no speaker, guest mis-attributed, …).
 
