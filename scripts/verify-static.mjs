@@ -36,6 +36,7 @@ for (const relative of requiredFiles) {
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
 assert.match(home, /<title>PUNDITS\b/);
+assert.match(home, /Created by Indie Labs LLC\./);
 assert.match(home, /Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);

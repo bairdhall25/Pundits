@@ -757,6 +757,50 @@ h1, h2, .type-broadcast {
   .lede { max-width: 720px; }
 }
 
+.site-footer {
+  border-top: 1px solid #2a2a2a;
+  margin-top: 24px;
+}
+.site-footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+.site-footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+.site-footer-mark {
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  line-height: 1;
+}
+.site-footer-mark span { color: var(--ink); }
+.site-footer-brand p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.site-footer-nav a {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.site-footer-legal {
+  margin: 0;
+  max-width: 720px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .privacy-copy p { margin: 0 0 14px; color: var(--ink); }
 .privacy-copy p:last-child { margin-bottom: 0; }
 
