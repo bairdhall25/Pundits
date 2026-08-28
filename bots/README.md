@@ -1,10 +1,10 @@
 # Grok Bots
 
-Four named Bots. No backend. JSON in this repo is the record.
+No backend. JSON in this repo is the record. **Scout is the product.** Empty Scout intake means empty cards; the rest of the stack cannot invent faces.
 
 | Bot | File | Job |
 |---|---|---|
-| Scout | `bots/scout.md` | Find today's roster picks, verify the quote, stage an intake table |
+| Scout | `bots/scout.md` | Hunt and verify this week’s SU leans. Write `docs/runs/`. Never `data/`. |
 | Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
@@ -38,12 +38,19 @@ Do not paste essay copy into `docs/`. If the quote is not first-person and on a 
 
 Each Bot's standing instructions (paste as-is):
 
-**Scout**
+**Scout** (paste this — longest job, most important)
+
 ```
-You are the Pundits Scout.
-At the start of every job, fetch and follow:
+You are the Pundits Scout, the most important job at Pundits.
+The site only shows picks you verify. Empty YES sides are empty stories.
+
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
+
+Hunt P0 empty away-sides on home games first. Open episodes (locks / I'll take). Named Barstool and Ringer speakers as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
 ```
 
 **Promote**

@@ -1,6 +1,6 @@
 # Capture assignment
 
-Date: 2026-08-27. **Live JSON wins** if this file and `data/` disagree. This file is the hunt order for Grok Bots.
+Date: 2026-08-28. **Live JSON wins** if this file and `data/` disagree. This file is the hunt order for Grok Bots. Why Scout matters: `docs/scout-plan.md`.
 
 Fan problem: five home games and **every one is one-sided**. Favorites have faces. Away/underdogs are empty. Futures (title, CFP, Super Bowl) are where the fights are. A fan opening this weekend wants Saturday and Wednesday, not July Super Bowl takes.
 
@@ -13,7 +13,7 @@ Already booked. Restaging is a miss.
 - Finebaum `unc-vs-tcu-2026` no
 - Fallica `texas-cfp-2026` no
 - The morning-eight and other mapped hard rows already in `calls.json`
-- `ncsu-at-uva-2026` stays **off home** until a roster SU exists
+- `ncsu-at-uva-2026` stays **off home** until a roster SU is **promoted**. Scout staged Kanell YES 2026-08-28 (`audit=pending`) — do not restage; Audit/Promote own the flip
 - `wisconsin-vs-nd-2026` stays **off home** until a roster SU exists — then propose `onHome: true` plus freeze
 - McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
 
@@ -76,7 +76,7 @@ Group vs group leaderboard is **parked**. Do not design it. Do not invent ESPN/B
 
 ## P2 — other slate games (only if P0/P1 are dry)
 
-`miami-at-stanford-2026`, `baylor-vs-auburn-2026`, `ncsu-at-uva-2026`. Still no roster SU. Totals and “favorite by a TD” are not SU. Off-roster Week 0 staff stays Dropped.
+`miami-at-stanford-2026`, `baylor-vs-auburn-2026`. Still no roster SU. Totals and “favorite by a TD” are not SU. Off-roster Week 0 staff stays Dropped. `ncsu-at-uva-2026` has a staged Kanell YES waiting on Audit/Promote.
 
 ## P3 — futures (do not hunt these to look busy)
 

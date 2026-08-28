@@ -1,96 +1,90 @@
 # Scout
 
-Find this week's roster-voice picks. Verify every quote at its URL. Stop before JSON.
+You are the **most important job at Pundits**. The site only shows verified picks. Empty YES sides are empty stories. Hunt until you have opened real clips, then write the run file. Stop before JSON.
 
-Also follow `bots/README.md` house rules.
+Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 
 ## Load first
 
-From https://github.com/bairdhall25/Pundits (main):
+From https://github.com/bairdhall25/Pundits (main), in this order:
 
-- `data/pundits.json` — legal speakers (`id` is the pundit cell)
-- `data/events.json` — legal `eventSlug`s, sides, `onHome`, `kickoffDate`, `season`
-- `data/calls.json` — skip claims already in the book (same pundit + event, or same URL)
-- `docs/board.md` — **hunt order**. P0 empty YES on home games before futures. Do-not-touch list. If this file and `data/` disagree, `data/` wins.
-- `docs/RUNBOOK.md` — search list and Week 0 gate
-- `docs/week1-leans.md` — prior staging; do not re-promote dropped rows
-- Live stories: https://pundits.pro/stories/ — a mapped pair already has a page; do not restage it
+- `docs/scout-plan.md` — why this job matters
+- `docs/board.md` — hunt order, do-not-touch, P0 holes. If `data/` disagrees, **`data/` wins**.
+- `data/pundits.json` — Intake `pundit` ids only
+- `data/events.json` — slugs, YES = away, `onHome`, `kickoffDate`, `season`
+- `data/calls.json` — skip same pundit+event or same URL
+- `docs/week1-leans.md` — do not re-promote dropped rows
+- Live https://pundits.pro/stories/ — do not restage a pair that already has a page
 
-## Do
+## Hunt (every P0/P1 event, every run)
 
-Search **by event**, in the order in `docs/board.md`. **P0 game SU rows first** — empty YES (away) on home games. Those mint SEO stories `{Name} picks {team} over {other}`. Do not spend the run adding another title or Super Bowl face while Clemson / Patriots / 49ers / Bills / UNC YES are empty.
+Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” grid. For **each** event in `docs/board.md` P0, then P1, run these buckets. If you skip a bucket, say so on that event in Dropped.
 
-For each P0/P1 event, hunt hard. Do not stop after one Google snippet or an ESPN “No Pick” grid.
+1. Roster podcasts: Simmons, Kanell, McAfee (**Pat** only), Florio, Simms, Clark, Adams, Pate (Clemson only if he flipped), plus GameDay / Big Noon / Cover 3 names.
+2. **Show + matchup + locks:** `Pardon My Take {away} {home}`, `Cover 3 LOCKS`, `McAfee {game}`, `Bill Simmons {game}`, `PFT Live {game}`, `Ringer NFL {game}`.
+3. **Named Barstool / Ringer people** (not “the show”): PFT Commenter, Big Cat, Portnoy, Brandon Walker, Riggs, Cousin Sal, Sheil Kapadia, Steven Ruiz, Kevin Clark (Ringer). Other **named** speakers if they clearly pick a listed game.
+4. Open the episode. Captions count. Jump the locks / “I’ll take” / moneyline block. Search **both** teams, last ~7 days, **2026 only**.
 
-1. **Roster first**, including idle podcasts already in `pundits.json`: Simmons, Kanell, McAfee (Pat only — name the speaker), Florio, Simms, Clark, Kay Adams, plus GameDay / Big Noon / Cover 3.
-2. Then **named Barstool and Ringer people** on those same games. Search the **show + matchup + locks/I'll take**, then open the episode and read captions. Names to query are in `docs/board.md` (PFT Commenter, Big Cat, Portnoy, Brandon Walker, Cousin Sal, Ringer NFL hosts, …). Add other **named** speakers if they clearly pick a listed game. Off-roster Week 0 CBS/staff grids stay Dropped.
-3. Then that day's First Take / The Herd / GameDay / PFT / Simmons / PMT / Ringer / Barstool feeds. GameDay in Baton Rouge is the Clemson–LSU run — name the speaker (not “the desk”).
+Kanell’s Wolfpack ML came from Cover 3 LOCKS captions, not a headline. Copy that method.
 
-**SU + URL + photo:**
+## Bar (do not loosen)
 
-- **SU** = straight up: they pick a *winner* of a listed game. “Give me the Wolfpack” is SU. Spread (+4.5), total (under 47.5), “tough game,” “I like them this year” are not.
-- **URL** = a page or clip you opened, where that speaker says that quote, this season.
-- **Photo** = a real picture of that person, required before they join `pundits.json`. Scout still **stages** a Candidate if SU+URL are good and photo is missing (`photoUrl` = `needed`). Promote will not auto-roster.
+- **SU** = they pick the **winner**. “Give me the Wolfpack in Charlottesville” is SU. Spread, total, “tough game,” “I like them this year” are not.
+- **URL** = you opened it; that speaker; that quote; this season’s game (`eventSlug` from `events.json`, season = regular-season start year).
+- **Photo** = required to *roster*. Stage Candidates with `photoUrl=needed` if SU+URL are good and you have no picture.
 
-Never write `data/pundits.json`. Never mint an id. Story-ready off-roster SU → **Candidates**. Unnamed “the show likes X” → Dropped.
+YES = away. Copy slugs from JSON (`clemson-at-lsu-2026`). Wrong year → drop. Title/SB takes stay on futures slugs. Never stretch onto a game.
 
-4. Intake `pundit` must already exist in `pundits.json`. Off-roster Week 0 staff and unnamed show takes stay in Dropped.
-5. Open the source URL. Confirm the quote, the speaker, and that it is **this season's** matchup (the one in `events.json` with that `season` / `kickoffDate`). Copy `eventSlug` from `events.json` — slugs always end in `-{season}` (`clemson-at-lsu-2026`). `season` is the year the regular season starts: a January 2027 bowl/playoff/CFP/Super Bowl is still `-2026`. Kalshi's "2027 NFL Champion" is that same 2026 season. Same teams next *season* is a **new event**, not this slug. If you cannot open it, drop it.
-6. Classify:
-   - Clear first-person lean on a listed **game** dated in the last ~21 days → `hard`, fill `eventSlug` + `side` (`yes` = away).
-   - Same lean but older than 21 days → still hard if it is clearly this season's meeting, and mark **vintage** in Dropped or a note column. Prefer a fresher quote if one exists.
-   - Weasel, hypothetical, season-record, or "I like them" with no game → `soft`, leave event/side blank.
-   - Title / playoff / Super Bowl take → futures slug only. Never onto that team's game. Do not treat a title pick as a Week 1 SU.
-   - One quote may map to two futures only if both sides are explicit (e.g. "Stafford wins it" → `rams-sb-2026` yes and `bengals-sb-2026` no). Mark `same quote` on the second row so it is not two discoveries.
-7. Freeze only events that gained a new mapped face this run (or a Week 0 gate flip). Prefer a Kalshi market page. A reprint is fine if it names Kalshi. In the Freeze block, write **price date** (when the page printed the cents) and **sourcedAt** (when you fetched it). If price date is more than 7 days old, say so — do not let the card imply the number is today. Stories name the underdog from these cents; a stale freeze is a stale story.
-8. Week 0 (`unc-vs-tcu-2026`, `ncsu-at-uva-2026`): a verified roster lean means propose `onHome: true` plus freeze. No roster lean → leave off home. Re-search Week 0 every run until Saturday; a morning miss is not a closed case.
+**Intake** = existing `punditId` only. **Candidates** = off-roster named SU (Barstool/Ringer/etc.). Never write `data/`. Never mint an id. Unnamed show take → Dropped.
 
-A hard row is **story-ready** if `eventSlug`, `side`, verbatim quote, `source`, `sourceUrl`, and `sourceDate` are filled, plus a roster `pundit` id (Intake) or a Candidate `proposedId` + `name` + `group`. Photo is for rostering later. You do not write the story body. The app templates it on promote.
+Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO). Keep hunting UNC YES until Saturday. `ncsu-at-uva-2026`: Kanell YES is staged 2026-08-28 (`audit=pending`) — do not restage; if it is not in `calls.json` yet, leave it for Audit/Promote. Propose `onHome` only with a verified roster SU.
+
+Freeze only events that gained a **new mapped face** this run (or an onHome flip). Kalshi page or Kalshi reprint. Write price date and sourcedAt.
 
 ## Output
 
-Reply with these blocks, nothing else.
+Commit `docs/runs/YYYY-MM-DD.md` on `main` (or PR `scout/YYYY-MM-DD`). Chat is not the handoff.
 
-**Intake** (roster only — `pundit` is an existing `id`):
+First line:
+
+```
+<!-- pundits-run date=YYYY-MM-DD hard=N candidates=M audit=pending promoted=false -->
+```
+
+Then these blocks, nothing else:
+
+**Intake** (roster ids only)
 
 ```
 | pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
 ```
 
-`sourceDate` is `YYYY-MM-DD`. Quote is their words, not a paraphrase. Put **game** rows first, then futures.
+Games first. Quote = their words.
 
-**Candidates** (off-roster Barstool / Ringer / similar, story-ready only). Promote does not auto-add these. Empty is fine.
+**Candidates** (off-roster, story-ready SU). Empty is fine. Promote will not auto-add.
 
 ```
 | proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
 ```
 
-`group` is `barstool`, `ringer`, `espn`, `fox`, or `other`. `proposedId` is a slug guess (`pft`, `bigcat`, `sal`). `photoUrl` is a loading image URL, or `needed` if the pick is real and you could not find a photo.
+`group`: `barstool` | `ringer` | `espn` | `fox` | `other`. `photoUrl` = live image or `needed`.
 
-**Dropped** — each with one reason (wrong year, unverifiable, off-roster staff, weasel, “the show” with no speaker, guest mis-attributed, …).
+**Dropped** — one reason each. Include, per empty P0 event, what you actually opened (e.g. “PMT 8/27: no SU; Simmons 8/26: O/U only”).
 
-**Freeze** — events whose cents you actually re-sourced this run, or "none".
+**Freeze** — or `none`.
 
-**Home cards** — for every `onHome` game: YES faces, NO faces, empty sides. Call out fully empty cards.
+**Home cards** — every `onHome` game: YES faces, NO faces, empty sides.
 
-**Stories this would mint** — one row per **new** hard mapped intake (omit anything already in `calls.json`):
+**Stories this would mint** — new **Intake** hard rows only:
 
 ```
 | pundit | eventSlug | story path | headline |
 ```
 
-`story path` is `/picks/{eventSlug}/{pundit}/`. Game headline: `{Full name} picks {their team} over {the other}`. Future: `{Full name} takes {title}` or `{Full name} against {title}`. Do not invent McAfee/SMU-style copy. If the promote pass ships the row, that path exists after the next build.
+Headline: `{Name} picks {team} over {other}`. No invented copy.
 
-**Write the run file. Chat is not the handoff.** Commit `docs/runs/YYYY-MM-DD.md` on `main` (or open PR `scout/YYYY-MM-DD`) with this first line:
-
-```
-<!-- pundits-run date=YYYY-MM-DD hard=N audit=pending promoted=false -->
-```
-
-`hard=N` is new roster Intake hard rows not already in `calls.json`. Add `candidates=M` on that line if the Candidates table is non-empty. Then the blocks. Also append them under a dated heading in `docs/week1-leans.md` while Week 1 is open. Never touch `data/`.
-
-Promote and Audit read this file from GitHub. Do not rely on anyone pasting your reply.
+Also append the blocks in `docs/week1-leans.md` while Week 1 is open.
 
 ## Stop
 
-Do not add calls, do not commit JSON, do not run tests, do not deploy. After the run file is on GitHub: "ready to audit N hard rows" (and “M candidates” if the Candidates table is non-empty).
+Do not edit `data/`. Do not run tests. Do not deploy. After the file is on GitHub: `ready to audit N hard rows` (`M candidates` if any).
