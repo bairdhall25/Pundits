@@ -11,6 +11,7 @@ const routes = [
   "/picks/unc-vs-tcu-2026/",
   "/picks/unc-vs-tcu-2026/finebaum/",
   "/picks/ncsu-at-uva-2026/kanell/",
+  "/picks/unc-vs-tcu-2026/patterson/",
   "/og/takes/ncsu-at-uva-2026--kanell.png",
   "/pundits/herbstreit/",
   "/privacy/",

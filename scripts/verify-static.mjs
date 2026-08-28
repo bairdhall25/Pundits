@@ -15,12 +15,14 @@ const requiredFiles = [
   "picks/unc-vs-tcu-2026/index.html",
   "picks/unc-vs-tcu-2026/finebaum/index.html",
   "picks/ncsu-at-uva-2026/kanell/index.html",
+  "picks/unc-vs-tcu-2026/patterson/index.html",
   "pundits/herbstreit/index.html",
   "privacy/index.html",
   "about/index.html",
   "terms/index.html",
   "og/takes/unc-vs-tcu-2026--finebaum.png",
   "og/takes/ncsu-at-uva-2026--kanell.png",
+  "og/takes/unc-vs-tcu-2026--patterson.png",
   "og/events/unc-vs-tcu-2026.png",
   "og/events/ncsu-at-uva-2026.png",
   "robots.txt",
@@ -44,8 +46,10 @@ assert.match(home, />Contact</);
 assert.doesNotMatch(home, />bairdhall25@gmail.com</);
 assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
-assert.match(home, /Never miss a verified pick\./);
+assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
+assert.match(home, /Chip Patterson/);
+assert.match(home, /Paul Finebaum/);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
 assert(!home.includes("/Pundits/"), "production output must not contain the GitHub Pages base path");
 
@@ -58,6 +62,16 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/unc-vs-tcu-2026\/finebaum\/"/
 );
 assert.match(story, /Paul Finebaum picks TCU over North Carolina/);
+
+const chipTake = await readFile(
+  path.join(out, "picks/unc-vs-tcu-2026/patterson/index.html"),
+  "utf8"
+);
+assert.match(chipTake, /Chip Patterson picks North Carolina over TCU/);
+assert.match(
+  chipTake,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--patterson\.png"/
+);
 
 const pickDetail = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
 assert.match(pickDetail, /Get the next verified pick\./);
@@ -117,6 +131,7 @@ for (const url of [
   "https://pundits.pro/stories/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/",
+  "https://pundits.pro/picks/unc-vs-tcu-2026/patterson/",
   "https://pundits.pro/pundits/herbstreit/",
   "https://pundits.pro/privacy/",
   "https://pundits.pro/about/",

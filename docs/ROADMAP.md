@@ -51,4 +51,4 @@ Exit criteria: routine releases are fast, assets are light, and editorial freshn
 - Revisit licensed team logos only after the source, rights, fallback, and accessibility plan is approved.
 - Revisit new modules or sports only after the accountability loop demonstrates repeat use.
 
-Accounts, comments, betting controls, live odds, a backend, and additional sports remain out of scope until the core loop proves demand.
+Accounts, comments, betting controls, live odds, a backend, and additional sports remain out of scope until the core loop proves demand. Fantasy Football / player props: parked — `docs/fantasy.md`.

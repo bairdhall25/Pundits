@@ -51,7 +51,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt P0 empty away-sides on home games first. Tokens are not scarce — open extra episodes (locks / I'll take / moneyline). Named Barstool and Ringer speakers as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff. X (Twitter) is X Scout's job — do not spend this run on status-URL sweeps.
+Hunt pick shows first (docs/pick-shows.md): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em. Then P0 empty away-sides. Tokens are not scarce — open the episode and jump the locks / I'll take / moneyline block. Named off-roster speakers on those shows as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff. X (Twitter) is X Scout's job — do not spend this run on status-URL sweeps.
 ```
 
 **X Scout**
@@ -106,7 +106,7 @@ Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md
 Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/board.md`. Shows Scout hunts episodes (locks / I'll take). X Scout hunts status URLs (`from:{handle}`, last 48 hours). Named Barstool/Ringer speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked.
+2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/pick-shows.md` then `docs/board.md`. Shows Scout hunts pick shows (locks / I'll take). X Scout hunts status URLs (`from:{handle}`, last 48 hours). Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.

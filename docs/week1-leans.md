@@ -110,7 +110,9 @@ ready to promote 1 hard row.
 
 ## Scout run 2026-08-28 (see [`docs/runs/2026-08-28.md`](./runs/2026-08-28.md))
 
-`hard=1` `candidates=1` `audit=ok` `promoted=true`. Kanell YES shipped; Chip Patterson stays off roster.
+`hard=1` `candidates=1` `audit=ok` `promoted=true`. Kanell YES shipped.
+
+Operator 2026-08-28 later: roster `patterson` + `walker`. Promote Patterson Dublin YES (same LOCKS ep, Audit `ok`). Walker has no Week 0 SU yet.
 
 ### Intake
 
@@ -126,4 +128,4 @@ Propose `onHome: true` on `ncsu-at-uva-2026` once Audit/Promote ship it.
 |---|---|---|---|---|---|---|---|---|---|
 | chip-patterson | Chip Patterson | other | CBS / Cover 3 | unc-vs-tcu-2026 | yes | hark the sound. Wouldn't it be hilarious if Bill actually won? … This is what a sprinkle's for. I'll go Tarheels to come back with the win. | https://www.youtube.com/watch?v=hhgxVGYo6Cc | 2026-08-27 | needed |
 
-Do not mint. Do not pin on kanell. Promote does not auto-roster. Empty YES stay empty. Lambeau stays off home.
+Promoted 2026-08-28 as `patterson` / `unc-vs-tcu-2026` yes. Do not restage. `walker` rostered with photo; no mapped game yet. Lambeau stays off home.

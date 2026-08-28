@@ -69,7 +69,7 @@ pundit must exist in data/pundits.json; the eventSlug in data/events.json.
 Done for both: Finebaum Dublin (`unc-vs-tcu-2026`) and Kanell Charlottesville (`ncsu-at-uva-2026`).
 Before flipping onHome, verify kickoff time and
 network against a source and record that source URL in the run report.
-Chip Patterson UNC ML stays off roster until the operator says otherwise.
+Chip Patterson UNC ML is rostered (`patterson`, Dublin YES). Brandon Walker is rostered (`walker`) with no mapped game yet — hunt BFW Saturday / Barstool CFB Show. Fantasy/props parked in `docs/fantasy.md`.
 
 ## After every run, report
 - new hard mapped calls (count, by event)

@@ -736,5 +736,19 @@
     "status": "pending",
     "eventSlug": "ncsu-at-uva-2026",
     "side": "yes"
+  },
+  {
+    "id": "patterson-unc-tcu-20260827",
+    "punditId": "patterson",
+    "claim": "I'll go Tarheels to come back with the win.",
+    "source": "Cover 3 Week 0 LOCKS",
+    "sourceUrl": "https://www.youtube.com/watch?v=hhgxVGYo6Cc",
+    "sourceDate": "2026-08-27",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina vs TCU (Week 0, Dublin)",
+    "status": "pending",
+    "eventSlug": "unc-vs-tcu-2026",
+    "side": "yes"
   }
 ]

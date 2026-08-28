@@ -49,7 +49,8 @@ describe("v1 mapped book", () => {
 
   it("puts fights first on the home list", () => {
     const home = getHomeEvents(loadEvents(), loadCalls());
-    expect(home[0].slug).toBe("indiana-title-2026");
+    expect(home[0].slug).toBe("unc-vs-tcu-2026");
+    expect(home.map((e) => e.slug)).toContain("indiana-title-2026");
     expect(home.every((e) => e.onHome)).toBe(true);
   });
 

@@ -24,6 +24,8 @@
   { "id": "staples", "name": "Andy Staples", "outlet": "On3", "photo": "/photos/staples.png", "sport": "ncaaf" },
   { "id": "wasserman", "name": "Ari Wasserman", "outlet": "On3", "photo": "/photos/wasserman.png", "sport": "ncaaf" },
   { "id": "kanell", "name": "Danny Kanell", "outlet": "CBS / Cover 3", "photo": "/photos/kanell.jpg", "sport": "ncaaf" },
+  { "id": "patterson", "name": "Chip Patterson", "outlet": "CBS / Cover 3", "photo": "/photos/patterson.jpg", "sport": "ncaaf" },
+  { "id": "walker", "name": "Brandon Walker", "outlet": "Barstool / BFW Show", "photo": "/photos/walker.jpg", "sport": "ncaaf" },
   { "id": "feldman", "name": "Bruce Feldman", "outlet": "FOX / The Athletic", "photo": "/photos/feldman.png", "sport": "ncaaf" },
 
   { "id": "stephena", "name": "Stephen A. Smith", "outlet": "First Take", "photo": "/photos/stephena.jpg", "sport": "nfl" },

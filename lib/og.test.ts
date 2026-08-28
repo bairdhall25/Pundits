@@ -55,13 +55,14 @@ describe("take cards", () => {
 });
 
 describe("event cards", () => {
-  it("shows Finebaum on TCU and an empty UNC side", () => {
+  it("shows Patterson on UNC and Finebaum on TCU", () => {
     const event = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026")!;
     const card = eventOgCard(event, loadCalls(), loadPundits(), loadTeams());
     expect(card.file).toBe("/og/events/unc-vs-tcu-2026.png");
     expect(card.title).toBe("North Carolina vs TCU");
-    expect(card.sides[0].empty).toBe(true);
+    expect(card.sides[0].empty).toBe(false);
     expect(card.sides[0].chip?.abbr).toBe("UNC");
+    expect(card.sides[0].faces.map((f) => f.name)).toContain("Chip Patterson");
     expect(card.sides[1].faces.map((f) => f.name)).toContain("Paul Finebaum");
     expect(card.sides[1].chip?.abbr).toBe("TCU");
   });

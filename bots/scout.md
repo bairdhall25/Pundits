@@ -9,6 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - `docs/scout-plan.md` — why this job matters
+- `docs/pick-shows.md` — which shows actually pick, when, which segment. Hunt shows first.
 - `docs/board.md` — hunt order, do-not-touch, P0 holes. If `data/` disagrees, **`data/` wins**.
 - `data/pundits.json` — Intake `pundit` ids only
 - `data/events.json` — slugs, YES = away, `onHome`, `kickoffDate`, `season`
@@ -18,12 +19,14 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 
 ## Hunt (every P0/P1 event, every run)
 
-Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” grid. For **each** event in `docs/board.md` P0, then P1, run these buckets. If you skip a bucket, say so on that event in Dropped.
+Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” grid. Hunt **shows**, then name the speaker. For **each** event in `docs/board.md` P0, then P1, run these buckets. If you skip a bucket, say so on that event in Dropped.
 
-1. Roster podcasts: Simmons, Kanell, McAfee (**Pat** only), Florio, Simms, Clark, Adams, Pate (Clemson only if he flipped), plus GameDay / Big Noon / Cover 3 names.
-2. **Show + matchup + locks:** `Pardon My Take {away} {home}`, `Cover 3 LOCKS`, `McAfee {game}`, `Bill Simmons {game}`, `PFT Live {game}`, `Ringer NFL {game}`.
-3. **Named Barstool / Ringer people** (not “the show”): PFT Commenter, Big Cat, Portnoy, Brandon Walker, Riggs, Cousin Sal, Sheil Kapadia, Steven Ruiz, Kevin Clark (Ringer). Other **named** speakers if they clearly pick a listed game.
-4. Open the episode. Captions count. Jump the locks / “I’ll take” / moneyline block. Search **both** teams, last ~7 days, **2026 only**.
+1. **Locks shows that dropped** (see `docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show locks, Picks Central, Pick Em, Bear Bets, Pate winners, GameDay/Big Noon only in their Saturday window. Jump the locks / moneyline / “I’ll take” chapter.
+2. Then idle roster voices **if their pick window is open** (`kanell`, `patterson`, `walker`, `pate`, `coughlin`, `fallica`, plus NFL desks the week of the game).
+3. **Named off-roster speakers on those same shows** (not “the show”): Fornelli, Elliott, Big Cat, Portnoy, PFT Commenter, Cousin Sal, Riggs. Other **named** speakers if they clearly pick a listed game.
+4. Open the episode. Captions count. Search **both** teams, last ~7 days, **2026 only**.
+
+PMT is comedy + guests, not a locks show. Stanford Steve on PMT is `coughlin`. Big Cat’s card is Pick Em / Picks Central / Barstool CFB Show, not PMT.
 
 **X is not this job.** `bots/scout-x.md` owns Twitter status URLs. Do not spend this run on `from:{handle}` sweeps. If you land on a tweet while opening a show, you may stage it; do not skip saying X Scout owns the systematic pass.
 
@@ -41,7 +44,7 @@ YES = away. Copy slugs from JSON (`clemson-at-lsu-2026`). Wrong year → drop. T
 
 **Intake** = existing `punditId` only. **Candidates** = off-roster named SU (Barstool/Ringer/etc.). Never write `data/`. Never mint an id. Unnamed show take → Dropped.
 
-Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO). Keep hunting UNC YES until Saturday. `ncsu-at-uva-2026` is on home (Kanell YES, promoted). Do not restage Kanell. Chip Patterson stays off the roster. Propose `onHome` only with a verified roster SU.
+Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO, Patterson YES). Do not restage either. `ncsu-at-uva-2026` is on home (Kanell YES). Do not restage Kanell. `walker` is on the roster with no mapped game yet — hunt BFW Saturday and Barstool CFB Show locks, do not invent a Week 0 SU. Propose `onHome` only with a verified roster SU.
 
 Freeze only events that gained a **new mapped face** this run (or an onHome flip). Kalshi page or Kalshi reprint. Write price date and sourcedAt.
 

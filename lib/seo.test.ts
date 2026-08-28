@@ -100,7 +100,7 @@ describe("pick stories", () => {
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
     expect(story.headline).toBe("Paul Finebaum picks TCU over North Carolina");
-    expect(story.dek).toContain("North Carolina is the underdog at 27¢");
+    expect(story.dek).toContain("North Carolina is the underdog at 26¢");
     expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
@@ -117,6 +117,18 @@ describe("pick stories", () => {
     expect(story.paragraphs.join(" ")).not.toMatch(/Chip Patterson|Tarheels/i);
   });
 
+  it("announces Patterson on UNC from the ledger only", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "patterson"
+    );
+    expect(take).toBeTruthy();
+    const story = pickStory(take!, loadCalls(), loadPundits());
+    expect(story.headline).toBe("Chip Patterson picks North Carolina over TCU");
+    expect(story.dek).toContain("North Carolina is the underdog at 26¢");
+    expect(story.paragraphs.join(" ")).toContain("Tarheels to come back with the win");
+    expect(story.paragraphs.join(" ")).not.toMatch(/Wolfpack|Kanell/i);
+  });
+
   it("does not print YES · YES on futures chips", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "texas-cfp-2026" && t.pundit.id === "fallica"
@@ -124,10 +136,14 @@ describe("pick stories", () => {
     expect(take).toBeTruthy();
     expect(sideChip(take!.event, "no")).toBe("Against");
     expect(toStoryCard(take!).sideChip).toBe("Against");
-    const dublin = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "unc-vs-tcu-2026"
+    const dublinNo = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     )!;
-    expect(toStoryCard(dublin).sideChip).toBe("TCU");
+    expect(toStoryCard(dublinNo).sideChip).toBe("TCU");
+    const dublinYes = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "patterson"
+    )!;
+    expect(toStoryCard(dublinYes).sideChip).toBe("North Carolina");
   });
 });
 
@@ -155,7 +171,7 @@ describe("json-ld", () => {
 
   it("marks a take as an Article with an author", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.event.slug === "unc-vs-tcu-2026"
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     );
     expect(take).toBeTruthy();
     const json = articleJsonLd(take!);

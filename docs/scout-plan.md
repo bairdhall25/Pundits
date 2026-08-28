@@ -14,16 +14,16 @@ A fan opening pundits.pro should see **arguments on this weekend’s games**, no
 
 Success (in order):
 
-1. At least one verified **away** pick on each remaining empty-YES home game (Clemson, UNC, Patriots, 49ers, Bills).
-2. Kanell NC State (`ncsu-at-uva-2026` yes) — **done** 2026-08-28 (audited `ok`, promoted, on home). Do not restage.
+1. At least one verified **away** pick on each remaining empty-YES home game (Clemson, Patriots, 49ers, Bills). Dublin UNC YES is Patterson — **done**. Do not restage.
+2. Kanell NC State (`ncsu-at-uva-2026` yes) — **done** 2026-08-28. Do not restage.
 3. One Lambeau SU → propose `wisconsin-vs-nd-2026` on home.
-4. Named Barstool/Ringer **Candidates** with SU+URL when they actually pick those games. Chip Patterson UNC ML stays a Candidate until the operator says to roster.
+4. Hunt **pick shows** (`docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em. `walker` is rostered; get him a game SU from those shows, do not invent one.
 
 Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboard (parked).
 
 ## Pipeline
 
-1. **Shows Scout** hunts YouTube / podcasts / TV. **X Scout** hunts status URLs only. Both write `docs/runs/YYYY-MM-DD.md` (X Scout appends `## X pass`). Never `data/`.
+1. **Shows Scout** hunts pick shows first (`docs/pick-shows.md`), then P0 holes. **X Scout** hunts status URLs only. Both write `docs/runs/YYYY-MM-DD.md` (X Scout appends `## X pass`). Never `data/`. Fantasy/props stay parked (`docs/fantasy.md`).
 2. Audit re-opens URLs (including `x.com/.../status/...`).
 3. Promote ships `ok` **roster** hard rows. Candidates are not auto-rostered.
 4. App mints `/picks/{slug}/{pundit}/`. Poster tweets the live URL. Poster does not hunt.
@@ -36,7 +36,7 @@ Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboar
 
 ## Cadence
 
-Through Saturday 8/29: Scout at least once more for **Dublin UNC YES** (PMS noon window). Kanell NC State is already promoted.  
+Through Saturday 8/29: hunt BFW Saturday / Barstool CFB Show locks for `walker`. Dublin is two-sided (Patterson YES, Finebaum NO). Kanell NC State is already promoted.  
 Sep 5: GameDay Baton Rouge is the Clemson YES run.  
 NFL openers: keep hunting named podcasts through Wed 9/9.
 

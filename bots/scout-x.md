@@ -9,6 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - `docs/board.md` — P0 holes, do-not-touch. If `data/` disagrees, **`data/` wins**.
+- `docs/pick-shows.md` — which shows pick; X still only opens status URLs.
 - `data/pundits.json` — Intake `pundit` ids only
 - `data/events.json` — slugs, YES = away
 - `data/calls.json` — skip same pundit+event or same URL
@@ -35,6 +36,8 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | id | Name | handle |
 |---|---|---|
 | kanell | Danny Kanell | dannykanell |
+| patterson | Chip Patterson | Chip_Patterson |
+| walker | Brandon Walker | BFW |
 | pate | Josh Pate | JoshPateCFB |
 | mcafee | Pat McAfee | PatMcAfeeShow |
 | herbstreit | Kirk Herbstreit | KirkHerbstreit |
@@ -53,23 +56,21 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | kimes | Mina Kimes | find official |
 | sharpe | Shannon Sharpe | find official |
 
-Pat McAfee Show guests are the **guest**, never `mcafee`. Chip Patterson is **not** Intake.
+Pat McAfee Show guests are the **guest**, never `mcafee`. `patterson` and `walker` are Intake.
 
 **Candidates (do not mint, do not tag):**
 
 | name | handle | group |
 |---|---|---|
-| Chip Patterson | Chip_Patterson | other |
 | PFT Commenter | PFTCommenter | barstool |
-| Big Cat | find official Barstool Big Cat | barstool |
+| Big Cat | BarstoolBigCat | barstool |
 | Dave Portnoy | find official | barstool |
-| Brandon Walker | find official | barstool |
+| Tom Fornelli | find official | other |
+| Bud Elliott | find official | other |
 | Cousin Sal | TheCousinSal | ringer |
 | Sheil Kapadia | find official | ringer |
 
-Chip Patterson stays **off the roster** until the operator says otherwise. Stage as Candidate only.
-
-P0 right now: empty YES on `unc-vs-tcu-2026` (UNC), `clemson-at-lsu-2026` (Clemson), `patriots-at-seahawks-2026` (Patriots), `49ers-vs-rams-2026` (49ers), `bills-at-texans-2026` (Bills). P1: `wisconsin-vs-nd-2026`. Do not restage Kanell NC State, Finebaum Dublin, or the morning eight.
+P0 right now: empty YES on `clemson-at-lsu-2026` (Clemson), `patriots-at-seahawks-2026` (Patriots), `49ers-vs-rams-2026` (49ers), `bills-at-texans-2026` (Bills). Dublin UNC YES is Patterson (do not restage). P1: `wisconsin-vs-nd-2026`. Do not restage Kanell NC State, Finebaum Dublin, Patterson Dublin, or the morning eight.
 
 ## Bar (do not loosen)
 
