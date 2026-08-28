@@ -37,7 +37,8 @@ const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
 assert.match(home, /<title>PUNDITS\b/);
 assert.match(home, /Never miss a verified pick\./);
-assert.match(home, /Email signup is temporarily unavailable\./);
+assert.match(home, /Join the early list/);
+assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
 assert(!home.includes("/Pundits/"), "production output must not contain the GitHub Pages base path");
 
 const story = await readFile(
@@ -61,7 +62,7 @@ assert.match(
   privacy,
   /<link rel="canonical" href="https:\/\/pundits\.pro\/privacy\/"/
 );
-assert.match(privacy, /Email collection is not active/);
+assert.match(privacy, /Pundits on Cloudflare/);
 assert.match(
   story,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png"/

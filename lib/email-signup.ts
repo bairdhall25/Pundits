@@ -21,15 +21,26 @@ export type EmailSignupPayload = {
   submittedAt: string;
 };
 
+export const EMAIL_SIGNUP_ENDPOINT = "/api/email-interest";
+
+export const EMAIL_SIGNUP_PROVIDER = "Pundits on Cloudflare";
+
+export const EMAIL_SIGNUP_RETENTION =
+  "We keep early-list addresses in our Cloudflare account until you ask us to delete them or we shut the list down. We are not sending pick-alert emails yet.";
+
+export const EMAIL_SIGNUP_CONTACT =
+  "https://github.com/bairdhall25/Pundits/issues";
+
 export function getEmailSignupConfig(): EmailSignupConfig {
-  const endpoint = (process.env.NEXT_PUBLIC_EMAIL_SIGNUP_ENDPOINT ?? "").trim();
-  const provider = (process.env.NEXT_PUBLIC_EMAIL_SIGNUP_PROVIDER ?? "").trim();
-  const retention = (process.env.NEXT_PUBLIC_EMAIL_SIGNUP_RETENTION ?? "").trim();
-  const contact = (process.env.NEXT_PUBLIC_PRIVACY_CONTACT ?? "").trim();
-  const active = Boolean(
-    endpoint.startsWith("https://") && provider && retention && contact.includes("@")
-  );
-  return { endpoint, provider, retention, contact, active };
+  const disabled = (process.env.NEXT_PUBLIC_EMAIL_SIGNUP_DISABLED ?? "").trim() === "true";
+  const contact = (process.env.NEXT_PUBLIC_PRIVACY_CONTACT ?? "").trim() || EMAIL_SIGNUP_CONTACT;
+  return {
+    endpoint: EMAIL_SIGNUP_ENDPOINT,
+    provider: EMAIL_SIGNUP_PROVIDER,
+    retention: EMAIL_SIGNUP_RETENTION,
+    contact,
+    active: !disabled,
+  };
 }
 
 export function normalizeEmail(raw: string): string {
@@ -56,6 +67,36 @@ export function buildSignupPayload(input: {
     pagePath: input.pagePath,
     consentVersion: EMAIL_SIGNUP_CONSENT_VERSION,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
+  };
+}
+
+export type ParsedSignup =
+  | { kind: "spam" }
+  | { kind: "invalid" }
+  | { kind: "ok"; payload: EmailSignupPayload };
+
+export function parseSignupFields(fields: Record<string, string>): ParsedSignup {
+  if ((fields._gotcha ?? "").trim() || (fields.website ?? "").trim()) {
+    return { kind: "spam" };
+  }
+  const placements = new Set(["home", "pick_detail", "pundit_profile"]);
+  const scopes = new Set(["all", "event", "pundit"]);
+  const email = normalizeEmail(fields.email ?? "");
+  const placement = fields.placement ?? "";
+  const scope = fields.scope ?? "";
+  if (!isPlausibleEmail(email) || !placements.has(placement) || !scopes.has(scope)) {
+    return { kind: "invalid" };
+  }
+  return {
+    kind: "ok",
+    payload: buildSignupPayload({
+      email,
+      placement: placement as EmailSignupPlacement,
+      scope: scope as EmailSignupScope,
+      scopeId: fields.scopeId,
+      pagePath: (fields.pagePath ?? "/").slice(0, 200),
+      submittedAt: fields.submittedAt,
+    }),
   };
 }
 

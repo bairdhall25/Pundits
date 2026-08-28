@@ -7,6 +7,7 @@ import {
   getEmailSignupConfig,
   isPlausibleEmail,
   normalizeEmail,
+  parseSignupFields,
   signupFormBody,
 } from "./email-signup";
 
@@ -67,10 +68,33 @@ describe("email signup payload", () => {
     expect(params).not.toHaveProperty("email");
   });
 
-  it("treats missing public config as inactive", () => {
-    expect(getEmailSignupConfig().active).toBe(false);
+  it("keeps the DIY Cloudflare bucket active unless disabled", () => {
+    expect(getEmailSignupConfig().active).toBe(true);
+    expect(getEmailSignupConfig().endpoint).toBe("/api/email-interest");
     expect(isPlausibleEmail("not-an-email")).toBe(false);
     expect(isPlausibleEmail("fan@example.com")).toBe(true);
+  });
+
+  it("treats honeypot fills as spam and rejects junk fields", () => {
+    expect(
+      parseSignupFields({
+        email: "fan@example.com",
+        placement: "home",
+        scope: "all",
+        website: "http://spam",
+      }).kind
+    ).toBe("spam");
+    expect(parseSignupFields({ email: "nope", placement: "home", scope: "all" }).kind).toBe(
+      "invalid"
+    );
+    expect(
+      parseSignupFields({
+        email: "fan@example.com",
+        placement: "home",
+        scope: "all",
+        pagePath: "/",
+      }).kind
+    ).toBe("ok");
   });
 
   it("uses the approved headings", () => {

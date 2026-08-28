@@ -30,18 +30,16 @@ export default function PrivacyPage() {
         {config.active ? (
           <>
             <p>
-              Submissions are stored by {config.provider}, which holds the early
-              list until we choose an email product. {config.retention}
+              Submissions are stored by {config.provider}. {config.retention}
             </p>
             <p>
-              To request deletion, email {config.contact}.
+              To request deletion, open an issue at {config.contact}
+              {config.contact.includes("@") ? ` or email ${config.contact}` : ""}.
             </p>
           </>
         ) : (
           <p>
-            Email collection is not active on this site right now. A named
-            third-party collector, retention policy, and public deletion
-            contact will be listed here before any addresses are accepted.
+            Email collection is not active on this site right now.
           </p>
         )}
       </div>
