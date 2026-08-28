@@ -9,6 +9,7 @@ import {
   loadCalls,
   loadEvents,
   loadPundits,
+  loadTeams,
   sidesForCard,
 } from "@/lib/data";
 import {
@@ -21,6 +22,7 @@ import {
 } from "@/lib/seo";
 import { formatGameWhen, seasonLabel, seasonSpan } from "@/lib/format";
 import { eventShare } from "@/lib/share";
+import { eventOgCard, ogImageFor } from "@/lib/og";
 import { pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -35,8 +37,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = getEvent(slug, loadEvents());
   if (!event) return pageMeta("Expert picks", "Who the experts are taking.");
-  const share = eventShare(event, loadCalls(), loadPundits());
-  return pageMeta(share.title, share.description, `/picks/${slug}`);
+  const calls = loadCalls();
+  const pundits = loadPundits();
+  const share = eventShare(event, calls, pundits);
+  const card = eventOgCard(event, calls, pundits, loadTeams());
+  return pageMeta(share.title, share.description, `/picks/${slug}`, ogImageFor(card.file, share.title));
 }
 
 export default async function PickPage({

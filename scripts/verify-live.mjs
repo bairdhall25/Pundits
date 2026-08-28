@@ -10,6 +10,8 @@ const routes = [
   "/nfl/",
   "/picks/unc-vs-tcu-2026/",
   "/picks/unc-vs-tcu-2026/finebaum/",
+  "/picks/ncsu-at-uva-2026/kanell/",
+  "/og/takes/ncsu-at-uva-2026--kanell.png",
   "/pundits/herbstreit/",
   "/sitemap.xml",
 ];

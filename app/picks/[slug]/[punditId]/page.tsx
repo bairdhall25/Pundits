@@ -15,6 +15,7 @@ import {
   takePath,
   toStoryCard,
 } from "@/lib/seo";
+import { ogImageFor, ogTakePath } from "@/lib/og";
 import { pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -35,7 +36,12 @@ export async function generateMetadata({
   );
   if (!take) return pageMeta("Expert pick", "A verified expert pick with the quote and the price.");
   const story = pickStory(take);
-  return pageMeta(story.headline, story.dek, takePath(slug, punditId));
+  return pageMeta(
+    story.headline,
+    story.dek,
+    takePath(slug, punditId),
+    ogImageFor(ogTakePath(slug, punditId), story.headline)
+  );
 }
 
 export default async function TakePage({

@@ -57,12 +57,14 @@ export function ogImage() {
   };
 }
 
+export type OgImage = ReturnType<typeof ogImage>;
+
 export function pageMeta(
   title: string,
   description: string,
-  path?: string
+  path?: string,
+  image: OgImage = ogImage()
 ): Metadata {
-  const image = ogImage();
   const url = path ? canonicalUrl(path) : undefined;
   return {
     title,

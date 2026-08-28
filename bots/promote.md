@@ -29,7 +29,7 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Publish
 
-`npx vitest run` && `npx next build` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+`npx vitest run` && `npm run build` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. `npm run build` renders per-page OG images before the static export. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
 
 Set the Scout run comment to `promoted=true` in the same commit (keep `hard=N`).
 

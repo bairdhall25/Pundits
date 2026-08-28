@@ -1,6 +1,8 @@
 node_modules/
 .next/
 out/
+public/og/takes/
+public/og/events/
 .worktrees/
 .superpowers/
 .env*

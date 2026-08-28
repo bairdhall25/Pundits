@@ -14,7 +14,12 @@ const requiredFiles = [
   "nfl/index.html",
   "picks/unc-vs-tcu-2026/index.html",
   "picks/unc-vs-tcu-2026/finebaum/index.html",
+  "picks/ncsu-at-uva-2026/kanell/index.html",
   "pundits/herbstreit/index.html",
+  "og/takes/unc-vs-tcu-2026--finebaum.png",
+  "og/takes/ncsu-at-uva-2026--kanell.png",
+  "og/events/unc-vs-tcu-2026.png",
+  "og/events/ncsu-at-uva-2026.png",
   "robots.txt",
   "sitemap.xml",
   "_redirects",
@@ -41,6 +46,28 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/unc-vs-tcu-2026\/finebaum\/"/
 );
 assert.match(story, /Paul Finebaum picks TCU over North Carolina/);
+assert.match(
+  story,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png"/
+);
+assert.doesNotMatch(story, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
+
+const kanell = await readFile(
+  path.join(out, "picks/ncsu-at-uva-2026/kanell/index.html"),
+  "utf8"
+);
+assert.match(
+  kanell,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/ncsu-at-uva-2026--kanell\.png"/
+);
+
+const ncsu = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
+assert.match(
+  ncsu,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png"/
+);
+
+assert.match(home, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
 
 const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
 for (const url of [
