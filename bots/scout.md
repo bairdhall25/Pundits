@@ -25,6 +25,8 @@ Do **not** stop after `{name} {away} {home} 2026 pick` or an ESPN “No Pick” 
 3. **Named Barstool / Ringer people** (not “the show”): PFT Commenter, Big Cat, Portnoy, Brandon Walker, Riggs, Cousin Sal, Sheil Kapadia, Steven Ruiz, Kevin Clark (Ringer). Other **named** speakers if they clearly pick a listed game.
 4. Open the episode. Captions count. Jump the locks / “I’ll take” / moneyline block. Search **both** teams, last ~7 days, **2026 only**.
 
+**X is not this job.** `bots/scout-x.md` owns Twitter status URLs. Do not spend this run on `from:{handle}` sweeps. If you land on a tweet while opening a show, you may stage it; do not skip saying X Scout owns the systematic pass.
+
 Kanell’s Wolfpack ML came from Cover 3 LOCKS captions, not a headline. Copy that method.
 
 **Tokens are not scarce.** Grok Heavy, Grok Bots, Codex, and Claude have a lot of monthly headroom. The constraint is a verified first-person SU, not spend. Open extra episodes. Jump the locks / moneyline block. Search **both** teams. A first empty query is not the end of the hunt. Do not invent a pick to fill a hole.

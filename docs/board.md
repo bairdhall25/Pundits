@@ -57,8 +57,9 @@ Fans follow **shows**. After roster podcasts, hunt **named** Barstool and Ringer
 - Segment words: `locks`, `I'll take`, `give me`, `moneyline`, `straight up`, `I'm on`.
 - Open the episode (YouTube/Barstool/Ringer). Use captions. Jump the locks/picks block — that is how Kanell’s Wolfpack ML showed up.
 - Search **both** teams, last ~7 days, this season only.
-- Named X/social is fine if the URL opens and the speaker is clear.
 - ESPN staff “No Pick” grids are not the end of the hunt.
+
+**X Scout** (`bots/scout-x.md`) owns Twitter. Shows Scout does not sweep `from:{handle}`. Same Intake/Candidates bar; append `## X pass` to the day’s run file.
 
 **Named people to query** (not a roster, a search list):
 
@@ -93,7 +94,8 @@ NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `
 
 ## Other bots
 
-- **Audit:** re-open new **game** hard rows first. A fail stays out of JSON.
+- **X Scout:** Twitter only. Append `## X pass` to the day’s run file. Chip Patterson stays a Candidate.
+- **Audit:** re-open new **game** hard rows first (Shows + X pass). A fail stays out of JSON.
 - **Promote:** ship `ok` game rows before any new future. Do not restage the do-not-touch list. Do not flip ncsu/wisconsin on home unless Scout proposed it with a verified SU.
 - **Grader:** first slate is Dublin `unc-vs-tcu-2026` (Sat Aug 29). Then Clemson–LSU. Then NFL Week 1. Infer winner from hit/miss; do not invent an event `result` field unless Promote adds one.
 - **Recap:** say out loud that every home game is still one-sided until P0 moves.

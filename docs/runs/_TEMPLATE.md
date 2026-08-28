@@ -28,3 +28,35 @@ none
 ### Stories this would mint
 
 *(none)*
+
+## X pass YYYY-MM-DD (Grok Bot)
+
+X (Twitter) only. Shows Scout owns episodes.
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+
+### Candidates
+
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
+
+### Dropped
+
+-
+
+### Freeze
+
+none
+
+### Home cards
+
+-
+
+### Stories this would mint
+
+*(none)*

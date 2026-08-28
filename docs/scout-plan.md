@@ -23,10 +23,10 @@ Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboar
 
 ## Pipeline
 
-1. Scout hunts, writes `docs/runs/YYYY-MM-DD.md` on GitHub. Never `data/`.
-2. Audit re-opens URLs.
+1. **Shows Scout** hunts YouTube / podcasts / TV. **X Scout** hunts status URLs only. Both write `docs/runs/YYYY-MM-DD.md` (X Scout appends `## X pass`). Never `data/`.
+2. Audit re-opens URLs (including `x.com/.../status/...`).
 3. Promote ships `ok` **roster** hard rows. Candidates are not auto-rostered.
-4. App mints `/picks/{slug}/{pundit}/`.
+4. App mints `/picks/{slug}/{pundit}/`. Poster tweets the live URL. Poster does not hunt.
 
 ## Quality bar
 

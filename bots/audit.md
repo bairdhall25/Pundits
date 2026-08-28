@@ -11,7 +11,7 @@ From https://github.com/bairdhall25/Pundits (main):
 - Latest Scout intake: `docs/runs/YYYY-MM-DD.md` (today, else the newest file in `docs/runs/`)
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
 - Live stories: https://pundits.pro/stories/
-- `bots/scout.md` house rules (season, YES = away, name the speaker)
+- `bots/scout.md` and `bots/scout-x.md` house rules (season, YES = away, name the speaker). An X `sourceUrl` must be a status URL (`x.com/{handle}/status/{id}` or twitter.com). The quote must be on that post.
 - `docs/board.md` — do-not-touch and game-first
 
 ## Do

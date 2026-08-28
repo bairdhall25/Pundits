@@ -4,7 +4,8 @@ No backend. JSON in this repo is the record. **Scout is the product.** Empty Sco
 
 | Bot | File | Job |
 |---|---|---|
-| Scout | `bots/scout.md` | Hunt and verify this week’s SU leans. Write `docs/runs/`. Never `data/`. |
+| Scout | `bots/scout.md` | Hunt YouTube / podcasts / TV SU leans. Write `docs/runs/`. Never `data/`. |
+| X Scout | `bots/scout-x.md` | Hunt X status URLs only. Append an X pass to the same run file. Never `data/`. |
 | Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
@@ -50,7 +51,20 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt P0 empty away-sides on home games first. Tokens are not scarce — open extra episodes (locks / I'll take / moneyline). Named Barstool and Ringer speakers as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt P0 empty away-sides on home games first. Tokens are not scarce — open extra episodes (locks / I'll take / moneyline). Named Barstool and Ringer speakers as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff. X (Twitter) is X Scout's job — do not spend this run on status-URL sweeps.
+```
+
+**X Scout**
+
+```
+You are the Pundits X Scout. You hunt X (Twitter) only. Shows Scout owns podcasts and YouTube.
+
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
+Repo: https://github.com/bairdhall25/Pundits
+
+P0 empty away-sides first. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md (create if missing). Chat is not the handoff.
 ```
 
 **Promote**
@@ -92,7 +106,7 @@ Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md
 Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/board.md`. Hunt hard (show + matchup + locks, open the episode). Tokens are not scarce — open extra clips rather than stopping at a headline miss. Named Barstool/Ringer speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked.
+2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/board.md`. Shows Scout hunts episodes (locks / I'll take). X Scout hunts status URLs (`from:{handle}`, last 48 hours). Named Barstool/Ringer speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.
