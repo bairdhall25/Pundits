@@ -7,6 +7,7 @@ import satori from "satori";
 import { loadCalls, loadEvents, loadPundits, loadTeams } from "../lib/data";
 import {
   eventOgCard,
+  ogQuote,
   takeOgCard,
   type EventOgCard,
   type OgChip,
@@ -87,13 +88,7 @@ function Chip({ chip }: { chip: OgChip }) {
 }
 
 function FaceRow({ side, showPhotos }: { side: OgSide; showPhotos: boolean }) {
-  if (side.empty) {
-    return (
-      <div style={{ marginTop: 14, color: MUTED, fontSize: 18, fontFamily: "Inter" }}>
-        No verified pundit pick yet
-      </div>
-    );
-  }
+  if (side.empty) return null;
   return (
     <div style={{ marginTop: 12, display: "flex", flexDirection: "column" }}>
       {side.faces.slice(0, 3).map((face) => {
@@ -188,7 +183,7 @@ function SidePanel({
   );
 }
 
-function Wordmark() {
+function Wordmark({ right }: { right?: string | null }) {
   return (
     <div
       style={{
@@ -197,20 +192,21 @@ function Wordmark() {
         alignItems: "center",
       }}
     >
-      <div style={{ display: "flex", fontFamily: "Oswald", fontSize: 34, letterSpacing: 4 }}>
+      <div style={{ display: "flex", fontFamily: "Oswald", fontSize: 32, letterSpacing: 4 }}>
         <span style={{ color: GREEN }}>PUNDITS</span>
         <span style={{ color: INK }}>.</span>
       </div>
-      <div
-        style={{
-          color: MUTED,
-          fontSize: 16,
-          letterSpacing: 4,
-          fontFamily: "Oswald",
-        }}
-      >
-        KALSHI
-      </div>
+      {right ? (
+        <div
+          style={{
+            color: MUTED,
+            fontSize: 18,
+            fontFamily: "Inter",
+          }}
+        >
+          {right}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -233,7 +229,7 @@ function Shell({ children }: { children: ReactNode }) {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          padding: "36px 52px 40px",
+          padding: "32px 48px 36px",
         }}
       >
         {children}
@@ -244,36 +240,38 @@ function Shell({ children }: { children: ReactNode }) {
 
 function TakeMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
+  const quote = ogQuote(card.quote, 120);
+  const quoteSize = quote.length > 90 ? 22 : 26;
   return (
     <Shell>
-      <Wordmark />
+      <Wordmark right={card.when} />
       <div
         style={{
           display: "flex",
           flex: 1,
           alignItems: "center",
-          marginTop: 28,
+          marginTop: 24,
         }}
       >
         {uri ? (
           <img
             src={uri}
-            width={220}
-            height={220}
+            width={300}
+            height={300}
             style={{ objectFit: "cover" }}
           />
         ) : (
           <div
             style={{
-              width: 220,
-              height: 220,
+              width: 300,
+              height: 300,
               background: CARD,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               color: MUTED,
               fontFamily: "Oswald",
-              fontSize: 72,
+              fontSize: 96,
             }}
           >
             {card.name.slice(0, 1)}
@@ -283,14 +281,14 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            marginLeft: 36,
+            marginLeft: 32,
             flex: 1,
           }}
         >
           <div
             style={{
               color: MUTED,
-              fontSize: 16,
+              fontSize: 15,
               letterSpacing: 3,
               textTransform: "uppercase",
               fontFamily: "Oswald",
@@ -309,26 +307,74 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
           >
             {card.headline}
           </div>
-          {card.when ? (
-            <div style={{ marginTop: 12, color: MUTED, fontSize: 20, fontFamily: "Inter" }}>
-              {card.when}
+          <div
+            style={{
+              marginTop: 18,
+              display: "flex",
+              borderLeft: `4px solid ${GREEN}`,
+              paddingLeft: 16,
+            }}
+          >
+            <div
+              style={{
+                color: INK,
+                fontFamily: "Inter",
+                fontSize: quoteSize,
+                lineHeight: 1.3,
+                fontWeight: 400,
+              }}
+            >
+              {`“${quote}”`}
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
-      <div style={{ display: "flex", marginTop: 24 }}>
-        <SidePanel side={card.sides[0]} showPhotos={false} />
+      <div style={{ display: "flex", marginTop: 22 }}>
+        <ScoreCell side={card.sides[0]} />
         <div style={{ width: 2, background: "#2a2a2a" }} />
-        <SidePanel side={card.sides[1]} showPhotos={false} />
+        <ScoreCell side={card.sides[1]} />
       </div>
     </Shell>
+  );
+}
+
+function ScoreCell({ side }: { side: OgSide }) {
+  return (
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        background: CARD,
+        padding: "16px 20px",
+        borderLeft: side.picked ? `6px solid ${GREEN}` : "6px solid #141414",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {side.chip ? <Chip chip={side.chip} /> : null}
+        <div
+          style={{
+            marginLeft: side.chip ? 12 : 0,
+            fontFamily: "Oswald",
+            fontSize: 24,
+            color: INK,
+          }}
+        >
+          {side.label}
+        </div>
+      </div>
+      <div style={{ fontFamily: "Oswald", fontSize: 40, color: INK, marginLeft: 12 }}>
+        {side.cents}
+      </div>
+    </div>
   );
 }
 
 function EventMarkup({ card }: { card: EventOgCard }) {
   return (
     <Shell>
-      <Wordmark />
+      <Wordmark right={card.when} />
       <div
         style={{
           marginTop: 28,
@@ -340,12 +386,7 @@ function EventMarkup({ card }: { card: EventOgCard }) {
       >
         {card.title}
       </div>
-      {card.when ? (
-        <div style={{ marginTop: 8, color: MUTED, fontSize: 20, fontFamily: "Inter" }}>
-          {card.when}
-        </div>
-      ) : null}
-      <div style={{ display: "flex", marginTop: 28, flex: 1 }}>
+      <div style={{ display: "flex", marginTop: 28 }}>
         <SidePanel side={card.sides[0]} showPhotos />
         <div style={{ width: 2, background: "#2a2a2a" }} />
         <SidePanel side={card.sides[1]} showPhotos />

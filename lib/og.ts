@@ -1,7 +1,7 @@
 import { formatCents, formatGameWhen } from "./format";
 import { getTeam, sidesForCard } from "./data";
 import { sideChip, takeHeadline, type MappedTake } from "./seo";
-import { canonicalUrl, ogImage } from "./site";
+import { canonicalUrl, ogImage, takePath } from "./site";
 import type { Call, CardSide, Event, Pundit, Team } from "./types";
 
 export type OgChip = {
@@ -29,6 +29,7 @@ export type TakeOgCard = {
   file: string;
   kicker: string;
   headline: string;
+  quote: string;
   when: string | null;
   photo: string;
   name: string;
@@ -49,6 +50,28 @@ export function ogTakePath(slug: string, punditId: string): string {
 
 export function ogEventPath(slug: string): string {
   return `/og/events/${slug}.png`;
+}
+
+export function ogQuote(claim: string, max = 140): string {
+  const trimmed = claim.replace(/\s+/g, " ").replace(/[.]+$/, "").trim();
+  if (trimmed.length <= max) return trimmed;
+  return `${trimmed.slice(0, max).replace(/\s+\S*$/, "")}…`;
+}
+
+export function takeTweetText(card: TakeOgCard, slug: string, punditId: string): string {
+  const [yes, no] = card.sides;
+  const price = `${yes.label} ${yes.cents} · ${no.label} ${no.cents}`;
+  return [
+    card.headline,
+    "",
+    `“${ogQuote(card.quote, 160)}”`,
+    "",
+    price,
+    card.when,
+    canonicalUrl(takePath(slug, punditId)),
+  ]
+    .filter((line) => line != null)
+    .join("\n");
 }
 
 export function ogImageFor(path: string, alt: string) {
@@ -114,6 +137,7 @@ export function takeOgCard(
     file: ogTakePath(take.event.slug, take.pundit.id),
     kicker: take.pundit.outlet,
     headline: takeHeadline(take.pundit, take.event, take.call),
+    quote: take.call.claim,
     when: formatGameWhen(take.event),
     photo: take.pundit.photo,
     name: take.pundit.name,
