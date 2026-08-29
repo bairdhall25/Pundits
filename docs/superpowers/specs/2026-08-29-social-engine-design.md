@@ -40,7 +40,7 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 
 ## The card index
 
-`scripts/build-social-index.mjs` runs with the build (alongside `render-og`) and writes `public/social/cards.json`: for each event, take, and pundit — page URL, OG card URL, story card URL, and state (pending / tonight / live / hit / miss), frozen cents, kickoff, and pundit record where applicable. Bots fetch `https://pundits.pro/social/cards.json` at job start. Ships with a test (repo convention: assert behavior, not live-data snapshots) and a `verify-static` route check. Freshness rides the existing game-day deploy cadence (RUNBOOK).
+`scripts/build-social-index.ts` (tsx, matching `render-og.tsx`; pure logic in `lib/social.ts`) runs with the build and writes `public/social/cards.json`: for each event, take, and pundit — page URL, OG card URL, story card URL, frozen cents, raw `kickoff`/`kickoffDate`, settled state, per-take status (pending / hit / miss), and pundit record. Time-relative words ("tonight", "live") are never baked in at build time — they'd go stale and the product gives them strict meanings; bots compute proximity from `kickoff` at post time. Bots fetch `https://pundits.pro/social/cards.json` at job start. Ships with a test (repo convention: assert behavior, not live-data snapshots) and a `verify-static` route check. Freshness rides the existing game-day deploy cadence (RUNBOOK).
 
 ## Voice (summary — full guide in `docs/social/voice.md`)
 
