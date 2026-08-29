@@ -1,4 +1,4 @@
-import { isMapped, settledSide, sidesForCard } from "./data";
+import { isMapped, sidesForCard } from "./data";
 import { publicSideLabel } from "./public-side";
 import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
 import { eventShare } from "./share";
@@ -381,27 +381,20 @@ export function eventJsonLd(
 ) {
   const url = canonicalUrl(`/picks/${event.slug}`);
   const share = eventShare(event, calls, pundits);
-  const base: Record<string, unknown> = {
+  return {
     "@context": "https://schema.org",
-    "@type": event.awayTeam && event.homeTeam ? "SportsEvent" : "Event",
+    "@type": "WebPage",
     name: event.title,
     url,
     description: share.description,
-    sport: "American football",
-    eventStatus: settledSide(event, calls)
-      ? "https://schema.org/EventCompleted"
-      : "https://schema.org/EventScheduled",
+    about:
+      event.awayTeam && event.homeTeam
+        ? [
+            { "@type": "SportsTeam", name: event.awayTeam },
+            { "@type": "SportsTeam", name: event.homeTeam },
+          ]
+        : { "@type": "Thing", name: event.title },
   };
-  if (event.kickoffDate) {
-    base.startDate = event.kickoffDate;
-  }
-  if (event.awayTeam) {
-    base.awayTeam = { "@type": "SportsTeam", name: event.awayTeam };
-  }
-  if (event.homeTeam) {
-    base.homeTeam = { "@type": "SportsTeam", name: event.homeTeam };
-  }
-  return base;
 }
 
 export function personJsonLd(pundit: Pundit) {
@@ -451,7 +444,7 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
       logo: canonicalUrl("/og.png"),
     },
     about: {
-      "@type": take.event.awayTeam ? "SportsEvent" : "Event",
+      "@type": "Thing",
       name: take.event.title,
       url: canonicalUrl(`/picks/${take.event.slug}`),
     },

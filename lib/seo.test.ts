@@ -220,6 +220,10 @@ describe("json-ld", () => {
     expect(json.headline).toBe("Paul Finebaum picks TCU over North Carolina");
     expect(json.author).toMatchObject({ name: "PUNDITS Staff" });
     expect(json.mentions).toMatchObject({ name: "Paul Finebaum" });
+    expect(json.about).toMatchObject({
+      "@type": "Thing",
+      name: "North Carolina vs TCU",
+    });
     expect(json.image).toContain(
       "https://pundits.pro/og/takes/unc-vs-tcu-2026--finebaum.png"
     );
@@ -256,7 +260,7 @@ describe("json-ld", () => {
     ]);
   });
 
-  it("marks event schema completed only when grading establishes a winner", () => {
+  it("describes pick pages without claiming Google Event rich-result eligibility", () => {
     const event = loadEvents().find((candidate) => candidate.slug === "unc-vs-tcu-2026")!;
     const call = loadCalls().find((candidate) => candidate.eventSlug === event.slug)!;
     const pending = eventJsonLd(event, [call], loadPundits());
@@ -265,8 +269,13 @@ describe("json-ld", () => {
       [{ ...call, status: "hit" } as Call],
       loadPundits()
     );
-    expect(pending.eventStatus).toBe("https://schema.org/EventScheduled");
-    expect(graded.eventStatus).toBe("https://schema.org/EventCompleted");
+    expect(pending["@type"]).toBe("WebPage");
+    expect(pending).not.toHaveProperty("startDate");
+    expect(pending).not.toHaveProperty("eventStatus");
+    expect(JSON.stringify(pending)).not.toMatch(/SportsEvent|\"@type\":\"Event\"/);
+    expect(graded["@type"]).toBe("WebPage");
+    expect(graded).not.toHaveProperty("eventStatus");
+    expect(JSON.stringify(graded)).not.toMatch(/SportsEvent|\"@type\":\"Event\"/);
   });
 
   it("writes grammatical futures headlines", () => {

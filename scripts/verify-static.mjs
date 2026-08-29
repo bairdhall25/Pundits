@@ -51,6 +51,8 @@ assert.match(
 assert.match(story, /Paul Finebaum pick(s|ed) TCU over North Carolina/);
 assert.match(story, />Share</);
 assert.match(story, /By PUNDITS Staff.*Source published/);
+assert.match(story, /\"about\":\{\"@type\":\"Thing\"/);
+assert.doesNotMatch(story, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"/);
 assert.match(story, /\"@type\":\"NewsArticle\"/);
 assert.match(story, /\"name\":\"PUNDITS Staff\"/);
 
@@ -78,6 +80,8 @@ const dublinDetail = await readFile(path.join(out, "picks/unc-vs-tcu-2026/index.
 assert.match(dublinDetail, /Open on Kalshi/);
 assert.match(dublinDetail, /data-kickoff="2026-08-29"/);
 assert.match(dublinDetail, /KXNCAAFGAME-26AUG29UNCTCU/);
+assert.match(dublinDetail, /\"@type\":\"WebPage\"/);
+assert.doesNotMatch(dublinDetail, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"/);
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
