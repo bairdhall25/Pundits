@@ -101,3 +101,10 @@ export function formatDispatch(rows) {
   }
   return lines.join("\n");
 }
+
+export function loadBringOntoHome(raw) {
+  if (!Array.isArray(raw) || raw.some((s) => typeof s !== "string" || !s)) {
+    throw new Error("docs/bring-onto-home.json must be a JSON array of slugs");
+  }
+  return raw;
+}

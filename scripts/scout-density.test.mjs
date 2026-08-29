@@ -4,6 +4,7 @@ import {
   formatDispatch,
   huntHint,
   isGameEvent,
+  loadBringOntoHome,
   mappedHardForEvent,
   scoreSlate,
 } from "./scout-density-lib.mjs";
@@ -169,5 +170,19 @@ describe("formatDispatch", () => {
     ]);
     expect(md).toContain("## Dispatch");
     expect(md).toContain("| clemson-at-lsu-2026 | ncaaf | (none) | pate, finebaum | empty-side | Clemson YES first, then a third voice |");
+  });
+});
+
+describe("loadBringOntoHome", () => {
+  it("accepts a slug array", () => {
+    expect(loadBringOntoHome(["wisconsin-vs-nd-2026"])).toEqual([
+      "wisconsin-vs-nd-2026",
+    ]);
+  });
+
+  it("rejects a non-array", () => {
+    expect(() => loadBringOntoHome({ slug: "wisconsin-vs-nd-2026" })).toThrow(
+      /array of slugs/
+    );
   });
 });
