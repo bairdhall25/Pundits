@@ -7,6 +7,9 @@ public/og/pundits/
 public/og/stories/
 public/social/cards.json
 .worktrees/
+.claude/
+.codex-audit/
+.wrangler/
 .superpowers/
 .env*
 *.tsbuildinfo
