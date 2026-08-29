@@ -26,6 +26,7 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (sk
 1. Roster handles below (and add-list handles in `docs/add-list.md`). Query **both** teams, last **48 hours**, this season only.
 2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
 3. Per under-dense game, say in Dropped which handles you actually opened.
+4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent). Do not claim a sweep.
 
 If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
 
@@ -100,7 +101,9 @@ Git is the mailbox. Chat is not the handoff.
 
 Same tables as Shows Scout, including the optional `reasoning` column:
 
-**Intake** · **Candidates** · **Dropped** (per under-dense game: handles you opened) · **Freeze** · **Home cards** · **Stories this would mint**
+**Intake** · **Candidates** · **Dropped** (per under-dense game: handles you opened) · **Freeze** · **Stories this would mint**
+
+Write **Home cards** only if you are the last pass of the day (no News still scheduled). Otherwise leave it for the later pass.
 
 Empty Intake is a valid run. Say so.
 

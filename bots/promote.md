@@ -9,7 +9,7 @@ Also follow `bots/README.md` house rules 2–8 and its Scheduled Git handoff.
 From https://github.com/bairdhall25/Pundits (main):
 
 - `bots/scout.md` — what Scout already verified (you do not re-mine)
-- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` on GitHub `main` (today, else the newest file). Include **X pass** Intake rows. Do not wait for a chat paste.
+- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` on GitHub `main` (today, else the newest file). Include Intake rows from **Shows pass**, **X pass**, and **News pass**. Do not wait for a chat paste.
 - Matching Audit: `docs/runs/YYYY-MM-DD-audit.md`. Prefer promoting only rows Audit marked `ok`. If Audit has not run and the operator asked you to ship anyway, say so in the commit.
 - `data/pundits.json` — legal `punditId`s
 - `data/events.json` — legal `eventSlug`s, YES = away

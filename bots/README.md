@@ -19,12 +19,13 @@ Scout does not grade and does not write JSON. Promote does not hunt new takes. A
 
 Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
 
-1. **Scout** commits `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`). Never `data/`.
-2. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
-3. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
-4. **Grader** after kickoff. **Recap** after Grader.
+1. **Coordinator** writes `## Dispatch` into `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`). Never `data/`.
+2. **Shows / X / News** hunt Dispatch and append their passes to that run file.
+3. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
+4. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
+5. **Grader** after kickoff. **Recap** after Grader.
 
-Launch-week cadence: Scout morning. Audit as soon as the run file lands (or a scheduled sweep). Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
+Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
 
 ## Scheduled Git handoff
 

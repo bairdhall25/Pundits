@@ -1,6 +1,6 @@
 # Capture assignment
 
-Date: 2026-08-28. **Live JSON wins** if this file and `data/` disagree. This file is the hunt order for Grok Bots. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
+Date: 2026-08-28. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
 
 Fan problem: five home games and **every one is one-sided**. Favorites have faces. Away/underdogs are empty. Futures (title, CFP, Super Bowl) are where the fights are. A fan opening this weekend wants Saturday and Wednesday, not July Super Bowl takes.
 
@@ -39,7 +39,7 @@ NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `
 ## Other bots
 
 - **X Scout:** Twitter only. Append `## X pass` to the day’s run file. `patterson` and `walker` are Intake.
-- **Audit:** re-open new **game** hard rows first (Shows + X pass). A fail stays out of JSON.
+- **Audit:** re-open new **game** hard rows first (Shows + X + News pass). A fail stays out of JSON.
 - **Promote:** ship `ok` game rows before any new future. Do not restage the do-not-touch list. Do not flip ncsu/wisconsin on home unless Scout proposed it with a verified SU.
 - **Grader:** first slate is Dublin `unc-vs-tcu-2026` (Sat Aug 29). Then Clemson–LSU. Then NFL Week 1. Infer winner from hit/miss; do not invent an event `result` field unless Promote adds one.
 - **Recap:** say out loud that every home game is still one-sided until empty-side rows move.

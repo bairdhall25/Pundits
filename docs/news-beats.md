@@ -13,7 +13,7 @@ Hunt only sports that appear on today’s `## Dispatch`. Skip `dense` rows unles
 
 | Outlet | Voices | Jump | Start |
 |---|---|---|---|
-| On3 PICKING recap | `staples`, `wasserman` | winner without a spread | YouTube/article titled `PICKING {away} {home}` — ATS cover only is Dropped |
+| On3 PICKING recap | `staples`, `wasserman` | winner without a spread | On3 **article** URL. PICKING YouTube is Shows. ATS cover only is Dropped |
 | Josh Pate recaps | `pate` | end-of-show winners written up | Josh Pate’s College Football Show site / YouTube description only if it quotes him |
 | FOX / Bear Bets column | `fallica` | bylined best bets | FOX Sports Fallica |
 | ESPN CFB byline | roster names only | “who wins” | Only if a roster id is the byline |
