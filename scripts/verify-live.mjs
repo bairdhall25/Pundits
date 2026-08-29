@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { CORE_PAGES } from "./required-routes.mjs";
 
 const origin = (process.env.PUNDITS_LIVE_ORIGIN ?? "https://pundits.pro").replace(/\/$/, "");
 const calls = JSON.parse(
@@ -10,24 +11,8 @@ const mappedHardCalls = calls.filter(
   (call) => call.kind === "hard" && call.eventSlug && call.punditId && call.side
 );
 
-const routes = new Set([
-  "/",
-  "/stories/",
-  "/book/",
-  "/leaderboard/",
-  "/ncaaf/",
-  "/nfl/",
-  "/picks/unc-vs-tcu-2026/",
-  "/picks/unc-vs-tcu-2026/finebaum/",
-  "/picks/ncsu-at-uva-2026/kanell/",
-  "/picks/unc-vs-tcu-2026/patterson/",
-  "/og/takes/ncsu-at-uva-2026--kanell.png",
-  "/pundits/herbstreit/",
-  "/privacy/",
-  "/about/",
-  "/terms/",
-  "/sitemap.xml",
-]);
+const routes = new Set(CORE_PAGES.map((page) => page.url));
+routes.add("/og/takes/ncsu-at-uva-2026--kanell.png");
 
 for (const call of mappedHardCalls) {
   routes.add(`/picks/${call.eventSlug}/`);

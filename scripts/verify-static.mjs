@@ -1,40 +1,14 @@
 import assert from "node:assert/strict";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { CORE_PAGES, STATIC_ONLY_FILES } from "./required-routes.mjs";
 
 const root = process.cwd();
 const out = path.join(root, "out");
 
 const requiredFiles = [
-  "index.html",
-  "stories/index.html",
-  "book/index.html",
-  "leaderboard/index.html",
-  "ncaaf/index.html",
-  "nfl/index.html",
-  "picks/unc-vs-tcu-2026/index.html",
-  "picks/unc-vs-tcu-2026/finebaum/index.html",
-  "picks/ncsu-at-uva-2026/kanell/index.html",
-  "picks/unc-vs-tcu-2026/patterson/index.html",
-  "pundits/herbstreit/index.html",
-  "privacy/index.html",
-  "about/index.html",
-  "methodology/index.html",
-  "terms/index.html",
-  "og/takes/unc-vs-tcu-2026--finebaum.png",
-  "og/takes/ncsu-at-uva-2026--kanell.png",
-  "og/takes/unc-vs-tcu-2026--patterson.png",
-  "og/events/unc-vs-tcu-2026.png",
-  "og/events/ncsu-at-uva-2026.png",
-  "og/pundits/finebaum.png",
-  "og/stories/takes/unc-vs-tcu-2026--finebaum.png",
-  "og/stories/events/unc-vs-tcu-2026.png",
-  "og/stories/pundits/finebaum.png",
-  "robots.txt",
-  "sitemap.xml",
-  "news-sitemap.xml",
-  "feed.xml",
-  "_redirects",
+  ...CORE_PAGES.map((page) => page.file),
+  ...STATIC_ONLY_FILES,
 ];
 
 for (const relative of requiredFiles) {

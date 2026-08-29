@@ -1,0 +1,35 @@
+/** Core pages both verifiers must see. url is live path; file is under out/. */
+export const CORE_PAGES = [
+  { url: "/", file: "index.html" },
+  { url: "/stories/", file: "stories/index.html" },
+  { url: "/book/", file: "book/index.html" },
+  { url: "/leaderboard/", file: "leaderboard/index.html" },
+  { url: "/ncaaf/", file: "ncaaf/index.html" },
+  { url: "/nfl/", file: "nfl/index.html" },
+  { url: "/picks/unc-vs-tcu-2026/", file: "picks/unc-vs-tcu-2026/index.html" },
+  { url: "/picks/unc-vs-tcu-2026/finebaum/", file: "picks/unc-vs-tcu-2026/finebaum/index.html" },
+  { url: "/picks/ncsu-at-uva-2026/kanell/", file: "picks/ncsu-at-uva-2026/kanell/index.html" },
+  { url: "/picks/unc-vs-tcu-2026/patterson/", file: "picks/unc-vs-tcu-2026/patterson/index.html" },
+  { url: "/pundits/herbstreit/", file: "pundits/herbstreit/index.html" },
+  { url: "/privacy/", file: "privacy/index.html" },
+  { url: "/about/", file: "about/index.html" },
+  { url: "/terms/", file: "terms/index.html" },
+  { url: "/sitemap.xml", file: "sitemap.xml" },
+];
+
+export const STATIC_ONLY_FILES = [
+  "og/takes/unc-vs-tcu-2026--finebaum.png",
+  "og/takes/ncsu-at-uva-2026--kanell.png",
+  "og/takes/unc-vs-tcu-2026--patterson.png",
+  "og/events/unc-vs-tcu-2026.png",
+  "og/events/ncsu-at-uva-2026.png",
+  "og/pundits/finebaum.png",
+  "og/stories/takes/unc-vs-tcu-2026--finebaum.png",
+  "og/stories/events/unc-vs-tcu-2026.png",
+  "og/stories/pundits/finebaum.png",
+  "robots.txt",
+  "news-sitemap.xml",
+  "feed.xml",
+  "_redirects",
+  "methodology/index.html",
+];
