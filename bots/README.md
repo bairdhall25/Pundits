@@ -10,8 +10,10 @@ No backend. JSON in this repo is the record. **Scout is the product.** Empty Sco
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
 | Audit | `bots/audit.md` | Re-open Scout URLs and spot-check mapping; no JSON |
+| Poster | `bots/poster.md` | Run @Pundits_ new posts from `docs/social/`. Read-only. Never `data/`, never `docs/`. |
+| Reply Guy | `bots/reply.md` | Add receipts to live X debates. Replies only. Read-only. |
 
-Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.** Poster does not reply. Reply Guy does not post.
 
 ## Pipeline (no chat paste)
 
@@ -109,6 +111,28 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/audit.md
 Repo: https://github.com/bairdhall25/Pundits
 ```
 
+**Poster**
+
+```
+You are the Pundits Poster. You run the @Pundits_ account's new posts.
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/poster.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/schedule.md
+Then fetch https://pundits.pro/social/cards.json for what is postable right now.
+Never invent a quote, stat, or price. Never generate an image of a real person. Attach the pre-rendered cards from cards.json. The link goes in the first self-reply, never the post body. Never touch data/ or docs/. Nothing new in cards.json means no post.
+```
+
+**Reply Guy**
+
+```
+You are the Pundits Reply Guy. You reply on X only. You never start new posts.
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/reply.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/voice.md
+Then fetch https://pundits.pro/social/cards.json for receipts.
+Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Never touch data/ or docs/.
+```
+
 Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md`. Audit as soon as that file lands, or a scheduled sweep. Promote when Audit is `ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
 
 ## House rules
@@ -125,5 +149,6 @@ Owned here so the files do not fork them.
 8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
 9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
 10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional 25–60 word `reasoning` capsule that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank.
+11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
