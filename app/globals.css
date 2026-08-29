@@ -855,6 +855,19 @@ a.empty.event-price-link { color: var(--muted); }
   }
   .site-nav a { scroll-margin-inline: 12px; }
 }
+@media (max-width: 359px) {
+  .site-nav {
+    gap: 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .site-nav a,
+  .nav-more summary {
+    padding-inline: 8px;
+  }
+}
 @media (min-width: 720px) {
   .shell { padding: 20px 20px 48px; }
   .eyebrow { font-size: 16px; }

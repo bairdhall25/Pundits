@@ -22,4 +22,4 @@ Poster: never more than 6 posts/day; never two identical archetypes in a row; ev
 
 ## Dead air rule
 
-If `cards.json` offers nothing new — no pending takes resolving, no new freezes — post nothing. Silence beats filler. Empty is better than false: this is a core product principle, not a style preference.
+If the live @Pundits_ timeline comparison offers nothing new — no unposted pending take, newly graded result, or unused scheduled moment — post nothing. `generatedAt` proves freshness, not novelty. Silence beats filler. Empty is better than false: this is a core product principle, not a style preference.

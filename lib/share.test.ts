@@ -72,7 +72,7 @@ describe("share copy", () => {
     );
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description).toContain("Finebaum / ESPN");
-    expect(share.description).toContain("2 live picks");
+    expect(share.description).toContain("2 open picks");
     expect(share.description).toContain("I don't believe they'll win this game in Ireland");
     expect(share.description).not.toContain("2026 record 0–0");
     expect(share.description).not.toMatch(/\.”\.$/);

@@ -113,7 +113,7 @@ export function punditShare(
       ? `2026 record ${pundit.season2026.wins}–${pundit.season2026.losses}`
       : null,
     pundit.mappedPending
-      ? `${pundit.mappedPending} live pick${pundit.mappedPending === 1 ? "" : "s"}`
+      ? `${pundit.mappedPending} open pick${pundit.mappedPending === 1 ? "" : "s"}`
       : null,
     latest ? `Latest: “${clipClaim(latest.claim)}”` : null,
   ].filter(Boolean);

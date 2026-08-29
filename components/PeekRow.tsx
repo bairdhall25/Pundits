@@ -73,7 +73,7 @@ export function TablePeek({ p, graded = false }: { p: ActivityRecord; graded?: b
       <PunditAvatar src={p.photo} alt={p.name} size="row" />
       <div className="nm type-broadcast">{p.name.split(" ").slice(-1)[0]}</div>
       <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-        Live
+        Open
       </div>
       <div className="pct type-broadcast">{p.mappedPending}</div>
       {graded ? (

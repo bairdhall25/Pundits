@@ -513,7 +513,7 @@ function PunditMarkup({ card }: { card: PunditOgCard }) {
             {`${card.name} expert picks`}
           </div>
           <div style={{ display: "flex", marginTop: 22 }}>
-            <Stat label="Live picks" value={String(card.livePicks)} />
+            <Stat label="Open picks" value={String(card.livePicks)} />
             <Stat label="2026 record" value={card.recordLabel} />
           </div>
           {quote ? (
@@ -915,7 +915,7 @@ function PunditStoryMarkup({ card }: { card: PunditOgCard }) {
         </div>
         <div style={{ display: "flex", marginTop: 32 }}>
           <div style={{ display: "flex", flexDirection: "column", marginRight: 48 }}>
-            <div style={{ color: MUTED, fontSize: 20, letterSpacing: 3, textTransform: "uppercase" }}>Live picks</div>
+            <div style={{ color: MUTED, fontSize: 20, letterSpacing: 3, textTransform: "uppercase" }}>Open picks</div>
             <div style={{ color: INK, fontFamily: "Oswald", fontSize: 72 }}>{String(card.livePicks)}</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>

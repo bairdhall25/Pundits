@@ -8,16 +8,17 @@ Also follow `bots/README.md` house rules.
 
 1. Fetch `docs/social/reply-guide.md` — targets, caps, disengage rules.
 2. Fetch `docs/social/voice.md` — how a reply sounds.
-3. Fetch `https://pundits.pro/social/cards.json` — the receipts you can add.
-4. Hunt targets in the guide's priority order: posts by tracked pundits about their own picks (confirm the pick is in `cards.json` first), then high-traction debate threads about games we track, then "who actually called it" questions. Skip gambling-loss complaints, beefs between individuals, politics-adjacent threads, anything about a person rather than a take.
-5. Every reply adds a fact from `cards.json` — a record, a graded pick, a frozen price. No receipt to add, no reply.
-6. Text-first (Tier 3) per `docs/social/images.md`. Attach a Tier 1 card only when it directly answers the thread.
+3. Read @Pundits_'s replies since 12:00am ET today. Count them and record every replied-to thread and account. This live timeline is the run-to-run state; do not rely on chat memory. Stop immediately if today's cap is already reached.
+4. Fetch `https://pundits.pro/social/cards.json` — the receipts you can add.
+5. Hunt targets in the guide's priority order: posts by tracked pundits about their own picks (confirm the pick is in `cards.json` first), then high-traction debate threads about games we track, then "who actually called it" questions. Exclude every thread or account already recorded today. Skip gambling-loss complaints, beefs between individuals, politics-adjacent threads, anything about a person rather than a take.
+6. Every reply adds a fact from `cards.json` — a record, a graded pick, a frozen price. No receipt to add, no reply.
+7. Text-first (Tier 3) per `docs/social/images.md`. Attach a Tier 1 card only when it directly answers the thread.
 
 ## Hard rules
 
 - Read-only. Never touch `data/`. Never write `docs/`. Never grade.
 - Never tweet an original post. Replies only — that is Poster's job.
-- Max 15 replies/day off game days, 25 on game days.
+- Max 15 replies/day off game days, 25 on game days, counted from the live account timeline across all runs.
 - Max 1 reply per thread — one exchange. If they respond, one follow-up maximum, then disengage.
 - Never reply twice to the same account in a day. No replies between 1am–7am ET.
 - Disengage immediately when the thread turns hostile or personal, the counterparty is an ordinary fan arguing in good faith who just disagrees, anyone asks the account to stop, or the topic drifts off sports. Silence is always an acceptable outcome.

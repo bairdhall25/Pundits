@@ -53,11 +53,11 @@ export function WeekArchive({
 
   const lede = graded
     ? `Experts went ${record.hits}–${record.misses} on verified Week ${week} picks${
-        record.pending ? `, with ${record.pending} still live` : ""
+        record.pending ? `, with ${record.pending} still open` : ""
       }. Every pick below shows the quote, the frozen price, and the result.`
     : `${games.length} tracked game${games.length === 1 ? "" : "s"} · ${
         record.pending
-      } live expert pick${record.pending === 1 ? "" : "s"}. Results land after the games.`;
+      } open expert pick${record.pending === 1 ? "" : "s"}. Results land after the games.`;
 
   return (
     <main id="main" className="shell">

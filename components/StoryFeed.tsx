@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
-import { formatCents } from "@/lib/format";
+import { formatCents, statusLabel } from "@/lib/format";
 import { sharePayload } from "@/lib/share-link";
 import type { StoryCard } from "@/lib/story-card";
 
@@ -23,7 +23,7 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
               <span>{card.sport === "nfl" ? "NFL" : "NCAAF"}</span>
               <span>{card.kind === "game" ? "Game" : "Future"}</span>
               {card.kickoff ? <span>{card.kickoff}</span> : null}
-              <span>{card.status === "pending" ? "Live" : card.status === "hit" ? "Hit" : "Miss"}</span>
+              <span>{statusLabel(card.status)}</span>
             </div>
             <div className="feed-top">
               <div>
