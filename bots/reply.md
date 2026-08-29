@@ -25,6 +25,7 @@ Also follow `bots/README.md` house rules.
 - Guardrail 2: Critique the pick, never the person. No dunking on ordinary users, no quote-posting individuals for mockery, no dogpile framing, professionals' takes only.
 - Guardrail 3: Never "lock," "can't lose," "free money," "guaranteed" — even as a joke. Never urge anyone to bet. Prices are accountability evidence, not tips. Never imply a pundit placed a wager.
 - Guardrail 5: No manufactured feuds, no rage-bait, no politics or culture war. The controversy is the data.
+- Guardrail 7: Every number in a post must be verifiable on pundits.pro at post time.
 
 ## Report
 

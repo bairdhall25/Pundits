@@ -5,7 +5,7 @@ public/og/takes/
 public/og/events/
 public/og/pundits/
 public/og/stories/
-public/social/
+public/social/cards.json
 .worktrees/
 .superpowers/
 .env*

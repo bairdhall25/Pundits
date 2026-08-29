@@ -45,7 +45,7 @@ The signature slot: at most one dry word or clause at the end ("Noted." / "The b
 
 | Us | Not us |
 |---|---|
-| "Finebaum took TCU at 61¢ Tuesday. Final: TCU 27, UNC 20. Hit. The book remembers." | "WOW Finebaum CALLED IT 🔥🔥 Who's the GOAT insider??" |
+| "Finebaum took TCU at 61¢ Tuesday. Final: TCU won. Hit. The book remembers." | "WOW Finebaum CALLED IT 🔥🔥 Who's the GOAT insider??" |
 | "Patterson says Heels. Finebaum says Frogs. Kalshi froze it 41–61. Somebody's going in the book." | "Who ya got?? UNC or TCU! Drop your picks below 👇" |
 | "4 — Herbstreit has taken the road team four straight weeks. Streak." | "Herbstreit is INSANE for this pick lmaooo" |
 | "Our Week 0 leans went 1-2. The receipt cuts both ways." | (deleting the loss, posting only wins) |

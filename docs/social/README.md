@@ -19,7 +19,10 @@ Two Grok bots run @Pundits_: Poster posts new content, Reply Guy replies in exis
 
 ## The card index
 
-Bots fetch `https://pundits.pro/social/cards.json` at job start. It has three arrays.
+Bots fetch `https://pundits.pro/social/cards.json` at job start. It has two top-level fields and three arrays.
+
+- `generatedAt` — ISO timestamp of the build that wrote the file.
+- `site` — `"https://pundits.pro"`.
 
 **`events[]`** — one row per tracked event.
 
@@ -43,6 +46,8 @@ Bots fetch `https://pundits.pro/social/cards.json` at job start. It has three ar
 - `wins`, `losses`, `pending`
 - `pageUrl`, `ogCard`, `storyCard`
 
+`pending` counts all ungraded hard calls, including unmapped ones — it can exceed the pundit's pending rows in `takes[]`.
+
 Note: **bots compute time proximity ("tonight", "live") from `kickoff` at post time; the file bakes in no time-relative labels.**
 
 YES = away team wins on games.
@@ -59,4 +64,4 @@ YES = away team wins on games.
 
 **Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image.
 
-**Link rule:** the post body never carries a link. Receipt in image/text; "full ledger →" link in the first reply; site URL in bio.
+**Link rule:** the post body never carries a link. Receipt in image/text; "full ledger →" link in the first reply; site URL in bio (sole exception: the Tier-1 attach-failure fallback in `images.md`).

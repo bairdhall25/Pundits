@@ -18,7 +18,7 @@ Cards refresh on deploy. `RUNBOOK.md` requires a deploy whenever the book change
 
 ## Budgets
 
-Poster: never more than 6 posts/day; never two identical archetypes in a row; every post body link-free (link in first self-reply). Reply Guy caps live in `reply-guide.md`.
+Poster: never more than 6 posts/day; never two identical archetypes in a row; every post body link-free (link in first self-reply) (sole exception: the Tier-1 attach-failure fallback in `images.md`). Reply Guy caps live in `reply-guide.md`.
 
 ## Dead air rule
 

@@ -46,7 +46,7 @@ Silence is always an acceptable outcome.
 
 Good: *"For the record: Finebaum's on TCU at 61¢, on the record since Tuesday. It's in the book either way."*
 
-Good: *"He's 4-1 on SEC unders this season — the one lane where he's actually sharp. Receipts on the profile."*
+Good: *"He's 4-1 on road picks this season — the one lane where he's actually sharp. Receipts on the profile."*
 
 Bad: *"Wrong. Check pundits.pro."*
 

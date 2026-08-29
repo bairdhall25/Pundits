@@ -6,11 +6,11 @@ Nine archetypes cover every post the bots make. Each names its image tier (see `
 
 **When:** a mapped take grades — `status` flips to `hit` or `miss` in `cards.json`.
 
-**Shape:** what they said → frozen cents → final score → one-word verdict + closer. Evenly for hits AND misses — the FCT rule: the ledger, not a vendetta.
+**Shape:** what they said → frozen cents → the outcome (winner) → one-word verdict + closer. Evenly for hits AND misses — the FCT rule: the ledger, not a vendetta.
 
 **Image:** Tier 1 take card.
 
-**Example** (calibration example — never repost verbatim): *"Finebaum took TCU at 61¢ on Tuesday. Final: TCU 27, UNC 20. Hit. The book remembers."*
+**Example** (calibration example — never repost verbatim): *"Finebaum took TCU at 61¢ on Tuesday. Final: TCU won. Hit. The book remembers."*
 
 ## The Freeze
 
@@ -30,7 +30,7 @@ Nine archetypes cover every post the bots make. Each names its image tier (see `
 
 **Image:** Tier 1 pundit card, or none.
 
-**Example** (calibration example — never repost verbatim): *"3 — Finebaum is 3-0 on ranked road teams this season. Best lane in the book."*
+**Example** (calibration example — never repost verbatim): *"3 — Finebaum has taken the road team three straight weeks. All three are in the book."*
 
 ## The Disagreement
 
