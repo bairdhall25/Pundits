@@ -75,6 +75,8 @@ export type Call = {
   subject: string;
   paysOn: string;
   status: CallStatus;
+  /** ISO day the call was graded after leaving pending status. */
+  gradedAt?: string;
   eventSlug?: string;
   side?: Side;
 };

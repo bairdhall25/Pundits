@@ -9,7 +9,14 @@ import {
   mappedCalls,
 } from "@/lib/data";
 import { punditIndexable } from "@/lib/records";
-import { isoDay, latestDay, mappedTakes, takePath } from "@/lib/seo";
+import {
+  eventLastModified,
+  isoDay,
+  latestDay,
+  mappedTakes,
+  takeLastModified,
+  takePath,
+} from "@/lib/seo";
 import { canonicalUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -30,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: canonicalUrl("/leaderboard/"), lastModified: freeze, changeFrequency: "weekly", priority: 0.6 },
     { url: canonicalUrl("/privacy/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.2 },
     { url: canonicalUrl("/about/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.3 },
+    { url: canonicalUrl("/methodology/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.4 },
     { url: canonicalUrl("/terms/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.2 },
   ];
 
@@ -37,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const on = mapped.filter((c) => c.eventSlug === event.slug);
     return {
       url: canonicalUrl(`/picks/${event.slug}/`),
-      lastModified: latestDay([event.sourcedAt, ...on.map((c) => c.sourceDate)]) ?? freeze,
+      lastModified: eventLastModified(event, on) ?? freeze,
       changeFrequency: "weekly",
       priority: on.length ? 0.8 : 0.4,
     };
@@ -45,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const takes: MetadataRoute.Sitemap = mappedTakes(calls, events, pundits).map((take) => ({
     url: canonicalUrl(takePath(take.event.slug, take.pundit.id)),
-    lastModified: isoDay(take.call.sourceDate),
+    lastModified: takeLastModified(take.call),
     changeFrequency: "weekly",
     priority: 0.85,
   }));
@@ -71,7 +79,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return {
       url: canonicalUrl(`/${w.sport}/${w.season}/week-${w.week}/`),
       lastModified:
-        latestDay([...games.map((e) => e.sourcedAt), ...on.map((c) => c.sourceDate)]) ?? freeze,
+        latestDay([
+          ...games.map((e) => e.sourcedAt),
+          ...on.flatMap((c) => [c.sourceDate, c.gradedAt]),
+        ]) ?? freeze,
       changeFrequency: "weekly",
       priority: 0.7,
     };

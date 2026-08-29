@@ -13,6 +13,7 @@ export function SiteFooter() {
           </div>
           <nav className="site-footer-nav" aria-label="Footer">
             <a href="/about/">About</a>
+            <a href="/methodology/">Methodology</a>
             <a href={CONTACT_HREF}>Contact</a>
             <a href="/privacy/">Privacy</a>
             <a href="/terms/">Terms</a>

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadCalls, loadEvents, loadPundits } from "./data";
-import type { Event } from "./types";
+import type { Call, Event } from "./types";
 import {
   mappedTakes,
   pickLede,
@@ -11,6 +11,10 @@ import {
   toStoryCard,
   organizationGraph,
   articleJsonLd,
+  eventJsonLd,
+  eventLastModified,
+  faqJsonLd,
+  takeLastModified,
 } from "./seo";
 import { canonicalUrl } from "./site";
 import { readFileSync } from "node:fs";
@@ -219,6 +223,50 @@ describe("json-ld", () => {
     expect(json.image).toContain(
       "https://pundits.pro/og/takes/unc-vs-tcu-2026--finebaum.png"
     );
+  });
+
+  it("moves article and sitemap freshness forward when a pick is graded", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits())[0];
+    const gradedAt = "2026-09-03";
+    const graded = { ...take, call: { ...take.call, status: "hit", gradedAt } } as typeof take;
+
+    expect(articleJsonLd(graded).datePublished).toBe(take.call.sourceDate);
+    expect(articleJsonLd(graded).dateModified).toBe(gradedAt);
+    expect(takeLastModified(graded.call)).toBe(gradedAt);
+    expect(eventLastModified(graded.event, [graded.call])).toBe(gradedAt);
+  });
+
+  it("keeps ungraded freshness tied to the existing source dates", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits())[0];
+    expect(takeLastModified(take.call)).toBe(take.call.sourceDate);
+    expect(eventLastModified(take.event, [take.call])).toBe(
+      [take.event.sourcedAt, take.call.sourceDate].filter(Boolean).sort().at(-1)
+    );
+  });
+
+  it("publishes methodology questions as FAQPage schema", () => {
+    const json = faqJsonLd([
+      { question: "What is a verified pick?", answer: "A named, sourced public lean." },
+      { question: "Is the price live?", answer: "No. It is a frozen snapshot." },
+    ]);
+    expect(json["@type"]).toBe("FAQPage");
+    expect(json.mainEntity).toEqual([
+      expect.objectContaining({ "@type": "Question", name: "What is a verified pick?" }),
+      expect.objectContaining({ "@type": "Question", name: "Is the price live?" }),
+    ]);
+  });
+
+  it("marks event schema completed only when grading establishes a winner", () => {
+    const event = loadEvents().find((candidate) => candidate.slug === "unc-vs-tcu-2026")!;
+    const call = loadCalls().find((candidate) => candidate.eventSlug === event.slug)!;
+    const pending = eventJsonLd(event, [call], loadPundits());
+    const graded = eventJsonLd(
+      event,
+      [{ ...call, status: "hit" } as Call],
+      loadPundits()
+    );
+    expect(pending.eventStatus).toBe("https://schema.org/EventScheduled");
+    expect(graded.eventStatus).toBe("https://schema.org/EventCompleted");
   });
 
   it("writes grammatical futures headlines", () => {

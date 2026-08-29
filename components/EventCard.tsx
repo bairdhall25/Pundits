@@ -271,6 +271,9 @@ export function EventCard({
             {asOf ? ` ${asOf}` : ""}. Hypothetical $100 at that freeze — not a bet
             the pundit placed.
           </p>
+          <p>
+            <Link href="/methodology/">How grading works →</Link>
+          </p>
           {kalshiHref ? (
             <p>
               {event.ticker ? (

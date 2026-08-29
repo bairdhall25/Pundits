@@ -1,4 +1,4 @@
-import { isMapped, sidesForCard } from "./data";
+import { isMapped, settledSide, sidesForCard } from "./data";
 import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
 import { eventShare } from "./share";
 import {
@@ -303,6 +303,17 @@ export function latestDay(dates: Array<string | null | undefined>): string | und
   return days.sort()[days.length - 1];
 }
 
+export function takeLastModified(call: Call): string | undefined {
+  return latestDay([call.sourceDate, call.gradedAt]);
+}
+
+export function eventLastModified(event: Event, calls: Call[]): string | undefined {
+  return latestDay([
+    event.sourcedAt,
+    ...calls.flatMap((call) => [call.sourceDate, call.gradedAt]),
+  ]);
+}
+
 export function organizationGraph() {
   const url = canonicalUrl("/");
   return {
@@ -347,6 +358,23 @@ export function breadcrumbList(
   };
 }
 
+export function faqJsonLd(
+  items: Array<{ question: string; answer: string }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export function eventJsonLd(
   event: Event,
   calls: Call[],
@@ -361,6 +389,9 @@ export function eventJsonLd(
     url,
     description: share.description,
     sport: "American football",
+    eventStatus: settledSide(event, calls)
+      ? "https://schema.org/EventCompleted"
+      : "https://schema.org/EventScheduled",
   };
   if (event.kickoffDate) {
     base.startDate = event.kickoffDate;
@@ -397,7 +428,11 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
     "@type": "NewsArticle",
     headline: story.headline,
     datePublished: isoDay(take.call.sourceDate),
-    dateModified: latestDay([take.call.sourceDate, take.event.sourcedAt]),
+    dateModified: latestDay([
+      take.call.sourceDate,
+      take.event.sourcedAt,
+      take.call.gradedAt,
+    ]),
     url,
     mainEntityOfPage: url,
     description: story.dek,

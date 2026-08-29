@@ -36,6 +36,8 @@ export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
         alt={alt}
         width={dim}
         height={dim}
+        loading={hero ? "eager" : "lazy"}
+        decoding={hero ? undefined : "async"}
         className="h-full w-full object-cover object-[50%_25%]"
       />
     </span>

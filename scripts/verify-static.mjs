@@ -19,6 +19,7 @@ const requiredFiles = [
   "pundits/herbstreit/index.html",
   "privacy/index.html",
   "about/index.html",
+  "methodology/index.html",
   "terms/index.html",
   "og/takes/unc-vs-tcu-2026--finebaum.png",
   "og/takes/ncsu-at-uva-2026--kanell.png",
@@ -147,6 +148,10 @@ assert.match(
 );
 assert.doesNotMatch(story, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
 
+const methodology = await readFile(path.join(out, "methodology/index.html"), "utf8");
+assert.match(methodology, /"@type":"FAQPage"/);
+assert.match(methodology, /What counts as a verified pick/);
+
 const kanell = await readFile(
   path.join(out, "picks/ncsu-at-uva-2026/kanell/index.html"),
   "utf8"
@@ -174,6 +179,7 @@ for (const url of [
   "https://pundits.pro/pundits/herbstreit/",
   "https://pundits.pro/privacy/",
   "https://pundits.pro/about/",
+  "https://pundits.pro/methodology/",
   "https://pundits.pro/terms/",
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
@@ -182,6 +188,7 @@ for (const url of [
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
 assert(robots.includes("Sitemap: https://pundits.pro/sitemap.xml"));
 assert(robots.includes("Sitemap: https://pundits.pro/news-sitemap.xml"));
+assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference"));
 
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);

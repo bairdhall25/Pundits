@@ -46,7 +46,7 @@ export async function generateMetadata({
     takePath(slug, punditId),
     ogImageFor(ogTakePath(slug, punditId), story.headline),
     take.call.sourceDate,
-    latestDay([take.call.sourceDate, take.event.sourcedAt])
+    latestDay([take.call.sourceDate, take.event.sourcedAt, take.call.gradedAt])
   );
 }
 
