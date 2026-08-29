@@ -78,20 +78,21 @@ function headlineSize(text: string): number {
   return 54;
 }
 
-function Chip({ chip }: { chip: OgChip }) {
+function Chip({ chip, size = 48 }: { chip: OgChip; size?: number }) {
   const long = chip.abbr.length > 3;
+  const font = size >= 60 ? (long ? 18 : 22) : long ? 13 : 16;
   return (
     <div
       style={{
-        width: 48,
-        height: 48,
+        width: size,
+        height: size,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         background: chip.primary,
         color: chip.ink,
         fontFamily: "Oswald",
-        fontSize: long ? 13 : 16,
+        fontSize: font,
         fontWeight: 700,
         lineHeight: 1,
       }}
@@ -104,36 +105,58 @@ function Chip({ chip }: { chip: OgChip }) {
 function FaceRow({ side, showPhotos }: { side: OgSide; showPhotos: boolean }) {
   if (side.empty) return null;
   return (
-    <div style={{ marginTop: 12, display: "flex", flexDirection: "column" }}>
+    <div style={{ marginTop: 18, display: "flex", flexDirection: "column", flex: 1 }}>
       {side.faces.slice(0, 3).map((face) => {
         const uri = showPhotos ? photoUri(face.photo) : null;
+        const quote = face.quote ? storyQuote(face.quote, 90) : null;
         return (
           <div
             key={face.name}
             style={{
               display: "flex",
-              alignItems: "center",
-              marginTop: 6,
+              alignItems: "flex-start",
+              marginTop: 12,
             }}
           >
             {uri ? (
               <img
                 src={uri}
-                width={44}
-                height={44}
+                width={72}
+                height={72}
                 style={{ objectFit: "cover" }}
               />
             ) : null}
             <div
               style={{
-                marginLeft: uri ? 10 : 0,
-                color: INK,
-                fontSize: 18,
-                fontFamily: "Inter",
-                fontWeight: 700,
+                marginLeft: uri ? 14 : 0,
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
               }}
             >
-              {face.name}
+              <div
+                style={{
+                  color: INK,
+                  fontSize: 24,
+                  fontFamily: "Inter",
+                  fontWeight: 700,
+                }}
+              >
+                {face.name}
+              </div>
+              {quote ? (
+                <div
+                  style={{
+                    color: MUTED,
+                    fontSize: 20,
+                    lineHeight: 1.3,
+                    marginTop: 6,
+                    fontFamily: "Inter",
+                  }}
+                >
+                  {`“${quote}”`}
+                </div>
+              ) : null}
             </div>
           </div>
         );
@@ -156,8 +179,8 @@ function SidePanel({
         display: "flex",
         flexDirection: "column",
         background: CARD,
-        padding: "16px 20px 18px",
-        borderLeft: side.picked ? `4px solid ${GREEN}` : "4px solid #141414",
+        padding: "22px 24px 24px",
+        borderLeft: side.picked ? `6px solid ${GREEN}` : "6px solid #141414",
       }}
     >
       <div
@@ -168,12 +191,12 @@ function SidePanel({
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          {side.chip ? <Chip chip={side.chip} /> : null}
+          {side.chip ? <Chip chip={side.chip} size={64} /> : null}
           <div
             style={{
-              marginLeft: side.chip ? 12 : 0,
+              marginLeft: side.chip ? 14 : 0,
               fontFamily: "Oswald",
-              fontSize: 22,
+              fontSize: 32,
               color: INK,
               lineHeight: 1.1,
             }}
@@ -184,7 +207,7 @@ function SidePanel({
         <div
           style={{
             fontFamily: "Oswald",
-            fontSize: 34,
+            fontSize: 56,
             color: INK,
             marginLeft: 12,
           }}
@@ -192,7 +215,22 @@ function SidePanel({
           {side.cents}
         </div>
       </div>
-      <FaceRow side={side} showPhotos={showPhotos} />
+      {side.empty ? (
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            color: MUTED,
+            fontSize: 22,
+            fontFamily: "Inter",
+          }}
+        >
+          No verified pick yet
+        </div>
+      ) : (
+        <FaceRow side={side} showPhotos={showPhotos} />
+      )}
     </div>
   );
 }
@@ -397,16 +435,22 @@ function ScoreCell({ side }: { side: OgSide }) {
   );
 }
 
+function eventHeadlineSize(text: string): number {
+  if (text.length > 48) return 48;
+  if (text.length > 32) return 58;
+  return 68;
+}
+
 function EventMarkup({ card }: { card: EventOgCard }) {
   return (
     <Shell>
       <Wordmark right={card.when} />
       <div
         style={{
-          marginTop: 24,
+          marginTop: 16,
           color: GREEN,
           fontFamily: "Oswald",
-          fontSize: 15,
+          fontSize: 18,
           letterSpacing: 3,
           textTransform: "uppercase",
         }}
@@ -415,16 +459,16 @@ function EventMarkup({ card }: { card: EventOgCard }) {
       </div>
       <div
         style={{
-          marginTop: 6,
+          marginTop: 4,
           color: INK,
           fontFamily: "Oswald",
-          fontSize: headlineSize(card.title),
-          lineHeight: 1.05,
+          fontSize: eventHeadlineSize(card.title),
+          lineHeight: 1.02,
         }}
       >
         {card.title}
       </div>
-      <div style={{ display: "flex", marginTop: 22 }}>
+      <div style={{ display: "flex", flex: 1, marginTop: 18, minHeight: 0 }}>
         <SidePanel side={card.sides[0]} showPhotos />
         <div style={{ width: 2, background: "#2a2a2a" }} />
         <SidePanel side={card.sides[1]} showPhotos />
