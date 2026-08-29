@@ -129,3 +129,46 @@ Propose `onHome: true` on `ncsu-at-uva-2026` once Audit/Promote ship it.
 | chip-patterson | Chip Patterson | other | CBS / Cover 3 | unc-vs-tcu-2026 | yes | hark the sound. Wouldn't it be hilarious if Bill actually won? … This is what a sprinkle's for. I'll go Tarheels to come back with the win. | https://www.youtube.com/watch?v=hhgxVGYo6Cc | 2026-08-27 | needed |
 
 Promoted 2026-08-28 as `patterson` / `unc-vs-tcu-2026` yes. Do not restage. `walker` rostered with photo; no mapped game yet. Lambeau stays off home.
+
+## Saturday priority pass 2026-08-29 (see [`docs/runs/2026-08-29.md`](./runs/2026-08-29.md))
+
+`hard=0` `candidates=3`. No new roster Intake. Three named, first-person Virginia winners were found off roster; no IDs were minted and no `data/` files were edited.
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|
+| *(empty)* | | | | | | | | |
+
+### Candidates
+
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| — | Michael McGraw | other | The Sabre | ncsu-at-uva-2026 | no | I give a slight edge to Virginia given the homefield advantage and the overall experience on the roster. Final prediction: Hoos 23, Wolfpack 20. | McGraw gives Virginia a narrow edge because of home field and the roster's overall experience, while noting the Cavaliers have a more proven defense even though NC State holds the quarterback advantage. | https://thesabre.com/football/2026/08/27/sabrebetrics-virginia-season-preview-week-0-prediction | 2026-08-27 | needed |
+| — | Pete Fiutak | other | College Football News / NC State On SI | ncsu-at-uva-2026 | no | I'm still going with Virginia - home game, upgraded through the portal, slightly sharper right away - and then point at me and laugh when I get this wrong after ignoring that, sometimes in college football, one team has another's number. | Fiutak sees Virginia as the better team, helped by the move to Charlottesville and portal upgrades. He expects the Cavaliers to be sharper immediately, while acknowledging NC State's long winning streak in the series. | https://www.si.com/college/ncstate/football/nc-state-virginia-expert-picks-score-prediction-2026 | 2026-08-29 | needed |
+| — | Xander Tilock | other | Virginia On SI | ncsu-at-uva-2026 | no | I think Virginia wins — size and experience are paramount — but there are questions about fourth-year linebacker Kam Robinson, second-year SPUR Corey Costner and the receiving room in terms of health. | Tilock favors Virginia's size, experience, and depth. He says the Cavaliers lack an obvious weak point, though he flags health questions at linebacker, SPUR, and receiver and expects CJ Bailey to keep the game close. | https://www.si.com/college/virginia/staff-predictions-how-will-virginia-fare-against-nc-state-01m14f0tzbh6 | 2026-08-28 | needed |
+
+### Dropped
+
+- McElroy episode page: no first-person winner. PFF score grid: not first-person. Action Network / VegasInsider: first-half or ATS only. Covers: away-side selection without a decisive first-person quote.
+- Clemson–LSU: Auerbach/Perry wording is conditional; Herbstreit transcript names no game winner. Did not restage Pate or Finebaum.
+- Wisconsin–Notre Dame: Rohrer grid says Wisconsin "Loss" but provides no decisive first-person winner quote. Lambeau stays off home.
+- Full source URLs and the prior X coverage are preserved in the run file.
+
+### Freeze
+
+none
+
+### Home cards
+
+- clemson-at-lsu-2026: YES empty. NO pate, finebaum.
+- patriots-at-seahawks-2026: YES empty. NO cowherd.
+- 49ers-vs-rams-2026: YES empty. NO eisen, cowherd.
+- bills-at-texans-2026: YES empty. NO cowherd.
+- unc-vs-tcu-2026: YES patterson. NO finebaum.
+- ncsu-at-uva-2026: YES kanell. NO empty (three off-roster Candidates staged).
+- wisconsin-vs-nd-2026: fully empty, stays off home.
+
+### Stories this would mint
+
+*(none)*
