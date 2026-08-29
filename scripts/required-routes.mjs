@@ -32,4 +32,5 @@ export const STATIC_ONLY_FILES = [
   "feed.xml",
   "_redirects",
   "methodology/index.html",
+  "social/cards.json",
 ];
