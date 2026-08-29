@@ -25,8 +25,9 @@ Empty sides stay empty if nothing verifies. Do not invent.
 
 1. Run `node scripts/scout-density.mjs` (or read `## Dispatch` in today’s run file).
 2. Shows / X / News hunt `empty-side`, then `off-home`, then `thin`. Skip `dense`.
-3. Add-list: `docs/add-list.md`. Bring onto home: `docs/bring-onto-home.json`.
-4. Futures are not the hunt target.
+3. Shows uses the bounded sports-radio fallback in `docs/pick-shows.md` only after its normal high-yield programs.
+4. Add-list: `docs/add-list.md`. Bring onto home: `docs/bring-onto-home.json`.
+5. Futures are not the hunt target.
 
 If this file and `data/` disagree, **`data/` wins**.
 

@@ -1,6 +1,6 @@
 # Pick shows (Scout hunt map)
 
-Date: 2026-08-28. **Shows Scout** hunt map (YouTube / podcasts / TV clips). News is `docs/news-beats.md`. X is `bots/scout-x.md`. Famous-face Google is not the job.
+Date: 2026-08-29. **Shows Scout** hunt map (YouTube / podcasts / TV clips / durable sports-radio archives). News is `docs/news-beats.md`. X is `bots/scout-x.md`. Famous-face Google is not the job.
 
 If this file and `data/` disagree, **`data/` wins**.
 
@@ -10,6 +10,7 @@ If this file and `data/` disagree, **`data/` wins**.
 2. Then `empty-side` / `off-home` / `thin` on today’s `## Dispatch` (`docs/board.md` is do-not-touch, not the scorecard).
 3. Then idle roster voices **only if their pick window is open**.
 4. Named off-roster speakers on those same shows → Candidates. Never “the show likes UNC.”
+5. If the game remains under-dense, use the bounded sports-radio fallback below.
 
 Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not the end of the hunt. Tokens are not scarce.
 
@@ -100,3 +101,31 @@ Hunt only when Dispatch includes `sport=nfl` rows that are `empty-side`, `thin`,
 | PFT video / PFT Live | `florio`, `simms` | weekday | “who wins” | Column version is News |
 
 Brand faces — NFL pick window (also in the table above this file): `stephena`, `kimes`, `orlovsky`, `spears` on the ESPN **page** are News Scout. If they say it on TV and a clip URL exists, Shows may stage it.
+
+## Sports radio pilot
+
+Sports radio is a source lane inside Shows Scout, not a separate bot or schedule.
+
+### National first
+
+Prioritize rostered national programs already listed above: Finebaum for NCAAF; The Herd and Rich Eisen for NFL; plus a rostered personality’s official radio or podcast archive when the episode is explicitly a picking segment.
+
+### Local fallback
+
+For an under-dense Dispatch game that remains unresolved after the listed national programs:
+
+1. Open at most **two** credible local archived programs for that matchup.
+2. Prefer official station, team-affiliate, YouTube, podcast, transcript, or show-note pages published in the last ~3 days.
+3. Search the team names plus `pick`, `who wins`, `give me`, or `I'll take` inside the archive.
+4. Stage a named off-roster host as a Candidate only when the radio-pilot rules in `docs/add-list.md` are satisfied.
+5. Record the programs opened and outcome in the run file’s `Radio coverage` table.
+
+Run one radio fallback per sport/pick window. Do not add another daily routine, reopen the same dry episode, or scan multi-hour live audio without a durable replay location.
+
+### Radio evidence bar
+
+- Identify the exact speaker; a station or show cannot own a pick.
+- Audit must be able to reopen the exact episode, clip, transcript, or show-note URL.
+- Preserve a short quote or timestamp proving the first-person winner pick.
+- Drop live-only streams, callers, polls, anonymous station consensus, and inaccessible snippets.
+- Verify a machine transcript against the audio before staging it.

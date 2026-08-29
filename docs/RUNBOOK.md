@@ -12,6 +12,9 @@ Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `
    Athletic), McAfee Show (name the speaker!).
 2. VERIFY — open every source URL; confirm the quote and the speaker.
    Unverifiable → drop.
+   Sports-radio evidence must be a durable episode, clip, transcript, or
+   show-note URL that Audit can reopen. Attribute the named personality,
+   never the station, show, caller pool, poll, or anonymous consensus.
 3. CLASSIFY + MAP — clear first-person lean on a listed event → hard +
    eventSlug + side (yes=away). Weasel or season-long take → soft, no
    mapping. Futures picks map to futures slugs only — never onto a game.

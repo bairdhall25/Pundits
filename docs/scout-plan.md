@@ -23,7 +23,7 @@ Architecture: `docs/superpowers/specs/2026-08-29-scout-architecture-design.md`.
 ## Pipeline
 
 1. **Coordinator** writes `## Dispatch` from `node scripts/scout-density.mjs` into `docs/runs/YYYY-MM-DD.md`. Does not hunt.
-2. **Shows / X / News** append their passes against Dispatch (`empty-side`, then `off-home`, then `thin`; skip `dense`). Never `data/`. Fantasy/props stay parked (`docs/fantasy.md`).
+2. **Shows / X / News** append their passes against Dispatch (`empty-side`, then `off-home`, then `thin`; skip `dense`). Shows includes a bounded durable-radio fallback after its normal programs. Never `data/`. Fantasy/props stay parked (`docs/fantasy.md`).
 3. **Audit** re-opens URLs (including `x.com/.../status/...`).
 4. **Promote** ships `ok` **roster** hard rows. Candidates are not auto-rostered. App mints `/picks/{slug}/{pundit}/`. Poster tweets the live URL. Poster does not hunt.
 
@@ -44,3 +44,4 @@ NFL openers: keep hunting named podcasts through Wed 9/9.
 - Auto-add pundits from Candidates.
 - Group competition UI.
 - Invent quotes or stretch titles onto games.
+- Add a radio-only bot or routine. The pilot uses the existing Shows schedule and is capped at two local archives per under-dense matchup.

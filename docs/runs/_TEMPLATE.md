@@ -25,6 +25,12 @@
 |---|---|---|---|---|---|
 | | | | | | |
 
+### Radio coverage
+
+| eventSlug | programs opened | outcome | notes |
+|---|---|---|---|
+| | | | |
+
 ### Dropped
 
 -

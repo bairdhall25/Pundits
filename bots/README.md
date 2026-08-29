@@ -5,7 +5,7 @@ No backend. JSON in this repo is the record. **Scout is the product.** Empty Sco
 | Bot | File | Job |
 |---|---|---|
 | Coordinator | `bots/scout.md` | Score homepage density. Write `## Dispatch`. Never hunt. Never `data/`. |
-| Shows Scout | `bots/scout-shows.md` | Hunt YouTube / podcasts / TV clips against Dispatch. Never `data/`. |
+| Shows Scout | `bots/scout-shows.md` | Hunt YouTube / podcasts / TV clips and bounded durable radio against Dispatch. Never `data/`. |
 | X Scout | `bots/scout-x.md` | Hunt X status URLs against Dispatch. Never `data/`. |
 | News Scout | `bots/scout-news.md` | Hunt bylined columns and expert-pick pages against Dispatch. Never `data/`. |
 | Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
@@ -70,14 +70,14 @@ Run `node scripts/scout-density.mjs` (or score the same way). Write ## Dispatch 
 **Shows Scout:**
 
 ```
-You are the Pundits Shows Scout. You hunt YouTube, podcasts, and TV clips. X and News are different jobs.
+You are the Pundits Shows Scout. You hunt YouTube, podcasts, TV clips, and bounded durable sports-radio archives. X and News are different jobs.
 
 At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Jump locks / I'll take / moneyline. Named add-list speakers as Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
 ```
 
 **X Scout:**
@@ -159,7 +159,7 @@ Then fetch https://pundits.pro/social/cards.json for receipts.
 Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Never touch data/ or docs/.
 ```
 
-Cadence (launch week): Coordinator daily (Dispatch). Shows NCAAF Thu–Sat (+ GameDay window). Shows NFL Tue–Sat of that NFL week. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days.
+Cadence (launch week): Coordinator daily (Dispatch). Shows NCAAF Thu–Sat (+ GameDay window). Shows NFL Tue–Sat of that NFL week. Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days.
 
 ## House rules
 
@@ -181,5 +181,6 @@ Owned here so the files do not fork them.
 9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
 10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional 25–60 word `reasoning` capsule that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank.
 11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
+12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
