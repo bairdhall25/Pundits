@@ -147,6 +147,6 @@ describe("page meta images", () => {
       outlet: "Finebaum / ESPN",
     });
     expect(card.latestQuote).toBeTruthy();
-    expect(card.recordLabel).toBe("—");
+    expect(card.recordLabel).toBe("0–1");
   });
 });

@@ -97,7 +97,7 @@ const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "ut
 assert.match(leaderboard, /Listed by open picks until the first game grades/);
 assert.match(leaderboard, />Open picks</);
 assert.doesNotMatch(leaderboard, />Live picks</);
-assert.doesNotMatch(leaderboard, /lb-rank[^>]*>01</);
+assert.match(leaderboard, /lb-rank[^>]*>01</);
 
 const privacy = await readFile(path.join(out, "privacy/index.html"), "utf8");
 assert.match(

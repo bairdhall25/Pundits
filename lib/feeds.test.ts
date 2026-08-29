@@ -8,7 +8,9 @@ describe("editorial feeds", () => {
     const xml = rssFeed(loadCalls(), loadEvents(), loadPundits());
     expect(xml).toContain("<rss version=\"2.0\">");
     expect(xml).toContain("https://pundits.pro/picks/unc-vs-tcu-2026/patterson/");
-    expect(xml).toContain("Chip Patterson picks North Carolina over TCU");
+    expect(xml).toContain(
+      "Chip Patterson picked North Carolina over TCU — and hit"
+    );
   });
 
   it("limits the news sitemap to the newest two publication days", () => {

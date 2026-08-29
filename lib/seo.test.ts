@@ -57,7 +57,7 @@ describe("mapped takes", () => {
     );
     expect(dublin).toBeTruthy();
     expect(takeHeadline(dublin!.pundit, dublin!.event, dublin!.call)).toBe(
-      "Paul Finebaum picks TCU over North Carolina"
+      "Paul Finebaum picked TCU over North Carolina — and missed (North Carolina won)"
     );
     expect(takePath("unc-vs-tcu-2026", "finebaum")).toBe(
       "/picks/unc-vs-tcu-2026/finebaum"
@@ -90,7 +90,7 @@ describe("mapped takes", () => {
     expect(games.length).toBeGreaterThan(0);
     for (const take of games) {
       const h = takeHeadline(take.pundit, take.event, take.call);
-      expect(h, take.call.id).toMatch(/ picks .+ over /);
+      expect(h, take.call.id).toMatch(/ pick(?:s|ed) .+ over /);
       const story = pickStory(take);
       expect(story.paragraphs.join(" "), take.call.id).toContain(take.call.claim);
     }
@@ -127,7 +127,9 @@ describe("pick stories", () => {
     );
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
-    expect(story.headline).toBe("Paul Finebaum picks TCU over North Carolina");
+    expect(story.headline).toBe(
+      "Paul Finebaum picked TCU over North Carolina — and missed (North Carolina won)"
+    );
     expect(story.dek).toContain("North Carolina as the underdog at 26¢");
     expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
@@ -151,7 +153,9 @@ describe("pick stories", () => {
     );
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
-    expect(story.headline).toBe("Chip Patterson picks North Carolina over TCU");
+    expect(story.headline).toBe(
+      "Chip Patterson picked North Carolina over TCU — and hit"
+    );
     expect(story.dek).toContain("North Carolina as the underdog at 26¢");
     expect(story.paragraphs.join(" ")).toContain("Tarheels to come back with the win");
     expect(story.paragraphs.join(" ")).not.toMatch(/Wolfpack|Kanell/i);
@@ -217,7 +221,9 @@ describe("json-ld", () => {
     expect(take).toBeTruthy();
     const json = articleJsonLd(take!);
     expect(json["@type"]).toBe("NewsArticle");
-    expect(json.headline).toBe("Paul Finebaum picks TCU over North Carolina");
+    expect(json.headline).toBe(
+      "Paul Finebaum picked TCU over North Carolina — and missed (North Carolina won)"
+    );
     expect(json.author).toMatchObject({ name: "PUNDITS Staff" });
     expect(json.mentions).toMatchObject({ name: "Paul Finebaum" });
     expect(json.about).toMatchObject({

@@ -179,6 +179,7 @@ export function EventCard({
   return (
     <article
       className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""} ${detail ? "event-detail" : "event-scan"} ${finalLabel ? "event-settled" : ""}`}
+      data-kickoff={game ? event.kickoffDate : undefined}
     >
       <div className="event-head">
         <div>
