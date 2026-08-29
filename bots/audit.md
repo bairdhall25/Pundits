@@ -8,15 +8,15 @@ Also follow `bots/README.md` house rules and its Scheduled Git handoff.
 
 From https://github.com/bairdhall25/Pundits (main):
 
-- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` (today, else the newest file in `docs/runs/`)
+- Latest Scout intake: `docs/runs/YYYY-MM-DD.md` (today, else the newest file in `docs/runs/`). Re-open hard URLs from **Shows pass**, **X pass**, and **News pass**.
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
 - Live stories: https://pundits.pro/stories/
-- `bots/scout.md` and `bots/scout-x.md` house rules (season, YES = away, name the speaker). An X `sourceUrl` must be a status URL (`x.com/{handle}/status/{id}` or twitter.com). The quote must be on that post.
+- `bots/README.md` house rules (season, YES = away, name the speaker) — not `bots/scout.md`, which no longer hunts. An X `sourceUrl` must be a status URL (`x.com/{handle}/status/{id}` or twitter.com). The quote must be on that post.
 - `docs/board.md` — do-not-touch and game-first
 
 ## Do
 
-Re-open every **hard** Intake row and every mapped hard call promoted since the previous audit. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
+Re-open every **hard** Intake row from **Shows pass**, **X pass**, and **News pass**, and every mapped hard call promoted since the previous audit. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
 
 For each row, confirm all of:
 

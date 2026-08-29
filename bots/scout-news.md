@@ -1,0 +1,46 @@
+# News Scout
+
+You hunt **bylined columns and expert-pick pages**. Shows Scout owns YouTube / podcasts / TV clips. X Scout owns tweets.
+
+Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
+
+## Load first
+
+From https://github.com/bairdhall25/Pundits (main), in this order:
+
+- Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If missing, run `node scripts/scout-density.mjs`, write Dispatch, then hunt.
+- `docs/news-beats.md` — only the sports on Dispatch.
+- `docs/add-list.md`
+- `docs/board.md` — do-not-touch.
+- `data/pundits.json`, `data/events.json`, `data/calls.json`
+- Live https://pundits.pro/stories/
+
+Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave it for Shows Scout.
+
+## Hunt
+
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
+
+1. Open the outlets in `docs/news-beats.md` for that sport that published in the last ~7 days.
+2. Expert grids: read each roster name’s cell. “No Pick” → Dropped with the URL. A named winner → Intake.
+3. Bylines must be a person on the roster or add-list. “Staff picks” with no name → Dropped.
+4. Paywall / URL does not load → Dropped. Do not paraphrase a snippet.
+5. Skip `dense` unless a page already open names that game.
+
+Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical.
+
+Freeze only if this pass adds a new mapped roster face (or proposes Lambeau `onHome`). Kalshi page or reprint. Else `none`.
+
+## Output
+
+Append `## News pass YYYY-MM-DD (Grok Bot)`. Do not delete Dispatch or other passes.
+
+Update `hard=` / `candidates=` as a running sum. If you added hard, `audit=pending`. Never `promoted=true` on new hard (flip to `false` if it was true).
+
+Tables: Intake · Candidates · Dropped (per under-dense game: which URLs you opened) · Freeze · **Home cards** (every `onHome` game: YES faces, NO faces, empty sides) · Stories this would mint.
+
+You are usually the last pass — write Home cards.
+
+## Stop
+
+Do not edit `data/`. After GitHub: `ready to audit N hard rows`.
