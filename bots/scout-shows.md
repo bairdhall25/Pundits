@@ -34,7 +34,7 @@ When a hard pick has real supporting rationale, keep the decisive verbatim quote
 
 ## Bar (do not loosen)
 
-- **SU** = they pick the **winner**. Spread, total, team total, and 1H lines are **not** SU — stage them in **Bets**, do not Drop them if the URL and speaker are good. “Tough game,” “I like them this year,” unnamed show takes stay Dropped. Player props stay parked (`docs/fantasy.md`).
+- **SU** = they pick the **winner** of a listed game. Decipher gambling copy (house rule 3): favorite laying points → SU **and** Bets; dog +points → Bets only unless they also say the dog wins; totals → Bets only; “definitely leaning X today” → SU. “Tough game,” “I like them this year,” unnamed show takes stay Dropped. Player props stay parked (`docs/fantasy.md`).
 - **URL** = you opened it; that speaker; that quote; this season’s `eventSlug`.
 - **Photo** = required to roster. Candidates may use `photoUrl=needed`.
 - YES = away. Wrong year → drop. Title/SB stays on futures slugs. Never stretch onto a game.

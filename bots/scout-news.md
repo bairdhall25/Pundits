@@ -27,7 +27,7 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
 4. Paywall / URL does not load → Dropped. Do not paraphrase a snippet.
 5. Skip `dense` unless a page already open names that game.
 
-Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical. Named totals/spreads/team totals go in **Bets**, not Dropped. Player props stay parked.
+Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical. Decipher gambling copy (house rule 3): do not Drop a numbered line; split winner vs Bets. Player props stay parked.
 
 Freeze only if this pass adds a new mapped roster face (or proposes Lambeau `onHome`). Kalshi page or reprint. Else `none`.
 

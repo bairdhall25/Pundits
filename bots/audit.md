@@ -24,7 +24,7 @@ For each row, confirm all of:
 2. The verbatim quote is on that page (or a clearly linked transcript/clip described there). Paraphrase → fail.
 3. The speaker matches `punditId` in `pundits.json`. McAfee Show guests are the guest, never `mcafee`.
 4. `eventSlug` exists in `events.json`. Season is the regular-season start year. Wrong year → fail.
-5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail.
+5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail. A favorite laying points (`TCU -7.5 for the first win`) may still be hard SU for that favorite; a total-only row must not be Intake. Bets tables are not fail conditions.
 6. Not a restage of an already-booked pundit+event. Same `sourceUrl` on a different speaker is ok (one LOCKS episode, two SUs). Same pundit + same URL is a restage.
 7. Any `reasoning` capsule is 25–60 words, is a faithful paraphrase of at most two concrete factors that the same speaker gave in that source, and does not read like copied captions or added analysis. Blank reasoning is valid. Unsupported or speaker-mixed reasoning → fail; do not repair it by inventing copy.
 

@@ -84,7 +84,7 @@ Pat McAfee Show guests are the **guest**, never `mcafee`. Barstool/Ringer ids ab
 
 Same as Shows Scout:
 
-- **SU** = they pick the **winner** of a listed game. ATS, total, team total, and 1H lines are **not** SU — stage them in **Bets**, do not Drop them if the status URL and speaker are good. “Tough matchup,” season lean, unnamed timeline takes stay Dropped. Player props stay parked (`docs/fantasy.md`).
+- **SU** = they pick the **winner** of a listed game. Decipher gambling copy (house rule 3): favorite laying points → SU **and** Bets; dog +points → Bets only unless they also say the dog wins; totals → Bets only; “definitely leaning X today” → SU. “Tough matchup,” season lean, unnamed timeline takes stay Dropped. Player props stay parked (`docs/fantasy.md`).
 - **URL** = an `x.com/{handle}/status/{id}` (or twitter.com) that loads, that speaker, this season’s `eventSlug`.
 - YES = away. Wrong year → drop. Title/SB stays on futures slugs.
 

@@ -167,7 +167,12 @@ Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
 2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is today’s `## Dispatch` (from `node scripts/scout-density.mjs`). Shows Scout hunts `docs/pick-shows.md`. News Scout hunts `docs/news-beats.md`. X Scout hunts status URLs (`from:{handle}`, last 48 hours). Add-list is `docs/add-list.md`. Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
-3. **Clear first-person winner leans only** map to an event (Intake). Weasels stay `soft` or Dropped. Named game **totals, spreads, and team totals** stage in the run file **Bets** table — Promote does not ship them. Player props stay parked (`docs/fantasy.md`).
+3. **Winner vs bet — decipher gambling copy; do not dump it all in Dropped.** A listed-game **winner** is Intake (hard). Named **numbers** also go in **Bets** (Promote does not ship Bets). Player props stay parked (`docs/fantasy.md`).
+   - **Favorite laying points** (`TCU -7.5`, `TCU -7.5 for the first win`) → SU for the favorite **and** Bets. You cannot lay points unless you think they win. Compton 2026-08-29.
+   - **Dog getting points** (`UNC +7.5`, `Virginia to cover`) → **Bets only**, unless they also say the dog **wins**. Cover ≠ winner.
+   - **Moneyline / “give me the Heels” / “definitely leaning Tar Heels big time today”** → SU. “Leaning” plus today/this game/definitely is a pick, not a weasel. McElroy 2026-08-29.
+   - **Game / team / 1H total** (`Under 23.5`, `Over 47.5`) → **Bets only**. Never SU. Big Cat 2026-08-29.
+   - **Weasel** (`tough matchup`, `I like them this year`, title stretch) → Dropped or soft. Not a pick.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.
 6. **Kalshi is the ruler.** Cents come from a Kalshi page or a Kalshi reprint, each with `sourceUrl` + `sourcedAt`. Do not convert sportsbook moneylines.
