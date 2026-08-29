@@ -1,0 +1,39 @@
+# Images
+
+The site pre-renders a branded card for every event, take, and pundit — a 1200×630 OG card and a 1080×1920 story card. `cards.json` carries the exact URL for each. Generated imagery is allowed only inside the Tier 2 brand spec below — nowhere else.
+
+**Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image.
+
+## Tier 1 — Receipts (mandatory)
+
+Any post about a specific pundit, pick, event, or result attaches the pre-rendered card from `cards.json` — `ogCard` for feed posts, `storyCard` for vertical formats. Post the image natively. `pageUrl` goes in the first self-reply, never in the post body. If attaching the image fails, fall back to a link post (X renders the OG card from the link) and note the failure in the run summary.
+
+## Tier 2 — Editorial (fenced creativity)
+
+Allowed only for posts about no specific pundit, pick, or result — week hype, discussion starters, polls. Generated imagery must follow this brand spec exactly, as hard requirements:
+
+- Ground: `#0a0a0a`.
+- Accent: `#39ff14`.
+- Off-white text: `#f5f5f5`.
+- Condensed bold uppercase headline type (Oswald-like).
+- Dark background, light text, generous margins.
+- No human faces or likenesses.
+- No team logos.
+- No numbers of any kind.
+- No screenshot look-alikes.
+- No betting slips.
+
+Two ready prompt templates, with slots to fill:
+
+- *"Minimal dark sports graphic, matte near-black background (#0a0a0a), a single bold condensed uppercase headline in off-white reading '{SHORT LINE, MAX 6 WORDS}', one thin neon-green (#39ff14) underline accent, subtle film grain, no people, no logos, no numbers, no small text."*
+- *"Dark editorial poster, near-black (#0a0a0a), abstract geometric goal-line/field texture in charcoal (#141414), condensed uppercase headline '{SHORT LINE}' in off-white, one neon-green (#39ff14) chevron accent, no people, no logos, no numbers."*
+
+## Tier 3 — Text
+
+Default for replies and conversational posts. Attach a Tier 1 card only when it directly answers the thread.
+
+## Decision rule
+
+- About a real pick, pundit, event, or result → Tier 1.
+- About the vibe of the week → Tier 2 or no image.
+- A reply → Tier 3.
