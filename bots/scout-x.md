@@ -66,6 +66,7 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | stephena | Stephen A. Smith | stephenasmith |
 | kimes | Mina Kimes | MinaKimes |
 | sharpe | Shannon Sharpe | ShannonSharpe |
+| compton | Will Compton | _willcompton |
 
 If a lookup disagrees, prefer the verified account with the person’s outlet in the bio. Never hunt `*quotes` / `Not Kirk`.
 

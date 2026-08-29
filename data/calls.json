@@ -765,5 +765,20 @@
     "status": "pending",
     "eventSlug": "unc-vs-tcu-2026",
     "side": "yes"
+  },
+  {
+    "id": "compton-unc-tcu-20260829",
+    "punditId": "compton",
+    "claim": "We're going TCU -7.5 for the first win of the season",
+    "reasoning": "Compton says Belichick's second year at North Carolina will not be better and that TCU will be sneaky in the Big 12. He is taking TCU minus 7.5 as the first win of the season.",
+    "source": "X (@_willcompton)",
+    "sourceUrl": "https://x.com/_willcompton/status/2093722138498777324",
+    "sourceDate": "2026-08-29",
+    "kind": "hard",
+    "subject": "TCU",
+    "paysOn": "North Carolina vs TCU (Week 0, Dublin)",
+    "status": "pending",
+    "eventSlug": "unc-vs-tcu-2026",
+    "side": "no"
   }
 ]

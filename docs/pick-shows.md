@@ -78,6 +78,7 @@ ESPN expert **page** is News Scout (`docs/news-beats.md`). If they say it on TV 
 | `ruiz` | theStevenRuiz |
 | `kanell` | dannykanell |
 | `pate` | JoshPateCFB |
+| `compton` | _willcompton |
 
 ## Do not
 

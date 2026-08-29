@@ -96,7 +96,8 @@ describe("share copy", () => {
     const live = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026");
     expect(live).toBeTruthy();
     const share = eventShare(live!, loadCalls(), loadPundits());
-    expect(share.description).toContain("Paul Finebaum picks TCU");
+    expect(share.description).toContain("Paul Finebaum and Will Compton pick TCU");
+    expect(share.description).toContain("Chip Patterson and Greg McElroy pick North Carolina");
     expect(share.description).not.toContain("wisconsin");
   });
 
