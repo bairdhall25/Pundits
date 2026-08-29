@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PUNDITS · Team chip mock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --ink: #f5f5f5;
+      --muted: #a3a3a3;
+      --line: #2a2a2a;
+      --green: #39ff14;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--ink); }
+    body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .type { font-family: Oswald, ui-sans-serif, sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+    .shell { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+    .banner {
+      border: 1px solid #3a2a00; background: #1a1408; color: #e6c36a;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 8px 10px; margin-bottom: 18px;
+    }
+    .eyebrow { color: var(--green); font-size: 13px; letter-spacing: 0.16em; }
+    h1 { font-size: clamp(28px, 6vw, 48px); line-height: 0.92; margin: 6px 0 10px; }
+    .lede { color: var(--muted); max-width: 640px; line-height: 1.5; margin: 0 0 28px; }
+    .label {
+      color: var(--green); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      margin: 28px 0 10px;
+    }
+    .event { background: var(--card); border: 1px solid var(--line); margin-bottom: 14px; }
+    .event-head { padding: 12px 14px 10px; border-bottom: 1px solid var(--line); }
+    .kalshi { color: var(--green); font-size: 12px; letter-spacing: 0.2em; margin-bottom: 4px; }
+    .event-head h2 { font-size: clamp(18px, 5vw, 26px); margin: 0 0 4px; }
+    .meta { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .sides { display: grid; grid-template-columns: 1fr; }
+    .col { padding: 14px; min-width: 0; }
+    .col.yes { background: #0d1a0c; border-bottom: 1px solid var(--line); }
+    .scan-team { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .chip {
+      flex: none;
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      font-family: Oswald, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      color: #fff;
+    }
+    .chip.sm { width: 36px; height: 36px; font-size: 11px; }
+    .chip. Clemson, .chip.clem { background: #F66733; }
+    .chip.lsu { background: #461D7C; color: #FDD023; }
+    .chip.unc { background: #7BAFD4; color: #13294B; }
+    .chip.tcu { background: #4D1979; }
+    .chip.ne { background: #002244; color: #C60C30; }
+    .chip.sea { background: #002244; color: #69BE28; }
+    .chip.sf { background: #AA0000; color: #B3995D; }
+    .chip.lar { background: #003594; color: #FFA300; }
+    .chip.buf { background: #00338D; color: #C60C30; }
+    .chip.hou { background: #03202F; color: #A71930; }
+    .chip.nd { background: #0C2340; color: #C99700; }
+    .chip.wis { background: #C5050C; }
+    .chip.mia { background: #F47321; color: #005030; }
+    .chip.stan { background: #8C1515; color: #fff; }
+    .chip.bay { background: #154734; color: #FFB81C; }
+    .chip.aub { background: #0C2340; color: #E87722; }
+    .chip.ncsu { background: #CC0000; }
+    .chip.uva { background: #232D4B; color: #F84C1E; }
+    .chip.iu { background: #990000; }
+    .chip.osu { background: #BA0C2F; }
+    .chip.uga { background: #BA0C2F; color: #000; }
+    .chip.tex { background: #BF5700; }
+    .chip.sec { background: #004B8D; }
+    .scan-name { font-size: clamp(16px, 4vw, 22px); margin: 0; }
+    .px { font-size: clamp(28px, 6vw, 40px); line-height: 0.9; margin: 0; }
+    .px-yes { color: var(--green); }
+    .empty { color: var(--muted); font-size: 13px; }
+    .person { display: flex; align-items: center; gap: 10px; margin-top: 8px; position: relative; z-index: 1; }
+    .person img { width: 56px; height: 56px; object-fit: cover; background: #222; }
+    .nm { font-size: 18px; }
+    .see-why {
+      padding: 8px 14px 12px;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green);
+    }
+    .phone { max-width: 390px; }
+    .strip { display: flex; flex-wrap: wrap; gap: 10px; }
+    .swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 64px; }
+    .swatch span { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+    .future { padding: 14px; }
+    .future h3 { margin: 0 0 10px; font-size: 18px; }
+    .tape { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tape > div { background: #0a0a0a; border: 1px solid var(--line); padding: 8px 10px; }
+    .tape span { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .note { color: var(--muted); font-size: 13px; max-width: 640px; line-height: 1.5; margin-top: 8px; }
+    @media (min-width: 720px) {
+      .wide .sides { grid-template-columns: 1fr 1fr; }
+      .wide .col.yes { border-bottom: 0; border-right: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="banner">Mock · abbreviation chips · not live</div>
+    <div class="eyebrow type">Team identity</div>
+    <h1 class="type">Chips, not logos.</h1>
+    <p class="lede">Same scan card as production. Team subject is a 40px color chip plus the name. Pundit face stays the speaker. No helmets, no traced marks.</p>
+
+    <div class="label type">Desktop scan · Clemson at LSU</div>
+    <article class="event wide">
+      <div class="event-head">
+        <div class="kalshi type">Kalshi</div>
+        <h2 class="type">Clemson at LSU</h2>
+        <div class="meta">Sat Sep 5, 2026 · 7:30 ET · ABC</div>
+      </div>
+      <div class="sides">
+        <div class="col yes">
+          <div class="scan-team">
+            <div class="who">
+              <div class="chip clem" aria-hidden="true">CLEM</div>
+              <div class="scan-name type">Clemson</div>
+            </div>
+            <div class="px type px-yes">24¢</div>
+          </div>
+          <div class="empty">No verified pundit pick yet</div>
+        </div>
+        <div class="col">
+          <div class="scan-team">
+            <div class="who">
+              <div class="chip lsu" aria-hidden="true">LSU</div>
+              <div class="scan-name type">LSU</div>
+            </div>
+            <div class="px type">78¢</div>
+          </div>
+          <div class="person">
+            <img src="../../public/photos/pate.jpg" alt="" />
+            <div class="nm type">Josh Pate</div>
+          </div>
+          <div class="person">
+            <img src="../../public/photos/finebaum.jpg" alt="" />
+            <div class="nm type">Paul Finebaum</div>
+          </div>
+        </div>
+      </div>
+      <div class="see-why">See why →</div>
+    </article>
+
+    <div class="label type">Phone · 390px</div>
+    <article class="event phone">
+      <div class="event-head">
+        <div class="kalshi type">Kalshi</div>
+        <h2 class="type">Clemson at LSU</h2>
+        <div class="meta">Sat Sep 5, 2026 · 7:30 ET · ABC</div>
+      </div>
+      <div class="sides">
+        <div class="col yes">
+          <div class="scan-team">
+            <div class="who">
+              <div class="chip clem" aria-hidden="true">CLEM</div>
+              <div class="scan-name type">Clemson</div>
+            </div>
+            <div class="px type px-yes">24¢</div>
+          </div>
+          <div class="empty">No verified pundit pick yet</div>
+        </div>
+        <div class="col">
+          <div class="scan-team">
+            <div class="who">
+              <div class="chip lsu" aria-hidden="true">LSU</div>
+              <div class="scan-name type">LSU</div>
+            </div>
+            <div class="px type">78¢</div>
+          </div>
+          <div class="person">
+            <img src="../../public/photos/pate.jpg" alt="" />
+            <div class="nm type">Josh Pate</div>
+          </div>
+          <div class="person">
+            <img src="../../public/photos/finebaum.jpg" alt="" />
+            <div class="nm type">Paul Finebaum</div>
+          </div>
+        </div>
+      </div>
+      <div class="see-why">See why →</div>
+    </article>
+
+    <div class="label type">Future · one team chip</div>
+    <article class="event future" style="max-width:320px">
+      <div class="kalshi type">Kalshi</div>
+      <h3 class="type">Rams win the Super Bowl</h3>
+      <div class="who" style="margin:10px 0 12px">
+        <div class="chip lar" aria-hidden="true">LAR</div>
+        <div class="scan-name type">Rams</div>
+      </div>
+      <div class="tape">
+        <div>
+          <span>Yes 16¢</span>
+          <b class="type px-yes" style="font-size:18px">Butler · Orlovsky</b>
+        </div>
+        <div>
+          <span>No 84¢</span>
+          <b class="type" style="font-size:18px">Hawk</b>
+        </div>
+      </div>
+    </article>
+
+    <div class="label type">V1 chip set · colors only</div>
+    <div class="strip">
+      <div class="swatch"><div class="chip sm clem">CLEM</div><span>Clemson</span></div>
+      <div class="swatch"><div class="chip sm lsu">LSU</div><span>LSU</span></div>
+      <div class="swatch"><div class="chip sm unc">UNC</div><span>UNC</span></div>
+      <div class="swatch"><div class="chip sm tcu">TCU</div><span>TCU</span></div>
+      <div class="swatch"><div class="chip sm wis">WIS</div><span>Wisconsin</span></div>
+      <div class="swatch"><div class="chip sm nd">ND</div><span>Notre Dame</span></div>
+      <div class="swatch"><div class="chip sm mia">MIA</div><span>Miami</span></div>
+      <div class="swatch"><div class="chip sm stan">STAN</div><span>Stanford</span></div>
+      <div class="swatch"><div class="chip sm bay">BAY</div><span>Baylor</span></div>
+      <div class="swatch"><div class="chip sm aub">AUB</div><span>Auburn</span></div>
+      <div class="swatch"><div class="chip sm ncsu">NCST</div><span>NC State</span></div>
+      <div class="swatch"><div class="chip sm uva">UVA</div><span>Virginia</span></div>
+      <div class="swatch"><div class="chip sm ne">NE</div><span>Patriots</span></div>
+      <div class="swatch"><div class="chip sm sea">SEA</div><span>Seahawks</span></div>
+      <div class="swatch"><div class="chip sm sf">SF</div><span>49ers</span></div>
+      <div class="swatch"><div class="chip sm lar">LAR</div><span>Rams</span></div>
+      <div class="swatch"><div class="chip sm buf">BUF</div><span>Bills</span></div>
+      <div class="swatch"><div class="chip sm hou">HOU</div><span>Texans</span></div>
+      <div class="swatch"><div class="chip sm iu">IU</div><span>Indiana</span></div>
+      <div class="swatch"><div class="chip sm osu">OSU</div><span>Ohio St</span></div>
+      <div class="swatch"><div class="chip sm uga">UGA</div><span>Georgia</span></div>
+      <div class="swatch"><div class="chip sm tex">TEX</div><span>Texas</span></div>
+      <div class="swatch"><div class="chip sm sec">SEC</div><span>SEC</span></div>
+    </div>
+    <p class="note">Names stay. Chip is decorative (empty alt). If a school later publishes an editorial SVG, only that team’s chip is swapped.</p>
+  </div>
+</body>
+</html>

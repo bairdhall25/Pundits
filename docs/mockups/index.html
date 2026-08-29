@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PUNDITS — On the board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --ink: #f5f5f5;
+      --muted: #a3a3a3;
+      --dim: #6b6b6b;
+      --green: #39ff14;
+      --line: #2a2a2a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); font-family: Inter, system-ui, sans-serif; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+    .shell { max-width: 1080px; margin: 0 auto; padding: 20px 20px 80px; }
+    header.top {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 28px; gap: 12px;
+    }
+    .wordmark {
+      font-family: "Bebas Neue", sans-serif; font-size: 42px; letter-spacing: 0.12em;
+      color: var(--green); line-height: 1;
+    }
+    .wordmark span { color: var(--ink); }
+    nav.main { display: flex; gap: 4px; flex-wrap: wrap; }
+    nav.main button {
+      text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 600;
+      padding: 8px 10px; color: var(--muted); border-bottom: 2px solid transparent;
+    }
+    nav.main button.on { color: var(--green); border-color: var(--green); }
+
+    .eyebrow { font-family: "Bebas Neue", sans-serif; letter-spacing: 0.18em; color: var(--green); font-size: 18px; }
+    h1.broadcast {
+      font-family: "Bebas Neue", sans-serif; font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: 0.04em; line-height: 0.92; margin: 4px 0 10px;
+    }
+    .lede { color: var(--muted); max-width: 560px; line-height: 1.5; margin-bottom: 24px; }
+
+    .event {
+      background: var(--card); border: 1px solid var(--line); margin-bottom: 14px; overflow: hidden;
+    }
+    .event.fight { border-color: #245c18; }
+    .event-head {
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      padding: 14px 16px 10px; border-bottom: 1px solid var(--line);
+    }
+    .event-head h2 {
+      font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 0.04em;
+    }
+    .event-head .meta { color: var(--dim); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; align-self: center; }
+    .sides { display: grid; grid-template-columns: 1fr 1fr; }
+    .col { padding: 14px 16px; min-height: 88px; }
+    .col.yes { background: #0d1a0c; border-right: 1px solid var(--line); }
+    .col.no { background: #141414; }
+    .col .lab {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 10px;
+    }
+    .col.no .lab { color: var(--muted); }
+    .empty { color: var(--dim); font-size: 13px; }
+    .p {
+      display: flex; gap: 10px; align-items: center; width: 100%; text-align: left;
+      margin-bottom: 10px;
+    }
+    .p:hover .nm { color: var(--green); }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: #222; }
+    .avatar.hero { width: 160px; height: 160px; border: 2px solid var(--green); }
+    .nm { font-family: "Bebas Neue", sans-serif; font-size: 20px; letter-spacing: 0.03em; }
+    .qt { color: var(--muted); font-size: 12px; line-height: 1.35; margin-top: 2px; }
+
+    @media (max-width: 640px) {
+      .sides { grid-template-columns: 1fr; }
+      .col.yes { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+
+    .board { display: flex; flex-direction: column; gap: 8px; }
+    .row {
+      display: grid; grid-template-columns: 44px 52px 1fr auto auto;
+      gap: 14px; align-items: center; background: var(--card); padding: 14px 16px;
+      border: 1px solid var(--line); text-align: left; width: 100%;
+    }
+    .row:hover { border-color: var(--green); }
+    .rank { font-family: "Bebas Neue", sans-serif; font-size: 24px; color: var(--green); }
+    .who .name { font-family: "Bebas Neue", sans-serif; font-size: 24px; }
+    .who .outlet { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .stat { text-align: right; }
+    .stat .k { color: var(--dim); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .stat .v { font-family: "Bebas Neue", sans-serif; font-size: 24px; color: var(--green); }
+    .stat .v.ink { color: var(--ink); }
+
+    .profile-hero { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; margin-bottom: 28px; }
+    @media (max-width: 640px) { .profile-hero { grid-template-columns: 1fr; } }
+    .stats-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 12px; }
+    .back { color: var(--green); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
+    .section-h {
+      font-family: "Bebas Neue", sans-serif; letter-spacing: 0.12em; font-size: 22px;
+      border-top: 1px solid var(--line); padding-top: 18px; margin: 28px 0 12px;
+    }
+    .call { background: var(--card); border: 1px solid var(--line); padding: 16px; margin-bottom: 8px; }
+    .chip {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+      padding: 3px 8px; border: 1px solid var(--dim); color: var(--muted); margin-right: 6px;
+    }
+    .chip.hard { border-color: var(--green); color: var(--green); }
+    .chip.pending { color: var(--green); border-color: transparent; background: #12380c; }
+    .claim { font-size: 16px; line-height: 1.45; margin: 8px 0; }
+    .source { color: var(--dim); font-size: 12px; }
+    .implied { background: #111; border-left: 3px solid var(--green); padding: 12px 14px; margin-top: 10px; font-size: 13px; }
+    .implied b { color: var(--green); }
+    .book-sum { display: flex; gap: 28px; background: #10200c; border: 1px solid #245c18; padding: 14px 18px; margin-bottom: 14px; }
+    .feed-card { display: grid; grid-template-columns: 48px 1fr; gap: 12px; }
+    .hidden { display: none; }
+    .note { color: var(--dim); font-size: 12px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div class="wordmark">PUNDITS<span>.</span></div>
+      <nav class="main">
+        <button id="nav-bets" class="on" onclick="show('bets')">Bets</button>
+        <button id="nav-board" onclick="show('board')">Leaderboard</button>
+        <button id="nav-feed" onclick="show('feed')">The Book</button>
+      </nav>
+    </header>
+
+    <section id="view-bets">
+      <div class="eyebrow">ACTIVE BETS · KALSHI FREEZE</div>
+      <h1 class="broadcast">WHO’S ON<br>WHAT.</h1>
+      <p class="lede">Each card is a real contract. Faces on the left implied YES. Faces on the right implied NO. Twitter lands here.</p>
+      <div id="events"></div>
+    </section>
+
+    <section id="view-board" class="hidden">
+      <div class="eyebrow">GAMIFICATION</div>
+      <h1 class="broadcast">THE TABLE.</h1>
+      <p class="lede">Who’s supposed to be good. 2026 is 0–0 until games land. Dollars stay on the profile.</p>
+      <div class="board" id="board"></div>
+    </section>
+
+    <section id="view-feed" class="hidden">
+      <div class="eyebrow">THE BOOK</div>
+      <h1 class="broadcast">EVERY<br>TAKE.</h1>
+      <p class="lede">Hard and soft. Mapped calls carry the Kalshi strip. This is the detail behind the bets.</p>
+      <div id="feed"></div>
+    </section>
+
+    <section id="view-profile" class="hidden"></section>
+  </div>
+
+  <script>
+    const pundits = [
+      { id: "saban", name: "Nick Saban", outlet: "ESPN / GameDay", acc: 63, w: 31, l: 18, pending: 3 },
+      { id: "mcelroy", name: "Greg McElroy", outlet: "ESPN", acc: 61, w: 34, l: 22, pending: 4 },
+      { id: "herbstreit", name: "Kirk Herbstreit", outlet: "College GameDay", acc: 58, w: 29, l: 21, pending: 5 },
+      { id: "coughlin", name: "Stanford Steve", outlet: "College GameDay", acc: 58, w: 38, l: 28, pending: 3 },
+      { id: "thamel", name: "Pete Thamel", outlet: "ESPN", acc: 55, w: 22, l: 18, pending: 3 },
+      { id: "mcfarland", name: "Booger McFarland", outlet: "ESPN studio", acc: 54, w: 27, l: 23, pending: 3 },
+      { id: "mcafee", name: "Pat McAfee", outlet: "GameDay / McAfee Show", acc: 51, w: 24, l: 23, pending: 3 },
+      { id: "finebaum", name: "Paul Finebaum", outlet: "Finebaum / ESPN", acc: 47, w: 21, l: 24, pending: 6 }
+    ];
+
+    const calls = [
+      { punditId: "thamel", kind: "hard", claim: "I’m taking Indiana. Until they prove otherwise.", source: "GameDay Podcast · Jul 28", event: "indiana-title", side: "YES" },
+      { punditId: "finebaum", kind: "hard", claim: "You’re not winning the national championship this year.", source: "First Take · Aug 18", event: "indiana-title", side: "NO" },
+      { punditId: "finebaum", kind: "hard", claim: "I’m out on the SEC ending its championship drought.", source: "SportsCenter · Jul 23", event: "sec-conf-title", side: "NO" },
+      { punditId: "finebaum", kind: "hard", claim: "Texas is the team to beat in the SEC.", source: "Get Up · Jul 21", event: "sec-texas", side: "YES" },
+      { punditId: "finebaum", kind: "soft", claim: "Curt Cignetti is the best coach in college football.", source: "First Take · Aug 18" },
+      { punditId: "saban", kind: "hard", claim: "Georgia and Texas have a chance to go a long way in the Playoff.", source: "McAfee Show · Aug 21", event: "cfp-georgia", side: "YES" },
+      { punditId: "mcfarland", kind: "hard", claim: "If that Georgia defense is what they used to be, it’s tough for anybody to beat them.", source: "ESPN · Aug 5", event: "cfp-georgia", side: "YES" },
+      { punditId: "saban", kind: "hard", claim: "Alabama could sneak up on some people this year.", source: "McAfee Show · Aug 21", event: "cfp-alabama", side: "YES" },
+      { punditId: "herbstreit", kind: "hard", claim: "They’re going to be in the Playoff, could win the SEC.", source: "McAfee Show · Jul 22", event: "cfp-texas", side: "YES" },
+      { punditId: "mcelroy", kind: "hard", claim: "11 wins is the floor. I have the Irish second.", source: "Always CFB · Aug 13", event: "nd-title", side: "YES" },
+      { punditId: "coughlin", kind: "hard", claim: "I expect them to win the National Championship.", source: "Pardon My Take", event: "nd-title", side: "YES" },
+      { punditId: "coughlin", kind: "hard", claim: "West Virginia plays in the Big 12 title game.", source: "Russillo · Aug 21", event: "b12-wvu", side: "YES" },
+      { punditId: "mcfarland", kind: "hard", claim: "Lincoln Riley’s seat is super warm, if not hot.", source: "Pardon My Take · Aug 17", event: "riley-out", side: "YES" },
+      { punditId: "thamel", kind: "hard", claim: "USC makes the Playoff or Riley gets fired.", source: "GameDay Podcast · Jul 28", event: "cfp-usc", side: "YES" },
+      { punditId: "mcafee", kind: "hard", claim: "West Virginia Mountaineers.", source: "McAfee Show · Jul 22", event: "wvu-title", side: "YES" },
+      { punditId: "herbstreit", kind: "hard", claim: "If Bryce is healthy, Michigan could win the Big Ten.", source: "Nonstop · Aug 24", event: "b1g-michigan", side: "YES" }
+    ];
+
+    const events = [
+      { id: "indiana-title", title: "Indiana wins the national title", kalshi: "National Champion — Indiana", yesPx: "14¢", noPx: "87¢" },
+      { id: "nd-title", title: "Notre Dame wins the national title", kalshi: "National Champion — Notre Dame", yesPx: "13¢", noPx: "87¢" },
+      { id: "sec-conf-title", title: "The SEC wins the national title", kalshi: "Conference to win the title — SEC", yesPx: "38¢", noPx: "62¢" },
+      { id: "sec-texas", title: "Texas wins the SEC", kalshi: "SEC Champion — Texas", yesPx: "16¢", noPx: "84¢" },
+      { id: "cfp-georgia", title: "Georgia makes the Playoff", kalshi: "CFP Qualifier — Georgia", yesPx: "—", noPx: "—" },
+      { id: "cfp-texas", title: "Texas makes the Playoff", kalshi: "CFP Qualifier — Texas", yesPx: "—", noPx: "—" },
+      { id: "cfp-alabama", title: "Alabama makes the Playoff", kalshi: "CFP Qualifier — Alabama", yesPx: "40¢", noPx: "60¢" },
+      { id: "b1g-michigan", title: "Michigan wins the Big Ten", kalshi: "Big Ten Champion — Michigan", yesPx: "thin", noPx: "—" },
+      { id: "b12-wvu", title: "West Virginia wins the Big 12", kalshi: "Big 12 Champion — WVU", yesPx: "thin", noPx: "—" },
+      { id: "riley-out", title: "Lincoln Riley out at USC in 2026", kalshi: "Riley out — USC", yesPx: "—", noPx: "—" },
+      { id: "cfp-usc", title: "USC makes the Playoff", kalshi: "CFP Qualifier — USC", yesPx: "thin", noPx: "—" }
+    ];
+
+    function byId(id) { return pundits.find(p => p.id === id); }
+
+    function onEvent(eid, side) {
+      return calls.filter(c => c.event === eid && c.side === side);
+    }
+
+    function person(c) {
+      const p = byId(c.punditId);
+      return `<button class="p" onclick="openProfile('${p.id}')">
+        <img class="avatar" src="photos/${p.id}.jpg" alt="" />
+        <div>
+          <div class="nm">${p.name}</div>
+          <div class="qt">“${c.claim}”</div>
+        </div>
+      </button>`;
+    }
+
+    function renderEvents() {
+      const ranked = [...events].sort((a, b) => {
+        const fight = (id) => onEvent(id, "YES").length && onEvent(id, "NO").length ? 1 : 0;
+        return fight(b.id) - fight(a.id);
+      });
+      document.getElementById("events").innerHTML = ranked.map(e => {
+        const yes = onEvent(e.id, "YES");
+        const no = onEvent(e.id, "NO");
+        const fight = yes.length && no.length;
+        return `<article class="event ${fight ? "fight" : ""}">
+          <div class="event-head">
+            <h2>${e.title}</h2>
+            <div class="meta">Kalshi · ${e.kalshi} · YES ${e.yesPx} · NO ${e.noPx}</div>
+          </div>
+          <div class="sides">
+            <div class="col yes">
+              <div class="lab">Yes · ${e.yesPx} · ${yes.length} pundit${yes.length === 1 ? "" : "s"}</div>
+              ${yes.length ? yes.map(person).join("") : `<div class="empty">Nobody on this side yet</div>`}
+            </div>
+            <div class="col no">
+              <div class="lab">No · ${e.noPx} · ${no.length} pundit${no.length === 1 ? "" : "s"}</div>
+              ${no.length ? no.map(person).join("") : `<div class="empty">Nobody on this side yet</div>`}
+            </div>
+          </div>
+        </article>`;
+      }).join("");
+    }
+
+    function renderBoard() {
+      document.getElementById("board").innerHTML = pundits.map((p, i) => `
+        <button class="row" onclick="openProfile('${p.id}')">
+          <div class="rank">${String(i + 1).padStart(2, "0")}</div>
+          <img class="avatar" src="photos/${p.id}.jpg" alt="" />
+          <div class="who">
+            <div class="name">${p.name}</div>
+            <div class="outlet">${p.outlet}</div>
+          </div>
+          <div class="stat"><div class="k">2025 est.</div><div class="v">${p.acc}%</div></div>
+          <div class="stat"><div class="k">2026</div><div class="v ink">0–0</div></div>
+        </button>
+      `).join("");
+    }
+
+    function impliedBlock(c) {
+      if (!c.event) return "";
+      const e = events.find(x => x.id === c.event);
+      const px = c.side === "YES" ? e.yesPx : e.noPx;
+      return `<div class="implied">${e.title} · <b>${c.side}</b> @ ${px} · $100 at risk</div>`;
+    }
+
+    function innerCall(c) {
+      return `<span class="chip ${c.kind === "hard" ? "hard" : ""}">${c.kind}</span>
+        <span class="chip pending">pending</span>
+        <p class="claim">${c.claim}</p>
+        <div class="source">${c.source}</div>
+        ${impliedBlock(c)}`;
+    }
+
+    function openProfile(id) {
+      const p = byId(id);
+      const mine = calls.filter(c => c.punditId === id);
+      const implied = mine.filter(c => c.event);
+      show("profile");
+      document.getElementById("view-profile").innerHTML = `
+        <button class="back" onclick="show('bets')">← Bets</button>
+        <div class="profile-hero">
+          <img class="avatar hero" src="photos/${p.id}.jpg" alt="" />
+          <div>
+            <div class="outlet" style="letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:12px">${p.outlet}</div>
+            <h1 class="broadcast" style="margin:0">${p.name}</h1>
+            <div class="stats-row">
+              <div class="stat" style="text-align:left"><div class="k">2025 est.</div><div class="v">${p.acc}%</div></div>
+              <div class="stat" style="text-align:left"><div class="k">2026</div><div class="v ink">0–0</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-h">Implied book</div>
+        <div class="book-sum">
+          <div class="stat" style="text-align:left"><div class="k">Open at risk</div><div class="v">$${implied.length * 100}</div></div>
+          <div class="stat" style="text-align:left"><div class="k">Settled</div><div class="v ink">$0</div></div>
+        </div>
+        ${implied.map(c => `<article class="call">${innerCall(c)}</article>`).join("")}
+        <div class="section-h">The book</div>
+        ${mine.map(c => `<article class="call">${innerCall(c)}</article>`).join("")}
+      `;
+      window.scrollTo(0, 0);
+    }
+
+    function renderFeed() {
+      document.getElementById("feed").innerHTML = calls.map(c => {
+        const p = byId(c.punditId);
+        return `<article class="call"><div class="feed-card">
+          <img class="avatar" src="photos/${p.id}.jpg" alt="" />
+          <div>
+            <div class="who"><div class="name">${p.name}</div><div class="outlet">${p.outlet}</div></div>
+            ${innerCall(c)}
+          </div>
+        </div></article>`;
+      }).join("");
+    }
+
+    function show(which) {
+      ["bets", "board", "feed", "profile"].forEach(v => {
+        document.getElementById("view-" + v).classList.toggle("hidden", v !== which);
+      });
+      document.getElementById("nav-bets").classList.toggle("on", which === "bets" || which === "profile");
+      document.getElementById("nav-board").classList.toggle("on", which === "board");
+      document.getElementById("nav-feed").classList.toggle("on", which === "feed");
+    }
+
+    renderEvents();
+    renderBoard();
+    renderFeed();
+  </script>
+</body>
+</html>
