@@ -5,7 +5,7 @@
     "dev": "next dev",
     "og": "tsx scripts/render-og.tsx --force",
     "predev": "tsx scripts/render-og.tsx",
-    "build": "tsx scripts/render-og.tsx --force && next build",
+    "build": "tsx scripts/render-og.tsx && next build",
     "start": "next start",
     "test": "vitest run",
     "verify:static": "node scripts/verify-static.mjs",

@@ -1,5 +1,7 @@
 # Capture run
 
+Status: Operational
+
 A run is on-demand. Target cadence launch week: Wed, Thu, Fri, Sat morning.
 Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `docs/board.md`. Mailbox: `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
 
@@ -42,6 +44,9 @@ Kickoff chips (Today / Tomorrow) are computed in the browser from Eastern
 time. A stale build does not freeze those labels. Deploy when the book
 changes (new pick, grade, freeze), not because the calendar flipped.
 A 6:30am ET empty deploy is optional.
+
+`npm run build` skips OG PNGs when data and `lib/og.ts` are unchanged. Use
+`npm run og` to force a full card rebuild after OG layout changes.
 
 ## URL permanence (SEO-critical)
 
