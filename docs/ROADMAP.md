@@ -1,5 +1,7 @@
 # Pundits roadmap
 
+Status: Operational
+
 The product goal is to make public sports predictions accountable: capture the original take, preserve the frozen market context, and close the loop when the event settles.
 
 ## Phase 0 — reliable shipping
@@ -19,6 +21,7 @@ Exit criteria: one documented deployment path, green CI, reproducible local pref
 
 ## Phase 1 — close the accountability loop
 
+- Treat this as the product gate: do not start new platform scope while every call is still pending.
 - Grade the first settled slate through Grader and Promote.
 - Verify pending, hit, and miss states on event, take, pundit, leaderboard, and home surfaces.
 - Add result-state fixtures, including inconsistent grading evidence.
@@ -47,6 +50,7 @@ Exit criteria: routine releases are fast, assets are light, and editorial freshn
 
 ## Phase 4 — prove growth before expanding scope
 
+- Measure qualified event density, not raw call or page count: covered events, two-sided events, picks per featured event, and resolution horizon.
 - Measure matchup-detail opens, take-story clicks, evidence-source clicks, settled-story shares, and return visits.
 - Revisit licensed team logos only after the source, rights, fallback, and accessibility plan is approved.
 - Revisit new modules or sports only after the accountability loop demonstrates repeat use.

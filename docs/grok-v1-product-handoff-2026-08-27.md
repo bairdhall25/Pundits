@@ -1,8 +1,10 @@
 # Pundits V1 product handoff for Grok
 
+> Status: Historical handoff. It remains useful design evidence, but current product decisions and agent rules live in `docs/product/` and `AGENTS.md`.
+
 Date: 2026-08-27  
 Audience: Grok Build / implementation agent  
-Status: Product direction approved; seven-part implementation plan required before code
+Status: Historical; durable decisions were consolidated into `docs/product/`
 
 ## Assignment
 

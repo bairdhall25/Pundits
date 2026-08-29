@@ -1,5 +1,7 @@
 # Pundits UI/UX Audit Fix Plan
 
+> Status: Historical. The UI work was an earlier implementation slice; GitHub Pages and `GITHUB_PAGES=true` are no longer production instructions.
+
 Date: 2026-08-26  
 Status: Proposed  
 Scope: Resolve the usability issues observed on the homepage, pick detail, leaderboard, Book, and pundit profile without changing the product's data model or editorial rules.

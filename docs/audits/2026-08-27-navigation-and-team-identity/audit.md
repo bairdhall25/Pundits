@@ -1,5 +1,7 @@
 # Pundits navigation and team-identity audit
 
+Status: Evidence
+
 Date: 2026-08-27
 
 ## Scope

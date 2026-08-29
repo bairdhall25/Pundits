@@ -1,5 +1,7 @@
 # Roster candidates — 20 NCAAF + 20 NFL
 
+Status: Evidence. Current roster truth is `data/pundits.json`.
+
 Date: 2026-08-25. "This-week talker" = actively producing content this week (CFB Week 1 window / NFL season-preview window), based on recency of published output found in search.
 
 Photo URLs were verified live (Wikipedia/Commons API responses or direct HTTP 200 image checks) on 2026-08-25. Where no verifiable photo exists, the cell says **none found** — nothing is invented. Some Wikimedia shots are old (vintage noted); swap for press stills before shipping if the face reads dated.

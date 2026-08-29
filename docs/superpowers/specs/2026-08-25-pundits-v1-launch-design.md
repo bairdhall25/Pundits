@@ -1,5 +1,7 @@
 # Pundits — v1 Public Launch ("Opening Weekend")
 
+> Status: Historical. Durable decisions adopted from this specification now live in `docs/product/`; its GitHub Pages deployment guidance is obsolete.
+
 Date: 2026-08-25
 Status: Current — extends the 2026-08-24 prototype spec for the first public share. Where they conflict, this document wins.
 

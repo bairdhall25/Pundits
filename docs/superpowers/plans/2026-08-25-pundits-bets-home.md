@@ -1,5 +1,7 @@
 # Pundits Bets-Home Prototype Implementation Plan
 
+> Status: Historical. The `/bets` route and prototype framing were superseded by permanent season-qualified `/picks/` routes and the current product system.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans or subagent-driven-development. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship the public Next.js prototype whose home is Kalshi-mapped event cards (YES vs NO faces), with a leaderboard and The Book, using a real 2026 preseason freeze.

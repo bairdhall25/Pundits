@@ -1,5 +1,7 @@
 # Pundits UI/UX audit — sports fan / sports gambler perspective
 
+Status: Evidence
+
 Date: 2026-08-28
 Method: rendered local app (main branch), headless-browser screenshots at desktop 1440×900 fold, full-page 1440px, and ~mobile width. Evaluated as two personas: a college football / NFL fan who follows TV pundits, and a sports gambler who lives in sportsbook apps.
 

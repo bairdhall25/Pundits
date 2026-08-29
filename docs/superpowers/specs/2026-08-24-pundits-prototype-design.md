@@ -1,5 +1,7 @@
 # Pundits — Preseason Prototype Design
 
+> Status: Historical. Retained as early product evidence; current product authority is `docs/product/` and current implementation truth is live code and JSON.
+
 Date: 2026-08-24
 Status: Current — supersedes the earlier leaderboard-first draft
 

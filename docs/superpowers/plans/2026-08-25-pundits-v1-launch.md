@@ -1,5 +1,7 @@
 # Pundits v1 Public Launch Implementation Plan
 
+> Status: Historical. The plan's GitHub Pages, earlier route, and launch-count guidance are obsolete. Production now uses Cloudflare Pages; consult `docs/product/`, `docs/ROADMAP.md`, and `docs/RUNBOOK.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Harden the existing Pundits prototype into a publicly shareable, fully accurate opening-weekend site (CFB Week 1 + NFL Week 1), shared Friday/Saturday Sep 4–5 2026 once marquee cards carry real captured picks.

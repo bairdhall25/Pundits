@@ -1,5 +1,7 @@
 # Week 0 / Week 1 leans — verified first-person picks
 
+Status: Evidence and capture history. Current publication truth is live `data/*.json`.
+
 Date: 2026-08-25. Verified first-person picks.
 
 > **2026-08-27 restore note:** An accidental Scout push briefly wiped this file. Pre-wipe full text (Week 0 staff tables + early addenda) is in git at `f2aabdc:docs/week1-leans.md` / blob `1e914f4b`. Bot-era Scout runs from 2026-08-26 onward are restored below. Morning 2026-08-27 also at [`docs/runs/2026-08-27.md`](./runs/2026-08-27.md). Promoted 2026-08-27: Fallica `texas-cfp-2026` no.
