@@ -8,24 +8,27 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
-- `docs/board.md` — P0 holes, do-not-touch. If `data/` disagrees, **`data/` wins**.
+- Today's `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt.
 - `docs/pick-shows.md` — which shows pick; X still only opens status URLs.
+- `docs/add-list.md` — Candidate handles.
+- `docs/board.md` — do-not-touch. If `data/` disagrees, **`data/` wins**.
 - `data/pundits.json` — Intake `pundit` ids only
 - `data/events.json` — slugs, YES = away
 - `data/calls.json` — skip same pundit+event. Same URL on a different speaker is a new row. Skip if this pundit already has that event or already used that URL.
-- Today's run file if it exists: `docs/runs/YYYY-MM-DD.md`
 - Live https://pundits.pro/stories/ — do not restage a pair that already has a page
 
 Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave it for Shows Scout.
 
 ## Hunt (X only)
 
-For **each** P0 event on `docs/board.md`, then P1 Lambeau:
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`):
 
-1. Roster handles below. Query **both** teams, last **48 hours**, this season only.
-2. Then named Candidate handles (Barstool / Ringer / Cover 3 off-roster).
-3. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
-4. Per empty P0 side, say in Dropped which handles you actually opened.
+1. Roster handles below (and add-list handles in `docs/add-list.md`). Query **both** teams, last **48 hours**, this season only.
+2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
+3. Per under-dense game, say in Dropped which handles you actually opened.
+4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent). Do not claim a sweep.
+
+If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
 
 For a hard row, keep the decisive verbatim quote short. Add a 25–60 word `reasoning` capsule only when the same post contains concrete rationale; paraphrase at most two factors and do not import context from replies, another speaker, or a different post. Most short winner-only posts should leave `reasoning` blank.
 
@@ -53,16 +56,18 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | simmons | Bill Simmons | BillSimmons |
 | cowherd | Colin Cowherd | colincowherd |
 | eisen | Rich Eisen | richeisen |
-| florio | Mike Florio | find official (not a parody) |
+| florio | Mike Florio | MikeFlorioPFT (skip parody / quote accounts; show account `ProFootballTalk` only if the post is Florio) |
 | simms | Chris Simms | CSimmsQB |
 | adams | Kay Adams | heykayadams |
-| clark | Ryan Clark | find official |
-| klatt | Joel Klatt | find official |
-| fallica | Chris "The Bear" Fallica | find official |
-| saban | Nick Saban | find official |
-| stephena | Stephen A. Smith | find official |
-| kimes | Mina Kimes | find official |
-| sharpe | Shannon Sharpe | find official |
+| clark | Ryan Clark | look up current official; skip if the account is gone after the 2026 ESPN layoff — say so in Dropped |
+| klatt | Joel Klatt | joelklatt |
+| fallica | Chris "The Bear" Fallica | chrisfallica |
+| saban | Nick Saban | NickSaban |
+| stephena | Stephen A. Smith | stephenasmith |
+| kimes | Mina Kimes | MinaKimes |
+| sharpe | Shannon Sharpe | ShannonSharpe |
+
+If a lookup disagrees, prefer the verified account with the person’s outlet in the bio. Never hunt `*quotes` / `Not Kirk`.
 
 Pat McAfee Show guests are the **guest**, never `mcafee`. Barstool/Ringer ids above are Intake. Name the speaker on PMT / Pick Em / Ringer NFL.
 
@@ -71,10 +76,8 @@ Pat McAfee Show guests are the **guest**, never `mcafee`. Barstool/Ringer ids ab
 | name | handle | group |
 |---|---|---|
 | Rico Bosco | Return_Of_RB | barstool |
-| Tom Fornelli | find official | other |
-| Bud Elliott | find official | other |
-
-P0 right now: empty YES on `clemson-at-lsu-2026` (Clemson), `patriots-at-seahawks-2026` (Patriots), `49ers-vs-rams-2026` (49ers), `bills-at-texans-2026` (Bills). Dublin UNC YES is Patterson (do not restage). P1: `wisconsin-vs-nd-2026`. Do not restage Kanell NC State, Finebaum Dublin, Patterson Dublin, or the morning eight.
+| Tom Fornelli | TomFornelli | other |
+| Bud Elliott | find official (only after an official handle is confirmed) | other |
 
 ## Bar (do not loosen)
 
@@ -98,7 +101,9 @@ Git is the mailbox. Chat is not the handoff.
 
 Same tables as Shows Scout, including the optional `reasoning` column:
 
-**Intake** · **Candidates** · **Dropped** (per empty P0: handles you opened) · **Freeze** · **Home cards** · **Stories this would mint**
+**Intake** · **Candidates** · **Dropped** (per under-dense game: handles you opened) · **Freeze** · **Stories this would mint**
+
+Write **Home cards** only if you are the last pass of the day (no News still scheduled). Otherwise leave it for the later pass.
 
 Empty Intake is a valid run. Say so.
 
