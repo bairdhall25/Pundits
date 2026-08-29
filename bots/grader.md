@@ -21,11 +21,14 @@ From https://github.com/bairdhall25/Pundits (main):
    - Future: contract Yes resolved → `yes` hits. Else `no` hits.
 4. Soft and unmapped calls stay `pending`. They are speech, not a record.
 5. One event grades every mapped call on that slug. Do not grade one pundit and leave the collision uncleared.
+6. Whenever proposing `status: hit` or `status: miss`, also propose `gradedAt`
+   as the Eastern Time calendar date of grading. Pending calls do not get a
+   `gradedAt` value.
 
 ## Output
 
 ```
-| call id | punditId | eventSlug | side | result | proposed status | evidence URL |
+| call id | punditId | eventSlug | side | result | proposed status | gradedAt | evidence URL |
 ```
 
 Then a one-line tally: `N hit / M miss / still pending`.
