@@ -8,6 +8,7 @@ import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
 import {
   callsForPundit,
+  getActivityBoard,
   getPundit,
   impliedOpenDollars,
   isMapped,
@@ -16,7 +17,12 @@ import {
   loadPundits,
   otherTakes,
 } from "@/lib/data";
-import { formatNetDollars, punditIndexable, settledNetDollars } from "@/lib/records";
+import {
+  formatNetDollars,
+  hasGradedRecords,
+  punditIndexable,
+  settledNetDollars,
+} from "@/lib/records";
 import { breadcrumbList, personJsonLd } from "@/lib/seo";
 import { punditShare, sharePayload } from "@/lib/share";
 import { pageMeta } from "@/lib/site";
@@ -66,6 +72,7 @@ export default async function PunditPage({
   const open = impliedOpenDollars(p.id, calls);
   const events = loadEvents();
   const settled = settledNetDollars(p.id, calls, events);
+  const showRecord = hasGradedRecords(getActivityBoard(pundits, calls));
 
   return (
     <main id="main" className="shell">
@@ -103,14 +110,16 @@ export default async function PunditPage({
             {p.sport}
           </div>
           <div className="mt-3 flex flex-wrap gap-6">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                2026
+            {showRecord ? (
+              <div>
+                <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
+                  2026
+                </div>
+                <div className="type-broadcast text-2xl">
+                  {p.season2026.wins}–{p.season2026.losses}
+                </div>
               </div>
-              <div className="type-broadcast text-2xl">
-                {p.season2026.wins}–{p.season2026.losses}
-              </div>
-            </div>
+            ) : null}
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 Live picks
@@ -121,7 +130,7 @@ export default async function PunditPage({
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                At risk
+                Hypothetical $100
               </div>
               <div className="type-broadcast text-2xl text-[var(--green)]">
                 ${open}
@@ -134,6 +143,9 @@ export default async function PunditPage({
       <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
         Implied book
       </h2>
+      <p className="lede" style={{ marginTop: 0 }}>
+        Hypothetical $100 at the frozen Kalshi price — not a bet they placed.
+      </p>
       <div className="mb-4 flex gap-7 border border-[#245c18] bg-[#10200c] px-5 py-4">
         <div>
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">

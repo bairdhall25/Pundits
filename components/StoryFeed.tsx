@@ -39,7 +39,7 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
                 {formatCents(card.cents)}
               </div>
             </div>
-            <h2 className="feed-hd type-broadcast">{card.headline}</h2>
+            <h2 className="feed-hd">{card.headline}</h2>
             <p className="feed-qt">“{card.quote}”</p>
             <div className="feed-meta">
               {card.sideChip}

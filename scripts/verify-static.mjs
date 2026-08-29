@@ -56,8 +56,9 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Paul Finebaum/);
-// Game cards must name teams instead of exposing raw market-side labels.
-// Futures tape rows intentionally use Yes/No because the contract itself is binary.
+assert.match(home, /event-title-link/);
+assert.doesNotMatch(home, /class="event-hit"/);
+assert.match(home, /Most on record/);
 assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>Yes</);
 assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>No</);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
@@ -109,6 +110,11 @@ assert.match(
 );
 assert.doesNotMatch(punditProfile, /2026 record 0–0/);
 assert.doesNotMatch(punditProfile, />0–0</);
+assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
+
+const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "utf8");
+assert.match(leaderboard, /Listed by live picks until the first game grades/);
+assert.doesNotMatch(leaderboard, /lb-rank[^>]*>01</);
 
 const privacy = await readFile(path.join(out, "privacy/index.html"), "utf8");
 assert.match(

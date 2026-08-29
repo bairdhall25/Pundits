@@ -18,8 +18,8 @@ export default function LeaderboardPage() {
         The table.
       </h1>
       <p className="lede">
-        Who’s actually on the record. Everyone starts 0–0. Hits and misses
-        land after the games.
+        Who’s actually on the record. Listed by live picks until the first
+        game grades — then hits and misses land.
       </p>
       <LeaderboardClient board={board} />
     </main>

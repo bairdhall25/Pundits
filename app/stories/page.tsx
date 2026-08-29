@@ -30,8 +30,9 @@ export default function StoriesPage() {
         what.
       </h1>
       <p className="lede">
-        Verified expert picks: who they’re taking, the quote, and the price.
-        The Book is the same takes as a dense list.
+        Verified picks from named analysts and commentators, with the original
+        quote and market price. Browse the visual quote feed or switch to the
+        compact ledger.
       </p>
       <TakesViews current="feed" />
       <StoryBoard cards={cards} />

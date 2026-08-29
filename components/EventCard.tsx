@@ -74,6 +74,7 @@ function SideCol({
   game,
   eventSlug,
   settled = false,
+  eventHref,
 }: {
   side: CardSide;
   pundits: Pundit[];
@@ -82,32 +83,48 @@ function SideCol({
   game: boolean;
   eventSlug?: string;
   settled?: boolean;
+  eventHref?: string;
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const vacant = side.calls.length === 0;
   const team = getTeam(side.teamId, teams);
   const odds = game && !settled ? americanOdds(side.cents) : null;
+  const teamBlock = (
+    <div className="scan-team">
+      <div className="who">
+        {team ? <TeamChip team={team} /> : null}
+        <div className="scan-name type-broadcast">{side.label}</div>
+      </div>
+      <div className="px-wrap">
+        <div className={`px type-broadcast ${detail && side.side === "yes" ? "px-yes" : ""}`}>
+          {formatCents(side.cents)}
+        </div>
+        {odds ? <div className="px-odds">≈ {odds}</div> : null}
+      </div>
+    </div>
+  );
   return (
     <div className={`col ${side.side} ${vacant ? "col-vacant" : ""}`}>
-      <div className="scan-team">
-        <div className="who">
-          {team ? <TeamChip team={team} /> : null}
-          <div className="scan-name type-broadcast">{side.label}</div>
-        </div>
-        <div className="px-wrap">
-          <div className={`px type-broadcast ${detail && side.side === "yes" ? "px-yes" : ""}`}>
-            {formatCents(side.cents)}
-          </div>
-          {odds ? <div className="px-odds">≈ {odds}</div> : null}
-        </div>
-      </div>
+      {eventHref ? (
+        <Link href={eventHref} className="event-price-link">
+          {teamBlock}
+        </Link>
+      ) : (
+        teamBlock
+      )}
       {detail && game ? (
         <div className="lab">
           {side.side === "yes" ? "Away" : "Home"}
         </div>
       ) : null}
       {vacant ? (
-        <div className="empty">No verified pundit pick yet</div>
+        eventHref ? (
+          <Link href={eventHref} className="empty event-price-link">
+            No verified pundit pick yet
+          </Link>
+        ) : (
+          <div className="empty">No verified pundit pick yet</div>
+        )
       ) : (
         side.calls.map((c) => {
           const p = byId[c.punditId];
@@ -155,18 +172,13 @@ export function EventCard({
   const tag = game && !finalLabel ? kickoffTag(event.kickoffDate, new Date()) : null;
   const kalshiHref = eventKalshiUrl(event);
   const freezeHref = kalshiHref ?? event.sourceUrl;
+  const eventHref = `/picks/${event.slug}`;
+  const eventLinkLabel = `${event.title}. ${yes.label} ${formatCents(yes.cents)}${yes.calls.length ? "" : ", no verified pundit pick yet"}. ${no.label} ${formatCents(no.cents)}${no.calls.length ? "" : ", no verified pundit pick yet"}`;
 
   return (
     <article
       className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""} ${detail ? "event-detail" : "event-scan"} ${finalLabel ? "event-settled" : ""}`}
     >
-      {permalink ? (
-        <Link
-          href={`/picks/${event.slug}`}
-          className="event-hit"
-          aria-label={`${event.title}. ${yes.label} ${formatCents(yes.cents)}${yes.calls.length ? "" : ", no verified pundit pick yet"}. ${no.label} ${formatCents(no.cents)}${no.calls.length ? "" : ", no verified pundit pick yet"}`}
-        />
-      ) : null}
       <div className="event-head">
         <div>
           {detail && kalshiHref ? (
@@ -183,8 +195,21 @@ export function EventCard({
           )}
           {detail ? null : (
             <h2 className="type-broadcast event-title">
-              {futureTeam ? <TeamChip team={futureTeam} /> : null}
-              {event.title}
+              {permalink ? (
+                <Link
+                  href={eventHref}
+                  className="event-title-link"
+                  aria-label={eventLinkLabel}
+                >
+                  {futureTeam ? <TeamChip team={futureTeam} /> : null}
+                  <span>{event.title}</span>
+                </Link>
+              ) : (
+                <>
+                  {futureTeam ? <TeamChip team={futureTeam} /> : null}
+                  <span>{event.title}</span>
+                </>
+              )}
             </h2>
           )}
           {detail && futureTeam ? (
@@ -213,8 +238,26 @@ export function EventCard({
         <div className="event-final type-broadcast">Final · {finalLabel}</div>
       ) : null}
       <div className="sides">
-        <SideCol side={yes} pundits={pundits} teams={teams} detail={detail} game={game} eventSlug={event.slug} settled={Boolean(finalLabel)} />
-        <SideCol side={no} pundits={pundits} teams={teams} detail={detail} game={game} eventSlug={event.slug} settled={Boolean(finalLabel)} />
+        <SideCol
+          side={yes}
+          pundits={pundits}
+          teams={teams}
+          detail={detail}
+          game={game}
+          eventSlug={event.slug}
+          settled={Boolean(finalLabel)}
+          eventHref={permalink ? eventHref : undefined}
+        />
+        <SideCol
+          side={no}
+          pundits={pundits}
+          teams={teams}
+          detail={detail}
+          game={game}
+          eventSlug={event.slug}
+          settled={Boolean(finalLabel)}
+          eventHref={permalink ? eventHref : undefined}
+        />
       </div>
       {detail ? (
         <details className="market-details">
@@ -241,7 +284,9 @@ export function EventCard({
           ) : null}
         </details>
       ) : permalink ? (
-        <div className="see-why">See why →</div>
+        <Link href={eventHref} className="see-why">
+          See why →
+        </Link>
       ) : null}
     </article>
   );

@@ -8,14 +8,14 @@ export function TakesViews({ current }: { current: "feed" | "book" }) {
         aria-current={current === "feed" ? "page" : undefined}
         className={current === "feed" ? "on" : undefined}
       >
-        Feed
+        Quote feed
       </Link>
       <Link
         href="/book/"
         aria-current={current === "book" ? "page" : undefined}
         className={current === "book" ? "on" : undefined}
       >
-        The Book
+        Compact ledger
       </Link>
     </div>
   );

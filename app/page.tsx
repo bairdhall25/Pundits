@@ -101,8 +101,9 @@ export default function HomePage() {
             what.
           </h1>
           <p className="lede lg:text-lg">
-            Expert college football and NFL picks from named TV voices. See
-            who they’re taking, the quote, and the market price.
+            College football and NFL picks from named analysts and
+            commentators. See who they’re taking, the quote, and the market
+            price.
           </p>
           <ul className="trust-bar">
             <li>Real quotes, linked to source</li>
@@ -133,17 +134,14 @@ export default function HomePage() {
         <span className="board-jump-label">Jump to</span>
         <a href="#ncaaf">College</a>
         <a href="#nfl">NFL</a>
-        <a href="#futures">Fights</a>
-        <a href="#takes">Takes</a>
-        <a href="#table">Pundits</a>
-        <a href="#book">The Book</a>
+        <a href="#futures">Disagreements</a>
       </nav>
 
       <Weekend
         id="ncaaf"
         kicker="Opening weekend"
         label="College football"
-        when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · cards with a real face"
+        when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · verified picks with original quotes"
         href="/ncaaf/"
         events={ncaafRest}
         calls={calls}
@@ -164,7 +162,7 @@ export default function HomePage() {
         <div className="row-head">
           <div>
             <div className="board-kicker type-broadcast">Pundit vs pundit</div>
-            <h2 className="board-title type-broadcast">Hottest fights</h2>
+            <h2 className="board-title type-broadcast">Biggest disagreements</h2>
           </div>
           <span className="flex gap-3">
             <a className="see" href="/ncaaf/">
@@ -187,13 +185,11 @@ export default function HomePage() {
         </PeekRow>
       </section>
 
-      <EmailInterestForm placement="home" scope="all" variant="band" />
-
       <section id="takes" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Takes</div>
-            <h2 className="board-title type-broadcast">Who picked what</h2>
+            <div className="board-kicker type-broadcast">Takes · quote feed</div>
+            <h2 className="board-title type-broadcast">Latest verified picks</h2>
           </div>
           <a className="see" href="/stories/">
             All takes →
@@ -217,7 +213,7 @@ export default function HomePage() {
       <section id="table" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Pundits · top 10</div>
+            <div className="board-kicker type-broadcast">Most on record</div>
             <h2 className="board-title type-broadcast">The table</h2>
           </div>
           <a className="see" href="/leaderboard/">
@@ -234,8 +230,8 @@ export default function HomePage() {
       <section id="book" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">The Book</div>
-            <h2 className="board-title type-broadcast">Fresh takes</h2>
+            <div className="board-kicker type-broadcast">The Book · compact ledger</div>
+            <h2 className="board-title type-broadcast">Fresh quotes</h2>
           </div>
           <a className="see" href="/book/">
             Open The Book →

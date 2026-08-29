@@ -228,10 +228,13 @@ body {
   line-height: 0.85;
 }
 .feed-hd {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
   font-size: clamp(18px, 4.5vw, 26px);
-  letter-spacing: 0.04em;
-  line-height: 0.95;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   margin: 0 0 8px;
+  text-transform: none;
 }
 .feed-qt {
   color: var(--muted);
@@ -347,8 +350,7 @@ input:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
-.event-hit:focus { outline: none; }
-.event:has(.event-hit:focus-visible) {
+summary:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
@@ -363,6 +365,8 @@ h1, h2, .type-broadcast {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.feed-kicker,
+.feed-meta { font-size: 12px; letter-spacing: 0.1em; }
 
 .shell { max-width: 1080px; margin: 0 auto; padding: 16px 16px 48px; }
 .shell-wide { max-width: 1400px; }
@@ -451,8 +455,9 @@ h1, h2, .type-broadcast {
 .board-title { font-size: clamp(24px, 6vw, 38px); margin: 2px 0 4px; }
 .when { color: var(--muted); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
 .event { position: relative; background: var(--card); border: 1px solid #2a2a2a; margin-bottom: 10px; }
-.event-link:hover { border-color: var(--green); }
-.event-hit { position: absolute; inset: 0; z-index: 0; }
+.event-link:hover,
+.event-link:has(.event-title-link:focus-visible),
+.event-link:has(.see-why:focus-visible) { border-color: var(--green); }
 .person-hit { position: relative; z-index: 1; }
 .event.fight { border-color: #245c18; }
 .event-head { padding: 12px 14px 10px; border-bottom: 1px solid #2a2a2a; }
@@ -503,6 +508,22 @@ a.kalshi-tag:hover {
   align-items: center;
   gap: 10px;
 }
+.event-title-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+.event-title-link:hover { color: var(--green); }
+.event-price-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+a.empty.event-price-link { color: var(--muted); }
 .event-future-team { margin: 8px 0 4px; }
 .scan-team {
   display: flex;
@@ -577,8 +598,7 @@ a.kalshi-tag:hover {
 .result-chip.hit { color: var(--green); }
 .result-chip.miss { color: var(--muted); }
 .see-why {
-  position: relative;
-  z-index: 1;
+  display: block;
   padding: 8px 14px 12px;
   font-size: 11px;
   font-weight: 800;
@@ -586,6 +606,7 @@ a.kalshi-tag:hover {
   text-transform: uppercase;
   color: var(--green);
 }
+.see-why:hover { text-decoration: underline; text-underline-offset: 4px; }
 .market-details {
   position: relative;
   z-index: 1;
@@ -733,6 +754,7 @@ a.kalshi-tag:hover {
 }
 .lb-row:hover { border-color: var(--green); }
 .lb-rank { color: var(--green); font-size: 22px; }
+.lb-rank-quiet { visibility: hidden; }
 .lb-name { font-size: 20px; overflow-wrap: anywhere; }
 .lb-outlet {
   font-size: 12px;

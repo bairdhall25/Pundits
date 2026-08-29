@@ -36,8 +36,11 @@ export function LeaderboardBoard({
       <div className="flex flex-col gap-2">
         {rows.map((p, i) => (
           <Link key={p.id} href={`/pundits/${p.id}`} className="lb-row">
-            <div className="lb-rank type-broadcast">
-              {String(i + 1).padStart(2, "0")}
+            <div
+              className={`lb-rank type-broadcast ${graded ? "" : "lb-rank-quiet"}`}
+              aria-hidden={graded ? undefined : true}
+            >
+              {graded ? String(i + 1).padStart(2, "0") : ""}
             </div>
             <PunditAvatar src={p.photo} alt={p.name} size="row" />
             <div className="lb-who">
