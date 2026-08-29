@@ -34,6 +34,8 @@ Kanell’s Wolfpack ML came from Cover 3 LOCKS captions, not a headline. Copy th
 
 **Tokens are not scarce.** Grok Heavy, Grok Bots, Codex, and Claude have a lot of monthly headroom. The constraint is a verified first-person SU, not spend. Open extra episodes. Jump the locks / moneyline block. Search **both** teams. A first empty query is not the end of the hunt. Do not invent a pick to fill a hole.
 
+When a hard pick has real supporting rationale, capture enough surrounding context to explain the expert's case without copying the segment. Keep the decisive `verbatim quote` to the shortest one or two sentences that prove the SU pick, normally no more than 60 words. Then write a separate 25–60 word `reasoning` capsule in your own words, paraphrasing at most two concrete factors that speaker gave nearby in the same source. Useful factors include a matchup edge, personnel, coaching, venue, or market disagreement. Do not add your own football analysis, merge another speaker's comments, repeat generic biography, or paste captions/play-by-play. If the speaker only names a winner, leave `reasoning` blank; thin truth is better than padded copy.
+
 ## Bar (do not loosen)
 
 - **SU** = they pick the **winner**. “Give me the Wolfpack in Charlottesville” is SU. Spread, total, “tough game,” “I like them this year” are not.
@@ -63,15 +65,15 @@ Then these blocks, nothing else:
 **Intake** (roster ids only)
 
 ```
-| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
 ```
 
-Games first. Quote = their words.
+Games first. Quote = their short exact words. `reasoning` = source-grounded paraphrase, 25–60 words when available, otherwise blank. It is not a transcript.
 
 **Candidates** (off-roster, story-ready SU). Empty is fine. Promote will not auto-add.
 
 ```
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
 ```
 
 `group`: `barstool` | `ringer` | `espn` | `fox` | `other`. `photoUrl` = live image or `needed`.

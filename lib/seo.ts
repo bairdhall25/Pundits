@@ -225,6 +225,10 @@ export function pickStory(
     : `The receipt comes from ${call.source}. ${pundit.name} said: “${call.claim}”`;
   paragraphs.push(said);
 
+  if (call.reasoning?.trim()) {
+    paragraphs.push(`The reasoning ${pundit.name} gave: ${call.reasoning.trim()}`);
+  }
+
   const others = allCalls.filter(
     (c) =>
       isMapped(c) &&

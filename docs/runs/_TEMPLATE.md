@@ -3,15 +3,15 @@
 
 ### Intake
 
-| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|
-| | | | | | | | |
+| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | |
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | |
 
 ### Dropped
 
@@ -35,15 +35,15 @@ X (Twitter) only. Shows Scout owns episodes.
 
 ### Intake
 
-| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|
-| | | | | | | | |
+| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | |
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | |
 
 ### Dropped
 

@@ -94,6 +94,29 @@ describe("mapped takes", () => {
 });
 
 describe("pick stories", () => {
+  it("adds a concise source-grounded reasoning capsule when present", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "kanell"
+    );
+    expect(take).toBeTruthy();
+    const reasoning =
+      "He treated NC State as a live road underdog and made the moneyline, rather than the spread, the clearest expression of his position on the matchup.";
+    const enriched = { ...take!, call: { ...take!.call, reasoning } };
+    const story = pickStory(enriched);
+    expect(story.paragraphs).toContain(
+      `The reasoning Danny Kanell gave: ${reasoning}`
+    );
+    expect(articleJsonLd(enriched).articleBody).toContain(reasoning);
+  });
+
+  it("does not pad stories when the source contains no reasoning", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "patterson"
+    );
+    expect(take).toBeTruthy();
+    expect(pickStory(take!).paragraphs.join(" ")).not.toContain("The reasoning");
+  });
+
   it("announces Finebaum on Dublin from the ledger only", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"

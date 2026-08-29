@@ -26,6 +26,7 @@ For each row, confirm all of:
 4. `eventSlug` exists in `events.json`. Season is the regular-season start year. Wrong year → fail.
 5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail.
 6. Not a restage of an already-booked pundit+event. Same `sourceUrl` on a different speaker is ok (one LOCKS episode, two SUs). Same pundit + same URL is a restage.
+7. Any `reasoning` capsule is 25–60 words, is a faithful paraphrase of at most two concrete factors that the same speaker gave in that source, and does not read like copied captions or added analysis. Blank reasoning is valid. Unsupported or speaker-mixed reasoning → fail; do not repair it by inventing copy.
 
 Do not invent a replacement pick when a row fails. Mark it fail and leave the side empty.
 

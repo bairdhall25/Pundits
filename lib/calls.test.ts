@@ -35,4 +35,14 @@ describe("2026 book", () => {
       expect(c.paysOn.length).toBeGreaterThan(3);
     }
   });
+
+  it("keeps optional reasoning capsules concise and single-paragraph", () => {
+    for (const c of loadCalls()) {
+      if (!c.reasoning) continue;
+      const words = c.reasoning.trim().split(/\s+/);
+      expect(words.length, c.id).toBeGreaterThanOrEqual(25);
+      expect(words.length, c.id).toBeLessThanOrEqual(60);
+      expect(c.reasoning, c.id).not.toMatch(/[\r\n]/);
+    }
+  });
 });

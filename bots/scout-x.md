@@ -27,6 +27,8 @@ For **each** P0 event on `docs/board.md`, then P1 Lambeau:
 3. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
 4. Per empty P0 side, say in Dropped which handles you actually opened.
 
+For a hard row, keep the decisive verbatim quote short. Add a 25–60 word `reasoning` capsule only when the same post contains concrete rationale; paraphrase at most two factors and do not import context from replies, another speaker, or a different post. Most short winner-only posts should leave `reasoning` blank.
+
 Query shape: `from:{handle} {away}` and `from:{handle} {home}`. Also `from:{handle} pick` / `I'll take` / `give me` if the team query is empty.
 
 Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve the official handle if the table is wrong.
@@ -94,7 +96,7 @@ Git is the mailbox. Chat is not the handoff.
 - If it does not exist, create the file from `docs/runs/_TEMPLATE.md` and fill the X pass.
 - Update the first-line comment: add new hard/candidate counts into `hard=` / `candidates=`. If you added a new hard row, set `audit=pending`. Do not set `promoted=true`. If the file was already `promoted=true` and you added new hard, set `promoted=false` so Promote comes back for the new rows only.
 
-Same tables as Shows Scout:
+Same tables as Shows Scout, including the optional `reasoning` column:
 
 **Intake** · **Candidates** · **Dropped** (per empty P0: handles you opened) · **Freeze** · **Home cards** · **Stories this would mint**
 
