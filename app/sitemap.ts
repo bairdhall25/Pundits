@@ -67,7 +67,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const live = mapped.filter((c) => c.punditId === pundit.id);
       return {
         url: canonicalUrl(`/pundits/${pundit.id}/`),
-        lastModified: latestDay(mine.map((c) => c.sourceDate)) ?? freeze,
+        lastModified:
+          latestDay(mine.flatMap((c) => [c.sourceDate, c.gradedAt])) ?? freeze,
         changeFrequency: "weekly",
         priority: live.length ? 0.7 : 0.3,
       };

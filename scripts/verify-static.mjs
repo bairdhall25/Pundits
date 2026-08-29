@@ -165,6 +165,24 @@ for (const url of [
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }
 
+function sitemapLastModified(url) {
+  const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = sitemap.match(
+    new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`)
+  );
+  assert(match, `sitemap must include lastmod for ${url}`);
+  return match[1];
+}
+
+for (const punditId of ["finebaum", "patterson"]) {
+  const profile = `https://pundits.pro/pundits/${punditId}/`;
+  const receipt = `https://pundits.pro/picks/unc-vs-tcu-2026/${punditId}/`;
+  assert(
+    sitemapLastModified(profile) >= sitemapLastModified(receipt),
+    `${profile} must be at least as fresh as its graded receipt`
+  );
+}
+
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
 assert(robots.includes("Sitemap: https://pundits.pro/sitemap.xml"));
 assert(robots.includes("Sitemap: https://pundits.pro/news-sitemap.xml"));
