@@ -36,7 +36,7 @@ Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboar
 
 ## Cadence
 
-Through Saturday 8/29: hunt BFW Saturday / Barstool CFB Show locks for `walker`. Dublin is two-sided (Patterson YES, Finebaum NO). Kanell NC State is already promoted.  
+Saturday 8/29: Dublin 12:00 ET ESPN, then NC State 3:30. **GameDay is not this Saturday** (first 2026 show is Baton Rouge Sep 5). Pre-kick extras optional; **Grader after a final**, not before. BFW Saturday / Barstool CFB Show still skipped this week. `ruiz` is FOX Sports now — do not hunt him on Ringer NFL.  
 Sep 5: GameDay Baton Rouge is the Clemson YES run.  
 NFL openers: keep hunting named podcasts through Wed 9/9.
 

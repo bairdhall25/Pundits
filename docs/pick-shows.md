@@ -39,7 +39,8 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | `stephena`, `kimes`, `orlovsky`, `spears` | ESPN NFL expert grid **Tue–Sat of that NFL week** | Week 1 grid was still No Pick as of 8/28 |
 | `eisen`, `florio`, `simms` | show + weekly column | AFC East lean ≠ Patriots–Seahawks. SB score ≠ Week 1 |
 | `simmons`, `sal` | Ringer gambling pods / Cousin Sal | Win totals ≠ Week 1 SU. Hunt the week of NFL games. |
-| `kapadia`, `ruiz` | Ringer NFL Show | Kapadia hosts. Ruiz is a regular. Analysis ≠ SU until they name a winner. |
+| `kapadia` | Ringer NFL Show | Hosts. Analysis ≠ SU until he names a Week 1 winner. |
+| `ruiz` | FOX Sports digital (left The Ringer 2026-08-21) | Hunt FOX NFL copy / @theStevenRuiz, not Ringer NFL Show. Analysis ≠ SU. |
 | `bigcat`, `portnoy`, `pft` | Pick Em, Picks Central, Barstool CFB Show, PMT only if **they** pick | **Do not** treat PMT bits as a pick show. PFT is the guest/host, never `bigcat`. |
 
 ## Already-rostered talkers (open the actual *PICKING* episode)
@@ -58,7 +59,8 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 - Barstool CFB Show / Picks Central / Pick Em: barstoolsports.com shows + YouTube
 - Pate: Josh Pate’s College Football Show YouTube
 - On3 picking: YouTube `PICKING {away} {home}` on the On3 channel
-- GameDay: Saturday live + clips labeled locks / picks
+- GameDay: Saturday live + clips labeled locks / picks. **First 2026 show is Baton Rouge Sep 5, not Dublin 8/29.**
+- Ruiz: FOX Sports digital / https://www.foxsports.com/personalities/steven-ruiz — not Ringer NFL Show.
 
 ## X handles (X Scout owns the sweep)
 

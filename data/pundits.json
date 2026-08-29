@@ -47,6 +47,6 @@
   { "id": "pft", "name": "PFT Commenter", "outlet": "Barstool / PMT", "photo": "/photos/pft.jpg", "sport": "nfl" },
   { "id": "sal", "name": "Cousin Sal", "outlet": "The Ringer", "photo": "/photos/sal.jpg", "sport": "nfl" },
   { "id": "kapadia", "name": "Sheil Kapadia", "outlet": "The Ringer", "photo": "/photos/kapadia.jpg", "sport": "nfl" },
-  { "id": "ruiz", "name": "Steven Ruiz", "outlet": "The Ringer", "photo": "/photos/ruiz.jpg", "sport": "nfl" },
+  { "id": "ruiz", "name": "Steven Ruiz", "outlet": "FOX Sports", "photo": "/photos/ruiz.jpg", "sport": "nfl" },
   { "id": "newton", "name": "Cam Newton", "outlet": "4th&1", "photo": "/photos/newton.jpg", "sport": "nfl" }
 ]
