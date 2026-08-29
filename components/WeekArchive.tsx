@@ -2,9 +2,15 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
-import { archiveWeeks, gamesForWeek, weekRecord } from "@/lib/archive";
+import {
+  archiveWeeks,
+  gamesForWeek,
+  weekRecord,
+  weekResults,
+} from "@/lib/archive";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
-import { breadcrumbList } from "@/lib/seo";
+import { formatCents } from "@/lib/format";
+import { breadcrumbList, takePath } from "@/lib/seo";
 import type { Sport } from "@/lib/types";
 
 const SPORT_LABEL: Record<Sport, string> = {
@@ -34,6 +40,7 @@ export function WeekArchive({
   const pundits = loadPundits();
   const games = gamesForWeek(sport, season, week, events);
   const record = weekRecord(games, calls);
+  const results = weekResults(games, calls, pundits);
   const graded = record.hits + record.misses > 0;
   const weeks = archiveWeeks(events).filter(
     (w) => w.sport === sport && w.season === season
@@ -72,9 +79,31 @@ export function WeekArchive({
         {label} · {season}–{String(season + 1).slice(-2)}
       </div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        Week {week}
+        {label} Week {week}
       </h1>
       <p className="lede">{lede}</p>
+
+      {results.length ? (
+        <section className="week-results" aria-labelledby="week-results-title">
+          <h2 id="week-results-title" className="type-broadcast">
+            Who was right
+          </h2>
+          <ol>
+            {results.map((result) => (
+              <li key={result.call.id}>
+                <Link href={`/pundits/${result.pundit.id}/`}>
+                  {result.pundit.name}
+                </Link>{" "}
+                {`— ${result.status} (`}
+                <Link href={takePath(result.event.slug, result.pundit.id)}>
+                  {result.pickLabel}
+                </Link>
+                {result.cents == null ? "" : `, ${formatCents(result.cents)}`})
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
 
       <section className="board">
         {games.map((event) => (

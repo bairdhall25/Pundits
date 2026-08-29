@@ -6,8 +6,9 @@ import {
   takesOnTeam,
   teamHasTakes,
   weekRecord,
+  weekResults,
 } from "./archive";
-import type { Call, Event } from "./types";
+import type { Call, Event, Pundit } from "./types";
 
 const ev = (over: Partial<Event>): Event =>
   ({
@@ -76,6 +77,62 @@ describe("weekRecord", () => {
       misses: 1,
       pending: 0,
     });
+  });
+});
+
+describe("weekResults", () => {
+  it("returns graded takes with hits first, then pundit name", () => {
+    const calls = [
+      call({
+        id: "c1", punditId: "patterson", eventSlug: "unc-vs-tcu-2026",
+        side: "yes", status: "miss",
+      }),
+      call({
+        id: "c2", punditId: "finebaum", eventSlug: "unc-vs-tcu-2026",
+        side: "no", status: "hit",
+      }),
+      call({
+        id: "c3", punditId: "adams", eventSlug: "unc-vs-tcu-2026",
+        side: "no", status: "hit",
+      }),
+      call({
+        id: "c4", punditId: "pending", eventSlug: "unc-vs-tcu-2026",
+        side: "yes", status: "pending",
+      }),
+    ];
+    const pundits = [
+      { id: "patterson", name: "Chip Patterson" },
+      { id: "finebaum", name: "Paul Finebaum" },
+      { id: "adams", name: "Amy Adams" },
+      { id: "pending", name: "Pending Person" },
+    ] as Pundit[];
+
+    expect(
+      weekResults(gamesForWeek("ncaaf", 2026, 0, events), calls, pundits)
+    ).toEqual([
+      expect.objectContaining({
+        status: "hit", pundit: expect.objectContaining({ name: "Amy Adams" }),
+        pickLabel: "TCU over North Carolina", cents: 50,
+      }),
+      expect.objectContaining({
+        status: "hit", pundit: expect.objectContaining({ name: "Paul Finebaum" }),
+        pickLabel: "TCU over North Carolina", cents: 50,
+      }),
+      expect.objectContaining({
+        status: "miss", pundit: expect.objectContaining({ name: "Chip Patterson" }),
+        pickLabel: "North Carolina over TCU", cents: 50,
+      }),
+    ]);
+  });
+
+  it("returns nothing before a week has graded takes", () => {
+    expect(
+      weekResults(
+        gamesForWeek("ncaaf", 2026, 0, events),
+        [call({ eventSlug: "unc-vs-tcu-2026", side: "no" })],
+        [{ id: "finebaum", name: "Paul Finebaum" } as Pundit]
+      )
+    ).toEqual([]);
   });
 });
 

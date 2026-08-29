@@ -1,5 +1,5 @@
 import { callsForEvent, eventKind, mappedCalls } from "./data";
-import type { Call, Event, Sport } from "./types";
+import type { Call, Event, Pundit, Sport } from "./types";
 
 export type ArchiveWeek = { sport: Sport; season: number; week: number };
 
@@ -60,6 +60,56 @@ export function weekRecord(
     else record.pending += 1;
   }
   return record;
+}
+
+export type WeekResult = {
+  call: Call;
+  event: Event;
+  pundit: Pundit;
+  status: "hit" | "miss";
+  pickLabel: string;
+  cents: number | null;
+};
+
+/** Graded takes on a week's games, ordered for a citation-friendly result list. */
+export function weekResults(
+  games: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): WeekResult[] {
+  const eventBySlug = new Map(games.map((event) => [event.slug, event]));
+  const punditById = new Map(pundits.map((pundit) => [pundit.id, pundit]));
+
+  return mappedCalls(calls)
+    .flatMap((call): WeekResult[] => {
+      if (
+        !call.eventSlug ||
+        !call.side ||
+        (call.status !== "hit" && call.status !== "miss")
+      ) {
+        return [];
+      }
+      const event = eventBySlug.get(call.eventSlug);
+      const pundit = punditById.get(call.punditId);
+      if (!event || !pundit || !event.awayTeam || !event.homeTeam) return [];
+      const picked = call.side === "yes" ? event.awayTeam : event.homeTeam;
+      const other = call.side === "yes" ? event.homeTeam : event.awayTeam;
+      return [
+        {
+          call,
+          event,
+          pundit,
+          status: call.status,
+          pickLabel: `${picked} over ${other}`,
+          cents: call.side === "yes" ? event.yesCents : event.noCents,
+        },
+      ];
+    })
+    .sort(
+      (a, b) =>
+        (a.status === b.status ? 0 : a.status === "hit" ? -1 : 1) ||
+        a.pundit.name.localeCompare(b.pundit.name)
+    );
 }
 
 /** Takes for and against a team, across its games (side maps to away/home)
