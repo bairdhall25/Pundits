@@ -15,7 +15,7 @@ From https://github.com/bairdhall25/Pundits (main):
 ## Do
 
 1. List pending mapped calls whose event is over (final score, or Kalshi contract resolved). Skip everything still in play. A 2026-season playoff/bowl/Super Bowl in January–February 2027 still grades the `-2026` slug. Grade in this order: `unc-vs-tcu-2026` (Dublin, Sat Aug 29), then `ncsu-at-uva-2026`, then `clemson-at-lsu-2026`, then NFL Week 1 games, then futures that have resolved.
-2. Confirm the result from a primary source (ESPN / NFL.com / school site) **and** Kalshi resolution when the contract exists. Kalshi wins if they disagree.
+2. Confirm the result from an authoritative primary source (league, school, official box score, or equivalent) **and** the Kalshi resolution when the contract exists. If they disagree, stop and report the contract terms and both sources; do not grade automatically. A data-provider error or misunderstood contract must not silently override the real-world result.
 3. Map the result onto the event's side:
    - Game: away win → `yes` hits, `no` misses. Home win → the reverse. Neutral-site still uses the event's `awayTeam` / `homeTeam` fields.
    - Future: contract Yes resolved → `yes` hits. Else `no` hits.
