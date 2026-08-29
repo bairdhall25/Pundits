@@ -11,6 +11,7 @@ import type {
   Sport,
   Team,
 } from "./types";
+import { publicSideLabel } from "./public-side";
 export { hasGradedRecords } from "./records";
 
 export function seasonFromCalls(
@@ -114,14 +115,14 @@ export function callsForEvent(
 export function sidesForCard(event: Event, calls: Call[]): [CardSide, CardSide] {
   const yes: CardSide = {
     side: "yes",
-    label: event.awayTeam ?? "YES",
+    label: publicSideLabel(event, "yes"),
     cents: event.yesCents,
     calls: callsForEvent(event.slug, calls, "yes"),
     teamId: event.awayTeamId,
   };
   const no: CardSide = {
     side: "no",
-    label: event.homeTeam ?? "NO",
+    label: publicSideLabel(event, "no"),
     cents: event.noCents,
     calls: callsForEvent(event.slug, calls, "no"),
     teamId: event.homeTeamId,

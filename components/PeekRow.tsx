@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
 import { callsForEvent, eventHasFight, formatCents, getTeam, loadTeams } from "@/lib/data";
+import { publicSideLabel } from "@/lib/public-side";
 import type { ActivityRecord, Call, Event, Pundit } from "@/lib/types";
 
 export function PeekRow({
@@ -52,12 +53,12 @@ export function FuturePeek({
       </h3>
       <div className="tape">
         <div>
-          <span>Takes it</span>
+          <span>{publicSideLabel(event, "yes")}</span>
           <b className="type-broadcast px-yes">{formatCents(event.yesCents)}</b>
           <div className="sub">{names(yes)}</div>
         </div>
         <div>
-          <span>Against</span>
+          <span>{publicSideLabel(event, "no")}</span>
           <b className="type-broadcast">{formatCents(event.noCents)}</b>
           <div className="sub">{names(no)}</div>
         </div>

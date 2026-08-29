@@ -139,6 +139,19 @@ describe("sidesForCard", () => {
     expect(yes.label).toBe("Clemson");
     expect(no.label).toBe("LSU");
   });
+
+  it("uses fan-facing labels for a future", () => {
+    const future: Event = {
+      ...event,
+      slug: "indiana-title-2026",
+      kind: "future",
+      awayTeam: undefined,
+      homeTeam: undefined,
+    };
+    const [yes, no] = sidesForCard(future, []);
+    expect(yes.label).toBe("Takes it");
+    expect(no.label).toBe("Against");
+  });
 });
 
 describe("settledSide", () => {

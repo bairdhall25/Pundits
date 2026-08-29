@@ -1,4 +1,5 @@
 import { isMapped, settledSide, sidesForCard } from "./data";
+import { publicSideLabel } from "./public-side";
 import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
 import { eventShare } from "./share";
 import {
@@ -131,9 +132,7 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
 }
 
 export function sideChip(event: Event, side: "yes" | "no"): string {
-  if (side === "yes" && event.awayTeam) return event.awayTeam;
-  if (side === "no" && event.homeTeam) return event.homeTeam;
-  return side === "yes" ? "Takes it" : "Against";
+  return publicSideLabel(event, side);
 }
 
 export function toStoryCard(take: MappedTake): StoryCard {
