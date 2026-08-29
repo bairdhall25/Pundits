@@ -2,7 +2,7 @@
 
 Keyed to the CFB/NFL calendar. Poster computes "today" from `kickoff` fields in `cards.json` at run time. All times ET.
 
-Cards refresh on deploy. `RUNBOOK.md` already requires a deploy whenever the book changes, and on game days the book changes at least once a day — so `cards.json` stays current through the week. If `generatedAt` in `cards.json` is older than 24h on a game day, prefer archetypes that don't depend on freshness (The Number, The Harvest) and avoid The Slate.
+Cards refresh on deploy. `RUNBOOK.md` requires a deploy whenever the book changes — on game days that typically means at least one fresh deploy, but never assume it: always check `generatedAt` before leaning on freshness. If `generatedAt` in `cards.json` is older than 24h on a game day, prefer archetypes that don't depend on freshness (The Number, The Harvest) and avoid The Slate.
 
 ## The week
 
@@ -11,10 +11,10 @@ Cards refresh on deploy. `RUNBOOK.md` already requires a deploy whenever the boo
 | Tue | 1–2 posts — The Freeze as picks land; The Number. | Reply sweep (15 cap). |
 | Wed | 2 posts — The Disagreement (best both-sides event); The Freeze. | Reply sweep. |
 | Thu | 2–3 posts — The Slate (if CFB tonight), Live register in window, The Receipt same night. | Game-day sweep (25 cap). |
-| Fri | 2 posts — weekend Slate preview, The Freeze / Bold-call Number (long-cents pending takes). | Reply sweep. |
-| Sat | 3–5 posts — The Slate (morning), Live register, The Receipt as games settle, night Ledger Move. | Heavy sweep (25 cap). |
+| Fri | 2 posts — The Slate (weekend preview); The Freeze — favor pending takes at long cents (bold calls). | Reply sweep. |
+| Sat | 3–5 posts — The Slate (morning), Live register, The Receipt as games settle, The Ledger Move (night). | Heavy sweep (25 cap). |
 | Sun | 3–5 posts — NFL mirror of Saturday. | Heavy sweep. |
-| Mon | 2–3 posts — The Ledger Move, The Self-Grade, MNF Slate + same-night Receipt. | Recap sweep. |
+| Mon | 2–3 posts — choose 2–3 among: The Ledger Move, The Self-Grade, The Slate (MNF), The Receipt (same night). | Recap sweep. |
 
 ## Budgets
 
