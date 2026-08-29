@@ -14,12 +14,16 @@ Display name: College Football Zone
 
 Pundits already decided internally (2026-08-29) to steal the craft (two team tiles, kickoff, one number) and reject the bait (fan score predictions, team-color logo templates). Log it here so that decision has a named competitor, not a vibe.
 
+A second 2026-08-29 handle hunt confirmed this is the real "CollegeFBonX" account. `@CFBonX` / `@CFBOnX` are not separate real accounts. `@CFBReport` and `@CFB247` are larger CFB graphic shops under different brands.
+
 ## Baseline signals
 
-- X profile on 2026-08-29 (fxtwitter): 52,801 followers, 9,918 following, 33,825 posts. Bio: "College football updates, highlights, memes and more."
+- X profile on 2026-08-29 (fxtwitter): 52,801 followers, 9,918 following, 33,825 posts. Bio: "College football updates, highlights, memes and more." PlayerSells public crawl the same day listed ~52,175 followers and a July 2020 join date; treat fxtwitter as the dated snapshot.
 - Sample post https://x.com/CollegeFBonX/status/2093420940164006086 (opened by Pundits bots the same day): "What is your score prediction for North Carolina vs TCU tomorrow?" with a matchup graphic. 119 likes, 76 replies, 3 quotes, 18,293 views, 3 reposts.
+- Open-web confirmation of the same craft without X login: AS USA (2026-08-26) embedded a season-record prediction card ("North Dakota State season prediction from College Football Zone: 8-4 / Comment your record prediction"); SI/Texas Tech On SI (2026-07-28) cited a Big 12 vs ACC stat card.
 - Pundit Reply Guy already treats this account as the prototype of an approachable mid-size CFB page that asks the audience a question.
-- No product site, ledger, named-pundit records, or Kalshi prices were verified on the account itself.
+- Hub is [linktr.ee/collegefbonx](https://linktr.ee/collegefbonx) (created 2025-12-01). Same brand on Instagram / TikTok / Threads as `@collegefb_zone`. Threads bio on 2026-08-29 pointed at `@collegefbonX on X` (1,254 followers, 583 threads). No dedicated product site.
+- No ledger, named-pundit records, or Kalshi prices were verified on the account itself.
 - No operator, company, or funding was verified in this pass.
 
 ## Competitive interpretation
@@ -53,12 +57,20 @@ None unless they want to post a Pundits split as the "correct" answer under a sc
 - Whether they add analyst names, odds, or grades to the graphics.
 - Format changes (vertical vs 16:9, poll vs image).
 - Copycats at similar follower scale.
+- Whether `@collegefb_zone` on IG/TikTok starts carrying named-pundit content.
 
 ## Sources
 
 - https://x.com/CollegeFBonX
 - https://x.com/CollegeFBonX/status/2093420940164006086
+- https://linktr.ee/collegefbonx
+- https://www.threads.com/@collegefb_zone
+- https://www.instagram.com/collegefb_zone
+- https://playersells.com/best-x-accounts/CollegeFBonX
+- https://en.as.com/ncaa/two-fcs-powers-are-making-their-fbs-debut-on-college-footballs-opening-weekend-f202608-n/
+- https://www.si.com/college/texas-tech/football/interesting-and-thought-provoking-texas-tech-late-july-social-media-news-and-posts
 
 ## Observations
 
 - 2026-08-29: first Pundits competition pass. Format competitor. Not a ledger.
+- 2026-08-29 handle hunt: confirmed `@CollegeFBonX` / College Football Zone is the nickname match. Cross-platform brand is `@collegefb_zone`. `@CFBonX` is not a real separate account.
