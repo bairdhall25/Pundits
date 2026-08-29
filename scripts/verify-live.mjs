@@ -52,8 +52,8 @@ assert.doesNotMatch(home, />bairdhall25@gmail.com</);
 assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert(!home.includes("/Pundits/"), "live output must not contain the retired GitHub Pages base path");
 
-const kickoffTags = ["Today", "Tomorrow"].filter((tag) =>
-  new RegExp(`>${tag}<`).test(home)
+const kickoffDates = [...home.matchAll(/data-kickoff="(\d{4}-\d{2}-\d{2})"/g)].map(
+  (m) => m[1]
 );
 
 const redirect = await fetch(`${origin}/picks/unc-vs-tcu/`, {
@@ -69,4 +69,6 @@ assert.equal(
 console.log(
   `Live verification passed (${routes.size} routes, ${mappedHardCalls.length} mapped hard stories, and one redirect).`
 );
-console.log(`Live kickoff tags: ${kickoffTags.length ? kickoffTags.join(", ") : "none"}.`);
+console.log(
+  `Live kickoff dates: ${kickoffDates.length ? [...new Set(kickoffDates)].join(", ") : "none"}.`
+);

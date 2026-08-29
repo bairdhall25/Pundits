@@ -38,9 +38,10 @@ Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `
 
 Cloudflare Pages project: `pundits`. GitHub Actions runs CI only; it does not deploy.
 
-Deploy at least once per game day: the TOMORROW/TODAY kickoff tags on game
-cards are computed at build time (ET), so a stale build shows yesterday's tag.
-The daily capture-run deploy covers this; if a capture is skipped, deploy anyway.
+Kickoff chips (Today / Tomorrow) are computed in the browser from Eastern
+time. A stale build does not freeze those labels. Deploy when the book
+changes (new pick, grade, freeze), not because the calendar flipped.
+A 6:30am ET empty deploy is optional.
 
 ## URL permanence (SEO-critical)
 

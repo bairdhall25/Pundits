@@ -12,7 +12,8 @@ import {
   settledLabel,
   sidesForCard,
 } from "@/lib/data";
-import { americanOdds, kickoffTag, statusLabel } from "@/lib/format";
+import { KickoffTag } from "@/components/KickoffTag";
+import { americanOdds, statusLabel } from "@/lib/format";
 import { eventKalshiUrl } from "@/lib/kalshi";
 import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
@@ -169,7 +170,7 @@ export function EventCard({
     .join(" · ");
   const teams = loadTeams();
   const futureTeam = !game ? getTeam(event.teamId, teams) : null;
-  const tag = game && !finalLabel ? kickoffTag(event.kickoffDate, new Date()) : null;
+
   const kalshiHref = eventKalshiUrl(event);
   const freezeHref = kalshiHref ?? event.sourceUrl;
   const eventHref = `/picks/${event.slug}`;
@@ -219,7 +220,7 @@ export function EventCard({
             </div>
           ) : null}
           <div className="meta">
-            {tag ? <span className="kick-tag type-broadcast">{tag}</span> : null}
+            {game && !finalLabel ? <KickoffTag date={event.kickoffDate} /> : null}
             {detail ? detailMeta : scanMeta}
           </div>
         </div>
