@@ -522,9 +522,30 @@ function Legal({ text }: { text: string }) {
   );
 }
 
+function storyQuote(claim: string, max = 90): string {
+  const trimmed = claim.replace(/\s+/g, " ").replace(/[.]+$/, "").trim();
+  if (trimmed.length <= max) return trimmed;
+  const window = trimmed.slice(0, max);
+  const stop = Math.max(
+    window.lastIndexOf(". "),
+    window.lastIndexOf(", "),
+    window.lastIndexOf("! "),
+    window.lastIndexOf("? ")
+  );
+  if (stop >= 24) return window.slice(0, stop).trim();
+  return `${window.replace(/\s+\S*$/, "")}…`;
+}
+
 function StoryWordmark({ right }: { right?: string | null }) {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
       <div style={{ display: "flex", fontFamily: "Oswald", fontSize: 42, letterSpacing: 6 }}>
         <span style={{ color: GREEN }}>PUNDITS</span>
         <span style={{ color: INK }}>.</span>
@@ -579,7 +600,7 @@ function StoryPrice({ side }: { side: OgSide }) {
 
 function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
-  const quote = ogQuote(card.quote, 160);
+  const quote = storyQuote(card.quote, 110);
   const rest = card.headline.startsWith(card.name)
     ? card.headline.slice(card.name.length).trim()
     : card.headline;
@@ -619,15 +640,25 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
         <div
           style={{
             position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            display: "flex",
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(10,10,10,0.6), rgba(10,10,10,0) 30%, rgba(10,10,10,0.2) 72%, #0a0a0a)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
             left: 64,
             right: 64,
             top: 48,
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
           }}
         >
-          <StoryWordmark right={card.when} />
+          <StoryWordmark right={card.when?.split(" · ")[0] ?? card.when} />
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", flex: 1, padding: "36px 64px 0" }}>
@@ -689,11 +720,10 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
 function StorySide({ side }: { side: OgSide }) {
   const face = side.faces[0];
   const uri = face ? photoUri(face.photo) : null;
-  const quote = face?.quote ? ogQuote(face.quote, 90) : null;
+  const quote = face?.quote ? storyQuote(face.quote, 110) : null;
   return (
     <div
       style={{
-        flex: 1,
         background: CARD,
         padding: 28,
         borderLeft: "8px solid #141414",
@@ -820,7 +850,15 @@ function PunditStoryMarkup({ card }: { card: PunditOgCard }) {
             {card.name.slice(0, 1)}
           </div>
         )}
-        <div style={{ position: "absolute", left: 64, right: 64, top: 48 }}>
+        <div
+          style={{
+            position: "absolute",
+            left: 64,
+            right: 64,
+            top: 48,
+            display: "flex",
+          }}
+        >
           <StoryWordmark right="Quotes · Receipts" />
         </div>
       </div>
@@ -915,7 +953,6 @@ async function shouldSkip(expected: number): Promise<boolean> {
   for (const dir of dirs) outs.push(...(await dirFiles(dir)));
   const pngs = outs.filter((f) => f.endsWith(".png"));
   if (pngs.length !== expected) return false;
-  if (outs.length !== expected) return false;
   const inputs = [
     path.join(ROOT, "data/calls.json"),
     path.join(ROOT, "data/events.json"),
@@ -977,9 +1014,13 @@ export async function renderAllOg(force = false): Promise<{ takes: number; event
     const card = punditOgCard(record, callsForPundit(pundit.id, calls)[0]);
     try {
       await writePng(card.file, await renderCardPng(punditTree(card)));
+    } catch (err) {
+      throw new Error(`pundit landscape ${card.file}: ${err instanceof Error ? err.message : err}`);
+    }
+    try {
       await writePng(ogStoryPunditPath(pundit.id), await renderCardPng(punditStoryTree(card), storySize));
     } catch (err) {
-      throw new Error(`pundit ${card.file}: ${err instanceof Error ? err.message : err}`);
+      throw new Error(`pundit story ${pundit.id}: ${err instanceof Error ? err.message : err}`);
     }
   }
   return { takes: takes.length, events: events.length, pundits: pundits.length };

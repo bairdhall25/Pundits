@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { eventShare, punditShare, sharePayload, tweetIntent } from "./share";
+import { eventShare, punditShare } from "./share";
+import { sharePayload, tweetIntent } from "./share-link";
 import { getPundit, loadCalls, loadEvents, loadPundits } from "./data";
 import { absoluteUrl, siteOrigin } from "./site";
 import type { Call, Event, Pundit } from "./types";

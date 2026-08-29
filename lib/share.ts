@@ -1,39 +1,8 @@
 import { sidesForCard } from "./data";
 import { formatAsOf, formatCents, formatGameDate, seasonSpan } from "./format";
-import { canonicalUrl } from "./site";
 import type { ActivityRecord, Call, Event, Pundit } from "./types";
 
-export type SharePayload = {
-  title: string;
-  text: string;
-  url: string;
-  image: string;
-  story: string;
-  tweetHref: string;
-};
-
-export function tweetIntent(text: string, url: string): string {
-  const params = new URLSearchParams({ text, url });
-  return `https://twitter.com/intent/tweet?${params.toString()}`;
-}
-
-export function sharePayload(input: {
-  title: string;
-  text: string;
-  path: string;
-  image: string;
-  story: string;
-}): SharePayload {
-  const url = canonicalUrl(input.path);
-  return {
-    title: input.title,
-    text: input.text,
-    url,
-    image: input.image,
-    story: input.story,
-    tweetHref: tweetIntent(input.text, url),
-  };
-}
+export { sharePayload, tweetIntent, type SharePayload } from "./share-link";
 
 function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p.name]));

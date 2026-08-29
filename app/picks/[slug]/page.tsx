@@ -18,10 +18,9 @@ import {
   pickLede,
 } from "@/lib/seo";
 import { formatGameWhen, seasonLabel, seasonSpan } from "@/lib/format";
-import { eventShare } from "@/lib/share";
 import { eventOgCard, ogEventPath, ogImageFor, ogStoryEventPath } from "@/lib/og";
 import { pageMeta } from "@/lib/site";
-import { sharePayload } from "@/lib/share";
+import { eventShare, sharePayload } from "@/lib/share";
 
 export function generateStaticParams() {
   return loadEvents().map((e) => ({ slug: e.slug }));

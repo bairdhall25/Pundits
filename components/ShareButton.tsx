@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import type { SharePayload } from "@/lib/share";
+import type { SharePayload } from "@/lib/share-link";
 
 function fileName(path: string): string {
   return path.split("/").filter(Boolean).join("-");
