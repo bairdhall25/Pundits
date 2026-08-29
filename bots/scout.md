@@ -46,7 +46,7 @@ YES = away. Copy slugs from JSON (`clemson-at-lsu-2026`). Wrong year → drop. T
 
 Week 0: `unc-vs-tcu-2026` already on home (Finebaum NO, Patterson YES). Do not restage either. `ncsu-at-uva-2026` is on home (Kanell YES). Do not restage Kanell. `walker` is on the roster with no mapped game yet — hunt BFW Saturday and Barstool CFB Show locks, do not invent a Week 0 SU. Propose `onHome` only with a verified roster SU.
 
-Freeze only events that gained a **new mapped face** this run (or an onHome flip). Kalshi page or Kalshi reprint. Write price date and sourcedAt.
+Freeze only events that gained a **new mapped face** this run (or an onHome flip). Prefer the **kalshi.com** event page plus the event ticker. A reprint can sit in the Freeze note. Write price date, sourcedAt, and ticker.
 
 ## Output
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadEvents, loadTeams } from "./data";
 import { formatGameWhen, seasonLabel, seasonSpan, statusLabel } from "./format";
+import { isKalshiUrl } from "./kalshi";
 
 describe("kalshi freeze", () => {
   it("prices and sources every home event, and sources every priced event", () => {
@@ -90,5 +91,29 @@ describe("kalshi freeze", () => {
     const clemson = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     expect(clemson.awayTeamId).toBe("clemson");
     expect(clemson.homeTeamId).toBe("lsu");
+  });
+
+  it("gives Saturday and home-board games a Kalshi ticker and kalshi.com URL", () => {
+    const bySlug = Object.fromEntries(loadEvents().map((e) => [e.slug, e]));
+    const saturday = ["unc-vs-tcu-2026", "ncsu-at-uva-2026"];
+    const homeBoard = [
+      ...saturday,
+      "clemson-at-lsu-2026",
+      "patriots-at-seahawks-2026",
+      "49ers-vs-rams-2026",
+      "bills-at-texans-2026",
+    ];
+    expect(bySlug["unc-vs-tcu-2026"].ticker).toBe("KXNCAAFGAME-26AUG29UNCTCU");
+    expect(bySlug["ncsu-at-uva-2026"].ticker).toBe("KXNCAAFGAME-26AUG29NCSTUVA");
+    for (const slug of homeBoard) {
+      expect(bySlug[slug].ticker, slug).toMatch(/^KX/);
+      expect(isKalshiUrl(bySlug[slug].sourceUrl), slug).toBe(true);
+    }
+  });
+
+  it("stores a game ticker even when the freeze is still empty", () => {
+    for (const e of loadEvents().filter((ev) => ev.kind === "game")) {
+      expect(e.ticker, e.slug).toMatch(/^KXNCAAFGAME-|^KXNFLGAME-/);
+    }
   });
 });

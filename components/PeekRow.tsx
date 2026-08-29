@@ -52,12 +52,12 @@ export function FuturePeek({
       </h3>
       <div className="tape">
         <div>
-          <span>Yes</span>
+          <span>Takes it</span>
           <b className="type-broadcast px-yes">{formatCents(event.yesCents)}</b>
           <div className="sub">{names(yes)}</div>
         </div>
         <div>
-          <span>No</span>
+          <span>Against</span>
           <b className="type-broadcast">{formatCents(event.noCents)}</b>
           <div className="sub">{names(no)}</div>
         </div>

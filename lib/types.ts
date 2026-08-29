@@ -35,6 +35,8 @@ export type Event = {
   noCents: number | null;
   sourceUrl: string | null;
   sourcedAt: string | null;
+  /** Kalshi event ticker, e.g. KXNCAAFGAME-26AUG29UNCTCU. */
+  ticker?: string;
   onHome: boolean;
   sport: Sport;
   homeRank: number;

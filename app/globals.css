@@ -463,6 +463,12 @@ h1, h2, .type-broadcast {
   letter-spacing: 0.2em;
   margin-bottom: 4px;
 }
+a.kalshi-tag {
+  text-decoration: none;
+}
+a.kalshi-tag:hover {
+  text-decoration: underline;
+}
 .event-head h2 { font-size: clamp(18px, 5vw, 26px); letter-spacing: 0.04em; margin: 0 0 4px; }
 .event-head .meta { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
 .sides { display: grid; grid-template-columns: 1fr; }
@@ -1129,3 +1135,4 @@ h1, h2, .type-broadcast {
 .share-compact { margin-top: 10px; }
 .share-compact .share-toggle { padding: 6px 10px; }
 .feed-post .share { z-index: 3; }
+.feed-post:has(.share-toggle[aria-expanded="true"]) { z-index: 20; }

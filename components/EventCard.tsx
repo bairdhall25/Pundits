@@ -13,6 +13,7 @@ import {
   sidesForCard,
 } from "@/lib/data";
 import { americanOdds, kickoffTag, statusLabel } from "@/lib/format";
+import { eventKalshiUrl } from "@/lib/kalshi";
 import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
 
@@ -100,9 +101,9 @@ function SideCol({
           {odds ? <div className="px-odds">≈ {odds}</div> : null}
         </div>
       </div>
-      {detail ? (
+      {detail && game ? (
         <div className="lab">
-          {game ? (side.side === "yes" ? "Away" : "Home") : side.side.toUpperCase()}
+          {side.side === "yes" ? "Away" : "Home"}
         </div>
       ) : null}
       {vacant ? (
@@ -152,6 +153,8 @@ export function EventCard({
   const teams = loadTeams();
   const futureTeam = !game ? getTeam(event.teamId, teams) : null;
   const tag = game && !finalLabel ? kickoffTag(event.kickoffDate, new Date()) : null;
+  const kalshiHref = eventKalshiUrl(event);
+  const freezeHref = kalshiHref ?? event.sourceUrl;
 
   return (
     <article
@@ -166,7 +169,18 @@ export function EventCard({
       ) : null}
       <div className="event-head">
         <div>
-          <div className="kalshi-tag type-broadcast">Kalshi</div>
+          {detail && kalshiHref ? (
+            <a
+              href={kalshiHref}
+              target="_blank"
+              rel="noreferrer"
+              className="kalshi-tag type-broadcast"
+            >
+              Kalshi
+            </a>
+          ) : (
+            <div className="kalshi-tag type-broadcast">Kalshi</div>
+          )}
           {detail ? null : (
             <h2 className="type-broadcast event-title">
               {futureTeam ? <TeamChip team={futureTeam} /> : null}
@@ -184,9 +198,9 @@ export function EventCard({
             {detail ? detailMeta : scanMeta}
           </div>
         </div>
-        {detail && event.sourceUrl ? (
+        {detail && freezeHref ? (
           <a
-            href={event.sourceUrl}
+            href={freezeHref}
             target="_blank"
             rel="noreferrer"
             className="see freeze-src"
@@ -207,12 +221,24 @@ export function EventCard({
           <summary>Market details</summary>
           <p>
             {game
-              ? `YES means ${yes.label} wins. NO means ${no.label} wins.`
-              : "YES and NO are the Kalshi contract sides."}{" "}
+              ? `The away side is ${yes.label}; the home side is ${no.label}.`
+              : "Takes it and Against are the two market sides."}{" "}
             Frozen at {formatCents(event.yesCents)} / {formatCents(event.noCents)}
             {asOf ? ` ${asOf}` : ""}. Hypothetical $100 at that freeze — not a bet
             the pundit placed.
           </p>
+          {kalshiHref ? (
+            <p>
+              {event.ticker ? (
+                <>
+                  Contract {event.ticker}.{" "}
+                </>
+              ) : null}
+              <a href={kalshiHref} target="_blank" rel="noreferrer">
+                Open on Kalshi →
+              </a>
+            </p>
+          ) : null}
         </details>
       ) : permalink ? (
         <div className="see-why">See why →</div>

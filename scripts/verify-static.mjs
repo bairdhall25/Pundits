@@ -88,6 +88,16 @@ assert.match(
 
 const pickDetail = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
 assert.match(pickDetail, /Get the next verified pick\./);
+assert.match(pickDetail, /Open on Kalshi/);
+assert.match(pickDetail, /KXNCAAFGAME-26AUG29NCSTUVA/);
+assert.match(
+  pickDetail,
+  /href="https:\/\/kalshi\.com\/markets\/kxncaafgame\/college-football-game\/kxncaafgame-26aug29ncstuva"/
+);
+
+const dublinDetail = await readFile(path.join(out, "picks/unc-vs-tcu-2026/index.html"), "utf8");
+assert.match(dublinDetail, /Open on Kalshi/);
+assert.match(dublinDetail, /KXNCAAFGAME-26AUG29UNCTCU/);
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
