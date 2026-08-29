@@ -26,6 +26,7 @@ This file records durable product decisions and working assumptions. Change an a
 | Hypothetical $100 is secondary analysis, not the primary fan promise. | It can express price-adjusted performance but can also make the product feel like a betting tool. | Accepted 2026-08-29 |
 | Records show receipts and sample size before they imply skill. | Early records are selective, correlated, and statistically thin. | Accepted 2026-08-29 |
 | Scout is a density engine: coordinator + Shows/X/News beats against homepage games. | Empty-YES Google against CFB YouTube factories produced dry mornings and ignored NFL/news. | Accepted 2026-08-29 |
+| Sports radio is a bounded source lane inside Shows Scout. | Named radio personalities can fill important local and national coverage gaps without another always-on bot; durable evidence and pilot cost gates preserve trust and usage. | Accepted 2026-08-29 |
 
 ## Working assumptions
 
