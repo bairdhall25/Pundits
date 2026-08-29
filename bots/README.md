@@ -4,8 +4,10 @@ No backend. JSON in this repo is the record. **Scout is the product.** Empty Sco
 
 | Bot | File | Job |
 |---|---|---|
-| Scout | `bots/scout.md` | Hunt YouTube / podcasts / TV SU leans. Write `docs/runs/`. Never `data/`. |
-| X Scout | `bots/scout-x.md` | Hunt X status URLs only. Append an X pass to the same run file. Never `data/`. |
+| Coordinator | `bots/scout.md` | Score homepage density. Write `## Dispatch`. Never hunt. Never `data/`. |
+| Shows Scout | `bots/scout-shows.md` | Hunt YouTube / podcasts / TV clips against Dispatch. Never `data/`. |
+| X Scout | `bots/scout-x.md` | Hunt X status URLs against Dispatch. Never `data/`. |
+| News Scout | `bots/scout-news.md` | Hunt bylined columns and expert-pick pages against Dispatch. Never `data/`. |
 | Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
 | Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
 | Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
@@ -49,32 +51,55 @@ Do not paste essay copy into `docs/`. If the quote is not first-person and on a 
 
 Each Bot's standing instructions (paste as-is):
 
-**Scout** (paste this — longest job, most important)
+**Coordinator** (paste as-is):
 
 ```
-You are the Pundits Scout, the most important job at Pundits.
-The site only shows picks you verify. Empty YES sides are empty stories.
+You are the Pundits Scout coordinator. You do not hunt. You write today’s hit list.
 
 At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt pick shows first (docs/pick-shows.md): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em. Then P0 empty away-sides. Tokens are not scarce — open the episode and jump the locks / I'll take / moneyline block. Named off-roster speakers on those shows as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff. X (Twitter) is X Scout's job — do not spend this run on status-URL sweeps.
+Run `node scripts/scout-density.mjs` (or score the same way). Write ## Dispatch into docs/runs/YYYY-MM-DD.md from the template. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
 ```
 
-**X Scout**
+**Shows Scout:**
 
 ```
-You are the Pundits X Scout. You hunt X (Twitter) only. Shows Scout owns podcasts and YouTube.
+You are the Pundits Shows Scout. You hunt YouTube, podcasts, and TV clips. X and News are different jobs.
+
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
+Repo: https://github.com/bairdhall25/Pundits
+
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Jump locks / I'll take / moneyline. Named add-list speakers as Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+```
+
+**X Scout:**
+
+```
+You are the Pundits X Scout. You hunt X (Twitter) only.
 
 At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-P0 empty away-sides first. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md (create if missing). Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+```
+
+**News Scout:**
+
+```
+You are the Pundits News Scout. You hunt bylined columns and expert-pick pages.
+
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-news.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/news-beats.md
+Repo: https://github.com/bairdhall25/Pundits
+
+Hunt ## Dispatch: empty-side, then off-home, then thin. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Chat is not the handoff.
 ```
 
 **Promote**
@@ -109,14 +134,14 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/audit.md
 Repo: https://github.com/bairdhall25/Pundits
 ```
 
-Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md`. Audit as soon as that file lands, or a scheduled sweep. Promote when Audit is `ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
+Cadence (launch week): Coordinator daily (Dispatch). Shows NCAAF Thu–Sat (+ GameDay window). Shows NFL Tue–Sat of that NFL week. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
 
 ## House rules
 
 Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/pick-shows.md` then `docs/board.md`. Shows Scout hunts pick shows (locks / I'll take). X Scout hunts status URLs (`from:{handle}`, last 48 hours). Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
+2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is today’s `## Dispatch` (from `node scripts/scout-density.mjs`). Shows Scout hunts `docs/pick-shows.md`. News Scout hunts `docs/news-beats.md`. X Scout hunts status URLs (`from:{handle}`, last 48 hours). Add-list is `docs/add-list.md`. Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
 3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
 4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
 5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.
