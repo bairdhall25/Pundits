@@ -83,7 +83,7 @@ Pat McAfee Show guests are the **guest**, never `mcafee`. Barstool/Ringer ids ab
 
 Same as Shows Scout:
 
-- **SU** = they pick the **winner** of a listed game. ATS, total, “tough matchup,” season lean ≠ SU.
+- **SU** = they pick the **winner** of a listed game. ATS, total, team total, and 1H lines are **not** SU — stage them in **Bets**, do not Drop them if the status URL and speaker are good. “Tough matchup,” season lean, unnamed timeline takes stay Dropped. Player props stay parked (`docs/fantasy.md`).
 - **URL** = an `x.com/{handle}/status/{id}` (or twitter.com) that loads, that speaker, this season’s `eventSlug`.
 - YES = away. Wrong year → drop. Title/SB stays on futures slugs.
 
@@ -101,7 +101,9 @@ Git is the mailbox. Chat is not the handoff.
 
 Same tables as Shows Scout, including the optional `reasoning` column:
 
-**Intake** · **Candidates** · **Dropped** (per under-dense game: handles you opened) · **Freeze** · **Stories this would mint**
+**Intake** · **Candidates** · **Bets** (totals/spreads/team totals; `bet` like `TCU team total under 23.5` or `unclear`) · **Dropped** (per under-dense game: handles you opened) · **Freeze** · **Stories this would mint**
+
+**Bets** is staging only. Do not invent a Kalshi contract if the line is ambiguous. Promote will not ship these.
 
 Write **Home cards** only if you are the last pass of the day (no News still scheduled). Otherwise leave it for the later pass.
 

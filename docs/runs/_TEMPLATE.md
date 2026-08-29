@@ -19,6 +19,12 @@
 |---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | |
 
+### Bets
+
+| pundit | eventSlug | bet | verbatim quote | sourceUrl | sourceDate |
+|---|---|---|---|---|---|
+| | | | | | |
+
 ### Dropped
 
 -
@@ -47,6 +53,12 @@ X (Twitter) only. Shows Scout owns episodes. News Scout owns columns.
 |---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | |
 
+### Bets
+
+| pundit | eventSlug | bet | verbatim quote | sourceUrl | sourceDate |
+|---|---|---|---|---|---|
+| | | | | | |
+
 ### Dropped
 
 -
@@ -74,6 +86,12 @@ Bylined columns and expert-pick pages only.
 | proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
 |---|---|---|---|---|---|---|---|---|---|---|
 | | | | | | | | | | | |
+
+### Bets
+
+| pundit | eventSlug | bet | verbatim quote | sourceUrl | sourceDate |
+|---|---|---|---|---|---|
+| | | | | | |
 
 ### Dropped
 

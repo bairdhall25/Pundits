@@ -2,6 +2,8 @@
 
 Status: **parked**. Do not implement. Do not add a Fantasy chip to `SportFilter`. Do not mint `sport: "fantasy"` or `kind: "prop"` until this file is un-parked by the operator.
 
+Game **totals / spreads / team totals** are not this file. Scout stages those in the run-file **Bets** table (`docs/runs/`). They still do not mint pages.
+
 Date: 2026-08-28.
 
 ## Why this is not a third sport yet
