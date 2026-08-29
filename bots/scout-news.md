@@ -27,7 +27,7 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
 4. Paywall / URL does not load → Dropped. Do not paraphrase a snippet.
 5. Skip `dense` unless a page already open names that game.
 
-Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical.
+Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical. Named totals/spreads/team totals go in **Bets**, not Dropped. Player props stay parked.
 
 Freeze only if this pass adds a new mapped roster face (or proposes Lambeau `onHome`). Kalshi page or reprint. Else `none`.
 
@@ -37,7 +37,9 @@ Append `## News pass YYYY-MM-DD (Grok Bot)`. Do not delete Dispatch or other pas
 
 Update `hard=` / `candidates=` as a running sum. If you added hard, `audit=pending`. Never `promoted=true` on new hard (flip to `false` if it was true).
 
-Tables: Intake · Candidates · Dropped (per under-dense game: which URLs you opened) · Freeze · **Home cards** (every `onHome` game: YES faces, NO faces, empty sides) · Stories this would mint.
+Tables: Intake · Candidates · **Bets** (totals/spreads/team totals; `bet` like `TCU team total under 23.5` or `unclear`) · Dropped (per under-dense game: which URLs you opened) · Freeze · **Home cards** (every `onHome` game: YES faces, NO faces, empty sides) · Stories this would mint.
+
+**Bets** is staging only. Do not invent a Kalshi contract if the line is ambiguous. Promote will not ship these.
 
 You are usually the last pass — write Home cards.
 

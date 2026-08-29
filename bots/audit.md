@@ -16,7 +16,7 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Do
 
-Re-open every **hard** Intake row from **Shows pass**, **X pass**, and **News pass**, and every mapped hard call promoted since the previous audit. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
+Re-open every **hard** Intake row from **Shows pass**, **X pass**, and **News pass**, and every mapped hard call promoted since the previous audit. Do **not** fail the run because a **Bets** row exists. Bets are staging only (totals/spreads); optional URL spot-check, never promote. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
 
 For each row, confirm all of:
 
