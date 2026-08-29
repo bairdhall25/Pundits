@@ -784,5 +784,20 @@
     "gradedAt": "2026-08-29",
     "eventSlug": "unc-vs-tcu-2026",
     "side": "no"
+  },
+  {
+    "id": "patterson-ncsu-uva-20260827",
+    "punditId": "patterson",
+    "claim": "I'll take NC State in a close one. NC State wins 28-24.",
+    "reasoning": "Patterson takes the Wolfpack in a game decided in the 20s. He points to the South Florida high-school trio of CJ Bailey, Daveion Gause, and JoJo Trader, and says Bailey leads a game-winning touchdown drive.",
+    "source": "CBS Sports HQ Spotlight (Chip Patterson + Beanie Wells)",
+    "sourceUrl": "https://www.youtube.com/watch?v=a5akVgwrdlg",
+    "sourceDate": "2026-08-27",
+    "kind": "hard",
+    "subject": "NC State",
+    "paysOn": "NC State at Virginia (Week 0)",
+    "status": "pending",
+    "eventSlug": "ncsu-at-uva-2026",
+    "side": "yes"
   }
 ]

@@ -144,7 +144,10 @@ describe("pick stories", () => {
     expect(story.headline).toBe("Danny Kanell picks NC State over Virginia");
     expect(story.dek).toContain("NC State as the underdog at 34¢");
     expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
-    expect(story.paragraphs.join(" ")).not.toMatch(/Chip Patterson|Tarheels/i);
+    expect(story.paragraphs.join(" ")).toContain(
+      "Chip Patterson has also weighed in on this game"
+    );
+    expect(story.paragraphs.join(" ")).not.toMatch(/Tarheels/i);
   });
 
   it("announces Patterson on UNC from the ledger only", () => {
