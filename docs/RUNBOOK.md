@@ -26,7 +26,8 @@ Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `
    and note in the run report that this convention is in use.
 5. AUDIT — re-open new hard URLs (`bots/audit.md`). Failures stay out of JSON.
 6. PUBLISH — promote verified hard rows into `data/calls.json` (unique
-   `punditId` + `eventSlug` + `side` + quote + sourceUrl + sourceDate).
+   `punditId` + `eventSlug`; quote, sourceUrl, and sourceDate on the row.
+   Two speakers may share a URL).
    The next build mints a pick story at `/picks/{eventSlug}/{punditId}/`
    and lists it on `/stories/`. Do not paste article copy into JSON.
    `npm run check` green, commit, push, deploy with `npm run deploy`, verify

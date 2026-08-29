@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadCalls, loadEvents, loadPundits } from "./data";
+import type { Event } from "./types";
 import {
   mappedTakes,
   pickLede,
@@ -149,9 +150,22 @@ describe("pick stories", () => {
 
 describe("pick copy", () => {
   it("says so when a market has no mapped face", () => {
-    const event = loadEvents().find((e) => e.slug === "wisconsin-vs-nd-2026");
-    expect(event).toBeTruthy();
-    expect(pickLede(event!, loadCalls(), loadPundits())).toMatch(/no verified expert pick/i);
+    const event: Event = {
+      slug: "faceless-game-2026",
+      kind: "game",
+      title: "A vs B",
+      contractName: "A vs B — moneyline",
+      awayTeam: "A",
+      homeTeam: "B",
+      yesCents: 40,
+      noCents: 60,
+      sourceUrl: "https://example.com",
+      sourcedAt: "2026-08-28",
+      onHome: true,
+      sport: "ncaaf",
+      homeRank: 9,
+    };
+    expect(pickLede(event, [], [])).toMatch(/no verified expert pick/i);
   });
 });
 

@@ -18,10 +18,14 @@ describe("2026 book", () => {
     expect(calls.some((c) => c.kind === "soft")).toBe(true);
   });
 
-  it("is almost all pending for the preseason snapshot", () => {
+  it("only uses live statuses, and keeps speech ungraded", () => {
     const calls = loadCalls();
-    const pending = calls.filter((c) => c.status === "pending").length;
-    expect(pending).toBe(calls.length);
+    for (const c of calls) {
+      expect(["pending", "hit", "miss"], c.id).toContain(c.status);
+      if (c.kind !== "hard" || !c.eventSlug) {
+        expect(c.status, c.id).toBe("pending");
+      }
+    }
   });
 
   it("does not use placeholder claim text", () => {

@@ -36,4 +36,14 @@ describe("ledger integrity", () => {
       expect(c.sourceUrl, c.id).toMatch(/^https?:\/\//);
     }
   });
+
+  it("has unique call ids", () => {
+    const ids = calls.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("maps at most one hard row per pundit and event", () => {
+    const keys = calls.filter(isMapped).map((c) => `${c.punditId}|${c.eventSlug}`);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
 });

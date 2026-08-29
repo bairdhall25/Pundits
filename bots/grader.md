@@ -38,4 +38,4 @@ Pick story URLs do not change when you grade. You only propose `hit` / `miss`. D
 
 Do not edit `calls.json`. The publish pass does that, then `npx vitest run`.
 
-Known gate: `lib/calls.test.ts` currently asserts every call is `pending` (preseason snapshot). The first real grade must retire or update that test in the same JSON commit. Flag it in your reply so the publish pass does not fail green-suite.
+Statuses are `pending` | `hit` | `miss`. Soft and unmapped rows stay `pending`. Hard mapped rows may grade without a test change.

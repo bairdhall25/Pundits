@@ -13,7 +13,7 @@ From https://github.com/bairdhall25/Pundits (main):
 - Matching Audit: `docs/runs/YYYY-MM-DD-audit.md`. Prefer promoting only rows Audit marked `ok`. If Audit has not run and the operator asked you to ship anyway, say so in the commit.
 - `data/pundits.json` — legal `punditId`s
 - `data/events.json` — legal `eventSlug`s, YES = away
-- `data/calls.json` — skip same pundit + event, or same `sourceUrl`
+- `data/calls.json` — skip same pundit+event. Two speakers on one `sourceUrl` is two rows (Cover 3 LOCKS). Skip if this pundit already has that event or already used that URL.
 - `docs/board.md` — do-not-touch list; promote **game** `ok` rows before new futures
 - `docs/RUNBOOK.md`
 

@@ -113,5 +113,6 @@ Owned here so the files do not fork them.
 6. **Kalshi is the ruler.** Cents come from a Kalshi page or a Kalshi reprint, each with `sourceUrl` + `sourcedAt`. Do not convert sportsbook moneylines.
 7. **Wrong season → drop.** Same teams in a prior year is not this event. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`), where season is the year the regular season starts — a January 2027 bowl/playoff/Super Bowl is still 2026. Next season's rematch is a new slug.
 8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
+9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.

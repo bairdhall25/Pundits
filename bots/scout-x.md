@@ -12,7 +12,7 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 - `docs/pick-shows.md` — which shows pick; X still only opens status URLs.
 - `data/pundits.json` — Intake `pundit` ids only
 - `data/events.json` — slugs, YES = away
-- `data/calls.json` — skip same pundit+event or same URL
+- `data/calls.json` — skip same pundit+event. Same URL on a different speaker is a new row. Skip if this pundit already has that event or already used that URL.
 - Today's run file if it exists: `docs/runs/YYYY-MM-DD.md`
 - Live https://pundits.pro/stories/ — do not restage a pair that already has a page
 

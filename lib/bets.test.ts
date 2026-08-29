@@ -123,21 +123,34 @@ describe("Top 10 boards", () => {
 });
 
 describe("weekend home", () => {
-  it("lists Week 1 games separately from futures", () => {
+  it("lists onHome games separately from futures, ranked for the homepage", () => {
     const events = loadEvents();
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
-    expect(ncaaf.map((e) => e.slug)).toEqual([
-      "unc-vs-tcu-2026",
-      "ncsu-at-uva-2026",
-      "clemson-at-lsu-2026",
-    ]);
-    expect(nfl.map((e) => e.slug)).toEqual([
-      "patriots-at-seahawks-2026",
-      "49ers-vs-rams-2026",
-      "bills-at-texans-2026",
-    ]);
-    expect(ncaaf.every((e) => eventKind(e) === "game")).toBe(true);
+    expect(ncaaf.every((e) => e.onHome && e.sport === "ncaaf" && eventKind(e) === "game")).toBe(
+      true
+    );
+    expect(nfl.every((e) => e.onHome && e.sport === "nfl" && eventKind(e) === "game")).toBe(true);
+    expect(ncaaf.map((e) => e.homeRank)).toEqual(
+      [...ncaaf.map((e) => e.homeRank)].sort((a, b) => a - b)
+    );
+    expect(nfl.map((e) => e.homeRank)).toEqual(
+      [...nfl.map((e) => e.homeRank)].sort((a, b) => a - b)
+    );
+    expect(ncaaf.map((e) => e.slug)).toEqual(
+      expect.arrayContaining([
+        "unc-vs-tcu-2026",
+        "ncsu-at-uva-2026",
+        "clemson-at-lsu-2026",
+      ])
+    );
+    expect(nfl.map((e) => e.slug)).toEqual(
+      expect.arrayContaining([
+        "patriots-at-seahawks-2026",
+        "49ers-vs-rams-2026",
+        "bills-at-texans-2026",
+      ])
+    );
     expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
       true
     );

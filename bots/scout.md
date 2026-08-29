@@ -13,7 +13,7 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 - `docs/board.md` — hunt order, do-not-touch, P0 holes. If `data/` disagrees, **`data/` wins**.
 - `data/pundits.json` — Intake `pundit` ids only
 - `data/events.json` — slugs, YES = away, `onHome`, `kickoffDate`, `season`
-- `data/calls.json` — skip same pundit+event or same URL
+- `data/calls.json` — skip same pundit+event. Same URL on a different speaker is a new row (Cover 3 LOCKS). Skip if this pundit already has that event or already used that URL.
 - `docs/week1-leans.md` — do not re-promote dropped rows
 - Live https://pundits.pro/stories/ — do not restage a pair that already has a page
 

@@ -25,7 +25,7 @@ For each row, confirm all of:
 3. The speaker matches `punditId` in `pundits.json`. McAfee Show guests are the guest, never `mcafee`.
 4. `eventSlug` exists in `events.json`. Season is the regular-season start year. Wrong year → fail.
 5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail.
-6. Not a restage of an already-booked pundit+event or the same `sourceUrl`.
+6. Not a restage of an already-booked pundit+event. Same `sourceUrl` on a different speaker is ok (one LOCKS episode, two SUs). Same pundit + same URL is a restage.
 
 Do not invent a replacement pick when a row fails. Mark it fail and leave the side empty.
 
