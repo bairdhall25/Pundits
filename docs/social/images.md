@@ -25,8 +25,8 @@ Allowed only for posts about no specific pundit, pick, or result — week hype, 
 
 Two ready prompt templates, with slots to fill:
 
-- *"Minimal dark sports graphic, matte near-black background (#0a0a0a), a single bold condensed uppercase headline in off-white reading '{SHORT LINE, MAX 6 WORDS}', one thin neon-green (#39ff14) underline accent, subtle film grain, no people, no logos, no numbers, no small text."*
-- *"Dark editorial poster, near-black (#0a0a0a), abstract geometric goal-line/field texture in charcoal (#141414), condensed uppercase headline '{SHORT LINE}' in off-white, one neon-green (#39ff14) chevron accent, no people, no logos, no numbers."*
+- *"Minimal dark sports graphic, matte near-black background (#0a0a0a), a single bold condensed uppercase headline in off-white reading '{SHORT LINE, MAX 6 WORDS}', one thin neon-green (#39ff14) underline accent, subtle film grain, no people, no logos, no numbers, no small text, no screenshot look-alikes, no betting slips."*
+- *"Dark editorial poster, near-black (#0a0a0a), abstract geometric goal-line/field texture in charcoal (#141414), condensed uppercase headline '{SHORT LINE}' in off-white, one neon-green (#39ff14) chevron accent, no people, no logos, no numbers, no small text, no screenshot look-alikes, no betting slips."*
 
 ## Tier 3 — Text
 

@@ -66,11 +66,11 @@ Nine archetypes cover every post the bots make. Each names its image tier (see `
 
 **When:** games underway — computed from `kickoff`; only while genuinely in-window.
 
-**Shape:** fragments; the pending pick + the score situation, no outcome claims before settle.
+**Shape:** fragments; no scores, no in-game stats — the post uses only what the index carries: the pending pick, the frozen price, and the fact the game is underway (computed from `kickoff`); never an outcome claim before the take settles.
 
 **Image:** none or Tier 1.
 
-**Example** (calibration example — never repost verbatim): *"Finebaum's TCU lean, 61¢ frozen. 21–20, 4th quarter. The book is watching."*
+**Example** (calibration example — never repost verbatim): *"Finebaum's TCU lean is live. 61¢ frozen on Tuesday, settling tonight. The book is watching."*
 
 ## The Self-Grade
 
