@@ -11,6 +11,7 @@ import type {
   Sport,
   Team,
 } from "./types";
+export { hasGradedRecords } from "./records";
 
 export function seasonFromCalls(
   punditId: string,

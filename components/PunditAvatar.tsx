@@ -23,17 +23,20 @@ export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
   return (
     <span
       className={`inline-block overflow-hidden ${
-        hero ? "rounded-full ring-1 ring-[var(--green)]" : ""
+        hero
+          ? "rounded-full ring-1 ring-[var(--green)]"
+          : "bg-[#1a1a1a] ring-1 ring-inset ring-[#2a2a2a]"
       }`}
       style={{ width: dim, height: dim }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* Faces sit in the top third of most source photos; bias the crop up. */}
       <img
         src={href}
         alt={alt}
         width={dim}
         height={dim}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-[50%_25%]"
       />
     </span>
   );

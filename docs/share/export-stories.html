@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PUNDITS story exports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0a0a0a; --card:#141414; --ink:#f5f5f5; --muted:#a3a3a3; --dim:#6b6b6b; --green:#39ff14; --line:#2a2a2a; --unc:#7BAFD4; --unc-ink:#13294B; --tcu:#4D1979; --iu:#990000; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #000; width: 1080px; }
+    .story { width: 1080px; height: 1920px; background: var(--bg); color: var(--ink); overflow: hidden; position: relative; display: flex; flex-direction: column; font-family: Inter, sans-serif; }
+    .bar { height: 12px; background: var(--green); flex: none; }
+    .mark { font-family: Oswald, sans-serif; font-weight: 700; letter-spacing: 6px; text-transform: uppercase; line-height: 1; font-size: 42px; }
+    .mark .p { color: var(--green); }
+    .chip { display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-weight: 700; line-height: 1; flex: none; }
+    .photo { height: 820px; flex: none; position: relative; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; display: block; }
+    .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,0) 28%, rgba(10,10,10,.15) 70%, #0a0a0a 100%); }
+    .brand { position: absolute; z-index: 1; left: 64px; right: 64px; top: 48px; display: flex; justify-content: space-between; align-items: baseline; }
+    .when { color: var(--muted); font-size: 22px; }
+    .mid { padding: 36px 64px 0; flex: 1; display: flex; flex-direction: column; }
+    .kicker { font-family: Oswald, sans-serif; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); font-size: 22px; }
+    .kicker.green { color: var(--green); }
+    .headline { font-family: Oswald, sans-serif; font-size: 72px; line-height: 0.98; margin-top: 10px; }
+    .quote { margin-top: 28px; border-left: 6px solid var(--green); padding-left: 22px; font-size: 34px; line-height: 1.28; }
+    .stub { margin-top: auto; padding: 0 64px 28px; }
+    .row-price { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: 22px 24px; border-left: 8px solid #141414; }
+    .row-price.on { border-left-color: var(--green); background: #101810; }
+    .row-price + .row-price { margin-top: 4px; }
+    .who { display: flex; align-items: center; gap: 16px; }
+    .row-price .chip { width: 64px; height: 64px; font-size: 20px; }
+    .lab { font-family: Oswald, sans-serif; font-size: 36px; }
+    .px { font-family: Oswald, sans-serif; font-size: 64px; }
+    .legal { padding: 0 64px; color: var(--dim); font-size: 22px; }
+    .url { color: var(--green); font-family: Oswald, sans-serif; letter-spacing: 0.12em; font-size: 22px; padding: 8px 64px 36px; }
+    .safe { flex: 1; display: flex; flex-direction: column; padding: 100px 64px 40px; min-height: 0; }
+    .sides { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+    .side { flex: 1; background: var(--card); padding: 28px; border-left: 8px solid #141414; display: flex; flex-direction: column; }
+    .side-head { display: flex; justify-content: space-between; align-items: center; }
+    .side-head .lab { font-size: 40px; }
+    .side-head .px { font-size: 72px; }
+    .side-head .chip { width: 64px; height: 64px; font-size: 20px; }
+    .people { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .person { display: flex; align-items: flex-start; gap: 14px; font-weight: 700; font-size: 28px; }
+    .person img { width: 72px; height: 72px; object-fit: cover; flex: none; }
+    .qt { font-weight: 400; font-size: 24px; color: var(--muted); line-height: 1.3; margin-top: 6px; }
+    .profile .photo { height: 920px; }
+    .stats { display: flex; gap: 48px; margin-top: 32px; }
+    .stat span { display: block; color: var(--muted); font-size: 20px; letter-spacing: 3px; text-transform: uppercase; }
+    .stat b { font-family: Oswald, sans-serif; font-size: 72px; }
+  </style>
+</head>
+<body>
+  <article class="story" id="take">
+    <div class="bar"></div>
+    <div class="photo">
+      <img src="../../public/photos/finebaum.jpg" alt="" />
+      <div class="brand">
+        <div class="mark"><span class="p">PUNDITS</span>.</div>
+        <div class="when">Sat Aug 29 · Dublin</div>
+      </div>
+    </div>
+    <div class="mid">
+      <div class="kicker">Finebaum / ESPN</div>
+      <div class="headline">Picks TCU over North Carolina</div>
+      <div class="quote">“I don’t believe they’ll win this game in Ireland.”</div>
+    </div>
+    <div class="stub">
+      <div class="row-price">
+        <div class="who"><span class="chip" style="background:var(--unc);color:var(--unc-ink)">UNC</span><span class="lab">North Carolina</span></div>
+        <span class="px">26¢</span>
+      </div>
+      <div class="row-price on">
+        <div class="who"><span class="chip" style="background:var(--tcu);color:#fff">TCU</span><span class="lab">TCU</span></div>
+        <span class="px">75¢</span>
+      </div>
+    </div>
+    <div class="legal">Not a bet he placed</div>
+    <div class="url">PUNDITS.PRO</div>
+  </article>
+
+  <article class="story" id="game">
+    <div class="bar"></div>
+    <div class="safe">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div class="mark"><span class="p">PUNDITS</span>.</div>
+        <div class="when">Sat Aug 29 · Dublin</div>
+      </div>
+      <div class="kicker green" style="margin-top:28px">Expert pick split</div>
+      <div class="headline">North Carolina vs TCU</div>
+      <div class="sides">
+        <div class="side">
+          <div class="side-head">
+            <div class="who"><span class="chip" style="background:var(--unc);color:var(--unc-ink)">UNC</span><span class="lab">North Carolina</span></div>
+            <span class="px">26¢</span>
+          </div>
+          <div class="people">
+            <div class="person"><img src="../../public/photos/patterson.jpg" alt="" /><div>Chip Patterson<div class="qt">“I’ll go Tarheels to come back with the win.”</div></div></div>
+          </div>
+        </div>
+        <div class="side">
+          <div class="side-head">
+            <div class="who"><span class="chip" style="background:var(--tcu);color:#fff">TCU</span><span class="lab">TCU</span></div>
+            <span class="px">75¢</span>
+          </div>
+          <div class="people">
+            <div class="person"><img src="../../public/photos/finebaum.jpg" alt="" /><div>Paul Finebaum<div class="qt">“I don’t believe they’ll win this game in Ireland.”</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legal">Not bets they placed</div>
+    <div class="url">PUNDITS.PRO</div>
+  </article>
+
+  <article class="story" id="future">
+    <div class="bar"></div>
+    <div class="safe">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div class="mark"><span class="p">PUNDITS</span>.</div>
+        <div class="when">2026–27 season</div>
+      </div>
+      <div class="kicker green" style="margin-top:28px">Expert pick split</div>
+      <div class="headline">Indiana wins the national title</div>
+      <div class="sides">
+        <div class="side">
+          <div class="side-head">
+            <div class="who"><span class="chip" style="background:var(--iu);color:#fff">IU</span><span class="lab">Takes it</span></div>
+            <span class="px">9¢</span>
+          </div>
+          <div class="people">
+            <div class="person"><img src="../../public/photos/thamel.jpg" alt="" /><div>Pete Thamel<div class="qt">“I’m taking Indiana. Until they prove otherwise.”</div></div></div>
+          </div>
+        </div>
+        <div class="side">
+          <div class="side-head">
+            <span class="lab">Against</span>
+            <span class="px">91¢</span>
+          </div>
+          <div class="people">
+            <div class="person"><img src="../../public/photos/herbstreit.jpg" alt="" /><div>Kirk Herbstreit<div class="qt">“I got CJ Carr and Notre Dame winning the national title over Indiana.”</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legal">Not bets they placed</div>
+    <div class="url">PUNDITS.PRO</div>
+  </article>
+
+  <article class="story profile" id="profile">
+    <div class="bar"></div>
+    <div class="photo">
+      <img src="../../public/photos/finebaum.jpg" alt="" />
+      <div class="brand">
+        <div class="mark"><span class="p">PUNDITS</span>.</div>
+        <div class="when">Quotes · Receipts</div>
+      </div>
+    </div>
+    <div class="mid">
+      <div class="kicker green">Finebaum / ESPN</div>
+      <div class="headline">Paul Finebaum</div>
+      <div class="stats">
+        <div class="stat"><span>Live picks</span><b>7</b></div>
+        <div class="stat"><span>2026</span><b>—</b></div>
+      </div>
+      <div class="quote">“I don’t believe they’ll win this game in Ireland.”</div>
+    </div>
+    <div class="legal">Mapped takes, not bets he placed</div>
+    <div class="url">PUNDITS.PRO</div>
+  </article>
+</body>
+</html>

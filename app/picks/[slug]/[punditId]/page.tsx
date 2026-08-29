@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
+import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { getEvent, loadCalls, loadEvents, loadPundits, statusLabel } from "@/lib/data";
@@ -14,9 +15,12 @@ import {
   takeHeadline,
   takePath,
   toStoryCard,
+  latestDay,
 } from "@/lib/seo";
-import { ogImageFor, ogTakePath } from "@/lib/og";
-import { pageMeta } from "@/lib/site";
+import { ogImageFor, ogStoryTakePath, ogTakePath } from "@/lib/og";
+import { sharePayload } from "@/lib/share";
+import { formatShortDate } from "@/lib/format";
+import { articleMeta, pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
   return mappedTakes(loadCalls(), loadEvents(), loadPundits()).map((take) => ({
@@ -36,11 +40,13 @@ export async function generateMetadata({
   );
   if (!take) return pageMeta("Expert pick", "A verified expert pick with the quote and the price.");
   const story = pickStory(take);
-  return pageMeta(
+  return articleMeta(
     story.headline,
     story.dek,
     takePath(slug, punditId),
-    ogImageFor(ogTakePath(slug, punditId), story.headline)
+    ogImageFor(ogTakePath(slug, punditId), story.headline),
+    take.call.sourceDate,
+    latestDay([take.call.sourceDate, take.event.sourcedAt])
   );
 }
 
@@ -94,9 +100,26 @@ export default async function TakePage({
       <div className="eyebrow type-broadcast">
         Take · {statusLabel(take.call.status)}
       </div>
-      <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {story.headline}
-      </h1>
+      <div className="share-head mb-4 mt-1">
+        <h1 className="text-[clamp(36px,6vw,64px)] leading-[0.92]">
+          {story.headline}
+        </h1>
+        <ShareButton
+          share={sharePayload({
+            title: story.headline,
+            text: story.headline,
+            path: takePath(event.slug, take.pundit.id),
+            image: ogTakePath(event.slug, take.pundit.id),
+            story: ogStoryTakePath(event.slug, take.pundit.id),
+          })}
+        />
+      </div>
+      <p className="story-byline">
+        By PUNDITS Staff
+        {formatShortDate(take.call.sourceDate)
+          ? ` · Source published ${formatShortDate(take.call.sourceDate)}`
+          : ""}
+      </p>
       <div className="story">
         {story.paragraphs.map((p) => (
           <p key={p}>{p}</p>

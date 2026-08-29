@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { ShareButton } from "@/components/ShareButton";
 import { formatCents } from "@/lib/format";
+import { ogStoryTakePath, ogTakePath } from "@/lib/og";
+import { sharePayload } from "@/lib/share";
 import type { StoryCard } from "@/lib/story-card";
 
 export function StoryFeed({ cards }: { cards: StoryCard[] }) {
@@ -43,6 +46,16 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
               {card.sideChip}
               <span>{card.eventTitle}</span>
             </div>
+            <ShareButton
+              compact
+              share={sharePayload({
+                title: card.headline,
+                text: card.headline,
+                path: card.href,
+                image: ogTakePath(card.eventSlug, card.punditId),
+                story: ogStoryTakePath(card.eventSlug, card.punditId),
+              })}
+            />
           </div>
         </li>
       ))}

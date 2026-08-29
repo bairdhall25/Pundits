@@ -13,16 +13,19 @@ import {
   sidesForCard,
 } from "@/lib/data";
 import { americanOdds, kickoffTag, statusLabel } from "@/lib/format";
+import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
 
 function FaceRow({
   call,
   pundit,
   detail,
+  eventSlug,
 }: {
   call: Call;
   pundit: Pundit;
   detail: boolean;
+  eventSlug?: string;
 }) {
   return (
     <div className="person-block">
@@ -50,6 +53,12 @@ function FaceRow({
               </a>
             </>
           ) : null}
+          {eventSlug ? (
+            <>
+              {" · "}
+              <Link href={takePath(eventSlug, pundit.id)}>Full take →</Link>
+            </>
+          ) : null}
         </div>
       ) : null}
     </div>
@@ -62,17 +71,21 @@ function SideCol({
   teams,
   detail,
   game,
+  eventSlug,
+  settled = false,
 }: {
   side: CardSide;
   pundits: Pundit[];
   teams: Team[];
   detail: boolean;
   game: boolean;
+  eventSlug?: string;
+  settled?: boolean;
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const vacant = side.calls.length === 0;
   const team = getTeam(side.teamId, teams);
-  const odds = game ? americanOdds(side.cents) : null;
+  const odds = game && !settled ? americanOdds(side.cents) : null;
   return (
     <div className={`col ${side.side} ${vacant ? "col-vacant" : ""}`}>
       <div className="scan-team">
@@ -98,7 +111,15 @@ function SideCol({
         side.calls.map((c) => {
           const p = byId[c.punditId];
           if (!p) return null;
-          return <FaceRow key={c.id} call={c} pundit={p} detail={detail} />;
+          return (
+            <FaceRow
+              key={c.id}
+              call={c}
+              pundit={p}
+              detail={detail}
+              eventSlug={eventSlug}
+            />
+          );
         })
       )}
     </div>
@@ -178,8 +199,8 @@ export function EventCard({
         <div className="event-final type-broadcast">Final · {finalLabel}</div>
       ) : null}
       <div className="sides">
-        <SideCol side={yes} pundits={pundits} teams={teams} detail={detail} game={game} />
-        <SideCol side={no} pundits={pundits} teams={teams} detail={detail} game={game} />
+        <SideCol side={yes} pundits={pundits} teams={teams} detail={detail} game={game} eventSlug={event.slug} settled={Boolean(finalLabel)} />
+        <SideCol side={no} pundits={pundits} teams={teams} detail={detail} game={game} eventSlug={event.slug} settled={Boolean(finalLabel)} />
       </div>
       {detail ? (
         <details className="market-details">

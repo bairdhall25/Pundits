@@ -52,6 +52,15 @@ export type PickStory = {
   paragraphs: string[];
 };
 
+function priceLine(event: Event, call: Call): string | null {
+  const game = gamePick(event, call);
+  if (!game || game.pickedCents == null) return null;
+  const asOf = formatAsOf(event.sourcedAt);
+  return `The market price on ${game.picked} was ${formatCents(game.pickedCents)} on Kalshi${
+    asOf ? ` ${asOf}` : ""
+  }`;
+}
+
 function gamePick(event: Event, call: Call): {
   picked: string;
   other: string;
@@ -82,14 +91,32 @@ function underdogLine(event: Event): string | null {
   const dog = event.yesCents < event.noCents ? event.awayTeam : event.homeTeam;
   const cents = Math.min(event.yesCents, event.noCents);
   const asOf = formatAsOf(event.sourcedAt);
-  return `${dog} is the underdog at ${formatCents(cents)} on Kalshi${asOf ? `, ${asOf}` : ""}.`;
+  return `The market had ${dog} as the underdog at ${formatCents(cents)} on Kalshi${
+    asOf ? `, ${asOf}` : ""
+  }.`;
+}
+
+function outcomePhrase(title: string): string {
+  const wins = title.match(/^(.+?) wins (.+)$/i);
+  if (wins) return `${wins[1]} to win ${wins[2]}`;
+  const makes = title.match(/^(.+?) makes (.+)$/i);
+  if (makes) return `${makes[1]} to make ${makes[2]}`;
+  return title;
+}
+
+function negativeOutcome(pundit: Pundit, title: string): string {
+  const wins = title.match(/^(.+?) wins (.+)$/i);
+  if (wins) return `${pundit.name} does not see ${wins[1]} winning ${wins[2]}`;
+  const makes = title.match(/^(.+?) makes (.+)$/i);
+  if (makes) return `${pundit.name} does not see ${makes[1]} making ${makes[2]}`;
+  return `${pundit.name} is out on ${title}`;
 }
 
 export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
   const game = gamePick(event, call);
   if (game) return `${pundit.name} picks ${game.picked} over ${game.other}`;
-  if (call.side === "no") return `${pundit.name} against ${event.title}`;
-  return `${pundit.name} takes ${event.title}`;
+  if (call.side === "no") return negativeOutcome(pundit, event.title);
+  return `${pundit.name} picks ${outcomePhrase(event.title)}`;
 }
 
 export function sideChip(event: Event, side: "yes" | "no"): string {
@@ -133,26 +160,49 @@ export function pickStory(
   const dog = underdogLine(event);
   const when = formatGameWhen(event);
   const day = formatShortDate(call.sourceDate);
+  const price = priceLine(event, call);
 
   const paragraphs: string[] = [];
   if (game) {
-    paragraphs.push(`${pundit.name} picks ${game.picked} over ${game.other}.`);
+    const posture =
+      game.pickedCents != null && game.otherCents != null && game.pickedCents < game.otherCents
+        ? "is calling for the upset"
+        : "is backing the market favorite";
+    paragraphs.push(
+      `${pundit.name} ${posture}: ${game.picked} over ${game.other}. ${
+        price ? `${price}.` : ""
+      }`.trim()
+    );
   } else if (call.side === "no") {
-    paragraphs.push(`${pundit.name} is against ${event.title}.`);
+    paragraphs.push(
+      `${negativeOutcome(pundit, event.title)}. The market priced that position at ${formatCents(
+        event.noCents
+      )}${formatAsOf(event.sourcedAt) ? ` ${formatAsOf(event.sourcedAt)}` : ""}.`
+    );
   } else {
-    paragraphs.push(`${pundit.name} takes ${event.title}.`);
+    paragraphs.push(
+      `${pundit.name} is planting a flag on ${outcomePhrase(event.title)}. The market priced that outcome at ${formatCents(
+        event.yesCents
+      )}${formatAsOf(event.sourcedAt) ? ` ${formatAsOf(event.sourcedAt)}` : ""}.`
+    );
   }
 
-  const marketBits = [
-    dog,
-    when ? `Listed ${when}.` : null,
-    "Hypothetical $100 at the freeze.",
-  ].filter(Boolean);
-  paragraphs.push(marketBits.join(" "));
+  if (game) {
+    const marketBits = [
+      dog,
+      when ? `The game is listed for ${when}.` : null,
+      "That price is a frozen market snapshot, not a bet the expert placed.",
+    ].filter(Boolean);
+    paragraphs.push(marketBits.join(" "));
+  } else {
+    paragraphs.push(
+      `${when ? `The market covers the ${when}. ` : ""}The price is a frozen snapshot, not a bet the expert placed.`
+    );
+  }
 
   const said = day
-    ? `On ${call.source} (${day}), ${pundit.name} said: “${call.claim}”`
-    : `On ${call.source}, ${pundit.name} said: “${call.claim}”`;
+    ? `The receipt comes from ${call.source} on ${day}. ${pundit.name} said: “${call.claim}”`
+    : `The receipt comes from ${call.source}. ${pundit.name} said: “${call.claim}”`;
   paragraphs.push(said);
 
   const others = allCalls.filter(
@@ -171,13 +221,22 @@ export function pickStory(
       const place = event.awayTeam ? "this game" : "this pick";
       paragraphs.push(
         names.length === 1
-          ? `${names[0]} is also on ${place}.`
-          : `Also on ${place}: ${names.join(", ")}.`
+          ? `${names[0]} has also weighed in on ${place}; the full split is on the game page.`
+          : `${names.join(", ")} have also weighed in on ${place}; the full split is on the game page.`
       );
     }
   }
 
-  const dek = [headline + ".", dog].filter(Boolean).join(" ");
+  const dek = game
+    ? [
+        `${pundit.name} is taking ${game.picked} over ${game.other}.`,
+        price ? `${price}.` : null,
+        dog,
+        `Here is the quote and the context behind the pick.`,
+      ]
+        .filter(Boolean)
+        .join(" ")
+    : [headline + ".", dog, "Here is the quote and the market context."].filter(Boolean).join(" ");
   return { headline, dek, paragraphs };
 }
 
@@ -303,19 +362,24 @@ export function personJsonLd(pundit: Pundit) {
 export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: Pundit[] = []) {
   const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
   const story = pickStory(take, allCalls, pundits);
+  const image = canonicalUrl(`/og/takes/${take.event.slug}--${take.pundit.id}.png`);
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: story.headline,
     datePublished: isoDay(take.call.sourceDate),
+    dateModified: latestDay([take.call.sourceDate, take.event.sourcedAt]),
     url,
     mainEntityOfPage: url,
     description: story.dek,
     articleBody: story.paragraphs.join(" "),
+    articleSection: take.event.sport === "nfl" ? "NFL" : "College Football",
+    isAccessibleForFree: true,
+    image: [image],
     author: {
-      "@type": "Person",
-      name: take.pundit.name,
-      url: canonicalUrl(`/pundits/${take.pundit.id}`),
+      "@type": "Organization",
+      name: `${SITE_NAME} Staff`,
+      url: canonicalUrl("/about"),
     },
     publisher: {
       "@type": "Organization",
@@ -327,6 +391,11 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
       "@type": take.event.awayTeam ? "SportsEvent" : "Event",
       name: take.event.title,
       url: canonicalUrl(`/picks/${take.event.slug}`),
+    },
+    mentions: {
+      "@type": "Person",
+      name: take.pundit.name,
+      url: canonicalUrl(`/pundits/${take.pundit.id}`),
     },
     citation: take.call.sourceUrl ?? undefined,
   };

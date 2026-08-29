@@ -42,7 +42,10 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: { canonical: canonicalUrl("/") },
+  alternates: {
+    canonical: canonicalUrl("/"),
+    types: { "application/rss+xml": canonicalUrl("/feed.xml") },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -62,7 +65,17 @@ export const metadata: Metadata = {
     icon: [{ url: publicPath("/icon.svg"), type: "image/svg+xml" }],
     apple: [{ url: publicPath("/apple-touch-icon.png"), sizes: "180x180" }],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

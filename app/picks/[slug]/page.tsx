@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
+import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import {
   getEvent,
@@ -11,20 +11,17 @@ import {
   loadEvents,
   loadPundits,
   loadTeams,
-  sidesForCard,
 } from "@/lib/data";
 import {
   breadcrumbList,
   eventJsonLd,
-  mappedTakes,
   pickLede,
-  takeHeadline,
-  takePath,
 } from "@/lib/seo";
 import { formatGameWhen, seasonLabel, seasonSpan } from "@/lib/format";
 import { eventShare } from "@/lib/share";
-import { eventOgCard, ogImageFor } from "@/lib/og";
+import { eventOgCard, ogEventPath, ogImageFor, ogStoryEventPath } from "@/lib/og";
 import { pageMeta } from "@/lib/site";
+import { sharePayload } from "@/lib/share";
 
 export function generateStaticParams() {
   return loadEvents().map((e) => ({ slug: e.slug }));
@@ -58,10 +55,6 @@ export default async function PickPage({
   const pundits = loadPundits();
   const slate = event.sport === "nfl" ? "/nfl" : "/ncaaf";
   const sportLabel = event.sport === "nfl" ? "NFL" : "NCAAF";
-  const takes = mappedTakes(calls, events, pundits).filter(
-    (t) => t.event.slug === event.slug
-  );
-  const [yes, no] = sidesForCard(event, calls);
   const crumbs = [
     { name: "Picks", href: "/" },
     { name: sportLabel, href: slate },
@@ -83,9 +76,20 @@ export default async function PickPage({
         {event.sport === "nfl" ? "NFL" : "NCAAF"}
         {event.season ? ` · ${seasonSpan(event.season)}` : ""}
       </div>
-      <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {event.title}
-      </h1>
+      <div className="share-head mb-2 mt-1">
+        <h1 className="text-[clamp(36px,6vw,64px)] leading-[0.92]">
+          {event.title}
+        </h1>
+        <ShareButton
+          share={sharePayload({
+            title: event.title,
+            text: pickLede(event, calls, pundits),
+            path: `/picks/${event.slug}`,
+            image: ogEventPath(event.slug),
+            story: ogStoryEventPath(event.slug),
+          })}
+        />
+      </div>
       <p className="when">
         {formatGameWhen(event) ?? seasonLabel(event.season) ?? "Kalshi market"}
       </p>
@@ -97,28 +101,6 @@ export default async function PickPage({
         permalink={false}
         detail
       />
-      {takes.length ? (
-        <section className="mt-8">
-          <h2 className="type-broadcast mb-3 text-[22px] tracking-widest">
-            Expert takes
-          </h2>
-          <ul className="take-list">
-            {takes.map((take) => {
-              const side = take.call.side === "yes" ? yes : no;
-              return (
-                <li key={`${take.pundit.id}-${take.call.id}`}>
-                  <Link href={takePath(event.slug, take.pundit.id)}>
-                    {takeHeadline(take.pundit, event, take.call)}
-                    <span>
-                      {side.label} · {take.call.source}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      ) : null}
       <EmailInterestForm
         placement="pick_detail"
         scope="event"

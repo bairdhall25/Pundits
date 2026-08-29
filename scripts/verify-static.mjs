@@ -25,8 +25,14 @@ const requiredFiles = [
   "og/takes/unc-vs-tcu-2026--patterson.png",
   "og/events/unc-vs-tcu-2026.png",
   "og/events/ncsu-at-uva-2026.png",
+  "og/pundits/finebaum.png",
+  "og/stories/takes/unc-vs-tcu-2026--finebaum.png",
+  "og/stories/events/unc-vs-tcu-2026.png",
+  "og/stories/pundits/finebaum.png",
   "robots.txt",
   "sitemap.xml",
+  "news-sitemap.xml",
+  "feed.xml",
   "_redirects",
 ];
 
@@ -62,6 +68,10 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/unc-vs-tcu-2026\/finebaum\/"/
 );
 assert.match(story, /Paul Finebaum picks TCU over North Carolina/);
+assert.match(story, />Share</);
+assert.match(story, /By PUNDITS Staff.*Source published/);
+assert.match(story, /\"@type\":\"NewsArticle\"/);
+assert.match(story, /\"name\":\"PUNDITS Staff\"/);
 
 const chipTake = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/patterson/index.html"),
@@ -78,6 +88,10 @@ assert.match(pickDetail, /Get the next verified pick\./);
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
+assert.match(
+  punditProfile,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/pundits\/kanell\.png"/
+);
 
 const privacy = await readFile(path.join(out, "privacy/index.html"), "utf8");
 assert.match(
@@ -142,6 +156,15 @@ for (const url of [
 
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
 assert(robots.includes("Sitemap: https://pundits.pro/sitemap.xml"));
+assert(robots.includes("Sitemap: https://pundits.pro/news-sitemap.xml"));
+
+const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
+assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
+assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
+
+const feed = await readFile(path.join(out, "feed.xml"), "utf8");
+assert.match(feed, /<rss version="2\.0">/);
+assert.match(feed, /Paul Finebaum picks TCU over North Carolina/);
 
 const sourceRedirects = await readFile(path.join(root, "public/_redirects"), "utf8");
 const outputRedirects = await readFile(path.join(out, "_redirects"), "utf8");

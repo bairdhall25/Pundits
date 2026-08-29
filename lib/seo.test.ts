@@ -100,7 +100,7 @@ describe("pick stories", () => {
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
     expect(story.headline).toBe("Paul Finebaum picks TCU over North Carolina");
-    expect(story.dek).toContain("North Carolina is the underdog at 26¢");
+    expect(story.dek).toContain("North Carolina as the underdog at 26¢");
     expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
@@ -112,7 +112,7 @@ describe("pick stories", () => {
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
     expect(story.headline).toBe("Danny Kanell picks NC State over Virginia");
-    expect(story.dek).toContain("NC State is the underdog at 34¢");
+    expect(story.dek).toContain("NC State as the underdog at 34¢");
     expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
     expect(story.paragraphs.join(" ")).not.toMatch(/Chip Patterson|Tarheels/i);
   });
@@ -124,7 +124,7 @@ describe("pick stories", () => {
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
     expect(story.headline).toBe("Chip Patterson picks North Carolina over TCU");
-    expect(story.dek).toContain("North Carolina is the underdog at 26¢");
+    expect(story.dek).toContain("North Carolina as the underdog at 26¢");
     expect(story.paragraphs.join(" ")).toContain("Tarheels to come back with the win");
     expect(story.paragraphs.join(" ")).not.toMatch(/Wolfpack|Kanell/i);
   });
@@ -169,14 +169,34 @@ describe("json-ld", () => {
     expect(org.sameAs).toContain("https://x.com/Pundits_");
   });
 
-  it("marks a take as an Article with an author", () => {
+  it("marks a take as a staff-written NewsArticle about the pundit", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     );
     expect(take).toBeTruthy();
     const json = articleJsonLd(take!);
-    expect(json["@type"]).toBe("Article");
+    expect(json["@type"]).toBe("NewsArticle");
     expect(json.headline).toBe("Paul Finebaum picks TCU over North Carolina");
-    expect(json.author).toMatchObject({ name: "Paul Finebaum" });
+    expect(json.author).toMatchObject({ name: "PUNDITS Staff" });
+    expect(json.mentions).toMatchObject({ name: "Paul Finebaum" });
+    expect(json.image).toContain(
+      "https://pundits.pro/og/takes/unc-vs-tcu-2026--finebaum.png"
+    );
+  });
+
+  it("writes grammatical futures headlines", () => {
+    const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
+    const yes = takes.find(
+      (t) => t.event.slug === "nd-title-2026" && t.pundit.id === "herbstreit"
+    )!;
+    const no = takes.find(
+      (t) => t.event.slug === "indiana-title-2026" && t.pundit.id === "finebaum"
+    )!;
+    expect(takeHeadline(yes.pundit, yes.event, yes.call)).toBe(
+      "Kirk Herbstreit picks Notre Dame to win the national title"
+    );
+    expect(takeHeadline(no.pundit, no.event, no.call)).toBe(
+      "Paul Finebaum does not see Indiana winning the national title"
+    );
   });
 });

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { hasGradedRecords } from "@/lib/records";
 import type { ActivityRecord } from "@/lib/types";
 
 export function LeaderboardBoard({
@@ -13,6 +14,7 @@ export function LeaderboardBoard({
 }) {
   const rows = showAll ? board : board.filter((p) => p.totalCalls > 0);
   const hidden = board.length - rows.length;
+  const graded = hasGradedRecords(board);
 
   return (
     <>
@@ -49,12 +51,14 @@ export function LeaderboardBoard({
                   {p.mappedPending}
                 </div>
               </div>
-              <div>
-                <div className="lb-k">2026</div>
-                <div className="type-broadcast lb-v">
-                  {p.season2026.wins}–{p.season2026.losses}
+              {graded ? (
+                <div>
+                  <div className="lb-k">2026</div>
+                  <div className="type-broadcast lb-v">
+                    {p.season2026.wins}–{p.season2026.losses}
+                  </div>
                 </div>
-              </div>
+              ) : null}
               <div>
                 <div className="lb-k">Calls</div>
                 <div className="type-broadcast lb-v">{p.totalCalls}</div>

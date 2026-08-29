@@ -10,6 +10,7 @@ import {
   latestCalls,
   formatAsOf,
   otherTakes,
+  hasGradedRecords,
 } from "./data";
 import { filterBook, emptyBookFilter } from "./book-filter";
 import type { Call, Event, Pundit } from "./types";
@@ -219,5 +220,20 @@ describe("latestCalls", () => {
       6
     );
     expect(peek.map((c) => c.id)).toEqual(["c1-later", "c3"]);
+  });
+});
+
+describe("hasGradedRecords", () => {
+  const rec = (wins: number, losses: number) =>
+    ({ season2026: { wins, losses, pending: 0 } }) as never;
+
+  it("is false while every record is 0-0", () => {
+    expect(hasGradedRecords([rec(0, 0), rec(0, 0)])).toBe(false);
+    expect(hasGradedRecords([])).toBe(false);
+  });
+
+  it("is true once any pick has graded", () => {
+    expect(hasGradedRecords([rec(0, 0), rec(1, 0)])).toBe(true);
+    expect(hasGradedRecords([rec(0, 2)])).toBe(true);
   });
 });

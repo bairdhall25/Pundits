@@ -67,6 +67,13 @@ export function ogImage() {
 
 export type OgImage = ReturnType<typeof ogImage>;
 
+export function metaDescription(value: string, max = 160): string {
+  const clean = value.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const clipped = clean.slice(0, max - 1).replace(/\s+\S*$/, "").replace(/[.,;:!?-]+$/, "");
+  return `${clipped}…`;
+}
+
 export function pageMeta(
   title: string,
   description: string,
@@ -74,21 +81,44 @@ export function pageMeta(
   image: OgImage = ogImage()
 ): Metadata {
   const url = path ? canonicalUrl(path) : undefined;
+  const snippet = metaDescription(description);
   return {
     title,
-    description,
+    description: snippet,
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
       title: `${title} · ${SITE_NAME}`,
-      description,
+      description: snippet,
       url,
       images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} · ${SITE_NAME}`,
-      description,
+      description: snippet,
       images: [image.url],
+    },
+  };
+}
+
+export function articleMeta(
+  title: string,
+  description: string,
+  path: string,
+  image: OgImage,
+  publishedTime?: string,
+  modifiedTime?: string
+): Metadata {
+  const base = pageMeta(title, description, path, image);
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      publishedTime,
+      modifiedTime,
+      authors: [canonicalUrl("/about")],
+      section: "Sports",
     },
   };
 }

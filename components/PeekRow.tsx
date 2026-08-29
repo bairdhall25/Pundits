@@ -66,7 +66,7 @@ export function FuturePeek({
   );
 }
 
-export function TablePeek({ p }: { p: ActivityRecord }) {
+export function TablePeek({ p, graded = false }: { p: ActivityRecord; graded?: boolean }) {
   return (
     <Link href={`/pundits/${p.id}`} className="peek table-card">
       <PunditAvatar src={p.photo} alt={p.name} size="row" />
@@ -75,9 +75,11 @@ export function TablePeek({ p }: { p: ActivityRecord }) {
         Live
       </div>
       <div className="pct type-broadcast">{p.mappedPending}</div>
-      <div className="wl">
-        2026 {p.season2026.wins}–{p.season2026.losses}
-      </div>
+      {graded ? (
+        <div className="wl">
+          2026 {p.season2026.wins}–{p.season2026.losses}
+        </div>
+      ) : null}
     </Link>
   );
 }

@@ -27,6 +27,12 @@ export default function AboutPage() {
           captured a verified pick yet.
         </p>
         <p>
+          Every pick story links to its source and separates the expert&apos;s
+          words from our market context. PUNDITS Staff writes the page; the
+          named expert is the quoted subject, not the author. We update records
+          when games settle and correct the ledger when a source changes.
+        </p>
+        <p>
           <a href={CONTACT_HREF}>Contact</a>
           {" · "}
           <a href="/privacy/">Privacy</a>

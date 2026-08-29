@@ -12,7 +12,9 @@ import {
   getActivityBoard,
   getFuturesPeek,
   getWeekend,
+  hasGradedRecords,
   latestCalls,
+  settledSide,
   loadCalls,
   loadEvents,
   loadPundits,
@@ -77,8 +79,13 @@ export default function HomePage() {
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
+  const withPicks = ncaaf.filter((e) =>
+    calls.some((c) => c.eventSlug === e.slug)
+  );
+  // A live game with picks beats a settled one; a settled marquee is the
+  // fallback only when everything has graded.
   const marquee =
-    ncaaf.find((e) => calls.some((c) => c.eventSlug === e.slug)) ?? ncaaf[0];
+    withPicks.find((e) => !settledSide(e, calls)) ?? withPicks[0] ?? ncaaf[0];
   const ncaafRest = marquee ? ncaaf.filter((e) => e !== marquee) : ncaaf;
 
   return (
@@ -210,16 +217,16 @@ export default function HomePage() {
       <section id="table" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Pundits</div>
-            <h2 className="board-title type-broadcast">Top 10</h2>
+            <div className="board-kicker type-broadcast">Pundits · top 10</div>
+            <h2 className="board-title type-broadcast">The table</h2>
           </div>
           <a className="see" href="/leaderboard/">
-            Full leaderboard →
+            Full table →
           </a>
         </div>
         <PeekRow>
           {table.map((p) => (
-            <TablePeek key={p.id} p={p} />
+            <TablePeek key={p.id} p={p} graded={hasGradedRecords(table)} />
           ))}
         </PeekRow>
       </section>

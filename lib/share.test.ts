@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eventShare, punditShare } from "./share";
+import { eventShare, punditShare, sharePayload, tweetIntent } from "./share";
 import { getPundit, loadCalls, loadEvents, loadPundits } from "./data";
 import { absoluteUrl, siteOrigin } from "./site";
 import type { Call, Event, Pundit } from "./types";
@@ -101,6 +101,24 @@ describe("share copy", () => {
     const share = punditShare(p!, latest);
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description.length).toBeGreaterThan(20);
+  });
+});
+
+describe("share payload", () => {
+  it("points at the landscape card, the story card, and an X intent", () => {
+    const payload = sharePayload({
+      title: "Paul Finebaum picks TCU over North Carolina",
+      text: "Paul Finebaum picks TCU over North Carolina",
+      path: "/picks/unc-vs-tcu-2026/finebaum",
+      image: "/og/takes/unc-vs-tcu-2026--finebaum.png",
+      story: "/og/stories/takes/unc-vs-tcu-2026--finebaum.png",
+    });
+    expect(payload.url).toBe("https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/");
+    expect(payload.image).toBe("/og/takes/unc-vs-tcu-2026--finebaum.png");
+    expect(payload.story).toBe("/og/stories/takes/unc-vs-tcu-2026--finebaum.png");
+    expect(payload.tweetHref).toContain("https://twitter.com/intent/tweet?");
+    expect(payload.tweetHref).toContain(encodeURIComponent(payload.url));
+    expect(tweetIntent("hello", "https://pundits.pro/x/")).toContain("text=hello");
   });
 });
 

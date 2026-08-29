@@ -2,7 +2,7 @@ import { formatCents, formatGameWhen } from "./format";
 import { getTeam, sidesForCard } from "./data";
 import { sideChip, takeHeadline, type MappedTake } from "./seo";
 import { canonicalUrl, ogImage, takePath } from "./site";
-import type { Call, CardSide, Event, Pundit, Team } from "./types";
+import type { ActivityRecord, Call, CardSide, Event, Pundit, Team } from "./types";
 
 export type OgChip = {
   abbr: string;
@@ -13,6 +13,7 @@ export type OgChip = {
 export type OgFace = {
   name: string;
   photo: string;
+  quote?: string;
 };
 
 export type OgSide = {
@@ -44,6 +45,19 @@ export type EventOgCard = {
   sides: [OgSide, OgSide];
 };
 
+export type PunditOgCard = {
+  kind: "pundit";
+  file: string;
+  name: string;
+  outlet: string;
+  photo: string;
+  livePicks: number;
+  wins: number;
+  losses: number;
+  recordLabel: string;
+  latestQuote: string | null;
+};
+
 export function ogTakePath(slug: string, punditId: string): string {
   return `/og/takes/${slug}--${punditId}.png`;
 }
@@ -52,10 +66,29 @@ export function ogEventPath(slug: string): string {
   return `/og/events/${slug}.png`;
 }
 
+export function ogPunditPath(id: string): string {
+  return `/og/pundits/${id}.png`;
+}
+
+export function ogStoryTakePath(slug: string, punditId: string): string {
+  return `/og/stories/takes/${slug}--${punditId}.png`;
+}
+
+export function ogStoryEventPath(slug: string): string {
+  return `/og/stories/events/${slug}.png`;
+}
+
+export function ogStoryPunditPath(id: string): string {
+  return `/og/stories/pundits/${id}.png`;
+}
+
 export function ogQuote(claim: string, max = 140): string {
   const trimmed = claim.replace(/\s+/g, " ").replace(/[.]+$/, "").trim();
   if (trimmed.length <= max) return trimmed;
-  return `${trimmed.slice(0, max).replace(/\s+\S*$/, "")}…`;
+  const window = trimmed.slice(0, max);
+  const stop = Math.max(window.lastIndexOf(". "), window.lastIndexOf("! "), window.lastIndexOf("? "));
+  if (stop >= max * 0.45) return window.slice(0, stop).trim();
+  return `${window.replace(/\s+\S*$/, "")}…`;
 }
 
 export function takeTweetText(card: TakeOgCard, slug: string, punditId: string): string {
@@ -95,7 +128,7 @@ function facesOn(side: CardSide, pundits: Pundit[]): OgFace[] {
     const p = byId[call.punditId];
     if (!p || seen.has(p.id)) continue;
     seen.add(p.id);
-    out.push({ name: p.name, photo: p.photo });
+    out.push({ name: p.name, photo: p.photo, quote: call.claim });
   }
   return out;
 }
@@ -164,5 +197,26 @@ export function eventOgCard(
       toOgSide(event, yes, pundits, teams, false),
       toOgSide(event, no, pundits, teams, false),
     ],
+  };
+}
+
+export function punditOgCard(
+  pundit: ActivityRecord,
+  latest?: Call
+): PunditOgCard {
+  return {
+    kind: "pundit",
+    file: ogPunditPath(pundit.id),
+    name: pundit.name,
+    outlet: pundit.outlet,
+    photo: pundit.photo,
+    livePicks: pundit.mappedPending,
+    wins: pundit.season2026.wins,
+    losses: pundit.season2026.losses,
+    recordLabel:
+      pundit.season2026.wins === 0 && pundit.season2026.losses === 0
+        ? "—"
+        : `${pundit.season2026.wins}–${pundit.season2026.losses}`,
+    latestQuote: latest?.claim ?? null,
   };
 }

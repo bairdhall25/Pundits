@@ -5,6 +5,7 @@ import { CallCard } from "@/components/CallCard";
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { ShareButton } from "@/components/ShareButton";
 import {
   callsForPundit,
   getPundit,
@@ -15,9 +16,11 @@ import {
   loadPundits,
   otherTakes,
 } from "@/lib/data";
+import { formatNetDollars, settledNetDollars } from "@/lib/records";
 import { breadcrumbList, personJsonLd } from "@/lib/seo";
-import { punditShare } from "@/lib/share";
+import { punditShare, sharePayload } from "@/lib/share";
 import { pageMeta } from "@/lib/site";
+import { ogImageFor, ogPunditPath, ogStoryPunditPath } from "@/lib/og";
 
 export function generateStaticParams() {
   return loadPundits().map((p) => ({ id: p.id }));
@@ -34,7 +37,12 @@ export async function generateMetadata({
   if (!p) return pageMeta("Expert picks", "Named expert on PUNDITS.");
   const latest = callsForPundit(p.id, calls)[0];
   const share = punditShare(p, latest);
-  return pageMeta(share.title, share.description, `/pundits/${id}`);
+  return pageMeta(
+    share.title,
+    share.description,
+    `/pundits/${id}`,
+    ogImageFor(ogPunditPath(id), `${p.name} expert picks and record`)
+  );
 }
 
 export default async function PunditPage({
@@ -52,6 +60,7 @@ export default async function PunditPage({
   const rest = otherTakes(p.id, calls);
   const open = impliedOpenDollars(p.id, calls);
   const events = loadEvents();
+  const settled = settledNetDollars(p.id, calls, events);
 
   return (
     <main id="main" className="shell">
@@ -71,9 +80,20 @@ export default async function PunditPage({
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
             {p.outlet}
           </div>
-          <h1 className="mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-            {p.name}
-          </h1>
+          <div className="share-head">
+            <h1 className="mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
+              {p.name}
+            </h1>
+            <ShareButton
+              share={sharePayload({
+                title: `${p.name} picks`,
+                text: punditShare(p, callsForPundit(p.id, calls)[0]).description,
+                path: `/pundits/${p.id}`,
+                image: ogPunditPath(p.id),
+                story: ogStoryPunditPath(p.id),
+              })}
+            />
+          </div>
           <div className="mt-2 inline-block border border-[#2a2a2a] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--muted)]">
             {p.sport}
           </div>
@@ -122,7 +142,13 @@ export default async function PunditPage({
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
             Settled
           </div>
-          <div className="type-broadcast text-2xl">$0</div>
+          <div
+            className={`type-broadcast text-2xl ${
+              settled > 0 ? "text-[var(--green)]" : settled < 0 ? "text-[#ff5c5c]" : ""
+            }`}
+          >
+            {formatNetDollars(settled)}
+          </div>
         </div>
       </div>
       {implied.length ? (

@@ -1,15 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
+import { getPundit, loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
 import { mappedTakes } from "./seo";
 import {
   eventOgCard,
   ogEventPath,
   ogImageFor,
+  ogPunditPath,
+  ogQuote,
+  ogStoryEventPath,
+  ogStoryPunditPath,
+  ogStoryTakePath,
   ogTakePath,
+  punditOgCard,
   takeOgCard,
   takeTweetText,
 } from "./og";
-import { pageMeta } from "./site";
+import { articleMeta, metaDescription, pageMeta } from "./site";
 
 describe("og paths", () => {
   it("keeps take and event images on stable public URLs", () => {
@@ -17,6 +23,11 @@ describe("og paths", () => {
       "/og/takes/ncsu-at-uva-2026--kanell.png"
     );
     expect(ogEventPath("ncsu-at-uva-2026")).toBe("/og/events/ncsu-at-uva-2026.png");
+    expect(ogStoryTakePath("ncsu-at-uva-2026", "kanell")).toBe(
+      "/og/stories/takes/ncsu-at-uva-2026--kanell.png"
+    );
+    expect(ogStoryEventPath("unc-vs-tcu-2026")).toBe("/og/stories/events/unc-vs-tcu-2026.png");
+    expect(ogStoryPunditPath("finebaum")).toBe("/og/stories/pundits/finebaum.png");
     const image = ogImageFor("/og/takes/ncsu-at-uva-2026--kanell.png", "Danny Kanell picks NC State over Virginia");
     expect(image.url).toBe("https://pundits.pro/og/takes/ncsu-at-uva-2026--kanell.png");
     expect(image.width).toBe(1200);
@@ -52,6 +63,16 @@ describe("take cards", () => {
     expect(tweet).not.toMatch(/@/);
     expect(tweet.length).toBeLessThanOrEqual(280);
   });
+
+  it("clips a long quote on a word, not a short first sentence", () => {
+    const claim =
+      "It is mass chaos in Chapel Hill. I don't believe they'll win this game in Ireland, and I don't think Bill Belichick is going to survive until the end of the season.";
+    const clipped = ogQuote(claim, 140);
+    expect(clipped.length).toBeLessThanOrEqual(140);
+    expect(clipped).not.toMatch(/don't\.\.\.$/);
+    expect(clipped).not.toBe("It is mass chaos in Chapel Hill");
+    expect(clipped).toMatch(/Ireland|Chapel Hill/);
+  });
 });
 
 describe("event cards", () => {
@@ -85,5 +106,48 @@ describe("page meta images", () => {
     const home = pageMeta("PUNDITS — Expert CFB and NFL picks", "See which teams");
     const homeImages = home.openGraph?.images as Array<{ url: string }>;
     expect(homeImages[0].url).toBe("https://pundits.pro/og.png");
+
+    const article = articleMeta(
+      "Danny Kanell picks NC State over Virginia",
+      "The quote and market context.",
+      "/picks/ncsu-at-uva-2026/kanell",
+      image,
+      "2026-08-27",
+      "2026-08-28"
+    );
+    expect(article.openGraph).toMatchObject({
+      type: "article",
+      publishedTime: "2026-08-27",
+      modifiedTime: "2026-08-28",
+    });
+  });
+
+  it("keeps generated search and social descriptions within snippet range", () => {
+    const long = "Paul Finebaum picks TCU over North Carolina. ".repeat(8);
+    const clipped = metaDescription(long);
+    expect(clipped.length).toBeLessThanOrEqual(160);
+    expect(clipped.endsWith("…")).toBe(true);
+    expect(clipped).not.toMatch(/\s…$/);
+    const meta = pageMeta("A title", long, "/stories");
+    expect(meta.description).toBe(clipped);
+    expect(meta.openGraph?.description).toBe(clipped);
+    expect(meta.twitter?.description).toBe(clipped);
+  });
+
+  it("gives every pundit profile a stable custom card", () => {
+    const calls = loadCalls();
+    const pundit = getPundit("finebaum", loadPundits(), calls)!;
+    const card = punditOgCard(
+      pundit,
+      calls.find((call) => call.punditId === pundit.id)
+    );
+    expect(ogPunditPath("finebaum")).toBe("/og/pundits/finebaum.png");
+    expect(card).toMatchObject({
+      file: "/og/pundits/finebaum.png",
+      name: "Paul Finebaum",
+      outlet: "Finebaum / ESPN",
+    });
+    expect(card.latestQuote).toBeTruthy();
+    expect(card.recordLabel).toBe("—");
   });
 });
