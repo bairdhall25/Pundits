@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatNetDollars, settledNetDollars } from "./records";
+import { formatNetDollars, punditIndexable, settledNetDollars } from "./records";
 import type { Call, Event } from "./types";
 
 const events = [
@@ -53,6 +53,15 @@ describe("settledNetDollars", () => {
       call({ eventSlug: "clemson-at-lsu-2026", side: "yes", status: "miss" }),
     ];
     expect(settledNetDollars("finebaum", calls, events)).toBe(-67);
+  });
+});
+
+describe("punditIndexable", () => {
+  it("is true only for pundits with at least one tracked call", () => {
+    const calls = [call({ punditId: "finebaum" })];
+    expect(punditIndexable("finebaum", calls)).toBe(true);
+    expect(punditIndexable("saban", calls)).toBe(false);
+    expect(punditIndexable("saban", [])).toBe(false);
   });
 });
 

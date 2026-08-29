@@ -35,6 +35,14 @@ export function settledNetDollars(
   return net;
 }
 
+/**
+ * A pundit profile earns indexing with its first tracked call; until then the
+ * page is a thin shell (photo + 0-0) that scaled-content policies punish.
+ */
+export function punditIndexable(punditId: string, calls: Call[]): boolean {
+  return calls.some((c) => c.punditId === punditId);
+}
+
 export function formatNetDollars(net: number): string {
   if (net > 0) return `+$${net}`;
   if (net < 0) return `−$${Math.abs(net)}`;

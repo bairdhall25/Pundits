@@ -6,6 +6,7 @@ import {
   loadPundits,
   mappedCalls,
 } from "@/lib/data";
+import { punditIndexable } from "@/lib/records";
 import { isoDay, latestDay, mappedTakes, takePath } from "@/lib/seo";
 import { canonicalUrl } from "@/lib/site";
 
@@ -47,16 +48,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  const people: MetadataRoute.Sitemap = pundits.map((pundit) => {
-    const mine = calls.filter((c) => c.punditId === pundit.id);
-    const live = mapped.filter((c) => c.punditId === pundit.id);
-    return {
-      url: canonicalUrl(`/pundits/${pundit.id}/`),
-      lastModified: latestDay(mine.map((c) => c.sourceDate)) ?? freeze,
-      changeFrequency: "weekly",
-      priority: live.length ? 0.7 : 0.3,
-    };
-  });
+  // Zero-call profiles are noindexed until their first take lands; keep the
+  // sitemap in agreement so Search Console stays quiet.
+  const people: MetadataRoute.Sitemap = pundits
+    .filter((pundit) => punditIndexable(pundit.id, calls))
+    .map((pundit) => {
+      const mine = calls.filter((c) => c.punditId === pundit.id);
+      const live = mapped.filter((c) => c.punditId === pundit.id);
+      return {
+        url: canonicalUrl(`/pundits/${pundit.id}/`),
+        lastModified: latestDay(mine.map((c) => c.sourceDate)) ?? freeze,
+        changeFrequency: "weekly",
+        priority: live.length ? 0.7 : 0.3,
+      };
+    });
 
   return [...core, ...takes, ...picks, ...people];
 }

@@ -16,7 +16,7 @@ import {
   loadPundits,
   otherTakes,
 } from "@/lib/data";
-import { formatNetDollars, settledNetDollars } from "@/lib/records";
+import { formatNetDollars, punditIndexable, settledNetDollars } from "@/lib/records";
 import { breadcrumbList, personJsonLd } from "@/lib/seo";
 import { punditShare, sharePayload } from "@/lib/share";
 import { pageMeta } from "@/lib/site";
@@ -37,12 +37,17 @@ export async function generateMetadata({
   if (!p) return pageMeta("Expert picks", "Named expert on PUNDITS.");
   const latest = callsForPundit(p.id, calls)[0];
   const share = punditShare(p, latest);
-  return pageMeta(
+  const meta = pageMeta(
     share.title,
     share.description,
     `/pundits/${id}`,
     ogImageFor(ogPunditPath(id), `${p.name} expert picks and record`)
   );
+  if (!punditIndexable(p.id, calls)) {
+    // Thin shell until the first take lands; flips to indexable with content.
+    return { ...meta, robots: { index: false, follow: true } };
+  }
+  return meta;
 }
 
 export default async function PunditPage({
