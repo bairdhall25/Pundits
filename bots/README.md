@@ -1,129 +1,119 @@
 # Grok Bots
 
-No backend. JSON in this repo is the record. **Scout is the product.** Empty Scout intake means empty cards; the rest of the stack cannot invent faces.
+No backend. JSON in this repository is the editorial record. **Scout is the product:** UI, Audit, Promote, and Grader cannot invent a verified pick.
 
 | Bot | File | Job |
 |---|---|---|
-| Scout | `bots/scout.md` | Hunt YouTube / podcasts / TV SU leans. Write `docs/runs/`. Never `data/`. |
-| X Scout | `bots/scout-x.md` | Hunt X status URLs only. Append an X pass to the same run file. Never `data/`. |
-| Promote | `bots/promote.md` | Write Scout's hard rows into `data/`, run tests, publish |
-| Grader | `bots/grader.md` | After games settle, propose hit/miss on mapped hard calls |
-| Recap | `bots/recap.md` | Read the ledger and report who is actually on record |
-| Audit | `bots/audit.md` | Re-open Scout URLs and spot-check mapping; no JSON |
+| Coordinator | `bots/scout.md` | Score homepage density and write `## Dispatch`. Never hunt. Never `data/`. |
+| Shows Scout | `bots/scout-shows.md` | Hunt video, podcasts, TV clips, and bounded sports-radio archives against Dispatch. Never `data/`. |
+| X Scout | `bots/scout-x.md` | Hunt X status URLs against Dispatch. Never `data/`. |
+| News Scout | `bots/scout-news.md` | Hunt bylined columns and expert-pick pages against Dispatch. Never `data/`. |
+| Audit | `bots/audit.md` | Reopen staged sources and check mapping. Never `data/`. |
+| Promote | `bots/promote.md` | Write audited roster rows into `data/`, test, and publish. |
+| Grader | `bots/grader.md` | Propose results after authoritative settlement. Never `data/`. |
+| Recap | `bots/recap.md` | Read the ledger and report who is on record. Never `data/`. |
 
-Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.**
+None of the bots writes standalone articles. The application derives permanent pick stories from promoted calls.
 
-## Pipeline (no chat paste)
+## Git mailbox
 
-Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
+1. Coordinator creates or refreshes `docs/runs/YYYY-MM-DD.md` with Dispatch.
+2. Shows, X, and News append their own passes; new hard rows set `audit=pending promoted=false`.
+3. Audit reopens every new hard URL, writes the audit file, and sets `audit=ok` or `audit=fail`.
+4. Promote ships only audited roster rows, tests, deploys, and sets `promoted=true`.
+5. Grader acts after an event is final or otherwise authoritatively settled. Recap follows Grader.
 
-1. **Scout** commits `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`). Never `data/`.
-2. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
-3. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
-4. **Grader** after kickoff. **Recap** after Grader.
-
-Launch-week cadence: Scout morning. Audit as soon as the run file lands (or a scheduled sweep). Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
+Chat is not the handoff. Do not ask a human to copy tables between bots.
 
 ## Scheduled Git handoff
 
-Scheduled jobs start in the saved project only long enough to fetch and create their own worktree. They never inspect, edit, test, build, or deploy from the operator's checkout.
+Scheduled jobs use a clean worktree based on fetched `origin/main`; they never inspect or edit the operator’s checkout.
 
-1. `git fetch origin`, then create a unique worktree under the ignored `.worktrees/scheduled/` directory from the fetched `origin/main`. A deploy-only job may use detached HEAD. A job that commits uses a unique temporary `codex/` branch. The branch name does not need to be `main`; the safety invariant is a clean worktree whose starting `HEAD` equals `origin/main`.
-2. Build/deploy jobs run `npm ci` in the scheduled worktree before invoking package scripts. Never borrow generated files or `node_modules` from the operator's checkout.
-3. Before a writer pushes, fetch again. If `origin/main` advanced, rebase the task commit onto it, re-check the resulting diff, and rerun any required validation. Push explicitly to `origin HEAD:main` without force. On a conflict or non-fast-forward rejection, stop and report; never overwrite the mailbox.
-4. After a clean no-op or successful push/deploy, leave the worktree clean and remove it. Preserve a dirty or failed worktree only when its exact path and recovery state are reported.
-5. GitHub, source URLs, npm, Cloudflare, and live verification require network access. If the unattended runtime cannot fetch, install, push, deploy, or verify, stop and report the missing capability rather than falling back to the operator's checkout.
+1. Fetch origin and create a unique worktree under ignored `.worktrees/scheduled/`. A writer uses a unique temporary `codex/` branch; a deploy-only job may be detached.
+2. Install dependencies in that worktree before package scripts. Do not borrow generated files or `node_modules` from another checkout.
+3. Before push, fetch again. If `origin/main` advanced, rebase, review the resulting diff, and rerun required validation. Push `origin HEAD:main` without force. Stop on conflict or non-fast-forward.
+4. Remove a clean worktree after a successful push or no-op. Preserve and report an exact dirty worktree path after failure.
+5. If network, authentication, or publishing access is unavailable, report it rather than falling back to the operator’s checkout.
 
-## Pick stories (SEO)
+## Standing prompts
 
-The web app, not the bots, writes crawlable stories.
+### Coordinator
 
-1. Scout stages a **story-ready** hard row (first-person, `eventSlug`, `side`, verbatim quote, source URL, date).
-2. Promote (Grok Build / Codex in this repo) writes it into `data/calls.json`.
-3. The next static build mints `/picks/{eventSlug}/{punditId}/` via `lib/seo.ts` `pickStory()` — headline like “Finebaum picks TCU over North Carolina,” underdog from Kalshi cents, then the quote.
-4. `/stories/` lists every minted story. Sitemap `lastmod` is the call’s `sourceDate`.
-
-Do not paste essay copy into `docs/`. If the quote is not first-person and on a listed event, there is no story. Soft rows stay in The Book only.
-
-## Point a Grok Bot at its file
-
-Each Bot's standing instructions (paste as-is):
-
-**Scout** (paste this — longest job, most important)
-
-```
-You are the Pundits Scout, the most important job at Pundits.
-The site only shows picks you verify. Empty YES sides are empty stories.
+```text
+You are the Pundits Scout coordinator. You do not hunt. You write today’s hit list.
 
 At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt pick shows first (docs/pick-shows.md): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em. Then P0 empty away-sides. Tokens are not scarce — open the episode and jump the locks / I'll take / moneyline block. Named off-roster speakers on those shows as Candidates. Never mint ids. Never touch data/. Commit docs/runs/YYYY-MM-DD.md. Chat is not the handoff. X (Twitter) is X Scout's job — do not spend this run on status-URL sweeps.
+Run node scripts/scout-density.mjs (or score identically). Write ## Dispatch into docs/runs/YYYY-MM-DD.md from the template. Do not open video, radio, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then report: dispatch ready.
 ```
 
-**X Scout**
+### Shows Scout
 
-```
-You are the Pundits X Scout. You hunt X (Twitter) only. Shows Scout owns podcasts and YouTube.
+```text
+You are the Pundits Shows Scout. You hunt video, podcasts, TV clips, and bounded durable sports-radio archives. X and News are different jobs.
 
 At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
+Repo: https://github.com/bairdhall25/Pundits
+
+Hunt Dispatch: empty-side, then off-home, then thin; skip dense. Use normal pick shows first, then the bounded radio fallback. Name the speaker. Record Radio coverage, including dry attempts. Never mint ids or touch data/. Append ## Shows pass to the run file. Chat is not the handoff.
+```
+
+### X Scout
+
+```text
+You are the Pundits X Scout. You hunt X status URLs only.
+
+At the start of every job, fetch and follow:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/board.md
 Repo: https://github.com/bairdhall25/Pundits
 
-P0 empty away-sides first. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md (create if missing). Chat is not the handoff.
+Hunt Dispatch: empty-side, then off-home, then thin; skip dense. Query both teams, last 48 hours, and open the status URL. Never mint ids, touch data/, or interact on X. Append ## X pass. Chat is not the handoff.
 ```
 
-**Promote**
-```
-You are the Pundits promoter.
-At the start of every job, fetch and follow:
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/promote.md
+### News Scout
+
+```text
+You are the Pundits News Scout. You hunt bylined columns and named expert-pick pages.
+
+At the start of every job, fetch and follow in order:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-news.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/news-beats.md
 Repo: https://github.com/bairdhall25/Pundits
+
+Hunt Dispatch: empty-side, then off-home, then thin; skip dense. Open the page and name the picker. No Pick, unnamed staff lists, and inaccessible pages are Dropped. Never mint ids or touch data/. Append ## News pass and refresh Home cards. Chat is not the handoff.
 ```
 
-**Grader**
-```
-You are the Pundits Grader.
-At the start of every job, fetch and follow:
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/grader.md
-Repo: https://github.com/bairdhall25/Pundits
-```
+Promote, Grader, Recap, and Audit standing prompts remain: fetch and follow their matching file from `bots/` before work.
 
-**Recap**
-```
-You are the Pundits Recap.
-At the start of every job, fetch and follow:
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/recap.md
-Repo: https://github.com/bairdhall25/Pundits
-```
+## Cadence
 
-**Audit**
-```
-You are the Pundits Audit.
-At the start of every job, fetch and follow:
-https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/audit.md
-Repo: https://github.com/bairdhall25/Pundits
-```
-
-Cadence (launch week): Scout Wed–Sat morning, writing `docs/runs/YYYY-MM-DD.md`. Audit as soon as that file lands, or a scheduled sweep. Promote when Audit is `ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request.
+- Coordinator daily.
+- Shows NCAAF Thu–Sat plus the Saturday pregame window.
+- Shows NFL Tue–Sat of that NFL week.
+- Radio only inside the applicable Shows pass, once per pick window; no separate routine.
+- X twice daily, last 48 hours.
+- News NCAAF Thu–Sat; News NFL Tue–Sat of that NFL week.
+- Audit when `hard>0` and `audit=pending`; Promote when `audit=ok` and `hard>0`.
+- Grader after settlement; Recap after Grader or on request.
 
 ## House rules
 
-Owned here so the files do not fork them.
+1. Scout, Audit, Grader, and Recap never edit `data/calls.json`, `data/events.json`, or `data/pundits.json`. Promote is the only bot that writes editorial JSON.
+2. Dispatch from `node scripts/scout-density.mjs` is the hunt order. Shows uses `docs/pick-shows.md`; News uses `docs/news-beats.md`; X uses status URLs; Candidates use `docs/add-list.md` plus the bounded radio-pilot gate.
+3. A mapped hard pick is a clear first-person straight-up winner on a listed event. Weasels, ATS, totals, season talk, callers, polls, and anonymous consensus stay out.
+4. YES is the away team. Futures map only to future slugs. Wrong season is Dropped.
+5. Name the speaker. A guest pick belongs to the guest; a radio pick never belongs to the station or show.
+6. A source URL must reopen the evidence. Live-only radio, search snippets, and inaccessible audio are Dropped.
+7. Same episode with two speakers is two rows. Same pundit/event already mapped is skipped.
+8. Intake uses existing pundit ids. Candidates are not auto-rostered; a real photo and operator approval are required.
+9. Kalshi remains the frozen-price ruler. Do not convert sportsbook moneylines.
+10. Keep the decisive quote short. Add a 25–60 word reasoning capsule only from concrete factors the same speaker gave in the same source.
+11. Radio is a pilot inside Shows: national first, at most two local archived programs per matchup, one fallback per pick window, and every attempt logged.
+12. Group-vs-group, fantasy/props, additional sports, and social posting remain separate scope.
 
-1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is `docs/pick-shows.md` then `docs/board.md`. Shows Scout hunts pick shows (locks / I'll take). X Scout hunts status URLs (`from:{handle}`, last 48 hours). Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster. Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
-3. **Clear first-person leans only** map to an event. Weasels stay `soft`, unmapped.
-4. **YES = away team wins** on game events. Futures map only to futures slugs. Never stretch a title pick onto a game.
-5. **Name the speaker.** McAfee Show guest picks belong to the guest (`hawk`, `butler`, …), never `mcafee`.
-6. **Kalshi is the ruler.** Cents come from a Kalshi page or a Kalshi reprint, each with `sourceUrl` + `sourcedAt`. Do not convert sportsbook moneylines.
-7. **Wrong season → drop.** Same teams in a prior year is not this event. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`), where season is the year the regular season starts — a January 2027 bowl/playoff/Super Bowl is still 2026. Next season's rematch is a new slug.
-8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
-9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
-10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional 25–60 word `reasoning` capsule that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank.
-
-Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
+Current product rules: `docs/product/README.md` and `AGENTS.md`. Capture and publishing contract: `docs/RUNBOOK.md`.

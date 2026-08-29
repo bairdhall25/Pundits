@@ -2,14 +2,16 @@
 
 Status: Operational
 
-A run is on-demand. Target cadence launch week: Wed, Thu, Fri, Sat morning.
-Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `docs/board.md`. Mailbox: `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
+A run is on-demand. Coordinator writes Dispatch daily. Shows runs in the relevant NCAAF/NFL pick window; X and News follow their cadence in `docs/scout-plan.md`.
+Scout is the critical job. Hunt order is the generated `## Dispatch` from `node scripts/scout-density.mjs`. Mailbox: `docs/runs/YYYY-MM-DD.md` on GitHub, not a chat paste.
 
 ## Steps
-1. CAPTURE — mine shows/columns/podcasts for roster voices' picks on the
-   opening-weekend slate. Search: GameDay/First Take/Big Noon clips, The
-   Herd, Klatt/Pate/Cowherd YouTube, staff-picks columns (CBS/ESPN/FOX/
-   Athletic), McAfee Show (name the speaker!).
+1. CAPTURE — Coordinator writes Dispatch. Shows mines video, podcasts, TV clips,
+   and bounded durable sports-radio archives; X mines status URLs; News mines
+   bylined columns and named expert-pick pages. All hunt `empty-side`, then
+   `off-home`, then `thin`, and skip `dense`. Name the speaker. Radio is one
+   bounded fallback inside Shows, never another routine; live-only audio,
+   callers, polls, and station consensus are not evidence.
 2. VERIFY — open every source URL; confirm the quote and the speaker.
    Unverifiable → drop.
 3. CLASSIFY + MAP — clear first-person lean on a listed event → hard +

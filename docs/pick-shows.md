@@ -1,85 +1,93 @@
-# Pick shows (Scout hunt map)
+# Shows Scout hunt map
 
-Date: 2026-08-28. Scout hunts **shows**, then names the speaker. Famous-face Google is not the job.
+Status: Operational
 
-If this file and `data/` disagree, **`data/` wins**. X remains `bots/scout-x.md`.
+Date: 2026-08-29. Shows Scout hunts video, podcasts, TV clips, and durable sports-radio archives, then names the speaker. News is `docs/news-beats.md`. X is `bots/scout-x.md`.
 
-## How to hunt (every run)
+If this file and `data/` disagree, **`data/` wins**.
 
-1. Open **locks shows that dropped in the last ~3 days** (table below). Jump the locks / moneyline / “I’ll take” chapter. Captions count.
-2. Then P0 empty YES on `docs/board.md`.
-3. Then idle roster voices **only if their pick window is open**.
-4. Named off-roster speakers on those same shows → Candidates. Never “the show likes UNC.”
+## How to hunt
 
-Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not the end of the hunt. Tokens are not scarce.
+1. Read today’s `## Dispatch`.
+2. Hunt `empty-side`, then `off-home`, then `thin`. Skip `dense` unless a source already open names that game.
+3. Open listed picking programs that dropped in their real window. Jump locks, moneyline, “I’ll take,” or “who wins.” Captions and official transcripts count.
+4. Use the bounded radio fallback only after the normal high-yield programs for that sport have been checked.
+5. Name the speaker. Rostered people are Intake; add-list or qualified radio-pilot personalities are Candidates.
 
-**SU** = they pick the winner of a listed game. ATS, totals, win totals, “tough matchup,” title stretches, start/sit, and fantasy rankings are not SU.
+**SU** means the person picks the winner of a listed game. ATS, totals, win totals, title stretches, start/sit, and general matchup analysis are not SU.
 
-## Weekly SU factories (open first)
+## NCAAF
 
-| Show | Voices (roster id) | Drop | Jump | Notes |
+| Show | Voices | Drop | Jump | Notes |
 |---|---|---|---|---|
-| Cover 3 LOCKS | `kanell`, `patterson`, Fornelli/Elliott (Candidates) | Thu/Fri | ATS locks, then **Moneyline Sprinkles** | Kanell Wolfpack ML and Patterson UNC ML both from Week 0 LOCKS `hhgxVGYo6Cc`. |
-| Josh Pate’s College Football Show | `pate` | almost daily | end-of-show winners / “I’ll take” | Already LSU. Only restage if he **flips** to Clemson. |
-| Bear Bets / FOX | `fallica` | column + Big Noon | bylined best bets | Futures OK only after P0 is dry. |
-| GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | Guest on PMT is `coughlin`, never `mcafee`. |
-| BFW Show | `walker` | Mon / Thu / **Sat** in-season | Saturday recap + locks; midweek is often conference/Top 25 | 8/24 B1G+ACC and 8/27 SEC+Big 12 were **conference** preds, not Week 0 SU. Hunt Saturday. YouTube `UC9v6icpVdER0VGQpA3uUUsQ`. |
-| Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
-| Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
-| Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
-| The Herd / Sharp or Square | `cowherd`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
-| Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
+| Cover 3 LOCKS | `kanell`, `patterson`; Fornelli/Elliott are Candidates | Thu/Fri | Moneyline Sprinkles | Same episode can produce several named rows |
+| Josh Pate’s College Football Show | `pate` | frequent | end-of-show winners / “I’ll take” | Do not restage an existing event pick unless he clearly flips |
+| Bear Bets / FOX | `fallica` | Thu–Sat | named winner | A bylined column is News |
+| GameDay betting | `coughlin`; other roster faces when they pick | Saturday | Stanford Steve card / picks | Guests are the guest, never the host |
+| BFW Show | `walker` | in-season | locks / named winner | Conference or season predictions are not game SUs |
+| Barstool College Football Show | `walker`, `bigcat`, `portnoy` | Saturday | gambling locks | Name each speaker |
+| Barstool Pick Em | `bigcat`, `portnoy`; Rico is Candidate | weekly | the card | PMT is not a locks show |
+| Big Noon | `meyer`, `klatt`, `quinn`, `leinart`, `ingram`, `fallica` | Saturday | pregame picks | Only in the game’s pick window |
+| Finebaum Show | `finebaum`; named guests | weekday | “who wins” | Also part of the national radio lane |
 
-## Brand faces — only in their pick window
+## NFL
 
-| Voices | Window | Until then |
-|---|---|---|
-| `herbstreit`, `saban`, `howard`, `davis`, `mcafee` (Pat only) | **GameDay Saturday** (Baton Rouge 9/5 is Clemson YES) | Analysis, title talk, “50-burger” weasels ≠ SU |
-| `meyer`, `klatt`, `quinn`, `leinart`, `ingram`, `fallica` | Big Noon Saturday pregame | Title/undefeated stretches stay futures |
-| `stephena`, `kimes`, `orlovsky`, `spears` | ESPN NFL expert grid **Tue–Sat of that NFL week** | Week 1 grid was still No Pick as of 8/28 |
-| `eisen`, `florio`, `simms` | show + weekly column | AFC East lean ≠ Patriots–Seahawks. SB score ≠ Week 1 |
-| `simmons`, `sal` | Ringer gambling pods / Cousin Sal | Win totals ≠ Week 1 SU. Hunt the week of NFL games. |
-| `kapadia` | Ringer NFL Show | Hosts. Analysis ≠ SU until he names a Week 1 winner. |
-| `ruiz` | FOX Sports digital (left The Ringer 2026-08-21) | Hunt FOX NFL copy / @theStevenRuiz, not Ringer NFL Show. Analysis ≠ SU. |
-| `bigcat`, `portnoy`, `pft` | Pick Em, Picks Central, Barstool CFB Show, PMT only if **they** pick | **Do not** treat PMT bits as a pick show. PFT is the guest/host, never `bigcat`. |
+Hunt week-of the game, not preseason desk chatter.
 
-## Already-rostered talkers (open the actual *PICKING* episode)
+| Show | Voices | Drop | Jump | Notes |
+|---|---|---|---|---|
+| The Rich Eisen Show | `eisen`; named guests | weekday | “who wins” / locks | Also part of the national radio lane |
+| The Herd | `cowherd`; named guests | weekday | bold predictions / “who wins” | Guest does not belong to Cowherd |
+| Ringer NFL Show / gambling pods | `kapadia`, `sal`, `simmons` | weekly | named winner | Win totals are not game SUs; `ruiz` is at FOX |
+| McAfee Show | `mcafee` only when Pat picks; guests are themselves | weekday | locks / “who wins” | Never pin a guest pick on McAfee |
+| PFT Live / video | `florio`, `simms` | weekday | named winner | A column version is News |
+| Barstool picking shows | `bigcat`, `portnoy`, `pft` | weekly | the card | PMT bits and guests are not automatically picks |
 
-| id | Show | Hunt |
-|---|---|---|
-| `staples`, `wasserman` | Andy & Ari On3 | Episode titled **PICKING** / game preview. 8/25 `DCFInXgbMtY` UNC–TCU is **ATS cover** (TCU 7.5) — dropped, not SU. Re-open if they name a winner without the number. |
-| `mcelroy` | Always College Football | Locks / “I’ll take” only |
-| `thamel`, `feldman` | insiders | Program talk. Do not force a SU. |
-| `kanell` | Cover 3 | NC State YES booked. Still hunt Clemson, Dublin, Lambeau. Totals/ATS ≠ SU. |
+ESPN named expert-pick pages belong to News. A durable TV clip of the person making the pick belongs here.
 
-## URL patterns (start here)
+## Sports radio pilot
 
-- Cover 3: YouTube search `Cover 3 LOCKS 2026`
-- BFW: https://www.youtube.com/@UnnecessaryRoughness (channel `UC9v6icpVdER0VGQpA3uUUsQ`)
-- Barstool CFB Show / Picks Central / Pick Em: barstoolsports.com shows + YouTube
-- Pate: Josh Pate’s College Football Show YouTube
-- On3 picking: YouTube `PICKING {away} {home}` on the On3 channel
-- GameDay: Saturday live + clips labeled locks / picks. **First 2026 show is Baton Rouge Sep 5, not Dublin 8/29.**
-- Ruiz: FOX Sports digital / https://www.foxsports.com/personalities/steven-ruiz — not Ringer NFL Show.
+Sports radio is a source lane inside Shows Scout, not a separate bot or schedule.
 
-## X handles (X Scout owns the sweep)
+### National first
 
-| id | handle |
-|---|---|
-| `patterson` | Chip_Patterson |
-| `walker` | BFW (person), BFWshow (show — clips only if the post is him) |
-| `bigcat` | BarstoolBigCat |
-| `portnoy` | stoolpresidente |
-| `pft` | PFTCommenter |
-| `sal` | TheCousinSal |
-| `kapadia` | SheilKapadia |
-| `ruiz` | theStevenRuiz |
-| `kanell` | dannykanell |
-| `pate` | JoshPateCFB |
+Prioritize rostered national programs already listed above: Finebaum for NCAAF; The Herd and Rich Eisen for NFL; plus any rostered personality’s official radio/podcast archive when the episode is explicitly a picking segment.
+
+### Local fallback
+
+For an under-dense Dispatch game that remains unresolved after the listed national programs:
+
+1. Open at most **two** credible local archived programs for that matchup.
+2. Prefer official station, team-affiliate, YouTube, podcast, or transcript pages published in the last ~3 days.
+3. Search the two team names plus `pick`, `who wins`, `give me`, or `I'll take` inside the archive.
+4. Stage a named off-roster host as a Candidate only when the radio-pilot rules in `docs/add-list.md` are satisfied.
+5. Record the number of programs opened and outcome in the run file’s `Radio coverage` table.
+
+One bounded radio fallback per sport/pick window is enough. Do not add another daily routine, re-open the same dry episode, or scan multi-hour live audio without a durable replay location.
+
+### Radio evidence bar
+
+- The exact speaker must be identifiable.
+- Audit must be able to reopen the exact episode, clip, transcript, or show-note URL.
+- A short quote or timestamp must prove the first-person winner pick.
+- Live-only streams, callers, polls, anonymous station consensus, and “everyone around here likes LSU” are Dropped.
+- If a transcript is machine-generated, verify the quote against the audio before staging it.
+
+## URL starting points
+
+- Cover 3: YouTube search `Cover 3 LOCKS {season}`.
+- BFW: official Unnecessary Roughness channel.
+- Barstool CFB Show / Pick Em: official Barstool show pages and YouTube.
+- Pate: official Josh Pate show archive.
+- On3 PICKING: official On3 page or channel.
+- GameDay / Big Noon: official Saturday clips labeled locks or picks.
+- Ruiz: FOX Sports digital, not old Ringer episodes.
+- Radio: official show/station archives only; search-engine snippets are not evidence.
 
 ## Do not
 
-- Hunt PMT as if it were a locks show (comedy + guests). Stanford Steve on PMT → `coughlin`.
-- Pin a guest on the host (`mcafee`, `eisen`, `walker` when the guest is talking).
-- Auto-roster Candidates. Photo still required to mint.
-- Stretch title / fantasy / ATS onto a game SU.
+- Hunt PMT as if it were a locks show.
+- Pin a guest on a host or a station.
+- Auto-roster Candidates or mint ids.
+- Stretch title, fantasy, ATS, total, or season talk onto a game.
+- Treat inaccessible or live-only radio as verified evidence.

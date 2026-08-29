@@ -12,7 +12,7 @@ From https://github.com/bairdhall25/Pundits (main):
 - `data/calls.json`
 - `data/events.json`
 - `lib/data.ts` — copy `getActivityBoard` ranking and `seasonFromCalls` (hard calls only)
-- `docs/board.md` — hunt order; say whether P0 empty YES is still empty
+- `node scripts/scout-density.mjs` or the latest run’s `## Dispatch` — say which homepage games remain `empty-side`, `off-home`, or `thin`
 
 Live check: https://pundits.pro/leaderboard/ and https://pundits.pro/stories/
 
@@ -28,13 +28,13 @@ Live check: https://pundits.pro/leaderboard/ and https://pundits.pro/stories/
 
 Short, in this order:
 
-1. **The table** — rank, name, 2026 W–L, live (mapped pending) picks, total calls.
+1. **The table** — rank, name, 2026 W–L, open (mapped pending) picks, total calls.
 2. **This slate** — which events were graded, who hit, who missed. Omit if nothing has settled.
 3. **Still empty** — home cards with no face on a side (Scout's next stories).
 4. **Stories** — count of mapped pick stories; name any new ones.
 5. **One sentence** a fan could screenshot. No betting advice. Hypothetical $100 / they did not place these picks.
 
-Do not write a second spreadsheet, a running "power ranking," or a 2025 record. If the JSON and the live leaderboard disagree, trust JSON and say the Pages deploy may be stale.
+Do not write a second spreadsheet, a running "power ranking," or a 2025 record. If the JSON and the deployed leaderboard disagree, trust JSON and say the Cloudflare Pages deploy may be stale.
 
 ## Stop
 

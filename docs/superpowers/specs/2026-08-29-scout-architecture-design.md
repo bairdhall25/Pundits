@@ -18,7 +18,7 @@ Today’s Scout is one morning Grok job that Google-searches empty-away holes ag
 1. **Success is density on this week’s homepage games.** Several named, sourced winner-picks per `onHome` game, preferably disagreement. Filling an empty side is urgent. Stacking a third voice on the favorite still counts.
 2. **Who:** current roster plus a short add-list. V1 add-list: Tom Fornelli, Bud Elliott, Rico Bosco. Photo still required to roster. Promote does not auto-add. Random beat writers do not mint pages.
 3. **How:** medium scouts. Separate Shows, X, and News hunters comb their medium, then keep people on the roster or add-list.
-4. **Beats in v1:** Shows (YouTube / podcasts / TV clips), X, News (bylined columns and expert-pick grids). X is the social beat. Instagram, TikTok, Reddit, and forums are out.
+4. **Beats in v1:** Shows (YouTube / podcasts / TV clips / durable sports-radio archives), X, News (bylined columns and expert-pick grids). Radio is a bounded source lane inside Shows, not a fourth hunter. X is the social beat. Instagram, TikTok, Reddit, and forums are out.
 5. **Scorecard:** homepage **game** cards (`onHome` and `kind=game`), plus a short bring-onto-home queue (`docs/bring-onto-home.json`, currently `wisconsin-vs-nd-2026`). Title/SB futures can be `onHome` for the peek row; they are not Scout’s hunt target. No calendar-week math — `onHome` is the slate.
 6. **Architecture:** a coordinator scores density and writes a hit list. Three beat scouts hunt from that list. They do not choose the week’s games. The coordinator does not open sources.
 7. **Sports:** coordinator is sport-agnostic. Each beat has an NCAAF list and an NFL list. V1 fills those two. A later sport is a new section in the lists + `Sport` union + roster tags + events, not a new architecture.
@@ -79,7 +79,9 @@ If a hunter starts and `## Dispatch` is missing, **that hunter** may write Dispa
 
 ### Shows — `bots/scout-shows.md`
 
-YouTube, podcasts, TV clips with durable URLs. Hunt map: `docs/pick-shows.md` (NCAAF and NFL sections). Jump locks / moneyline / “I’ll take.” Captions count. PMT is not a locks show. Name the speaker; guests are not the host.
+YouTube, podcasts, TV clips, and archived sports radio with durable URLs. Hunt map: `docs/pick-shows.md` (NCAAF and NFL sections). Jump locks / moneyline / “I’ll take.” Captions count. PMT is not a locks show. Name the speaker; guests are not the host and radio picks never belong to a station.
+
+Radio is a two-week bounded pilot: national rostered programs first, then at most two local archived programs for an under-dense matchup. It runs inside the normal Shows pick window, never as another daily routine. Live-only audio, callers, polls, anonymous station consensus, and audio Audit cannot reopen are Dropped. The Shows pass records programs opened and outcomes so yield and Grok usage can be reviewed.
 
 ### X — `bots/scout-x.md`
 
@@ -173,6 +175,8 @@ Tokens are not scarce. After the listed factories and two reasonable named searc
 | Same pundit + event already mapped | Skip. Same URL, different named speaker → new row. |
 | Add-list, no photo | Candidate, `photoUrl=needed`. No page. |
 | Paywall / URL does not load | Drop. Audit will fail it anyway. |
+| Radio has no durable replay, clip, transcript, or show-note URL | Drop. Do not cite a live stream or search snippet. |
+| Radio speaker is a caller, poll, or station consensus | Drop. Picks belong to named personalities only. |
 | Wrong season | Drop. Slugs end in `-{season}`. |
 | Coordinator missed | First hunter writes Dispatch from the script, then hunts its beat. |
 | No hunt map for a sport | Skip that sport. Say so. |
@@ -189,7 +193,7 @@ Tokens are not scarce. After the listed factories and two reasonable named searc
 | `bots/scout-x.md` | Read Dispatch; hunt empty-side/thin only; fill official NFL handles. |
 | `bots/scout-news.md` | New. |
 | `bots/README.md` | Four Scout jobs in the table + paste-ready standing prompts. House rules stay. |
-| `docs/pick-shows.md` | Add an NFL section. Keep NCAAF. Title it as the Shows hunt map. |
+| `docs/pick-shows.md` | Add NFL and bounded sports-radio sections. Keep NCAAF. Title it as the Shows hunt map. |
 | `docs/news-beats.md` | New. NCAAF + NFL columns/grids. |
 | `docs/add-list.md` | New. Fornelli, Elliott, Rico. |
 | `docs/bring-onto-home.json` | New. Slug array the density script reads. V1: `["wisconsin-vs-nd-2026"]`. |
@@ -217,6 +221,7 @@ No app route, no UI, no `data/` edits in this work.
 ## Out of scope
 
 - Auto-rostering Candidates.
+- A separate Radio Scout or additional radio schedule before the pilot proves yield.
 - Instagram, TikTok, Reddit, forums.
 - Live Kalshi API.
 - Scout writing `data/`.
