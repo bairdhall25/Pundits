@@ -4,7 +4,7 @@ Status: Evidence with an active monitoring checklist
 
 Baseline researched: 2026-08-29
 
-Website: https://freezingcoldtakes.com/
+Website: https://freezingcoldtakes.com/ (homepage looked hijacked/spam on 2026-08-29; brand lives on X/IG plus books. About page still used as a source.)
 
 X: [@OldTakesExposed](https://x.com/OldTakesExposed)
 
@@ -25,6 +25,7 @@ For Pundits, this is the attention competitor that matters more than Pundit Ledg
 - Palm Beach Post (2018) described a large following that tips him missed takes. Follower count in that article was 187,000; the 2026 figure is much larger.
 - Product is screenshot + timestamp + a dry line. Hits are not the format. There is no per-pundit season record, source-URL object, or frozen market on the public site in this pass.
 - Books exist (NFL; college football). Revenue mix (books, social, possible licensing) was not independently verified here.
+- 2026-08-29 homepage of freezingcoldtakes.com appeared hijacked/spam (unrelated posts). Treat the domain as untrustworthy until verified otherwise. About page and X/IG still carry the brand.
 
 ## Competitive interpretation
 
@@ -41,6 +42,7 @@ For Pundits, this is the attention competitor that matters more than Pundit Ledg
 - No mapped-pick discipline (quote, event, side, grade rule) as a queryable product.
 - Hard to use as "who is on this game, and what did they say."
 - Comedy frame makes partnership with the pundits themselves harder.
+- Official domain currently looks compromised; do not send users there.
 
 ## Implications for Pundits.Pro
 
@@ -58,6 +60,7 @@ Low-probability, high-upside: FCT as a distribution partner that points a miss a
 - Whether they add a searchable ledger, records, or source URLs.
 - New books, shows, or licensing.
 - Whether they start covering current-week picks rather than only aged ones.
+- Whether freezingcoldtakes.com is recovered or abandoned.
 
 ## Sources
 
@@ -70,3 +73,4 @@ Low-probability, high-upside: FCT as a distribution partner that points a miss a
 ## Observations
 
 - 2026-08-29: first Pundits competition pass. Treat as the X-attention incumbent, not a product clone target.
+- 2026-08-29 follow-up: homepage looked hijacked/spam. Brand lives on X/IG plus books.

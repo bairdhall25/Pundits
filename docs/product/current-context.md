@@ -51,7 +51,7 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 
 ## Competitive context
 
-The living radar is `docs/competitive/`. Pundit Ledger remains on a monthly technical/partnership checklist and is not the commercial threat. The 2026-08-29 sweep added the closer analogs: Cole's Gameday Blog (named CFB analyst records), Pickwatch (paid expert consensus for bettors), Predicted Sports (public AI ledger), Freezing Cold Takes (X receipts incumbent), and `@CollegeFBonX` (score-card distribution). Do not change the Pundits.Pro roadmap from any one of those; log new evidence in `docs/competitive/`.
+The living radar is `docs/competitive/`. Pundit Ledger remains on a monthly technical/partnership checklist and is not the commercial threat. The 2026-08-29 sweep's closer analogs: Cole's Gameday Blog (named CFB analyst records), Whose Bet Cashes (quote + receipt + auto-grade, betting-show corpus), Tallysight (expert-consensus Pulse plus Kalshi creator network), Pickwatch (paid expert consensus for bettors), Predicted Sports (public AI ledger), Freezing Cold Takes (X receipts incumbent), and `@CollegeFBonX` (score-card distribution). Nobody else currently ships named pundit + verbatim quote + source URL + frozen Kalshi + hit/miss on a CFB/NFL game card. Do not change the Pundits.Pro roadmap from any one of those; log new evidence in `docs/competitive/`.
 
 ## Open questions
 
