@@ -6,7 +6,7 @@ const MONTHS = [
 export function statusLabel(status: "pending" | "hit" | "miss"): string {
   if (status === "hit") return "Hit";
   if (status === "miss") return "Miss";
-  return "Live";
+  return "Open";
 }
 
 export function formatCents(cents: number | null): string {

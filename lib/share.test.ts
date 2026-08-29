@@ -72,7 +72,7 @@ describe("share copy", () => {
     );
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description).toContain("Finebaum / ESPN");
-    expect(share.description).toContain("2 live picks");
+    expect(share.description).toContain("2 open picks");
     expect(share.description).toContain("I don't believe they'll win this game in Ireland");
     expect(share.description).not.toContain("2026 record 0–0");
     expect(share.description).not.toMatch(/\.”\.$/);
@@ -92,10 +92,10 @@ describe("share copy", () => {
     expect(share.description).toContain("2026 record 0–0");
   });
 
-  it("matches the live Dublin row", () => {
-    const live = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026");
-    expect(live).toBeTruthy();
-    const share = eventShare(live!, loadCalls(), loadPundits());
+  it("matches the current Dublin row", () => {
+    const current = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026");
+    expect(current).toBeTruthy();
+    const share = eventShare(current!, loadCalls(), loadPundits());
     expect(share.description).toContain("Paul Finebaum picks TCU");
     expect(share.description).not.toContain("wisconsin");
   });
@@ -109,11 +109,11 @@ describe("share copy", () => {
     expect(share.description).not.toContain("2027 NFL Champion");
   });
 
-  it("keeps Finebaum's live profile description first-person", () => {
-    const callsLive = loadCalls();
-    const p = getPundit("finebaum", loadPundits(), callsLive);
+  it("keeps Finebaum's current profile description first-person", () => {
+    const currentCalls = loadCalls();
+    const p = getPundit("finebaum", loadPundits(), currentCalls);
     expect(p).toBeTruthy();
-    const latest = callsLive.find((c) => c.punditId === "finebaum");
+    const latest = currentCalls.find((c) => c.punditId === "finebaum");
     const share = punditShare(p!, latest);
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description.length).toBeGreaterThan(20);

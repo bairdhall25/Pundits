@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { americanOdds, kickoffTag } from "./format";
+import { americanOdds, kickoffTag, statusLabel } from "./format";
+
+describe("statusLabel", () => {
+  it("calls unresolved picks open without implying the event is live", () => {
+    expect(statusLabel("pending")).toBe("Open");
+    expect(statusLabel("hit")).toBe("Hit");
+    expect(statusLabel("miss")).toBe("Miss");
+  });
+});
 
 describe("americanOdds", () => {
   it("converts favorite prices to negative odds", () => {

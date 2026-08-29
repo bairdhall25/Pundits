@@ -122,7 +122,7 @@ export default async function PunditPage({
             ) : null}
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                Live picks
+                Open picks
               </div>
               <div className="type-broadcast text-2xl text-[var(--green)]">
                 {p.mappedPending}

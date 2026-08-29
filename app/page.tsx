@@ -82,7 +82,7 @@ export default function HomePage() {
   const withPicks = ncaaf.filter((e) =>
     calls.some((c) => c.eventSlug === e.slug)
   );
-  // A live game with picks beats a settled one; a settled marquee is the
+  // An open game with picks beats a settled one; a settled marquee is the
   // fallback only when everything has graded.
   const marquee =
     withPicks.find((e) => !settledSide(e, calls)) ?? withPicks[0] ?? ncaaf[0];

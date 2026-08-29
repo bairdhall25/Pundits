@@ -49,7 +49,7 @@ export function LeaderboardBoard({
             </div>
             <div className="lb-metrics">
               <div>
-                <div className="lb-k">Live picks</div>
+                <div className="lb-k">Open picks</div>
                 <div className="type-broadcast text-[var(--green)] lb-v">
                   {p.mappedPending}
                 </div>
