@@ -750,5 +750,20 @@
     "status": "pending",
     "eventSlug": "unc-vs-tcu-2026",
     "side": "yes"
+  },
+  {
+    "id": "mcelroy-unc-tcu-20260829",
+    "punditId": "mcelroy",
+    "claim": "Yeah, I'm definitely leaning towards the Tar Heels big time today",
+    "reasoning": "McElroy leaned UNC after the host clocked his Tar Heel-blue tie. He said last year's offense was among the worst in the country, so they need competent offense from Bobby Petrino and Billy Edwards, while the defense already played well.",
+    "source": "SportsCenter (McElroy in-studio)",
+    "sourceUrl": "https://www.youtube.com/watch?v=egBWxViSsRc",
+    "sourceDate": "2026-08-29",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina vs TCU (Week 0, Dublin)",
+    "status": "pending",
+    "eventSlug": "unc-vs-tcu-2026",
+    "side": "yes"
   }
 ]
