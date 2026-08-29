@@ -1,8 +1,10 @@
 # Pundits email early-access implementation plan for Grok
 
+> Status: Historical implementation plan. Email capture now uses the Cloudflare KV endpoint described in `README.md`; the third-party collector prerequisites below are not current production instructions.
+
 Date: 2026-08-28  
 Audience: Grok Build / implementation agent  
-Status: Approved product direction; implementation plan  
+Status: Historical; implemented with a different Cloudflare KV storage path
 
 ## Assignment
 

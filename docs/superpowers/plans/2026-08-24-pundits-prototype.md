@@ -1,5 +1,7 @@
 # Pundits Preseason Prototype Implementation Plan
 
+> Status: Historical. This prototype plan includes invented records, obsolete routes, and a Vercel deployment. Do not execute it as current instruction; use `docs/product/`, `docs/ROADMAP.md`, and `docs/RUNBOOK.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship a public Next.js site that shows eight CFB pundits’ 2026 preseason books and estimated 2025 records, looking like a GameDay broadcast board.

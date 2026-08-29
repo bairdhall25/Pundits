@@ -1,5 +1,7 @@
 # User feedback
 
+Status: Evidence
+
 Early reactions from people shown the prototype. Quotes are verbatim. Implications are ours, not theirs.
 
 ## 2026-08-25

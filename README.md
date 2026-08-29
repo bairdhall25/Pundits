@@ -1,8 +1,12 @@
 # Pundits
 
-Public CFB pundit analytics. Homepage is Kalshi-mapped event cards (YES vs NO). Leaderboard is the table. The Book is every take.
+Public college football and NFL pick accountability. Pundits.Pro preserves named experts' quotes, frozen market context, and eventual results.
 
 Live: https://pundits.pro/
+
+## Product documentation
+
+Start with [`docs/product/README.md`](docs/product/README.md) for the canonical product brief, experience principles, domain model, growth loop, and decision log. Repository-wide agent instructions are in [`AGENTS.md`](AGENTS.md).
 
 ## Development
 
