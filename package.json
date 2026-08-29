@@ -11,7 +11,7 @@
     "verify:static": "node scripts/verify-static.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "check": "npm test && npm run build && npm run verify:static",
-    "deploy": "npm run check && wrangler pages deploy out --project-name pundits",
+    "deploy": "npm run check && wrangler pages deploy out --project-name pundits && node scripts/indexnow.mjs",
     "email:dump": "wrangler kv key list --namespace-id cda9bfd1f31f441297a3082a8875363b --remote",
     "notify:deploy": "wrangler deploy -c workers/email-notify/wrangler.toml"
   },
