@@ -74,7 +74,22 @@ describe("share copy", () => {
     expect(share.description).toContain("Finebaum / ESPN");
     expect(share.description).toContain("2 live picks");
     expect(share.description).toContain("I don't believe they'll win this game in Ireland");
+    expect(share.description).not.toContain("2026 record 0–0");
     expect(share.description).not.toMatch(/\.”\.$/);
+  });
+
+  it("adds the season record only after the record gate opens", () => {
+    const share = punditShare(
+      {
+        name: "Paul Finebaum",
+        outlet: "Finebaum / ESPN",
+        mappedPending: 2,
+        season2026: { wins: 0, losses: 0, pending: 2 },
+      },
+      calls[0],
+      { showRecord: true }
+    );
+    expect(share.description).toContain("2026 record 0–0");
   });
 
   it("matches the live Dublin row", () => {
@@ -127,5 +142,23 @@ describe("site urls", () => {
   it("defaults origin to the production domain", () => {
     expect(siteOrigin()).toBe("https://pundits.pro");
     expect(absoluteUrl("/og.png")).toMatch(/\/og\.png$/);
+  });
+});
+
+describe("settled event share copy", () => {
+  it("titles a settled game with the result", () => {
+    const graded: Call[] = [
+      { ...calls[0], status: "hit" },
+      {
+        ...calls[0],
+        id: "patterson-unc-tcu-20260827",
+        punditId: "patterson",
+        side: "yes",
+        status: "miss",
+      },
+    ];
+    const share = eventShare(event, graded, pundits);
+    expect(share.title).toBe("TCU beat North Carolina: who called it");
+    expect(share.description.startsWith("Final: TCU won.")).toBe(true);
   });
 });

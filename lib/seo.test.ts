@@ -214,3 +214,76 @@ describe("json-ld", () => {
     );
   });
 });
+
+describe("graded take headlines", () => {
+  const pundit = {
+    id: "finebaum",
+    name: "Paul Finebaum",
+    outlet: "ESPN",
+    photo: "/photos/finebaum.jpg",
+    sport: "ncaaf",
+  } as never;
+  const game = {
+    slug: "unc-vs-tcu-2026",
+    title: "North Carolina vs TCU",
+    awayTeam: "North Carolina",
+    homeTeam: "TCU",
+    yesCents: 26,
+    noCents: 75,
+    sport: "ncaaf",
+    kind: "game",
+  } as Event;
+  const future = {
+    slug: "indiana-title-2026",
+    title: "Indiana wins the national title",
+    yesCents: 9,
+    noCents: 91,
+    sport: "ncaaf",
+    kind: "future",
+  } as Event;
+  const call = (over: object) =>
+    ({
+      id: "c",
+      punditId: "finebaum",
+      claim: "quote",
+      source: "First Take",
+      sourceDate: "2026-08-25",
+      kind: "hard",
+      status: "pending",
+      ...over,
+    }) as never;
+
+  it("keeps present tense while the pick is live", () => {
+    expect(takeHeadline(pundit, game, call({ side: "no", eventSlug: game.slug }))).toBe(
+      "Paul Finebaum picks TCU over North Carolina"
+    );
+  });
+
+  it("marks a graded game pick with the verdict", () => {
+    expect(takeHeadline(pundit, game, call({ side: "no", status: "hit", eventSlug: game.slug }))).toBe(
+      "Paul Finebaum picked TCU over North Carolina — and hit"
+    );
+    expect(takeHeadline(pundit, game, call({ side: "yes", status: "miss", eventSlug: game.slug }))).toBe(
+      "Paul Finebaum picked North Carolina over TCU — and missed (TCU won)"
+    );
+  });
+
+  it("marks graded future takes with the verdict", () => {
+    expect(takeHeadline(pundit, future, call({ side: "yes", status: "hit", eventSlug: future.slug }))).toBe(
+      "Paul Finebaum picked Indiana to win the national title — and hit"
+    );
+    expect(takeHeadline(pundit, future, call({ side: "no", status: "miss", eventSlug: future.slug }))).toBe(
+      "Paul Finebaum did not see Indiana winning the national title — and missed"
+    );
+  });
+
+  it("leads the graded story with the result", () => {
+    const story = pickStory({
+      pundit,
+      event: game,
+      call: call({ side: "no", status: "hit", eventSlug: game.slug }),
+    });
+    expect(story.paragraphs[0]).toContain("TCU won");
+    expect(story.paragraphs[0]).toContain("hit");
+  });
+});

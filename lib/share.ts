@@ -1,4 +1,4 @@
-import { sidesForCard } from "./data";
+import { settledSide, sidesForCard } from "./data";
 import { formatAsOf, formatCents, formatGameDate, seasonSpan } from "./format";
 import type { ActivityRecord, Call, Event, Pundit } from "./types";
 
@@ -23,9 +23,9 @@ function andList(names: string[]): string {
   return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
 }
 
-function picksLine(names: string[], team: string): string | null {
+function picksLine(names: string[], team: string, past = false): string | null {
   if (!names.length) return null;
-  const verb = names.length === 1 ? "picks" : "pick";
+  const verb = past ? "picked" : names.length === 1 ? "picks" : "pick";
   return `${andList(names)} ${verb} ${team}`;
 }
 
@@ -53,9 +53,15 @@ export function eventShare(
   const noNames = namesOn(no.calls, pundits);
 
   if (event.awayTeam && event.homeTeam) {
+    // Once the game settles, searchers want the answer, not the preview.
+    const winnerSide = settledSide(event, calls);
+    const winner =
+      winnerSide === "yes" ? event.awayTeam : winnerSide === "no" ? event.homeTeam : null;
+    const loser = winnerSide === "yes" ? event.homeTeam : event.awayTeam;
+    const settledTitle = winner ? `${winner} beat ${loser}: who called it` : title;
     const who = [
-      picksLine(noNames, event.homeTeam),
-      picksLine(yesNames, event.awayTeam),
+      picksLine(noNames, event.homeTeam, Boolean(winner)),
+      picksLine(yesNames, event.awayTeam, Boolean(winner)),
     ].filter(Boolean);
     if (!yesNames.length) who.push(`Nobody on ${event.awayTeam} yet`);
     if (!noNames.length && yesNames.length) who.push(`Nobody on ${event.homeTeam} yet`);
@@ -64,13 +70,14 @@ export function eventShare(
       who.push("No verified expert picks yet");
     }
     const description = [
+      winner ? `Final: ${winner} won` : null,
       ...who,
       `${event.homeTeam} ${formatCents(no.cents)}, ${event.awayTeam} ${formatCents(yes.cents)} on Kalshi`,
       asOf,
     ]
       .filter(Boolean)
       .join(". ");
-    return { title, description };
+    return { title: settledTitle, description };
   }
 
   const who = [
@@ -94,12 +101,17 @@ export function eventShare(
 
 export function punditShare(
   pundit: Pick<ActivityRecord, "name" | "outlet" | "mappedPending" | "season2026">,
-  latest?: Call
+  latest?: Call,
+  options: { showRecord?: boolean } = {}
 ): { title: string; description: string } {
+  const showRecord =
+    options.showRecord ?? pundit.season2026.wins + pundit.season2026.losses > 0;
   const bits = [
     `${pundit.name} expert picks`,
     pundit.outlet,
-    `2026 record ${pundit.season2026.wins}–${pundit.season2026.losses}`,
+    showRecord
+      ? `2026 record ${pundit.season2026.wins}–${pundit.season2026.losses}`
+      : null,
     pundit.mappedPending
       ? `${pundit.mappedPending} live pick${pundit.mappedPending === 1 ? "" : "s"}`
       : null,

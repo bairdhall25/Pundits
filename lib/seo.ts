@@ -104,19 +104,30 @@ function outcomePhrase(title: string): string {
   return title;
 }
 
-function negativeOutcome(pundit: Pundit, title: string): string {
+function negativeOutcome(pundit: Pundit, title: string, past = false): string {
+  const see = past ? "did not see" : "does not see";
   const wins = title.match(/^(.+?) wins (.+)$/i);
-  if (wins) return `${pundit.name} does not see ${wins[1]} winning ${wins[2]}`;
+  if (wins) return `${pundit.name} ${see} ${wins[1]} winning ${wins[2]}`;
   const makes = title.match(/^(.+?) makes (.+)$/i);
-  if (makes) return `${pundit.name} does not see ${makes[1]} making ${makes[2]}`;
-  return `${pundit.name} is out on ${title}`;
+  if (makes) return `${pundit.name} ${see} ${makes[1]} making ${makes[2]}`;
+  return `${pundit.name} ${past ? "was" : "is"} out on ${title}`;
 }
 
+/** Graded takes speak in past tense and carry the verdict — after the game,
+ *  searchers want the answer, not the prediction. */
 export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
+  const graded = call.status === "hit" || call.status === "miss";
   const game = gamePick(event, call);
-  if (game) return `${pundit.name} picks ${game.picked} over ${game.other}`;
-  if (call.side === "no") return negativeOutcome(pundit, event.title);
-  return `${pundit.name} picks ${outcomePhrase(event.title)}`;
+  if (game) {
+    if (!graded) return `${pundit.name} picks ${game.picked} over ${game.other}`;
+    const verdict =
+      call.status === "hit" ? " — and hit" : ` — and missed (${game.other} won)`;
+    return `${pundit.name} picked ${game.picked} over ${game.other}${verdict}`;
+  }
+  const verdict = graded ? ` — and ${call.status === "hit" ? "hit" : "missed"}` : "";
+  if (call.side === "no") return `${negativeOutcome(pundit, event.title, graded)}${verdict}`;
+  const verb = graded ? "picked" : "picks";
+  return `${pundit.name} ${verb} ${outcomePhrase(event.title)}${verdict}`;
 }
 
 export function sideChip(event: Event, side: "yes" | "no"): string {
@@ -162,7 +173,16 @@ export function pickStory(
   const day = formatShortDate(call.sourceDate);
   const price = priceLine(event, call);
 
+  const graded = call.status === "hit" || call.status === "miss";
   const paragraphs: string[] = [];
+  if (graded && game) {
+    const winner = call.status === "hit" ? game.picked : game.other;
+    paragraphs.push(
+      `Result: ${winner} won. This pick graded a ${call.status === "hit" ? "hit" : "miss"}.`
+    );
+  } else if (graded) {
+    paragraphs.push(`Result: this take graded a ${call.status === "hit" ? "hit" : "miss"}.`);
+  }
   if (game) {
     const posture =
       game.pickedCents != null && game.otherCents != null && game.pickedCents < game.otherCents
@@ -229,7 +249,12 @@ export function pickStory(
 
   const dek = game
     ? [
-        `${pundit.name} is taking ${game.picked} over ${game.other}.`,
+        graded
+          ? `Result: ${call.status === "hit" ? game.picked : game.other} won — this pick ${
+              call.status === "hit" ? "hit" : "missed"
+            }.`
+          : null,
+        `${pundit.name} ${graded ? "took" : "is taking"} ${game.picked} over ${game.other}.`,
         price ? `${price}.` : null,
         dog,
         `Here is the quote and the context behind the pick.`,

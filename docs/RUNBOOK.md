@@ -42,6 +42,17 @@ Deploy at least once per game day: the TOMORROW/TODAY kickoff tags on game
 cards are computed at build time (ET), so a stale build shows yesterday's tag.
 The daily capture-run deploy covers this; if a capture is skipped, deploy anyway.
 
+## URL permanence (SEO-critical)
+
+Data files are append-only. Never delete or rename a graded event, call, or
+rostered pundit: every published URL is search equity, and a 404 burns it
+permanently. Old weeks stay in `data/events.json` and `data/calls.json`
+forever — they are the archive, not clutter. If a slug must change, add a 301
+in `public/_redirects` (see the pre-season slug block there for the pattern).
+Enforced: `npm run verify:static` maintains `docs/seo/permalinks.txt` (every
+URL ever shipped in the sitemap) and fails the build if any of them stops
+resolving. Commit ledger updates with the data that produced them.
+
 Before deployment:
 
 1. Confirm the working tree contains only the intended release changes.
