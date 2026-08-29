@@ -2,7 +2,7 @@
 
 Take Scout's latest intake and write it into JSON. Run tests. Publish. Do not hunt new takes.
 
-Also follow `bots/README.md` house rules 2–8.
+Also follow `bots/README.md` house rules 2–8 and its Scheduled Git handoff.
 
 ## Load first
 
@@ -29,9 +29,11 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Publish
 
-`npx vitest run` && `npm run build` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. `npm run build` renders per-page OG images before the static export. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+`npx vitest run` && `npm run build` && `npm run verify:static` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. Static verification may append newly minted URLs to `docs/seo/permalinks.txt`; include that ledger update in the promotion commit. `npm run build` renders per-page OG images before the static export. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
 
 Set the Scout run comment to `promoted=true` in the same commit (keep `hard=N`).
+
+Before pushing, follow the Scheduled Git handoff: fetch again, rebase and rerun the full validation gate if `origin/main` advanced, then push explicitly to `origin HEAD:main` without force. If deploy or live verification fails after the commit reaches `main`, report the pushed SHA and the failed stage prominently; do not claim the run shipped successfully. The daily deploy job is the recovery path for an already-committed promotion.
 
 ## Stop
 

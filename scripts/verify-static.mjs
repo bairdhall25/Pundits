@@ -56,8 +56,10 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Paul Finebaum/);
-assert.doesNotMatch(home, />Yes</);
-assert.doesNotMatch(home, />No</);
+// Game cards must name teams instead of exposing raw market-side labels.
+// Futures tape rows intentionally use Yes/No because the contract itself is binary.
+assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>Yes</);
+assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>No</);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
 assert(!home.includes("/Pundits/"), "production output must not contain the GitHub Pages base path");
 

@@ -24,6 +24,16 @@ Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
 
 Launch-week cadence: Scout morning. Audit as soon as the run file lands (or a scheduled sweep). Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
 
+## Scheduled Git handoff
+
+Scheduled jobs start in the saved project only long enough to fetch and create their own worktree. They never inspect, edit, test, build, or deploy from the operator's checkout.
+
+1. `git fetch origin`, then create a unique worktree under the ignored `.worktrees/scheduled/` directory from the fetched `origin/main`. A deploy-only job may use detached HEAD. A job that commits uses a unique temporary `codex/` branch. The branch name does not need to be `main`; the safety invariant is a clean worktree whose starting `HEAD` equals `origin/main`.
+2. Build/deploy jobs run `npm ci` in the scheduled worktree before invoking package scripts. Never borrow generated files or `node_modules` from the operator's checkout.
+3. Before a writer pushes, fetch again. If `origin/main` advanced, rebase the task commit onto it, re-check the resulting diff, and rerun any required validation. Push explicitly to `origin HEAD:main` without force. On a conflict or non-fast-forward rejection, stop and report; never overwrite the mailbox.
+4. After a clean no-op or successful push/deploy, leave the worktree clean and remove it. Preserve a dirty or failed worktree only when its exact path and recovery state are reported.
+5. GitHub, source URLs, npm, Cloudflare, and live verification require network access. If the unattended runtime cannot fetch, install, push, deploy, or verify, stop and report the missing capability rather than falling back to the operator's checkout.
+
 ## Pick stories (SEO)
 
 The web app, not the bots, writes crawlable stories.

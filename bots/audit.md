@@ -2,7 +2,7 @@
 
 Spot-check Scout's latest run (and recently promoted hard rows) against the live source URLs. Do not hunt new takes. Do not write JSON.
 
-Also follow `bots/README.md` house rules.
+Also follow `bots/README.md` house rules and its Scheduled Git handoff.
 
 ## Load first
 
@@ -31,7 +31,7 @@ Do not invent a replacement pick when a row fails. Mark it fail and leave the si
 
 ## Output
 
-Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed):
+Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed). Preserve every earlier audit row and dated section in that file:
 
 ```
 | pundit | eventSlug | side | verdict | note |
@@ -44,6 +44,8 @@ Then one line: `N ok / M fail / ready to promote K` where K is the count of new 
 Update the Scout run file's status comment to `audit=ok` only if M = 0 for new hard rows. If any new hard row failed, `audit=fail`.
 
 Never touch `data/`.
+
+Before pushing, follow the Scheduled Git handoff and push explicitly to `origin HEAD:main` without force. Stop and report any rebase conflict or non-fast-forward rejection.
 
 ## Stop
 
