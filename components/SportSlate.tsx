@@ -3,6 +3,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
+import { WeekArchivePathLinks, TeamLinks } from "@/components/SlateLinks";
 import {
   formatGameWhen,
   getBoard,
@@ -54,6 +55,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
       </p>
       <SportFilter current={sport} />
       <div className="when">{copy.when}</div>
+      <WeekArchivePathLinks sport={sport} />
 
       <section className="board">
         <div className="board-kicker type-broadcast">Games</div>
@@ -102,6 +104,8 @@ export function SportSlate({ sport }: { sport: Sport }) {
           ))}
         </PeekRow>
       </section>
+
+      <TeamLinks sport={sport} />
     </main>
   );
 }

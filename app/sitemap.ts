@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
+import { archiveWeeks, gamesForWeek, teamHasTakes } from "@/lib/archive";
 import {
   loadCalls,
   loadEvents,
   loadEventsFile,
   loadPundits,
+  loadTeams,
   mappedCalls,
 } from "@/lib/data";
 import { punditIndexable } from "@/lib/records";
@@ -63,5 +65,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
-  return [...core, ...takes, ...picks, ...people];
+  const archives: MetadataRoute.Sitemap = archiveWeeks(events).map((w) => {
+    const games = gamesForWeek(w.sport, w.season, w.week, events);
+    const on = mapped.filter((c) => games.some((e) => e.slug === c.eventSlug));
+    return {
+      url: canonicalUrl(`/${w.sport}/${w.season}/week-${w.week}/`),
+      lastModified:
+        latestDay([...games.map((e) => e.sourcedAt), ...on.map((c) => c.sourceDate)]) ?? freeze,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    };
+  });
+
+  // Team pages follow the pundit-profile rule: indexable (and listed) only
+  // once at least one take involves the team.
+  const teams: MetadataRoute.Sitemap = loadTeams()
+    .filter((t) => teamHasTakes(t.id, events, calls))
+    .map((t) => ({
+      url: canonicalUrl(`/teams/${t.id}/`),
+      lastModified: freeze,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
+
+  return [...core, ...takes, ...picks, ...archives, ...teams, ...people];
 }

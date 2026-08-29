@@ -1,0 +1,104 @@
+import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { EventCard } from "@/components/EventCard";
+import { JsonLd } from "@/components/JsonLd";
+import { archiveWeeks, gamesForWeek, weekRecord } from "@/lib/archive";
+import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { breadcrumbList } from "@/lib/seo";
+import type { Sport } from "@/lib/types";
+
+const SPORT_LABEL: Record<Sport, string> = {
+  ncaaf: "College football",
+  nfl: "NFL",
+};
+
+export function weekArchivePath(sport: Sport, season: number, week: number): string {
+  return `/${sport}/${season}/week-${week}/`;
+}
+
+export function weekArchiveTitle(sport: Sport, season: number, week: number): string {
+  return `${SPORT_LABEL[sport]} Week ${week} expert picks (${season})`;
+}
+
+export function WeekArchive({
+  sport,
+  season,
+  week,
+}: {
+  sport: Sport;
+  season: number;
+  week: number;
+}) {
+  const events = loadEvents();
+  const calls = loadCalls();
+  const pundits = loadPundits();
+  const games = gamesForWeek(sport, season, week, events);
+  const record = weekRecord(games, calls);
+  const graded = record.hits + record.misses > 0;
+  const weeks = archiveWeeks(events).filter(
+    (w) => w.sport === sport && w.season === season
+  );
+  const idx = weeks.findIndex((w) => w.week === week);
+  const prev = idx > 0 ? weeks[idx - 1] : null;
+  const next = idx >= 0 && idx < weeks.length - 1 ? weeks[idx + 1] : null;
+  const label = SPORT_LABEL[sport];
+  const slate = `/${sport}/`;
+
+  const lede = graded
+    ? `Experts went ${record.hits}–${record.misses} on verified Week ${week} picks${
+        record.pending ? `, with ${record.pending} still live` : ""
+      }. Every pick below shows the quote, the frozen price, and the result.`
+    : `${games.length} tracked game${games.length === 1 ? "" : "s"} · ${
+        record.pending
+      } live expert pick${record.pending === 1 ? "" : "s"}. Results land after the games.`;
+
+  return (
+    <main id="main" className="shell">
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Picks", path: "/" },
+          { name: label, path: slate },
+          { name: `Week ${week}`, path: weekArchivePath(sport, season, week) },
+        ])}
+      />
+      <Breadcrumbs
+        items={[
+          { name: "Picks", href: "/" },
+          { name: label, href: slate },
+          { name: `Week ${week}` },
+        ]}
+      />
+      <div className="eyebrow type-broadcast">
+        {label} · {season}–{String(season + 1).slice(-2)}
+      </div>
+      <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
+        Week {week}
+      </h1>
+      <p className="lede">{lede}</p>
+
+      <section className="board">
+        {games.map((event) => (
+          <EventCard key={event.slug} event={event} calls={calls} pundits={pundits} />
+        ))}
+      </section>
+
+      <nav className="week-nav" aria-label="More weeks">
+        {prev ? (
+          <Link href={weekArchivePath(sport, season, prev.week)}>
+            ← Week {prev.week}
+          </Link>
+        ) : (
+          <span />
+        )}
+        <Link href={slate}>Current {label} slate</Link>
+        {next ? (
+          <Link href={weekArchivePath(sport, season, next.week)}>
+            Week {next.week} →
+          </Link>
+        ) : (
+          <span />
+        )}
+      </nav>
+    </main>
+  );
+}

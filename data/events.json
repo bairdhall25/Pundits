@@ -23,7 +23,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-05",
       "awayTeamId": "clemson",
-      "homeTeamId": "lsu"
+      "homeTeamId": "lsu",
+      "week": 1
     },
     {
       "slug": "wisconsin-vs-nd-2026",
@@ -45,7 +46,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-06",
       "awayTeamId": "wisconsin",
-      "homeTeamId": "notre-dame"
+      "homeTeamId": "notre-dame",
+      "week": 1
     },
     {
       "slug": "miami-at-stanford-2026",
@@ -67,7 +69,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-04",
       "awayTeamId": "miami",
-      "homeTeamId": "stanford"
+      "homeTeamId": "stanford",
+      "week": 1
     },
     {
       "slug": "baylor-vs-auburn-2026",
@@ -89,7 +92,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-05",
       "awayTeamId": "baylor",
-      "homeTeamId": "auburn"
+      "homeTeamId": "auburn",
+      "week": 1
     },
     {
       "slug": "patriots-at-seahawks-2026",
@@ -111,7 +115,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-09",
       "awayTeamId": "patriots",
-      "homeTeamId": "seahawks"
+      "homeTeamId": "seahawks",
+      "week": 1
     },
     {
       "slug": "49ers-vs-rams-2026",
@@ -133,7 +138,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-10",
       "awayTeamId": "49ers",
-      "homeTeamId": "rams"
+      "homeTeamId": "rams",
+      "week": 1
     },
     {
       "slug": "bills-at-texans-2026",
@@ -155,7 +161,8 @@
       "season": 2026,
       "kickoffDate": "2026-09-13",
       "awayTeamId": "bills",
-      "homeTeamId": "texans"
+      "homeTeamId": "texans",
+      "week": 1
     },
     {
       "slug": "indiana-title-2026",
@@ -486,7 +493,8 @@
       "season": 2026,
       "kickoffDate": "2026-08-29",
       "awayTeamId": "north-carolina",
-      "homeTeamId": "tcu"
+      "homeTeamId": "tcu",
+      "week": 0
     },
     {
       "slug": "ncsu-at-uva-2026",
@@ -508,7 +516,8 @@
       "season": 2026,
       "kickoffDate": "2026-08-29",
       "awayTeamId": "nc-state",
-      "homeTeamId": "virginia"
+      "homeTeamId": "virginia",
+      "week": 0
     }
   ]
 }
