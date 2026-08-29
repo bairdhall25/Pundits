@@ -11,6 +11,9 @@ PUNDITS tracks who credible sports voices are picking. Faces are named experts. 
 - https://pundits.pro/book/
 - https://pundits.pro/stories/
 - https://pundits.pro/leaderboard/
+- https://pundits.pro/teams/{id}/
+- https://pundits.pro/ncaaf/{season}/week-{week}/
+- https://pundits.pro/nfl/{season}/week-{week}/
 - https://pundits.pro/about/
 - https://pundits.pro/privacy/
 - https://pundits.pro/terms/
@@ -23,4 +26,9 @@ PUNDITS tracks who credible sports voices are picking. Faces are named experts. 
 - `/picks/{event}-{season}` is the game or futures page (e.g. `/picks/clemson-at-lsu-2026/`).
 - `/picks/{event}-{season}/{pundit}` is the pick story: who picked whom, underdog, quote, price.
 - `/pundits/{id}` is that voice's book.
-- Quotes are verified first-person. Soft takes stay in The Book until they map to a game or future.
+- `/teams/{id}` groups every mapped take involving that team, for and against.
+- `/{sport}/{season}/week-{week}` is a permanent weekly archive; college football Week 0 uses `week-0`.
+- Quotes are verified first-person. Soft takes stay in The Book; only hard calls explicitly mapped to an event and side become pick stories.
+- `pending` means the outcome is still open, not that the game is underway. `hit` and `miss` are assigned after authoritative settlement.
+- Grading updates the pick story, event, pundit record, weekly archive, and leaderboard while preserving the original quote and frozen price.
+- Pundit pages show a season record only after at least one pick grades. Settled dollars use a hypothetical $100 at the frozen price of the picked side; it is analysis, not a bet the pundit placed.
