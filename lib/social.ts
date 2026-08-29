@@ -13,7 +13,7 @@ import {
   ogTakePath,
 } from "./og";
 import { mappedTakes, sideChip } from "./seo";
-import type { Call, Event, Pundit, Side, Sport } from "./types";
+import type { Call, CallStatus, Event, Pundit, Side, Sport } from "./types";
 
 const SITE = "https://pundits.pro";
 
@@ -41,7 +41,7 @@ export type SocialTakeRow = {
   eventSlug: string;
   punditId: string;
   punditName: string;
-  status: "pending" | "hit" | "miss";
+  status: CallStatus;
   side: Side;
   sideLabel: string;
   cents: number | null;

@@ -27,6 +27,25 @@ const events: Event[] = [
     season: 2026,
     week: 0,
   },
+  {
+    slug: "mia-vs-fsu-2026",
+    title: "Miami vs FSU",
+    contractName: "Miami to win",
+    yesCents: 55,
+    noCents: 48,
+    sourceUrl: "https://kalshi.com/markets/y",
+    sourcedAt: "2026-08-25",
+    onHome: true,
+    sport: "ncaaf",
+    homeRank: 2,
+    kind: "game",
+    awayTeam: "Miami",
+    homeTeam: "FSU",
+    kickoff: "2026-08-29T20:30:00-04:00",
+    kickoffDate: "2026-08-29",
+    season: 2026,
+    week: 0,
+  },
 ];
 
 const calls: Call[] = [
@@ -60,6 +79,20 @@ const calls: Call[] = [
     eventSlug: "unc-vs-tcu-2026",
     side: "yes",
   },
+  {
+    id: "c3",
+    punditId: "pat",
+    claim: "Hurricanes got this.",
+    source: "The Pat Show",
+    sourceUrl: "https://example.com/c",
+    sourceDate: "2026-08-27",
+    kind: "hard",
+    subject: "Miami at FSU",
+    paysOn: "Miami win",
+    status: "pending",
+    eventSlug: "mia-vs-fsu-2026",
+    side: "yes",
+  },
 ];
 
 describe("socialIndex", () => {
@@ -71,20 +104,25 @@ describe("socialIndex", () => {
   });
 
   it("lists every event with absolute page and card urls plus settled state", () => {
-    expect(index.events).toHaveLength(1);
-    const e = index.events[0];
-    expect(e.pageUrl).toBe("https://pundits.pro/picks/unc-vs-tcu-2026/");
-    expect(e.ogCard).toBe("https://pundits.pro/og/events/unc-vs-tcu-2026.png");
-    expect(e.storyCard).toBe("https://pundits.pro/og/stories/events/unc-vs-tcu-2026.png");
-    expect(e.settled).toBe(true); // a graded call on the event settles it
-    expect(e.kickoffDate).toBe("2026-08-29");
-    expect(e.yesPundits).toEqual(["Chip Patterson"]);
-    expect(e.noPundits).toEqual(["Paul Finebaum"]);
+    expect(index.events).toHaveLength(2);
+    const settled = index.events.find((e) => e.slug === "unc-vs-tcu-2026")!;
+    expect(settled.pageUrl).toBe("https://pundits.pro/picks/unc-vs-tcu-2026/");
+    expect(settled.ogCard).toBe("https://pundits.pro/og/events/unc-vs-tcu-2026.png");
+    expect(settled.storyCard).toBe("https://pundits.pro/og/stories/events/unc-vs-tcu-2026.png");
+    expect(settled.settled).toBe(true); // all graded calls settle the event
+    expect(settled.kickoffDate).toBe("2026-08-29");
+    expect(settled.yesPundits).toEqual(["Chip Patterson"]);
+    expect(settled.noPundits).toEqual(["Paul Finebaum"]);
+
+    const pending = index.events.find((e) => e.slug === "mia-vs-fsu-2026")!;
+    expect(pending.pageUrl).toBe("https://pundits.pro/picks/mia-vs-fsu-2026/");
+    expect(pending.settled).toBe(false); // pending call prevents settlement
+    expect(pending.yesPundits).toEqual(["Chip Patterson"]);
   });
 
   it("lists one take per mapped hard call with status, side label, and frozen cents", () => {
-    expect(index.takes).toHaveLength(2);
-    const hit = index.takes.find((t) => t.punditId === "fin")!;
+    expect(index.takes).toHaveLength(3);
+    const hit = index.takes.find((t) => t.punditId === "fin" && t.eventSlug === "unc-vs-tcu-2026")!;
     expect(hit.status).toBe("hit");
     expect(hit.side).toBe("no");
     expect(hit.cents).toBe(61);
@@ -93,6 +131,12 @@ describe("socialIndex", () => {
     expect(hit.ogCard).toBe("https://pundits.pro/og/takes/unc-vs-tcu-2026--fin.png");
     expect(hit.storyCard).toBe("https://pundits.pro/og/stories/takes/unc-vs-tcu-2026--fin.png");
     expect(hit.sideLabel.length).toBeGreaterThan(0);
+
+    const pending = index.takes.find((t) => t.eventSlug === "mia-vs-fsu-2026")!;
+    expect(pending.status).toBe("pending");
+    expect(pending.punditId).toBe("pat");
+    expect(pending.claim).toBe("Hurricanes got this.");
+    expect(pending.pageUrl).toBe("https://pundits.pro/picks/mia-vs-fsu-2026/pat/");
   });
 
   it("lists every pundit with live record and card urls", () => {
@@ -102,6 +146,7 @@ describe("socialIndex", () => {
     expect(fin.pageUrl).toBe("https://pundits.pro/pundits/fin/");
     expect(fin.ogCard).toBe("https://pundits.pro/og/pundits/fin.png");
     const pat = index.pundits.find((p) => p.id === "pat")!;
-    expect(pat).toMatchObject({ wins: 0, losses: 1, pending: 0 });
+    expect(pat).toMatchObject({ wins: 0, losses: 1, pending: 1 });
+    expect(pat.storyCard).toBe("https://pundits.pro/og/stories/pundits/pat.png");
   });
 });
