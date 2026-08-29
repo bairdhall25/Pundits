@@ -4,8 +4,9 @@
   "scripts": {
     "dev": "next dev",
     "og": "tsx scripts/render-og.tsx --force",
-    "predev": "tsx scripts/render-og.tsx",
-    "build": "tsx scripts/render-og.tsx && next build",
+    "predev": "tsx scripts/render-og.tsx && tsx scripts/build-social-index.ts",
+    "build": "tsx scripts/render-og.tsx && tsx scripts/build-social-index.ts && next build",
+    "social:index": "tsx scripts/build-social-index.ts",
     "start": "next start",
     "test": "vitest run",
     "verify:static": "node scripts/verify-static.mjs",

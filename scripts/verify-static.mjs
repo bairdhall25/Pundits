@@ -237,3 +237,15 @@ if (added.length) {
 }
 
 console.log(`Static verification passed (${requiredFiles.length} required files).`);
+
+const socialCards = JSON.parse(
+  await readFile(path.join(out, "social/cards.json"), "utf8")
+);
+assert(socialCards.site === "https://pundits.pro", "social index must carry the site origin");
+assert(Array.isArray(socialCards.takes) && socialCards.takes.length > 0, "social index must list takes");
+assert(Array.isArray(socialCards.events) && socialCards.events.length > 0, "social index must list events");
+for (const take of socialCards.takes) {
+  const rel = take.ogCard.replace("https://pundits.pro/", "");
+  const info = await stat(path.join(out, rel));
+  assert(info.size > 0, `social index points at missing card ${rel}`);
+}
