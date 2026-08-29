@@ -1,13 +1,13 @@
 # Pick shows (Scout hunt map)
 
-Date: 2026-08-28. Scout hunts **shows**, then names the speaker. Famous-face Google is not the job.
+Date: 2026-08-28. **Shows Scout** hunt map (YouTube / podcasts / TV clips). News is `docs/news-beats.md`. X is `bots/scout-x.md`. Famous-face Google is not the job.
 
-If this file and `data/` disagree, **`data/` wins**. X remains `bots/scout-x.md`.
+If this file and `data/` disagree, **`data/` wins**.
 
 ## How to hunt (every run)
 
 1. Open **locks shows that dropped in the last ~3 days** (table below). Jump the locks / moneyline / “I’ll take” chapter. Captions count.
-2. Then P0 empty YES on `docs/board.md`.
+2. Then `empty-side` / `off-home` / `thin` on today’s `## Dispatch` (`docs/board.md` is do-not-touch, not the scorecard).
 3. Then idle roster voices **only if their pick window is open**.
 4. Named off-roster speakers on those same shows → Candidates. Never “the show likes UNC.”
 
@@ -83,3 +83,17 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 - Pin a guest on the host (`mcafee`, `eisen`, `walker` when the guest is talking).
 - Auto-roster Candidates. Photo still required to mint.
 - Stretch title / fantasy / ATS onto a game SU.
+
+## NFL (Shows Scout)
+
+Hunt only when Dispatch includes `sport=nfl` rows that are `empty-side`, `thin`, or `off-home`. Week-of the game, not August desk chatter.
+
+| Show | Voices (roster id) | Drop | Jump | Notes |
+|---|---|---|---|---|
+| The Rich Eisen Show | `eisen`; guests are the guest | weekday | “who wins” / locks | AFC East lean ≠ Patriots–Seahawks |
+| The Herd | `cowherd`; guests (Duck, etc.) | weekday | bold predictions | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards |
+| Ringer NFL Show / gambling pods | `kapadia`, `sal`, `simmons` | weekly | named winner | Win totals ≠ Week 1 SU. `ruiz` is FOX now — do not hunt him here |
+| McAfee Show | `mcafee` only if Pat picks | weekday | locks | Guests are the guest (`pft`, etc.), never `mcafee` |
+| PFT video / PFT Live | `florio`, `simms` | weekday | “who wins” | Column version is News |
+
+Brand faces — NFL pick window (also in the table above this file): `stephena`, `kimes`, `orlovsky`, `spears` on the ESPN **page** are News Scout. If they say it on TV and a clip URL exists, Shows may stage it.

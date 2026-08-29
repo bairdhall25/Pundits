@@ -8,25 +8,24 @@ The site already looks like a fan product: chips, even cards, who-picked-whom SE
 
 The monthly budget (Grok Heavy, Grok Bots, Codex, Claude) is large. **Do not hunt like tokens are scarce.** Open the episode. Jump locks. Read captions. Query named people twice if the first pass is empty. The scarce thing is a verified SU, not API spend. Inventing a pick to look productive is still a fail.
 
-## Goal this week
+## Goal
 
-A fan opening pundits.pro should see **arguments on this weekend’s games**, not only July title/SB takes.
+A fan opening pundits.pro should see **several named, sourced winner-picks on each homepage game**, NCAAF and NFL, preferably disagreement.
 
-Success (in order):
+Success is density, not a single face on an empty side:
 
-1. At least one verified **away** pick on each remaining empty-YES home game (Clemson, Patriots, 49ers, Bills). Dublin UNC YES is Patterson — **done**. Do not restage.
-2. Kanell NC State (`ncsu-at-uva-2026` yes) — **done** 2026-08-28. Do not restage.
-3. One Lambeau SU → propose `wisconsin-vs-nd-2026` on home.
-4. Hunt **pick shows** (`docs/pick-shows.md`): Cover 3 LOCKS, BFW Saturday, Barstool CFB Show, Picks Central, Pick Em, Ringer NFL. `walker`, `bigcat`, `portnoy`, `pft`, `sal`, `kapadia`, `ruiz` are rostered with no mapped games — Intake when they pick, do not invent.
+- `empty-side` (a homepage game with nobody on YES or nobody on NO) is urgent.
+- `thin` (both sides have someone, total mapped hard SUs < 3) still counts — stacking the favorite is success.
+- `dense` (≥3 mapped hard and both sides ≥1) is done for the week.
 
-Not success: more Herbstreit CFP faces. Not success: ESPN vs Barstool leaderboard (parked).
+Architecture: `docs/superpowers/specs/2026-08-29-scout-architecture-design.md`.
 
 ## Pipeline
 
-1. **Shows Scout** hunts pick shows first (`docs/pick-shows.md`), then P0 holes. **X Scout** hunts status URLs only. Both write `docs/runs/YYYY-MM-DD.md` (X Scout appends `## X pass`). Never `data/`. Fantasy/props stay parked (`docs/fantasy.md`).
-2. Audit re-opens URLs (including `x.com/.../status/...`).
-3. Promote ships `ok` **roster** hard rows. Candidates are not auto-rostered.
-4. App mints `/picks/{slug}/{pundit}/`. Poster tweets the live URL. Poster does not hunt.
+1. **Coordinator** writes `## Dispatch` from `node scripts/scout-density.mjs` into `docs/runs/YYYY-MM-DD.md`. Does not hunt.
+2. **Shows / X / News** append their passes against Dispatch (`empty-side`, then `off-home`, then `thin`; skip `dense`). Never `data/`. Fantasy/props stay parked (`docs/fantasy.md`).
+3. **Audit** re-opens URLs (including `x.com/.../status/...`).
+4. **Promote** ships `ok` **roster** hard rows. Candidates are not auto-rostered. App mints `/picks/{slug}/{pundit}/`. Poster tweets the live URL. Poster does not hunt.
 
 ## Quality bar
 
