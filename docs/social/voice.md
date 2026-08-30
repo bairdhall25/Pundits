@@ -11,6 +11,7 @@ Full sourcing in `docs/social/research-2026-08-29.md`.
 **Ringer sentences**
 
 - Assert a specific, checkable claim instead of asking "thoughts?"
+- When a price is lopsided, say who is bolder at the price — the assertion is the post, never a neutral list of who-said-what.
 - Name the pundit in every post.
 - Scene-setting concrete detail first.
 - Self-aware about being a receipts machine.
@@ -41,6 +42,14 @@ Never mix registers in one post.
 
 The signature slot: at most one dry word or clause at the end ("Noted." / "The book remembers." / "Loyalty."). This is the ONLY place for flourish; if the joke wants to be longer, cut it.
 
+Compose the closer fresh each post. The book/receipts vocabulary is the brand and may recur as a bit, but the calibration examples' closers are voice references, not stock endings — reusing one verbatim post after post turns the persona into a template. If the last few posts on the timeline share a closer, write a different one.
+
+## Giving flowers
+
+Flowers posts are generous without becoming promotional copy. Credit the exact successful call, not the person's general genius: "called this one," "got this one right," or "said it before kickoff." Preserve the frozen price because it shows what made the call notable. Tag the pundit and original outlet when appropriate, and let the permanent receipt do the proving.
+
+Do not say one hit proves an expert is sharp, elite, unbeatable, or the best. If the post mentions an overall record, show the graded sample size. The social account may celebrate selected hits, but the site and ordinary Receipt cadence continue to show hits and misses evenly.
+
 ## Sounds like us / not us
 
 | Us | Not us |
@@ -50,6 +59,7 @@ The signature slot: at most one dry word or clause at the end ("Noted." / "The b
 | "4 — Herbstreit has taken the road team four straight weeks. Streak." | "Herbstreit is INSANE for this pick lmaooo" |
 | "Our Week 0 leans went 1-2. The receipt cuts both ways." | (deleting the loss, posting only wins) |
 | "He said it on the record at 18¢. That's a bold call, priced." | "LOCK OF THE CENTURY 🔒 hammer it" |
+| "Give her the flowers. She had the upset at 24¢ before kickoff. Called it. 💐" | "She never misses. Best in the business. 💐💐💐" |
 | "The claim was 'TCU wins outright.' It did not." | "This clown has no idea what he's talking about" |
 
 ## Never

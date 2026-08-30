@@ -12,7 +12,7 @@ Two Grok bots run @Pundits_: Poster posts new content, Reply Guy replies in exis
 |---|---|
 | `voice.md` | How we sound |
 | `images.md` | The image tiers — the fix for off-brand images |
-| `post-patterns.md` | The nine archetypes |
+| `post-patterns.md` | The ten archetypes, including The Flowers |
 | `reply-guide.md` | Reply Guy targeting and caps |
 | `schedule.md` | The weekly rhythm |
 | `research-2026-08-29.md` | Why — sourced evidence |
@@ -50,7 +50,7 @@ Bots fetch `https://pundits.pro/social/cards.json` at job start. It has two top-
 
 Note: **bots compute time proximity ("tonight", "live") from `kickoff` at post time; the file bakes in no time-relative labels.**
 
-YES = away team wins on games.
+YES = away team wins on games. On futures, YES = the named outcome and NO = the field (everything else); the NO price is never the price of any specific alternative outcome — see `post-patterns.md` `## Futures`.
 
 ## Hard guardrails
 

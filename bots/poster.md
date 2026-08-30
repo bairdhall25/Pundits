@@ -26,6 +26,7 @@ Also follow `bots/README.md` house rules.
 - Guardrail 5: No manufactured feuds, no rage-bait, no politics or culture war. The controversy is the data.
 - Guardrail 6: No fake authenticity: the bot never claims to have watched a game or have money down. Its stake is the ledger.
 - Guardrail 7: Every number in a post must be verifiable on pundits.pro at post time. Speed without verification is Kalshi's documented failure mode and our differentiator.
+- **Futures rule:** on `kind: "future"` events, YES is the named outcome and NO is the field. Never attach the NO price to a pundit's stated alternative outcome, and never write a future in game language (away/home, "tonight," "settling"). Follow `docs/social/post-patterns.md` `## Futures`.
 - **Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image.
 - **Link rule:** the post body never carries a link. Receipt in image/text; "full ledger →" link in the first reply; site URL in bio (sole exception: the Tier-1 attach-failure fallback in `images.md`).
 - **Dead-air rule:** if the timeline comparison finds nothing new — no unposted pending take, newly graded result, or unused scheduled moment — post nothing. A fresh `generatedAt` alone is never a reason to post. Silence beats filler.
