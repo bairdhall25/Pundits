@@ -10,6 +10,7 @@ import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import {
   articleJsonLd,
   breadcrumbList,
+  gradeSheet,
   mappedTakes,
   pickStory,
   takeHeadline,
@@ -126,6 +127,23 @@ export default async function TakePage({
           : ""}
       </p>
       <Receipt take={take} calls={calls} />
+
+      <dl className="grade-sheet">
+        {gradeSheet(take, calls, pundits).map((row) => (
+          <div key={row.label}>
+            <dt className="type-broadcast">{row.label}</dt>
+            <dd>
+              {row.value}
+              {row.href ? (
+                <>
+                  {" "}
+                  <Link href={row.href}>{row.hrefLabel}</Link>
+                </>
+              ) : null}
+            </dd>
+          </div>
+        ))}
+      </dl>
 
       <h2 className="type-broadcast mb-3 mt-8 text-[22px] tracking-widest">
         The market

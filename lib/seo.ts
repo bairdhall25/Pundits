@@ -1,6 +1,12 @@
-import { isMapped, sidesForCard } from "./data";
+import { finalScoreParts, isMapped, seasonFromCalls, sidesForCard } from "./data";
 import { publicSideLabel } from "./public-side";
-import { formatAsOf, formatCents, formatGameWhen, formatShortDate } from "./format";
+import {
+  americanOdds,
+  formatAsOf,
+  formatCents,
+  formatGameWhen,
+  formatShortDate,
+} from "./format";
 import { eventShare } from "./share";
 import {
   LEGAL_NAME,
@@ -266,6 +272,79 @@ export function pickStory(
         .join(" ")
     : [headline + ".", dog, "Here is the quote and the market context."].filter(Boolean).join(" ");
   return { headline, dek, paragraphs };
+}
+
+export type GradeRow = { label: string; value: string; href?: string; hrefLabel?: string };
+
+/** The take page's labeled facts — same primitives as pickStory, honest structure. */
+export function gradeSheet(take: MappedTake, calls: Call[], pundits: Pundit[]): GradeRow[] {
+  const { pundit, event, call } = take;
+  const graded = call.status === "hit" || call.status === "miss";
+  const game = gamePick(event, call);
+  const rows: GradeRow[] = [];
+
+  if (graded) {
+    const score = finalScoreParts(event, calls);
+    if (score) {
+      rows.push({
+        label: "Result",
+        value: `${score.winner} won ${score.winnerScore}–${score.loserScore}.`,
+      });
+    } else if (game) {
+      const winner = call.status === "hit" ? game.picked : game.other;
+      rows.push({ label: "Result", value: `${winner} won.` });
+    } else {
+      rows.push({ label: "Result", value: `Graded a ${call.status}.` });
+    }
+  }
+
+  if (game) {
+    const upset =
+      game.pickedCents != null && game.otherCents != null && game.pickedCents < game.otherCents;
+    const posture = upset
+      ? graded
+        ? "called the upset"
+        : "calling the upset"
+      : graded
+        ? "backed the market favorite"
+        : "backing the market favorite";
+    rows.push({ label: "The call", value: `${game.picked} over ${game.other} — ${posture}.` });
+  } else if (call.side === "no") {
+    rows.push({ label: "The call", value: `${negativeOutcome(pundit, event.title, graded)}.` });
+  } else {
+    rows.push({
+      label: "The call",
+      value: `${pundit.name} ${graded ? "took" : "is taking"} ${outcomePhrase(event.title)}.`,
+    });
+  }
+
+  const cents = game ? game.pickedCents : call.side === "no" ? event.noCents : event.yesCents;
+  if (cents != null) {
+    const odds = americanOdds(cents);
+    const asOf = formatAsOf(event.sourcedAt);
+    rows.push({
+      label: "The price",
+      value: `${formatCents(cents)} at the freeze${odds ? ` (≈ ${odds})` : ""}${asOf ? `, ${asOf}` : ""}.`,
+    });
+  }
+
+  const season = seasonFromCalls(pundit.id, calls);
+  const recordValue =
+    season.wins + season.losses > 0
+      ? `${pundit.name} is ${season.wins}–${season.losses} on graded picks this season${
+          season.pending ? `, with ${season.pending} open` : ""
+        }.`
+      : `${pundit.name} has no graded picks yet this season${
+          season.pending ? ` — ${season.pending} open` : ""
+        }.`;
+  rows.push({
+    label: "Record",
+    value: recordValue,
+    href: `/pundits/${pundit.id}`,
+    hrefLabel: "Full record →",
+  });
+
+  return rows;
 }
 
 export function takeDescription(

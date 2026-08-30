@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { loadCalls, loadEvents, loadPundits } from "./data";
 import type { Call, Event } from "./types";
 import {
+  gradeSheet,
   mappedTakes,
   pickLede,
   pickStory,
@@ -94,6 +95,31 @@ describe("mapped takes", () => {
       const story = pickStory(take);
       expect(story.paragraphs.join(" "), take.call.id).toContain(take.call.claim);
     }
+  });
+});
+
+describe("grade sheet", () => {
+  it("lays out the graded take as labeled rows", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "patterson"
+    )!;
+    const rows = gradeSheet(take, loadCalls(), loadPundits());
+    expect(rows.map((r) => r.label)).toEqual(["Result", "The call", "The price", "Record"]);
+    expect(rows[0].value).toBe("Virginia won 34–8.");
+    expect(rows[1].value).toBe("NC State over Virginia — called the upset.");
+    expect(rows[2].value).toBe("34¢ at the freeze (≈ +194), as of Aug 28, 2026.");
+    expect(rows[3].value).toContain("1–1");
+    expect(rows[3]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
+  });
+
+  it("keeps open picks and futures on the sheet without a result row", () => {
+    const open = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.call.status === "pending"
+    )!;
+    const rows = gradeSheet(open, loadCalls(), loadPundits());
+    expect(rows[0].label).not.toBe("Result");
+    expect(rows.map((r) => r.label)).toContain("The price");
+    expect(rows.map((r) => r.label)).toContain("Record");
   });
 });
 
