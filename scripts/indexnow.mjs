@@ -20,7 +20,10 @@ try {
       urlList,
     }),
   });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  if (!response.ok) {
+    const body = (await response.text()).slice(0, 200);
+    throw new Error(`HTTP ${response.status}${body ? ` — ${body}` : ""}`);
+  }
   console.log(`IndexNow: submitted ${urlList.length} URLs.`);
 } catch (error) {
   console.warn(
