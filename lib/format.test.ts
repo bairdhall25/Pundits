@@ -1,11 +1,25 @@
 import { describe, expect, it } from "vitest";
-import { americanOdds, kickoffTag, statusLabel } from "./format";
+import { americanOdds, kickoffTag, statusChipText, statusLabel, verdictClass } from "./format";
 
 describe("statusLabel", () => {
   it("calls unresolved picks open without implying the event is live", () => {
     expect(statusLabel("pending")).toBe("Open");
     expect(statusLabel("hit")).toBe("Hit");
     expect(statusLabel("miss")).toBe("Miss");
+  });
+});
+
+describe("verdicts", () => {
+  it("pairs every verdict color with a glyph or word", () => {
+    expect(statusChipText("hit")).toBe("✓ Hit");
+    expect(statusChipText("miss")).toBe("✗ Miss");
+    expect(statusChipText("pending")).toBe("Open");
+  });
+
+  it("maps status to a css verdict class", () => {
+    expect(verdictClass("hit")).toBe("hit");
+    expect(verdictClass("miss")).toBe("miss");
+    expect(verdictClass("pending")).toBe("open");
   });
 });
 

@@ -13,7 +13,7 @@ import {
   sidesForCard,
 } from "@/lib/data";
 import { KickoffTag } from "@/components/KickoffTag";
-import { americanOdds, statusLabel } from "@/lib/format";
+import { americanOdds, statusChipText } from "@/lib/format";
 import { eventKalshiUrl } from "@/lib/kalshi";
 import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
@@ -37,7 +37,7 @@ function FaceRow({
           <div className="nm type-broadcast">
             {pundit.name}
             {call.status !== "pending" ? (
-              <span className={`result-chip ${call.status}`}>{statusLabel(call.status)}</span>
+              <span className={`result-chip ${call.status}`}>{statusChipText(call.status)}</span>
             ) : null}
           </div>
           {detail ? <div className="qt">“{call.claim}”</div> : null}

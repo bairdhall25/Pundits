@@ -9,6 +9,17 @@ export function statusLabel(status: "pending" | "hit" | "miss"): string {
   return "Open";
 }
 
+export function verdictClass(status: "pending" | "hit" | "miss"): "hit" | "miss" | "open" {
+  return status === "pending" ? "open" : status;
+}
+
+/** Verdict chips pair a glyph with the word so color is never the only signal. */
+export function statusChipText(status: "pending" | "hit" | "miss"): string {
+  if (status === "hit") return "✓ Hit";
+  if (status === "miss") return "✗ Miss";
+  return "Open";
+}
+
 export function formatCents(cents: number | null): string {
   if (cents == null) return "—";
   return `${cents}¢`;

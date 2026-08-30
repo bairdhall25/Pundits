@@ -6,7 +6,7 @@ import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
-import { getEvent, loadCalls, loadEvents, loadPundits, statusLabel } from "@/lib/data";
+import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import {
   articleJsonLd,
   breadcrumbList,
@@ -19,7 +19,7 @@ import {
 } from "@/lib/seo";
 import { ogImageFor, ogStoryTakePath, ogTakePath } from "@/lib/og";
 import { sharePayload } from "@/lib/share";
-import { formatShortDate } from "@/lib/format";
+import { formatShortDate, statusChipText, verdictClass } from "@/lib/format";
 import { articleMeta, pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -98,7 +98,10 @@ export default async function TakePage({
         ]}
       />
       <div className="eyebrow type-broadcast">
-        Take · {statusLabel(take.call.status)}
+        Take ·{" "}
+        <span className={`verdict-${verdictClass(take.call.status)}`}>
+          {statusChipText(take.call.status)}
+        </span>
       </div>
       <div className="share-head mb-4 mt-1">
         <h1 className="text-[clamp(36px,6vw,64px)] leading-[0.92]">

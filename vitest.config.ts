@@ -4,7 +4,7 @@ import path from "node:path";
 export default defineConfig({
   test: {
     environment: "node",
-    exclude: ["**/node_modules/**", "**/dist/**", "**/out/**", "**/.worktrees/**"],
+    exclude: ["**/node_modules/**", "**/dist/**", "**/out/**", "**/.worktrees/**", "**/.claude/**"],
   },
   resolve: { alias: { "@": path.resolve(__dirname, ".") } },
 });

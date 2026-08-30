@@ -8,6 +8,7 @@
   --ink: #f5f5f5;
   --muted: #a3a3a3;
   --green: #39ff14;
+  --red: #ff4d4f;
 }
 
 html,
@@ -596,7 +597,10 @@ a.empty.event-price-link { color: var(--muted); }
   vertical-align: middle;
 }
 .result-chip.hit { color: var(--green); }
-.result-chip.miss { color: var(--muted); }
+.result-chip.miss { color: var(--red); }
+.verdict-hit { color: var(--green); }
+.verdict-miss { color: var(--red); }
+.verdict-open { color: var(--muted); }
 .see-why {
   display: block;
   padding: 8px 14px 12px;
