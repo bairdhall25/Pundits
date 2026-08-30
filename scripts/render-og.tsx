@@ -34,6 +34,7 @@ const H = 630;
 const STORY_W = 1080;
 const STORY_H = 1920;
 const GREEN = "#39ff14";
+const RED = "#ff4d4f";
 const INK = "#f5f5f5";
 const MUTED = "#a3a3a3";
 const CARD = "#141414";
@@ -47,6 +48,12 @@ const inter = readFileSync(
 );
 const interBold = readFileSync(
   path.join(ROOT, "node_modules/@fontsource/inter/files/inter-latin-700-normal.woff")
+);
+const plexMono = readFileSync(
+  path.join(ROOT, "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff")
+);
+const plexMonoSemi = readFileSync(
+  path.join(ROOT, "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff")
 );
 
 const photoCache = new Map<string, string>();
@@ -276,6 +283,7 @@ function Shell({ children }: { children: ReactNode }) {
         display: "flex",
         flexDirection: "column",
         fontFamily: "Inter",
+        position: "relative",
       }}
     >
       <div style={{ height: 8, width: "100%", background: GREEN }} />
@@ -293,13 +301,50 @@ function Shell({ children }: { children: ReactNode }) {
   );
 }
 
+function Stamp({
+  status,
+  scale = 1,
+  top,
+  right,
+}: {
+  status: "hit" | "miss";
+  scale?: number;
+  top: number;
+  right: number;
+}) {
+  const color = status === "hit" ? GREEN : RED;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top,
+        right,
+        display: "flex",
+        transform: "rotate(-6deg)",
+        border: `${Math.round(5 * scale)}px solid ${color}`,
+        color,
+        fontFamily: "Oswald",
+        fontSize: Math.round(44 * scale),
+        letterSpacing: Math.round(10 * scale),
+        padding: `${Math.round(6 * scale)}px ${Math.round(20 * scale)}px`,
+      }}
+    >
+      {status === "hit" ? "HIT" : "MISS"}
+    </div>
+  );
+}
+
 function TakeMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
   const quote = ogQuote(card.quote, 100);
   const quoteSize = quote.length > 78 ? 21 : 25;
+  const verdictColor = card.status === "hit" ? GREEN : card.status === "miss" ? RED : GREEN;
   return (
     <Shell>
       <Wordmark right={card.when} />
+      {card.status !== "pending" ? (
+        <Stamp status={card.status} top={88} right={56} />
+      ) : null}
       <div
         style={{
           display: "flex",
@@ -371,7 +416,7 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
             style={{
               marginTop: 18,
               display: "flex",
-              borderLeft: `4px solid ${GREEN}`,
+              borderLeft: `4px solid ${verdictColor}`,
               paddingLeft: 16,
               maxWidth: 760,
               maxHeight: 76,
@@ -393,16 +438,30 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
         </div>
       </div>
       <div style={{ display: "flex", marginTop: 22 }}>
-        <ScoreCell side={card.sides[0]} />
+        <ScoreCell side={card.sides[0]} accent={verdictColor} />
         <div style={{ width: 2, background: "#2a2a2a" }} />
-        <ScoreCell side={card.sides[1]} />
+        <ScoreCell side={card.sides[1]} accent={verdictColor} />
       </div>
+      {card.result ? (
+        <div
+          style={{
+            marginTop: 14,
+            display: "flex",
+            fontFamily: "IBM Plex Mono",
+            fontSize: 20,
+            letterSpacing: 3,
+            color: INK,
+          }}
+        >
+          {`FINAL: ${card.result.toUpperCase()}`}
+        </div>
+      ) : null}
       <Legal text="Not a bet they placed · hypothetical $100 at the freeze" />
     </Shell>
   );
 }
 
-function ScoreCell({ side }: { side: OgSide }) {
+function ScoreCell({ side, accent }: { side: OgSide; accent?: string }) {
   return (
     <div
       style={{
@@ -412,7 +471,7 @@ function ScoreCell({ side }: { side: OgSide }) {
         justifyContent: "space-between",
         background: CARD,
         padding: "16px 20px",
-        borderLeft: side.picked ? `6px solid ${GREEN}` : "6px solid #141414",
+        borderLeft: side.picked ? `6px solid ${accent ?? GREEN}` : "6px solid #141414",
       }}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -428,7 +487,7 @@ function ScoreCell({ side }: { side: OgSide }) {
           {side.label}
         </div>
       </div>
-      <div style={{ fontFamily: "Oswald", fontSize: 40, color: INK, marginLeft: 12 }}>
+      <div style={{ fontFamily: "IBM Plex Mono", fontWeight: 600, fontSize: 36, color: INK, marginLeft: 12 }}>
         {side.cents}
       </div>
     </div>
@@ -538,6 +597,8 @@ export async function renderCardPng(
       { name: "Oswald", data: oswald, weight: 700, style: "normal" },
       { name: "Inter", data: inter, weight: 400, style: "normal" },
       { name: "Inter", data: interBold, weight: 700, style: "normal" },
+      { name: "IBM Plex Mono", data: plexMono, weight: 400, style: "normal" },
+      { name: "IBM Plex Mono", data: plexMonoSemi, weight: 600, style: "normal" },
     ],
   });
   const resvg = new Resvg(svg, {
@@ -601,7 +662,7 @@ function StoryWordmark({ right }: { right?: string | null }) {
   );
 }
 
-function StoryPrice({ side }: { side: OgSide }) {
+function StoryPrice({ side, accent }: { side: OgSide; accent?: string }) {
   return (
     <div
       style={{
@@ -610,7 +671,7 @@ function StoryPrice({ side }: { side: OgSide }) {
         justifyContent: "space-between",
         background: side.picked ? "#101810" : CARD,
         padding: "22px 24px",
-        borderLeft: side.picked ? `8px solid ${GREEN}` : "8px solid #141414",
+        borderLeft: side.picked ? `8px solid ${accent ?? GREEN}` : "8px solid #141414",
         marginTop: 4,
       }}
     >
@@ -645,6 +706,7 @@ function StoryPrice({ side }: { side: OgSide }) {
 function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
   const quote = storyQuote(card.quote, 110);
+  const verdictColor = card.status === "hit" ? GREEN : card.status === "miss" ? RED : GREEN;
   const rest = card.headline.startsWith(card.name)
     ? card.headline.slice(card.name.length).trim()
     : card.headline;
@@ -704,6 +766,9 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
         >
           <StoryWordmark right={card.when?.split(" · ")[0] ?? card.when} />
         </div>
+        {card.status !== "pending" ? (
+          <Stamp status={card.status} scale={1.6} top={150} right={64} />
+        ) : null}
       </div>
       <div style={{ display: "flex", flexDirection: "column", flex: 1, padding: "36px 64px 0" }}>
         <div
@@ -731,7 +796,7 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
         <div
           style={{
             marginTop: 28,
-            borderLeft: `6px solid ${GREEN}`,
+            borderLeft: `6px solid ${verdictColor}`,
             paddingLeft: 22,
             color: INK,
             fontSize: 34,
@@ -742,9 +807,23 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
         </div>
       </div>
       <div style={{ padding: "0 64px 20px", display: "flex", flexDirection: "column" }}>
-        <StoryPrice side={card.sides[0]} />
-        <StoryPrice side={card.sides[1]} />
+        <StoryPrice side={card.sides[0]} accent={verdictColor} />
+        <StoryPrice side={card.sides[1]} accent={verdictColor} />
       </div>
+      {card.result ? (
+        <div
+          style={{
+            display: "flex",
+            fontFamily: "IBM Plex Mono",
+            fontSize: 26,
+            letterSpacing: 4,
+            color: INK,
+            padding: "0 64px 14px",
+          }}
+        >
+          {`FINAL: ${card.result.toUpperCase()}`}
+        </div>
+      ) : null}
       <div style={{ color: "#6b6b6b", fontSize: 22, padding: "0 64px 8px" }}>Not a bet they placed</div>
       <div
         style={{

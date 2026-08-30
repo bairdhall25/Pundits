@@ -55,6 +55,8 @@ describe("take cards", () => {
     expect(card.sides[0].cents).toBe("34¢");
     expect(card.sides[1].label).toBe("Virginia");
     expect(card.sides[1].picked).toBe(false);
+    expect(card.status).toBe("miss");
+    expect(card.result).toBe("Virginia 34, NC State 8");
     expect(JSON.stringify(card)).not.toMatch(/\bYES\b/);
     const tweet = takeTweetText(card, "ncsu-at-uva-2026", "kanell");
     expect(tweet).toContain(

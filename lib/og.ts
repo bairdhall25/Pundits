@@ -1,8 +1,8 @@
 import { formatCents, formatGameWhen } from "./format";
-import { getTeam, sidesForCard } from "./data";
+import { finalScoreLine, getTeam, sidesForCard } from "./data";
 import { sideChip, takeHeadline, type MappedTake } from "./seo";
 import { canonicalUrl, ogImage, takePath } from "./site";
-import type { ActivityRecord, Call, CardSide, Event, Pundit, Team } from "./types";
+import type { ActivityRecord, Call, CallStatus, CardSide, Event, Pundit, Team } from "./types";
 
 export type OgChip = {
   abbr: string;
@@ -34,6 +34,8 @@ export type TakeOgCard = {
   when: string | null;
   photo: string;
   name: string;
+  status: CallStatus;
+  result: string | null;
   sides: [OgSide, OgSide];
 };
 
@@ -174,6 +176,8 @@ export function takeOgCard(
     when: formatGameWhen(take.event),
     photo: take.pundit.photo,
     name: take.pundit.name,
+    status: take.call.status,
+    result: finalScoreLine(take.event, calls),
     sides: [
       toOgSide(take.event, yes, pundits, teams, take.call.side === "yes"),
       toOgSide(take.event, no, pundits, teams, take.call.side === "no"),
