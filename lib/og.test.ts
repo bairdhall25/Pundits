@@ -44,7 +44,9 @@ describe("take cards", () => {
     expect(take).toBeTruthy();
     const card = takeOgCard(take!, loadCalls(), loadPundits(), loadTeams());
     expect(card.file).toBe("/og/takes/ncsu-at-uva-2026--kanell.png");
-    expect(card.headline).toBe("Danny Kanell picks NC State over Virginia");
+    expect(card.headline).toBe(
+      "Danny Kanell picked NC State over Virginia — and missed (Virginia won)"
+    );
     expect(card.quote).toMatch(/give me the Wolfpack/i);
     expect(card.photo).toBe("/photos/kanell.jpg");
     expect(card.sides[0].label).toBe("NC State");
@@ -55,7 +57,9 @@ describe("take cards", () => {
     expect(card.sides[1].picked).toBe(false);
     expect(JSON.stringify(card)).not.toMatch(/\bYES\b/);
     const tweet = takeTweetText(card, "ncsu-at-uva-2026", "kanell");
-    expect(tweet).toContain("Danny Kanell picks NC State over Virginia");
+    expect(tweet).toContain(
+      "Danny Kanell picked NC State over Virginia — and missed (Virginia won)"
+    );
     expect(tweet).toMatch(/give me the Wolfpack/i);
     expect(tweet).toContain("NC State 34¢");
     expect(tweet).toContain("https://pundits.pro/picks/ncsu-at-uva-2026/kanell/");

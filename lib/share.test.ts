@@ -103,6 +103,17 @@ describe("share copy", () => {
     expect(share.description).not.toContain("wisconsin");
   });
 
+  it("matches the current Charlottesville row", () => {
+    const current = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026");
+    expect(current).toBeTruthy();
+    const share = eventShare(current!, loadCalls(), loadPundits());
+    expect(share.title).toBe("Virginia beat NC State: who called it");
+    expect(share.description).toContain("Final: Virginia won");
+    expect(share.description).toContain("Danny Kanell and Chip Patterson picked NC State");
+    expect(share.description).toContain("Nobody on Virginia yet");
+    expect(share.description).not.toContain("wisconsin");
+  });
+
   it("names Super Bowl futures by the 2026–27 season, not Kalshi's 2027 champion year", () => {
     const rams = loadEvents().find((e) => e.slug === "rams-sb-2026")!;
     const share = eventShare(rams, loadCalls(), loadPundits());

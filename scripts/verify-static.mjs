@@ -136,6 +136,7 @@ const kanell = await readFile(
   path.join(out, "picks/ncsu-at-uva-2026/kanell/index.html"),
   "utf8"
 );
+assert.match(kanell, /Danny Kanell pick(s|ed) NC State over Virginia/);
 assert.match(
   kanell,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/ncsu-at-uva-2026--kanell\.png"/
