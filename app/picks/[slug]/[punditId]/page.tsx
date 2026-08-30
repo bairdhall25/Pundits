@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
-import { PunditAvatar } from "@/components/PunditAvatar";
+import { Receipt } from "@/components/Receipt";
 import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import {
   articleJsonLd,
@@ -117,42 +117,15 @@ export default async function TakePage({
           })}
         />
       </div>
-      <p className="story-byline">
-        By PUNDITS Staff
+      <p className="story-byline type-mono">
         {formatShortDate(take.call.sourceDate)
-          ? ` · Source published ${formatShortDate(take.call.sourceDate)}`
+          ? `Source published ${formatShortDate(take.call.sourceDate)}`
+          : "Verified source"}
+        {formatShortDate(take.call.gradedAt)
+          ? ` · Graded ${formatShortDate(take.call.gradedAt)}`
           : ""}
       </p>
-      <div className="story">
-        {story.paragraphs.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-      </div>
-
-      <article className="take-quote">
-        <Link href={`/pundits/${take.pundit.id}`} className="person person-hit">
-          <PunditAvatar
-            src={take.pundit.photo}
-            alt={take.pundit.name}
-            size="row"
-          />
-          <div>
-            <div className="nm type-broadcast">{take.pundit.name}</div>
-            <div className="qt">“{take.call.claim}”</div>
-          </div>
-        </Link>
-        <div className="src-meta">
-          {take.pundit.outlet}
-          {take.call.sourceUrl ? (
-            <>
-              {" · "}
-              <a href={take.call.sourceUrl} target="_blank" rel="noreferrer">
-                Open source →
-              </a>
-            </>
-          ) : null}
-        </div>
-      </article>
+      <Receipt take={take} calls={calls} />
 
       <h2 className="type-broadcast mb-3 mt-8 text-[22px] tracking-widest">
         The market
