@@ -50,7 +50,12 @@ assert.match(
 // Tense flips to "picked … — and hit/missed" once the game grades.
 assert.match(story, /Paul Finebaum pick(s|ed) TCU over North Carolina/);
 assert.match(story, />Share</);
-assert.match(story, /By PUNDITS Staff.*Source published/);
+// Take pages lead with the receipt: mono byline, stamp, grade sheet, tape.
+assert.match(story, /Source published Aug 25, 2026.*Graded Aug 29, 2026/);
+assert.match(story, /receipt-stamp verdict-miss/);
+assert.match(story, /grade-sheet/);
+assert.match(story, /Full record →/);
+assert.match(story, /Final <b>North Carolina 15, TCU 10<\/b>/);
 assert.match(story, /\"about\":\{\"@type\":\"Thing\"/);
 assert.doesNotMatch(story, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"/);
 assert.match(story, /\"@type\":\"NewsArticle\"/);

@@ -322,6 +322,7 @@ body {
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 12px;
+  padding-right: clamp(84px, 16vw, 132px);
 }
 .receipt-quote {
   margin: 0 0 16px;
