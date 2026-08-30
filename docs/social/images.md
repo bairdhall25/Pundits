@@ -8,6 +8,15 @@ The site pre-renders a branded card for every event, take, and pundit — a 1200
 
 Any post about a specific pundit, pick, event, or result attaches the pre-rendered card from `cards.json` — `ogCard` for feed posts, `storyCard` for vertical formats. Post the image natively. `pageUrl` goes in the first self-reply, never in the post body. If attaching the image fails, fall back to a link post (X renders the OG card from the link) and note the failure in the run summary.
 
+### Flowers treatments
+
+The Flowers uses the same verified Tier 1 take card and never generates or alters a pundit's likeness. The treatment is a restrained presentation layer; the pundit and exact call remain the subject.
+
+- **Broadcast Spotlight:** lead with a compact `CALLED IT` result treatment, final score, frozen probability, and a small flowers mark. Keep the existing black-and-neon-green broadcast identity.
+- **Quote-First:** make the pundit's face, name, and faithful quote fragment the dominant elements. Result details and the flowers mark are supporting proof.
+
+Use `GIVE THEM THEIR FLOWERS` or a small `💐` badge, not floral backgrounds, bouquets covering the card, greeting-card styling, or victory effects that obscure evidence. Until a dedicated rendered Flowers card exists in `cards.json`, use the standard take card and carry the Flowers treatment in the post copy; do not improvise an AI-generated result graphic.
+
 ## Tier 2 — Editorial (fenced creativity)
 
 Allowed only for posts about no specific pundit, pick, or result — week hype, discussion starters, polls. Generated imagery must follow this brand spec exactly, as hard requirements:
@@ -35,5 +44,6 @@ Default for replies and conversational posts. Attach a Tier 1 card only when it 
 ## Decision rule
 
 - About a real pick, pundit, event, or result → Tier 1.
+- A successful call selected for The Flowers → Tier 1 take card with Broadcast Spotlight or Quote-First treatment; standard take card until that treatment is rendered by the site.
 - About the vibe of the week → Tier 2 or no image.
 - A reply → Tier 3.

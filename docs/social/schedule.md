@@ -10,15 +10,17 @@ Cards refresh on deploy. `RUNBOOK.md` requires a deploy whenever the book change
 |---|---|---|
 | Tue | 1–2 posts — The Freeze as picks land; The Number. | Reply sweep (15 cap). |
 | Wed | 2 posts — The Disagreement (best both-sides event); The Freeze. | Reply sweep. |
-| Thu | 2–3 posts — The Slate (if CFB tonight), Live register in window, The Receipt same night. | Game-day sweep (25 cap). |
+| Thu | 2–3 posts — The Slate (if CFB tonight), Live register in window, The Receipt or selective Flowers same night. | Game-day sweep (25 cap). |
 | Fri | 2 posts — The Slate (weekend preview); The Freeze — favor pending takes at long cents (bold calls). | Reply sweep. |
-| Sat | 3–5 posts — The Slate (morning), Live register, The Receipt as games settle, The Ledger Move (night). | Heavy sweep (25 cap). |
-| Sun | 3–5 posts — NFL mirror of Saturday. | Heavy sweep. |
-| Mon | 2–3 posts — choose 2–3 among: The Ledger Move, The Self-Grade, The Slate (MNF), The Receipt (same night). | Recap sweep. |
+| Sat | 3–5 posts — The Slate (morning), Live register, The Receipt as games settle, selective Flowers for a notable hit, The Ledger Move (night). | Heavy sweep (25 cap). |
+| Sun | 3–5 posts — NFL mirror of Saturday, including selective Flowers. | Heavy sweep. |
+| Mon | 2–3 posts — choose 2–3 among: The Ledger Move, The Self-Grade, The Slate (MNF), The Receipt (same night), or the strongest uncelebrated Flowers from the weekend. | Recap sweep. |
 
 ## Budgets
 
 Poster: never more than 6 posts/day; never two identical archetypes in a row; every post body link-free (link in first self-reply) (sole exception: the Tier-1 attach-failure fallback in `images.md`). Reply Guy caps live in `reply-guide.md`.
+
+Flowers is selective and does not add a posting slot. It replaces an ordinary hit receipt when the call is specific and notable. Miss receipts remain in the mix so praise never turns the public record into a winners-only feed.
 
 ## Dead air rule
 

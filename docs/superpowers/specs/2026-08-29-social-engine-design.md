@@ -25,7 +25,7 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 | `docs/social/README.md` | Strategy overview; how playbook, bots, and card index fit |
 | `docs/social/voice.md` | Receipts Guy voice guide: the blend, registers, good/bad examples |
 | `docs/social/images.md` | The tier system + brand image spec + Tier-2 prompt templates |
-| `docs/social/post-patterns.md` | The nine archetypes (below), example-driven |
+| `docs/social/post-patterns.md` | The ten archetypes (below), example-driven |
 | `docs/social/reply-guide.md` | Reply Guy targeting, value rules, caps, disengage rules |
 | `docs/social/schedule.md` | Weekly calendar keyed to the CFB/NFL rhythm |
 | `docs/social/research-2026-08-29.md` | Evidence base (committed alongside this spec) |
@@ -50,7 +50,7 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 
 ## Post archetypes (full patterns in `docs/social/post-patterns.md`)
 
-The Receipt · The Freeze · The Number · The Disagreement · The Slate · The Ledger Move · Live register · The Self-Grade · The Harvest. Each pattern names its image tier and register; all example-driven, none scripted.
+The Receipt · The Flowers · The Freeze · The Number · The Disagreement · The Slate · The Ledger Move · Live register · The Self-Grade · The Harvest. Each pattern names its image tier and register; all example-driven, none scripted. The Flowers selectively celebrates a notable successful call with a Broadcast Spotlight or Quote-First Tier 1 treatment; it complements rather than replaces the ledger's even treatment of hits and misses.
 
 ## Guardrails (enforce verbatim in both bot files)
 
