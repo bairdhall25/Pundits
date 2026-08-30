@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Inter, Oswald } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Oswald } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -24,6 +24,12 @@ const oswald = Oswald({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-mono",
 });
 
 const image = ogImage();
@@ -80,7 +86,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${inter.variable} ${plexMono.variable}`}>
       {process.env.NODE_ENV === "production" ? (
         <head>
           <script

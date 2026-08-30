@@ -366,6 +366,12 @@ h1, h2, .type-broadcast {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.type-mono,
+.px, .px-odds, .tape b, .freeze-bar b, .lb-v, .pct {
+  font-family: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
 .feed-kicker,
 .feed-meta { font-size: 12px; letter-spacing: 0.1em; }
 
