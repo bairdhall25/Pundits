@@ -27,6 +27,7 @@ This file records durable product decisions and working assumptions. Change an a
 | Records show receipts and sample size before they imply skill. | Early records are selective, correlated, and statistically thin. | Accepted 2026-08-29 |
 | Scout is a density engine: coordinator + Shows/X/News beats against homepage games. | Empty-YES Google against CFB YouTube factories produced dry mornings and ignored NFL/news. | Accepted 2026-08-29 |
 | Sports radio is a bounded source lane inside Shows Scout. | Named radio personalities can fill important local and national coverage gaps without another always-on bot; durable evidence and pilot cost gates preserve trust and usage. | Accepted 2026-08-29 |
+| Growth target is dense marquee game cards, not more object types. | Event-level SU density is the thesis; Bets, fantasy, bulk roster, and extra homepage games do not create Dublin-shaped cards. Hold new product work through the 2026-09-05 week and observe capture. See `docs/product/2026-08-30-dense-marquee-cards.md`. | Accepted 2026-08-30 |
 
 ## Working assumptions
 
@@ -43,6 +44,8 @@ This file records durable product decisions and working assumptions. Change an a
 ## Parked scope
 
 - Fantasy football and player props; see `docs/fantasy.md`.
+- Fan-facing Bets pages (spreads/totals/team totals on the game card). Scout may still stage them in the run-file Bets table. Revisit after Week 1 capture; see `docs/product/2026-08-30-dense-marquee-cards.md`.
+- Bulk roster expansion and auto-roster of Candidates. Tiny opinionated adds (add-list names who actually lock a homepage game) remain operator-gated.
 - Accounts, authentication, saved picks, comments, and personalization.
 - Live odds and automatic price refresh.
 - Betting controls or claims that pundits placed wagers.

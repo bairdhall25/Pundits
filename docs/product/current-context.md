@@ -2,7 +2,7 @@
 
 Status: Operational
 
-Last updated: 2026-08-29
+Last updated: 2026-08-30
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
 
@@ -32,7 +32,7 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 
 1. Complete and audit the first end-to-end grading cycle.
 2. Correct pending-versus-live language in implemented surfaces.
-3. Increase multi-pundit coverage on marquee weekly games.
+3. Increase multi-pundit coverage on marquee weekly games (empty-side SU capture). Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
 4. Instrument the minimum engagement events in `measurement.md`.
 5. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, and graded-receipt returns.
 6. Establish four to six weeks of operating and audience baselines.

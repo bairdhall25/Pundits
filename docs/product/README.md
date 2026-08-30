@@ -26,6 +26,7 @@ For a concise handoff of the present thesis, product truth, immediate priorities
 - [Editorial and corrections policy](./editorial-and-corrections.md): attribution, source hierarchy, disputes, corrections, and rights boundaries.
 - [Decision log](./decision-log.md): accepted, working, parked, and unresolved product decisions.
 - [Strategy QA](./strategy-qa-2026-08-29.md): dated assessment of what is right, what is unproven, and what should happen next.
+- [Dense marquee cards, hold through this week](./2026-08-30-dense-marquee-cards.md): 2026-08-30 decision to optimize for event SU density and defer Bets/fantasy/bulk roster until Week 1 capture is observed.
 
 Supporting operational sources remain authoritative within their scope:
 
