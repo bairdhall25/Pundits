@@ -53,6 +53,11 @@ export type Event = {
   season?: number;
   /** Schedule week for games (CFB Week 0 = 0). Futures have no week. */
   week?: number;
+  /** Final score, sourced from the official box score linked in the grade run doc. */
+  awayScore?: number;
+  homeScore?: number;
+  /** Authoritative result URL (official box score) that grounds the score fields. */
+  resultUrl?: string;
 };
 
 export type EventsFile = {

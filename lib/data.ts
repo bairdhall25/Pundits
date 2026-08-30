@@ -158,6 +158,28 @@ export function settledLabel(event: Event, calls: Call[]): string | null {
   return side === "yes" ? yes.label : no.label;
 }
 
+/** Final score, winner first. Null until scores exist AND grading has settled the event. */
+export function finalScoreParts(
+  event: Event,
+  calls: Call[]
+): { winner: string; loser: string; winnerScore: number; loserScore: number } | null {
+  if (event.awayScore == null || event.homeScore == null) return null;
+  if (!event.awayTeam || !event.homeTeam) return null;
+  if (settledSide(event, calls) == null) return null;
+  const awayWon = event.awayScore > event.homeScore;
+  return {
+    winner: awayWon ? event.awayTeam : event.homeTeam,
+    loser: awayWon ? event.homeTeam : event.awayTeam,
+    winnerScore: Math.max(event.awayScore, event.homeScore),
+    loserScore: Math.min(event.awayScore, event.homeScore),
+  };
+}
+
+export function finalScoreLine(event: Event, calls: Call[]): string | null {
+  const p = finalScoreParts(event, calls);
+  return p ? `${p.winner} ${p.winnerScore}, ${p.loser} ${p.loserScore}` : null;
+}
+
 export function eventKind(event: Event): "game" | "future" {
   return event.kind ?? "future";
 }

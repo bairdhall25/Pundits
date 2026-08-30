@@ -494,7 +494,10 @@
       "kickoffDate": "2026-08-29",
       "awayTeamId": "north-carolina",
       "homeTeamId": "tcu",
-      "week": 0
+      "week": 0,
+      "awayScore": 15,
+      "homeScore": 10,
+      "resultUrl": "https://goheels.com/game-center/26876"
     },
     {
       "slug": "ncsu-at-uva-2026",
@@ -517,7 +520,10 @@
       "kickoffDate": "2026-08-29",
       "awayTeamId": "nc-state",
       "homeTeamId": "virginia",
-      "week": 0
+      "week": 0,
+      "awayScore": 8,
+      "homeScore": 34,
+      "resultUrl": "https://gopack.com/sports/football/stats/2026/virginia/boxscore/24537"
     }
   ]
 }

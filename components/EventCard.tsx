@@ -3,6 +3,7 @@ import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
 import {
   eventHasFight,
+  finalScoreParts,
   formatAsOf,
   formatCents,
   formatGameWhen,
@@ -164,6 +165,7 @@ export function EventCard({
   const asOf = formatAsOf(event.sourcedAt);
   const when = game ? formatGameWhen(event) : event.contractName;
   const finalLabel = settledLabel(event, calls);
+  const score = finalScoreParts(event, calls);
   const scanMeta = [when, !game ? seasonLabel(event.season) : null].filter(Boolean).join(" · ");
   const detailMeta = [when, !game ? seasonLabel(event.season) : null, asOf]
     .filter(Boolean)
@@ -237,7 +239,10 @@ export function EventCard({
         ) : null}
       </div>
       {finalLabel ? (
-        <div className="event-final type-broadcast">Final · {finalLabel}</div>
+        <div className="event-final type-broadcast">
+          Final · {finalLabel}
+          {score ? ` ${score.winnerScore}–${score.loserScore}` : ""}
+        </div>
       ) : null}
       <div className="sides">
         <SideCol

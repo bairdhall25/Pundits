@@ -7,7 +7,11 @@ import {
   sidesForCard,
   settledLabel,
   settledSide,
+  finalScoreLine,
+  finalScoreParts,
   latestCalls,
+  loadCalls,
+  loadEvents,
   formatAsOf,
   otherTakes,
   hasGradedRecords,
@@ -183,6 +187,21 @@ describe("settledSide", () => {
     const miss = { ...noLive, status: "miss" as const };
     expect(settledSide(event, [miss])).toBe("yes");
     expect(settledLabel(event, [miss])).toBe("Clemson");
+  });
+});
+
+describe("finalScoreLine", () => {
+  it("formats the final score winner-first, and only once settled", () => {
+    const live = loadCalls();
+    const uva = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026")!;
+    expect(finalScoreLine(uva, live)).toBe("Virginia 34, NC State 8");
+    expect(finalScoreParts(uva, live)).toEqual({
+      winner: "Virginia", loser: "NC State", winnerScore: 34, loserScore: 8,
+    });
+    const dublin = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026")!;
+    expect(finalScoreLine(dublin, live)).toBe("North Carolina 15, TCU 10");
+    const open = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
+    expect(finalScoreLine(open, live)).toBeNull();
   });
 });
 

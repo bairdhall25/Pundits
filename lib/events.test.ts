@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadEvents, loadTeams } from "./data";
+import { loadCalls, loadEvents, loadTeams, settledSide } from "./data";
 import { formatGameWhen, seasonLabel, seasonSpan } from "./format";
 import { isKalshiUrl } from "./kalshi";
 
@@ -105,6 +105,21 @@ describe("kalshi freeze", () => {
     for (const slug of homeBoard) {
       expect(bySlug[slug].ticker, slug).toMatch(/^KX/);
       expect(isKalshiUrl(bySlug[slug].sourceUrl), slug).toBe(true);
+    }
+  });
+
+  it("scores settled games only, agreeing with the graded side", () => {
+    const calls = loadCalls();
+    const scored = loadEvents().filter((e) => e.awayScore != null || e.homeScore != null);
+    expect(scored.length).toBeGreaterThanOrEqual(2);
+    for (const e of scored) {
+      expect(typeof e.awayScore, e.slug).toBe("number");
+      expect(typeof e.homeScore, e.slug).toBe("number");
+      expect(e.awayScore, e.slug).not.toBe(e.homeScore);
+      expect(e.resultUrl, e.slug).toMatch(/^https:\/\//);
+      const side = settledSide(e, calls);
+      expect(side, e.slug).not.toBeNull();
+      expect(side === "yes", e.slug).toBe(e.awayScore! > e.homeScore!);
     }
   });
 
