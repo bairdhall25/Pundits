@@ -4,7 +4,7 @@ Status: Canonical
 
 ## 1. Feel like sports media, not a database
 
-Lead with the matchup, recognizable faces, stakes, time, disagreement, and result. Filters, schemas, market mechanics, and provenance support the experience but should not dominate the first scan.
+Lead with the matchup, recognizable faces, stakes, time, disagreement, and result. Filters, schemas, market mechanics, and provenance support the experience but should not dominate the first scan. The homepage hero is the next matchup, not a product slogan.
 
 The fan-facing hierarchy is:
 
@@ -35,7 +35,7 @@ An empty side tells the truth about the current corpus. A vague, inferred, off-t
 
 ## 5. Market context is a ruler, not the product
 
-The frozen Kalshi price makes a call concrete and shows how bold or conventional it was at capture time. Keep the price visible, but describe it in sports language. Exact YES/NO mechanics and hypothetical-return calculations belong deeper in the experience.
+The frozen Kalshi price makes a call concrete and shows how bold or conventional it was at capture time. Keep the price visible, but describe it in sports language. Frozen cents stay on the sides; the word Kalshi is not the scan kicker. Exact YES/NO mechanics and hypothetical-return calculations belong deeper in the experience.
 
 Never imply the displayed number is a live sportsbook line or that the pundit placed a wager.
 
