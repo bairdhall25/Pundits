@@ -9,6 +9,7 @@
     "social:index": "tsx scripts/build-social-index.ts",
     "start": "next start",
     "test": "vitest run",
+    "scout:feeds": "node scripts/scout-feeds.mjs",
     "verify:static": "node scripts/verify-static.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "check": "npm test && npm run build && npm run verify:static",

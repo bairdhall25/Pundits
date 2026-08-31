@@ -19,7 +19,7 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 
 For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
 
-1. Open locks shows in `docs/pick-shows.md` for that row’s `sport` that dropped in the last ~3 days. Jump locks / moneyline / “I’ll take.” Captions count.
+1. Read `## Factory feeds` in today’s run file (or run `node scripts/scout-feeds.mjs`). Skip a factory whose status is `waiting`, `recap`, `short`, `wrong-year`, `off-topic`, or `error`. Open `today` rows. Jump locks / moneyline / “I’ll take.” Captions count.
 2. Then idle roster voices if their pick window in that file is open.
 3. Named add-list speakers on those same shows → Candidates (`photoUrl=needed` unless a real photo is already known).
 4. If the game remains under-dense, run the bounded radio fallback in `docs/pick-shows.md`.

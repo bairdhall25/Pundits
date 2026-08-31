@@ -18,15 +18,16 @@ From https://github.com/bairdhall25/Pundits (main):
 ## Do
 
 1. In the repo (or a scheduled worktree on `origin/main`), run `node scripts/scout-density.mjs`.
-2. If you cannot run Node, score the same way the script does: homepage `kind=game` (or kickoff+teams) with `onHome`, plus slugs in `bring-onto-home.json`. Count mapped **hard** calls only. Ignore futures, even if `onHome`. Status:
+2. Run `node scripts/scout-feeds.mjs` (or `npm run scout:feeds`). Paste the markdown into `## Factory feeds`. Do not invent rows. `waiting` / `recap` / `short` / `wrong-year` / `off-topic` / `error` means Shows should not open that factory this pass.
+3. If you cannot run Node, score the same way the script does: homepage `kind=game` (or kickoff+teams) with `onHome`, plus slugs in `bring-onto-home.json`. Count mapped **hard** calls only. Ignore futures, even if `onHome`. Status:
    - `empty-side` — YES or NO has 0 mapped hard
    - `thin` — both sides ≥1, total < 3
    - `dense` — ≥3 mapped hard and both sides ≥1
    - `off-home` — bring-onto-home slug, not `onHome`, zero mapped hard
-3. Create or update `docs/runs/YYYY-MM-DD.md` from `docs/runs/_TEMPLATE.md`.
-4. Write the script’s markdown into `## Dispatch`. Do not invent rows.
-5. Leave Shows / X / News pass tables empty unless they already have content from an earlier hunter. Do not delete an existing pass.
-6. First-line comment: keep `hard` / `candidates` as they are if passes already exist; otherwise `hard=0 candidates=0 audit=pending promoted=false`.
+4. Create or update `docs/runs/YYYY-MM-DD.md` from `docs/runs/_TEMPLATE.md`.
+5. Write the density script’s markdown into `## Dispatch`. Do not invent rows.
+6. Leave Shows / X / News pass tables empty unless they already have content from an earlier hunter. Do not delete an existing pass.
+7. First-line comment: keep `hard` / `candidates` as they are if passes already exist; otherwise `hard=0 candidates=0 audit=pending promoted=false`.
 
 ## Do not
 
@@ -37,4 +38,4 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Stop
 
-Commit `docs/runs/YYYY-MM-DD.md` on `main` (or PR `scout/YYYY-MM-DD`). Chat is not the handoff. Then: `dispatch ready — Shows, X, News may hunt`.
+Commit `docs/runs/YYYY-MM-DD.md` on `main` (or PR `scout/YYYY-MM-DD`) with Dispatch **and** Factory feeds. Chat is not the handoff. Then: `dispatch ready — Shows, X, News may hunt`.

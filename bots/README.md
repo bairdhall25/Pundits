@@ -64,7 +64,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Run `node scripts/scout-density.mjs` (or score the same way). Write ## Dispatch into docs/runs/YYYY-MM-DD.md from the template. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
+Run `node scripts/scout-density.mjs` (or score the same way) and `node scripts/scout-feeds.mjs`. Write ## Dispatch and ## Factory feeds into docs/runs/YYYY-MM-DD.md from the template. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
 ```
 
 **Shows Scout:**
@@ -77,7 +77,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Read ## Factory feeds first — skip waiting/recap/short/wrong-year/off-topic/error; open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
 ```
 
 **X Scout:**

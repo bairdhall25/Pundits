@@ -5,6 +5,12 @@
 |---|---|---|---|---|---|
 | | | | | | |
 
+## Factory feeds
+
+| factory | last drop (ET) | title | status | hunt |
+|---|---|---|---|---|
+| | | | | |
+
 ## Shows pass YYYY-MM-DD (Grok Bot)
 
 ### Intake

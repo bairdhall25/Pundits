@@ -41,7 +41,7 @@ Week 0 is graded. Settled games are not hunt targets.
 
 | When | Job |
 |---|---|
-| Daily | Coordinator Dispatch from `node scripts/scout-density.mjs`. X twice daily. |
+| Daily | Coordinator Dispatch from `node scripts/scout-density.mjs` plus Factory feeds from `node scripts/scout-feeds.mjs`. X twice daily. |
 | Tue 9/2 | X. No Shows NCAAF (Thu–Sat). NFL Shows/News wait until Tue of that NFL week (9/8). |
 | Thu 9/3 | Cover 3 **Week 1 LOCKS** — first high-yield factory. Shows + News NCAAF. Clemson YES first. |
 | Fri 9/4 | Shows + News. Miami–Stanford is off-home; do not hunt unless it lands on Dispatch. |
