@@ -71,7 +71,7 @@ function Weekend({
         />
       ))}
       {recap ? (
-        <p className="when">
+        <p className="week-recap">
           <a href={recap.href}>{recap.line}</a>
         </p>
       ) : null}

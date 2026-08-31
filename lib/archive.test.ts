@@ -191,4 +191,51 @@ describe("latestGradedWeekRecap", () => {
       "Week 0: experts went 2–4. Chip Patterson and Greg McElroy hit on North Carolina."
     );
   });
+
+  it("recaps graded week 0 when a newer complete week has no grades", () => {
+    const week0 = ev({
+      slug: "unc-vs-tcu-2026",
+      week: 0,
+      kickoffDate: "2026-08-30",
+      awayTeamId: "unc",
+      homeTeamId: "tcu",
+      awayTeam: "North Carolina",
+      homeTeam: "TCU",
+      awayScore: 10,
+      homeScore: 48,
+    });
+    const week1 = ev({
+      slug: "clemson-at-lsu-2026",
+      week: 1,
+      kickoffDate: "2026-09-06",
+      awayTeamId: "clemson",
+      homeTeamId: "lsu",
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+      awayScore: 10,
+      homeScore: 24,
+    });
+    const calls = [
+      call({ eventSlug: "unc-vs-tcu-2026", side: "no", status: "hit" }),
+      call({
+        id: "c2",
+        punditId: "patterson",
+        eventSlug: "unc-vs-tcu-2026",
+        side: "yes",
+        status: "miss",
+      }),
+    ];
+    const pundits = [
+      { id: "finebaum", name: "Paul Finebaum" },
+      { id: "patterson", name: "Chip Patterson" },
+    ] as Pundit[];
+
+    const recap = latestGradedWeekRecap([week0, week1], calls, pundits);
+    expect(recap).not.toBeNull();
+    expect(recap!.week).toBe(0);
+    expect(recap!.href).toBe("/ncaaf/2026/week-0/");
+    expect(recap!.line).toBe(
+      "Week 0: experts went 1–1. Paul Finebaum hit on TCU."
+    );
+  });
 });

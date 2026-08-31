@@ -125,37 +125,61 @@ export function latestGradedWeekRecap(
   calls: Call[],
   pundits: Pundit[]
 ): { sport: Sport; season: number; week: number; href: string; line: string } | null {
-  const games = events.filter(
+  const complete = events.filter(
     (e) => eventKind(e) === "game" && e.season != null && e.week != null && gameComplete(e)
   );
-  if (!games.length) return null;
-  const newest = [...games].sort((a, b) =>
-    (b.kickoffDate ?? "").localeCompare(a.kickoffDate ?? "")
-  )[0];
-  const weekGames = gamesForWeek(newest.sport, newest.season!, newest.week!, events);
-  const record = weekRecord(weekGames, calls);
-  if (record.hits + record.misses === 0) return null;
-  const hitNames = [
-    ...new Set(
-      weekResults(weekGames, calls, pundits)
-        .filter((r) => r.status === "hit")
-        .map((r) => r.pundit.name)
-    ),
-  ];
-  const hitTeam = weekResults(weekGames, calls, pundits).find((r) => r.status === "hit")
-    ?.pickLabel.split(" over ")[0];
-  const who =
-    hitNames.length && hitTeam
-      ? ` ${listNames(hitNames)} hit on ${hitTeam}.`
-      : "";
-  const line = `Week ${newest.week}: experts went ${record.hits}–${record.misses}.${who}`;
-  return {
-    sport: newest.sport,
-    season: newest.season!,
-    week: newest.week!,
-    href: weekArchivePath(newest.sport, newest.season!, newest.week!),
-    line,
-  };
+  if (!complete.length) return null;
+
+  const weeks = new Map<
+    string,
+    { sport: Sport; season: number; week: number; kickoff: string }
+  >();
+  for (const game of complete) {
+    const key = `${game.sport}/${game.season}/${game.week}`;
+    const kickoff = game.kickoffDate ?? "";
+    const existing = weeks.get(key);
+    if (!existing || kickoff > existing.kickoff) {
+      weeks.set(key, {
+        sport: game.sport,
+        season: game.season!,
+        week: game.week!,
+        kickoff,
+      });
+    }
+  }
+
+  const candidates = [...weeks.values()].sort((a, b) =>
+    b.kickoff.localeCompare(a.kickoff)
+  );
+
+  for (const candidate of candidates) {
+    const weekGames = gamesForWeek(
+      candidate.sport,
+      candidate.season,
+      candidate.week,
+      events
+    );
+    const record = weekRecord(weekGames, calls);
+    if (record.hits + record.misses === 0) continue;
+
+    const hits = weekResults(weekGames, calls, pundits).filter(
+      (r) => r.status === "hit"
+    );
+    const hitNames = [...new Set(hits.map((r) => r.pundit.name))];
+    const hitTeam = hits[0]?.pickLabel.split(" over ")[0];
+    const who =
+      hitNames.length && hitTeam
+        ? ` ${listNames(hitNames)} hit on ${hitTeam}.`
+        : "";
+    return {
+      sport: candidate.sport,
+      season: candidate.season,
+      week: candidate.week,
+      href: weekArchivePath(candidate.sport, candidate.season, candidate.week),
+      line: `Week ${candidate.week}: experts went ${record.hits}–${record.misses}.${who}`,
+    };
+  }
+  return null;
 }
 
 function listNames(names: string[]): string {
