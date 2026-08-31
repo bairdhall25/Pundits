@@ -22,7 +22,6 @@ import {
   marqueeGame,
   partitionGames,
 } from "@/lib/data";
-import { kickoffClock } from "@/lib/format";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
@@ -113,9 +112,6 @@ export default function HomePage() {
   // game into the hero left College looking like last week's receipts.
   const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
   const nflCards = [...nflParts.open, ...nflParts.grading];
-  const heroWhen = marquee
-    ? [kickoffClock(marquee.kickoff), marquee.network].filter(Boolean).join(" · ")
-    : "Week 1";
   const heroLede = marquee
     ? homeHeroLede(marquee, calls, pundits)
     : "College football and NFL picks from named analysts and commentators.";
@@ -124,9 +120,7 @@ export default function HomePage() {
     <main id="main" className="shell">
       <div className="hero">
         <div className="hero-copy">
-          <div className="eyebrow type-broadcast">
-            {heroWhen}
-          </div>
+          <div className="eyebrow type-broadcast">Expert picks</div>
           <h1 className="mb-2 mt-1 leading-[0.92] tracking-wide">
             Who’s picking
             <br />
