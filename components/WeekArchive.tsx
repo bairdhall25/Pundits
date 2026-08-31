@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import {
   archiveWeeks,
   gamesForWeek,
+  weekArchivePath,
   weekRecord,
   weekResults,
 } from "@/lib/archive";
@@ -13,14 +14,12 @@ import { formatCents } from "@/lib/format";
 import { breadcrumbList, takePath } from "@/lib/seo";
 import type { Sport } from "@/lib/types";
 
+export { weekArchivePath };
+
 const SPORT_LABEL: Record<Sport, string> = {
   ncaaf: "College football",
   nfl: "NFL",
 };
-
-export function weekArchivePath(sport: Sport, season: number, week: number): string {
-  return `/${sport}/${season}/week-${week}/`;
-}
 
 export function weekArchiveTitle(sport: Sport, season: number, week: number): string {
   return `${SPORT_LABEL[sport]} Week ${week} expert picks (${season})`;

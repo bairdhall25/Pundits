@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
+import { FinalRow } from "@/components/FinalRow";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
 import { WeekArchivePathLinks, TeamLinks } from "@/components/SlateLinks";
@@ -11,6 +12,7 @@ import {
   loadCalls,
   loadEvents,
   loadPundits,
+  partitionGames,
 } from "@/lib/data";
 import type { Sport } from "@/lib/types";
 
@@ -37,8 +39,9 @@ export function SportSlate({ sport }: { sport: Sport }) {
   const games = getSlateGames(sport, events);
   const futures = getBoard(sport, events, calls);
   const copy = COPY[sport];
-  const active = games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
+  const withPicks = games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
   const waiting = games.filter((e) => !calls.some((c) => c.eventSlug === e.slug));
+  const { open, grading, final } = partitionGames(withPicks, calls);
 
   return (
     <main id="main" className="shell">
@@ -60,7 +63,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
       <section className="board">
         <div className="board-kicker type-broadcast">Games</div>
         <h2 className="board-title type-broadcast">The slate</h2>
-        {active.map((event) => (
+        {[...open, ...grading].map((event) => (
           <EventCard
             key={event.slug}
             event={event}
@@ -68,6 +71,18 @@ export function SportSlate({ sport }: { sport: Sport }) {
             pundits={pundits}
           />
         ))}
+        {final.length ? (
+          <>
+            <h3 className="wait-head type-broadcast">Final</h3>
+            <ul className="wait-list">
+              {final.map((event) => (
+                <li key={event.slug}>
+                  <FinalRow event={event} calls={calls} />
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
         {waiting.length ? (
           <>
             <h3 className="wait-head type-broadcast">

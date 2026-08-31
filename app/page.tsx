@@ -1,5 +1,6 @@
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
+import { FinalRow } from "@/components/FinalRow";
 import { SportFilter } from "@/components/SportFilter";
 import {
   BookPeek,
@@ -8,18 +9,22 @@ import {
   StoryPeek,
   TablePeek,
 } from "@/components/PeekRow";
+import { latestGradedWeekRecap } from "@/lib/archive";
 import {
   getActivityBoard,
   getFuturesPeek,
   getWeekend,
   hasGradedRecords,
   latestCalls,
-  settledSide,
   loadCalls,
   loadEvents,
   loadPundits,
+  marqueeGame,
+  partitionGames,
 } from "@/lib/data";
+import { kickoffClock } from "@/lib/format";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
+import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
 
 function Weekend({
@@ -29,8 +34,10 @@ function Weekend({
   when,
   href,
   events,
+  finals,
   calls,
   pundits,
+  recap,
 }: {
   id: string;
   kicker: string;
@@ -38,8 +45,10 @@ function Weekend({
   when: string;
   href: string;
   events: Event[];
+  finals: Event[];
   calls: Call[];
   pundits: Pundit[];
+  recap?: { href: string; line: string } | null;
 }) {
   return (
     <section id={id} className="board">
@@ -61,6 +70,23 @@ function Weekend({
           pundits={pundits}
         />
       ))}
+      {recap ? (
+        <p className="week-recap">
+          <a href={recap.href}>{recap.line}</a>
+        </p>
+      ) : null}
+      {finals.length ? (
+        <>
+          <h3 className="wait-head type-broadcast">Final</h3>
+          <ul className="wait-list">
+            {finals.map((event) => (
+              <li key={event.slug}>
+                <FinalRow event={event} calls={calls} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </section>
   );
 }
@@ -79,31 +105,35 @@ export default function HomePage() {
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
-  const withPicks = ncaaf.filter((e) =>
-    calls.some((c) => c.eventSlug === e.slug)
-  );
-  // An open game with picks beats a settled one; a settled marquee is the
-  // fallback only when everything has graded.
-  const marquee =
-    withPicks.find((e) => !settledSide(e, calls)) ?? withPicks[0] ?? ncaaf[0];
-  const ncaafRest = marquee ? ncaaf.filter((e) => e !== marquee) : ncaaf;
+  const recap = latestGradedWeekRecap(events, calls, pundits);
+  const ncaafParts = partitionGames(ncaaf, calls);
+  const nflParts = partitionGames(nfl, calls);
+  const marquee = marqueeGame(ncaaf, nfl, calls);
+  // Keep the marquee on its sport board too. Pulling the only open CFB
+  // game into the hero left College looking like last week's receipts.
+  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
+  const nflCards = [...nflParts.open, ...nflParts.grading];
+  const heroWhen = marquee
+    ? [kickoffClock(marquee.kickoff), marquee.network].filter(Boolean).join(" · ")
+    : "Week 1";
+  const heroLede = marquee
+    ? homeHeroLede(marquee, calls, pundits)
+    : "College football and NFL picks from named analysts and commentators.";
 
   return (
     <main id="main" className="shell">
       <div className="hero">
         <div className="hero-copy">
           <div className="eyebrow type-broadcast">
-            Active picks · Week 1
+            {heroWhen}
           </div>
-          <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
+          <h1 className="mb-2 mt-1 leading-[0.92] tracking-wide">
             Who’s picking
             <br />
             what.
           </h1>
           <p className="lede lg:text-lg">
-            College football and NFL picks from named analysts and
-            commentators. See who they’re taking, the quote, and the market
-            price.
+            {heroLede}
           </p>
           <ul className="trust-bar">
             <li>Real quotes, linked to source</li>
@@ -114,7 +144,7 @@ export default function HomePage() {
         {marquee ? (
           <div className="hero-card">
             <div className="hero-card-kicker type-broadcast">
-              Marquee · College football
+              Marquee · {marquee.sport === "nfl" ? "NFL" : "College football"}
             </div>
             <EventCard event={marquee} calls={calls} pundits={pundits} />
           </div>
@@ -143,9 +173,11 @@ export default function HomePage() {
         label="College football"
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
-        events={ncaafRest}
+        events={ncaafCards}
+        finals={ncaafParts.final}
         calls={calls}
         pundits={pundits}
+        recap={recap?.sport === "ncaaf" ? recap : null}
       />
       <Weekend
         id="nfl"
@@ -153,7 +185,8 @@ export default function HomePage() {
         label="NFL"
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
-        events={nfl}
+        events={nflCards}
+        finals={nflParts.final}
         calls={calls}
         pundits={pundits}
       />
@@ -161,8 +194,9 @@ export default function HomePage() {
       <section id="futures" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Pundit vs pundit</div>
+            <div className="board-kicker type-broadcast">Season</div>
             <h2 className="board-title type-broadcast">Biggest disagreements</h2>
+            <div className="when">Titles and Super Bowls · not this week</div>
           </div>
           <span className="flex gap-3">
             <a className="see" href="/ncaaf/">

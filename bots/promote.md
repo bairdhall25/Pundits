@@ -38,3 +38,4 @@ Before pushing, follow the Scheduled Git handoff: fetch again, rebase and rerun 
 ## Stop
 
 Do not hunt new takes (Scout). Do not grade (Grader). Do not write recap copy (Recap).
+Scores (`awayScore`, `homeScore`, `resultUrl`) may be written as soon as the authoritative box score exists, even if some mapped calls on that slug are still pending. Do not invent scores.

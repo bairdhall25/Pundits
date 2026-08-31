@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eventShare, punditShare } from "./share";
+import { eventShare, homeHeroLede, punditShare } from "./share";
 import { sharePayload, tweetIntent } from "./share-link";
 import { getPundit, loadCalls, loadEvents, loadPundits } from "./data";
 import { absoluteUrl, siteOrigin } from "./site";
@@ -49,6 +49,15 @@ const calls: Call[] = [
 ];
 
 describe("share copy", () => {
+  it("names the marquee sides without cents or as-of", () => {
+    const event = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
+    const line = homeHeroLede(event, loadCalls(), loadPundits());
+    expect(line).toBe(
+      "Josh Pate and Paul Finebaum pick LSU. Nobody on Clemson yet."
+    );
+    expect(line).not.toMatch(/¢|as of/i);
+  });
+
   it("names sides and freeze on a game card", () => {
     const share = eventShare(event, calls, pundits);
     expect(share.title).toBe("North Carolina vs TCU expert picks");

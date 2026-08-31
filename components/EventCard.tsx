@@ -3,6 +3,8 @@ import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
 import {
   eventHasFight,
+  eventScanStatus,
+  eventStatusLine,
   finalScoreParts,
   formatAsOf,
   formatCents,
@@ -10,7 +12,6 @@ import {
   getTeam,
   loadTeams,
   seasonLabel,
-  settledLabel,
   sidesForCard,
 } from "@/lib/data";
 import { KickoffTag } from "@/components/KickoffTag";
@@ -164,7 +165,8 @@ export function EventCard({
   const game = event.kind === "game";
   const asOf = formatAsOf(event.sourcedAt);
   const when = game ? formatGameWhen(event) : event.contractName;
-  const finalLabel = settledLabel(event, calls);
+  const status = eventScanStatus(event, calls);
+  const statusLine = eventStatusLine(event, calls);
   const score = finalScoreParts(event, calls);
   const scanMeta = [when, !game ? seasonLabel(event.season) : null].filter(Boolean).join(" · ");
   const detailMeta = [when, !game ? seasonLabel(event.season) : null, asOf]
@@ -180,23 +182,25 @@ export function EventCard({
 
   return (
     <article
-      className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""} ${detail ? "event-detail" : "event-scan"} ${finalLabel ? "event-settled" : ""}`}
+      className={`event ${fight ? "fight" : ""} ${permalink ? "event-link" : ""} ${detail ? "event-detail" : "event-scan"} ${status === "final" ? "event-settled" : status === "grading" ? "event-grading" : "event-open"}`}
       data-kickoff={game ? event.kickoffDate : undefined}
     >
       <div className="event-head">
         <div>
-          {detail && kalshiHref ? (
-            <a
-              href={kalshiHref}
-              target="_blank"
-              rel="noreferrer"
-              className="kalshi-tag type-broadcast"
-            >
-              Kalshi
-            </a>
-          ) : (
-            <div className="kalshi-tag type-broadcast">Kalshi</div>
-          )}
+          {detail ? (
+            kalshiHref ? (
+              <a
+                href={kalshiHref}
+                target="_blank"
+                rel="noreferrer"
+                className="kalshi-tag type-broadcast"
+              >
+                Kalshi
+              </a>
+            ) : (
+              <div className="kalshi-tag type-broadcast">Kalshi</div>
+            )
+          ) : null}
           {detail ? null : (
             <h2 className="type-broadcast event-title">
               {permalink ? (
@@ -223,7 +227,10 @@ export function EventCard({
             </div>
           ) : null}
           <div className="meta">
-            {game && !finalLabel ? <KickoffTag date={event.kickoffDate} /> : null}
+            {game && status === "open" ? (
+              <span className="kick-tag type-broadcast">Open</span>
+            ) : null}
+            {game && status === "open" ? <KickoffTag date={event.kickoffDate} /> : null}
             {detail ? detailMeta : scanMeta}
           </div>
         </div>
@@ -238,11 +245,8 @@ export function EventCard({
           </a>
         ) : null}
       </div>
-      {finalLabel ? (
-        <div className="event-final type-broadcast">
-          Final · {finalLabel}
-          {score ? ` ${score.winnerScore}–${score.loserScore}` : ""}
-        </div>
+      {status !== "open" ? (
+        <div className="event-final type-broadcast">{statusLine}</div>
       ) : null}
       <div className="sides">
         <SideCol
@@ -252,7 +256,7 @@ export function EventCard({
           detail={detail}
           game={game}
           eventSlug={event.slug}
-          settled={Boolean(finalLabel)}
+          settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
         />
         <SideCol
@@ -262,7 +266,7 @@ export function EventCard({
           detail={detail}
           game={game}
           eventSlug={event.slug}
-          settled={Boolean(finalLabel)}
+          settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
         />
       </div>

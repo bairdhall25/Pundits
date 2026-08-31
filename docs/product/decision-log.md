@@ -28,6 +28,10 @@ This file records durable product decisions and working assumptions. Change an a
 | Scout is a density engine: coordinator + Shows/X/News beats against homepage games. | Empty-YES Google against CFB YouTube factories produced dry mornings and ignored NFL/news. | Accepted 2026-08-29 |
 | Sports radio is a bounded source lane inside Shows Scout. | Named radio personalities can fill important local and national coverage gaps without another always-on bot; durable evidence and pilot cost gates preserve trust and usage. | Accepted 2026-08-29 |
 | Growth target is dense marquee game cards, not more object types. | Event-level SU density is the thesis; Bets, fantasy, bulk roster, and extra homepage games do not create Dublin-shaped cards. Hold new product work through the 2026-09-05 week and observe capture. See `docs/product/2026-08-30-dense-marquee-cards.md`. | Accepted 2026-08-30 |
+| Homepage hero and this-week boards look forward. | A finished game is a receipt. Do not feature it while an open (or grading) onHome game with picks exists. | Accepted 2026-08-31 |
+| Box scores may land before every mapped pick is graded. | Game complete and picks finished are different facts. `Final · Grading` is the public label for that window. | Accepted 2026-08-31 |
+| Homepage hero leads with the next game. | A fan should see matchup, time, and who is on it before the product pitch. | Accepted 2026-08-31 |
+| Scan cards do not lead with Kalshi. | Market source belongs on the detail card; scan is game, state, faces, price. | Accepted 2026-08-31 |
 
 ## Working assumptions
 

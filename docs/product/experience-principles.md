@@ -4,7 +4,7 @@ Status: Canonical
 
 ## 1. Feel like sports media, not a database
 
-Lead with the matchup, recognizable faces, stakes, time, disagreement, and result. Filters, schemas, market mechanics, and provenance support the experience but should not dominate the first scan.
+Lead with the matchup, recognizable faces, stakes, time, disagreement, and result. Filters, schemas, market mechanics, and provenance support the experience but should not dominate the first scan. The homepage hero is the next matchup, not a product slogan.
 
 The fan-facing hierarchy is:
 
@@ -35,16 +35,16 @@ An empty side tells the truth about the current corpus. A vague, inferred, off-t
 
 ## 5. Market context is a ruler, not the product
 
-The frozen Kalshi price makes a call concrete and shows how bold or conventional it was at capture time. Keep the price visible, but describe it in sports language. Exact YES/NO mechanics and hypothetical-return calculations belong deeper in the experience.
+The frozen Kalshi price makes a call concrete and shows how bold or conventional it was at capture time. Keep the price visible, but describe it in sports language. Frozen cents stay on the sides; the word Kalshi is not the scan kicker. Exact YES/NO mechanics and hypothetical-return calculations belong deeper in the experience.
 
 Never imply the displayed number is a live sportsbook line or that the pundit placed a wager.
 
 ## 6. Time words have strict meanings
 
-- `Pending` or `Open`: the outcome has not settled.
+- `Pending` or `Open`: the outcome has not settled. On a game card, `Open` means there is not yet a box score.
 - `Tonight`: the event is expected to resolve within roughly 24 hours.
-- `Live now` or `In play`: the underlying event is actually underway.
-- `Final`: the event has settled.
+- `Live now` or `In play`: the underlying event is actually underway. Do not infer this from a pending pick or a past kickoff date.
+- `Final`: the game has a box score. If mapped picks are still pending, label it `Final · Grading`. If every mapped pick is graded, keep `Final` and show Hit/Miss on the faces.
 - `Hit` or `Miss`: the individual mapped pick has been graded.
 
 Season-long futures are not live merely because they are unresolved. A future live product should separate `Live now`, `Tonight`, and `Long range` rather than mixing them into one open-picks feed.
@@ -78,7 +78,7 @@ Not every record deserves the same visual weight. Promote:
 - Newly graded hits and misses.
 - Calls with strong source evidence and clear stakes.
 
-Long-range or low-interest records remain searchable without crowding out today's story.
+Long-range or low-interest records remain searchable without crowding out today's story. Homepage hero and this-week boards prefer open games; finished games are compact receipts, not the lead.
 
 ## 10. Consistency is a product feature
 

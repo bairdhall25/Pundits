@@ -158,14 +158,13 @@ export function settledLabel(event: Event, calls: Call[]): string | null {
   return side === "yes" ? yes.label : no.label;
 }
 
-/** Final score, winner first. Null until scores exist AND grading has settled the event. */
+/** Final score, winner first. Null until both scores exist. Grading is a separate fact. */
 export function finalScoreParts(
   event: Event,
-  calls: Call[]
+  _calls?: Call[]
 ): { winner: string; loser: string; winnerScore: number; loserScore: number } | null {
   if (event.awayScore == null || event.homeScore == null) return null;
   if (!event.awayTeam || !event.homeTeam) return null;
-  if (settledSide(event, calls) == null) return null;
   const awayWon = event.awayScore > event.homeScore;
   return {
     winner: awayWon ? event.awayTeam : event.homeTeam,
@@ -184,6 +183,42 @@ export function eventKind(event: Event): "game" | "future" {
   return event.kind ?? "future";
 }
 
+export type EventScanStatus = "open" | "grading" | "final";
+
+export function gameComplete(event: Event): boolean {
+  return (
+    eventKind(event) === "game" &&
+    event.awayScore != null &&
+    event.homeScore != null
+  );
+}
+
+export function picksFinished(event: Event, calls: Call[]): boolean {
+  return settledSide(event, calls) != null;
+}
+
+export function eventScanStatus(event: Event, calls: Call[]): EventScanStatus {
+  if (eventKind(event) === "game") {
+    if (gameComplete(event) && !picksFinished(event, calls)) return "grading";
+    if (gameComplete(event) || picksFinished(event, calls)) return "final";
+    return "open";
+  }
+  return picksFinished(event, calls) ? "final" : "open";
+}
+
+export function eventStatusLine(event: Event, calls: Call[]): string {
+  const status = eventScanStatus(event, calls);
+  const score = finalScoreParts(event, calls);
+  const scoreBit = score ? `${score.winner} ${score.winnerScore}–${score.loserScore}` : null;
+  if (status === "open") return "Open";
+  if (status === "grading") {
+    return scoreBit ? `Final · Grading · ${scoreBit}` : "Final · Grading";
+  }
+  if (scoreBit) return `Final · ${scoreBit}`;
+  const winner = settledLabel(event, calls);
+  return winner ? `Final · ${winner}` : "Final";
+}
+
 export function getWeekend(
   sport: Sport,
   events: Event[]
@@ -191,6 +226,39 @@ export function getWeekend(
   return events
     .filter((e) => e.onHome && e.sport === sport && eventKind(e) === "game")
     .sort((a, b) => a.homeRank - b.homeRank);
+}
+
+export function partitionGames(
+  games: Event[],
+  calls: Call[]
+): { open: Event[]; grading: Event[]; final: Event[] } {
+  const open: Event[] = [];
+  const grading: Event[] = [];
+  const final: Event[] = [];
+  for (const event of games) {
+    const status = eventScanStatus(event, calls);
+    if (status === "open") open.push(event);
+    else if (status === "grading") grading.push(event);
+    else final.push(event);
+  }
+  return { open, grading, final };
+}
+
+export function marqueeGame(
+  ncaaf: Event[],
+  nfl: Event[],
+  calls: Call[]
+): Event | undefined {
+  const withPicks = (games: Event[]) =>
+    games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
+  const first = (games: Event[], status: EventScanStatus) =>
+    withPicks(games).find((e) => eventScanStatus(e, calls) === status);
+  return (
+    first(ncaaf, "open") ??
+    first(nfl, "open") ??
+    first(ncaaf, "grading") ??
+    first(nfl, "grading")
+  );
 }
 
 export function getSlateGames(sport: Sport, events: Event[]): Event[] {

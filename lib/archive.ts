@@ -1,4 +1,4 @@
-import { callsForEvent, eventKind, mappedCalls } from "./data";
+import { callsForEvent, eventKind, gameComplete, mappedCalls } from "./data";
 import type { Call, Event, Pundit, Sport } from "./types";
 
 export type ArchiveWeek = { sport: Sport; season: number; week: number };
@@ -27,6 +27,14 @@ export function archiveWeeks(events: Event[]): ArchiveWeek[] {
     (a, b) =>
       a.sport.localeCompare(b.sport) || a.season - b.season || a.week - b.week
   );
+}
+
+export function weekArchivePath(
+  sport: Sport,
+  season: number,
+  week: number
+): string {
+  return `/${sport}/${season}/week-${week}/`;
 }
 
 export function gamesForWeek(
@@ -110,6 +118,74 @@ export function weekResults(
         (a.status === b.status ? 0 : a.status === "hit" ? -1 : 1) ||
         a.pundit.name.localeCompare(b.pundit.name)
     );
+}
+
+export function latestGradedWeekRecap(
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): { sport: Sport; season: number; week: number; href: string; line: string } | null {
+  const complete = events.filter(
+    (e) => eventKind(e) === "game" && e.season != null && e.week != null && gameComplete(e)
+  );
+  if (!complete.length) return null;
+
+  const weeks = new Map<
+    string,
+    { sport: Sport; season: number; week: number; kickoff: string }
+  >();
+  for (const game of complete) {
+    const key = `${game.sport}/${game.season}/${game.week}`;
+    const kickoff = game.kickoffDate ?? "";
+    const existing = weeks.get(key);
+    if (!existing || kickoff > existing.kickoff) {
+      weeks.set(key, {
+        sport: game.sport,
+        season: game.season!,
+        week: game.week!,
+        kickoff,
+      });
+    }
+  }
+
+  const candidates = [...weeks.values()].sort((a, b) =>
+    b.kickoff.localeCompare(a.kickoff)
+  );
+
+  for (const candidate of candidates) {
+    const weekGames = gamesForWeek(
+      candidate.sport,
+      candidate.season,
+      candidate.week,
+      events
+    );
+    const record = weekRecord(weekGames, calls);
+    if (record.hits + record.misses === 0) continue;
+
+    const hits = weekResults(weekGames, calls, pundits).filter(
+      (r) => r.status === "hit"
+    );
+    const hitNames = [...new Set(hits.map((r) => r.pundit.name))];
+    const hitTeam = hits[0]?.pickLabel.split(" over ")[0];
+    const who =
+      hitNames.length && hitTeam
+        ? ` ${listNames(hitNames)} hit on ${hitTeam}.`
+        : "";
+    return {
+      sport: candidate.sport,
+      season: candidate.season,
+      week: candidate.week,
+      href: weekArchivePath(candidate.sport, candidate.season, candidate.week),
+      line: `Week ${candidate.week}: experts went ${record.hits}–${record.misses}.${who}`,
+    };
+  }
+  return null;
+}
+
+function listNames(names: string[]): string {
+  if (names.length === 1) return names[0];
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
 }
 
 /** Takes for and against a team, across its games (side maps to away/home)

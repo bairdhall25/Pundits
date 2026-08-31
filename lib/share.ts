@@ -35,6 +35,27 @@ function clipClaim(claim: string, max = 180): string {
   return `${trimmed.slice(0, max).replace(/\s+\S*$/, "")}…`;
 }
 
+export function homeHeroLede(
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): string {
+  const [yes, no] = sidesForCard(event, calls);
+  const yesNames = namesOn(yes.calls, pundits);
+  const noNames = namesOn(no.calls, pundits);
+  if (!event.awayTeam || !event.homeTeam) {
+    return "No verified pick yet.";
+  }
+  const bits = [
+    picksLine(noNames, event.homeTeam),
+    picksLine(yesNames, event.awayTeam),
+    yesNames.length ? null : `Nobody on ${event.awayTeam} yet`,
+    noNames.length || !yesNames.length ? null : `Nobody on ${event.homeTeam} yet`,
+  ].filter(Boolean);
+  if (!bits.length) return `No verified pick on ${event.title} yet.`;
+  return `${bits.join(". ")}.`;
+}
+
 export function eventShare(
   event: Event,
   calls: Call[],
