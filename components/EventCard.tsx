@@ -187,18 +187,20 @@ export function EventCard({
     >
       <div className="event-head">
         <div>
-          {detail && kalshiHref ? (
-            <a
-              href={kalshiHref}
-              target="_blank"
-              rel="noreferrer"
-              className="kalshi-tag type-broadcast"
-            >
-              Kalshi
-            </a>
-          ) : (
-            <div className="kalshi-tag type-broadcast">Kalshi</div>
-          )}
+          {detail ? (
+            kalshiHref ? (
+              <a
+                href={kalshiHref}
+                target="_blank"
+                rel="noreferrer"
+                className="kalshi-tag type-broadcast"
+              >
+                Kalshi
+              </a>
+            ) : (
+              <div className="kalshi-tag type-broadcast">Kalshi</div>
+            )
+          ) : null}
           {detail ? null : (
             <h2 className="type-broadcast event-title">
               {permalink ? (
