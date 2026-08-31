@@ -9,6 +9,10 @@ import {
   settledSide,
   finalScoreLine,
   finalScoreParts,
+  gameComplete,
+  picksFinished,
+  eventScanStatus,
+  eventStatusLine,
   latestCalls,
   loadCalls,
   loadEvents,
@@ -191,7 +195,7 @@ describe("settledSide", () => {
 });
 
 describe("finalScoreLine", () => {
-  it("formats the final score winner-first, and only once settled", () => {
+  it("formats the final score winner-first when both scores exist", () => {
     const live = loadCalls();
     const uva = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026")!;
     expect(finalScoreLine(uva, live)).toBe("Virginia 34, NC State 8");
@@ -202,6 +206,117 @@ describe("finalScoreLine", () => {
     expect(finalScoreLine(dublin, live)).toBe("North Carolina 15, TCU 10");
     const open = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     expect(finalScoreLine(open, live)).toBeNull();
+  });
+
+  it("returns a score line for a scored event even when mapped calls are still pending", () => {
+    const scored: Event = {
+      slug: "clemson-at-lsu-2026",
+      kind: "game",
+      title: "Clemson at LSU",
+      contractName: "Clemson vs LSU — moneyline",
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+      yesCents: 24,
+      noCents: 78,
+      sourceUrl: "https://example.com",
+      sourcedAt: "2026-08-25",
+      onHome: true,
+      sport: "ncaaf",
+      homeRank: 2,
+      awayScore: 17,
+      homeScore: 24,
+    };
+    const pending: Call = {
+      id: "n1",
+      punditId: "finebaum",
+      claim: "LSU",
+      source: "t",
+      sourceUrl: "https://example.com/a",
+      sourceDate: "2026-09-04",
+      kind: "hard",
+      subject: "LSU",
+      paysOn: "Clemson at LSU",
+      status: "pending",
+      eventSlug: "clemson-at-lsu-2026",
+      side: "no",
+    };
+    expect(finalScoreParts(scored, [pending])).toEqual({
+      winner: "LSU",
+      loser: "Clemson",
+      winnerScore: 24,
+      loserScore: 17,
+    });
+    expect(finalScoreLine(scored, [pending])).toBe("LSU 24, Clemson 17");
+  });
+});
+
+describe("event scan status", () => {
+  const clemson: Event = {
+    slug: "clemson-at-lsu-2026",
+    kind: "game",
+    title: "Clemson at LSU",
+    contractName: "Clemson vs LSU — moneyline",
+    awayTeam: "Clemson",
+    homeTeam: "LSU",
+    yesCents: 24,
+    noCents: 78,
+    sourceUrl: "https://example.com",
+    sourcedAt: "2026-08-25",
+    onHome: true,
+    sport: "ncaaf",
+    homeRank: 2,
+  };
+  const pending: Call = {
+    id: "n1",
+    punditId: "finebaum",
+    claim: "LSU",
+    source: "t",
+    sourceUrl: "https://example.com/a",
+    sourceDate: "2026-09-04",
+    kind: "hard",
+    subject: "LSU",
+    paysOn: "Clemson at LSU",
+    status: "pending",
+    eventSlug: "clemson-at-lsu-2026",
+    side: "no",
+  };
+  const scored = { ...clemson, awayScore: 17, homeScore: 24 };
+
+  it("treats an unscored game as open even with pending picks", () => {
+    expect(gameComplete(clemson)).toBe(false);
+    expect(picksFinished(clemson, [pending])).toBe(false);
+    expect(eventScanStatus(clemson, [pending])).toBe("open");
+    expect(eventStatusLine(clemson, [pending])).toBe("Open");
+  });
+
+  it("treats a scored game with pending picks as grading", () => {
+    expect(gameComplete(scored)).toBe(true);
+    expect(picksFinished(scored, [pending])).toBe(false);
+    expect(eventScanStatus(scored, [pending])).toBe("grading");
+    expect(eventStatusLine(scored, [pending])).toBe("Final · Grading · LSU 24–17");
+  });
+
+  it("treats a scored, fully graded game as final", () => {
+    const hit = { ...pending, status: "hit" as const };
+    expect(eventScanStatus(scored, [hit])).toBe("final");
+    expect(eventStatusLine(scored, [hit])).toBe("Final · LSU 24–17");
+  });
+
+  it("does not use grading for futures", () => {
+    const future: Event = { ...clemson, kind: "future", slug: "lsu-title-2026" };
+    const futurePending = { ...pending, eventSlug: "lsu-title-2026" };
+    expect(eventScanStatus(future, [futurePending])).toBe("open");
+    expect(eventScanStatus(future, [{ ...futurePending, status: "hit" }])).toBe("final");
+  });
+
+  it("classifies live Week 0 as final and Clemson as open", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    const tcu = events.find((e) => e.slug === "unc-vs-tcu-2026")!;
+    const clem = events.find((e) => e.slug === "clemson-at-lsu-2026")!;
+    expect(eventScanStatus(tcu, calls)).toBe("final");
+    expect(eventScanStatus(clem, calls)).toBe("open");
+    expect(eventStatusLine(tcu, calls)).toBe("Final · North Carolina 15–10");
   });
 });
 

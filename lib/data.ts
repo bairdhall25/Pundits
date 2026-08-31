@@ -158,14 +158,13 @@ export function settledLabel(event: Event, calls: Call[]): string | null {
   return side === "yes" ? yes.label : no.label;
 }
 
-/** Final score, winner first. Null until scores exist AND grading has settled the event. */
+/** Final score, winner first. Null until both scores exist. Grading is a separate fact. */
 export function finalScoreParts(
   event: Event,
-  calls: Call[]
+  _calls?: Call[]
 ): { winner: string; loser: string; winnerScore: number; loserScore: number } | null {
   if (event.awayScore == null || event.homeScore == null) return null;
   if (!event.awayTeam || !event.homeTeam) return null;
-  if (settledSide(event, calls) == null) return null;
   const awayWon = event.awayScore > event.homeScore;
   return {
     winner: awayWon ? event.awayTeam : event.homeTeam,
@@ -182,6 +181,42 @@ export function finalScoreLine(event: Event, calls: Call[]): string | null {
 
 export function eventKind(event: Event): "game" | "future" {
   return event.kind ?? "future";
+}
+
+export type EventScanStatus = "open" | "grading" | "final";
+
+export function gameComplete(event: Event): boolean {
+  return (
+    eventKind(event) === "game" &&
+    event.awayScore != null &&
+    event.homeScore != null
+  );
+}
+
+export function picksFinished(event: Event, calls: Call[]): boolean {
+  return settledSide(event, calls) != null;
+}
+
+export function eventScanStatus(event: Event, calls: Call[]): EventScanStatus {
+  if (eventKind(event) === "game") {
+    if (gameComplete(event) && !picksFinished(event, calls)) return "grading";
+    if (gameComplete(event) || picksFinished(event, calls)) return "final";
+    return "open";
+  }
+  return picksFinished(event, calls) ? "final" : "open";
+}
+
+export function eventStatusLine(event: Event, calls: Call[]): string {
+  const status = eventScanStatus(event, calls);
+  const score = finalScoreParts(event, calls);
+  const scoreBit = score ? `${score.winner} ${score.winnerScore}–${score.loserScore}` : null;
+  if (status === "open") return "Open";
+  if (status === "grading") {
+    return scoreBit ? `Final · Grading · ${scoreBit}` : "Final · Grading";
+  }
+  if (scoreBit) return `Final · ${scoreBit}`;
+  const winner = settledLabel(event, calls);
+  return winner ? `Final · ${winner}` : "Final";
 }
 
 export function getWeekend(
