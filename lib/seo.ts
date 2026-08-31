@@ -11,6 +11,7 @@ import { eventShare } from "./share";
 import {
   LEGAL_NAME,
   SITE_DESCRIPTION,
+  SITE_ENTITY_NAME,
   SITE_NAME,
   TWITTER_URL,
   canonicalUrl,
@@ -400,7 +401,8 @@ export function organizationGraph() {
       {
         "@type": "Organization",
         "@id": `${url}#org`,
-        name: SITE_NAME,
+        name: SITE_ENTITY_NAME,
+        alternateName: SITE_NAME,
         legalName: LEGAL_NAME,
         url,
         logo: canonicalUrl("/og.png"),
@@ -410,11 +412,15 @@ export function organizationGraph() {
       {
         "@type": "WebSite",
         "@id": `${url}#website`,
-        name: SITE_NAME,
+        name: SITE_ENTITY_NAME,
+        alternateName: SITE_NAME,
         url,
         description: SITE_DESCRIPTION,
         inLanguage: "en-US",
-        about: { "@type": "Thing", name: "College football and NFL expert picks" },
+        about: {
+          "@type": "Thing",
+          name: "Named college football and NFL pundit picks",
+        },
         publisher: { "@id": `${url}#org` },
       },
     ],
@@ -518,7 +524,7 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
     },
     publisher: {
       "@type": "Organization",
-      name: SITE_NAME,
+      name: SITE_ENTITY_NAME,
       url: canonicalUrl("/"),
       logo: canonicalUrl("/og.png"),
     },

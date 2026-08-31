@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqJsonLd } from "@/lib/seo";
-import { pageMeta } from "@/lib/site";
+import { SITE_DESCRIPTION, pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta(
   "Methodology",
-  "How Pundits verifies public picks, freezes Kalshi prices, grades results, and calculates hypothetical records.",
+  "How Pundits.Pro verifies public picks, freezes Kalshi prices, grades results, and calculates hypothetical records.",
   "/methodology"
 );
 
 const FAQ = [
+  {
+    question: "What is Pundits.Pro?",
+    answer: SITE_DESCRIPTION,
+  },
   {
     question: "What counts as a verified pick?",
     answer:
@@ -47,7 +51,7 @@ export default function MethodologyPage() {
       </h1>
       <div className="privacy-copy lede" style={{ maxWidth: 760 }}>
         <p>
-          Pundits records public sports predictions from named people, preserves
+          Pundits.Pro records public sports predictions from named people, preserves
           the original evidence and market context, and closes the loop with a
           result. The core object is a verifiable pick, not an article, model
           output, or betting recommendation.

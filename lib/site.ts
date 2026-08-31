@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "PUNDITS";
 
+export const SITE_ENTITY_NAME = "Pundits.Pro";
+
 export const SITE_TITLE = "PUNDITS — Expert CFB and NFL picks";
 
 export const SITE_DESCRIPTION =
-  "See which teams the TV experts are picking in college football and the NFL. Quote, source, and the market price. Hypothetical $100 — not a bet they placed.";
+  "Pundits.Pro tracks named pundits’ college football and NFL picks with original quotes, source links, frozen—not live—Kalshi snapshots, and graded results.";
 
 export const OG_ALT = "PUNDITS. Expert CFB and NFL picks.";
 

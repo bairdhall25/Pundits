@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { organizationGraph } from "@/lib/seo";
 import {
   SITE_DESCRIPTION,
+  SITE_ENTITY_NAME,
   SITE_NAME,
   SITE_TITLE,
   canonicalUrl,
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
+  applicationName: SITE_ENTITY_NAME,
   alternates: {
     canonical: canonicalUrl("/"),
     types: { "application/rss+xml": canonicalUrl("/feed.xml") },
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: SITE_NAME,
+    siteName: SITE_ENTITY_NAME,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: canonicalUrl("/"),

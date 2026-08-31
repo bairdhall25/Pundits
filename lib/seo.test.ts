@@ -17,7 +17,12 @@ import {
   faqJsonLd,
   takeLastModified,
 } from "./seo";
-import { canonicalUrl } from "./site";
+import {
+  SITE_DESCRIPTION,
+  SITE_ENTITY_NAME,
+  SITE_NAME,
+  canonicalUrl,
+} from "./site";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
@@ -239,11 +244,35 @@ describe("json-ld", () => {
     expect(types).toContain("Organization");
     expect(types).toContain("WebSite");
     const org = graph["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization") as {
+      name: string;
+      alternateName: string;
+      description: string;
       legalName: string;
       sameAs: string[];
     };
+    const website = graph["@graph"].find(
+      (n: { "@type": string }) => n["@type"] === "WebSite"
+    ) as {
+      name: string;
+      alternateName: string;
+      description: string;
+      about: { name: string };
+    };
+    expect(org.name).toBe(SITE_ENTITY_NAME);
+    expect(org.alternateName).toBe(SITE_NAME);
+    expect(org.description).toBe(SITE_DESCRIPTION);
     expect(org.legalName).toBe("Indie Labs LLC");
     expect(org.sameAs).toContain("https://x.com/Pundits_");
+    expect(website).toMatchObject({
+      name: SITE_ENTITY_NAME,
+      alternateName: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      about: { name: "Named college football and NFL pundit picks" },
+    });
+    expect(SITE_DESCRIPTION).toMatch(/^Pundits\.Pro tracks named pundits/i);
+    expect(SITE_DESCRIPTION).toMatch(/frozen.not live.Kalshi snapshots/i);
+    expect(SITE_DESCRIPTION).toMatch(/graded results/i);
+    expect(SITE_DESCRIPTION.length).toBeLessThanOrEqual(160);
   });
 
   it("marks a take as a staff-written NewsArticle about the pundit", () => {
