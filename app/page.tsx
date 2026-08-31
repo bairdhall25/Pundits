@@ -21,7 +21,9 @@ import {
   marqueeGame,
   partitionGames,
 } from "@/lib/data";
+import { kickoffClock } from "@/lib/format";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
+import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
 
 function Weekend({
@@ -102,23 +104,27 @@ export default function HomePage() {
   // game into the hero left College looking like last week's receipts.
   const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
   const nflCards = [...nflParts.open, ...nflParts.grading];
+  const heroWhen = marquee
+    ? [kickoffClock(marquee.kickoff), marquee.network].filter(Boolean).join(" · ")
+    : "Week 1";
+  const heroLede = marquee
+    ? homeHeroLede(marquee, calls, pundits)
+    : "College football and NFL picks from named analysts and commentators.";
 
   return (
     <main id="main" className="shell">
       <div className="hero">
         <div className="hero-copy">
           <div className="eyebrow type-broadcast">
-            Active picks · Week 1
+            {heroWhen}
           </div>
-          <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
+          <h1 className="mb-2 mt-1 leading-[0.92] tracking-wide">
             Who’s picking
             <br />
             what.
           </h1>
           <p className="lede lg:text-lg">
-            College football and NFL picks from named analysts and
-            commentators. See who they’re taking, the quote, and the market
-            price.
+            {heroLede}
           </p>
           <ul className="trust-bar">
             <li>Real quotes, linked to source</li>
