@@ -228,6 +228,39 @@ export function getWeekend(
     .sort((a, b) => a.homeRank - b.homeRank);
 }
 
+export function partitionGames(
+  games: Event[],
+  calls: Call[]
+): { open: Event[]; grading: Event[]; final: Event[] } {
+  const open: Event[] = [];
+  const grading: Event[] = [];
+  const final: Event[] = [];
+  for (const event of games) {
+    const status = eventScanStatus(event, calls);
+    if (status === "open") open.push(event);
+    else if (status === "grading") grading.push(event);
+    else final.push(event);
+  }
+  return { open, grading, final };
+}
+
+export function marqueeGame(
+  ncaaf: Event[],
+  nfl: Event[],
+  calls: Call[]
+): Event | undefined {
+  const withPicks = (games: Event[]) =>
+    games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
+  const first = (games: Event[], status: EventScanStatus) =>
+    withPicks(games).find((e) => eventScanStatus(e, calls) === status);
+  return (
+    first(ncaaf, "open") ??
+    first(nfl, "open") ??
+    first(ncaaf, "grading") ??
+    first(nfl, "grading")
+  );
+}
+
 export function getSlateGames(sport: Sport, events: Event[]): Event[] {
   return events
     .filter((e) => e.sport === sport && eventKind(e) === "game")

@@ -3,6 +3,7 @@ import {
   callsForEvent,
   eventHasFight,
   eventKind,
+  eventScanStatus,
   getBoard,
   getFuturesPeek,
   getHomeEvents,
@@ -12,6 +13,8 @@ import {
   loadCalls,
   loadEvents,
   mappedCalls,
+  marqueeGame,
+  partitionGames,
 } from "./data";
 import type { Call, Event } from "./types";
 
@@ -221,5 +224,30 @@ describe("weekend home", () => {
     expect(peek).toHaveLength(5);
     expect(peek[0].slug).toBe("indiana-title-2026");
     expect(peek.every((e) => eventKind(e) === "future")).toBe(true);
+  });
+
+  it("features the next open game, not a finished Week 0 card", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    const ncaaf = getWeekend("ncaaf", events);
+    const nfl = getWeekend("nfl", events);
+    const marquee = marqueeGame(ncaaf, nfl, calls);
+    expect(marquee?.slug).toBe("clemson-at-lsu-2026");
+    const { open, grading, final } = partitionGames(ncaaf, calls);
+    expect(open.map((e) => e.slug)).toEqual(["clemson-at-lsu-2026"]);
+    expect(grading).toEqual([]);
+    expect(final.map((e) => e.slug)).toEqual([
+      "unc-vs-tcu-2026",
+      "ncsu-at-uva-2026",
+    ]);
+  });
+
+  it("does not fall back to a final game when nothing is open", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    const ncaaf = getWeekend("ncaaf", events).filter(
+      (e) => eventScanStatus(e, calls) === "final"
+    );
+    expect(marqueeGame(ncaaf, [], calls)).toBeUndefined();
   });
 });

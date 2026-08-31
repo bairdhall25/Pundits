@@ -681,6 +681,8 @@ a.empty.event-price-link { color: var(--muted); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
+.final-board { margin-top: -24px; }
+.final-row .wait-when { color: var(--green); }
 .event-scan .px { font-size: clamp(28px, 6vw, 40px); margin: 0; color: var(--ink); }
 .event-final {
   padding: 8px 14px;

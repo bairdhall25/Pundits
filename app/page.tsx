@@ -1,5 +1,6 @@
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
+import { FinalRow } from "@/components/FinalRow";
 import { SportFilter } from "@/components/SportFilter";
 import {
   BookPeek,
@@ -14,10 +15,11 @@ import {
   getWeekend,
   hasGradedRecords,
   latestCalls,
-  settledSide,
   loadCalls,
   loadEvents,
   loadPundits,
+  marqueeGame,
+  partitionGames,
 } from "@/lib/data";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import type { Event, Call, Pundit } from "@/lib/types";
@@ -79,14 +81,15 @@ export default function HomePage() {
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
-  const withPicks = ncaaf.filter((e) =>
-    calls.some((c) => c.eventSlug === e.slug)
+  const ncaafParts = partitionGames(ncaaf, calls);
+  const nflParts = partitionGames(nfl, calls);
+  const marquee = marqueeGame(ncaaf, nfl, calls);
+  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading].filter(
+    (e) => e !== marquee
   );
-  // An open game with picks beats a settled one; a settled marquee is the
-  // fallback only when everything has graded.
-  const marquee =
-    withPicks.find((e) => !settledSide(e, calls)) ?? withPicks[0] ?? ncaaf[0];
-  const ncaafRest = marquee ? ncaaf.filter((e) => e !== marquee) : ncaaf;
+  const nflCards = [...nflParts.open, ...nflParts.grading].filter(
+    (e) => e !== marquee
+  );
 
   return (
     <main id="main" className="shell">
@@ -114,7 +117,7 @@ export default function HomePage() {
         {marquee ? (
           <div className="hero-card">
             <div className="hero-card-kicker type-broadcast">
-              Marquee · College football
+              Marquee · {marquee.sport === "nfl" ? "NFL" : "College football"}
             </div>
             <EventCard event={marquee} calls={calls} pundits={pundits} />
           </div>
@@ -143,20 +146,44 @@ export default function HomePage() {
         label="College football"
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
-        events={ncaafRest}
+        events={ncaafCards}
         calls={calls}
         pundits={pundits}
       />
+      {ncaafParts.final.length ? (
+        <div className="board final-board">
+          <h3 className="wait-head type-broadcast">Final</h3>
+          <ul className="wait-list">
+            {ncaafParts.final.map((event) => (
+              <li key={event.slug}>
+                <FinalRow event={event} calls={calls} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <Weekend
         id="nfl"
         kicker="Up next"
         label="NFL"
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
-        events={nfl}
+        events={nflCards}
         calls={calls}
         pundits={pundits}
       />
+      {nflParts.final.length ? (
+        <div className="board final-board">
+          <h3 className="wait-head type-broadcast">Final</h3>
+          <ul className="wait-list">
+            {nflParts.final.map((event) => (
+              <li key={event.slug}>
+                <FinalRow event={event} calls={calls} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <section id="futures" className="board">
         <div className="row-head">
