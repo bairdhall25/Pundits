@@ -3,11 +3,14 @@ import {
   parseWeekParam,
   archiveWeeks,
   gamesForWeek,
+  latestGradedWeekRecap,
   takesOnTeam,
   teamHasTakes,
+  weekArchivePath,
   weekRecord,
   weekResults,
 } from "./archive";
+import { loadCalls, loadEvents, loadPundits } from "./data";
 import type { Call, Event, Pundit } from "./types";
 
 const ev = (over: Partial<Event>): Event =>
@@ -166,5 +169,26 @@ describe("parseWeekParam", () => {
     expect(parseWeekParam("week-")).toBeNull();
     expect(parseWeekParam("0")).toBeNull();
     expect(parseWeekParam("week-1x")).toBeNull();
+  });
+});
+
+describe("weekArchivePath", () => {
+  it("builds the week archive path with a trailing slash", () => {
+    expect(weekArchivePath("ncaaf", 2026, 0)).toBe("/ncaaf/2026/week-0/");
+  });
+});
+
+describe("latestGradedWeekRecap", () => {
+  it("recaps the latest graded week in sports copy", () => {
+    const recap = latestGradedWeekRecap(
+      loadEvents(),
+      loadCalls(),
+      loadPundits()
+    );
+    expect(recap).not.toBeNull();
+    expect(recap!.href).toBe("/ncaaf/2026/week-0/");
+    expect(recap!.line).toBe(
+      "Week 0: experts went 2–4. Chip Patterson and Greg McElroy hit on North Carolina."
+    );
   });
 });

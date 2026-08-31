@@ -9,6 +9,7 @@ import {
   StoryPeek,
   TablePeek,
 } from "@/components/PeekRow";
+import { latestGradedWeekRecap } from "@/lib/archive";
 import {
   getActivityBoard,
   getFuturesPeek,
@@ -36,6 +37,7 @@ function Weekend({
   finals,
   calls,
   pundits,
+  recap,
 }: {
   id: string;
   kicker: string;
@@ -46,6 +48,7 @@ function Weekend({
   finals: Event[];
   calls: Call[];
   pundits: Pundit[];
+  recap?: { href: string; line: string } | null;
 }) {
   return (
     <section id={id} className="board">
@@ -67,6 +70,11 @@ function Weekend({
           pundits={pundits}
         />
       ))}
+      {recap ? (
+        <p className="when">
+          <a href={recap.href}>{recap.line}</a>
+        </p>
+      ) : null}
       {finals.length ? (
         <>
           <h3 className="wait-head type-broadcast">Final</h3>
@@ -97,6 +105,7 @@ export default function HomePage() {
   const book = latestCalls(calls, 6);
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
+  const recap = latestGradedWeekRecap(events, calls, pundits);
   const ncaafParts = partitionGames(ncaaf, calls);
   const nflParts = partitionGames(nfl, calls);
   const marquee = marqueeGame(ncaaf, nfl, calls);
@@ -168,6 +177,7 @@ export default function HomePage() {
         finals={ncaafParts.final}
         calls={calls}
         pundits={pundits}
+        recap={recap?.sport === "ncaaf" ? recap : null}
       />
       <Weekend
         id="nfl"
@@ -184,8 +194,9 @@ export default function HomePage() {
       <section id="futures" className="board">
         <div className="row-head">
           <div>
-            <div className="board-kicker type-broadcast">Pundit vs pundit</div>
+            <div className="board-kicker type-broadcast">Season</div>
             <h2 className="board-title type-broadcast">Biggest disagreements</h2>
+            <div className="when">Titles and Super Bowls · not this week</div>
           </div>
           <span className="flex gap-3">
             <a className="see" href="/ncaaf/">
