@@ -41,10 +41,10 @@ Never imply the displayed number is a live sportsbook line or that the pundit pl
 
 ## 6. Time words have strict meanings
 
-- `Pending` or `Open`: the outcome has not settled.
+- `Pending` or `Open`: the outcome has not settled. On a game card, `Open` means there is not yet a box score.
 - `Tonight`: the event is expected to resolve within roughly 24 hours.
-- `Live now` or `In play`: the underlying event is actually underway.
-- `Final`: the event has settled.
+- `Live now` or `In play`: the underlying event is actually underway. Do not infer this from a pending pick or a past kickoff date.
+- `Final`: the game has a box score. If mapped picks are still pending, label it `Final · Grading`. If every mapped pick is graded, keep `Final` and show Hit/Miss on the faces.
 - `Hit` or `Miss`: the individual mapped pick has been graded.
 
 Season-long futures are not live merely because they are unresolved. A future live product should separate `Live now`, `Tonight`, and `Long range` rather than mixing them into one open-picks feed.
@@ -78,7 +78,7 @@ Not every record deserves the same visual weight. Promote:
 - Newly graded hits and misses.
 - Calls with strong source evidence and clear stakes.
 
-Long-range or low-interest records remain searchable without crowding out today's story.
+Long-range or low-interest records remain searchable without crowding out today's story. Homepage hero and this-week boards prefer open games; finished games are compact receipts, not the lead.
 
 ## 10. Consistency is a product feature
 

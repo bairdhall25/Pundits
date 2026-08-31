@@ -90,6 +90,8 @@ Published routes are search equity. Data and URL sets are append-only; correctio
 
 The code currently infers an event's winning side from consistent graded mapped calls instead of storing a separate event result field. If graded evidence conflicts, the UI must not invent a winner. A future explicit result model should be designed and migrated deliberately, with tests and backward compatibility.
 
+`awayScore` and `homeScore` mean the game is complete. `settledSide` means mapped picks are finished. Winner display on a scored game comes from the scores. Do not invent a new result object in this change.
+
 ## Operating boundaries
 
 - Static architecture is intentional at this stage.
