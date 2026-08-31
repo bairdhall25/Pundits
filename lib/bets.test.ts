@@ -235,6 +235,7 @@ describe("weekend home", () => {
     expect(marquee?.slug).toBe("clemson-at-lsu-2026");
     const { open, grading, final } = partitionGames(ncaaf, calls);
     expect(open.map((e) => e.slug)).toEqual(["clemson-at-lsu-2026"]);
+    expect([...open, ...grading].map((e) => e.slug)).toContain(marquee!.slug);
     expect(grading).toEqual([]);
     expect(final.map((e) => e.slug)).toEqual([
       "unc-vs-tcu-2026",

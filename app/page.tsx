@@ -31,6 +31,7 @@ function Weekend({
   when,
   href,
   events,
+  finals,
   calls,
   pundits,
 }: {
@@ -40,6 +41,7 @@ function Weekend({
   when: string;
   href: string;
   events: Event[];
+  finals: Event[];
   calls: Call[];
   pundits: Pundit[];
 }) {
@@ -63,6 +65,18 @@ function Weekend({
           pundits={pundits}
         />
       ))}
+      {finals.length ? (
+        <>
+          <h3 className="wait-head type-broadcast">Final</h3>
+          <ul className="wait-list">
+            {finals.map((event) => (
+              <li key={event.slug}>
+                <FinalRow event={event} calls={calls} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </section>
   );
 }
@@ -84,12 +98,10 @@ export default function HomePage() {
   const ncaafParts = partitionGames(ncaaf, calls);
   const nflParts = partitionGames(nfl, calls);
   const marquee = marqueeGame(ncaaf, nfl, calls);
-  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading].filter(
-    (e) => e !== marquee
-  );
-  const nflCards = [...nflParts.open, ...nflParts.grading].filter(
-    (e) => e !== marquee
-  );
+  // Keep the marquee on its sport board too. Pulling the only open CFB
+  // game into the hero left College looking like last week's receipts.
+  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
+  const nflCards = [...nflParts.open, ...nflParts.grading];
 
   return (
     <main id="main" className="shell">
@@ -147,21 +159,10 @@ export default function HomePage() {
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
         events={ncaafCards}
+        finals={ncaafParts.final}
         calls={calls}
         pundits={pundits}
       />
-      {ncaafParts.final.length ? (
-        <div className="board final-board">
-          <h3 className="wait-head type-broadcast">Final</h3>
-          <ul className="wait-list">
-            {ncaafParts.final.map((event) => (
-              <li key={event.slug}>
-                <FinalRow event={event} calls={calls} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
       <Weekend
         id="nfl"
         kicker="Up next"
@@ -169,21 +170,10 @@ export default function HomePage() {
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
         events={nflCards}
+        finals={nflParts.final}
         calls={calls}
         pundits={pundits}
       />
-      {nflParts.final.length ? (
-        <div className="board final-board">
-          <h3 className="wait-head type-broadcast">Final</h3>
-          <ul className="wait-list">
-            {nflParts.final.map((event) => (
-              <li key={event.slug}>
-                <FinalRow event={event} calls={calls} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
 
       <section id="futures" className="board">
         <div className="row-head">
