@@ -48,6 +48,14 @@ Do not edit editorial JSON during product or UI work merely to improve a screens
 - Run `npm test` for data or logic changes. Run `npm run check` for route, UI, SEO, build, or release-affecting changes.
 - Production is Cloudflare Pages project `pundits`; keep `GITHUB_PAGES` unset for the production-style build.
 
+## Public methodology synchronization
+
+- Treat `app/methodology/page.tsx`, including its visible FAQ and FAQPage JSON-LD, as a public product contract rather than static marketing copy.
+- Before finishing any change to product behavior, data semantics, or user-facing claims, perform a methodology impact check. Update the methodology in the same change when the work alters pick eligibility, evidence or attribution requirements, event/side mapping, frozen-market semantics, grading or result states, record calculations, correction handling, or roster criteria.
+- When a changed claim is repeated in About, Terms, metadata, structured data, feeds, or tests, update those surfaces together so they do not contradict the methodology. Keep the canonical Pundits.Pro entity description in `lib/site.ts` aligned with the public explanation.
+- Do not edit the methodology for an internal refactor, fixture change, or visual-only adjustment that leaves public behavior and product truth unchanged.
+- In the final verification for an affected change, confirm both the visible methodology copy and the rendered structured FAQ, then run the repository check required for that change class.
+
 ## Product-stage discipline
 
 The present goal is to build dense coverage of events fans care about, prove the grading loop, and establish repeatable distribution before optimizing monetization. Do not optimize raw pick or page count. New features should improve at least one of: event-level coverage, grading speed, fan comprehension, repeat use, search discovery, social distribution, or operating reliability.
