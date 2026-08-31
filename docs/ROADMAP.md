@@ -21,11 +21,11 @@ Exit criteria: one documented deployment path, green CI, reproducible local pref
 
 ## Phase 1 — close the accountability loop
 
-- Treat this as the product gate: do not start new platform scope while every call is still pending.
-- Grade the first settled slate through Grader and Promote.
-- Verify pending, hit, and miss states on event, take, pundit, leaderboard, and home surfaces.
+- Treat this as the product gate: do not start new platform scope while open marquee games stay empty-side.
+- [x] Grade the first settled slate through Grader and Promote (Week 0, 2026-08-29).
+- [x] Verify pending, hit, and miss states on event, take, pundit, leaderboard, and home surfaces.
 - Add result-state fixtures, including inconsistent grading evidence.
-- Publish a recap within 24 hours of settlement.
+- [x] Publish a recap within 24 hours of settlement (`docs/runs/2026-08-31-recap.md`; next recap after Clemson).
 
 Exit criteria: a visitor can move from the original quote and frozen price to the final result and record.
 

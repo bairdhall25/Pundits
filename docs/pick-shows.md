@@ -23,7 +23,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Cover 3 LOCKS | `kanell`, `patterson`, Fornelli/Elliott (Candidates) | Thu/Fri | ATS locks, then **Moneyline Sprinkles** | Kanell Wolfpack ML and Patterson UNC ML both from Week 0 LOCKS `hhgxVGYo6Cc`. |
 | Josh Pate’s College Football Show | `pate` | almost daily | end-of-show winners / “I’ll take” | Already LSU. Only restage if he **flips** to Clemson. |
 | Bear Bets / FOX | `fallica` | column + Big Noon | bylined best bets | Dispatch empty-side / thin / off-home only. Futures are not this beat. |
-| GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | Guest on PMT is `coughlin`, never `mcafee`. |
+| GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | First 2026 show is **Baton Rouge Sat 9/5** (Clemson YES). Guest on PMT is `coughlin`, never `mcafee`. |
 | BFW Show | `walker` | Mon / Thu / **Sat** in-season | Saturday recap + locks; midweek is often conference/Top 25 | 8/24 B1G+ACC and 8/27 SEC+Big 12 were **conference** preds, not Week 0 SU. Hunt Saturday. YouTube `UC9v6icpVdER0VGQpA3uUUsQ`. |
 | Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
 | Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |

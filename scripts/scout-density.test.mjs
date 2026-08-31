@@ -4,6 +4,7 @@ import {
   formatDispatch,
   huntHint,
   isGameEvent,
+  isSettledGame,
   loadBringOntoHome,
   mappedHardForEvent,
   scoreSlate,
@@ -153,6 +154,34 @@ describe("scoreSlate", () => {
     });
     expect(rows).toHaveLength(1);
     expect(rows[0].status).toBe("empty-side");
+  });
+
+  it("omits settled games even when onHome and empty-side", () => {
+    const dublin = {
+      slug: "unc-vs-tcu-2026",
+      kind: "game",
+      onHome: true,
+      sport: "ncaaf",
+      awayTeam: "North Carolina",
+      homeTeam: "TCU",
+      kickoffDate: "2026-08-29",
+      awayScore: 15,
+      homeScore: 10,
+    };
+    const rows = scoreSlate({
+      events: [clemson, dublin],
+      calls: [hard("pate", "clemson-at-lsu-2026", "no")],
+      bringOntoHome: [],
+    });
+    expect(rows.map((r) => r.eventSlug)).toEqual(["clemson-at-lsu-2026"]);
+  });
+});
+
+describe("isSettledGame", () => {
+  it("requires both scores", () => {
+    expect(isSettledGame({ awayScore: 15, homeScore: 10 })).toBe(true);
+    expect(isSettledGame({ awayScore: 15 })).toBe(false);
+    expect(isSettledGame(clemson)).toBe(false);
   });
 });
 

@@ -93,7 +93,7 @@ export default function HomePage() {
       <div className="hero">
         <div className="hero-copy">
           <div className="eyebrow type-broadcast">
-            Active picks · opening weekend
+            Active picks · Week 1
           </div>
           <h1 className="mb-2 mt-1 text-[clamp(32px,8vw,56px)] leading-[0.92] tracking-wide lg:text-[72px]">
             Who’s picking
@@ -139,9 +139,9 @@ export default function HomePage() {
 
       <Weekend
         id="ncaaf"
-        kicker="Opening weekend"
+        kicker="This week"
         label="College football"
-        when="Week 0 Sat Aug 29 · Week 1 Sep 3–7 · verified picks with original quotes"
+        when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
         events={ncaafRest}
         calls={calls}

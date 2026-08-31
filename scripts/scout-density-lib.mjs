@@ -14,6 +14,11 @@ export function isGameEvent(event) {
   return kick && away && home;
 }
 
+/** Final scores mean the game is archive, not a hunt target. */
+export function isSettledGame(event) {
+  return event?.awayScore != null && event?.homeScore != null;
+}
+
 export function mappedHardForEvent(calls, slug) {
   const yes = [];
   const no = [];
@@ -69,6 +74,7 @@ export function scoreSlate({ events, calls, bringOntoHome = [] }) {
   const rows = [];
   for (const event of events ?? []) {
     if (!isGameEvent(event)) continue;
+    if (isSettledGame(event)) continue;
     const listedOffHome = !event.onHome && offHomeSet.has(event.slug);
     if (!event.onHome && !listedOffHome) continue;
     if (seen.has(event.slug)) continue;

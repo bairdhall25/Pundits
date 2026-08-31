@@ -35,9 +35,21 @@ Architecture: `docs/superpowers/specs/2026-08-29-scout-architecture-design.md`.
 
 ## Cadence
 
-Saturday 8/29: Dublin 12:00 ET ESPN, then NC State 3:30. **GameDay is not this Saturday** (first 2026 show is Baton Rouge Sep 5). Pre-kick extras optional; **Grader after a final**, not before. BFW Saturday / Barstool CFB Show still skipped this week. `ruiz` is FOX Sports now — do not hunt him on Ringer NFL.  
-Sep 5: GameDay Baton Rouge is the Clemson YES run.  
-NFL openers: keep hunting named podcasts through Wed 9/9.
+Week 0 is graded. Settled games are not hunt targets.
+
+**This week (CFB Week 1):**
+
+| When | Job |
+|---|---|
+| Daily | Coordinator Dispatch from `node scripts/scout-density.mjs`. X twice daily. |
+| Tue 9/2 | X. No Shows NCAAF (Thu–Sat). NFL Shows/News wait until Tue of that NFL week (9/8). |
+| Thu 9/3 | Cover 3 **Week 1 LOCKS** — first high-yield factory. Shows + News NCAAF. Clemson YES first. |
+| Fri 9/4 | Shows + News. Miami–Stanford is off-home; do not hunt unless it lands on Dispatch. |
+| Sat 9/5 | **GameDay Baton Rouge** is the Clemson YES run (Herbstreit / Saban / McAfee / Howard / Davis / Coughlin). Big Noon same window. Grader after Clemson is final, not before. Recap after Grader. |
+| Sun 9/6 | Lambeau stays off-home until a roster SU. |
+| Tue 9/8–Wed 9/9 | NFL empty YES (Patriots, then 49ers, then Bills) through Kickoff Wednesday. |
+
+Hunt order is Dispatch: Clemson YES, then NFL empty YES, then one Lambeau SU. Do not fill Miami–Stanford or Baylor–Auburn. `ruiz` is FOX Sports — not Ringer NFL. Bets/fantasy/bulk roster stay parked through this week.
 
 ## What we will not do in this pass
 

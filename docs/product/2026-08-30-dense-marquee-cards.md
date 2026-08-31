@@ -29,7 +29,7 @@ The roster is already large (~49). Most of those voices have zero mapped **games
 - Clemson–LSU is the CFB card that matters before Saturday 9/5 (GameDay Baton Rouge).
 - NFL three stay empty-side hunts through 9/9.
 - Settled Week 0 stays Final, not a hunt target.
-- Recap after Grader is owed; it does not write JSON.
+- Recap after Grader: Week 0 recap is `docs/runs/2026-08-31-recap.md`. Next recap after Clemson grades. Recap does not write JSON.
 - Reopen this file after Week 1 factories actually tape. If Scout still returns empty-side on Clemson YES and the NFL dogs, the bottleneck is Scout, not the calendar.
 
 ## Approaches parked until then

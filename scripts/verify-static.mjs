@@ -99,7 +99,7 @@ assert.doesNotMatch(punditProfile, />0–0</);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
 
 const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "utf8");
-assert.match(leaderboard, /Listed by open picks until the first game grades/);
+assert.match(leaderboard, /Ranked by open picks\. The 2026 column is/);
 assert.match(leaderboard, />Open picks</);
 assert.doesNotMatch(leaderboard, />Live picks</);
 assert.match(leaderboard, /lb-rank[^>]*>01</);

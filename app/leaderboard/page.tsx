@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Expert pick records",
-  "Who’s actually on the record this season. Hits, misses, and open expert picks — everyone starts 0–0.",
+  "Who’s actually on the record this season. Hits, misses, and open expert picks.",
   "/leaderboard"
 );
 
@@ -18,8 +18,8 @@ export default function LeaderboardPage() {
         The table.
       </h1>
       <p className="lede">
-        Who’s actually on the record. Listed by open picks until the first
-        game grades — then hits and misses land.
+        Who’s actually on the record. Ranked by open picks. The 2026 column is
+        hits and misses on graded games.
       </p>
       <LeaderboardClient board={board} />
     </main>

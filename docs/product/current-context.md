@@ -2,7 +2,7 @@
 
 Status: Operational
 
-Last updated: 2026-08-30
+Last updated: 2026-08-31
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
 
@@ -22,17 +22,17 @@ The operating target is **qualified event density**, not raw volume. A smaller s
 
 ## Current product truth
 
-At the documentation QA baseline, the repository held 57 calls, 34 mapped picks, and no completed hit or miss. Twenty-two of 31 events were futures or default futures. Those counts are dated; inspect `data/*.json` before using them as current facts.
+Week 0 graded on 2026-08-29: Dublin 2–2 (Patterson and McElroy hit; Finebaum and Compton miss) and Charlottesville 0–2 (Kanell and Patterson miss). Recap is `docs/runs/2026-08-31-recap.md`. Live JSON wins for current counts.
 
-The central product promise therefore remains unproven in production until a real slate grades cleanly across the pick story, event page, pundit record, leaderboard, archive, sitemap freshness, social image, and recap.
+The first slate closed on pick stories, event pages, records, leaderboard, and social cards. Repeat the loop on Clemson–LSU and the NFL openers before treating the promise as proven.
 
 Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Live now` and `In play` for an event actually underway.
 
 ## Immediate order of operations
 
-1. Complete and audit the first end-to-end grading cycle.
-2. Correct pending-versus-live language in implemented surfaces.
-3. Increase multi-pundit coverage on marquee weekly games (empty-side SU capture). Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
+1. Capture empty-side SU on Clemson YES, then NFL empty YES, then one Lambeau SU. Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
+2. Grade Clemson–LSU after the final, then recap within 24 hours.
+3. Grade NFL Week 1 as those games settle.
 4. Instrument the minimum engagement events in `measurement.md`.
 5. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, and graded-receipt returns.
 6. Establish four to six weeks of operating and audience baselines.

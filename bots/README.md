@@ -159,7 +159,7 @@ Then fetch https://pundits.pro/social/cards.json for receipts.
 Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Never touch data/ or docs/.
 ```
 
-Cadence (launch week): Coordinator daily (Dispatch). Shows NCAAF Thu–Sat (+ GameDay window). Shows NFL Tue–Sat of that NFL week. Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after each settled slate (Week 0 Sat 8/29, then Week 1, then NFL Week 1). Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days.
+Cadence (Week 1): Coordinator daily (Dispatch; settled games are not hunt targets). Shows NCAAF Thu–Sat (+ GameDay Baton Rouge Sat 9/5). Shows NFL Tue–Sat of that NFL week (starts Tue 9/8). Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days.
 
 ## House rules
 

@@ -1,8 +1,8 @@
 # Capture assignment
 
-Date: 2026-08-28. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
+Date: 2026-08-31. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
 
-Fan problem: five home games and **every one is one-sided**. Favorites have faces. Away/underdogs are empty. Futures (title, CFP, Super Bowl) are where the fights are. A fan opening this weekend wants Saturday and Wednesday, not July Super Bowl takes.
+Fan problem: homepage games are still one-sided favorites. Week 0 is Final. This week’s card is Clemson–LSU, then the three NFL openers. Do not pad with title/SB faces or extra faceless games.
 
 Do not pad the site with more title/SB faces until Dispatch holes are worked.
 
@@ -15,7 +15,7 @@ Already booked. Restaging is a miss.
 - Fallica `texas-cfp-2026` no
 - Kanell `ncsu-at-uva-2026` yes (promoted 2026-08-28). Do not restage.
 - The morning-eight and other mapped hard rows already in `calls.json`
-- `walker` is on the roster. Do not invent a Week 0 SU; hunt BFW Saturday / Barstool CFB Show locks.
+- `walker` is on the roster. Hunt BFW Thursday / Saturday locks and Barstool CFB Show. Do not invent a SU.
 - `wisconsin-vs-nd-2026` stays **off home** until a roster SU exists — then propose `onHome: true` plus freeze
 - McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals / ATS +4.5, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
 
@@ -42,11 +42,11 @@ NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `
 - **X Scout:** Twitter only. Append `## X pass` to the day’s run file. `patterson` and `walker` are Intake.
 - **Audit:** re-open new **game** hard rows first (Shows + X + News pass). A fail stays out of JSON.
 - **Promote:** ship `ok` game rows before any new future. Do not restage the do-not-touch list. Do not flip ncsu/wisconsin on home unless Scout proposed it with a verified SU.
-- **Grader:** first slate is Dublin `unc-vs-tcu-2026` (Sat Aug 29). Then Clemson–LSU. Then NFL Week 1. Infer winner from hit/miss; do not invent an event `result` field unless Promote adds one.
-- **Recap:** say out loud that every home game is still one-sided until empty-side rows move.
+- **Grader:** Week 0 is done. Next: `clemson-at-lsu-2026` (Sat Sep 5), then NFL Week 1 (`patriots-at-seahawks-2026`, `49ers-vs-rams-2026`, `bills-at-texans-2026`). Infer winner from hit/miss; do not invent an event `result` field unless Promote adds one.
+- **Recap:** first recap is `docs/runs/2026-08-31-recap.md`. Next recap after Clemson grades.
 
-## Snapshot (from `data/` 2026-08-27)
+## Snapshot (from `data/` 2026-08-31)
 
-Home games: Clemson empty / LSU pate+finebaum; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd; **UNC patterson / TCU finebaum**; **NC State kanell / Virginia empty**.
+Open home games: Clemson empty / LSU pate+finebaum; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd. Lambeau fully empty, off home. Week 0 Final: Dublin dense (Patterson/McElroy hit, Finebaum/Compton miss); Charlottesville Kanell+Patterson miss, Virginia still empty.
 
-Dublin is two-sided. Four home games still one-sided, all favorites. Fantasy/props: parked in `docs/fantasy.md`.
+Four open home games are still one-sided, all favorites. Fantasy/props: parked in `docs/fantasy.md`.
