@@ -550,6 +550,19 @@ h1, h2, .type-broadcast {
 .event-link:has(.see-why:focus-visible) { border-color: var(--green); }
 .person-hit { position: relative; z-index: 1; }
 .event.fight { border-color: #245c18; }
+.event-settled {
+  border-color: #1e1e1e;
+  opacity: 0.92;
+}
+.event-settled.fight {
+  border-color: #1e1e1e;
+}
+.event-grading {
+  border-color: var(--green);
+}
+.event-grading .event-final {
+  letter-spacing: 0.14em;
+}
 .event-head { padding: 12px 14px 10px; border-bottom: 1px solid #2a2a2a; }
 .kalshi-tag {
   display: inline-block;
