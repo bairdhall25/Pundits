@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqJsonLd } from "@/lib/seo";
-import { SITE_DESCRIPTION, pageMeta } from "@/lib/site";
+import { CONTACT_HREF, pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta(
   "Methodology",
@@ -12,7 +12,8 @@ export const metadata: Metadata = pageMeta(
 const FAQ = [
   {
     question: "What is Pundits.Pro?",
-    answer: SITE_DESCRIPTION,
+    answer:
+      "Pundits.Pro keeps the receipts on college football and NFL picks: who made the call, what they said, where they said it, what the market believed at the time, and whether it hit.",
   },
   {
     question: "What counts as a verified pick?",
@@ -22,17 +23,17 @@ const FAQ = [
   {
     question: "What is a frozen Kalshi price?",
     answer:
-      "It is a dated snapshot of the relevant Kalshi market used to show the market context when the pick was captured. It is not live odds and does not mean the pundit placed a bet.",
+      "It is a dated snapshot of the relevant Kalshi market. It shows the market context when the pick was captured; it is not live odds and does not mean the pundit placed a bet.",
   },
   {
     question: "How are picks graded?",
     answer:
-      "Mapped hard picks remain pending until the game or contract settles, then grade hit or miss against the event's objective result. Soft or unmapped takes do not enter the record.",
+      "A mapped hard pick stays pending until the game or contract settles. Then it becomes a hit or miss against the event's objective result. Soft and unmapped takes stay out of the record.",
   },
   {
     question: "What does hypothetical $100 mean?",
     answer:
-      "It is a consistent scoring device using the frozen price of the picked side. Settled net dollars summarize that hypothetical result; no wager is placed for the pundit or reader.",
+      "It puts every pick in the same scoring frame using the frozen price of the picked side. Settled net dollars summarize that hypothetical result; no wager is placed for the pundit or reader.",
   },
   {
     question: "How does a pundit join the roster?",
@@ -51,46 +52,66 @@ export default function MethodologyPage() {
       </h1>
       <div className="privacy-copy lede" style={{ maxWidth: 760 }}>
         <p>
-          Pundits.Pro records public sports predictions from named people, preserves
-          the original evidence and market context, and closes the loop with a
-          result. The core object is a verifiable pick, not an article, model
-          output, or betting recommendation.
+          A pick only counts when we can show the receipt. Pundits.Pro preserves
+          the named speaker, exact public evidence, frozen market context, and
+          objective result. This is not a model, betting recommendation, or
+          catch-all archive of sports talk.
         </p>
 
         <h2 className="type-broadcast mt-8 text-[24px] tracking-widest">
           What qualifies
         </h2>
         <p>
-          A mapped pick needs a clear first-person lean, named pundit, verbatim
-          public quote, source URL, source date, real event, explicit side, and
-          objective grading rule. Vague commentary stays an unmapped take. No
-          pundit joins the public roster without a verified photo, and an empty
-          side remains empty until the evidence is good enough.
+          A mapped pick must have a clear first-person lean from a named pundit,
+          verbatim public quote, source URL and date, real event, explicit side,
+          and objective grading rule. Vague commentary stays an unmapped take —
+          and stays out of the record. No pundit joins the public roster without
+          a verified photo. An empty side stays empty until the evidence clears
+          the bar.
+        </p>
+
+        <h2 className="type-broadcast mt-8 text-[24px] tracking-widest">
+          Sources and corrections
+        </h2>
+        <p>
+          We want the original video, audio, transcript, article, newsletter, or
+          social post containing the prediction. When it is unavailable, we may
+          use an official outlet clip or transcript, or a reputable secondary
+          source that preserves the quote and clearly identifies where it was
+          made. We label the source we actually reviewed. We never pass a
+          secondary report off as the original.
+        </p>
+        <p>
+          See a problem? <a href={CONTACT_HREF}>Contact us</a> with the
+          Pundits.Pro page and supporting public evidence. We reopen the source
+          before changing the record. If a correction is warranted, we record
+          the decision and keep the permanent receipt URL. No quiet deletes.
         </p>
 
         <h2 className="type-broadcast mt-8 text-[24px] tracking-widest">
           Frozen market context
         </h2>
         <p>
-          The displayed cents are a dated Kalshi snapshot captured for the
-          relevant market. They are not live odds, a sportsbook line, or proof
-          that the pundit placed a bet. On game markets, YES is the away team
-          and NO is the home team.
+          The displayed cents are a dated Kalshi snapshot. They show how bold or
+          conventional the call looked when we captured it. They are not live
+          odds, a sportsbook line, or proof that the pundit placed a bet. On
+          game markets, YES is the away team and NO is the home team.
         </p>
 
         <h2 className="type-broadcast mt-8 text-[24px] tracking-widest">
           Grading and records
         </h2>
         <p>
-          Hard mapped picks remain pending until the game or contract settles,
-          then grade hit or miss against the objective result. Pundit pages show
-          the 2026 record after results land. Soft and unmapped takes remain
-          outside that record.
+          A hard mapped pick stays pending until the game or contract settles.
+          Then it becomes a hit or miss against the objective result. Pundit
+          pages show the 2026 record after results land. Soft and unmapped takes
+          stay out of that record.
         </p>
         <p>
-          Hypothetical $100 at the frozen price is a consistent scoring device.
-          Settled net dollars add those hypothetical results across graded picks;
-          no money is wagered for the pundit or the reader.
+          Hypothetical $100 puts every frozen price in the same scoring frame.
+          Settled net dollars add those hypothetical results across graded
+          picks. It is bookkeeping, not betting; no money is wagered for the
+          pundit or the reader.
         </p>
 
         <h2 className="type-broadcast mt-8 text-[24px] tracking-widest">
