@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatCents, statusLabel } from "@/lib/format";
+import { mappedStakeLine } from "@/lib/public-side";
 import { takePath } from "@/lib/site";
 import type { Call, Event } from "@/lib/types";
 
@@ -58,8 +59,11 @@ export function CallCard({
         <div className="mt-2.5 border-l-[3px] border-[var(--green)] bg-[#111] px-3.5 py-3 text-[13px]">
           <Link href={takePath(event.slug, call.punditId)}>
             {event.title} ·{" "}
-            <b className="text-[var(--green)]">{call.side.toUpperCase()}</b> @{" "}
-            {formatCents(cents)} · $100 at risk
+            <b className="text-[var(--green)]">
+              {mappedStakeLine(event, call.side, cents).label}
+            </b>
+            {" @ "}
+            {formatCents(cents)} · hypothetical $100
           </Link>
         </div>
       ) : null}

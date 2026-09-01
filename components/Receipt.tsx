@@ -10,6 +10,7 @@ import {
   statusLabel,
   verdictClass,
 } from "@/lib/format";
+import { publicSideLabel } from "@/lib/public-side";
 import type { MappedTake } from "@/lib/seo";
 import type { Call } from "@/lib/types";
 
@@ -23,7 +24,7 @@ export function Receipt({ take, calls }: { take: MappedTake; calls: Call[] }) {
   const game = Boolean(event.awayTeam && event.homeTeam);
   const froze = game
     ? `${event.awayTeam} ${formatCents(event.yesCents)} / ${event.homeTeam} ${formatCents(event.noCents)}`
-    : `Yes ${formatCents(event.yesCents)} / No ${formatCents(event.noCents)}`;
+    : `${publicSideLabel(event, "yes")} ${formatCents(event.yesCents)} / ${publicSideLabel(event, "no")} ${formatCents(event.noCents)}`;
 
   return (
     <article className="receipt">

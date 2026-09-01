@@ -99,6 +99,15 @@ assert.doesNotMatch(punditProfile, /2026 record 0–0/);
 assert.doesNotMatch(punditProfile, />0–0</);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
 
+const book = await readFile(path.join(out, "book/index.html"), "utf8");
+assert.doesNotMatch(book, /\$100 at risk/);
+assert.doesNotMatch(book, /· <b[^>]*>YES<\/b>|· <b[^>]*>NO<\/b>/);
+assert.match(book, /hypothetical \$100/);
+
+const finebaum = await readFile(path.join(out, "pundits/finebaum/index.html"), "utf8");
+assert.doesNotMatch(finebaum, /Open at risk/);
+assert.match(finebaum, /Open · hypothetical \$100/);
+
 const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "utf8");
 assert.match(leaderboard, /Sample sizes are small/);
 assert.match(leaderboard, /2026 results/);

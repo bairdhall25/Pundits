@@ -150,7 +150,7 @@ export default async function PunditPage({
       <div className="mb-4 flex gap-7 border border-[#245c18] bg-[#10200c] px-5 py-4">
         <div>
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-            Open at risk
+            Open · hypothetical $100
           </div>
           <div className="type-broadcast text-2xl text-[var(--green)]">
             ${open}

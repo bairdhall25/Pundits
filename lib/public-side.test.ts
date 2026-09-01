@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { publicSideLabel } from "./public-side";
+import { mappedStakeLine, publicSideLabel } from "./public-side";
 import type { Event } from "./types";
 
 const game = {
@@ -18,5 +18,30 @@ describe("publicSideLabel", () => {
   it("maps future sides to fan-facing language", () => {
     expect(publicSideLabel(future, "yes")).toBe("Takes it");
     expect(publicSideLabel(future, "no")).toBe("Against");
+  });
+});
+
+describe("mappedStakeLine", () => {
+  it("prints the team, not YES/NO, on a game stake line", () => {
+    const event = {
+      kind: "game",
+      title: "Clemson at LSU",
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+    } as Event;
+    const row = mappedStakeLine(event, "no", 78);
+    expect(row.label).toBe("LSU");
+    expect(row.line).toBe("Clemson at LSU · LSU @ 78¢ · hypothetical $100");
+    expect(row.line).not.toMatch(/\bYES\b|\bNO\b|at risk/i);
+  });
+
+  it("prints Takes it / Against on a future stake line", () => {
+    const event = {
+      kind: "future",
+      title: "Indiana wins the national title",
+    } as Event;
+    expect(mappedStakeLine(event, "no", 91).line).toBe(
+      "Indiana wins the national title · Against @ 91¢ · hypothetical $100"
+    );
   });
 });
