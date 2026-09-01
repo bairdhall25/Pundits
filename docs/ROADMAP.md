@@ -36,6 +36,7 @@ Exit criteria: a visitor can move from the original quote and frozen price to th
 - Frame the pre-result leaderboard as `Most on record`.
 - Collapse secondary mobile filters behind `Filter & sort`.
 - Reduce repeated copy on individual take pages without removing source evidence or SEO structure.
+- Post-grade comprehension (2026-09-01): results-first table, no public YES/NO on Book/profiles, `vs` matchup copy, compact empty futures. Plan: `docs/superpowers/plans/2026-09-01-post-grade-comprehension.md`.
 
 Exit criteria: a first-time fan can distinguish Picks, Takes, Pundits, pending status, and settled performance without learning internal vocabulary.
 
