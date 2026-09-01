@@ -103,5 +103,9 @@ describe("email signup payload", () => {
     expect(copyForPlacement("pundit_profile", "Danny Kanell").heading).toBe(
       "Get new Danny Kanell picks."
     );
+    expect(copyForPlacement("pundit_profile", "Danny Kanell")).toMatchObject({
+      body: "Join the early list for an email when new picks are available. Alerts are not live yet.",
+      button: "Request pick alerts",
+    });
   });
 });

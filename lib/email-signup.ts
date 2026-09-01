@@ -123,8 +123,8 @@ export function copyForPlacement(
     return {
       kicker,
       heading: `Get new ${subjectName ?? "pundit"} picks.`,
-      body: "Tell us you want pundit-specific email alerts. Alerts are not live yet.",
-      button,
+      body: "Join the early list for an email when new picks are available. Alerts are not live yet.",
+      button: "Request pick alerts",
     };
   }
   if (placement === "pick_detail") {

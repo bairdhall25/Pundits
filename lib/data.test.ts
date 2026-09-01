@@ -45,6 +45,18 @@ const calls: Call[] = [
     side: "no",
   },
   {
+    id: "c4",
+    punditId: "finebaum",
+    claim: "Eleven wins is the floor for Notre Dame.",
+    source: "Always College Football",
+    sourceUrl: null,
+    sourceDate: "2026-08-22",
+    kind: "hard",
+    subject: "Notre Dame",
+    paysOn: "2026 season",
+    status: "hit",
+  },
+  {
     id: "c2",
     punditId: "finebaum",
     claim: "Curt Cignetti is the best coach in college football.",
@@ -71,16 +83,16 @@ const calls: Call[] = [
 ];
 
 describe("seasonFromCalls", () => {
-  it("counts only hard hit/miss toward W-L and hard pending toward pending", () => {
+  it("counts only mapped hard calls toward the public record", () => {
     expect(seasonFromCalls("finebaum", calls)).toEqual({
       wins: 0,
       losses: 0,
       pending: 1,
     });
   });
-  it("counts a hard hit as a win", () => {
+  it("ignores an unmapped hard result", () => {
     expect(seasonFromCalls("saban", calls)).toEqual({
-      wins: 1,
+      wins: 0,
       losses: 0,
       pending: 0,
     });
@@ -95,10 +107,10 @@ describe("getActivityBoard", () => {
     expect(board[0].mappedPending).toBe(1);
     expect(board[0].totalCalls).toBeGreaterThan(0);
   });
-  it("exposes season2026 derived from hard calls only", () => {
+  it("exposes season2026 derived from mapped hard calls only", () => {
     const board = getActivityBoard(pundits, calls);
     const saban = board.find((p) => p.id === "saban")!;
-    expect(saban.season2026).toEqual({ wins: 1, losses: 0, pending: 0 });
+    expect(saban.season2026).toEqual({ wins: 0, losses: 0, pending: 0 });
   });
 });
 
@@ -115,7 +127,7 @@ describe("getPundit", () => {
 describe("callsForPundit", () => {
   it("returns that pundit’s calls newest sourceDate first", () => {
     const list = callsForPundit("finebaum", calls);
-    expect(list.map((c) => c.id)).toEqual(["c1", "c2"]);
+    expect(list.map((c) => c.id)).toEqual(["c4", "c1", "c2"]);
   });
 });
 
@@ -339,7 +351,7 @@ describe("event scan status", () => {
 describe("otherTakes", () => {
   it("returns only unmapped calls for a pundit", () => {
     const rest = otherTakes("finebaum", calls);
-    expect(rest.map((c) => c.id)).toEqual(["c2"]);
+    expect(rest.map((c) => c.id)).toEqual(["c4", "c2"]);
     expect(rest.every((c) => !c.eventSlug)).toBe(true);
   });
 });

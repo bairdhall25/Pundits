@@ -31,6 +31,7 @@ Each profile should answer:
 | Product | Category | Current threat | Partnership potential | Profile |
 |---|---|---:|---:|---|
 | Pundit Ledger / Cap Alpha | Automated sports-prediction ledger | Low commercially; credible technically | Possible if its pipeline and corpus become reliable | [Profile](./pundit-ledger.md) |
+| Takes Ledger / Receipts | Team-specific pundit receipts | Low today; direct product overlap | Unclear; possible local/team corpus partner | [Profile](./takes-ledger.md) |
 
 ## Monitoring discipline
 

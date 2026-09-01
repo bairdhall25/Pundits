@@ -18,7 +18,9 @@ export function seasonFromCalls(
   punditId: string,
   calls: Call[]
 ): { wins: number; losses: number; pending: number } {
-  const hard = calls.filter((c) => c.punditId === punditId && c.kind === "hard");
+  const hard = calls.filter(
+    (c) => c.punditId === punditId && c.kind === "hard" && isMapped(c)
+  );
   return {
     wins: hard.filter((c) => c.status === "hit").length,
     losses: hard.filter((c) => c.status === "miss").length,

@@ -22,12 +22,12 @@ export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
 
   return (
     <span
-      className={`inline-block overflow-hidden ${
+      className={`pundit-avatar inline-block overflow-hidden ${
         hero
-          ? "rounded-full ring-1 ring-[var(--green)]"
+          ? "pundit-avatar-hero rounded-full ring-1 ring-[var(--green)]"
           : "bg-[#1a1a1a] ring-1 ring-inset ring-[#2a2a2a]"
       }`}
-      style={{ width: dim, height: dim }}
+      style={hero ? undefined : { width: dim, height: dim }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       {/* Faces sit in the top third of most source photos; bias the crop up. */}

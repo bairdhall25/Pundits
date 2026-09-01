@@ -31,6 +31,8 @@ Exit criteria: a visitor can move from the original quote and frozen price to th
 
 ## Phase 2 — reduce conceptual load
 
+Active Codex plan: `docs/superpowers/plans/2026-08-31-phase-2-comprehension.md`.
+
 - Keep The Book as a Takes view and remove its duplicate global-navigation state.
 - Replace ambiguous `Live` labels with `Open` or `Pending` where appropriate.
 - Frame the pre-result leaderboard as `Most on record`.
@@ -49,6 +51,8 @@ Exit criteria: a first-time fan can distinguish Picks, Takes, Pundits, pending s
 Exit criteria: routine releases are fast, assets are light, and editorial freshness is measurable.
 
 ## Phase 4 — prove growth before expanding scope
+
+Active Codex plan for the engagement events: `docs/superpowers/plans/2026-08-31-engagement-events.md`.
 
 - Measure qualified event density, not raw call or page count: covered events, two-sided events, picks per featured event, and resolution horizon.
 - Measure matchup-detail opens, take-story clicks, evidence-source clicks, settled-story shares, and return visits.

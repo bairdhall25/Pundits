@@ -90,13 +90,30 @@ assert.doesNotMatch(dublinDetail, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
+assert.match(punditProfile, /Request pick alerts/);
 assert.match(
   punditProfile,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/pundits\/kanell\.png"/
 );
 assert.doesNotMatch(punditProfile, /2026 record 0–0/);
 assert.doesNotMatch(punditProfile, />0–0</);
+assert.doesNotMatch(punditProfile, /No unmapped takes on file/);
+assert.doesNotMatch(punditProfile, /Open at risk/);
+assert.doesNotMatch(punditProfile, />\s*hard\s*</i);
+assert.match(punditProfile, /Tracked picks/);
+assert.match(punditProfile, /Hypothetical record/);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
+assert.ok(
+  punditProfile.indexOf("Tracked picks") < punditProfile.indexOf("Hypothetical record"),
+  "pundit profiles should show receipts before hypothetical performance"
+);
+
+const openOnlyProfile = await readFile(
+  path.join(out, "pundits/herbstreit/index.html"),
+  "utf8"
+);
+assert.match(openOnlyProfile, /No graded picks yet/);
+assert.doesNotMatch(openOnlyProfile, />0–0</);
 
 const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "utf8");
 assert.match(leaderboard, /Ranked by open picks\. The 2026 column is/);

@@ -131,3 +131,13 @@ Do not pursue a partnership until several of these signals are present:
 ## Monthly observations
 
 Add dated monitoring results below. Record material changes and partnership implications; avoid repeating an unchanged baseline.
+
+### 2026-09-01
+
+- An automated leaderboard-snapshot issue was refreshed with 3,315 predictions and 51 pundits, up from the public baseline of 2,373 claims and 46 pundits. Resolved predictions remained 137. This is ingestion-volume evidence, not a substantive product release: the public homepage still showed the old totals and July 30 update date.
+- The repository still had no new main-branch commit after July 30. Recent visible activity was automated snapshot and extraction-watcher output rather than founder-shipped product work.
+- Extraction health worsened: the watcher reported repeated failures through September 1, including five consecutive failures in the prior 24 hours. Previously documented resolver, timeout, and count-consistency issues remained open.
+- The public API and ledger status checks were operational, but the status page still reported partial degradation because Stripe billing returned HTTP 404. Pricing remained published without new public customer, revenue, funding, team, press, partnership, search, or social-traction evidence.
+- Assessment: competitive threat decreased slightly because nominal corpus growth is not reaching a fresh, reliably resolved public product. The partnership case did not strengthen; ingestion may be producing more records, but resolution reliability, reconciliation, and sustained delivery remain below the stated partnership gates.
+
+Sources checked: https://cap-alpha.co/, https://cap-alpha.co/status, https://cap-alpha.co/pricing, https://github.com/cap-alpha/cap-alpha-protocol, https://github.com/cap-alpha/cap-alpha-protocol/issues/941, and https://github.com/cap-alpha/cap-alpha-protocol/issues/1196.
