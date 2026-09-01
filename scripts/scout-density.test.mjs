@@ -3,10 +3,12 @@ import {
   densityStatus,
   formatDispatch,
   huntHint,
+  inFlipWindow,
   isGameEvent,
   isSettledGame,
   loadBringOntoHome,
   mappedHardForEvent,
+  scoreEvent,
   scoreSlate,
 } from "./scout-density-lib.mjs";
 
@@ -122,6 +124,52 @@ describe("huntHint", () => {
 
   it("skips dense", () => {
     expect(huntHint(clemson, ["a"], ["b", "c"], "dense")).toBe("skip");
+  });
+});
+
+describe("inFlipWindow", () => {
+  const sep2 = Date.parse("2026-09-02T12:00:00Z");
+
+  it("opens 72h before kickoff for onHome games", () => {
+    expect(inFlipWindow(clemson, sep2)).toBe(true);
+  });
+
+  it("stays closed more than 72h out", () => {
+    expect(inFlipWindow(pats, sep2)).toBe(false);
+  });
+
+  it("stays closed off home or without a kickoffDate", () => {
+    expect(inFlipWindow(lambeau, Date.parse("2026-09-05T12:00:00Z"))).toBe(
+      false
+    );
+    expect(inFlipWindow({ ...clemson, kickoffDate: undefined }, sep2)).toBe(
+      false
+    );
+  });
+});
+
+describe("scoreEvent flip-check", () => {
+  const denseCalls = [
+    hard("wrighster", "clemson-at-lsu-2026", "yes"),
+    hard("pate", "clemson-at-lsu-2026", "no"),
+    hard("finebaum", "clemson-at-lsu-2026", "no"),
+    hard("staples", "clemson-at-lsu-2026", "no"),
+  ];
+
+  it("dense onHome inside 72h hunts a flip-check, not a skip", () => {
+    const row = scoreEvent(clemson, denseCalls, {
+      now: Date.parse("2026-09-03T12:00:00Z"),
+    });
+    expect(row.status).toBe("dense");
+    expect(row.hunt).toBe("flip-check carded pundits only (kickoff ≤72h)");
+  });
+
+  it("dense outside 72h still skips", () => {
+    const row = scoreEvent(clemson, denseCalls, {
+      now: Date.parse("2026-08-30T12:00:00Z"),
+    });
+    expect(row.status).toBe("dense");
+    expect(row.hunt).toBe("skip");
   });
 });
 

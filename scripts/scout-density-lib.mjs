@@ -42,8 +42,26 @@ export function densityStatus(yes, no, { offHome = false } = {}) {
   return "dense";
 }
 
-export function huntHint(event, yes, no, status) {
-  if (status === "dense") return "skip";
+const FLIP_WINDOW_MS = 72 * 60 * 60 * 1000;
+
+/**
+ * Dense onHome games get one flip-check pass over already-carded pundits in
+ * the final 72h before kickoff (docs/capture-policy.md rule 3). A quiet
+ * reversal on the marquee card is an integrity miss, not a density miss.
+ * kickoffDate is date-only, so the window opens from its UTC midnight.
+ */
+export function inFlipWindow(event, now = Date.now()) {
+  if (!event?.onHome || !event.kickoffDate) return false;
+  const kick = Date.parse(event.kickoffDate);
+  if (Number.isNaN(kick)) return false;
+  return kick - now <= FLIP_WINDOW_MS;
+}
+
+export function huntHint(event, yes, no, status, { flipCheck = false } = {}) {
+  if (status === "dense")
+    return flipCheck
+      ? "flip-check carded pundits only (kickoff ≤72h)"
+      : "skip";
   if (status === "off-home") return "one roster SU to propose onHome";
   if (status === "thin") return "keep hunting (stack OK)";
   const away = event.awayTeam ?? "away";
@@ -55,20 +73,30 @@ export function huntHint(event, yes, no, status) {
   return first;
 }
 
-export function scoreEvent(event, calls, { offHome = false } = {}) {
+export function scoreEvent(
+  event,
+  calls,
+  { offHome = false, now = Date.now() } = {}
+) {
   const { yes, no } = mappedHardForEvent(calls, event.slug);
   const status = densityStatus(yes, no, { offHome });
+  const flipCheck = status === "dense" && inFlipWindow(event, now);
   return {
     eventSlug: event.slug,
     sport: event.sport,
     yes,
     no,
     status,
-    hunt: huntHint(event, yes, no, status),
+    hunt: huntHint(event, yes, no, status, { flipCheck }),
   };
 }
 
-export function scoreSlate({ events, calls, bringOntoHome = [] }) {
+export function scoreSlate({
+  events,
+  calls,
+  bringOntoHome = [],
+  now = Date.now(),
+}) {
   const offHomeSet = new Set(bringOntoHome);
   const seen = new Set();
   const rows = [];
@@ -79,7 +107,7 @@ export function scoreSlate({ events, calls, bringOntoHome = [] }) {
     if (!event.onHome && !listedOffHome) continue;
     if (seen.has(event.slug)) continue;
     seen.add(event.slug);
-    rows.push(scoreEvent(event, calls, { offHome: listedOffHome }));
+    rows.push(scoreEvent(event, calls, { offHome: listedOffHome, now }));
   }
   rows.sort(
     (a, b) =>
