@@ -51,6 +51,7 @@ export function BookLedger({
   const shown = useMemo(() => filterBook(calls, pundits, f), [calls, pundits, f]);
   const active =
     f.q.trim() !== "" || f.sport !== "all" || f.kind !== "all" || f.mapping !== "all";
+  const secondaryActive = f.sport !== "all" || f.kind !== "all" || f.mapping !== "all";
 
   return (
     <>
@@ -64,73 +65,82 @@ export function BookLedger({
             placeholder="Quote, pundit, source"
           />
         </label>
-        <Select
-          label="Sport"
-          value={f.sport}
-          onChange={(v) => {
-            trackEvent(
-              "filter_use",
-              filterUseParams({ surface: "book", filterName: "sport", filterValue: v })
-            );
-            setF({ ...f, sport: v as BookFilter["sport"] });
-          }}
-          options={[
-            { value: "all", label: "All" },
-            { value: "ncaaf", label: "NCAAF" },
-            { value: "nfl", label: "NFL" },
-          ]}
-        />
-        <Select
-          label="Kind"
-          value={f.kind}
-          onChange={(v) => {
-            trackEvent(
-              "filter_use",
-              filterUseParams({ surface: "book", filterName: "kind", filterValue: v })
-            );
-            setF({ ...f, kind: v as BookFilter["kind"] });
-          }}
-          options={[
-            { value: "all", label: "All" },
-            { value: "hard", label: "Hard" },
-            { value: "soft", label: "Soft" },
-          ]}
-        />
-        <Select
-          label="Mapping"
-          value={f.mapping}
-          onChange={(v) => {
-            trackEvent(
-              "filter_use",
-              filterUseParams({
-                surface: "book",
-                filterName: "mapping",
-                filterValue: v,
-              })
-            );
-            setF({ ...f, mapping: v as BookFilter["mapping"] });
-          }}
-          options={[
-            { value: "all", label: "All" },
-            { value: "mapped", label: "Mapped" },
-            { value: "unmapped", label: "Unmapped" },
-          ]}
-        />
-        {active ? (
-          <button
-            type="button"
-            className="lb-toggle"
-            onClick={() => {
-              trackEvent(
-                "filter_use",
-                filterUseParams({ surface: "book", filterName: "reset", filterValue: "all" })
-              );
-              setF(emptyBookFilter);
-            }}
-          >
-            Reset
-          </button>
-        ) : null}
+        <details className="feed-more">
+          <summary className={secondaryActive ? "on" : undefined}>Filter &amp; sort</summary>
+          <div className="feed-more-panel book-more-panel">
+            <Select
+              label="Sport"
+              value={f.sport}
+              onChange={(v) => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({ surface: "book", filterName: "sport", filterValue: v })
+                );
+                setF({ ...f, sport: v as BookFilter["sport"] });
+              }}
+              options={[
+                { value: "all", label: "All" },
+                { value: "ncaaf", label: "NCAAF" },
+                { value: "nfl", label: "NFL" },
+              ]}
+            />
+            <Select
+              label="Kind"
+              value={f.kind}
+              onChange={(v) => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({ surface: "book", filterName: "kind", filterValue: v })
+                );
+                setF({ ...f, kind: v as BookFilter["kind"] });
+              }}
+              options={[
+                { value: "all", label: "All" },
+                { value: "hard", label: "Hard" },
+                { value: "soft", label: "Soft" },
+              ]}
+            />
+            <Select
+              label="Mapping"
+              value={f.mapping}
+              onChange={(v) => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({
+                    surface: "book",
+                    filterName: "mapping",
+                    filterValue: v,
+                  })
+                );
+                setF({ ...f, mapping: v as BookFilter["mapping"] });
+              }}
+              options={[
+                { value: "all", label: "All" },
+                { value: "mapped", label: "Mapped" },
+                { value: "unmapped", label: "Unmapped" },
+              ]}
+            />
+            {active ? (
+              <button
+                type="button"
+                className="lb-toggle"
+                onClick={() => {
+                  trackEvent(
+                    "filter_use",
+                    filterUseParams({
+                      surface: "book",
+                      filterName: "reset",
+                      filterValue: "all",
+                    })
+                  );
+                  setF(emptyBookFilter);
+                }}
+              >
+                Reset
+              </button>
+            ) : null}
+          </div>
+        </details>
       </div>
       <p className="when">{shown.length} take{shown.length === 1 ? "" : "s"}</p>
       {shown.length === 0 ? (
