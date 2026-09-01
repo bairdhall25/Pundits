@@ -21,7 +21,7 @@ Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave
 
 ## Hunt (X only)
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`):
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`). Hunt NCAAF and NFL rows in the same pass:
 
 1. Roster handles below (and add-list handles in `docs/add-list.md`). Query **both** teams, last **48 hours**, this season only.
 2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.

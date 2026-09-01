@@ -9,7 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt.
-- `docs/pick-shows.md` — NCAAF and NFL show lists. Only open sections for sports that appear on Dispatch.
+- `docs/pick-shows.md` — NCAAF and NFL show lists. Open factories for **every** sport on Dispatch in the same pass. A weekday is not an NFL-off or CFB-off day.
 - `docs/add-list.md` — Candidates only.
 - `docs/board.md` — do-not-touch.
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
@@ -17,7 +17,7 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 
 ## Hunt
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NCAAF and NFL in the same pass):
 
 1. Read `## Factory feeds` in today’s run file (or run `node scripts/scout-feeds.mjs`). Skip a factory whose status is `waiting`, `recap`, `short`, `wrong-year`, `off-topic`, or `error`. Open `today` rows. Jump locks / moneyline / “I’ll take.” Captions count.
 2. Then idle roster voices if their pick window in that file is open.

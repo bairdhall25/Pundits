@@ -2,7 +2,7 @@
 
 Status: Operational
 
-Last updated: 2026-08-31
+Last updated: 2026-09-01
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
 
@@ -30,7 +30,7 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 
 ## Immediate order of operations
 
-1. Capture empty-side SU on Clemson YES, then NFL empty YES, then one Lambeau SU. Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
+1. Every Scout pass hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, and Wisconsin YES (Lambeau stays off-home until a roster SU). Clemson is dense — do not restage. Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
 2. Grade Clemson–LSU after the final, then recap within 24 hours.
 3. Grade NFL Week 1 as those games settle.
 4. Instrument the minimum engagement events in `measurement.md`.

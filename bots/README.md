@@ -66,7 +66,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Run `node scripts/scout-density.mjs` (or score the same way) and `node scripts/scout-feeds.mjs`. Write ## Dispatch and ## Factory feeds into docs/runs/YYYY-MM-DD.md from the template. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
+Run `node scripts/scout-density.mjs` (or score the same way) and `node scripts/scout-feeds.mjs`. Write ## Dispatch and ## Factory feeds into docs/runs/YYYY-MM-DD.md from the template. Keep NCAAF and NFL rows on the same hit list. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
 ```
 
 **Shows Scout:**
@@ -79,7 +79,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. Read ## Factory feeds first — skip waiting/recap/short/wrong-year/off-topic/error; open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense. NCAAF and NFL in the same pass — do not park a sport. Read ## Factory feeds first — skip waiting/recap/short/wrong-year/off-topic/error; open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
 ```
 
 **X Scout:**
@@ -91,7 +91,7 @@ At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. NCAAF and NFL in the same pass — do not park a sport. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
 ```
 
 **News Scout:**
@@ -104,7 +104,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-news.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/news-beats.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. NCAAF and NFL in the same pass — do not park a sport. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Chat is not the handoff.
 ```
 
 **Promote**
@@ -174,7 +174,7 @@ Account: @Pundits_
 Score the last 7 ET days of @Pundits_ against cards.json and the playbook. Write docs/runs/YYYY-MM-DD-social.md. Append one row to docs/social/scoreboard.md. Propose exactly one playbook change in the run file. Do not edit voice.md, schedule.md, reply-guide.md, post-patterns.md, or data/. Chat is not the mailbox.
 ```
 
-Cadence (Week 1): Coordinator daily (Dispatch; settled games are not hunt targets). Shows NCAAF Thu–Sat (+ GameDay Baton Rouge Sat 9/5). Shows NFL Tue–Sat of that NFL week (starts Tue 9/8). Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
+Cadence (Week 1): Coordinator daily (Dispatch; settled games are not hunt targets). **Every Shows / X / News pass hunts NCAAF and NFL Dispatch rows in the same run** — do not park a sport for a calendar window. Factory windows still apply (GameDay / Big Noon Saturday). Radio is a bounded fallback inside Shows jobs, never an additional routine. X twice daily. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
 
 ## House rules
 
@@ -198,5 +198,6 @@ Owned here so the files do not fork them.
 11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
 12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
 13. **Reviewer writes only the social mailbox.** Allowed: `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. Forbidden: `data/`, playbook files under `docs/social/` except the scoreboard, posts, replies, follows, and grades. A playbook change is a proposal in the run file until the operator commits it.
+14. **Every Scout pass covers NCAAF and NFL.** Coordinator writes the full Dispatch. Shows, X, and News hunt every under-dense row in that table in the same run. Do not park a sport because the calendar said “CFB day” or “NFL week.” Skip `dense` events and settled games, not a sport. Factory windows (GameDay Saturday, etc.) still limit which episode to open.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
