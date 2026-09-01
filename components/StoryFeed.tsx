@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
 import { TrackLink } from "@/components/TrackLink";
@@ -66,6 +65,10 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
                 path: card.href,
                 image: `/og/takes/${card.eventSlug}--${card.punditId}.png`,
                 story: `/og/stories/takes/${card.eventSlug}--${card.punditId}.png`,
+                artifactType: "take",
+                eventSlug: card.eventSlug,
+                punditId: card.punditId,
+                status: card.status,
               })}
             />
           </div>

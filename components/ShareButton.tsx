@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { shareIntentParams, trackEvent } from "@/lib/analytics";
 import type { SharePayload } from "@/lib/share-link";
 
 function fileName(path: string): string {
@@ -29,6 +30,19 @@ export function ShareButton({
   const root = useRef<HTMLDivElement>(null);
   const menuId = useId();
 
+  function trackShareIntent() {
+    if (!share.eventSlug) return;
+    trackEvent(
+      "share_intent",
+      shareIntentParams({
+        artifactType: share.artifactType ?? "take",
+        eventSlug: share.eventSlug,
+        punditId: share.punditId,
+        status: share.status,
+      })
+    );
+  }
+
   useEffect(() => {
     if (!open) return;
     function onDoc(event: MouseEvent) {
@@ -47,7 +61,8 @@ export function ShareButton({
     };
   }, [open]);
 
-  async function copyLink() {
+  async function copyLink(track = true) {
+    if (track) trackShareIntent();
     try {
       await navigator.clipboard.writeText(share.url);
       setCopied(true);
@@ -58,6 +73,7 @@ export function ShareButton({
   }
 
   async function nativeShare() {
+    trackShareIntent();
     if (typeof navigator.share === "function") {
       try {
         await navigator.share({ title: share.title, text: share.text, url: share.url });
@@ -67,7 +83,7 @@ export function ShareButton({
         if ((err as { name?: string }).name === "AbortError") return;
       }
     }
-    await copyLink();
+    await copyLink(false);
   }
 
   return (
@@ -93,13 +109,33 @@ export function ShareButton({
           <button type="button" role="menuitem" onClick={() => void copyLink()}>
             {copied ? "Copied" : "Copy link"}
           </button>
-          <a role="menuitem" href={share.tweetHref} target="_blank" rel="noreferrer">
+          <a
+            role="menuitem"
+            href={share.tweetHref}
+            target="_blank"
+            rel="noreferrer"
+            onClick={trackShareIntent}
+          >
             Post to X
           </a>
-          <button type="button" role="menuitem" onClick={() => save(share.image)}>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => {
+              trackShareIntent();
+              save(share.image);
+            }}
+          >
             Save image
           </button>
-          <button type="button" role="menuitem" onClick={() => save(share.story)}>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => {
+              trackShareIntent();
+              save(share.story);
+            }}
+          >
             Save story
           </button>
         </div>

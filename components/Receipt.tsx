@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { TrackAnchor } from "@/components/TrackLink";
+import { sourceOpenParams } from "@/lib/analytics";
 import { finalScoreLine } from "@/lib/data";
 import {
   formatAsOf,
@@ -44,9 +46,17 @@ export function Receipt({ take, calls }: { take: MappedTake; calls: Call[] }) {
       </Link>
       {call.sourceUrl ? (
         <div className="src-meta">
-          <a href={call.sourceUrl} target="_blank" rel="noreferrer">
+          <TrackAnchor
+            href={call.sourceUrl}
+            event="source_open"
+            params={sourceOpenParams({
+              eventSlug: event.slug,
+              punditId: pundit.id,
+              sourceType: "evidence",
+            })}
+          >
             Open source →
-          </a>
+          </TrackAnchor>
         </div>
       ) : null}
       <div className="receipt-tape">

@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
-import { TrackLink } from "@/components/TrackLink";
-import { eventDetailOpenParams, type EngagementSurface } from "@/lib/analytics";
+import { TrackAnchor, TrackLink } from "@/components/TrackLink";
+import {
+  eventDetailOpenParams,
+  sourceOpenParams,
+  type EngagementSurface,
+} from "@/lib/analytics";
 import {
   eventHasFight,
   eventScanStatus,
@@ -31,7 +35,7 @@ function FaceRow({
   call: Call;
   pundit: Pundit;
   detail: boolean;
-  eventSlug?: string;
+  eventSlug: string;
 }) {
   return (
     <div className="person-block">
@@ -54,9 +58,17 @@ function FaceRow({
           {call.sourceUrl ? (
             <>
               {" · "}
-              <a href={call.sourceUrl} target="_blank" rel="noreferrer">
+              <TrackAnchor
+                href={call.sourceUrl}
+                event="source_open"
+                params={sourceOpenParams({
+                  eventSlug,
+                  punditId: pundit.id,
+                  sourceType: "evidence",
+                })}
+              >
                 Open source →
-              </a>
+              </TrackAnchor>
             </>
           ) : null}
           {eventSlug ? (
@@ -86,7 +98,7 @@ function SideCol({
   teams: Team[];
   detail: boolean;
   game: boolean;
-  eventSlug?: string;
+  eventSlug: string;
   settled?: boolean;
   eventHref?: string;
 }) {

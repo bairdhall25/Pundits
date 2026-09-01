@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { eventDetailOpenParams } from "@/lib/analytics";
 import {
   eventHasTakes,
+  eventScanStatus,
   getEvent,
   loadCalls,
   loadEvents,
@@ -106,6 +107,9 @@ export default async function PickPage({
             path: `/picks/${event.slug}`,
             image: ogEventPath(event.slug),
             story: ogStoryEventPath(event.slug),
+            artifactType: "event",
+            eventSlug: event.slug,
+            status: eventScanStatus(event, calls),
           })}
         />
       </div>

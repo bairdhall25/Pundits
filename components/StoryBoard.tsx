@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { StoryFeed } from "@/components/StoryFeed";
+import { filterUseParams, trackEvent } from "@/lib/analytics";
 import { storyHaystack, type StoryCard, type StoryKind } from "@/lib/story-card";
 import type { Sport } from "@/lib/types";
 
@@ -52,7 +53,17 @@ export function StoryBoard({ cards }: { cards: StoryCard[] }) {
               role="tab"
               aria-selected={sport === value}
               className={sport === value ? "on" : undefined}
-              onClick={() => setSport(value)}
+              onClick={() => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({
+                    surface: "stories",
+                    filterName: "sport",
+                    filterValue: value,
+                  })
+                );
+                setSport(value);
+              }}
             >
               {label}
             </button>
@@ -72,7 +83,17 @@ export function StoryBoard({ cards }: { cards: StoryCard[] }) {
               role="tab"
               aria-selected={kind === value}
               className={kind === value ? "on" : undefined}
-              onClick={() => setKind(value)}
+              onClick={() => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({
+                    surface: "stories",
+                    filterName: "kind",
+                    filterValue: value,
+                  })
+                );
+                setKind(value);
+              }}
             >
               {label}
             </button>
@@ -91,7 +112,17 @@ export function StoryBoard({ cards }: { cards: StoryCard[] }) {
               role="tab"
               aria-selected={group === value}
               className={group === value ? "on" : undefined}
-              onClick={() => setGroup(value)}
+              onClick={() => {
+                trackEvent(
+                  "filter_use",
+                  filterUseParams({
+                    surface: "stories",
+                    filterName: "group",
+                    filterValue: value,
+                  })
+                );
+                setGroup(value);
+              }}
             >
               {label}
             </button>

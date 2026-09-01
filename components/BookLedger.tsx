@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CallCard } from "@/components/CallCard";
 import { PunditAvatar } from "@/components/PunditAvatar";
+import { filterUseParams, trackEvent } from "@/lib/analytics";
 import { emptyBookFilter, filterBook } from "@/lib/book-filter";
 import type { BookFilter } from "@/lib/book-filter";
 import type { Call, Event, Pundit } from "@/lib/types";
@@ -66,7 +67,13 @@ export function BookLedger({
         <Select
           label="Sport"
           value={f.sport}
-          onChange={(v) => setF({ ...f, sport: v as BookFilter["sport"] })}
+          onChange={(v) => {
+            trackEvent(
+              "filter_use",
+              filterUseParams({ surface: "book", filterName: "sport", filterValue: v })
+            );
+            setF({ ...f, sport: v as BookFilter["sport"] });
+          }}
           options={[
             { value: "all", label: "All" },
             { value: "ncaaf", label: "NCAAF" },
@@ -76,7 +83,13 @@ export function BookLedger({
         <Select
           label="Kind"
           value={f.kind}
-          onChange={(v) => setF({ ...f, kind: v as BookFilter["kind"] })}
+          onChange={(v) => {
+            trackEvent(
+              "filter_use",
+              filterUseParams({ surface: "book", filterName: "kind", filterValue: v })
+            );
+            setF({ ...f, kind: v as BookFilter["kind"] });
+          }}
           options={[
             { value: "all", label: "All" },
             { value: "hard", label: "Hard" },
@@ -86,7 +99,17 @@ export function BookLedger({
         <Select
           label="Mapping"
           value={f.mapping}
-          onChange={(v) => setF({ ...f, mapping: v as BookFilter["mapping"] })}
+          onChange={(v) => {
+            trackEvent(
+              "filter_use",
+              filterUseParams({
+                surface: "book",
+                filterName: "mapping",
+                filterValue: v,
+              })
+            );
+            setF({ ...f, mapping: v as BookFilter["mapping"] });
+          }}
           options={[
             { value: "all", label: "All" },
             { value: "mapped", label: "Mapped" },
@@ -94,7 +117,17 @@ export function BookLedger({
           ]}
         />
         {active ? (
-          <button type="button" className="lb-toggle" onClick={() => setF(emptyBookFilter)}>
+          <button
+            type="button"
+            className="lb-toggle"
+            onClick={() => {
+              trackEvent(
+                "filter_use",
+                filterUseParams({ surface: "book", filterName: "reset", filterValue: "all" })
+              );
+              setF(emptyBookFilter);
+            }}
+          >
             Reset
           </button>
         ) : null}

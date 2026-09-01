@@ -103,6 +103,7 @@ export default async function PunditPage({
                 path: `/pundits/${p.id}`,
                 image: ogPunditPath(p.id),
                 story: ogStoryPunditPath(p.id),
+                artifactType: "pundit",
               })}
             />
           </div>

@@ -126,6 +126,10 @@ export default async function TakePage({
             path: takePath(event.slug, take.pundit.id),
             image: ogTakePath(event.slug, take.pundit.id),
             story: ogStoryTakePath(event.slug, take.pundit.id),
+            artifactType: "take",
+            eventSlug: event.slug,
+            punditId: take.pundit.id,
+            status: take.call.status,
           })}
         />
       </div>

@@ -20,10 +20,11 @@ export default function PrivacyPage() {
           {`Pundits is a project of ${LEGAL_NAME}. This page covers how the site handles analytics and the early-access email list.`}
         </p>
         <p>
-          We use Google Analytics to see which pages people open. That tool
-          collects typical usage data (pages, device, approximate location).
-          Our own analytics events for the email form never include your
-          address or other personal information.
+          We use Google Analytics to see which pages people open and which
+          product events they trigger (event opens, take opens, source clicks,
+          shares, and filters). Those events use object IDs, never email
+          addresses or quote text. Our email-form events also never include
+          your address.
         </p>
         {config.active ? (
           <>

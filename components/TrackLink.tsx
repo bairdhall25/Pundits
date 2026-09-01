@@ -30,3 +30,29 @@ export function TrackLink({
     </Link>
   );
 }
+
+export function TrackAnchor({
+  href,
+  className,
+  event,
+  params,
+  children,
+}: {
+  href: string;
+  className?: string;
+  event: string;
+  params: Record<string, string>;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      className={className}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() => trackEvent(event, params)}
+    >
+      {children}
+    </a>
+  );
+}

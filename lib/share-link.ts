@@ -7,6 +7,10 @@ export type SharePayload = {
   image: string;
   story: string;
   tweetHref: string;
+  artifactType?: "event" | "take" | "pundit";
+  eventSlug?: string;
+  punditId?: string;
+  status?: string;
 };
 
 export function tweetIntent(text: string, url: string): string {
@@ -20,6 +24,10 @@ export function sharePayload(input: {
   path: string;
   image: string;
   story: string;
+  artifactType?: "event" | "take" | "pundit";
+  eventSlug?: string;
+  punditId?: string;
+  status?: string;
 }): SharePayload {
   const url = canonicalUrl(input.path);
   return {
@@ -29,5 +37,9 @@ export function sharePayload(input: {
     image: input.image,
     story: input.story,
     tweetHref: tweetIntent(input.text, url),
+    artifactType: input.artifactType,
+    eventSlug: input.eventSlug,
+    punditId: input.punditId,
+    status: input.status,
   };
 }
