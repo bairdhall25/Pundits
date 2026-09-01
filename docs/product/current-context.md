@@ -39,6 +39,12 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 7. Select a retention experiment from observed behavior.
 8. Test monetization only after repeat value is visible.
 
+## Capture vs display (working, 2026-09-01)
+
+Homepage (`onHome`) is a curated first screen, not the hunt universe. `/ncaaf/` and `/nfl/` already show ledger games with picks, plus a waiting list for games with none. Scout Dispatch is homepage games plus `docs/bring-onto-home.json` (today: Wisconsin–ND). A pick for a game not in `events.json` cannot be mapped.
+
+Do not add extra homepage games through 2026-09-05. After this week, reopen as: operator names a small watchlist; Scout hunts it (overflow is allowed if a show already opened names another game); Promote keeps new events off-home until the card has at least one verified SU, preferably both sides. Skip dense events, not a sport.
+
 ## Guardrails
 
 - A public prediction is not automatically a mapped pick; preserve the qualification and sourcing standard.
@@ -61,6 +67,7 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - Which generated artifacts earn indexing, engagement, or sharing rather than merely existing?
 - What correction or dispute states become necessary after real edge cases occur?
 - What repeat behavior is strong enough to support a monetization experiment?
+- Should Scout capture more games than the homepage features, and when does a watchlist game earn `onHome`?
 
 ## Authority and next reads
 

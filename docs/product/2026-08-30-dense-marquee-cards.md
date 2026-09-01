@@ -32,6 +32,15 @@ The roster is already large (~49). Most of those voices have zero mapped **games
 - Recap after Grader: Week 0 recap is `docs/runs/2026-08-31-recap.md`. Next recap after Clemson grades. Recap does not write JSON.
 - Reopen this file after Week 1 factories actually tape. If Scout still returns empty-side on Clemson YES and the NFL dogs, the bottleneck is Scout, not the calendar.
 
+## After this week (not yet in force)
+
+Homepage density and Scout hunt scope are different jobs. Do not treat “not on `/`” as “Scout must never see it,” and do not put every game on `/`.
+
+1. Operator names a small watchlist in `docs/bring-onto-home.json` (current holes plus 2–4 games we actually care about).
+2. Scout hunts that list. Overflow is allowed: if a hunter is already in a show for a Dispatch hole and the speaker names another listed-or-listable game, stage it. Do not vacuum the whole FBS/NFL board.
+3. Promote writes or keeps the event **off-home**, with a Kalshi freeze if one exists. A homepage card also needs cents.
+4. Flip `onHome` only when it looks like a card: at least one verified SU, preferably both sides.
+
 ## Approaches parked until then
 
 1. **Capture-only** (likely still right): no product change; hunt empty sides; tiny opinionated roster adds.
