@@ -68,6 +68,18 @@ const calls: Call[] = [
     paysOn: "2026 CFP",
     status: "hit",
   },
+  {
+    id: "c4",
+    punditId: "finebaum",
+    claim: "11 wins is the floor for the Irish.",
+    source: "Always College Football",
+    sourceUrl: null,
+    sourceDate: "2026-08-13",
+    kind: "hard",
+    subject: "Notre Dame",
+    paysOn: "2026 Notre Dame win total",
+    status: "pending",
+  },
 ];
 
 describe("seasonFromCalls", () => {
@@ -80,10 +92,33 @@ describe("seasonFromCalls", () => {
   });
   it("counts a hard hit as a win", () => {
     expect(seasonFromCalls("saban", calls)).toEqual({
-      wins: 1,
+      wins: 0,
       losses: 0,
       pending: 0,
     });
+  });
+  it("counts only mapped hard hit/miss/pending toward the 2026 record", () => {
+    expect(seasonFromCalls("finebaum", calls)).toEqual({
+      wins: 0,
+      losses: 0,
+      pending: 1, // c1 mapped; c4 unmapped hard pending is ignored
+    });
+    expect(seasonFromCalls("saban", calls)).toEqual({
+      wins: 0, // c3 is an unmapped hard hit — not a public record
+      losses: 0,
+      pending: 0,
+    });
+  });
+  it("does not treat unmapped hard takes as open picks", () => {
+    expect(seasonFromCalls("finebaum", calls).pending).toBe(
+      calls.filter(
+        (c) =>
+          c.punditId === "finebaum" &&
+          c.kind === "hard" &&
+          c.status === "pending" &&
+          Boolean(c.eventSlug && c.side)
+      ).length
+    );
   });
 });
 
@@ -95,10 +130,10 @@ describe("getActivityBoard", () => {
     expect(board[0].mappedPending).toBe(1);
     expect(board[0].totalCalls).toBeGreaterThan(0);
   });
-  it("exposes season2026 derived from hard calls only", () => {
+  it("exposes season2026 derived from mapped hard calls only", () => {
     const board = getActivityBoard(pundits, calls);
     const saban = board.find((p) => p.id === "saban")!;
-    expect(saban.season2026).toEqual({ wins: 1, losses: 0, pending: 0 });
+    expect(saban.season2026).toEqual({ wins: 0, losses: 0, pending: 0 });
   });
 });
 
@@ -115,7 +150,7 @@ describe("getPundit", () => {
 describe("callsForPundit", () => {
   it("returns that pundit’s calls newest sourceDate first", () => {
     const list = callsForPundit("finebaum", calls);
-    expect(list.map((c) => c.id)).toEqual(["c1", "c2"]);
+    expect(list.map((c) => c.id)).toEqual(["c1", "c2", "c4"]);
   });
 });
 
@@ -324,7 +359,7 @@ describe("event scan status", () => {
 describe("otherTakes", () => {
   it("returns only unmapped calls for a pundit", () => {
     const rest = otherTakes("finebaum", calls);
-    expect(rest.map((c) => c.id)).toEqual(["c2"]);
+    expect(rest.map((c) => c.id)).toEqual(["c2", "c4"]);
     expect(rest.every((c) => !c.eventSlug)).toBe(true);
   });
 });

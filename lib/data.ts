@@ -14,15 +14,20 @@ import type {
 import { publicSideLabel } from "./public-side";
 export { hasGradedRecords } from "./records";
 
+export function isMapped(call: Call): boolean {
+  return Boolean(call.eventSlug && call.side);
+}
+
 export function seasonFromCalls(
   punditId: string,
   calls: Call[]
 ): { wins: number; losses: number; pending: number } {
   const hard = calls.filter((c) => c.punditId === punditId && c.kind === "hard");
+  const mappedHard = hard.filter(isMapped);
   return {
-    wins: hard.filter((c) => c.status === "hit").length,
-    losses: hard.filter((c) => c.status === "miss").length,
-    pending: hard.filter((c) => c.status === "pending").length,
+    wins: mappedHard.filter((c) => c.status === "hit").length,
+    losses: mappedHard.filter((c) => c.status === "miss").length,
+    pending: mappedHard.filter((c) => c.status === "pending").length,
   };
 }
 
@@ -90,10 +95,6 @@ export function loadTeams(): Team[] {
 export function getTeam(id: string | undefined, teams: Team[] = loadTeams()): Team | null {
   if (!id) return null;
   return teams.find((t) => t.id === id) ?? null;
-}
-
-export function isMapped(call: Call): boolean {
-  return Boolean(call.eventSlug && call.side);
 }
 
 export function mappedCalls(calls: Call[]): Call[] {
