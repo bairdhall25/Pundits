@@ -18,6 +18,8 @@ Already booked. Restaging is a miss.
 - `walker` is on the roster. Hunt BFW Thursday / Saturday locks and Barstool CFB Show. Do not invent a SU.
 - `wisconsin-vs-nd-2026` has roster ND SUs (`wasserman`, `staples`) and stays **off home** while Wisconsin YES is empty (hold extra home games through 2026-09-05)
 - Staples `clemson-at-lsu-2026` no (promoted 2026-08-31). Do not restage.
+- Wrighster `clemson-at-lsu-2026` yes (promoted 2026-09-01). Do not restage.
+- McElroy `clemson-at-lsu-2026` no and McElroy `wisconsin-vs-nd-2026` no (promoted 2026-09-01). Do not restage.
 - Wasserman `wisconsin-vs-nd-2026` no and Staples `wisconsin-vs-nd-2026` no (promoted 2026-08-31). Do not restage.
 - McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals / ATS +4.5, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
 

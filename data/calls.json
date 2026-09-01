@@ -873,5 +873,20 @@
     "status": "pending",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
+  },
+  {
+    "id": "wrighster-clemson-lsu-20260901",
+    "punditId": "wrighster",
+    "claim": "I'm taking Clemson in the upset.",
+    "reasoning": "Wrighster notes both teams finished 7-6 last season. He contrasts LSU's 43-transfer, $50 million roster with Clemson's answer of a quarterback who waited three years, and still takes Clemson as the upset.",
+    "source": "X (@georgewrighster)",
+    "sourceUrl": "https://x.com/georgewrighster/status/2094593200447177117",
+    "sourceDate": "2026-09-01",
+    "kind": "hard",
+    "subject": "Clemson",
+    "paysOn": "Clemson at LSU (Week 1)",
+    "status": "pending",
+    "eventSlug": "clemson-at-lsu-2026",
+    "side": "yes"
   }
 ]
