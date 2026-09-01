@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   seasonFromCalls,
   getActivityBoard,
+  sortActivityBoard,
   getPundit,
   callsForPundit,
   sidesForCard,
@@ -16,6 +17,7 @@ import {
   latestCalls,
   loadCalls,
   loadEvents,
+  loadPundits,
   formatAsOf,
   otherTakes,
   hasGradedRecords,
@@ -68,6 +70,18 @@ const calls: Call[] = [
     paysOn: "2026 CFP",
     status: "hit",
   },
+  {
+    id: "c4",
+    punditId: "finebaum",
+    claim: "11 wins is the floor for the Irish.",
+    source: "Always College Football",
+    sourceUrl: null,
+    sourceDate: "2026-08-13",
+    kind: "hard",
+    subject: "Notre Dame",
+    paysOn: "2026 Notre Dame win total",
+    status: "pending",
+  },
 ];
 
 describe("seasonFromCalls", () => {
@@ -80,25 +94,90 @@ describe("seasonFromCalls", () => {
   });
   it("counts a hard hit as a win", () => {
     expect(seasonFromCalls("saban", calls)).toEqual({
-      wins: 1,
+      wins: 0,
       losses: 0,
       pending: 0,
     });
   });
+  it("counts only mapped hard hit/miss/pending toward the 2026 record", () => {
+    expect(seasonFromCalls("finebaum", calls)).toEqual({
+      wins: 0,
+      losses: 0,
+      pending: 1, // c1 mapped; c4 unmapped hard pending is ignored
+    });
+    expect(seasonFromCalls("saban", calls)).toEqual({
+      wins: 0, // c3 is an unmapped hard hit — not a public record
+      losses: 0,
+      pending: 0,
+    });
+  });
+  it("does not treat unmapped hard takes as open picks", () => {
+    expect(seasonFromCalls("finebaum", calls).pending).toBe(
+      calls.filter(
+        (c) =>
+          c.punditId === "finebaum" &&
+          c.kind === "hard" &&
+          c.status === "pending" &&
+          Boolean(c.eventSlug && c.side)
+      ).length
+    );
+  });
 });
 
 describe("getActivityBoard", () => {
-  it("ranks by mapped pending picks, then total calls, then name", () => {
+  it("defaults to open volume while nobody has a mapped graded pick", () => {
     // fixture calls: finebaum has 1 mapped pending hard call, saban has 0 mapped
     const board = getActivityBoard(pundits, calls);
     expect(board.map((p) => p.id)).toEqual(["finebaum", "saban"]);
     expect(board[0].mappedPending).toBe(1);
     expect(board[0].totalCalls).toBeGreaterThan(0);
   });
-  it("exposes season2026 derived from hard calls only", () => {
+  it("defaults to results-first once anyone has a mapped graded pick", () => {
+    const mappedHit: Call = {
+      ...calls.find((c) => c.id === "c3")!,
+      id: "c3-mapped",
+      eventSlug: "georgia-cfp",
+      side: "yes",
+    };
+    const board = getActivityBoard(pundits, [...calls, mappedHit]);
+    expect(board.map((p) => p.id)).toEqual(["saban", "finebaum"]);
+  });
+  it("exposes season2026 derived from mapped hard calls only", () => {
     const board = getActivityBoard(pundits, calls);
     const saban = board.find((p) => p.id === "saban")!;
-    expect(saban.season2026).toEqual({ wins: 1, losses: 0, pending: 0 });
+    expect(saban.season2026).toEqual({ wins: 0, losses: 0, pending: 0 });
+  });
+});
+
+describe("sortActivityBoard", () => {
+  it("ranks by mapped pending when sort is open", () => {
+    const board = getActivityBoard(pundits, calls);
+    expect(sortActivityBoard(board, "open").map((p) => p.id)).toEqual([
+      "finebaum",
+      "saban",
+    ]);
+  });
+
+  it("puts sample size before hits when sort is results", () => {
+    const mappedHit: Call = {
+      ...calls.find((c) => c.id === "c3")!,
+      id: "c3-mapped",
+      eventSlug: "georgia-cfp",
+      side: "yes",
+    };
+    const board = getActivityBoard(pundits, [...calls, mappedHit]);
+    // saban now has a mapped hard hit; finebaum has none
+    expect(sortActivityBoard(board, "results").map((p) => p.id)).toEqual([
+      "saban",
+      "finebaum",
+    ]);
+  });
+
+  it("on the live board, Patterson (1–1) outranks McElroy (1–0) by sample size", () => {
+    const board = getActivityBoard(loadPundits(), loadCalls());
+    const ids = sortActivityBoard(board, "results").map((p) => p.id);
+    expect(ids.indexOf("patterson")).toBeLessThan(ids.indexOf("mcelroy"));
+    expect(ids.indexOf("mcelroy")).toBeLessThan(ids.indexOf("herbstreit"));
   });
 });
 
@@ -115,7 +194,7 @@ describe("getPundit", () => {
 describe("callsForPundit", () => {
   it("returns that pundit’s calls newest sourceDate first", () => {
     const list = callsForPundit("finebaum", calls);
-    expect(list.map((c) => c.id)).toEqual(["c1", "c2"]);
+    expect(list.map((c) => c.id)).toEqual(["c1", "c2", "c4"]);
   });
 });
 
@@ -324,7 +403,7 @@ describe("event scan status", () => {
 describe("otherTakes", () => {
   it("returns only unmapped calls for a pundit", () => {
     const rest = otherTakes("finebaum", calls);
-    expect(rest.map((c) => c.id)).toEqual(["c2"]);
+    expect(rest.map((c) => c.id)).toEqual(["c2", "c4"]);
     expect(rest.every((c) => !c.eventSlug)).toBe(true);
   });
 });

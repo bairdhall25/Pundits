@@ -1,3 +1,5 @@
+import type { PunditSport, Sport } from "./types";
+
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
@@ -76,6 +78,10 @@ export function seasonSpan(season: number | null | undefined): string | null {
 export function seasonLabel(season: number | null | undefined): string | null {
   const span = seasonSpan(season);
   return span ? `${span} season` : null;
+}
+
+export function sportChip(sport: Sport | PunditSport): "NFL" | "College football" {
+  return sport === "nfl" ? "NFL" : "College football";
 }
 
 function easternDate(at: Date): string {

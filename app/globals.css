@@ -96,7 +96,7 @@ body {
 }
 .feed-tools {
   position: sticky;
-  top: 64px;
+  top: 96px;
   z-index: 12;
   display: flex;
   flex-wrap: wrap;
@@ -145,7 +145,7 @@ body {
   font-size: 14px;
 }
 .feed-more {
-  flex: 0 0 100%;
+  flex: 1 1 auto;
 }
 .feed-more summary {
   list-style: none;
@@ -977,6 +977,7 @@ a.empty.event-price-link { color: var(--muted); }
 .book-by { display: flex; align-items: center; gap: 8px; }
 .book-by .sub { margin: 0; }
 @media (max-width: 719px) {
+  .feed-more { flex: 0 0 100%; }
   .site-nav {
     mask-image: linear-gradient(90deg, #000 85%, transparent);
     -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
@@ -996,6 +997,7 @@ a.empty.event-price-link { color: var(--muted); }
   }
 }
 @media (min-width: 720px) {
+  .feed-tools { top: 72px; }
   .shell { padding: 20px 20px 48px; }
   .eyebrow { font-size: 16px; }
   .board-jump { flex-wrap: wrap; overflow: visible; margin: 0 0 32px; padding: 0; }

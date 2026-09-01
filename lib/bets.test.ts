@@ -14,6 +14,7 @@ import {
   loadEvents,
   mappedCalls,
   marqueeGame,
+  partitionFutures,
   partitionGames,
 } from "./data";
 import type { Call, Event } from "./types";
@@ -224,6 +225,22 @@ describe("weekend home", () => {
     expect(peek).toHaveLength(5);
     expect(peek[0].slug).toBe("indiana-title-2026");
     expect(peek.every((e) => eventKind(e) === "future")).toBe(true);
+  });
+
+  it("never peeks a future with no mapped pick", () => {
+    const nfl = getFuturesPeek("nfl", loadEvents(), loadCalls(), 10);
+    const calls = loadCalls();
+    expect(nfl.length).toBeGreaterThan(0);
+    for (const event of nfl) {
+      expect(mappedCalls(calls).some((c) => c.eventSlug === event.slug)).toBe(true);
+    }
+    expect(nfl.some((e) => e.slug === "seahawks-sb-2026")).toBe(false);
+  });
+
+  it("splits NFL futures into faced cards and a waiting list", () => {
+    const { withPicks, waiting } = partitionFutures("nfl", loadEvents(), loadCalls());
+    expect(withPicks.some((e) => e.slug === "rams-sb-2026")).toBe(true);
+    expect(waiting.some((e) => e.slug === "seahawks-sb-2026")).toBe(true);
   });
 
   it("features the next open game, not a finished Week 0 card", () => {

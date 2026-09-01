@@ -23,6 +23,7 @@ import {
 import { KickoffTag } from "@/components/KickoffTag";
 import { americanOdds, statusChipText } from "@/lib/format";
 import { eventKalshiUrl } from "@/lib/kalshi";
+import { isVsGame } from "@/lib/public-side";
 import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
 
@@ -89,6 +90,7 @@ function SideCol({
   teams,
   detail,
   game,
+  vsGame,
   eventSlug,
   settled = false,
   eventHref,
@@ -98,6 +100,7 @@ function SideCol({
   teams: Team[];
   detail: boolean;
   game: boolean;
+  vsGame: boolean;
   eventSlug: string;
   settled?: boolean;
   eventHref?: string;
@@ -129,7 +132,7 @@ function SideCol({
       ) : (
         teamBlock
       )}
-      {detail && game ? (
+      {detail && game && !vsGame ? (
         <div className="lab">
           {side.side === "yes" ? "Away" : "Home"}
         </div>
@@ -179,6 +182,7 @@ export function EventCard({
   const [yes, no] = sidesForCard(event, calls);
   const fight = eventHasFight(event.slug, calls);
   const game = event.kind === "game";
+  const vsGame = isVsGame(event);
   const asOf = formatAsOf(event.sourcedAt);
   const when = game ? formatGameWhen(event) : event.contractName;
   const status = eventScanStatus(event, calls);
@@ -277,6 +281,7 @@ export function EventCard({
           teams={teams}
           detail={detail}
           game={game}
+          vsGame={vsGame}
           eventSlug={event.slug}
           settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
@@ -287,6 +292,7 @@ export function EventCard({
           teams={teams}
           detail={detail}
           game={game}
+          vsGame={vsGame}
           eventSlug={event.slug}
           settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
@@ -297,7 +303,9 @@ export function EventCard({
           <summary>Market details</summary>
           <p>
             {game
-              ? `The away side is ${yes.label}; the home side is ${no.label}.`
+              ? isVsGame(event)
+                ? `${event.title}${event.network ? ` · ${event.network}` : ""}. ${yes.label} is the away contract; ${no.label} is the home contract.`
+                : `The away side is ${yes.label}; the home side is ${no.label}.`
               : "Takes it and Against are the two market sides."}{" "}
             Frozen at {formatCents(event.yesCents)} / {formatCents(event.noCents)}
             {asOf ? ` ${asOf}` : ""}. Hypothetical $100 at that freeze — not a bet

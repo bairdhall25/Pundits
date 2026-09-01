@@ -10,23 +10,9 @@ import { getTeam, loadCalls, loadEvents, loadPundits, loadTeams } from "@/lib/da
 import { ogImageFor, teamOgCard } from "@/lib/og";
 import { breadcrumbList, teamJsonLd } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
-import type { Call, Pundit } from "@/lib/types";
 
 export function generateStaticParams() {
   return loadTeams().map((t) => ({ id: t.id }));
-}
-
-function punditNames(calls: Call[], pundits: Pundit[]): Pundit[] {
-  const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
-  const seen = new Set<string>();
-  const out: Pundit[] = [];
-  for (const c of calls) {
-    const p = byId[c.punditId];
-    if (!p || seen.has(p.id)) continue;
-    seen.add(p.id);
-    out.push(p);
-  }
-  return out;
 }
 
 export async function generateMetadata({
@@ -67,8 +53,6 @@ export default async function TeamPage({
   const pundits = loadPundits();
   const involved = teamEvents(id, events);
   const takes = takesOnTeam(id, events, calls);
-  const believers = punditNames(takes.for, pundits);
-  const faders = punditNames(takes.against, pundits);
 
   return (
     <main id="main" className="shell">
@@ -95,17 +79,23 @@ export default async function TeamPage({
           : `No verified expert take on ${team.name} yet. Their markets are below; picks land here as experts go on the record.`}
       </p>
 
-      {believers.length || faders.length ? (
+      {takes.for.length || takes.against.length ? (
         <div className="team-split">
           <div>
             <div className="board-kicker type-broadcast">With {team.name}</div>
-            {believers.length ? (
+            {takes.for.length ? (
               <ul>
-                {believers.map((p) => (
-                  <li key={p.id}>
-                    <Link href={`/pundits/${p.id}`}>{p.name}</Link>
-                  </li>
-                ))}
+                {takes.for.map((c) => {
+                  const p = pundits.find((x) => x.id === c.punditId);
+                  const event = events.find((e) => e.slug === c.eventSlug);
+                  if (!p) return null;
+                  return (
+                    <li key={c.id}>
+                      <Link href={`/pundits/${p.id}`}>{p.name}</Link>
+                      {event ? <span className="wait-when"> · {event.title}</span> : null}
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p className="empty">Nobody yet</p>
@@ -113,13 +103,19 @@ export default async function TeamPage({
           </div>
           <div>
             <div className="board-kicker type-broadcast">Against</div>
-            {faders.length ? (
+            {takes.against.length ? (
               <ul>
-                {faders.map((p) => (
-                  <li key={p.id}>
-                    <Link href={`/pundits/${p.id}`}>{p.name}</Link>
-                  </li>
-                ))}
+                {takes.against.map((c) => {
+                  const p = pundits.find((x) => x.id === c.punditId);
+                  const event = events.find((e) => e.slug === c.eventSlug);
+                  if (!p) return null;
+                  return (
+                    <li key={c.id}>
+                      <Link href={`/pundits/${p.id}`}>{p.name}</Link>
+                      {event ? <span className="wait-when"> · {event.title}</span> : null}
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p className="empty">Nobody yet</p>

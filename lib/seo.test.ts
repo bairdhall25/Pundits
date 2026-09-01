@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
+import { getActivityBoard, loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
 import type { Call, Event } from "./types";
 import {
   gradeSheet,
@@ -129,6 +129,19 @@ describe("grade sheet", () => {
     expect(rows[0].label).not.toBe("Result");
     expect(rows.map((r) => r.label)).toContain("The price");
     expect(rows.map((r) => r.label)).toContain("Record");
+  });
+
+  it("reports the same open count as the pundit profile", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.pundit.id === "mcelroy" && t.event.slug === "unc-vs-tcu-2026"
+    )!;
+    const rows = gradeSheet(take, loadCalls(), loadPundits());
+    const record = rows.find((r) => r.label === "Record")!;
+    const board = getActivityBoard(loadPundits(), loadCalls());
+    const mcelroy = board.find((p) => p.id === "mcelroy")!;
+    expect(mcelroy.mappedPending).toBe(0);
+    expect(record.value).toContain("1–0");
+    expect(record.value).not.toMatch(/with 1 open|— 1 open/);
   });
 });
 

@@ -8,12 +8,13 @@ import { SportFilter } from "@/components/SportFilter";
 import { WeekArchivePathLinks, TeamLinks } from "@/components/SlateLinks";
 import {
   formatGameWhen,
-  getBoard,
   getSlateGames,
   loadCalls,
   loadEvents,
   loadPundits,
+  partitionFutures,
   partitionGames,
+  seasonLabel,
 } from "@/lib/data";
 import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
 import type { Sport } from "@/lib/types";
@@ -39,7 +40,11 @@ export function SportSlate({ sport }: { sport: Sport }) {
   const calls = loadCalls();
   const pundits = loadPundits();
   const games = getSlateGames(sport, events);
-  const futures = getBoard(sport, events, calls);
+  const { withPicks: futurePicks, waiting: futureWaiting } = partitionFutures(
+    sport,
+    events,
+    calls
+  );
   const copy = COPY[sport];
   const withPicks = games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
   const waiting = games.filter((e) => !calls.some((c) => c.eventSlug === e.slug));
@@ -127,7 +132,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
         <div className="board-kicker type-broadcast">Still open</div>
         <h2 className="board-title type-broadcast">Futures</h2>
         <PeekRow hint={false}>
-          {futures.map((event) => (
+          {futurePicks.map((event) => (
             <FuturePeek
               key={event.slug}
               event={event}
@@ -136,6 +141,22 @@ export function SportSlate({ sport }: { sport: Sport }) {
             />
           ))}
         </PeekRow>
+        {futureWaiting.length ? (
+          <>
+            <h3 className="wait-head type-broadcast">Waiting for a verified pick</h3>
+            <ul className="wait-list">
+              {futureWaiting.map((event) => (
+                <li key={event.slug}>
+                  <Link href={`/picks/${event.slug}`} className="wait-row">
+                    <span className="wait-title type-broadcast">{event.title}</span>
+                    <span className="wait-when">{seasonLabel(event.season)}</span>
+                    <span className="wait-cta">No pick yet →</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
       </section>
 
       <TeamLinks sport={sport} />

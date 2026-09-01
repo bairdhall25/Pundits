@@ -22,6 +22,7 @@ import {
 import { ogImageFor, ogStoryTakePath, ogTakePath } from "@/lib/og";
 import { sharePayload } from "@/lib/share";
 import { formatShortDate, statusChipText, verdictClass } from "@/lib/format";
+import { matchupSentence } from "@/lib/public-side";
 import { articleMeta, pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -94,7 +95,7 @@ export default async function TakePage({
       <JsonLd data={articleJsonLd(take, calls, pundits)} />
       <JsonLd
         data={breadcrumbList([
-          { name: "Stories", path: "/stories" },
+          { name: "Takes", path: "/stories" },
           { name: sportLabel, path: slate },
           { name: event.title, path: `/picks/${event.slug}` },
           { name: story.headline, path: takePath(event.slug, take.pundit.id) },
@@ -102,7 +103,7 @@ export default async function TakePage({
       />
       <Breadcrumbs
         items={[
-          { name: "Stories", href: "/stories" },
+          { name: "Takes", href: "/stories" },
           { name: sportLabel, href: slate },
           { name: event.title, href: `/picks/${event.slug}` },
           { name: take.pundit.name },
@@ -164,9 +165,7 @@ export default async function TakePage({
           The matchup
         </h2>
         <p className="lede" style={{ maxWidth: 720 }}>
-          {event.awayTeam && event.homeTeam
-            ? `${event.awayTeam} at ${event.homeTeam}.`
-            : event.title}{" "}
+          {matchupSentence(event)}{" "}
           <Link href={`/picks/${event.slug}`}>Full game card →</Link>
         </p>
       </section>

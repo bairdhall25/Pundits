@@ -11,18 +11,25 @@ import type {
   Sport,
   Team,
 } from "./types";
+import { defaultBoardSort, sortActivityBoard } from "./board";
 import { publicSideLabel } from "./public-side";
 export { hasGradedRecords } from "./records";
+export { defaultBoardSort, sortActivityBoard, type BoardSort } from "./board";
+
+export function isMapped(call: Call): boolean {
+  return Boolean(call.eventSlug && call.side);
+}
 
 export function seasonFromCalls(
   punditId: string,
   calls: Call[]
 ): { wins: number; losses: number; pending: number } {
   const hard = calls.filter((c) => c.punditId === punditId && c.kind === "hard");
+  const mappedHard = hard.filter(isMapped);
   return {
-    wins: hard.filter((c) => c.status === "hit").length,
-    losses: hard.filter((c) => c.status === "miss").length,
-    pending: hard.filter((c) => c.status === "pending").length,
+    wins: mappedHard.filter((c) => c.status === "hit").length,
+    losses: mappedHard.filter((c) => c.status === "miss").length,
+    pending: mappedHard.filter((c) => c.status === "pending").length,
   };
 }
 
@@ -37,14 +44,8 @@ export function toActivityRecord(pundit: Pundit, calls: Call[]): ActivityRecord 
 }
 
 export function getActivityBoard(pundits: Pundit[], calls: Call[]): ActivityRecord[] {
-  return pundits
-    .map((p) => toActivityRecord(p, calls))
-    .sort(
-      (a, b) =>
-        b.mappedPending - a.mappedPending ||
-        b.totalCalls - a.totalCalls ||
-        a.name.localeCompare(b.name)
-    );
+  const board = pundits.map((p) => toActivityRecord(p, calls));
+  return sortActivityBoard(board, defaultBoardSort(board));
 }
 
 export function getPundit(id: string, pundits: Pundit[], calls: Call[]): ActivityRecord | null {
@@ -90,10 +91,6 @@ export function loadTeams(): Team[] {
 export function getTeam(id: string | undefined, teams: Team[] = loadTeams()): Team | null {
   if (!id) return null;
   return teams.find((t) => t.id === id) ?? null;
-}
-
-export function isMapped(call: Call): boolean {
-  return Boolean(call.eventSlug && call.side);
 }
 
 export function mappedCalls(calls: Call[]): Call[] {
@@ -275,13 +272,31 @@ export function getSlateGames(sport: Sport, events: Event[]): Event[] {
     );
 }
 
+export function partitionFutures(
+  sport: Sport,
+  events: Event[],
+  calls: Call[]
+): { withPicks: Event[]; waiting: Event[] } {
+  const board = getBoard(sport, events, calls);
+  const withPicks: Event[] = [];
+  const waiting: Event[] = [];
+  for (const event of board) {
+    if (mappedCalls(calls).some((c) => c.eventSlug === event.slug)) {
+      withPicks.push(event);
+    } else {
+      waiting.push(event);
+    }
+  }
+  return { withPicks, waiting };
+}
+
 export function getFuturesPeek(
   sport: Sport,
   events: Event[],
   calls: Call[],
   limit = 5
 ): Event[] {
-  return getBoard(sport, events, calls).slice(0, limit);
+  return partitionFutures(sport, events, calls).withPicks.slice(0, limit);
 }
 
 export function latestCalls(calls: Call[], limit = 6): Call[] {
