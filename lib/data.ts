@@ -272,13 +272,31 @@ export function getSlateGames(sport: Sport, events: Event[]): Event[] {
     );
 }
 
+export function partitionFutures(
+  sport: Sport,
+  events: Event[],
+  calls: Call[]
+): { withPicks: Event[]; waiting: Event[] } {
+  const board = getBoard(sport, events, calls);
+  const withPicks: Event[] = [];
+  const waiting: Event[] = [];
+  for (const event of board) {
+    if (mappedCalls(calls).some((c) => c.eventSlug === event.slug)) {
+      withPicks.push(event);
+    } else {
+      waiting.push(event);
+    }
+  }
+  return { withPicks, waiting };
+}
+
 export function getFuturesPeek(
   sport: Sport,
   events: Event[],
   calls: Call[],
   limit = 5
 ): Event[] {
-  return getBoard(sport, events, calls).slice(0, limit);
+  return partitionFutures(sport, events, calls).withPicks.slice(0, limit);
 }
 
 export function latestCalls(calls: Call[], limit = 6): Call[] {
