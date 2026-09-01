@@ -144,6 +144,39 @@ body {
   padding: 0 12px;
   font-size: 14px;
 }
+.feed-more {
+  flex: 0 0 100%;
+}
+.feed-more summary {
+  list-style: none;
+  width: max-content;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #2a2a2a;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.feed-more summary::-webkit-details-marker { display: none; }
+.feed-more summary.on,
+.feed-more[open] summary {
+  border-color: var(--green);
+  color: var(--green);
+}
+.feed-more-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #2a2a2a;
+  background: var(--card);
+}
 .feed-count {
   color: var(--muted);
   font-size: 12px;

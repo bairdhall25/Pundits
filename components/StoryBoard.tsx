@@ -69,65 +69,72 @@ export function StoryBoard({ cards }: { cards: StoryCard[] }) {
             </button>
           ))}
         </div>
-        <div className="feed-tabs" role="tablist" aria-label="Kind">
-          {(
-            [
-              ["all", "All takes"],
-              ["game", "Games"],
-              ["future", "Futures"],
-            ] as const
-          ).map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              role="tab"
-              aria-selected={kind === value}
-              className={kind === value ? "on" : undefined}
-              onClick={() => {
-                trackEvent(
-                  "filter_use",
-                  filterUseParams({
-                    surface: "stories",
-                    filterName: "kind",
-                    filterValue: value,
-                  })
-                );
-                setKind(value);
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <div className="feed-tabs" role="tablist" aria-label="Order">
-          {(
-            [
-              ["latest", "Latest"],
-              ["matchup", "By game"],
-            ] as const
-          ).map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              role="tab"
-              aria-selected={group === value}
-              className={group === value ? "on" : undefined}
-              onClick={() => {
-                trackEvent(
-                  "filter_use",
-                  filterUseParams({
-                    surface: "stories",
-                    filterName: "group",
-                    filterValue: value,
-                  })
-                );
-                setGroup(value);
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <details className="feed-more">
+          <summary className={kind !== "all" || group !== "latest" ? "on" : undefined}>
+            Filter &amp; sort
+          </summary>
+          <div className="feed-more-panel">
+            <div className="feed-tabs" role="tablist" aria-label="Kind">
+              {(
+                [
+                  ["all", "All takes"],
+                  ["game", "Games"],
+                  ["future", "Futures"],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  role="tab"
+                  aria-selected={kind === value}
+                  className={kind === value ? "on" : undefined}
+                  onClick={() => {
+                    trackEvent(
+                      "filter_use",
+                      filterUseParams({
+                        surface: "stories",
+                        filterName: "kind",
+                        filterValue: value,
+                      })
+                    );
+                    setKind(value);
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className="feed-tabs" role="tablist" aria-label="Order">
+              {(
+                [
+                  ["latest", "Latest"],
+                  ["matchup", "By game"],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  role="tab"
+                  aria-selected={group === value}
+                  className={group === value ? "on" : undefined}
+                  onClick={() => {
+                    trackEvent(
+                      "filter_use",
+                      filterUseParams({
+                        surface: "stories",
+                        filterName: "group",
+                        filterValue: value,
+                      })
+                    );
+                    setGroup(value);
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </details>
         <label className="feed-search">
           <span className="sr-only">Search stories</span>
           <input
