@@ -3,7 +3,7 @@
 No backend. JSON in this repo is the record. **Scout is the product.** Empty Scout intake means empty cards; the rest of the stack cannot invent faces.
 
 | Bot | File | Job |
-|---|---|---|
+|---|---|
 | Coordinator | `bots/scout.md` | Score homepage density. Write `## Dispatch`. Never hunt. Never `data/`. |
 | Shows Scout | `bots/scout-shows.md` | Hunt YouTube / podcasts / TV clips and bounded durable radio against Dispatch. Never `data/`. |
 | X Scout | `bots/scout-x.md` | Hunt X status URLs against Dispatch. Never `data/`. |
@@ -14,8 +14,9 @@ No backend. JSON in this repo is the record. **Scout is the product.** Empty Sco
 | Audit | `bots/audit.md` | Re-open Scout URLs and spot-check mapping; no JSON |
 | Poster | `bots/poster.md` | Run @Pundits_ new posts from `docs/social/`. Read-only. Never `data/`, never `docs/`. |
 | Reply Guy | `bots/reply.md` | Add receipts to live X debates. Replies only. Read-only. |
+| Reviewer | `bots/reviewer.md` | Weekly @Pundits_ analytics review. Writes social run + scoreboard only. |
 
-Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.** Poster does not reply. Reply Guy does not post.
+Scout does not grade and does not write JSON. Promote does not hunt new takes. Audit does not hunt new takes. Grader does not hunt new takes. Recap does not keep its own scorebook. **None of them write articles.** Poster does not reply. Reply Guy does not post. Reviewer does not post or reply.
 
 ## Pipeline (no chat paste)
 
@@ -26,6 +27,7 @@ Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
 3. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
 4. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
 5. **Grader** after kickoff. **Recap** after Grader.
+6. **Reviewer** weekly (Monday ET): write `docs/runs/YYYY-MM-DD-social.md` and append `docs/social/scoreboard.md`. Propose one playbook change. Do not edit `docs/social/` playbook files.
 
 Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
 
@@ -159,7 +161,20 @@ Then fetch https://pundits.pro/social/cards.json for receipts.
 Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Never touch data/ or docs/.
 ```
 
-Cadence (Week 1): Coordinator daily (Dispatch; settled games are not hunt targets). Shows NCAAF Thu–Sat (+ GameDay Baton Rouge Sat 9/5). Shows NFL Tue–Sat of that NFL week (starts Tue 9/8). Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days.
+**Reviewer**
+
+```
+You are the Pundits Reviewer. You audit @Pundits_ and the social playbook. You do not post, reply, follow, like, or grade.
+
+At the start of every job, fetch and follow:
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/reviewer.md
+Repo: https://github.com/bairdhall25/Pundits
+Account: @Pundits_
+
+Score the last 7 ET days of @Pundits_ against cards.json and the playbook. Write docs/runs/YYYY-MM-DD-social.md. Append one row to docs/social/scoreboard.md. Propose exactly one playbook change in the run file. Do not edit voice.md, schedule.md, reply-guide.md, post-patterns.md, or data/. Chat is not the mailbox.
+```
+
+Cadence (Week 1): Coordinator daily (Dispatch; settled games are not hunt targets). Shows NCAAF Thu–Sat (+ GameDay Baton Rouge Sat 9/5). Shows NFL Tue–Sat of that NFL week (starts Tue 9/8). Radio is a bounded fallback inside those Shows jobs, never an additional routine. X twice daily. News NCAAF Thu–Sat. News NFL Tue–Sat of that NFL week. Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
 
 ## House rules
 
@@ -182,5 +197,6 @@ Owned here so the files do not fork them.
 10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional 25–60 word `reasoning` capsule that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank.
 11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
 12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
+13. **Reviewer writes only the social mailbox.** Allowed: `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. Forbidden: `data/`, playbook files under `docs/social/` except the scoreboard, posts, replies, follows, and grades. A playbook change is a proposal in the run file until the operator commits it.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.
