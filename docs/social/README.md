@@ -1,6 +1,8 @@
 # Social engine
 
-Two Grok bots run @Pundits_: Poster posts new content, Reply Guy replies in existing threads. This directory is their playbook. At the start of every job, each bot fetches its instructions from raw GitHub and fetches `https://pundits.pro/social/cards.json` for what is currently postable. Both bots are read-only: they never touch `data/`, never write `docs/runs/`, never grade, never edit the site.
+Three Grok bots run the @Pundits_ social loop: Poster posts new content, Reply Guy replies in existing threads, Reviewer scores the week and writes the mailbox. This directory is the playbook. At the start of every job, each bot fetches its instructions from raw GitHub and fetches `https://pundits.pro/social/cards.json` for what is currently postable.
+
+Poster and Reply Guy are read-only: they never touch `data/`, never write `docs/`, never grade, never edit the site. Reviewer may write only `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. It does not edit this playbook.
 
 ## The one-line voice
 
@@ -15,7 +17,11 @@ Two Grok bots run @Pundits_: Poster posts new content, Reply Guy replies in exis
 | `post-patterns.md` | The ten archetypes, including The Flowers |
 | `reply-guide.md` | Reply Guy targeting and caps |
 | `schedule.md` | The weekly rhythm |
+| `scoreboard.md` | Living weekly @Pundits_ metrics table |
+| `shakedown.md` | Operator spot-check routine |
 | `research-2026-08-29.md` | Why — sourced evidence |
+
+Reviewer instructions live in `bots/reviewer.md`.
 
 ## The card index
 
