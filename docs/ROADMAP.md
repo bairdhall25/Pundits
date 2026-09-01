@@ -15,6 +15,7 @@ Status: implementation complete; awaiting push and the first CI run.
 - [x] Document production and preview release steps.
 - [x] Upgrade Next.js and affected transitive dependencies in a dedicated change, with a clean build and browser regression pass.
 - [x] Add an on-demand live post-deploy smoke check for routes, canonical paths, and redirects.
+- [x] Make social-preview integrity release-blocking with content-versioned cards, decoded-image checks, and live monitoring.
 - [x] Keep authenticated Cloudflare deployment as an explicit local release step; CI verifies every change without holding production credentials.
 
 Exit criteria: one documented deployment path, green CI, reproducible local preflight, and no GitHub Pages base path in production output.

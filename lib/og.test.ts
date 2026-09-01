@@ -38,6 +38,26 @@ describe("og paths", () => {
     expect(image.height).toBe(630);
     expect(image.alt).toBe("Danny Kanell picks NC State over Virginia");
   });
+
+  it("versions generated preview URLs from their rendered content", () => {
+    const open = ogImageFor("/og/takes/example.png", "Example pick", {
+      status: "pending",
+      cents: 24,
+    });
+    const same = ogImageFor("/og/takes/example.png", "Example pick", {
+      status: "pending",
+      cents: 24,
+    });
+    const graded = ogImageFor("/og/takes/example.png", "Example pick", {
+      status: "hit",
+      cents: 24,
+    });
+    expect(open.url).toMatch(
+      /^https:\/\/pundits\.pro\/og\/takes\/example\.png\?v=[a-z0-9]+$/
+    );
+    expect(same.url).toBe(open.url);
+    expect(graded.url).not.toBe(open.url);
+  });
 });
 
 describe("take cards", () => {

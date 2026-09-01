@@ -51,6 +51,13 @@ A 6:30am ET empty deploy is optional.
 `npm run build` skips OG PNGs when data and `lib/og.ts` are unchanged. Use
 `npm run og` to force a full card rebuild after OG layout changes.
 
+Every generated landscape social card uses a content-derived `?v=` URL in
+Open Graph and Twitter metadata. A quote, frozen price, grade, record, or card
+layout change therefore gives link-preview crawlers a fresh asset URL without
+changing the permanent page URL. `npm run check` validates every indexed
+page's preview metadata and decodes every referenced image; blank, transparent,
+oversized, malformed, or incorrectly sized cards fail the release.
+
 ## URL permanence (SEO-critical)
 
 Data files are append-only. Never delete or rename a graded event, call, or
@@ -64,12 +71,20 @@ resolving. Commit ledger updates with the data that produced them.
 
 Before deployment:
 
-1. Confirm the working tree contains only the intended release changes.
+1. Confirm `main` is clean, pushed, and synchronized with `origin/main`.
 2. Run `npm run check` with `GITHUB_PAGES` unset.
 3. Review the generated `out/_redirects` and `out/sitemap.xml` when routes changed.
-4. Run `npm run deploy` from `main` for production or another branch for a preview.
+4. Run `npm run deploy` from `main` for production. The command enforces the
+   clean/synchronized branch, checks that the candidate preserves every URL in
+   the current production sitemap, deploys, and then verifies the exact live
+   preview metadata and decoded images before notifying IndexNow.
 
-After deployment, run `npm run verify:live`, then spot-check:
+For a branch preview, run `npm run check`, then use Wrangler with an explicit
+non-main branch name. Do not use the production `npm run deploy` command.
+
+`npm run verify:live` performs an Applebot-style sweep of all indexed live
+pages and images and is also scheduled weekly in GitHub Actions. After
+deployment, optionally spot-check:
 
 - `/`
 - `/stories/`

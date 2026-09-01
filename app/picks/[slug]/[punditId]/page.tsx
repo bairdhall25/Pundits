@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Receipt } from "@/components/Receipt";
 import { TrackView } from "@/components/TrackView";
 import { pickStoryOpenParams } from "@/lib/analytics";
-import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { getEvent, loadCalls, loadEvents, loadPundits, loadTeams } from "@/lib/data";
 import {
   articleJsonLd,
   breadcrumbList,
@@ -19,7 +19,7 @@ import {
   toStoryCard,
   latestDay,
 } from "@/lib/seo";
-import { ogImageFor, ogStoryTakePath, ogTakePath } from "@/lib/og";
+import { ogImageFor, ogStoryTakePath, ogTakePath, takeOgCard } from "@/lib/og";
 import { sharePayload } from "@/lib/share";
 import { formatShortDate, statusChipText, verdictClass } from "@/lib/format";
 import { matchupSentence } from "@/lib/public-side";
@@ -38,16 +38,20 @@ export async function generateMetadata({
   params: Promise<{ slug: string; punditId: string }>;
 }): Promise<Metadata> {
   const { slug, punditId } = await params;
-  const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+  const calls = loadCalls();
+  const events = loadEvents();
+  const pundits = loadPundits();
+  const take = mappedTakes(calls, events, pundits).find(
     (t) => t.event.slug === slug && t.pundit.id === punditId
   );
   if (!take) return pageMeta("Expert pick", "A verified expert pick with the quote and the price.");
   const story = pickStory(take);
+  const card = takeOgCard(take, calls, pundits, loadTeams());
   return articleMeta(
     story.headline,
     story.dek,
     takePath(slug, punditId),
-    ogImageFor(ogTakePath(slug, punditId), story.headline),
+    ogImageFor(ogTakePath(slug, punditId), story.headline, card),
     take.call.sourceDate,
     latestDay([take.call.sourceDate, take.event.sourcedAt, take.call.gradedAt])
   );

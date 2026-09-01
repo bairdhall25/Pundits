@@ -139,10 +139,21 @@ export function takeTweetText(card: TakeOgCard, slug: string, punditId: string):
     .join("\n");
 }
 
-export function ogImageFor(path: string, alt: string) {
+function ogCacheVersion(value: unknown): string {
+  const input = typeof value === "string" ? value : JSON.stringify(value);
+  let hash = 2166136261;
+  for (let index = 0; index < input.length; index += 1) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36);
+}
+
+export function ogImageFor(path: string, alt: string, cacheKey?: unknown) {
+  const url = canonicalUrl(path);
   return {
     ...ogImage(),
-    url: canonicalUrl(path),
+    url: cacheKey == null ? url : `${url}?v=${ogCacheVersion(cacheKey)}`,
     alt,
   };
 }

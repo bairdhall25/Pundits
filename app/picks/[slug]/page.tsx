@@ -46,7 +46,7 @@ export async function generateMetadata({
     share.title,
     share.description,
     `/picks/${slug}`,
-    ogImageFor(card.file, share.title)
+    ogImageFor(card.file, share.title, card)
   );
   if (!eventHasTakes(slug, calls)) {
     return { ...meta, robots: { index: false, follow: true } };

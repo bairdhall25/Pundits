@@ -25,7 +25,12 @@ import { breadcrumbList, personJsonLd } from "@/lib/seo";
 import { punditShare, sharePayload } from "@/lib/share";
 import { sportChip } from "@/lib/format";
 import { pageMeta } from "@/lib/site";
-import { ogImageFor, ogPunditPath, ogStoryPunditPath } from "@/lib/og";
+import {
+  ogImageFor,
+  ogPunditPath,
+  ogStoryPunditPath,
+  punditOgCard,
+} from "@/lib/og";
 
 export function generateStaticParams() {
   return loadPundits().map((p) => ({ id: p.id }));
@@ -42,11 +47,12 @@ export async function generateMetadata({
   if (!p) return pageMeta("Expert picks", "Named expert on PUNDITS.");
   const latest = callsForPundit(p.id, calls)[0];
   const share = punditShare(p, latest);
+  const card = punditOgCard(p, latest);
   const meta = pageMeta(
     share.title,
     share.description,
     `/pundits/${id}`,
-    ogImageFor(ogPunditPath(id), `${p.name} expert picks and record`)
+    ogImageFor(ogPunditPath(id), `${p.name} expert picks and record`, card)
   );
   if (!punditIndexable(p.id, calls)) {
     // Thin shell until the first take lands; flips to indexable with content.

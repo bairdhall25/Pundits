@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { CORE_PAGES, STATIC_ONLY_FILES } from "./required-routes.mjs";
+import { validateStaticPreviews } from "./preview-validation.mjs";
 
 const root = process.cwd();
 const out = path.join(root, "out");
@@ -69,7 +70,7 @@ const chipTake = await readFile(
 assert.match(chipTake, /Chip Patterson pick(s|ed) North Carolina over TCU/);
 assert.match(
   chipTake,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--patterson\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--patterson\.png\?v=[a-z0-9]+"/
 );
 
 const pickDetail = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
@@ -94,7 +95,7 @@ assert.match(punditProfile, /Get new Danny Kanell picks\./);
 assert.match(punditProfile, /Request pick alerts/);
 assert.match(
   punditProfile,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/pundits\/kanell\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/pundits\/kanell\.png\?v=[a-z0-9]+"/
 );
 assert.doesNotMatch(punditProfile, /2026 record 0–0/);
 assert.doesNotMatch(punditProfile, />0–0</);
@@ -156,7 +157,7 @@ assert.match(
 );
 assert.match(
   story,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/unc-vs-tcu-2026--finebaum\.png\?v=[a-z0-9]+"/
 );
 assert.doesNotMatch(story, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
 
@@ -171,13 +172,13 @@ const kanell = await readFile(
 assert.match(kanell, /Danny Kanell pick(s|ed) NC State over Virginia/);
 assert.match(
   kanell,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/ncsu-at-uva-2026--kanell\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/takes\/ncsu-at-uva-2026--kanell\.png\?v=[a-z0-9]+"/
 );
 
 const ncsu = await readFile(path.join(out, "picks/ncsu-at-uva-2026/index.html"), "utf8");
 assert.match(
   ncsu,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png\?v=[a-z0-9]+"/
 );
 
 const emptyEvent = await readFile(
@@ -236,14 +237,14 @@ assert.match(notFoundPage, /No page here/);
 const teamPage = await readFile(path.join(out, "teams/tcu/index.html"), "utf8");
 assert.match(
   teamPage,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/teams\/tcu\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/teams\/tcu\.png\?v=[a-z0-9]+"/
 );
 assert.match(teamPage, /"@type":"SportsTeam"/);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
 assert.match(
   week0,
-  /property="og:image" content="https:\/\/pundits\.pro\/og\/weeks\/ncaaf-2026-week-0\.png"/
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/weeks\/ncaaf-2026-week-0\.png\?v=[a-z0-9]+"/
 );
 assert.match(week0, /"@type":"CollectionPage"/);
 
@@ -392,3 +393,8 @@ for (const take of socialCards.takes) {
   const info = await stat(path.join(out, rel));
   assert(info.size > 0, `social index points at missing card ${rel}`);
 }
+
+const previewSummary = await validateStaticPreviews({ outDir: out });
+console.log(
+  `Preview verification passed (${previewSummary.pages} pages, ${previewSummary.images} decoded images).`
+);

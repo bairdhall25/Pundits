@@ -31,7 +31,7 @@ export async function generateMetadata({
     `${team.name} expert picks`,
     `Who the TV voices are taking on ${team.name}: ${takes.for.length} with them, ${takes.against.length} against, each with the quote and the frozen market price.`,
     `/teams/${id}`,
-    ogImageFor(card.file, `${team.name} expert picks`)
+    ogImageFor(card.file, `${team.name} expert picks`, card)
   );
   if (!teamHasTakes(id, events, calls)) {
     // Thin until a take involves this team; flips to indexable with content.

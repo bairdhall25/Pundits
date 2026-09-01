@@ -53,7 +53,7 @@ export function weekArchiveMeta(
     title,
     weekArchiveDescription(week, record),
     weekArchivePath(sport, season, week),
-    ogImageFor(card.file, title)
+    ogImageFor(card.file, title, card)
   );
 }
 
