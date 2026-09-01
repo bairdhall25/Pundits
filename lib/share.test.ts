@@ -53,7 +53,7 @@ describe("share copy", () => {
     const event = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     const line = homeHeroLede(event, loadCalls(), loadPundits());
     expect(line).toBe(
-      "Josh Pate, Paul Finebaum, and Andy Staples pick LSU. Nobody on Clemson yet."
+      "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. Nobody on Clemson yet."
     );
     expect(line).not.toMatch(/¢|as of/i);
   });
