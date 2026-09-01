@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import { Receipt } from "@/components/Receipt";
@@ -160,16 +159,17 @@ export default async function TakePage({
         ))}
       </dl>
 
-      <h2 className="type-broadcast mb-3 mt-8 text-[22px] tracking-widest">
-        The market
-      </h2>
-      <EventCard
-        event={event}
-        calls={calls}
-        pundits={pundits}
-        permalink={false}
-        detail
-      />
+      <section className="mt-8">
+        <h2 className="type-broadcast mb-3 text-[22px] tracking-widest">
+          The matchup
+        </h2>
+        <p className="lede" style={{ maxWidth: 720 }}>
+          {event.awayTeam && event.homeTeam
+            ? `${event.awayTeam} at ${event.homeTeam}.`
+            : event.title}{" "}
+          <Link href={`/picks/${event.slug}`}>Full game card →</Link>
+        </p>
+      </section>
 
       {others.length ? (
         <section className="mt-8">
