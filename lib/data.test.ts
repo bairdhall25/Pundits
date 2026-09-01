@@ -19,6 +19,7 @@ import {
   formatAsOf,
   otherTakes,
   hasGradedRecords,
+  eventHasTakes,
 } from "./data";
 import { filterBook, emptyBookFilter } from "./book-filter";
 import type { Call, Event, Pundit } from "./types";
@@ -382,5 +383,15 @@ describe("hasGradedRecords", () => {
   it("is true once any pick has graded", () => {
     expect(hasGradedRecords([rec(0, 0), rec(1, 0)])).toBe(true);
     expect(hasGradedRecords([rec(0, 2)])).toBe(true);
+  });
+});
+
+describe("eventHasTakes", () => {
+  it("treats an event as empty until a mapped pick lands", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    expect(eventHasTakes("unc-vs-tcu-2026", calls)).toBe(true);
+    expect(eventHasTakes("wisconsin-vs-nd-2026", calls)).toBe(false);
+    expect(events.some((event) => event.slug === "wisconsin-vs-nd-2026")).toBe(true);
   });
 });

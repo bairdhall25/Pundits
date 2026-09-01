@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { EventCard } from "@/components/EventCard";
 import { FinalRow } from "@/components/FinalRow";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
@@ -14,6 +15,7 @@ import {
   loadPundits,
   partitionGames,
 } from "@/lib/data";
+import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
 import type { Sport } from "@/lib/types";
 
 const COPY: Record<
@@ -45,6 +47,21 @@ export function SportSlate({ sport }: { sport: Sport }) {
 
   return (
     <main id="main" className="shell">
+      <JsonLd
+        data={collectionPageJsonLd(
+          sport === "nfl" ? "NFL Week 1 picks" : "College football picks",
+          `/${sport}/`,
+          sport === "nfl"
+            ? "Expert NFL picks for Week 1. Who the TV voices are taking in the regular-season openers, with the market price."
+            : "Expert CFB picks for Week 1, plus Week 0 results. See who the TV voices are taking, with the market price next to each take."
+        )}
+      />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Picks", path: "/" },
+          { name: copy.title, path: `/${sport}` },
+        ])}
+      />
       <Breadcrumbs
         items={[{ name: "Picks", href: "/" }, { name: copy.title }]}
       />

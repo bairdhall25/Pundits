@@ -11,9 +11,13 @@ import {
   ogStoryPunditPath,
   ogStoryTakePath,
   ogTakePath,
+  ogTeamPath,
+  ogWeekPath,
   punditOgCard,
   takeOgCard,
   takeTweetText,
+  teamOgCard,
+  weekOgCard,
 } from "./og";
 import { articleMeta, metaDescription, pageMeta } from "./site";
 
@@ -154,5 +158,22 @@ describe("page meta images", () => {
     });
     expect(card.latestQuote).toBeTruthy();
     expect(card.recordLabel).toBe("0–1");
+  });
+
+  it("gives filled team pages a stable custom card", () => {
+    const team = loadTeams().find((candidate) => candidate.id === "tcu")!;
+    const card = teamOgCard(team, loadEvents(), loadCalls(), loadPundits());
+    expect(ogTeamPath("tcu")).toBe("/og/teams/tcu.png");
+    expect(card.file).toBe("/og/teams/tcu.png");
+    expect(card.name).toBe("TCU");
+    expect(card.withThem + card.against).toBeGreaterThan(0);
+  });
+
+  it("gives weekly archives a stable custom card", () => {
+    const card = weekOgCard("ncaaf", 2026, 0, loadEvents(), loadCalls());
+    expect(ogWeekPath("ncaaf", 2026, 0)).toBe("/og/weeks/ncaaf-2026-week-0.png");
+    expect(card.file).toBe("/og/weeks/ncaaf-2026-week-0.png");
+    expect(card.title).toMatch(/Week 0/);
+    expect(card.line).toMatch(/2–4|2-4/);
   });
 });

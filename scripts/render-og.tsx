@@ -12,6 +12,7 @@ import {
   loadTeams,
   toActivityRecord,
 } from "../lib/data";
+import { archiveWeeks } from "../lib/archive";
 import {
   eventOgCard,
   ogQuote,
@@ -20,11 +21,16 @@ import {
   ogStoryTakePath,
   punditOgCard,
   takeOgCard,
+  teamOgCard,
+  weekOgCard,
   type EventOgCard,
   type OgChip,
+  type OgFace,
   type OgSide,
   type PunditOgCard,
   type TakeOgCard,
+  type TeamOgCard,
+  type WeekOgCard,
 } from "../lib/og";
 import { mappedTakes } from "../lib/seo";
 
@@ -550,6 +556,77 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
+function FaceNames({ faces, label }: { faces: OgFace[]; label: string }) {
+  return (
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", background: CARD, padding: "22px 24px" }}>
+      <div style={{ color: MUTED, fontFamily: "Oswald", fontSize: 16, letterSpacing: 3, textTransform: "uppercase" }}>
+        {label}
+      </div>
+      {faces.length ? (
+        faces.slice(0, 4).map((face) => (
+          <div key={face.name} style={{ color: INK, fontFamily: "Inter", fontWeight: 700, fontSize: 22, marginTop: 12 }}>
+            {face.name}
+          </div>
+        ))
+      ) : (
+        <div style={{ color: MUTED, fontFamily: "Inter", fontSize: 20, marginTop: 14 }}>Nobody yet</div>
+      )}
+    </div>
+  );
+}
+
+function TeamMarkup({ card }: { card: TeamOgCard }) {
+  return (
+    <Shell>
+      <Wordmark right={`${card.sport} expert picks`} />
+      <div style={{ display: "flex", alignItems: "center", marginTop: 22 }}>
+        <Chip chip={card.chip} size={88} />
+        <div style={{ marginLeft: 22, display: "flex", flexDirection: "column" }}>
+          <div style={{ color: GREEN, fontFamily: "Oswald", fontSize: 16, letterSpacing: 3, textTransform: "uppercase" }}>
+            Team archive
+          </div>
+          <div style={{ color: INK, fontFamily: "Oswald", fontSize: headlineSize(`${card.name} expert picks`), lineHeight: 1.02 }}>
+            {`${card.name} expert picks`}
+          </div>
+        </div>
+      </div>
+      <div style={{ display: "flex", marginTop: 22 }}>
+        <Stat label="With them" value={String(card.withThem)} />
+        <Stat label="Against" value={String(card.against)} />
+      </div>
+      <div style={{ display: "flex", flex: 1, marginTop: 18, minHeight: 0 }}>
+        <FaceNames faces={card.withFaces} label={`With ${card.name}`} />
+        <div style={{ width: 2, background: "#2a2a2a" }} />
+        <FaceNames faces={card.againstFaces} label="Against" />
+      </div>
+    </Shell>
+  );
+}
+
+function WeekMarkup({ card }: { card: WeekOgCard }) {
+  return (
+    <Shell>
+      <Wordmark right={card.kicker} />
+      <div style={{ color: GREEN, fontFamily: "Oswald", fontSize: 18, letterSpacing: 3, textTransform: "uppercase", marginTop: 20 }}>
+        Weekly archive
+      </div>
+      <div style={{ color: INK, fontFamily: "Oswald", fontSize: 64, lineHeight: 1.02, marginTop: 4 }}>
+        {card.title}
+      </div>
+      <div style={{ color: INK, fontFamily: "Oswald", fontSize: 36, marginTop: 16 }}>
+        {card.line}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", marginTop: 22, flex: 1 }}>
+        {card.games.slice(0, 5).map((game) => (
+          <div key={game} style={{ color: MUTED, fontFamily: "Inter", fontSize: 24, marginTop: 10 }}>
+            {game}
+          </div>
+        ))}
+      </div>
+    </Shell>
+  );
+}
+
 function PunditMarkup({ card }: { card: PunditOgCard }) {
   const uri = photoUri(card.photo);
   const quote = card.latestQuote ? ogQuote(card.latestQuote, 130) : null;
@@ -617,6 +694,14 @@ export function eventTree(card: EventOgCard) {
 
 export function punditTree(card: PunditOgCard) {
   return <PunditMarkup card={card} />;
+}
+
+export function teamTree(card: TeamOgCard) {
+  return <TeamMarkup card={card} />;
+}
+
+export function weekTree(card: WeekOgCard) {
+  return <WeekMarkup card={card} />;
 }
 
 function Legal({ text }: { text: string }) {
@@ -1068,6 +1153,8 @@ async function shouldSkip(expected: number): Promise<boolean> {
     "public/og/takes",
     "public/og/events",
     "public/og/pundits",
+    "public/og/teams",
+    "public/og/weeks",
     "public/og/stories/takes",
     "public/og/stories/events",
     "public/og/stories/pundits",
@@ -1089,15 +1176,29 @@ async function shouldSkip(expected: number): Promise<boolean> {
   return outMin > inMax;
 }
 
-export async function renderAllOg(force = false): Promise<{ takes: number; events: number; pundits: number }> {
+export async function renderAllOg(force = false): Promise<{
+  takes: number;
+  events: number;
+  pundits: number;
+  teams: number;
+  weeks: number;
+}> {
   const calls = loadCalls();
   const events = loadEvents();
   const pundits = loadPundits();
   const teams = loadTeams();
   const takes = mappedTakes(calls, events, pundits);
-  const expected = (takes.length + events.length + pundits.length) * 2;
+  const weeks = archiveWeeks(events);
+  const expected =
+    (takes.length + events.length + pundits.length) * 2 + teams.length + weeks.length;
   if (!force && (await shouldSkip(expected))) {
-    return { takes: takes.length, events: events.length, pundits: pundits.length };
+    return {
+      takes: takes.length,
+      events: events.length,
+      pundits: pundits.length,
+      teams: teams.length,
+      weeks: weeks.length,
+    };
   }
 
   const storySize = { width: STORY_W, height: STORY_H };
@@ -1105,6 +1206,8 @@ export async function renderAllOg(force = false): Promise<{ takes: number; event
     "public/og/takes",
     "public/og/events",
     "public/og/pundits",
+    "public/og/teams",
+    "public/og/weeks",
     "public/og/stories/takes",
     "public/og/stories/events",
     "public/og/stories/pundits",
@@ -1146,7 +1249,29 @@ export async function renderAllOg(force = false): Promise<{ takes: number; event
       throw new Error(`pundit story ${pundit.id}: ${err instanceof Error ? err.message : err}`);
     }
   }
-  return { takes: takes.length, events: events.length, pundits: pundits.length };
+  for (const team of teams) {
+    const card = teamOgCard(team, events, calls, pundits);
+    try {
+      await writePng(card.file, await renderCardPng(teamTree(card)));
+    } catch (err) {
+      throw new Error(`team ${card.file}: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  for (const week of weeks) {
+    const card = weekOgCard(week.sport, week.season, week.week, events, calls);
+    try {
+      await writePng(card.file, await renderCardPng(weekTree(card)));
+    } catch (err) {
+      throw new Error(`week ${card.file}: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  return {
+    takes: takes.length,
+    events: events.length,
+    pundits: pundits.length,
+    teams: teams.length,
+    weeks: weeks.length,
+  };
 }
 
 function isCli() {
@@ -1158,7 +1283,9 @@ if (isCli()) {
   const force = process.argv.includes("--force");
   renderAllOg(force)
     .then((result) => {
-      console.log(`OG cards: ${result.takes} takes, ${result.events} events, ${result.pundits} pundits`);
+      console.log(
+        `OG cards: ${result.takes} takes, ${result.events} events, ${result.pundits} pundits, ${result.teams} teams, ${result.weeks} weeks`
+      );
     })
     .catch((err) => {
       console.error(err);

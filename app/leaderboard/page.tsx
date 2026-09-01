@@ -1,5 +1,7 @@
+import { JsonLd } from "@/components/JsonLd";
 import { LeaderboardClient } from "@/components/LeaderboardClient";
 import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
+import { collectionPageJsonLd } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -13,6 +15,13 @@ export default function LeaderboardPage() {
 
   return (
     <main id="main" className="shell">
+      <JsonLd
+        data={collectionPageJsonLd(
+          "Expert pick records",
+          "/leaderboard/",
+          "Who’s actually on the record this season. Hits, misses, and open expert picks."
+        )}
+      />
       <div className="eyebrow type-broadcast">Pundits</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         The table.

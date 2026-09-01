@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadCalls, loadEvents, loadPundits } from "./data";
+import { loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
 import type { Call, Event } from "./types";
 import {
   gradeSheet,
@@ -16,6 +16,10 @@ import {
   eventLastModified,
   faqJsonLd,
   takeLastModified,
+  callsLastModified,
+  teamLastModified,
+  teamJsonLd,
+  collectionPageJsonLd,
 } from "./seo";
 import {
   SITE_DESCRIPTION,
@@ -315,6 +319,14 @@ describe("json-ld", () => {
     );
   });
 
+  it("moves team and hub freshness with the latest grade", () => {
+    const events = loadEvents();
+    const calls = loadCalls();
+    expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
+    expect(teamLastModified("north-carolina", events, calls)).toBe("2026-08-29");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-08-29");
+  });
+
   it("publishes methodology questions as FAQPage schema", () => {
     const json = faqJsonLd([
       { question: "What is a verified pick?", answer: "A named, sourced public lean." },
@@ -325,6 +337,33 @@ describe("json-ld", () => {
       expect.objectContaining({ "@type": "Question", name: "What is a verified pick?" }),
       expect.objectContaining({ "@type": "Question", name: "Is the price live?" }),
     ]);
+  });
+
+  it("describes a team page as a SportsTeam with its pick archive URL", () => {
+    const team = loadTeams().find((candidate) => candidate.id === "tcu")!;
+    const json = teamJsonLd(team);
+    expect(json["@type"]).toBe("SportsTeam");
+    expect(json.name).toBe("TCU");
+    expect(json.url).toBe("https://pundits.pro/teams/tcu/");
+    expect(json.sport).toBe("American Football");
+  });
+
+  it("describes hub and week archives as collection pages, not news articles", () => {
+    const week = collectionPageJsonLd(
+      "College football Week 0 expert picks (2026)",
+      "/ncaaf/2026/week-0/",
+      "Experts went 2–4 on verified Week 0 picks."
+    );
+    expect(week["@type"]).toBe("CollectionPage");
+    expect(week.url).toBe("https://pundits.pro/ncaaf/2026/week-0/");
+    expect(week.name).toBe("College football Week 0 expert picks (2026)");
+    const stories = collectionPageJsonLd(
+      "Expert picks",
+      "/stories/",
+      "Verified expert CFB and NFL picks."
+    );
+    expect(stories.url).toBe("https://pundits.pro/stories/");
+    expect(JSON.stringify(week)).not.toMatch(/NewsArticle/);
   });
 
   it("describes pick pages without claiming Google Event rich-result eligibility", () => {

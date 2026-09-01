@@ -1,4 +1,4 @@
-import { mappedTakes, pickStory, takePath, type MappedTake } from "./seo";
+import { callsLastModified, mappedTakes, pickStory, takePath, type MappedTake } from "./seo";
 import { canonicalUrl, SITE_DESCRIPTION, SITE_NAME } from "./site";
 import type { Call, Event, Pundit } from "./types";
 
@@ -51,7 +51,7 @@ export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): stri
 <link>${canonicalUrl("/")}</link>
 <description>${xmlEscape(SITE_DESCRIPTION)}</description>
 <language>en-us</language>
-<lastBuildDate>${rssDate(mappedTakes(calls, events, pundits)[0]?.call.sourceDate ?? "2026-01-01")}</lastBuildDate>
+<lastBuildDate>${rssDate(callsLastModified(calls, mappedTakes(calls, events, pundits)[0]?.call.sourceDate) ?? "2026-01-01")}</lastBuildDate>
 ${items}
 </channel>
 </rss>`;

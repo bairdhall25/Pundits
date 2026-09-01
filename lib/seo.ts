@@ -1,3 +1,4 @@
+import { takesOnTeam } from "./archive";
 import { finalScoreParts, isMapped, seasonFromCalls, sidesForCard } from "./data";
 import { publicSideLabel } from "./public-side";
 import {
@@ -18,7 +19,7 @@ import {
   takePath,
 } from "./site";
 import type { StoryCard } from "./story-card";
-import type { Call, Event, Pundit } from "./types";
+import type { Call, Event, Pundit, Team } from "./types";
 
 export type MappedTake = {
   call: Call;
@@ -393,6 +394,30 @@ export function eventLastModified(event: Event, calls: Call[]): string | undefin
   ]);
 }
 
+export function callsLastModified(
+  calls: Call[],
+  fallback?: string | null
+): string | undefined {
+  return latestDay([
+    ...calls.flatMap((call) => [call.sourceDate, call.gradedAt]),
+    fallback,
+  ]);
+}
+
+export function teamLastModified(
+  teamId: string,
+  events: Event[],
+  calls: Call[]
+): string | undefined {
+  const takes = takesOnTeam(teamId, events, calls);
+  return latestDay(
+    [...takes.for, ...takes.against].flatMap((call) => [
+      call.sourceDate,
+      call.gradedAt,
+    ])
+  );
+}
+
 export function organizationGraph() {
   const url = canonicalUrl("/");
   return {
@@ -493,6 +518,30 @@ export function personJsonLd(pundit: Pundit) {
     image: pundit.photo.startsWith("http")
       ? pundit.photo
       : canonicalUrl(pundit.photo),
+  };
+}
+
+export function teamJsonLd(team: Team) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    name: team.name,
+    url: canonicalUrl(`/teams/${team.id}`),
+    sport: "American Football",
+  };
+}
+
+export function collectionPageJsonLd(
+  name: string,
+  path: string,
+  description: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    url: canonicalUrl(path),
+    description,
   };
 }
 

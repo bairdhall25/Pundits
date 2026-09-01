@@ -7,7 +7,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { TeamChip } from "@/components/TeamChip";
 import { takesOnTeam, teamEvents, teamHasTakes } from "@/lib/archive";
 import { getTeam, loadCalls, loadEvents, loadPundits, loadTeams } from "@/lib/data";
-import { breadcrumbList } from "@/lib/seo";
+import { ogImageFor, teamOgCard } from "@/lib/og";
+import { breadcrumbList, teamJsonLd } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 import type { Call, Pundit } from "@/lib/types";
 
@@ -39,10 +40,12 @@ export async function generateMetadata({
   const events = loadEvents();
   const calls = loadCalls();
   const takes = takesOnTeam(id, events, calls);
+  const card = teamOgCard(team, events, calls, loadPundits());
   const meta = pageMeta(
     `${team.name} expert picks`,
     `Who the TV voices are taking on ${team.name}: ${takes.for.length} with them, ${takes.against.length} against, each with the quote and the frozen market price.`,
-    `/teams/${id}`
+    `/teams/${id}`,
+    ogImageFor(card.file, `${team.name} expert picks`)
   );
   if (!teamHasTakes(id, events, calls)) {
     // Thin until a take involves this team; flips to indexable with content.
@@ -69,6 +72,7 @@ export default async function TeamPage({
 
   return (
     <main id="main" className="shell">
+      <JsonLd data={teamJsonLd(team)} />
       <JsonLd
         data={breadcrumbList([
           { name: "Picks", path: "/" },

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EventCard } from "@/components/EventCard";
@@ -11,8 +12,10 @@ import {
 } from "@/lib/archive";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { formatCents } from "@/lib/format";
-import { breadcrumbList, takePath } from "@/lib/seo";
-import type { Sport } from "@/lib/types";
+import { ogImageFor, weekOgCard } from "@/lib/og";
+import { breadcrumbList, collectionPageJsonLd, takePath } from "@/lib/seo";
+import { pageMeta } from "@/lib/site";
+import type { Call, Event, Sport } from "@/lib/types";
 
 export { weekArchivePath };
 
@@ -23,6 +26,35 @@ const SPORT_LABEL: Record<Sport, string> = {
 
 export function weekArchiveTitle(sport: Sport, season: number, week: number): string {
   return `${SPORT_LABEL[sport]} Week ${week} expert picks (${season})`;
+}
+
+export function weekArchiveDescription(
+  week: number,
+  record: { hits: number; misses: number; pending: number }
+): string {
+  const graded = record.hits + record.misses > 0;
+  return graded
+    ? `Experts went ${record.hits}–${record.misses} on verified Week ${week} picks. Every quote, frozen price, and result.`
+    : `Verified expert picks for every tracked Week ${week} game, with the quote and the frozen market price.`;
+}
+
+export function weekArchiveMeta(
+  sport: Sport,
+  season: number,
+  week: number,
+  events: Event[],
+  calls: Call[]
+): Metadata {
+  const games = gamesForWeek(sport, season, week, events);
+  const record = weekRecord(games, calls);
+  const title = weekArchiveTitle(sport, season, week);
+  const card = weekOgCard(sport, season, week, events, calls);
+  return pageMeta(
+    title,
+    weekArchiveDescription(week, record),
+    weekArchivePath(sport, season, week),
+    ogImageFor(card.file, title)
+  );
 }
 
 export function WeekArchive({
@@ -57,14 +89,18 @@ export function WeekArchive({
     : `${games.length} tracked game${games.length === 1 ? "" : "s"} · ${
         record.pending
       } open expert pick${record.pending === 1 ? "" : "s"}. Results land after the games.`;
+  const path = weekArchivePath(sport, season, week);
 
   return (
     <main id="main" className="shell">
       <JsonLd
+        data={collectionPageJsonLd(weekArchiveTitle(sport, season, week), path, lede)}
+      />
+      <JsonLd
         data={breadcrumbList([
           { name: "Picks", path: "/" },
           { name: label, path: slate },
-          { name: `Week ${week}`, path: weekArchivePath(sport, season, week) },
+          { name: `Week ${week}`, path },
         ])}
       />
       <Breadcrumbs

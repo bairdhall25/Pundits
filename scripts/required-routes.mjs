@@ -24,6 +24,8 @@ export const STATIC_ONLY_FILES = [
   "og/events/unc-vs-tcu-2026.png",
   "og/events/ncsu-at-uva-2026.png",
   "og/pundits/finebaum.png",
+  "og/teams/tcu.png",
+  "og/weeks/ncaaf-2026-week-0.png",
   "og/stories/takes/unc-vs-tcu-2026--finebaum.png",
   "og/stories/events/unc-vs-tcu-2026.png",
   "og/stories/pundits/finebaum.png",

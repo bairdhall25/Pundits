@@ -100,6 +100,11 @@ export function mappedCalls(calls: Call[]): Call[] {
   return calls.filter(isMapped);
 }
 
+/** True once at least one mapped pick is on this event; gates indexing. */
+export function eventHasTakes(slug: string, calls: Call[]): boolean {
+  return mappedCalls(calls).some((call) => call.eventSlug === slug);
+}
+
 export function callsForEvent(
   slug: string,
   calls: Call[],

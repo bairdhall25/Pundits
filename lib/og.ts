@@ -1,8 +1,9 @@
+import { gamesForWeek, takesOnTeam, weekRecord } from "./archive";
 import { formatCents, formatGameWhen } from "./format";
 import { finalScoreLine, getTeam, sidesForCard } from "./data";
 import { sideChip, takeHeadline, type MappedTake } from "./seo";
 import { canonicalUrl, ogImage, takePath } from "./site";
-import type { ActivityRecord, Call, CallStatus, CardSide, Event, Pundit, Team } from "./types";
+import type { ActivityRecord, Call, CallStatus, CardSide, Event, Pundit, Sport, Team } from "./types";
 
 export type OgChip = {
   abbr: string;
@@ -60,6 +61,27 @@ export type PunditOgCard = {
   latestQuote: string | null;
 };
 
+export type TeamOgCard = {
+  kind: "team";
+  file: string;
+  name: string;
+  sport: string;
+  chip: OgChip;
+  withThem: number;
+  against: number;
+  withFaces: OgFace[];
+  againstFaces: OgFace[];
+};
+
+export type WeekOgCard = {
+  kind: "week";
+  file: string;
+  kicker: string;
+  title: string;
+  line: string;
+  games: string[];
+};
+
 export function ogTakePath(slug: string, punditId: string): string {
   return `/og/takes/${slug}--${punditId}.png`;
 }
@@ -70,6 +92,14 @@ export function ogEventPath(slug: string): string {
 
 export function ogPunditPath(id: string): string {
   return `/og/pundits/${id}.png`;
+}
+
+export function ogTeamPath(id: string): string {
+  return `/og/teams/${id}.png`;
+}
+
+export function ogWeekPath(sport: Sport, season: number, week: number): string {
+  return `/og/weeks/${sport}-${season}-week-${week}.png`;
 }
 
 export function ogStoryTakePath(slug: string, punditId: string): string {
@@ -222,5 +252,60 @@ export function punditOgCard(
         ? "—"
         : `${pundit.season2026.wins}–${pundit.season2026.losses}`,
     latestQuote: latest?.claim ?? null,
+  };
+}
+
+function facesFromCalls(calls: Call[], pundits: Pundit[]): OgFace[] {
+  const byId = Object.fromEntries(pundits.map((pundit) => [pundit.id, pundit]));
+  const seen = new Set<string>();
+  const out: OgFace[] = [];
+  for (const call of calls) {
+    const pundit = byId[call.punditId];
+    if (!pundit || seen.has(pundit.id)) continue;
+    seen.add(pundit.id);
+    out.push({ name: pundit.name, photo: pundit.photo, quote: call.claim });
+  }
+  return out;
+}
+
+export function teamOgCard(
+  team: Team,
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): TeamOgCard {
+  const takes = takesOnTeam(team.id, events, calls);
+  return {
+    kind: "team",
+    file: ogTeamPath(team.id),
+    name: team.name,
+    sport: team.sport === "nfl" ? "NFL" : "College football",
+    chip: { abbr: team.abbr, primary: team.primary, ink: team.ink },
+    withThem: takes.for.length,
+    against: takes.against.length,
+    withFaces: facesFromCalls(takes.for, pundits),
+    againstFaces: facesFromCalls(takes.against, pundits),
+  };
+}
+
+export function weekOgCard(
+  sport: Sport,
+  season: number,
+  week: number,
+  events: Event[],
+  calls: Call[]
+): WeekOgCard {
+  const games = gamesForWeek(sport, season, week, events);
+  const record = weekRecord(games, calls);
+  const graded = record.hits + record.misses > 0;
+  return {
+    kind: "week",
+    file: ogWeekPath(sport, season, week),
+    kicker: sport === "nfl" ? "NFL" : "College football",
+    title: `Week ${week} expert picks`,
+    line: graded
+      ? `Experts went ${record.hits}–${record.misses}`
+      : `${games.length} game${games.length === 1 ? "" : "s"} · ${record.pending} open pick${record.pending === 1 ? "" : "s"}`,
+    games: games.map((game) => game.title),
   };
 }

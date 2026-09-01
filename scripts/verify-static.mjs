@@ -153,6 +153,30 @@ assert.match(
   /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png"/
 );
 
+const emptyEvent = await readFile(
+  path.join(out, "picks/wisconsin-vs-nd-2026/index.html"),
+  "utf8"
+);
+assert.match(emptyEvent, /name="robots" content="noindex, follow"/);
+assert.match(
+  emptyEvent,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/wisconsin-vs-nd-2026\/"/
+);
+
+const teamPage = await readFile(path.join(out, "teams/tcu/index.html"), "utf8");
+assert.match(
+  teamPage,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/teams\/tcu\.png"/
+);
+assert.match(teamPage, /"@type":"SportsTeam"/);
+
+const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
+assert.match(
+  week0,
+  /property="og:image" content="https:\/\/pundits\.pro\/og\/weeks\/ncaaf-2026-week-0\.png"/
+);
+assert.match(week0, /"@type":"CollectionPage"/);
+
 assert.match(home, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
 
 const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
@@ -163,6 +187,8 @@ for (const url of [
   "https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/patterson/",
   "https://pundits.pro/pundits/herbstreit/",
+  "https://pundits.pro/teams/tcu/",
+  "https://pundits.pro/ncaaf/2026/week-0/",
   "https://pundits.pro/privacy/",
   "https://pundits.pro/about/",
   "https://pundits.pro/methodology/",
@@ -170,6 +196,10 @@ for (const url of [
 ]) {
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }
+assert(
+  !sitemap.includes("https://pundits.pro/picks/wisconsin-vs-nd-2026/"),
+  "empty event shells stay out of the sitemap until a mapped pick lands"
+);
 
 function sitemapLastModified(url) {
   const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -188,6 +218,15 @@ for (const punditId of ["finebaum", "patterson"]) {
     `${profile} must be at least as fresh as its graded receipt`
   );
 }
+assert(
+  sitemapLastModified("https://pundits.pro/teams/tcu/") >=
+    sitemapLastModified("https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/"),
+  "team pages must refresh when a take on that team grades"
+);
+assert(
+  sitemapLastModified("https://pundits.pro/") >= "2026-08-29",
+  "hub pages must refresh when a pick grades"
+);
 
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
 assert(robots.includes("Sitemap: https://pundits.pro/sitemap.xml"));
@@ -197,6 +236,9 @@ assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, u
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
 assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
+assert.match(newsSitemap, /\/picks\/unc-vs-tcu-2026\//);
+assert.doesNotMatch(newsSitemap, /\/ncaaf\/2026\/week-0\//);
+assert.doesNotMatch(newsSitemap, /\/teams\//);
 
 const feed = await readFile(path.join(out, "feed.xml"), "utf8");
 assert.match(feed, /<rss version="2\.0">/);

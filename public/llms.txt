@@ -15,6 +15,7 @@ PUNDITS tracks who credible sports voices are picking. Faces are named experts. 
 - https://pundits.pro/ncaaf/{season}/week-{week}/
 - https://pundits.pro/nfl/{season}/week-{week}/
 - https://pundits.pro/about/
+- https://pundits.pro/methodology/
 - https://pundits.pro/privacy/
 - https://pundits.pro/terms/
 - https://pundits.pro/sitemap.xml

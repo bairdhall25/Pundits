@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  WeekArchive,
-  weekArchivePath,
-  weekArchiveTitle,
-} from "@/components/WeekArchive";
-import { archiveWeeks, gamesForWeek, parseWeekParam, weekRecord } from "@/lib/archive";
+import { WeekArchive, weekArchiveMeta } from "@/components/WeekArchive";
+import { archiveWeeks, parseWeekParam } from "@/lib/archive";
 import { loadCalls, loadEvents } from "@/lib/data";
 import { pageMeta } from "@/lib/site";
 
@@ -35,17 +31,12 @@ export async function generateMetadata({
   const { season, week } = await params;
   const resolved = resolve(season, week);
   if (!resolved) return pageMeta("Expert picks", "Weekly expert picks archive.");
-  const events = loadEvents();
-  const games = gamesForWeek(SPORT, resolved.season, resolved.week, events);
-  const record = weekRecord(games, loadCalls());
-  const graded = record.hits + record.misses > 0;
-  const description = graded
-    ? `Experts went ${record.hits}–${record.misses} on verified Week ${resolved.week} picks. Every quote, frozen price, and result.`
-    : `Verified expert picks for every tracked Week ${resolved.week} game, with the quote and the frozen market price.`;
-  return pageMeta(
-    weekArchiveTitle(SPORT, resolved.season, resolved.week),
-    description,
-    weekArchivePath(SPORT, resolved.season, resolved.week)
+  return weekArchiveMeta(
+    SPORT,
+    resolved.season,
+    resolved.week,
+    loadEvents(),
+    loadCalls()
   );
 }
 

@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { StoryBoard } from "@/components/StoryBoard";
 import { TakesViews } from "@/components/TakesViews";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
-import { breadcrumbList, mappedTakes, toStoryCard } from "@/lib/seo";
+import { breadcrumbList, collectionPageJsonLd, mappedTakes, toStoryCard } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -19,6 +19,13 @@ export default function StoriesPage() {
 
   return (
     <main id="main" className="shell shell-wide">
+      <JsonLd
+        data={collectionPageJsonLd(
+          "Expert picks",
+          "/stories/",
+          "Verified expert CFB and NFL picks: who they’re taking, the quote, and the market price. Newest first."
+        )}
+      />
       <JsonLd
         data={breadcrumbList([{ name: "Takes", path: "/stories" }])}
       />

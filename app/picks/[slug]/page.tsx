@@ -6,6 +6,7 @@ import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import {
+  eventHasTakes,
   getEvent,
   loadCalls,
   loadEvents,
@@ -38,7 +39,16 @@ export async function generateMetadata({
   const pundits = loadPundits();
   const share = eventShare(event, calls, pundits);
   const card = eventOgCard(event, calls, pundits, loadTeams());
-  return pageMeta(share.title, share.description, `/picks/${slug}`, ogImageFor(card.file, share.title));
+  const meta = pageMeta(
+    share.title,
+    share.description,
+    `/picks/${slug}`,
+    ogImageFor(card.file, share.title)
+  );
+  if (!eventHasTakes(slug, calls)) {
+    return { ...meta, robots: { index: false, follow: true } };
+  }
+  return meta;
 }
 
 export default async function PickPage({
