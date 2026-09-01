@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { americanOdds, kickoffTag, statusChipText, statusLabel, verdictClass } from "./format";
+import { americanOdds, kickoffTag, sportChip, statusChipText, statusLabel, verdictClass } from "./format";
+
+describe("sportChip", () => {
+  it("prints a fan-facing sport chip", () => {
+    expect(sportChip("nfl")).toBe("NFL");
+    expect(sportChip("ncaaf")).toBe("College football");
+  });
+});
 
 describe("statusLabel", () => {
   it("calls unresolved picks open without implying the event is live", () => {

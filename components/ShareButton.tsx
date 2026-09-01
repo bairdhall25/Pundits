@@ -104,7 +104,7 @@ export function ShareButton({
       {open ? (
         <div className="share-sheet" id={menuId} role="menu">
           <button type="button" role="menuitem" onClick={() => void nativeShare()}>
-            Share
+            Share via device
           </button>
           <button type="button" role="menuitem" onClick={() => void copyLink()}>
             {copied ? "Copied" : "Copy link"}

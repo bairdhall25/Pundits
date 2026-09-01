@@ -124,12 +124,14 @@ export default async function PickPage({
         permalink={false}
         detail
       />
-      <EmailInterestForm
-        placement="pick_detail"
-        scope="event"
-        scopeId={event.slug}
-        subjectName={event.title}
-      />
+      {eventHasTakes(event.slug, calls) ? (
+        <EmailInterestForm
+          placement="pick_detail"
+          scope="event"
+          scopeId={event.slug}
+          subjectName={event.title}
+        />
+      ) : null}
     </main>
   );
 }

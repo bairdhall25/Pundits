@@ -95,7 +95,7 @@ export default async function TakePage({
       <JsonLd data={articleJsonLd(take, calls, pundits)} />
       <JsonLd
         data={breadcrumbList([
-          { name: "Stories", path: "/stories" },
+          { name: "Takes", path: "/stories" },
           { name: sportLabel, path: slate },
           { name: event.title, path: `/picks/${event.slug}` },
           { name: story.headline, path: takePath(event.slug, take.pundit.id) },
@@ -103,7 +103,7 @@ export default async function TakePage({
       />
       <Breadcrumbs
         items={[
-          { name: "Stories", href: "/stories" },
+          { name: "Takes", href: "/stories" },
           { name: sportLabel, href: slate },
           { name: event.title, href: `/picks/${event.slug}` },
           { name: take.pundit.name },

@@ -170,6 +170,7 @@ const emptyEvent = await readFile(
   "utf8"
 );
 assert.match(emptyEvent, /name="robots" content="noindex, follow"/);
+assert.doesNotMatch(emptyEvent, /Join the early list/);
 assert.match(
   emptyEvent,
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/miami-at-stanford-2026\/"/
@@ -198,6 +199,24 @@ const dublinTake = await readFile(
 );
 assert.match(dublinTake, /North Carolina vs TCU\./);
 assert.doesNotMatch(dublinTake, /North Carolina at TCU/);
+assert.match(dublinTake, />Takes</);
+
+const pateTake = await readFile(
+  path.join(out, "picks/clemson-at-lsu-2026/pate/index.html"),
+  "utf8"
+);
+assert.match(pateTake, />Takes</);
+
+assert.doesNotMatch(finebaum, />ncaaf</);
+assert.match(finebaum, /College football/);
+
+let notFoundPage;
+try {
+  notFoundPage = await readFile(path.join(out, "404.html"), "utf8");
+} catch {
+  notFoundPage = await readFile(path.join(out, "404/index.html"), "utf8");
+}
+assert.match(notFoundPage, /No page here/);
 
 const teamPage = await readFile(path.join(out, "teams/tcu/index.html"), "utf8");
 assert.match(

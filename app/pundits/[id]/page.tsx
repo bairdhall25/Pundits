@@ -25,6 +25,7 @@ import {
 } from "@/lib/records";
 import { breadcrumbList, personJsonLd } from "@/lib/seo";
 import { punditShare, sharePayload } from "@/lib/share";
+import { sportChip } from "@/lib/format";
 import { pageMeta } from "@/lib/site";
 import { ogImageFor, ogPunditPath, ogStoryPunditPath } from "@/lib/og";
 
@@ -79,12 +80,12 @@ export default async function PunditPage({
       <JsonLd data={personJsonLd(p)} />
       <JsonLd
         data={breadcrumbList([
-          { name: "Picks", path: "/" },
+          { name: "Pundits", path: "/leaderboard" },
           { name: p.name, path: `/pundits/${p.id}` },
         ])}
       />
       <Breadcrumbs
-        items={[{ name: "Picks", href: "/" }, { name: p.name }]}
+        items={[{ name: "Pundits", href: "/leaderboard" }, { name: p.name }]}
       />
       <div className="mb-8 grid items-center gap-6 md:grid-cols-[160px_1fr]">
         <PunditAvatar src={p.photo} alt={p.name} size="hero" />
@@ -108,7 +109,7 @@ export default async function PunditPage({
             />
           </div>
           <div className="mt-2 inline-block border border-[#2a2a2a] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--muted)]">
-            {p.sport}
+            {sportChip(p.sport)}
           </div>
           <div className="mt-3 flex flex-wrap gap-6">
             {showRecord ? (
