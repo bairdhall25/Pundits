@@ -91,13 +91,28 @@ assert.doesNotMatch(dublinDetail, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
+assert.match(punditProfile, /Request pick alerts/);
 assert.match(
   punditProfile,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/pundits\/kanell\.png"/
 );
 assert.doesNotMatch(punditProfile, /2026 record 0–0/);
 assert.doesNotMatch(punditProfile, />0–0</);
+assert.doesNotMatch(punditProfile, /No unmapped takes on file/);
+assert.doesNotMatch(punditProfile, /at risk/i);
+assert.doesNotMatch(punditProfile, />hard</i);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
+assert(
+  punditProfile.indexOf("Tracked picks") < punditProfile.indexOf("Hypothetical record"),
+  "pundit profile must put tracked picks before hypothetical totals"
+);
+
+const herbstreitProfile = await readFile(
+  path.join(out, "pundits/herbstreit/index.html"),
+  "utf8"
+);
+assert.match(herbstreitProfile, /No graded picks yet/);
+assert.doesNotMatch(herbstreitProfile, />0–0</);
 
 const book = await readFile(path.join(out, "book/index.html"), "utf8");
 assert.doesNotMatch(book, /\$100 at risk/);

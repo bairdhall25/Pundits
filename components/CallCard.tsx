@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatCents, statusLabel } from "@/lib/format";
+import { statusLabel } from "@/lib/format";
 import { mappedStakeLine } from "@/lib/public-side";
 import { takePath } from "@/lib/site";
 import type { Call, Event } from "@/lib/types";
@@ -7,9 +7,11 @@ import type { Call, Event } from "@/lib/types";
 export function CallCard({
   call,
   events = [],
+  showKind = true,
 }: {
   call: Call;
   events?: Event[];
+  showKind?: boolean;
 }) {
   const event = call.eventSlug
     ? events.find((e) => e.slug === call.eventSlug) ?? null
@@ -20,52 +22,62 @@ export function CallCard({
         ? event.yesCents
         : event.noCents
       : null;
+  const stake = event && call.side ? mappedStakeLine(event, call.side, cents) : null;
+  const badgeLabel = [showKind ? call.kind : null, statusLabel(call.status)]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <article className="mb-2 border border-[#2a2a2a] bg-[var(--card)] p-4">
-      <div className="mb-2">
+    <article className="call-card mb-2 border border-[#2a2a2a] bg-[var(--card)] p-4">
+      <div
+        className="call-card-badges mb-2"
+        role="group"
+        aria-label={badgeLabel}
+      >
+        {showKind ? (
+          <span
+            aria-hidden="true"
+            className={`border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+              call.kind === "hard"
+                ? "border-[var(--green)] text-[var(--green)]"
+                : "border-[#6b6b6b] text-[var(--muted)]"
+            }`}
+          >
+            {call.kind}
+          </span>
+        ) : null}
         <span
-          className={`mr-1.5 border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-            call.kind === "hard"
-              ? "border-[var(--green)] text-[var(--green)]"
-              : "border-[#6b6b6b] text-[var(--muted)]"
-          }`}
+          aria-hidden="true"
+          className="bg-[#12380c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--green)]"
         >
-          {call.kind}
-        </span>
-        <span className="bg-[#12380c] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--green)]">
           {statusLabel(call.status)}
         </span>
       </div>
       <p className="mb-2 text-base leading-relaxed">{call.claim}</p>
-      <div className="text-xs text-[var(--muted)]">
-        {call.source}
-        {call.sourceDate ? ` · ${call.sourceDate}` : ""}
+      <div className="call-card-meta">
+        <span>
+          {call.source}
+          {call.sourceDate ? ` · ${call.sourceDate}` : ""}
+        </span>
         {call.sourceUrl ? (
-          <>
-            {" · "}
-            <a
-              href={call.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="font-extrabold uppercase tracking-wider text-[var(--green)]"
-            >
-              Source →
-            </a>
-          </>
+          <a
+            href={call.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="call-card-source"
+          >
+            Open source →
+          </a>
         ) : null}
       </div>
-      {event && call.side ? (
-        <div className="mt-2.5 border-l-[3px] border-[var(--green)] bg-[#111] px-3.5 py-3 text-[13px]">
-          <Link href={takePath(event.slug, call.punditId)}>
-            {event.title} ·{" "}
-            <b className="text-[var(--green)]">
-              {mappedStakeLine(event, call.side, cents).label}
-            </b>
-            {" @ "}
-            {formatCents(cents)} · hypothetical $100
-          </Link>
-        </div>
+      {event && stake ? (
+        <Link
+          className="call-card-receipt"
+          href={takePath(event.slug, call.punditId)}
+        >
+          <span>{stake.line}</span>
+          <span className="call-card-receipt-action">View receipt →</span>
+        </Link>
       ) : null}
     </article>
   );

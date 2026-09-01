@@ -8,7 +8,6 @@ import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
 import {
   callsForPundit,
-  getActivityBoard,
   getPundit,
   impliedOpenDollars,
   isMapped,
@@ -19,7 +18,6 @@ import {
 } from "@/lib/data";
 import {
   formatNetDollars,
-  hasGradedRecords,
   punditIndexable,
   settledNetDollars,
 } from "@/lib/records";
@@ -68,12 +66,13 @@ export default async function PunditPage({
   const p = getPundit(id, pundits, calls);
   if (!p) notFound();
 
-  const implied = callsForPundit(p.id, calls).filter(isMapped);
+  const punditCalls = callsForPundit(p.id, calls);
+  const mapped = punditCalls.filter(isMapped);
   const rest = otherTakes(p.id, calls);
   const open = impliedOpenDollars(p.id, calls);
   const events = loadEvents();
   const settled = settledNetDollars(p.id, calls, events);
-  const showRecord = hasGradedRecords(getActivityBoard(pundits, calls));
+  const gradedCount = p.season2026.wins + p.season2026.losses;
 
   return (
     <main id="main" className="shell">
@@ -87,9 +86,9 @@ export default async function PunditPage({
       <Breadcrumbs
         items={[{ name: "Pundits", href: "/leaderboard" }, { name: p.name }]}
       />
-      <div className="mb-8 grid items-center gap-6 md:grid-cols-[160px_1fr]">
+      <div className="pundit-profile-hero">
         <PunditAvatar src={p.photo} alt={p.name} size="hero" />
-        <div>
+        <div className="pundit-profile-copy">
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
             {p.outlet}
           </div>
@@ -100,7 +99,7 @@ export default async function PunditPage({
             <ShareButton
               share={sharePayload({
                 title: `${p.name} picks`,
-                text: punditShare(p, callsForPundit(p.id, calls)[0]).description,
+                text: punditShare(p, punditCalls[0]).description,
                 path: `/pundits/${p.id}`,
                 image: ogPunditPath(p.id),
                 story: ogStoryPunditPath(p.id),
@@ -111,17 +110,7 @@ export default async function PunditPage({
           <div className="mt-2 inline-block border border-[#2a2a2a] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--muted)]">
             {sportChip(p.sport)}
           </div>
-          <div className="mt-3 flex flex-wrap gap-6">
-            {showRecord ? (
-              <div>
-                <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                  2026
-                </div>
-                <div className="type-broadcast text-2xl">
-                  {p.season2026.wins}–{p.season2026.losses}
-                </div>
-              </div>
-            ) : null}
+          <div className="pundit-profile-stats">
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 Open picks
@@ -132,58 +121,89 @@ export default async function PunditPage({
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                Hypothetical $100
+                2026 record
               </div>
-              <div className="type-broadcast text-2xl text-[var(--green)]">
-                ${open}
-              </div>
+              {gradedCount ? (
+                <div className="pundit-profile-record">
+                  <span className="type-broadcast text-2xl">
+                    {p.season2026.wins}–{p.season2026.losses}
+                  </span>
+                  <span>{gradedCount} graded</span>
+                </div>
+              ) : (
+                <div className="pundit-profile-record-empty">No graded picks yet</div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
-        Implied book
-      </h2>
-      <p className="lede" style={{ marginTop: 0 }}>
-        Hypothetical $100 at the frozen Kalshi price — not a bet they placed.
-      </p>
-      <div className="mb-4 flex gap-7 border border-[#245c18] bg-[#10200c] px-5 py-4">
-        <div>
-          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-            Open · hypothetical $100
-          </div>
-          <div className="type-broadcast text-2xl text-[var(--green)]">
-            ${open}
-          </div>
-        </div>
-        <div>
-          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-            Settled
-          </div>
-          <div
-            className={`type-broadcast text-2xl ${
-              settled > 0 ? "text-[var(--green)]" : settled < 0 ? "text-[#ff5c5c]" : ""
-            }`}
-          >
-            {formatNetDollars(settled)}
-          </div>
-        </div>
-      </div>
-      {implied.length ? (
-        implied.map((c) => <CallCard key={c.id} call={c} events={events} />)
-      ) : (
-        <p className="lede">No mapped Kalshi lean yet.</p>
-      )}
+      <section aria-labelledby="tracked-picks">
+        <h2 id="tracked-picks" className="pundit-profile-section-title">
+          Tracked picks
+        </h2>
+        {mapped.length ? (
+          mapped.map((c) => (
+            <CallCard key={c.id} call={c} events={events} showKind={false} />
+          ))
+        ) : (
+          <p className="lede">No tracked picks yet.</p>
+        )}
+      </section>
 
-      <h2 className="type-broadcast mb-3 mt-8 border-t border-[#2a2a2a] pt-4 text-[22px] tracking-widest">
-        Other takes
-      </h2>
+      {mapped.length ? (
+        <section aria-labelledby="hypothetical-record">
+          <h2 id="hypothetical-record" className="pundit-profile-section-title">
+            Hypothetical record
+          </h2>
+          <p className="lede" style={{ marginTop: 0 }}>
+            Hypothetical $100 at the frozen Kalshi price — not a bet they placed.
+          </p>
+          <div className="pundit-profile-book">
+            {open > 0 ? (
+              <div>
+                <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
+                  Open · hypothetical $100
+                </div>
+                <div className="type-broadcast text-2xl text-[var(--green)]">
+                  ${open}
+                </div>
+              </div>
+            ) : null}
+            <div>
+              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
+                {gradedCount ? `Settled · ${gradedCount} graded` : "Settled"}
+              </div>
+              {gradedCount ? (
+                <div
+                  className={`type-broadcast text-2xl ${
+                    settled > 0
+                      ? "text-[var(--green)]"
+                      : settled < 0
+                        ? "text-[#ff5c5c]"
+                        : ""
+                  }`}
+                >
+                  {formatNetDollars(settled)}
+                </div>
+              ) : (
+                <div className="pundit-profile-settled-empty">
+                  No settled picks yet
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {rest.length ? (
-        rest.map((c) => <CallCard key={c.id} call={c} events={events} />)
-      ) : (
-        <p className="lede">No unmapped takes on file.</p>
-      )}
+        <section aria-labelledby="more-takes">
+          <h2 id="more-takes" className="pundit-profile-section-title">
+            More takes
+          </h2>
+          {rest.map((c) => <CallCard key={c.id} call={c} events={events} />)}
+        </section>
+      ) : null}
 
       <EmailInterestForm
         placement="pundit_profile"
