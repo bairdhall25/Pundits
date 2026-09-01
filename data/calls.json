@@ -801,5 +801,49 @@
     "gradedAt": "2026-08-29",
     "eventSlug": "ncsu-at-uva-2026",
     "side": "yes"
+  },
+  {
+    "id": "staples-clemson-lsu-20260831",
+    "punditId": "staples",
+    "claim": "I'll take LSU to cover this thing. I just think they're better.",
+    "source": "Andy & Ari On3",
+    "sourceUrl": "https://www.youtube.com/watch?v=haQLZXbYO3c",
+    "sourceDate": "2026-08-31",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "Clemson at LSU (Week 1)",
+    "status": "pending",
+    "eventSlug": "clemson-at-lsu-2026",
+    "side": "no"
+  },
+  {
+    "id": "wasserman-wisconsin-nd-20260831",
+    "punditId": "wasserman",
+    "claim": "I'm taking Notre Dame to I'm laying 20 and a half points. I think that they're going to win by a lot.",
+    "reasoning": "Ari says Notre Dame is foaming to leave no doubt after last year's playoff snub and will flex in week one as one of the five best teams.",
+    "source": "Andy & Ari On3",
+    "sourceUrl": "https://www.youtube.com/watch?v=haQLZXbYO3c",
+    "sourceDate": "2026-08-31",
+    "kind": "hard",
+    "subject": "Notre Dame",
+    "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
+    "status": "pending",
+    "eventSlug": "wisconsin-vs-nd-2026",
+    "side": "no"
+  },
+  {
+    "id": "staples-wisconsin-nd-20260831",
+    "punditId": "staples",
+    "claim": "So I will take Notre Dame to cover as well.",
+    "reasoning": "Andy agrees with Ari's leave-no-doubt read and expects Notre Dame to look like the team they think they are in week one (favorite laying 20.5).",
+    "source": "Andy & Ari On3",
+    "sourceUrl": "https://www.youtube.com/watch?v=haQLZXbYO3c",
+    "sourceDate": "2026-08-31",
+    "kind": "hard",
+    "subject": "Notre Dame",
+    "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
+    "status": "pending",
+    "eventSlug": "wisconsin-vs-nd-2026",
+    "side": "no"
   }
 ]

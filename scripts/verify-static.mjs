@@ -154,12 +154,22 @@ assert.match(
 );
 
 const emptyEvent = await readFile(
-  path.join(out, "picks/wisconsin-vs-nd-2026/index.html"),
+  path.join(out, "picks/miami-at-stanford-2026/index.html"),
   "utf8"
 );
 assert.match(emptyEvent, /name="robots" content="noindex, follow"/);
 assert.match(
   emptyEvent,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/miami-at-stanford-2026\/"/
+);
+
+const lambeau = await readFile(
+  path.join(out, "picks/wisconsin-vs-nd-2026/index.html"),
+  "utf8"
+);
+assert.doesNotMatch(lambeau, /name="robots" content="noindex, follow"/);
+assert.match(
+  lambeau,
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/wisconsin-vs-nd-2026\/"/
 );
 
@@ -186,6 +196,10 @@ for (const url of [
   "https://pundits.pro/picks/unc-vs-tcu-2026/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/",
   "https://pundits.pro/picks/unc-vs-tcu-2026/patterson/",
+  "https://pundits.pro/picks/wisconsin-vs-nd-2026/",
+  "https://pundits.pro/picks/wisconsin-vs-nd-2026/wasserman/",
+  "https://pundits.pro/picks/wisconsin-vs-nd-2026/staples/",
+  "https://pundits.pro/picks/clemson-at-lsu-2026/staples/",
   "https://pundits.pro/pundits/herbstreit/",
   "https://pundits.pro/teams/tcu/",
   "https://pundits.pro/ncaaf/2026/week-0/",
@@ -197,7 +211,7 @@ for (const url of [
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }
 assert(
-  !sitemap.includes("https://pundits.pro/picks/wisconsin-vs-nd-2026/"),
+  !sitemap.includes("https://pundits.pro/picks/miami-at-stanford-2026/"),
   "empty event shells stay out of the sitemap until a mapped pick lands"
 );
 
@@ -236,7 +250,8 @@ assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, u
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
 assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
-assert.match(newsSitemap, /\/picks\/unc-vs-tcu-2026\//);
+assert.match(newsSitemap, /\/picks\/clemson-at-lsu-2026\/staples\//);
+assert.match(newsSitemap, /\/picks\/wisconsin-vs-nd-2026\//);
 assert.doesNotMatch(newsSitemap, /\/ncaaf\/2026\/week-0\//);
 assert.doesNotMatch(newsSitemap, /\/teams\//);
 

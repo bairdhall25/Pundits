@@ -16,7 +16,9 @@ Already booked. Restaging is a miss.
 - Kanell `ncsu-at-uva-2026` yes (promoted 2026-08-28). Do not restage.
 - The morning-eight and other mapped hard rows already in `calls.json`
 - `walker` is on the roster. Hunt BFW Thursday / Saturday locks and Barstool CFB Show. Do not invent a SU.
-- `wisconsin-vs-nd-2026` stays **off home** until a roster SU exists — then propose `onHome: true` plus freeze
+- `wisconsin-vs-nd-2026` has roster ND SUs (`wasserman`, `staples`) and stays **off home** while Wisconsin YES is empty (hold extra home games through 2026-09-05)
+- Staples `clemson-at-lsu-2026` no (promoted 2026-08-31). Do not restage.
+- Wasserman `wisconsin-vs-nd-2026` no and Staples `wisconsin-vs-nd-2026` no (promoted 2026-08-31). Do not restage.
 - McAfee “50-burger” Clemson, Fallica “double-digit dog,” Kanell totals / ATS +4.5, Klatt “open with LSU is tough,” Eisen paraphrase, Simms AFC East, Florio/Simms Super Bowl *score* as Week 1 — already dropped
 
 Empty sides stay empty if nothing verifies. Do not invent.
@@ -47,6 +49,6 @@ NFL, unused on Week 1 games: `florio`, `simms`, `stephena`, `sharpe`, `kimes`, `
 
 ## Snapshot (from `data/` 2026-08-31)
 
-Open home games: Clemson empty / LSU pate+finebaum; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd. Lambeau fully empty, off home. Week 0 Final: Dublin dense (Patterson/McElroy hit, Finebaum/Compton miss); Charlottesville Kanell+Patterson miss, Virginia still empty.
+Open home games: Clemson empty / LSU pate+finebaum+staples; Patriots empty / SEA cowherd; 49ers empty / LAR eisen+cowherd; Bills empty / HOU cowherd. Lambeau wasserman+staples ND NO, Wisconsin empty, stays off home. Week 0 Final: Dublin dense (Patterson/McElroy hit, Finebaum/Compton miss); Charlottesville Kanell+Patterson miss, Virginia still empty.
 
 Four open home games are still one-sided, all favorites. Fantasy/props: parked in `docs/fantasy.md`.
