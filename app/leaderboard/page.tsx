@@ -27,8 +27,9 @@ export default function LeaderboardPage() {
         The table.
       </h1>
       <p className="lede">
-        Who’s actually on the record. Ranked by open picks. The 2026 column is
-        hits and misses on graded games.
+        People with a 2026 result first, by how many picks have graded, then
+        hits. Sample sizes are small — this is a ledger, not a claim they can
+        predict. Switch to open picks to see volume.
       </p>
       <LeaderboardClient board={board} />
     </main>

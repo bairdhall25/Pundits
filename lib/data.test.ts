@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   seasonFromCalls,
   getActivityBoard,
+  sortActivityBoard,
   getPundit,
   callsForPundit,
   sidesForCard,
@@ -16,6 +17,7 @@ import {
   latestCalls,
   loadCalls,
   loadEvents,
+  loadPundits,
   formatAsOf,
   otherTakes,
   hasGradedRecords,
@@ -123,17 +125,59 @@ describe("seasonFromCalls", () => {
 });
 
 describe("getActivityBoard", () => {
-  it("ranks by mapped pending picks, then total calls, then name", () => {
+  it("defaults to open volume while nobody has a mapped graded pick", () => {
     // fixture calls: finebaum has 1 mapped pending hard call, saban has 0 mapped
     const board = getActivityBoard(pundits, calls);
     expect(board.map((p) => p.id)).toEqual(["finebaum", "saban"]);
     expect(board[0].mappedPending).toBe(1);
     expect(board[0].totalCalls).toBeGreaterThan(0);
   });
+  it("defaults to results-first once anyone has a mapped graded pick", () => {
+    const mappedHit: Call = {
+      ...calls.find((c) => c.id === "c3")!,
+      id: "c3-mapped",
+      eventSlug: "georgia-cfp",
+      side: "yes",
+    };
+    const board = getActivityBoard(pundits, [...calls, mappedHit]);
+    expect(board.map((p) => p.id)).toEqual(["saban", "finebaum"]);
+  });
   it("exposes season2026 derived from mapped hard calls only", () => {
     const board = getActivityBoard(pundits, calls);
     const saban = board.find((p) => p.id === "saban")!;
     expect(saban.season2026).toEqual({ wins: 0, losses: 0, pending: 0 });
+  });
+});
+
+describe("sortActivityBoard", () => {
+  it("ranks by mapped pending when sort is open", () => {
+    const board = getActivityBoard(pundits, calls);
+    expect(sortActivityBoard(board, "open").map((p) => p.id)).toEqual([
+      "finebaum",
+      "saban",
+    ]);
+  });
+
+  it("puts sample size before hits when sort is results", () => {
+    const mappedHit: Call = {
+      ...calls.find((c) => c.id === "c3")!,
+      id: "c3-mapped",
+      eventSlug: "georgia-cfp",
+      side: "yes",
+    };
+    const board = getActivityBoard(pundits, [...calls, mappedHit]);
+    // saban now has a mapped hard hit; finebaum has none
+    expect(sortActivityBoard(board, "results").map((p) => p.id)).toEqual([
+      "saban",
+      "finebaum",
+    ]);
+  });
+
+  it("on the live board, Patterson (1–1) outranks McElroy (1–0) by sample size", () => {
+    const board = getActivityBoard(loadPundits(), loadCalls());
+    const ids = sortActivityBoard(board, "results").map((p) => p.id);
+    expect(ids.indexOf("patterson")).toBeLessThan(ids.indexOf("mcelroy"));
+    expect(ids.indexOf("mcelroy")).toBeLessThan(ids.indexOf("herbstreit"));
   });
 });
 

@@ -11,8 +11,10 @@ import type {
   Sport,
   Team,
 } from "./types";
+import { defaultBoardSort, sortActivityBoard } from "./board";
 import { publicSideLabel } from "./public-side";
 export { hasGradedRecords } from "./records";
+export { defaultBoardSort, sortActivityBoard, type BoardSort } from "./board";
 
 export function isMapped(call: Call): boolean {
   return Boolean(call.eventSlug && call.side);
@@ -42,14 +44,8 @@ export function toActivityRecord(pundit: Pundit, calls: Call[]): ActivityRecord 
 }
 
 export function getActivityBoard(pundits: Pundit[], calls: Call[]): ActivityRecord[] {
-  return pundits
-    .map((p) => toActivityRecord(p, calls))
-    .sort(
-      (a, b) =>
-        b.mappedPending - a.mappedPending ||
-        b.totalCalls - a.totalCalls ||
-        a.name.localeCompare(b.name)
-    );
+  const board = pundits.map((p) => toActivityRecord(p, calls));
+  return sortActivityBoard(board, defaultBoardSort(board));
 }
 
 export function getPundit(id: string, pundits: Pundit[], calls: Call[]): ActivityRecord | null {

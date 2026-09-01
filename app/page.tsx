@@ -14,7 +14,6 @@ import {
   getActivityBoard,
   getFuturesPeek,
   getWeekend,
-  hasGradedRecords,
   latestCalls,
   loadCalls,
   loadEvents,
@@ -256,7 +255,7 @@ export default function HomePage() {
         </div>
         <PeekRow>
           {table.map((p) => (
-            <TablePeek key={p.id} p={p} graded={hasGradedRecords(table)} />
+            <TablePeek key={p.id} p={p} />
           ))}
         </PeekRow>
       </section>

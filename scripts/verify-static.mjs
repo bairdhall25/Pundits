@@ -30,6 +30,7 @@ assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
+assert.match(home, /Chip Patterson|Greg McElroy/);
 assert.match(home, /Paul Finebaum/);
 assert.match(home, /event-title-link/);
 assert.doesNotMatch(home, /class="event-hit"/);
@@ -99,7 +100,9 @@ assert.doesNotMatch(punditProfile, />0–0</);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
 
 const leaderboard = await readFile(path.join(out, "leaderboard/index.html"), "utf8");
-assert.match(leaderboard, /Ranked by open picks\. The 2026 column is/);
+assert.match(leaderboard, /Sample sizes are small/);
+assert.match(leaderboard, /2026 results/);
+assert.match(leaderboard, /Open picks/);
 assert.match(leaderboard, />Open picks</);
 assert.doesNotMatch(leaderboard, />Live picks</);
 assert.match(leaderboard, /lb-rank[^>]*>01</);

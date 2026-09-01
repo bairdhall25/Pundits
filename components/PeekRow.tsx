@@ -67,20 +67,30 @@ export function FuturePeek({
   );
 }
 
-export function TablePeek({ p, graded = false }: { p: ActivityRecord; graded?: boolean }) {
+export function TablePeek({ p }: { p: ActivityRecord }) {
+  const sample = p.season2026.wins + p.season2026.losses;
   return (
     <Link href={`/pundits/${p.id}`} className="peek table-card">
       <PunditAvatar src={p.photo} alt={p.name} size="row" />
       <div className="nm type-broadcast">{p.name.split(" ").slice(-1)[0]}</div>
-      <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-        Open
-      </div>
-      <div className="pct type-broadcast">{p.mappedPending}</div>
-      {graded ? (
-        <div className="wl">
-          2026 {p.season2026.wins}–{p.season2026.losses}
-        </div>
-      ) : null}
+      {sample > 0 ? (
+        <>
+          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
+            2026
+          </div>
+          <div className="pct type-broadcast">
+            {p.season2026.wins}–{p.season2026.losses}
+          </div>
+          <div className="wl">{p.mappedPending} open</div>
+        </>
+      ) : (
+        <>
+          <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
+            Open
+          </div>
+          <div className="pct type-broadcast">{p.mappedPending}</div>
+        </>
+      )}
     </Link>
   );
 }
