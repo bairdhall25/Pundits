@@ -21,3 +21,11 @@ export function mappedStakeLine(
     line: `${event.title} · ${label} @ ${formatCents(cents)} · hypothetical $100`,
   };
 }
+
+export function isVsGame(event: Pick<Event, "kind" | "title">): boolean {
+  return event.kind === "game" && / vs /i.test(event.title);
+}
+
+export function matchupSentence(event: Event): string {
+  return `${event.title}.`;
+}

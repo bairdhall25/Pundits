@@ -22,6 +22,7 @@ import {
 import { ogImageFor, ogStoryTakePath, ogTakePath } from "@/lib/og";
 import { sharePayload } from "@/lib/share";
 import { formatShortDate, statusChipText, verdictClass } from "@/lib/format";
+import { matchupSentence } from "@/lib/public-side";
 import { articleMeta, pageMeta } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -164,9 +165,7 @@ export default async function TakePage({
           The matchup
         </h2>
         <p className="lede" style={{ maxWidth: 720 }}>
-          {event.awayTeam && event.homeTeam
-            ? `${event.awayTeam} at ${event.homeTeam}.`
-            : event.title}{" "}
+          {matchupSentence(event)}{" "}
           <Link href={`/picks/${event.slug}`}>Full game card →</Link>
         </p>
       </section>

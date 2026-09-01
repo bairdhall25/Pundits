@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { mappedStakeLine, publicSideLabel } from "./public-side";
+import {
+  isVsGame,
+  mappedStakeLine,
+  matchupSentence,
+  publicSideLabel,
+} from "./public-side";
 import type { Event } from "./types";
 
 const game = {
@@ -43,5 +48,31 @@ describe("mappedStakeLine", () => {
     expect(mappedStakeLine(event, "no", 91).line).toBe(
       "Indiana wins the national title · Against @ 91¢ · hypothetical $100"
     );
+  });
+});
+
+describe("neutral-site matchup copy", () => {
+  it("treats vs titles as neutral-site copy", () => {
+    const lambeau = {
+      kind: "game",
+      title: "Wisconsin vs Notre Dame",
+      awayTeam: "Wisconsin",
+      homeTeam: "Notre Dame",
+      network: "NBC · Lambeau",
+    } as Event;
+    expect(isVsGame(lambeau)).toBe(true);
+    expect(matchupSentence(lambeau)).toBe("Wisconsin vs Notre Dame.");
+    expect(matchupSentence(lambeau)).not.toMatch(/at Notre Dame/);
+  });
+
+  it("keeps at titles as at", () => {
+    const lsu = {
+      kind: "game",
+      title: "Clemson at LSU",
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+    } as Event;
+    expect(isVsGame(lsu)).toBe(false);
+    expect(matchupSentence(lsu)).toBe("Clemson at LSU.");
   });
 });

@@ -185,6 +185,20 @@ assert.match(
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/wisconsin-vs-nd-2026\/"/
 );
 
+const ndTake = await readFile(
+  path.join(out, "picks/wisconsin-vs-nd-2026/staples/index.html"),
+  "utf8"
+);
+assert.match(ndTake, /Wisconsin vs Notre Dame\./);
+assert.doesNotMatch(ndTake, /Wisconsin at Notre Dame/);
+
+const dublinTake = await readFile(
+  path.join(out, "picks/unc-vs-tcu-2026/mcelroy/index.html"),
+  "utf8"
+);
+assert.match(dublinTake, /North Carolina vs TCU\./);
+assert.doesNotMatch(dublinTake, /North Carolina at TCU/);
+
 const teamPage = await readFile(path.join(out, "teams/tcu/index.html"), "utf8");
 assert.match(
   teamPage,
