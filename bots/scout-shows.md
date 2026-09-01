@@ -23,7 +23,8 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NC
 2. Then idle roster voices if their pick window in that file is open.
 3. Named add-list speakers on those same shows → Candidates (`photoUrl=needed` unless a real photo is already known).
 4. If the game remains under-dense, run the bounded radio fallback in `docs/pick-shows.md`.
-5. Skip `dense` rows unless a source you already opened names that game.
+5. Skip `dense` rows unless a source you already opened names that game, or the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals. A reversal is a correction on the existing row, never a second card.
+6. **Overflow (docs/capture-policy.md rule 4):** while already inside a source for a Dispatch hole, if a rostered speaker drops a hard SU on a game that is **not in `events.json`**, stage it as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` blank with the matchup named in `subject`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a source, and it is not a license to vacuum the board.
 
 PMT is comedy + guests, not a locks show. Stanford Steve on PMT is `coughlin`. Big Cat’s card is Pick Em / Picks Central / Barstool CFB Show, not PMT. GameDay / Big Noon only in their Saturday window (first 2026 GameDay is Baton Rouge Sep 5). A radio pick belongs to the named personality, never the station or show.
 

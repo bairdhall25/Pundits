@@ -21,12 +21,13 @@ Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave
 
 ## Hunt (X only)
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`). Hunt NCAAF and NFL rows in the same pass:
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`, unless the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals; a reversal is a correction on the existing row, never a second card). Hunt NCAAF and NFL rows in the same pass:
 
 1. Roster handles below (and add-list handles in `docs/add-list.md`). Query **both** teams, last **48 hours**, this season only.
 2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
 3. Per under-dense game, say in Dropped which handles you actually opened.
 4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent). Do not claim a sweep.
+5. **Overflow (docs/capture-policy.md rule 4):** if a handle you queried for a Dispatch hole also posted a hard SU on a game not in `events.json`, you may stage it as an unmapped Intake row — verbatim quote, status URL, post date, full SU bar, `eventSlug` blank with the matchup in `subject`. Never invent a slug; the operator mints or discards. Overflow never adds handles or queries beyond the Dispatch pass.
 
 If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
 

@@ -24,6 +24,11 @@ From https://github.com/bairdhall25/Pundits (main):
 6. Whenever proposing `status: hit` or `status: miss`, also propose `gradedAt`
    as the Eastern Time calendar date of grading. Pending calls do not get a
    `gradedAt` value.
+7. If a game event reached kickoff with **zero mapped calls**, propose deleting
+   it from `events.json` instead of grading it into an empty Final
+   (docs/capture-policy.md rule 9). List these under `### Zero-pick deletions`
+   in the grade file; the publish pass executes. Never propose deleting an
+   event that has any mapped call, graded or pending.
 
 ## Output
 

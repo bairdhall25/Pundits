@@ -34,15 +34,15 @@ Two customers, one ledger. Fans get a dense homepage of verified faces on games 
 
 Everything else here is a JSON/doc edit in git — cheap to amend.
 
-## Deltas from current bot behavior (edits owed, not yet made)
+## Where the rules are enforced (edits applied 2026-09-01)
 
-- `bots/scout.md` step 1 and `scripts/scout-density.mjs`: add the fetch-first / origin/main-freshness requirement (rule 1) and the 72h flip-check exception to the dense skip (rule 3).
-- `bots/scout-shows.md` / `scout-x.md` / `scout-news.md`: add the overflow-staging rule for unlisted games (rule 4) — today a quote about a non-ledger game has no codified path.
-- `bots/promote.md`: rule 3 (freeze on new-face runs) already matches rule 6's spirit; add the when-to-mint gate (≥1 verified SU or watchlist intent) alongside its existing slug mechanics in step 5.
-- `bots/grader.md` (or the operator runbook): add the zero-pick kickoff deletion (rule 9) — today nothing removes a pickless event.
-- `docs/bring-onto-home.json`: adopt the mintable-within-a-day discipline (rule 8).
+- Rule 1 (fetch-first) and rule 3 (72h flip-check): `bots/scout.md`; the flip-check is computed by `scripts/scout-density-lib.mjs` (`inFlipWindow`) and shows up in the Dispatch `hunt` column.
+- Rule 4 (overflow staging for unlisted games): `bots/scout-shows.md`, `bots/scout-x.md`, `bots/scout-news.md`.
+- Rule 6 (when-to-mint + freeze-in-same-commit): `bots/promote.md` step 5.
+- Rule 9 (zero-pick kickoff deletion): `bots/grader.md` proposes (`### Zero-pick deletions`), `bots/promote.md` executes.
+- Rule 8 (watchlist discipline): `docs/bring-onto-home.json` — every entry mintable within a day of a hit, or it comes off.
 
 ## Standing operator decisions (as of 2026-09-01)
 
 - Aug 30 hold runs through 2026-09-05: fill Patriots / 49ers / Bills YES and Wisconsin YES; no extra homepage games; Lambeau off home until a Wisconsin SU.
-- Miami at Stanford and Baylor vs Auburn: watchlist-or-delete decision due **this week** — Week 1 preview content is peaking and picks get harder to source cleanly after kickoff. Watchlisting keeps them off home; the hold bars homepage padding, not watchlist entries.
+- Miami at Stanford and Baylor vs Auburn: **watchlisted 2026-09-01** (operator call). Scout hunts them off-home; freeze on first verified SU; onHome only after the hold and per rule 7.

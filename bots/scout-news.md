@@ -25,7 +25,8 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NC
 2. Expert grids: read each roster name’s cell. “No Pick” → Dropped with the URL. A named winner → Intake.
 3. Bylines must be a person on the roster or add-list. “Staff picks” with no name → Dropped.
 4. Paywall / URL does not load → Dropped. Do not paraphrase a snippet.
-5. Skip `dense` unless a page already open names that game.
+5. Skip `dense` unless a page already open names that game, or the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals (correction on the existing row, never a second card).
+6. **Overflow (docs/capture-policy.md rule 4):** on a page already open for a Dispatch hole, a rostered speaker's hard SU on a game not in `events.json` may be staged as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` blank with the matchup in `subject`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a page.
 
 Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical. Decipher gambling copy (house rule 3): do not Drop a numbered line; split winner vs Bets. Player props stay parked.
 
