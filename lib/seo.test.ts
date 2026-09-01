@@ -139,9 +139,9 @@ describe("grade sheet", () => {
     const record = rows.find((r) => r.label === "Record")!;
     const board = getActivityBoard(loadPundits(), loadCalls());
     const mcelroy = board.find((p) => p.id === "mcelroy")!;
-    expect(mcelroy.mappedPending).toBe(0);
+    expect(mcelroy.mappedPending).toBe(2);
     expect(record.value).toContain("1–0");
-    expect(record.value).not.toMatch(/with 1 open|— 1 open/);
+    expect(record.value).toMatch(/with 2 open/);
   });
 });
 
@@ -337,7 +337,7 @@ describe("json-ld", () => {
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
     expect(teamLastModified("north-carolina", events, calls)).toBe("2026-08-29");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-08-31");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-01");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {

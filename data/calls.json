@@ -845,5 +845,33 @@
     "status": "pending",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
+  },
+  {
+    "id": "mcelroy-clemson-lsu-20260901",
+    "punditId": "mcelroy",
+    "claim": "So does it happen? No, I don't. I do think Clemson keeps it close. So I do think LSU wins the game, but I would be surprised if Clemson didn't make it very competitive throughout most of this contest.",
+    "source": "Always College Football",
+    "sourceUrl": "https://www.youtube.com/watch?v=1wrMJQitzYw",
+    "sourceDate": "2026-09-01",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "Clemson at LSU (Week 1)",
+    "status": "pending",
+    "eventSlug": "clemson-at-lsu-2026",
+    "side": "no"
+  },
+  {
+    "id": "mcelroy-wisconsin-nd-20260901",
+    "punditId": "mcelroy",
+    "claim": "So does it happen? No. I think Notre Dame wins and wins comfortably, and the September story dies in Green Bay. However, I think they get the job done on Sunday.",
+    "source": "Always College Football",
+    "sourceUrl": "https://www.youtube.com/watch?v=1wrMJQitzYw",
+    "sourceDate": "2026-09-01",
+    "kind": "hard",
+    "subject": "Notre Dame",
+    "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
+    "status": "pending",
+    "eventSlug": "wisconsin-vs-nd-2026",
+    "side": "no"
   }
 ]
