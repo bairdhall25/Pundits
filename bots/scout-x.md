@@ -67,6 +67,7 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 | kimes | Mina Kimes | MinaKimes |
 | sharpe | Shannon Sharpe | ShannonSharpe |
 | compton | Will Compton | _willcompton |
+| wrighster | George Wrighster | georgewrighster |
 
 If a lookup disagrees, prefer the verified account with the person’s outlet in the bio. Never hunt `*quotes` / `Not Kirk`.
 

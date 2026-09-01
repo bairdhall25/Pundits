@@ -49,5 +49,6 @@
   { "id": "kapadia", "name": "Sheil Kapadia", "outlet": "The Ringer", "photo": "/photos/kapadia.jpg", "sport": "nfl" },
   { "id": "ruiz", "name": "Steven Ruiz", "outlet": "FOX Sports", "photo": "/photos/ruiz.jpg", "sport": "nfl" },
   { "id": "newton", "name": "Cam Newton", "outlet": "4th&1", "photo": "/photos/newton.jpg", "sport": "nfl" },
-  { "id": "compton", "name": "Will Compton", "outlet": "Bussin' With The Boys / ESPN", "photo": "/photos/compton.jpg", "sport": "both" }
+  { "id": "compton", "name": "Will Compton", "outlet": "Bussin' With The Boys / ESPN", "photo": "/photos/compton.jpg", "sport": "both" },
+  { "id": "wrighster", "name": "George Wrighster", "outlet": "On3 / Unafraid Show", "photo": "/photos/wrighster.jpg", "sport": "ncaaf" }
 ]
