@@ -9,3 +9,4 @@ Public engagement rate is `(likes + replies + reposts + quotes + bookmarks) / vi
 | Week ending | Best archetype | Best post views | Untagged original median views | Tagged receipt views | URL clicks | Profile clicks | Experiment next week |
 |---|---|---|---|---|---|---|---|
 | 2026-08-31 | Ledger Move (tagged @GregMcElroy) | ~6910 | ~8–17 | n/a this window besides the leader post | n/a | n/a | Spend the budget on tagged receipts and replies under the working-set handles; stop repeating untagged Freezes |
+| 2026-09-01 | Ledger Move (tagged @GregMcElroy) | 6911 | 52 (content originals; bare URLs 18–19) | Receipt 28; Ledger Move 6911 | n/a | n/a | Repeat: tagged receipts + working-set replies only; no untagged Freezes |
