@@ -6,6 +6,8 @@ import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import { Receipt } from "@/components/Receipt";
+import { TrackView } from "@/components/TrackView";
+import { pickStoryOpenParams } from "@/lib/analytics";
 import { getEvent, loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import {
   articleJsonLd,
@@ -81,6 +83,15 @@ export default async function TakePage({
 
   return (
     <main id="main" className="shell">
+      <TrackView
+        event="pick_story_open"
+        params={pickStoryOpenParams({
+          eventSlug: event.slug,
+          punditId: take.pundit.id,
+          status: take.call.status,
+          surface: "take",
+        })}
+      />
       <JsonLd data={articleJsonLd(take, calls, pundits)} />
       <JsonLd
         data={breadcrumbList([

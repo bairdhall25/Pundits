@@ -4,7 +4,9 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
+import { TrackView } from "@/components/TrackView";
 import { JsonLd } from "@/components/JsonLd";
+import { eventDetailOpenParams } from "@/lib/analytics";
 import {
   eventHasTakes,
   getEvent,
@@ -72,6 +74,14 @@ export default async function PickPage({
 
   return (
     <main id="main" className="shell">
+      <TrackView
+        event="event_detail_open"
+        params={eventDetailOpenParams({
+          eventSlug: event.slug,
+          sport: event.sport,
+          surface: "event",
+        })}
+      />
       <JsonLd data={eventJsonLd(event, calls, pundits)} />
       <JsonLd
         data={breadcrumbList([

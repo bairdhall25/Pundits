@@ -86,6 +86,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
             event={event}
             calls={calls}
             pundits={pundits}
+            surface={sport}
           />
         ))}
         {final.length ? (

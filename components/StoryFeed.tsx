@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
+import { TrackLink } from "@/components/TrackLink";
+import { pickStoryOpenParams } from "@/lib/analytics";
 import { formatCents, statusLabel } from "@/lib/format";
 import { sharePayload } from "@/lib/share-link";
 import type { StoryCard } from "@/lib/story-card";
@@ -16,7 +18,18 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
           key={`${card.eventSlug}-${card.punditId}`}
           className={`feed-post ${card.side}`}
         >
-          <Link href={card.href} className="feed-hit" aria-label={card.headline} />
+          <TrackLink
+            href={card.href}
+            className="feed-hit"
+            ariaLabel={card.headline}
+            event="pick_story_open"
+            params={pickStoryOpenParams({
+              eventSlug: card.eventSlug,
+              punditId: card.punditId,
+              status: card.status,
+              surface: "stories",
+            })}
+          />
           <PunditAvatar src={card.photo} alt={card.name} size="feed" />
           <div className="feed-main">
             <div className="feed-kicker">

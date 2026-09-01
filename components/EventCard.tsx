@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
+import { TrackLink } from "@/components/TrackLink";
+import { eventDetailOpenParams, type EngagementSurface } from "@/lib/analytics";
 import {
   eventHasFight,
   eventScanStatus,
@@ -153,12 +155,14 @@ export function EventCard({
   pundits,
   permalink = true,
   detail = false,
+  surface = "event",
 }: {
   event: Event;
   calls: Call[];
   pundits: Pundit[];
   permalink?: boolean;
   detail?: boolean;
+  surface?: EngagementSurface;
 }) {
   const [yes, no] = sidesForCard(event, calls);
   const fight = eventHasFight(event.slug, calls);
@@ -204,14 +208,20 @@ export function EventCard({
           {detail ? null : (
             <h2 className="type-broadcast event-title">
               {permalink ? (
-                <Link
+                <TrackLink
                   href={eventHref}
                   className="event-title-link"
-                  aria-label={eventLinkLabel}
+                  ariaLabel={eventLinkLabel}
+                  event="event_detail_open"
+                  params={eventDetailOpenParams({
+                    eventSlug: event.slug,
+                    sport: event.sport,
+                    surface,
+                  })}
                 >
                   {futureTeam ? <TeamChip team={futureTeam} /> : null}
                   <span>{event.title}</span>
-                </Link>
+                </TrackLink>
               ) : (
                 <>
                   {futureTeam ? <TeamChip team={futureTeam} /> : null}

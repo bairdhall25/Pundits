@@ -67,6 +67,7 @@ function Weekend({
           event={event}
           calls={calls}
           pundits={pundits}
+          surface="home"
         />
       ))}
       {recap ? (
@@ -140,7 +141,12 @@ export default function HomePage() {
             <div className="hero-card-kicker type-broadcast">
               Marquee · {marquee.sport === "nfl" ? "NFL" : "College football"}
             </div>
-            <EventCard event={marquee} calls={calls} pundits={pundits} />
+            <EventCard
+              event={marquee}
+              calls={calls}
+              pundits={pundits}
+              surface="home"
+            />
           </div>
         ) : null}
       </div>
