@@ -6,6 +6,15 @@ export type EmailInterestEvent =
 
 export type EmailInterestErrorType = "validation" | "network" | "provider" | "configuration";
 
+export type EngagementSurface =
+  | "home"
+  | "ncaaf"
+  | "nfl"
+  | "event"
+  | "stories"
+  | "take"
+  | "book";
+
 export type EmailInterestParams = {
   placement: string;
   scope: string;
@@ -37,7 +46,88 @@ export function analyticsParams(params: EmailInterestParams): Record<string, str
   return out;
 }
 
-export function trackEmailInterest(event: EmailInterestEvent, params: EmailInterestParams): void {
+export function engagementParams(
+  params: Record<string, string | undefined>
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [key, value] of Object.entries(params)) {
+    if (value) out[key] = value;
+  }
+  return out;
+}
+
+export function trackEvent(
+  event: string,
+  params: Record<string, string | undefined>
+): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", event, analyticsParams(params));
+  window.gtag("event", event, engagementParams(params));
+}
+
+export function eventDetailOpenParams(input: {
+  eventSlug: string;
+  sport: string;
+  surface: EngagementSurface;
+}) {
+  return engagementParams({
+    event_slug: input.eventSlug,
+    sport: input.sport,
+    surface: input.surface,
+  });
+}
+
+export function pickStoryOpenParams(input: {
+  eventSlug: string;
+  punditId: string;
+  status: string;
+  surface: EngagementSurface;
+}) {
+  return engagementParams({
+    event_slug: input.eventSlug,
+    pundit_id: input.punditId,
+    status: input.status,
+    surface: input.surface,
+  });
+}
+
+export function sourceOpenParams(input: {
+  eventSlug: string;
+  punditId: string;
+  sourceType: "evidence" | "kalshi";
+}) {
+  return engagementParams({
+    event_slug: input.eventSlug,
+    pundit_id: input.punditId,
+    source_type: input.sourceType,
+  });
+}
+
+export function shareIntentParams(input: {
+  artifactType: "event" | "take" | "pundit";
+  eventSlug: string;
+  punditId?: string;
+  status?: string;
+}) {
+  return engagementParams({
+    artifact_type: input.artifactType,
+    event_slug: input.eventSlug,
+    pundit_id: input.punditId,
+    status: input.status,
+  });
+}
+
+export function filterUseParams(input: {
+  surface: "stories" | "book";
+  filterName: string;
+  filterValue: string;
+}) {
+  return engagementParams({
+    surface: input.surface,
+    filter_name: input.filterName,
+    filter_value: input.filterValue,
+  });
+}
+
+export function trackEmailInterest(event: EmailInterestEvent, params: EmailInterestParams): void {
+  trackEvent(event, analyticsParams(params));
 }
