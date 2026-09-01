@@ -272,6 +272,21 @@ describe("settledSide", () => {
     expect(settledSide(event, [miss])).toBe("yes");
     expect(settledLabel(event, [miss])).toBe("Clemson");
   });
+
+  it("refuses to infer a winner when graded evidence conflicts", () => {
+    const noHit = { ...noLive, status: "hit" as const };
+    const yesHit: Call = {
+      ...noLive,
+      id: "y1",
+      punditId: "patterson",
+      subject: "Clemson",
+      side: "yes",
+      status: "hit",
+    };
+
+    expect(settledSide(event, [noHit, yesHit])).toBeNull();
+    expect(settledLabel(event, [noHit, yesHit])).toBeNull();
+  });
 });
 
 describe("finalScoreLine", () => {
