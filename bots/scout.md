@@ -25,7 +25,7 @@ From https://github.com/bairdhall25/Pundits (main):
    - `dense` — ≥3 mapped hard and both sides ≥1
    - `off-home` — bring-onto-home slug, not `onHome`, zero mapped hard
 4. Create or update `docs/runs/YYYY-MM-DD.md` from `docs/runs/_TEMPLATE.md`.
-5. Write the density script’s markdown into `## Dispatch`. Do not invent rows.
+5. Write the density script’s markdown into `## Dispatch`. Do not invent rows. Never drop NCAAF or NFL as a class — if the script emitted both sports, both sports stay on the hit list.
 6. Leave Shows / X / News pass tables empty unless they already have content from an earlier hunter. Do not delete an existing pass.
 7. First-line comment: keep `hard` / `candidates` as they are if passes already exist; otherwise `hard=0 candidates=0 audit=pending promoted=false`.
 

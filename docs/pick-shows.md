@@ -7,7 +7,7 @@ If this file and `data/` disagree, **`data/` wins**.
 ## How to hunt (every run)
 
 1. Run `node scripts/scout-feeds.mjs` (Coordinator pastes `## Factory feeds`). Only open factories marked `today`. `waiting` / `recap` / `short` / `wrong-year` / `off-topic` / `error` means skip — do not burn a pass on Friday’s Finebaum or a UFR recap. Jump the locks / moneyline / “I’ll take” chapter. Captions count.
-2. Then `empty-side` / `off-home` / `thin` on today’s `## Dispatch` (`docs/board.md` is do-not-touch, not the scorecard).
+2. Then `empty-side` / `off-home` / `thin` on today’s `## Dispatch` (`docs/board.md` is do-not-touch, not the scorecard). Hunt NCAAF and NFL rows in the same pass. Do not park a sport.
 3. Then idle roster voices **only if their pick window is open**.
 4. Named off-roster speakers on those same shows → Candidates. Never “the show likes UNC.”
 5. If the game remains under-dense, use the bounded sports-radio fallback below.

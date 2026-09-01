@@ -9,7 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If missing, run `node scripts/scout-density.mjs`, write Dispatch, then hunt.
-- `docs/news-beats.md` — only the sports on Dispatch.
+- `docs/news-beats.md` — every sport on Dispatch, in the same pass. Do not park NCAAF or NFL for a calendar window.
 - `docs/add-list.md`
 - `docs/board.md` — do-not-touch.
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
@@ -19,7 +19,7 @@ Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave
 
 ## Hunt
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin`:
+For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NCAAF and NFL in the same pass):
 
 1. Open the outlets in `docs/news-beats.md` for that sport that published in the last ~7 days.
 2. Expert grids: read each roster name’s cell. “No Pick” → Dropped with the URL. A named winner → Intake.

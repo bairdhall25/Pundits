@@ -28,7 +28,7 @@ Empty sides stay empty if nothing verifies. Do not invent.
 ## How to hunt now
 
 1. Run `node scripts/scout-density.mjs` (or read `## Dispatch` in today’s run file). Run `node scripts/scout-feeds.mjs` before opening a factory.
-2. Shows / X / News hunt `empty-side`, then `off-home`, then `thin`. Skip `dense`.
+2. Shows / X / News hunt `empty-side`, then `off-home`, then `thin`. Skip `dense`. Every pass covers **both** NCAAF and NFL Dispatch rows. Do not skip college because NFL is empty, or skip NFL because CFB is on.
 3. Shows uses the bounded sports-radio fallback in `docs/pick-shows.md` only after its normal high-yield programs.
 4. Add-list: `docs/add-list.md`. Bring onto home: `docs/bring-onto-home.json`.
 5. Futures are not the hunt target.

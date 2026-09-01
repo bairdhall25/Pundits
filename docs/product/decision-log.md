@@ -32,6 +32,7 @@ This file records durable product decisions and working assumptions. Change an a
 | Box scores may land before every mapped pick is graded. | Game complete and picks finished are different facts. `Final · Grading` is the public label for that window. | Accepted 2026-08-31 |
 | Homepage hero leads with the next game. | A fan should see matchup, time, and who is on it before the product pitch. | Accepted 2026-08-31 |
 | Scan cards do not lead with Kalshi. | Market source belongs on the detail card; scan is game, state, faces, price. | Accepted 2026-08-31 |
+| Every Scout pass hunts NCAAF and NFL together. | Parking a sport for a calendar window missed weekday CFB and delayed NFL empty-YES. Skip dense events, not a sport. | Accepted 2026-09-01 |
 
 ## Working assumptions
 
