@@ -25,7 +25,7 @@ export default function BookPage() {
           "Every tracked expert comment — locked-in picks and softer takes. Mapped picks carry the market price."
         )}
       />
-      <div className="eyebrow type-broadcast">The Book — every tracked take</div>
+      <div className="eyebrow type-broadcast">Takes · Compact ledger</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
         Every
         <br />

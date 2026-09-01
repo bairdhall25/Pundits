@@ -31,15 +31,6 @@ const PRIMARY = [
   },
 ];
 
-const MORE = [
-  {
-    href: "/book/",
-    label: "The Book",
-    ariaLabel: "The Book — compact picks ledger",
-    match: (p: string) => p.startsWith("/book"),
-  },
-];
-
 function NavLink({
   href,
   label,
@@ -65,25 +56,11 @@ function NavLink({
 
 export function NavLinks() {
   const path = usePathname() || "/";
-  const moreOn = MORE.some((l) => l.match(path));
   return (
     <nav className="site-nav" aria-label="Site">
       {PRIMARY.map((l) => (
         <NavLink key={l.href} href={l.href} label={l.label} ariaLabel={l.ariaLabel} on={l.match(path)} />
       ))}
-      <div className="nav-rest">
-        {MORE.map((l) => (
-          <NavLink key={l.href} href={l.href} label={l.label} ariaLabel={l.ariaLabel} on={l.match(path)} />
-        ))}
-      </div>
-      <details className="nav-more">
-        <summary className={moreOn ? "on" : undefined}>More</summary>
-        <div className="nav-more-panel">
-          {MORE.map((l) => (
-            <NavLink key={l.href} href={l.href} label={l.label} ariaLabel={l.ariaLabel} on={l.match(path)} />
-          ))}
-        </div>
-      </details>
     </nav>
   );
 }
