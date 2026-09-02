@@ -50,3 +50,4 @@ Everything else here is a JSON/doc edit in git — cheap to amend.
 
 - Aug 30 hold runs through 2026-09-05: fill Patriots / 49ers / Bills YES and Wisconsin YES; no extra homepage games; Lambeau off home until an operator `onHome` flip.
 - Miami at Stanford and Baylor vs Auburn: **watchlisted 2026-09-01**. Scout hunts them off-home; freeze on first verified SU; onHome only after the hold and per rule 7.
+- Homepage **display** (which games fill `/`) is `docs/product/featured-games.md`. That waterfall does not change Dispatch and does not authorize an `onHome` flip.
