@@ -13,14 +13,12 @@ import { latestGradedWeekRecap } from "@/lib/archive";
 import {
   getActivityBoard,
   getFuturesPeek,
-  getWeekend,
   latestCalls,
   loadCalls,
   loadEvents,
   loadPundits,
-  marqueeGame,
-  partitionGames,
 } from "@/lib/data";
+import { getHomepageFeaturedGames, loadFeaturedPin } from "@/lib/featured";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
@@ -94,8 +92,12 @@ export default function HomePage() {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const ncaaf = getWeekend("ncaaf", events);
-  const nfl = getWeekend("nfl", events);
+  const featured = getHomepageFeaturedGames(
+    events,
+    calls,
+    pundits,
+    loadFeaturedPin()
+  );
   const futures = [
     ...getFuturesPeek("ncaaf", events, calls, 3),
     ...getFuturesPeek("nfl", events, calls, 2),
@@ -105,13 +107,9 @@ export default function HomePage() {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
   const recap = latestGradedWeekRecap(events, calls, pundits);
-  const ncaafParts = partitionGames(ncaaf, calls);
-  const nflParts = partitionGames(nfl, calls);
-  const marquee = marqueeGame(ncaaf, nfl, calls);
-  // Keep the marquee on its sport board too. Pulling the only open CFB
-  // game into the hero left College looking like last week's receipts.
-  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
-  const nflCards = [...nflParts.open, ...nflParts.grading];
+  const marquee = featured.hero;
+  const ncaafCards = featured.ncaaf;
+  const nflCards = featured.nfl;
   const heroLede = marquee
     ? homeHeroLede(marquee, calls, pundits)
     : "College football and NFL picks from named analysts and commentators.";
@@ -173,7 +171,7 @@ export default function HomePage() {
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
         events={ncaafCards}
-        finals={ncaafParts.final}
+        finals={featured.ncaafFinal}
         calls={calls}
         pundits={pundits}
         recap={recap?.sport === "ncaaf" ? recap : null}
@@ -185,7 +183,7 @@ export default function HomePage() {
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
         events={nflCards}
-        finals={nflParts.final}
+        finals={featured.nflFinal}
         calls={calls}
         pundits={pundits}
       />
