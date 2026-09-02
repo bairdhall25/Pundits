@@ -30,7 +30,7 @@ Primary use: event pages.
 - Matchup or outcome is the largest text.
 - Side counts are visible immediately.
 - A featured dissenting or leading face may dominate one side.
-- Supporting pundits use dense portrait-plus-name modules, not wide background crops.
+- Supporting pundits use dense circular portrait-plus-name modules with a slim green ring, not wide background crops.
 - Frozen prices live in the proof rail; they are supporting evidence, not the hero.
 - Empty sides remain visibly empty and say so plainly.
 
@@ -61,7 +61,7 @@ Primary use: week pages, team pages, sport landings, collection pages, and route
 
 1. One hook, one dominant subject, one proof rail, one state, one Pundits signature.
 2. Photos replace space. Do not add a separate card around a photo when the photo can be structural.
-3. Supporting portraits use near-square image regions paired with useful attribution.
+3. Supporting portraits use circular source-photo crops with a slim green ring, paired with useful attribution.
 4. Never force square or portrait assets into 2:1 background slots.
 5. Landscape headline line-height defaults to `1.02`; wrapped titles must retain visible leading.
 6. The landscape proof rail reserves 64 px and never overlays names, faces, or result text.
@@ -77,7 +77,7 @@ Primary use: week pages, team pages, sport landings, collection pages, and route
 There are two portrait roles:
 
 - `featured`: one person may use a large full-bleed or half-canvas crop;
-- `supporting`: a near-square portrait is paired with name and optional outlet.
+- `supporting`: a circular portrait with a slim green ring is paired with name and optional outlet.
 
 Every portrait may declare a focal point. The renderer applies a safe center default when none exists.
 
@@ -167,7 +167,7 @@ The renderer consumes this model. Routes, social bots, and app cards should not 
 ### Event split
 
 - `1 vs 1`: two featured portrait modules.
-- `1 vs 2–4`: one featured portrait; supporting side uses a 2×2 portrait-plus-name grid.
+- `1 vs 2–4`: one featured portrait; supporting side uses a dense portrait-plus-name grid with circular source-photo crops.
 - `2–4 vs 2–4`: symmetric supporting grids; counts carry hierarchy.
 - `>4` on a side: render the highest-priority supported portraits and show `+N`; never use `.slice()` without overflow copy.
 - one side empty: the populated side expands, while the empty side remains a deliberate statement rather than dead canvas.

@@ -142,10 +142,12 @@ export function PersonPortrait({
   person,
   width,
   height,
+  circular = false,
 }: {
   person: SocialPerson;
   width: number | string;
   height: number | string;
+  circular?: boolean;
 }) {
   const uri = socialPhotoUri(person.portrait);
   if (!uri) return null;
@@ -162,6 +164,12 @@ export function PersonPortrait({
         flexShrink: 0,
         objectFit: "cover",
         objectPosition: objectPosition(person.portraitFocus),
+        ...(circular
+          ? {
+              border: `2px solid ${SOCIAL_COLORS.green}`,
+              borderRadius: "50%",
+            }
+          : {}),
       }}
     />
   );

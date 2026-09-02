@@ -78,12 +78,10 @@ function PersonTile({
   person,
   width = "50%",
   height = "50%",
-  portraitWidth = "48%",
 }: {
   person: SocialPerson;
   width?: string;
   height?: string;
-  portraitWidth?: string;
 }) {
   const hasPhoto = Boolean(person.portrait);
   return (
@@ -92,6 +90,7 @@ function PersonTile({
         width,
         height,
         display: "flex",
+        alignItems: "center",
         minWidth: 0,
         overflow: "hidden",
         borderRight: `1px solid ${SOCIAL_COLORS.line}`,
@@ -99,7 +98,11 @@ function PersonTile({
         background: SOCIAL_COLORS.panel,
       }}
     >
-      {hasPhoto ? <PersonPortrait person={person} width={portraitWidth} height="100%" /> : null}
+      {hasPhoto ? (
+        <div style={{ display: "flex", marginLeft: 14, flexShrink: 0 }}>
+          <PersonPortrait person={person} width={126} height={126} circular />
+        </div>
+      ) : null}
       <div
         style={{
           display: "flex",
@@ -181,10 +184,10 @@ function PeopleGrid({ group, label }: { group: SocialPeopleGroup; label: string 
     <div style={{ display: "flex", flex: 1, flexWrap: "wrap", minWidth: 0, overflow: "hidden" }}>
       {group.people.map((person, index) => {
         if (count === 2) {
-          return <PersonTile key={person.punditId} person={person} width="100%" height="50%" portraitWidth="30%" />;
+          return <PersonTile key={person.punditId} person={person} width="100%" height="50%" />;
         }
         if (count === 3 && index === 2) {
-          return <PersonTile key={person.punditId} person={person} width="100%" height="50%" portraitWidth="24%" />;
+          return <PersonTile key={person.punditId} person={person} width="100%" height="50%" />;
         }
         return <PersonTile key={person.punditId} person={person} />;
       })}
