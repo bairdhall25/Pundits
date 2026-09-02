@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  FACTORIES,
   classifyItem,
   easternDay,
   formatFeeds,
@@ -243,5 +244,13 @@ describe("formatFeeds", () => {
     expect(md).toContain(
       "| Finebaum Show | 2026-08-28 | Hour 4: Week Zero | waiting | do not burn tokens |"
     );
+  });
+});
+
+describe("FACTORIES", () => {
+  it("hunts BFW on Apple, not the dead Unnecessary Roughness YouTube RSS", () => {
+    const bfw = FACTORIES.find((factory) => factory.id === "bfw");
+    expect(bfw.kind).toBe("apple");
+    expect(bfw.appleId).toBe("1375714621");
   });
 });
