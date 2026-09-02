@@ -10,7 +10,7 @@ X: [@predictedsports](https://x.com/predictedsports)
 
 ## Current assessment
 
-Predicted Sports is building public, graded pick boards whose primary players are frontier AI models. It also grades some human/expert sources (the site claims ESPN BPI and CBS Sports staff appear in head-to-head pages). CFB and NFL boards are in motion for the 2026 season.
+Predicted Sports is building public, graded pick boards whose primary players are frontier AI models. It also grades some human/expert sources (the site claims ESPN BPI and CBS Sports staff appear in head-to-head pages). As of 2026-09-02 the CFB board is live and grading Week 0; the NFL board page exists for Week 1 but picks are still scaffolded.
 
 This is a real "lock the pick, grade it in public, never quietly edit" cousin. The core object is a model call, not a named pundit's quote. Watch it for SEO collision on game pages and for whether human experts become more than a comparison foil.
 
@@ -68,3 +68,5 @@ Possible later: they have model boards; Pundits has named-quote receipts. Only i
 ## Observations
 
 - 2026-08-29: first Pundits competition pass. Public-ledger cousin, different hero object.
+
+- 2026-09-02 (weekly radar): **Material.** CFB AI Pick Board at https://predictedsports.com/cfb/board is live and grading (Week 0 games graded with consensus + finals; Week 1 slate has consensus calls). Leaderboard CFB section shows **8 graded games**. NFL board at https://predictedsports.com/nfl/board exists for Week 1 (Sep 9+) but picks still say field projects land game week. Pro strategies UI still MLB/UFC/EPL-focused ($9/mo). Still AI-model consensus + public grades, not named human + verbatim quote + source + Kalshi. Threat stays **Medium** (public-ledger/SEO cousin now denser on CFB); partnership call unchanged. Watch NFL picks filling next week.
