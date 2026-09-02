@@ -33,6 +33,12 @@ import {
   type WeekOgCard,
 } from "../lib/og";
 import { mappedTakes } from "../lib/seo";
+import {
+  resolveEventSocialCard,
+  resolvePunditSocialCard,
+  resolveTakeSocialCard,
+} from "../lib/social-card";
+import { landscapeSocialTree } from "./social-card/render";
 
 const ROOT = process.cwd();
 const W = 1200;
@@ -1169,6 +1175,16 @@ async function shouldSkip(expected: number): Promise<boolean> {
     path.join(ROOT, "data/pundits.json"),
     path.join(ROOT, "data/teams.json"),
     path.join(ROOT, "lib/og.ts"),
+    path.join(ROOT, "lib/social-card/model.ts"),
+    path.join(ROOT, "lib/social-card/portraits.ts"),
+    path.join(ROOT, "lib/social-card/resolver.ts"),
+    path.join(ROOT, "scripts/social-card/assets.ts"),
+    path.join(ROOT, "scripts/social-card/tokens.ts"),
+    path.join(ROOT, "scripts/social-card/primitives.tsx"),
+    path.join(ROOT, "scripts/social-card/split.tsx"),
+    path.join(ROOT, "scripts/social-card/quote.tsx"),
+    path.join(ROOT, "scripts/social-card/editorial.tsx"),
+    path.join(ROOT, "scripts/social-card/render.tsx"),
     path.join(ROOT, "scripts/render-og.tsx"),
   ];
   const inMax = await newestMtime(inputs);
@@ -1219,8 +1235,9 @@ export async function renderAllOg(force = false): Promise<{
 
   for (const take of takes) {
     const card = takeOgCard(take, calls, pundits, teams);
+    const socialCard = resolveTakeSocialCard(take, calls, pundits, teams);
     try {
-      await writePng(card.file, await renderCardPng(takeTree(card)));
+      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
       await writePng(ogStoryTakePath(take.event.slug, take.pundit.id), await renderCardPng(takeStoryTree(card), storySize));
     } catch (err) {
       throw new Error(`take ${card.file}: ${err instanceof Error ? err.message : err}`);
@@ -1228,8 +1245,9 @@ export async function renderAllOg(force = false): Promise<{
   }
   for (const event of events) {
     const card = eventOgCard(event, calls, pundits, teams);
+    const socialCard = resolveEventSocialCard(event, calls, pundits, teams);
     try {
-      await writePng(card.file, await renderCardPng(eventTree(card)));
+      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
       await writePng(ogStoryEventPath(event.slug), await renderCardPng(eventStoryTree(card), storySize));
     } catch (err) {
       throw new Error(`event ${card.file}: ${err instanceof Error ? err.message : err}`);
@@ -1238,8 +1256,9 @@ export async function renderAllOg(force = false): Promise<{
   for (const pundit of pundits) {
     const record = toActivityRecord(pundit, calls);
     const card = punditOgCard(record, callsForPundit(pundit.id, calls)[0]);
+    const socialCard = resolvePunditSocialCard(pundit, calls);
     try {
-      await writePng(card.file, await renderCardPng(punditTree(card)));
+      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
     } catch (err) {
       throw new Error(`pundit landscape ${card.file}: ${err instanceof Error ? err.message : err}`);
     }

@@ -4,7 +4,7 @@ Status: Active plan
 
 Date: 2026-09-02
 
-Implementation update: the approved Phase 1 semantic model, portrait focal-point manifest, route resolvers, and edge-case tests now live under `lib/social-card/`. They are additive and are not yet connected to the production renderer, generated images, metadata, or `public/social/cards.json`.
+Implementation update: Phase 1 established the semantic model, portrait focal-point manifest, route resolvers, and edge-case tests under `lib/social-card/`. Phase 2 now connects event, take, and pundit landscape images to the approved Split and Quote templates under `scripts/social-card/`. Generated filenames, route metadata, story images, and `public/social/cards.json` remain stable; team, week, page, and vertical-story template migration remains future work.
 
 ## Goal
 

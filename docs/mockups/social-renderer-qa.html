@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1050, initial-scale=1" />
+  <title>Pundits social renderer QA</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 1050px; height: 551px; margin: 0; overflow: hidden; background: #080908; }
+    .stage { width: 1200px; height: 630px; transform: scale(.875); transform-origin: 0 0; }
+    img { display: block; width: 1200px; height: 630px; }
+  </style>
+</head>
+<body>
+  <div class="stage"><img id="card" alt="Rendered Pundits social card fixture" /></div>
+  <script>
+    const fixtures = {
+      event: "../../public/og/events/clemson-at-lsu-2026.png",
+      take: "../../public/og/takes/clemson-at-lsu-2026--wrighster.png",
+      pundit: "../../public/og/pundits/finebaum.png",
+      empty: "../../public/og/events/seahawks-sb-2026.png",
+      long: "../../public/og/takes/rams-sb-2026--orlovsky.png",
+      future: "../../public/og/events/nd-title-2026.png",
+    };
+    const selected = new URLSearchParams(location.search).get("card") || "event";
+    document.querySelector("#card").src = fixtures[selected] || fixtures.event;
+  </script>
+</body>
+</html>
