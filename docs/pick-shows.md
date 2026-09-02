@@ -58,7 +58,7 @@ ESPN expert **page** is News Scout (`docs/news-beats.md`). If they say it on TV 
 ## URL patterns (start here)
 
 - Cover 3: YouTube search `Cover 3 LOCKS 2026`
-- BFW: https://www.youtube.com/@UnnecessaryRoughness (channel `UC9v6icpVdER0VGQpA3uUUsQ`)
+- BFW: Apple `1375714621` (Brandon Walker College Football Show). YouTube watch URLs still work; the old Unnecessary Roughness RSS 404s.
 - Barstool CFB Show / Picks Central / Pick Em: barstoolsports.com shows + YouTube
 - Pate: Josh Pate’s College Football Show YouTube
 - On3 picking: YouTube `PICKING {away} {home}` on the On3 channel

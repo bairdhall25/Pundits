@@ -8,7 +8,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
-- Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If missing, run `node scripts/scout-density.mjs`, write Dispatch, then hunt.
+- Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If missing, run `node scripts/scout-density.mjs`, write Dispatch, then hunt. If a pass already exists, **append**. Re-run density at hunt time.
 - `docs/news-beats.md` — every sport on Dispatch, in the same pass. Do not park NCAAF or NFL for a calendar window.
 - `docs/add-list.md`
 - `docs/board.md` — do-not-touch.

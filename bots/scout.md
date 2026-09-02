@@ -27,7 +27,7 @@ From https://github.com/bairdhall25/Pundits (main):
    - `off-home` — bring-onto-home slug, not `onHome`, zero mapped hard
 
    Dense stays `dense`, but an `onHome` game whose `kickoffDate` is within 3 calendar days gets hunt `flip-check carded pundits only (kickoff date ≤3 days)` instead of `skip` — the script does this itself. A flip is a correction on the existing row, never a second card. Off-home hunt is a roster SU that stays off-home until the operator flips `onHome`.
-4. Create or update `docs/runs/YYYY-MM-DD.md` from `docs/runs/_TEMPLATE.md`.
+4. Create `docs/runs/YYYY-MM-DD.md` from `docs/runs/_TEMPLATE.md` only if it does not exist. If it already has a Shows/X/News pass, **do not recreate it from the template**. Replace `## Dispatch` and `## Factory feeds` in place. Never wipe a prior pass.
 5. Write the density script’s markdown into `## Dispatch`. Do not invent rows. Never drop NCAAF or NFL as a class — if the script emitted both sports, both sports stay on the hit list.
 6. Leave Shows / X / News pass tables empty unless they already have content from an earlier hunter. Do not delete an existing pass.
 7. First-line comment: keep `hard` / `candidates` as they are if passes already exist; otherwise `hard=0 candidates=0 audit=pending promoted=false`.

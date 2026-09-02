@@ -19,8 +19,8 @@ export const FACTORIES = [
     id: "bfw",
     name: "BFW Show",
     sport: "ncaaf",
-    kind: "youtube",
-    channelId: "UC9v6icpVdER0VGQpA3uUUsQ",
+    kind: "apple",
+    appleId: "1375714621",
   },
   {
     id: "pate",

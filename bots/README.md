@@ -80,7 +80,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Read ## Factory feeds first — skip waiting/recap/short/wrong-year/off-topic/error; open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Re-run scout-feeds.mjs at hunt time; skip only a fresh waiting/recap/short/wrong-year/off-topic/error. Open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass — never wipe a prior pass. Chat is not the handoff.
 ```
 
 **X Scout:**
