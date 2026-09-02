@@ -19,7 +19,7 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 
 For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NCAAF and NFL in the same pass):
 
-1. Read `## Factory feeds` in today’s run file (or run `node scripts/scout-feeds.mjs`). Skip a factory whose status is `waiting`, `recap`, `short`, `wrong-year`, `off-topic`, or `error`. Open `today` rows. Jump locks / moneyline / “I’ll take.” Captions count.
+1. Re-run `node scripts/scout-feeds.mjs` **at hunt time**. Replace `## Factory feeds` in today’s run file. Do not skip a factory because an overnight pass marked it `waiting`. Skip only the **fresh** status: `waiting`, `recap`, `short`, `wrong-year`, `off-topic`, or `error`. Open `today` rows. Jump locks / moneyline / “I’ll take.” Captions count. If today’s run file already has a Shows/X/News pass, **append**. Never wipe a prior pass to PLACEHOLDER. Do not restage a pair already in `calls.json`, or an Intake row Audit already marked `ok`.
 2. Then idle roster voices if their pick window in that file is open.
 3. Named add-list speakers on those same shows → Candidates (`photoUrl=needed` unless a real photo is already known).
 4. If the game remains under-dense, run the bounded radio fallback in `docs/pick-shows.md`.

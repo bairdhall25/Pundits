@@ -10,6 +10,7 @@
     "start": "next start",
     "test": "vitest run",
     "scout:feeds": "node scripts/scout-feeds.mjs",
+    "roster:add": "node scripts/roster-add.mjs",
     "verify:static": "node scripts/verify-static.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "verify:deployed": "node scripts/verify-live.mjs --expected-out",

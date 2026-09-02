@@ -10,7 +10,6 @@
   { "id": "skip", "name": "Skip Bayless", "outlet": "The Skip Bayless Show", "photo": "/photos/skip.jpg", "sport": "nfl" },
   { "id": "hawk", "name": "A.J. Hawk", "outlet": "The Pat McAfee Show", "photo": "/photos/hawk.jpg", "sport": "nfl" },
   { "id": "butler", "name": "Darius Butler", "outlet": "The Pat McAfee Show", "photo": "/photos/butler.jpg", "sport": "nfl" },
-
   { "id": "davis", "name": "Rece Davis", "outlet": "College GameDay", "photo": "/photos/davis.jpg", "sport": "ncaaf" },
   { "id": "howard", "name": "Desmond Howard", "outlet": "College GameDay", "photo": "/photos/howard.jpg", "sport": "ncaaf" },
   { "id": "tebow", "name": "Tim Tebow", "outlet": "SEC Nation", "photo": "/photos/tebow.jpg", "sport": "ncaaf" },
@@ -29,7 +28,6 @@
   { "id": "bigcat", "name": "Big Cat", "outlet": "Barstool / PMT", "photo": "/photos/bigcat.jpg", "sport": "both" },
   { "id": "portnoy", "name": "Dave Portnoy", "outlet": "Barstool", "photo": "/photos/portnoy.jpg", "sport": "both" },
   { "id": "feldman", "name": "Bruce Feldman", "outlet": "FOX / The Athletic", "photo": "/photos/feldman.png", "sport": "ncaaf" },
-
   { "id": "stephena", "name": "Stephen A. Smith", "outlet": "First Take", "photo": "/photos/stephena.jpg", "sport": "nfl" },
   { "id": "orlovsky", "name": "Dan Orlovsky", "outlet": "NFL Live / First Take", "photo": "/photos/orlovsky.jpg", "sport": "nfl" },
   { "id": "kimes", "name": "Mina Kimes", "outlet": "NFL Live", "photo": "/photos/kimes.jpg", "sport": "nfl" },
@@ -50,5 +48,6 @@
   { "id": "ruiz", "name": "Steven Ruiz", "outlet": "FOX Sports", "photo": "/photos/ruiz.jpg", "sport": "nfl" },
   { "id": "newton", "name": "Cam Newton", "outlet": "4th&1", "photo": "/photos/newton.jpg", "sport": "nfl" },
   { "id": "compton", "name": "Will Compton", "outlet": "Bussin' With The Boys / ESPN", "photo": "/photos/compton.jpg", "sport": "both" },
-  { "id": "wrighster", "name": "George Wrighster", "outlet": "On3 / Unafraid Show", "photo": "/photos/wrighster.jpg", "sport": "ncaaf" }
+  { "id": "wrighster", "name": "George Wrighster", "outlet": "On3 / Unafraid Show", "photo": "/photos/wrighster.jpg", "sport": "ncaaf" },
+  { "id": "jmac", "name": "Jason McIntyre", "outlet": "The Herd / FOX Sports", "photo": "/photos/jmac.jpg", "sport": "both" }
 ]

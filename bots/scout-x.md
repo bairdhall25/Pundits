@@ -8,7 +8,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
-- Today's `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt.
+- Today's `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt. If a Shows/X/News pass already exists, **append**. Re-run density at hunt time so overnight Dispatch is not the scorecard.
 - `docs/pick-shows.md` — which shows pick; X still only opens status URLs.
 - `docs/add-list.md` — Candidate handles.
 - `docs/board.md` — do-not-touch. If `data/` disagrees, **`data/` wins**.
@@ -41,6 +41,7 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 
 | id | Name | handle |
 |---|---|---|
+| jmac | Jason McIntyre | jasonrmcintyre |
 | kanell | Danny Kanell | dannykanell |
 | patterson | Chip Patterson | Chip_Patterson |
 | walker | Brandon Walker | BFW |

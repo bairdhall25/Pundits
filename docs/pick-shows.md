@@ -28,7 +28,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
 | Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
 | Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
-| The Herd / Sharp or Square | `cowherd`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
+| The Herd / Sharp or Square | `cowherd`, `jmac`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
 | Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
 
 ## Brand faces — only in their pick window
@@ -50,7 +50,7 @@ ESPN expert **page** is News Scout (`docs/news-beats.md`). If they say it on TV 
 
 | id | Show | Hunt |
 |---|---|---|
-| `staples`, `wasserman` | Andy & Ari On3 | Episode titled **PICKING** / game preview. 8/25 `DCFInXgbMtY` UNC–TCU is **ATS cover** (TCU 7.5) — dropped, not SU. Re-open if they name a winner without the number. |
+| `staples`, `wasserman`, `wrighster` | Andy & Ari On3 | Episode titled **PICKING** / game preview. 8/25 `DCFInXgbMtY` UNC–TCU is **ATS cover** (TCU 7.5) — dropped, not SU. Re-open if they name a winner without the number. |
 | `mcelroy` | Always College Football | Locks / “I’ll take” only |
 | `thamel`, `feldman` | insiders | Program talk. Do not force a SU. |
 | `kanell` | Cover 3 | NC State YES booked. Still hunt Clemson, Dublin, Lambeau. Totals/ATS ≠ SU. |
@@ -58,7 +58,7 @@ ESPN expert **page** is News Scout (`docs/news-beats.md`). If they say it on TV 
 ## URL patterns (start here)
 
 - Cover 3: YouTube search `Cover 3 LOCKS 2026`
-- BFW: https://www.youtube.com/@UnnecessaryRoughness (channel `UC9v6icpVdER0VGQpA3uUUsQ`)
+- BFW: Apple `1375714621` (Brandon Walker College Football Show). YouTube watch URLs still work; the old Unnecessary Roughness RSS 404s.
 - Barstool CFB Show / Picks Central / Pick Em: barstoolsports.com shows + YouTube
 - Pate: Josh Pate’s College Football Show YouTube
 - On3 picking: YouTube `PICKING {away} {home}` on the On3 channel
