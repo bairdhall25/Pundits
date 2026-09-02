@@ -50,7 +50,7 @@ ESPN expert **page** is News Scout (`docs/news-beats.md`). If they say it on TV 
 
 | id | Show | Hunt |
 |---|---|---|
-| `staples`, `wasserman` | Andy & Ari On3 | Episode titled **PICKING** / game preview. 8/25 `DCFInXgbMtY` UNC–TCU is **ATS cover** (TCU 7.5) — dropped, not SU. Re-open if they name a winner without the number. |
+| `staples`, `wasserman`, `wrighster` | Andy & Ari On3 | Episode titled **PICKING** / game preview. 8/25 `DCFInXgbMtY` UNC–TCU is **ATS cover** (TCU 7.5) — dropped, not SU. Re-open if they name a winner without the number. |
 | `mcelroy` | Always College Football | Locks / “I’ll take” only |
 | `thamel`, `feldman` | insiders | Program talk. Do not force a SU. |
 | `kanell` | Cover 3 | NC State YES booked. Still hunt Clemson, Dublin, Lambeau. Totals/ATS ≠ SU. |

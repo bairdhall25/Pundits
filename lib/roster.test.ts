@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { loadPundits } from "./data";
+import { checkRosterPipeline } from "../scripts/roster-add.mjs";
 
 const SPORTS = new Set(["ncaaf", "nfl", "both"]);
 
@@ -24,5 +25,9 @@ describe("roster", () => {
   it("has unique ids", () => {
     const ids = loadPundits().map((p) => p.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("keeps pipeline-managed ids complete", () => {
+    expect(checkRosterPipeline(process.cwd()).ok).toBe(true);
   });
 });
