@@ -41,7 +41,7 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 
 ## Capture vs display
 
-Canonical: `docs/capture-policy.md`. Capture eagerly, mint lazily, feature reluctantly. Homepage (`onHome`) is curated. Scout hunts homepage games plus `docs/bring-onto-home.json` (Wisconsin, Miami, Baylor). Overflow unlisted SUs stage as unmapped rows; Promote mints them only when asked. Published event slugs are append-only — do not delete Miami or Baylor if they stay empty. Extra homepage games stay parked through 2026-09-05.
+Canonical capture: `docs/capture-policy.md`. Canonical homepage display: `docs/product/featured-games.md`. Capture eagerly, mint lazily, feature reluctantly. Featured is a waterfall (pin → when → coverage → size), not a score and not “both sides or nothing.” Scout hunts homepage games plus `docs/bring-onto-home.json` (Wisconsin, Miami, Baylor). Overflow unlisted SUs stage as unmapped rows; Promote mints them only when asked. Published event slugs are append-only. Extra homepage games stay parked through 2026-09-05 unless pinned. Do not infer `onHome` from the featured rule until that sort is implemented.
 
 ## Guardrails
 
@@ -74,4 +74,5 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - `editorial-and-corrections.md` defines trust and correction policy.
 - `docs/README.md` distinguishes current authority from historical plans and evidence.
 - `docs/capture-policy.md` is the capture vs homepage-density doctrine.
+- `docs/product/featured-games.md` is the homepage featured-game display rule.
 - `AGENTS.md` defines repository-wide invariants and agent ownership.
