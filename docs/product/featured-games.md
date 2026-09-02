@@ -16,7 +16,7 @@ A number that mixes size, kickoff, and face count is arbitrary, jumpy, and hard 
 - **Hero** — one open (or grading) game.
 - **College** — up to three open/grading NCAAF games (hero may repeat here).
 - **NFL** — up to three open/grading NFL games.
-- **Final** — settled games from those boards, as receipts, not as the lead.
+- **Final** — settled complete cards from those boards, as receipts, not as the lead. `onHome` is not the gate.
 
 `/ncaaf/` and `/nfl/` are the full slates: every **game** with ≥1 mapped hard pick. No zero-pick “waiting” rows on those pages. Futures stay in the futures block, not in this-week featured slots.
 

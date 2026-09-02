@@ -145,9 +145,15 @@ describe("featured game display", () => {
     });
     const calls = [pick(unpriced.slug, "face-1", "yes")];
 
-    expect(
-      getHomepageFeaturedGames([unpriced], calls, pundits, null, "2026-09-01").ncaaf
-    ).toEqual([]);
+    const featured = getHomepageFeaturedGames(
+      [unpriced],
+      calls,
+      pundits,
+      null,
+      "2026-09-01"
+    );
+    expect(featured.ncaaf).toEqual([]);
+    expect(featured.ncaafFinal).toEqual([]);
     expect(getLeagueGames("ncaaf", [unpriced], calls).map((event) => event.slug)).toEqual([
       unpriced.slug,
     ]);
@@ -257,7 +263,38 @@ describe("featured game display", () => {
 
     expect(featured.hero).toBeUndefined();
     expect(featured.ncaaf).toEqual([]);
+    expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
+      settled.slug,
+    ]);
     expect(getLeagueGames("ncaaf", [settled], calls)).toEqual([settled]);
+  });
+
+  it("puts an off-home settled complete card in homepage Final", () => {
+    const wisconsin = game("wisconsin-settled", "ncaaf", "2026-09-06", {
+      onHome: false,
+      awayScore: 10,
+      homeScore: 24,
+    });
+    const onHomeFinal = game("week0-final", "ncaaf", "2026-08-29", {
+      awayScore: 15,
+      homeScore: 10,
+    });
+    const calls = [
+      pick(wisconsin.slug, "face-1", "no", "hit"),
+      pick(onHomeFinal.slug, "face-2", "yes", "hit"),
+    ];
+    const featured = getHomepageFeaturedGames(
+      [wisconsin, onHomeFinal],
+      calls,
+      pundits,
+      null,
+      "2026-09-07"
+    );
+
+    expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
+      wisconsin.slug,
+      onHomeFinal.slug,
+    ]);
   });
 
   it("sorts by date without penalizing a Melbourne kickoff", () => {
@@ -312,10 +349,19 @@ describe("featured game display", () => {
     expect(homeHeroLede(featured.hero!, calls, livePundits)).toBe(
       "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. George Wrighster picks Clemson."
     );
+    expect(featured.ncaaf.map((event) => event.slug)).toEqual([
+      "clemson-at-lsu-2026",
+      "wisconsin-vs-nd-2026",
+    ]);
+    expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
+      "ncsu-at-uva-2026",
+      "unc-vs-tcu-2026",
+    ]);
     expect(featured.nfl.map((event) => event.slug)).toEqual([
       "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
       "bills-at-texans-2026",
     ]);
+    expect(featured.nflFinal).toEqual([]);
   });
 });

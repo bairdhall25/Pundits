@@ -13,12 +13,10 @@ import { latestGradedWeekRecap } from "@/lib/archive";
 import {
   getActivityBoard,
   getFuturesPeek,
-  getWeekend,
   latestCalls,
   loadCalls,
   loadEvents,
   loadPundits,
-  partitionGames,
 } from "@/lib/data";
 import { getHomepageFeaturedGames, loadFeaturedPin } from "@/lib/featured";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
@@ -109,11 +107,7 @@ export default function HomePage() {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
   const recap = latestGradedWeekRecap(events, calls, pundits);
-  const ncaafParts = partitionGames(getWeekend("ncaaf", events), calls);
-  const nflParts = partitionGames(getWeekend("nfl", events), calls);
   const marquee = featured.hero;
-  // Keep the marquee on its sport board too. Pulling the only open CFB
-  // game into the hero left College looking like last week's receipts.
   const ncaafCards = featured.ncaaf;
   const nflCards = featured.nfl;
   const heroLede = marquee
@@ -177,7 +171,7 @@ export default function HomePage() {
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
         events={ncaafCards}
-        finals={ncaafParts.final}
+        finals={featured.ncaafFinal}
         calls={calls}
         pundits={pundits}
         recap={recap?.sport === "ncaaf" ? recap : null}
@@ -189,7 +183,7 @@ export default function HomePage() {
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
         events={nflCards}
-        finals={nflParts.final}
+        finals={featured.nflFinal}
         calls={calls}
         pundits={pundits}
       />

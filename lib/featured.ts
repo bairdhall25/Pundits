@@ -12,6 +12,8 @@ export type HomepageFeaturedGames = {
   hero: Event | undefined;
   ncaaf: Event[];
   nfl: Event[];
+  ncaafFinal: Event[];
+  nflFinal: Event[];
 };
 
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -82,6 +84,18 @@ function hasFreeze(event: Event): boolean {
   );
 }
 
+function isCompleteCard(
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): boolean {
+  return (
+    eventKind(event) === "game" &&
+    hasFreeze(event) &&
+    cardedCalls(event, calls, pundits).length > 0
+  );
+}
+
 export function isCompleteFeaturedCard(
   event: Event,
   calls: Call[],
@@ -89,10 +103,19 @@ export function isCompleteFeaturedCard(
 ): boolean {
   const status = eventScanStatus(event, calls);
   return (
-    eventKind(event) === "game" &&
-    (status === "open" || status === "grading") &&
-    hasFreeze(event) &&
-    cardedCalls(event, calls, pundits).length > 0
+    isCompleteCard(event, calls, pundits) &&
+    (status === "open" || status === "grading")
+  );
+}
+
+function isCompleteFinalCard(
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): boolean {
+  return (
+    isCompleteCard(event, calls, pundits) &&
+    eventScanStatus(event, calls) === "final"
   );
 }
 
@@ -202,6 +225,21 @@ export function sortFeaturedGames(
   });
 }
 
+function sortFinalGames(
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): Event[] {
+  return events
+    .filter((event) => isCompleteFinalCard(event, calls, pundits))
+    .sort(
+      (a, b) =>
+        dateValue(b) - dateValue(a) ||
+        (b.kickoff ?? "").localeCompare(a.kickoff ?? "") ||
+        a.slug.localeCompare(b.slug)
+    );
+}
+
 export function getHomepageFeaturedGames(
   events: Event[],
   calls: Call[],
@@ -218,6 +256,7 @@ export function getHomepageFeaturedGames(
   const twoSided = sorted.find(
     (event) => coverage(event, calls, pundits).bothSides
   );
+  const finals = sortFinalGames(events, calls, pundits);
 
   return {
     hero: pinned ?? twoSided ?? sorted[0],
@@ -225,6 +264,8 @@ export function getHomepageFeaturedGames(
       .filter((event) => event.sport === "ncaaf")
       .slice(0, sectionLimit),
     nfl: sorted.filter((event) => event.sport === "nfl").slice(0, sectionLimit),
+    ncaafFinal: finals.filter((event) => event.sport === "ncaaf"),
+    nflFinal: finals.filter((event) => event.sport === "nfl"),
   };
 }
 
