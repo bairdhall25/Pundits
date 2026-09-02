@@ -1,8 +1,10 @@
 # Social card system — design and integration contract
 
-Status: Working design contract
+Status: Active plan
 
 Date: 2026-09-02
+
+Implementation update: the approved Phase 1 semantic model, portrait focal-point manifest, route resolvers, and edge-case tests now live under `lib/social-card/`. They are additive and are not yet connected to the production renderer, generated images, metadata, or `public/social/cards.json`.
 
 ## Goal
 
