@@ -125,12 +125,18 @@ describe("huntHint", () => {
   it("skips dense", () => {
     expect(huntHint(clemson, ["a"], ["b", "c"], "dense")).toBe("skip");
   });
+
+  it("keeps off-home SUs off the homepage until an operator flip", () => {
+    expect(huntHint(lambeau, [], [], "off-home")).toBe(
+      "one roster SU (off-home until operator flip)"
+    );
+  });
 });
 
 describe("inFlipWindow", () => {
   const sep2 = Date.parse("2026-09-02T12:00:00Z");
 
-  it("opens 72h before kickoff for onHome games", () => {
+  it("opens 3 calendar days before kickoffDate for onHome games", () => {
     expect(inFlipWindow(clemson, sep2)).toBe(true);
   });
 
@@ -156,15 +162,15 @@ describe("scoreEvent flip-check", () => {
     hard("staples", "clemson-at-lsu-2026", "no"),
   ];
 
-  it("dense onHome inside 72h hunts a flip-check, not a skip", () => {
+  it("dense onHome inside 3 calendar days hunts a flip-check, not a skip", () => {
     const row = scoreEvent(clemson, denseCalls, {
       now: Date.parse("2026-09-03T12:00:00Z"),
     });
     expect(row.status).toBe("dense");
-    expect(row.hunt).toBe("flip-check carded pundits only (kickoff ≤72h)");
+    expect(row.hunt).toBe("flip-check carded pundits only (kickoff date ≤3 days)");
   });
 
-  it("dense outside 72h still skips", () => {
+  it("dense outside 3 calendar days still skips", () => {
     const row = scoreEvent(clemson, denseCalls, {
       now: Date.parse("2026-08-30T12:00:00Z"),
     });

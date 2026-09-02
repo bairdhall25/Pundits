@@ -30,7 +30,7 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 
 ## Immediate order of operations
 
-1. Every Scout pass hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, and Wisconsin YES (Lambeau stays off-home until a roster SU). Clemson is dense — do not restage. Do not ship Bets pages, fantasy, bulk roster, or extra home games until after the 2026-09-05 week; context in `docs/product/2026-08-30-dense-marquee-cards.md`.
+1. Every Scout pass hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, Wisconsin YES, and the Miami / Baylor watchlist (off-home). Clemson is dense — flip-check already-carded faces once `kickoffDate` is within 3 calendar days; do not restage. Do not ship Bets pages, fantasy, bulk roster, or extra homepage games until after the 2026-09-05 week. Doctrine: `docs/capture-policy.md`.
 2. Grade Clemson–LSU after the final, then recap within 24 hours.
 3. Grade NFL Week 1 as those games settle.
 4. Instrument the minimum engagement events in `measurement.md`.
@@ -39,11 +39,9 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 7. Select a retention experiment from observed behavior.
 8. Test monetization only after repeat value is visible.
 
-## Capture vs display (working, 2026-09-01)
+## Capture vs display
 
-Homepage (`onHome`) is a curated first screen, not the hunt universe. `/ncaaf/` and `/nfl/` already show ledger games with picks, plus a waiting list for games with none. Scout Dispatch is homepage games plus `docs/bring-onto-home.json` (today: Wisconsin–ND). A pick for a game not in `events.json` cannot be mapped.
-
-Do not add extra homepage games through 2026-09-05. After this week, reopen as: operator names a small watchlist; Scout hunts it (overflow is allowed if a show already opened names another game); Promote keeps new events off-home until the card has at least one verified SU, preferably both sides. Skip dense events, not a sport.
+Canonical: `docs/capture-policy.md`. Capture eagerly, mint lazily, feature reluctantly. Homepage (`onHome`) is curated. Scout hunts homepage games plus `docs/bring-onto-home.json` (Wisconsin, Miami, Baylor). Overflow unlisted SUs stage as unmapped rows; Promote mints them only when asked. Published event slugs are append-only — do not delete Miami or Baylor if they stay empty. Extra homepage games stay parked through 2026-09-05.
 
 ## Guardrails
 
@@ -67,7 +65,6 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - Which generated artifacts earn indexing, engagement, or sharing rather than merely existing?
 - What correction or dispute states become necessary after real edge cases occur?
 - What repeat behavior is strong enough to support a monetization experiment?
-- Should Scout capture more games than the homepage features, and when does a watchlist game earn `onHome`?
 
 ## Authority and next reads
 
@@ -76,4 +73,5 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - `measurement.md` defines metrics and stage gates.
 - `editorial-and-corrections.md` defines trust and correction policy.
 - `docs/README.md` distinguishes current authority from historical plans and evidence.
+- `docs/capture-policy.md` is the capture vs homepage-density doctrine.
 - `AGENTS.md` defines repository-wide invariants and agent ownership.

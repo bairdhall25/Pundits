@@ -37,21 +37,21 @@ Architecture: `docs/superpowers/specs/2026-08-29-scout-architecture-design.md`.
 
 Week 0 is graded. Settled games are not hunt targets.
 
-**Every Coordinator / Shows / X / News pass hunts both NCAAF and NFL.** Dispatch is the full homepage slate. Do not park a sport because the calendar said “CFB day” or “wait for NFL week.” Skip `dense` events and settled games only. Factory *windows* still apply (GameDay Saturday, Big Noon Saturday) — that is which episode to open, not which sport to drop.
+**Every Coordinator / Shows / X / News pass hunts both NCAAF and NFL.** Dispatch is homepage games plus the watchlist. Do not park a sport because the calendar said “CFB day” or “wait for NFL week.” Skip `dense` events except a `flip-check` on already-carded faces when `kickoffDate` is within 3 calendar days. Skip settled games. Factory *windows* still apply (GameDay Saturday, Big Noon Saturday) — that is which episode to open, not which sport to drop. Doctrine: `docs/capture-policy.md`.
 
 **This week (CFB Week 1 / NFL Week 1 preview):**
 
 | When | Job |
 |---|---|
 | Daily | Coordinator Dispatch from `node scripts/scout-density.mjs` plus Factory feeds from `node scripts/scout-feeds.mjs`. Shows, X, and News hunt every under-dense Dispatch row in **both** sports. X twice daily. |
-| Weeknights | Open Finebaum / Pate / Always CFB / On3 **and** Herd / Eisen / McAfee when Factory feeds say `today`. Wisconsin YES and NFL empty YES stay open. Clemson is dense — skip unless a source already opened names it. |
-| Thu 9/3 | Cover 3 **Week 1 LOCKS** — first high-yield CFB factory. Still hunt NFL empty YES in the same pass. |
-| Fri 9/4 | Shows + News, both sports. Miami–Stanford is off-home; do not hunt unless it lands on Dispatch. |
-| Sat 9/5 | **GameDay Baton Rouge** plus Big Noon. Grader after Clemson is final, not before. Recap after Grader. Still hunt NFL empty YES. |
+| Weeknights | Open Finebaum / Pate / Always CFB / On3 **and** Herd / Eisen / McAfee when Factory feeds say `today`. Wisconsin YES, Miami, Baylor, and NFL empty YES stay open (watchlist / empty-side). Clemson is dense — skip unless Dispatch says `flip-check` or a source already opened names it. |
+| Thu 9/3 | Cover 3 **Week 1 LOCKS** — first high-yield CFB factory. Still hunt NFL empty YES and the CFB watchlist in the same pass. |
+| Fri 9/4 | Shows + News, both sports. Miami–Stanford is on the watchlist (off-home hunt). Do not put it on `/`. |
+| Sat 9/5 | **GameDay Baton Rouge** plus Big Noon. Clemson is in the flip-check window. Grader after Clemson is final, not before. Recap after Grader. Still hunt NFL empty YES. |
 | Sun 9/6 | Lambeau stays off-home until a roster Wisconsin SU. |
 | Through Kickoff Wed 9/9 | Keep NFL empty YES (Patriots, 49ers, Bills) on every pass, alongside remaining NCAAF holes. |
 
-Hunt order is Dispatch: `empty-side` (NCAAF and NFL), then `off-home`, then `thin`. Skip `dense`. Do not fill Miami–Stanford or extra home games through 2026-09-05. `ruiz` is FOX Sports — not Ringer NFL. Bets/fantasy/bulk roster stay parked through this week.
+Hunt order is Dispatch: `empty-side` (NCAAF and NFL), then `off-home`, then `thin`. Skip `dense` except flip-check. Hunt Miami–Stanford and Baylor–Auburn **off-home**; do not add extra homepage games through 2026-09-05. `ruiz` is FOX Sports — not Ringer NFL. Bets/fantasy/bulk roster stay parked through this week.
 
 ## What we will not do in this pass
 
