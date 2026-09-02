@@ -60,3 +60,6 @@ Keep the shipped board: Clemson is the lead; the three NFL openers stay in the N
 Replace `onHome` as the homepage gate with this sort. `onHome` can become the pin, or go away. Capture policy does not change.
 
 Implementation brief for the first PR: `docs/superpowers/plans/2026-09-01-featured-games.md`.
+
+Implemented in `lib/featured.ts`. The current operator pin lives at
+`data/featured-pin.json`; `until` is inclusive through that calendar day.

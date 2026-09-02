@@ -18,9 +18,9 @@ import {
   loadCalls,
   loadEvents,
   loadPundits,
-  marqueeGame,
   partitionGames,
 } from "@/lib/data";
+import { getHomepageFeaturedGames, loadFeaturedPin } from "@/lib/featured";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
@@ -94,8 +94,12 @@ export default function HomePage() {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const ncaaf = getWeekend("ncaaf", events);
-  const nfl = getWeekend("nfl", events);
+  const featured = getHomepageFeaturedGames(
+    events,
+    calls,
+    pundits,
+    loadFeaturedPin()
+  );
   const futures = [
     ...getFuturesPeek("ncaaf", events, calls, 3),
     ...getFuturesPeek("nfl", events, calls, 2),
@@ -105,13 +109,13 @@ export default function HomePage() {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
   const recap = latestGradedWeekRecap(events, calls, pundits);
-  const ncaafParts = partitionGames(ncaaf, calls);
-  const nflParts = partitionGames(nfl, calls);
-  const marquee = marqueeGame(ncaaf, nfl, calls);
+  const ncaafParts = partitionGames(getWeekend("ncaaf", events), calls);
+  const nflParts = partitionGames(getWeekend("nfl", events), calls);
+  const marquee = featured.hero;
   // Keep the marquee on its sport board too. Pulling the only open CFB
   // game into the hero left College looking like last week's receipts.
-  const ncaafCards = [...ncaafParts.open, ...ncaafParts.grading];
-  const nflCards = [...nflParts.open, ...nflParts.grading];
+  const ncaafCards = featured.ncaaf;
+  const nflCards = featured.nfl;
   const heroLede = marquee
     ? homeHeroLede(marquee, calls, pundits)
     : "College football and NFL picks from named analysts and commentators.";

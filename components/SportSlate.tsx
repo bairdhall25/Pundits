@@ -7,8 +7,6 @@ import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
 import { WeekArchivePathLinks, TeamLinks } from "@/components/SlateLinks";
 import {
-  formatGameWhen,
-  getSlateGames,
   loadCalls,
   loadEvents,
   loadPundits,
@@ -16,6 +14,7 @@ import {
   partitionGames,
   seasonLabel,
 } from "@/lib/data";
+import { getLeagueGames } from "@/lib/featured";
 import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
 import type { Sport } from "@/lib/types";
 
@@ -39,16 +38,14 @@ export function SportSlate({ sport }: { sport: Sport }) {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const games = getSlateGames(sport, events);
+  const games = getLeagueGames(sport, events, calls);
   const { withPicks: futurePicks, waiting: futureWaiting } = partitionFutures(
     sport,
     events,
     calls
   );
   const copy = COPY[sport];
-  const withPicks = games.filter((e) => calls.some((c) => c.eventSlug === e.slug));
-  const waiting = games.filter((e) => !calls.some((c) => c.eventSlug === e.slug));
-  const { open, grading, final } = partitionGames(withPicks, calls);
+  const { open, grading, final } = partitionGames(games, calls);
 
   return (
     <main id="main" className="shell">
@@ -75,8 +72,8 @@ export function SportSlate({ sport }: { sport: Sport }) {
         {copy.title}
       </h1>
       <p className="lede">
-        Expert picks on this week’s games. Cards on the home page have a
-        verified face. The rest stay here until someone takes a side.
+        Expert picks on this week’s games. Every game here has at least one
+        verified pick. Prices are frozen when available.
       </p>
       <SportFilter current={sport} />
       <div className="when">{copy.when}</div>
@@ -101,26 +98,6 @@ export function SportSlate({ sport }: { sport: Sport }) {
               {final.map((event) => (
                 <li key={event.slug}>
                   <FinalRow event={event} calls={calls} />
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : null}
-        {waiting.length ? (
-          <>
-            <h3 className="wait-head type-broadcast">
-              Waiting for a verified pick
-            </h3>
-            <ul className="wait-list">
-              {waiting.map((event) => (
-                <li key={event.slug}>
-                  <Link href={`/picks/${event.slug}`} className="wait-row">
-                    <span className="wait-title type-broadcast">
-                      {event.title}
-                    </span>
-                    <span className="wait-when">{formatGameWhen(event)}</span>
-                    <span className="wait-cta">No pick yet →</span>
-                  </Link>
                 </li>
               ))}
             </ul>
