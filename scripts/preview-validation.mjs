@@ -10,7 +10,7 @@ export const APPLEBOT_USER_AGENT =
 // https://developer.apple.com/documentation/technotes/tn3156-create-rich-previews-for-messages/
 const MAX_PAGE_BYTES = 1_000_000;
 const MAX_ASSOCIATED_RESOURCE_BYTES = 10_000_000;
-const VERSIONED_CARD_PATH = /^\/og\/(takes|events|pundits|teams|weeks)\//;
+const VERSIONED_CARD_PATH = /^\/og\/(takes|events|pundits|teams|weeks|pages)\//;
 
 function decodeHtml(value) {
   return value
@@ -49,6 +49,11 @@ export function previewImageFromHtml(html, pageUrl) {
   assert(image, `${pageUrl} must publish og:image`);
   const imageUrl = new URL(image, pageUrl);
   assert.equal(imageUrl.protocol, "https:", `${pageUrl} og:image must use HTTPS`);
+  assert.notEqual(
+    imageUrl.pathname,
+    "/og.png",
+    `${pageUrl} must use a route-specific social card instead of the emergency fallback`
+  );
   assert(meta.get("og:title"), `${pageUrl} must publish og:title`);
   assert.equal(
     meta.get("og:image:type"),

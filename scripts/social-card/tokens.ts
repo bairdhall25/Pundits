@@ -17,6 +17,7 @@ export const SOCIAL_LAYOUT = {
   topRule: 8,
   headerHeight: 64,
   proofHeight: 64,
+  heroRule: 4,
 } as const;
 
 export const SOCIAL_FONTS = {

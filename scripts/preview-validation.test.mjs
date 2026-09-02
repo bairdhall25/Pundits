@@ -41,6 +41,15 @@ describe("preview metadata validation", () => {
     ).toThrow(/content-versioned/);
   });
 
+  it("rejects the generic emergency fallback for shareable routes", () => {
+    expect(() =>
+      previewImageFromHtml(
+        previewHtml("https://pundits.pro/og.png"),
+        "https://pundits.pro/new-content-type/"
+      )
+    ).toThrow(/route-specific social card/);
+  });
+
   it("accepts a complete, versioned preview contract", () => {
     expect(
       previewImageFromHtml(previewHtml(), "https://pundits.pro/picks/example/").href

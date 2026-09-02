@@ -4,12 +4,12 @@ import { StoryBoard } from "@/components/StoryBoard";
 import { TakesViews } from "@/components/TakesViews";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { breadcrumbList, collectionPageJsonLd, mappedTakes, toStoryCard } from "@/lib/seo";
-import { pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
 
-export const metadata = pageMeta(
+export const metadata = socialPageMeta(
+  "stories",
   "Expert picks",
   "Verified expert CFB and NFL picks: who they’re taking, the quote, and the market price. Newest first.",
-  "/stories"
 );
 
 export default function StoriesPage() {

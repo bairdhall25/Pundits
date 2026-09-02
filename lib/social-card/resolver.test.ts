@@ -116,6 +116,7 @@ describe("social-card portrait presentation", () => {
     }
     expect(portraitPresentationFor("pate").focus).toEqual({ x: 0.5, y: 0.53 });
     expect(portraitPresentationFor("finebaum").focus).toEqual({ x: 0.5, y: 0.24 });
+    expect(portraitPresentationFor("butler").focus).toEqual({ x: 0.5, y: 0.28 });
     expect(portraitPresentationFor("unknown-person")).toEqual({
       punditId: "unknown-person",
     });
@@ -147,6 +148,28 @@ describe("social-card model utilities", () => {
     expect(excerpt.length).toBeLessThanOrEqual(160);
     expect(excerpt).not.toMatch(/\s…$/);
     expect(quoteExcerpt(longest.claim, 160)).toBe(excerpt);
+  });
+});
+
+describe("page social-card resolver", () => {
+  it("uses live corpus counts and real portraits on distribution pages", () => {
+    const card = resolvePageSocialCard("stories", "landscape", {
+      events,
+      calls,
+      pundits,
+    });
+    expect(card.metrics.find((metric) => metric.label === "Mapped picks")?.value).toBe(
+      String(calls.filter((call) => call.eventSlug && call.side).length)
+    );
+    expect(card.people?.people.length).toBe(3);
+    expect(card.people?.people.every((person) => person.portrait)).toBe(true);
+  });
+
+  it("keeps trust and utility cards text-first", () => {
+    const data = { events, calls, pundits };
+    for (const key of ["about", "methodology", "privacy", "terms"] as const) {
+      expect(resolvePageSocialCard(key, "landscape", data).people).toBeNull();
+    }
   });
 });
 

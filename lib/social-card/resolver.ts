@@ -53,9 +53,6 @@ function personFromPundit(pundit: Pundit, call?: Call): SocialPerson {
     outlet: pundit.outlet,
     portrait: pundit.photo?.trim() || null,
     ...(presentation.focus ? { portraitFocus: presentation.focus } : {}),
-    ...(presentation.featuredScale
-      ? { featuredScale: presentation.featuredScale }
-      : {}),
     ...(call?.claim ? { quote: call.claim } : {}),
     ...(call?.status ? { status: call.status } : {}),
   };
@@ -330,6 +327,7 @@ function featureForTeam(
     headline:
       selected.group.total === 1 ? `Lone ${selected.headline.slice(4)}` : selected.headline,
     context: person.outlet,
+    person,
   };
 }
 
@@ -358,6 +356,7 @@ export function resolveTeamSocialCard(
     kicker: team.sport === "nfl" ? "NFL team archive" : "College football team archive",
     headline: team.name,
     context: `${total} verified pick${total === 1 ? "" : "s"}`,
+    chip: chipForTeam(team),
     metrics: [
       { label: "With", value: String(takes.for.length), tone: "accent" },
       { label: "Against", value: String(takes.against.length) },
@@ -416,6 +415,7 @@ export function resolveWeekSocialCard(
   events: Event[],
   calls: Call[],
   pundits: Pundit[],
+  teams: Team[] = [],
   format: SocialFormat = "landscape"
 ): EditorialSocialCardModel {
   const games = gamesForWeek(sport, season, week, events);
@@ -430,6 +430,13 @@ export function resolveWeekSocialCard(
     format === "story" ? STORY_PEOPLE_LIMIT : WEEK_PEOPLE_LIMIT
   );
   const marqueeSides = marquee ? sidesForCard(marquee, calls) : null;
+  const socialMarqueeSides: [SocialSide, SocialSide] | null =
+    marquee && marqueeSides
+      ? [
+          socialSide(marquee, marqueeSides[0], pundits, teams, format),
+          socialSide(marquee, marqueeSides[1], pundits, teams, format),
+        ]
+      : null;
   const split = marqueeSides
     ? `${marqueeSides[0].calls.length} — ${marqueeSides[1].calls.length} expert pick split`
     : undefined;
@@ -460,6 +467,7 @@ export function resolveWeekSocialCard(
           kicker: "Marquee disagreement",
           headline: marquee.title,
           ...(split ? { context: split } : {}),
+          ...(socialMarqueeSides ? { sides: socialMarqueeSides } : {}),
         }
       : null,
     proof: [
@@ -560,9 +568,73 @@ const PAGE_CONTENT: Record<
   },
 };
 
+export type SocialPageData = {
+  events: Event[];
+  calls: Call[];
+  pundits: Pundit[];
+};
+
+function pageCalls(key: SocialPageKey, data: SocialPageData): Call[] {
+  const mapped = data.calls.filter(isMapped);
+  if (key !== "ncaaf" && key !== "nfl") return mapped;
+  const slugs = new Set(
+    data.events.filter((event) => event.sport === key).map((event) => event.slug)
+  );
+  return mapped.filter((call) => call.eventSlug && slugs.has(call.eventSlug));
+}
+
+function pageMetrics(
+  key: SocialPageKey,
+  data: SocialPageData | undefined
+): EditorialSocialCardModel["metrics"] {
+  if (!data) return [];
+  const mapped = pageCalls(key, data);
+  const eventCount = new Set(mapped.flatMap((call) => (call.eventSlug ? [call.eventSlug] : []))).size;
+  const punditCount = new Set(mapped.map((call) => call.punditId)).size;
+  const graded = mapped.filter((call) => call.status !== "pending").length;
+  if (key === "book") {
+    return [
+      { label: "Takes", value: String(data.calls.length), tone: "accent" },
+      { label: "Mapped", value: String(mapped.length) },
+    ];
+  }
+  if (key === "leaderboard") {
+    return [
+      { label: "On record", value: String(punditCount), tone: "accent" },
+      { label: "Graded", value: String(graded) },
+    ];
+  }
+  if (["home", "stories", "ncaaf", "nfl"].includes(key)) {
+    return [
+      { label: "Mapped picks", value: String(mapped.length), tone: "accent" },
+      { label: "Events", value: String(eventCount) },
+    ];
+  }
+  return [];
+}
+
+function pagePeople(
+  key: SocialPageKey,
+  format: SocialFormat,
+  data: SocialPageData | undefined
+): SocialPeopleGroup | null {
+  if (!data || !["home", "stories", "book", "leaderboard", "ncaaf", "nfl"].includes(key)) {
+    return null;
+  }
+  const newest = [...pageCalls(key, data)].sort((a, b) =>
+    a.sourceDate < b.sourceDate ? 1 : a.sourceDate > b.sourceDate ? -1 : 0
+  );
+  const people = socialPeopleGroup(
+    peopleFromCalls(newest, data.pundits),
+    format === "story" ? STORY_PEOPLE_LIMIT : 3
+  );
+  return people.total ? people : null;
+}
+
 export function resolvePageSocialCard(
   key: SocialPageKey,
-  format: SocialFormat = "landscape"
+  format: SocialFormat = "landscape",
+  data?: SocialPageData
 ): EditorialSocialCardModel {
   const content = PAGE_CONTENT[key];
   return {
@@ -571,8 +643,8 @@ export function resolvePageSocialCard(
     format,
     state: "evergreen",
     ...content,
-    metrics: [],
-    people: null,
+    metrics: pageMetrics(key, data),
+    people: pagePeople(key, format, data),
     groups: [],
     feature: null,
   };

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqJsonLd } from "@/lib/seo";
-import { CONTACT_HREF, pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
+import { CONTACT_HREF } from "@/lib/site";
 
-export const metadata: Metadata = pageMeta(
+export const metadata: Metadata = socialPageMeta(
+  "methodology",
   "Methodology",
   "How Pundits.Pro verifies public picks, freezes Kalshi prices, grades results, and calculates hypothetical records.",
-  "/methodology"
 );
 
 const FAQ = [

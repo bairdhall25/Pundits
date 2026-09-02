@@ -2,12 +2,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { LeaderboardClient } from "@/components/LeaderboardClient";
 import { getActivityBoard, loadCalls, loadPundits } from "@/lib/data";
 import { collectionPageJsonLd } from "@/lib/seo";
-import { pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
 
-export const metadata = pageMeta(
+export const metadata = socialPageMeta(
+  "leaderboard",
   "Expert pick records",
   "Who’s actually on the record this season. Hits, misses, and open expert picks.",
-  "/leaderboard"
 );
 
 export default function LeaderboardPage() {

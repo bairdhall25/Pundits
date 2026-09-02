@@ -4,7 +4,7 @@ Status: Active plan
 
 Date: 2026-09-02
 
-Implementation update: Phase 1 established the semantic model, portrait focal-point manifest, route resolvers, and edge-case tests under `lib/social-card/`. Phase 2 now connects event, take, and pundit landscape images to the approved Split and Quote templates under `scripts/social-card/`. Generated filenames, route metadata, story images, and `public/social/cards.json` remain stable; team, week, page, and vertical-story template migration remains future work.
+Implementation update: Phases 1–4 are implemented. The semantic model, portrait focal-point manifest, route resolvers, and edge-case tests live under `lib/social-card/`; event, take, pundit, team, week, collection, sport, trust, and utility landscape images now render through the approved Split, Quote, and Editorial templates under `scripts/social-card/`. Stable published filenames remain intact, route metadata is registered exhaustively, and `public/social/cards.json` adds team, week, and page landscape rows without changing the existing event, take, or pundit contract. Vertical-story template migration remains future work.
 
 ## Goal
 
@@ -320,10 +320,10 @@ They should not share Satori markup or identical layouts. App cards must still s
 
 ## Implementation sequence
 
-1. Approve this contract and renderer ownership boundary.
-2. Add semantic model, portrait focal points, and resolver tests without changing public images.
-3. Migrate landscape event, take, and pundit cards to Split and Quote.
-4. Migrate team, week, sport, collection, and trust routes to Editorial.
+1. [x] Approve this contract and renderer ownership boundary.
+2. [x] Add semantic model, portrait focal points, and resolver tests without changing public images.
+3. [x] Migrate landscape event, take, and pundit cards to Split and Quote.
+4. [x] Migrate team, week, sport, collection, and trust routes to Editorial.
 5. Migrate event, take, and pundit story assets.
 6. Add a deterministic visual fixture gallery and production preview checklist.
 7. Revisit application cards in a separate branch after social-card results are stable.

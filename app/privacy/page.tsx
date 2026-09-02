@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { getEmailSignupConfig } from "@/lib/email-signup";
-import { CONTACT_HREF, LEGAL_NAME, pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
+import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
 
-export const metadata: Metadata = pageMeta(
+export const metadata: Metadata = socialPageMeta(
+  "privacy",
   "Privacy",
   "How Pundits handles analytics and the early-access email list.",
-  "/privacy"
 );
 
 export default function PrivacyPage() {

@@ -1,6 +1,6 @@
 # Images
 
-The site pre-renders a branded card for every event, take, and pundit — a 1200×630 OG card and a 1080×1920 story card. `cards.json` carries the exact URL for each. Generated imagery is allowed only inside the Tier 2 brand spec below — nowhere else.
+The site pre-renders a branded 1200×630 landscape card for every shareable route family. Events, takes, and pundits also receive 1080×1920 story cards. `cards.json` carries the exact URLs for events, takes, pundits, teams, weeks, and registered pages. Generated imagery is allowed only inside the Tier 2 brand spec below — nowhere else.
 
 **Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image.
 

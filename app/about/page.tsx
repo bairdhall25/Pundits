@@ -3,13 +3,13 @@ import {
   CONTACT_HREF,
   LEGAL_NAME,
   SITE_DESCRIPTION,
-  pageMeta,
 } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
 
-export const metadata: Metadata = pageMeta(
+export const metadata: Metadata = socialPageMeta(
+  "about",
   "About",
   SITE_DESCRIPTION,
-  "/about"
 );
 
 export default function AboutPage() {

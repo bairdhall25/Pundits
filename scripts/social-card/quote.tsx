@@ -64,7 +64,7 @@ function TakeCard({ model }: { model: QuoteSocialCardModel }) {
   return (
     <SocialShell>
       {hasPhoto ? (
-        <div style={{ position: "absolute", top: 0, left: 0, bottom: SOCIAL_LAYOUT.proofHeight, width: "45.5%", display: "flex", overflow: "hidden", borderRight: `7px solid ${SOCIAL_COLORS.green}` }}>
+        <div style={{ position: "absolute", top: 0, left: 0, bottom: SOCIAL_LAYOUT.proofHeight, width: "45.5%", display: "flex", overflow: "hidden", borderRight: `${SOCIAL_LAYOUT.heroRule}px solid ${SOCIAL_COLORS.green}` }}>
           <PersonPortrait person={model.subject} width="100%" height="100%" />
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 95, display: "flex", background: "linear-gradient(180deg, rgba(8,9,8,0), rgba(8,9,8,0.78))" }} />
         </div>
@@ -132,7 +132,7 @@ function PunditCard({ model }: { model: QuoteSocialCardModel }) {
   return (
     <SocialShell>
       {hasPhoto ? (
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: SOCIAL_LAYOUT.proofHeight, width: "44%", display: "flex", overflow: "hidden", borderRight: `7px solid ${SOCIAL_COLORS.green}` }}>
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: SOCIAL_LAYOUT.proofHeight, width: "44%", display: "flex", overflow: "hidden", borderRight: `${SOCIAL_LAYOUT.heroRule}px solid ${SOCIAL_COLORS.green}` }}>
           <PersonPortrait person={model.subject} width="100%" height="100%" />
         </div>
       ) : null}

@@ -5,6 +5,8 @@ import { sideChip, takeHeadline, type MappedTake } from "./seo";
 import { canonicalUrl, ogImage, takePath } from "./site";
 import type { ActivityRecord, Call, CallStatus, CardSide, Event, Pundit, Sport, Team } from "./types";
 
+export const OG_LAYOUT_VERSION = 2;
+
 export type OgChip = {
   abbr: string;
   primary: string;
@@ -153,7 +155,10 @@ export function ogImageFor(path: string, alt: string, cacheKey?: unknown) {
   const url = canonicalUrl(path);
   return {
     ...ogImage(),
-    url: cacheKey == null ? url : `${url}?v=${ogCacheVersion(cacheKey)}`,
+    url:
+      cacheKey == null
+        ? url
+        : `${url}?v=${ogCacheVersion({ layout: OG_LAYOUT_VERSION, content: cacheKey })}`,
     alt,
   };
 }

@@ -34,9 +34,14 @@ import {
 } from "../lib/og";
 import { mappedTakes } from "../lib/seo";
 import {
+  SOCIAL_PAGE_KEYS,
   resolveEventSocialCard,
+  resolvePageSocialCard,
   resolvePunditSocialCard,
   resolveTakeSocialCard,
+  resolveTeamSocialCard,
+  resolveWeekSocialCard,
+  ogPagePath,
 } from "../lib/social-card";
 import { landscapeSocialTree } from "./social-card/render";
 
@@ -1161,6 +1166,7 @@ async function shouldSkip(expected: number): Promise<boolean> {
     "public/og/pundits",
     "public/og/teams",
     "public/og/weeks",
+    "public/og/pages",
     "public/og/stories/takes",
     "public/og/stories/events",
     "public/og/stories/pundits",
@@ -1177,6 +1183,7 @@ async function shouldSkip(expected: number): Promise<boolean> {
     path.join(ROOT, "lib/og.ts"),
     path.join(ROOT, "lib/social-card/model.ts"),
     path.join(ROOT, "lib/social-card/portraits.ts"),
+    path.join(ROOT, "lib/social-card/registry.ts"),
     path.join(ROOT, "lib/social-card/resolver.ts"),
     path.join(ROOT, "scripts/social-card/assets.ts"),
     path.join(ROOT, "scripts/social-card/tokens.ts"),
@@ -1198,6 +1205,7 @@ export async function renderAllOg(force = false): Promise<{
   pundits: number;
   teams: number;
   weeks: number;
+  pages: number;
 }> {
   const calls = loadCalls();
   const events = loadEvents();
@@ -1206,7 +1214,10 @@ export async function renderAllOg(force = false): Promise<{
   const takes = mappedTakes(calls, events, pundits);
   const weeks = archiveWeeks(events);
   const expected =
-    (takes.length + events.length + pundits.length) * 2 + teams.length + weeks.length;
+    (takes.length + events.length + pundits.length) * 2 +
+    teams.length +
+    weeks.length +
+    SOCIAL_PAGE_KEYS.length;
   if (!force && (await shouldSkip(expected))) {
     return {
       takes: takes.length,
@@ -1214,6 +1225,7 @@ export async function renderAllOg(force = false): Promise<{
       pundits: pundits.length,
       teams: teams.length,
       weeks: weeks.length,
+      pages: SOCIAL_PAGE_KEYS.length,
     };
   }
 
@@ -1224,6 +1236,7 @@ export async function renderAllOg(force = false): Promise<{
     "public/og/pundits",
     "public/og/teams",
     "public/og/weeks",
+    "public/og/pages",
     "public/og/stories/takes",
     "public/og/stories/events",
     "public/og/stories/pundits",
@@ -1270,18 +1283,40 @@ export async function renderAllOg(force = false): Promise<{
   }
   for (const team of teams) {
     const card = teamOgCard(team, events, calls, pundits);
+    const socialCard = resolveTeamSocialCard(team, events, calls, pundits);
     try {
-      await writePng(card.file, await renderCardPng(teamTree(card)));
+      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
     } catch (err) {
       throw new Error(`team ${card.file}: ${err instanceof Error ? err.message : err}`);
     }
   }
   for (const week of weeks) {
     const card = weekOgCard(week.sport, week.season, week.week, events, calls);
+    const socialCard = resolveWeekSocialCard(
+      week.sport,
+      week.season,
+      week.week,
+      events,
+      calls,
+      pundits,
+      teams
+    );
     try {
-      await writePng(card.file, await renderCardPng(weekTree(card)));
+      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
     } catch (err) {
       throw new Error(`week ${card.file}: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  for (const key of SOCIAL_PAGE_KEYS) {
+    const socialCard = resolvePageSocialCard(key, "landscape", {
+      events,
+      calls,
+      pundits,
+    });
+    try {
+      await writePng(ogPagePath(key), await renderCardPng(landscapeSocialTree(socialCard)));
+    } catch (err) {
+      throw new Error(`page ${key}: ${err instanceof Error ? err.message : err}`);
     }
   }
   return {
@@ -1290,6 +1325,7 @@ export async function renderAllOg(force = false): Promise<{
     pundits: pundits.length,
     teams: teams.length,
     weeks: weeks.length,
+    pages: SOCIAL_PAGE_KEYS.length,
   };
 }
 
@@ -1303,7 +1339,7 @@ if (isCli()) {
   renderAllOg(force)
     .then((result) => {
       console.log(
-        `OG cards: ${result.takes} takes, ${result.events} events, ${result.pundits} pundits, ${result.teams} teams, ${result.weeks} weeks`
+        `OG cards: ${result.takes} takes, ${result.events} events, ${result.pundits} pundits, ${result.teams} teams, ${result.weeks} weeks, ${result.pages} pages`
       );
     })
     .catch((err) => {

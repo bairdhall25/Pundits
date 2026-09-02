@@ -3,12 +3,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { TakesViews } from "@/components/TakesViews";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { collectionPageJsonLd } from "@/lib/seo";
-import { pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
 
-export const metadata = pageMeta(
+export const metadata = socialPageMeta(
+  "book",
   "The Book — every expert take",
   "Every tracked expert comment — locked-in picks and softer takes. Mapped picks carry the market price.",
-  "/book"
 );
 
 export default function BookPage() {

@@ -29,7 +29,20 @@ function FeaturedPerson({ person }: { person: SocialPerson }) {
   const hasPhoto = Boolean(person.portrait);
   return (
     <div style={{ display: "flex", flex: 1, minWidth: 0, overflow: "hidden", background: SOCIAL_COLORS.panel }}>
-      {hasPhoto ? <PersonPortrait person={person} width="58%" height="100%" /> : null}
+      {hasPhoto ? (
+        <div
+          style={{
+            width: "58%",
+            height: "100%",
+            display: "flex",
+            flexShrink: 0,
+            overflow: "hidden",
+            borderRight: `${SOCIAL_LAYOUT.heroRule}px solid ${SOCIAL_COLORS.green}`,
+          }}
+        >
+          <PersonPortrait person={person} width="100%" height="100%" />
+        </div>
+      ) : null}
       <div
         style={{
           display: "flex",
@@ -38,7 +51,6 @@ function FeaturedPerson({ person }: { person: SocialPerson }) {
           flexDirection: "column",
           justifyContent: "center",
           padding: hasPhoto ? "18px 17px" : "24px 28px",
-          borderLeft: `1px solid ${SOCIAL_COLORS.line}`,
         }}
       >
         <div

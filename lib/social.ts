@@ -4,6 +4,7 @@ import {
   sidesForCard,
   toActivityRecord,
 } from "./data";
+import { archiveWeeks, weekArchivePath } from "./archive";
 import {
   ogEventPath,
   ogPunditPath,
@@ -11,9 +12,17 @@ import {
   ogStoryPunditPath,
   ogStoryTakePath,
   ogTakePath,
+  ogTeamPath,
+  ogWeekPath,
 } from "./og";
 import { mappedTakes, sideChip } from "./seo";
-import type { Call, CallStatus, Event, Pundit, Side, Sport } from "./types";
+import {
+  SOCIAL_PAGE_KEYS,
+  ogPagePath,
+  socialPageRoute,
+  type SocialPageKey,
+} from "./social-card";
+import type { Call, CallStatus, Event, Pundit, Side, Sport, Team } from "./types";
 
 const SITE = "https://pundits.pro";
 
@@ -65,12 +74,37 @@ export type SocialPunditRow = {
   storyCard: string;
 };
 
+export type SocialPageRow = {
+  key: SocialPageKey;
+  pageUrl: string;
+  ogCard: string;
+};
+
+export type SocialTeamRow = {
+  id: string;
+  name: string;
+  pageUrl: string;
+  ogCard: string;
+};
+
+export type SocialWeekRow = {
+  sport: Sport;
+  season: number;
+  week: number;
+  pageUrl: string;
+  ogCard: string;
+};
+
 export type SocialIndex = {
+  schemaVersion: 2;
   generatedAt: string;
   site: string;
   events: SocialEventRow[];
   takes: SocialTakeRow[];
   pundits: SocialPunditRow[];
+  teams: SocialTeamRow[];
+  weeks: SocialWeekRow[];
+  pages: SocialPageRow[];
 };
 
 function names(punditIds: string[], pundits: Pundit[]): string[] {
@@ -90,7 +124,8 @@ export function socialIndex(
   calls: Call[],
   events: Event[],
   pundits: Pundit[],
-  generatedAt: string = new Date().toISOString()
+  generatedAt: string = new Date().toISOString(),
+  teams: Team[] = []
 ): SocialIndex {
   const eventRows: SocialEventRow[] = events.map((event) => {
     const [yes, no] = sidesForCard(event, calls);
@@ -151,5 +186,37 @@ export function socialIndex(
     };
   });
 
-  return { generatedAt, site: SITE, events: eventRows, takes: takeRows, pundits: punditRows };
+  const teamRows: SocialTeamRow[] = teams.map((team) => ({
+    id: team.id,
+    name: team.name,
+    pageUrl: `${SITE}/teams/${team.id}/`,
+    ogCard: `${SITE}${ogTeamPath(team.id)}`,
+  }));
+
+  const weekRows: SocialWeekRow[] = archiveWeeks(events).map((week) => ({
+    ...week,
+    pageUrl: `${SITE}${weekArchivePath(week.sport, week.season, week.week)}`,
+    ogCard: `${SITE}${ogWeekPath(week.sport, week.season, week.week)}`,
+  }));
+
+  const pageRows: SocialPageRow[] = SOCIAL_PAGE_KEYS.map((key) => {
+    const route = socialPageRoute(key);
+    return {
+      key,
+      pageUrl: route === "/" ? `${SITE}/` : `${SITE}${route}/`,
+      ogCard: `${SITE}${ogPagePath(key)}`,
+    };
+  });
+
+  return {
+    schemaVersion: 2,
+    generatedAt,
+    site: SITE,
+    events: eventRows,
+    takes: takeRows,
+    pundits: punditRows,
+    teams: teamRows,
+    weeks: weekRows,
+    pages: pageRows,
+  };
 }

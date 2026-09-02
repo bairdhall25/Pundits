@@ -9,8 +9,11 @@ import {
 import { mappedTakes } from "../../lib/seo";
 import {
   resolveEventSocialCard,
+  resolvePageSocialCard,
   resolvePunditSocialCard,
   resolveTakeSocialCard,
+  resolveTeamSocialCard,
+  resolveWeekSocialCard,
 } from "../../lib/social-card";
 import { renderCardPng } from "../render-og";
 import { landscapeSocialTree } from "./render";
@@ -31,17 +34,25 @@ describe("landscape social renderer", () => {
         candidate.pundit.id === "wrighster"
     );
     const pundit = pundits.find((candidate) => candidate.id === "finebaum");
+    const team = teams.find((candidate) => candidate.id === "clemson");
 
     expect(event).toBeDefined();
     expect(emptyEvent).toBeDefined();
     expect(take).toBeDefined();
     expect(pundit).toBeDefined();
+    expect(team).toBeDefined();
+
+    const pageData = { events, calls, pundits };
 
     const models = [
       resolveEventSocialCard(event!, calls, pundits, teams),
       resolveEventSocialCard(emptyEvent!, calls, pundits, teams),
       resolveTakeSocialCard(take!, calls, pundits, teams),
       resolvePunditSocialCard(pundit!, calls),
+      resolveTeamSocialCard(team!, events, calls, pundits),
+      resolveWeekSocialCard("ncaaf", 2026, 1, events, calls, pundits, teams),
+      resolvePageSocialCard("stories", "landscape", pageData),
+      resolvePageSocialCard("methodology", "landscape", pageData),
     ];
     const pngs = await Promise.all(
       models.map((model) => renderCardPng(landscapeSocialTree(model)))
@@ -53,5 +64,5 @@ describe("landscape social renderer", () => {
       expect(metadata.width).toBe(1200);
       expect(metadata.height).toBe(630);
     }
-  }, 30_000);
+  }, 60_000);
 });

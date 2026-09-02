@@ -22,7 +22,6 @@ export type PortraitFocus = {
 export type PortraitPresentation = {
   punditId: string;
   focus?: PortraitFocus;
-  featuredScale?: number;
 };
 
 export type SocialPerson = {
@@ -31,7 +30,6 @@ export type SocialPerson = {
   outlet: string;
   portrait: string | null;
   portraitFocus?: PortraitFocus;
-  featuredScale?: number;
   quote?: string;
   status?: CallStatus;
 };
@@ -113,6 +111,7 @@ export type QuoteSocialCardModel = SocialCardBase & {
 export type EditorialSocialCardModel = SocialCardBase & {
   archetype: "editorial";
   mode: "event-empty" | "team" | "week" | "page";
+  chip?: SocialTeamChip | null;
   metrics: SocialMetric[];
   people: SocialPeopleGroup | null;
   groups: SocialEditorialGroup[];
@@ -120,6 +119,8 @@ export type EditorialSocialCardModel = SocialCardBase & {
     kicker: string;
     headline: string;
     context?: string;
+    person?: SocialPerson;
+    sides?: [SocialSide, SocialSide];
   } | null;
 };
 

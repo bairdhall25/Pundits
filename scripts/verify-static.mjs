@@ -248,7 +248,28 @@ assert.match(
 );
 assert.match(week0, /"@type":"CollectionPage"/);
 
-assert.match(home, /property="og:image" content="https:\/\/pundits\.pro\/og\.png"/);
+const pageCardFiles = {
+  "index.html": "home",
+  "stories/index.html": "stories",
+  "book/index.html": "book",
+  "leaderboard/index.html": "leaderboard",
+  "ncaaf/index.html": "ncaaf",
+  "nfl/index.html": "nfl",
+  "about/index.html": "about",
+  "methodology/index.html": "methodology",
+  "privacy/index.html": "privacy",
+  "terms/index.html": "terms",
+};
+for (const [file, key] of Object.entries(pageCardFiles)) {
+  const html = await readFile(path.join(out, file), "utf8");
+  assert.match(
+    html,
+    new RegExp(
+      `property="og:image" content="https:\\/\\/pundits\\.pro\\/og\\/pages\\/${key}\\.png\\?v=[a-z0-9]+"`
+    ),
+    `${file} must use its registered social card`
+  );
+}
 
 const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
 for (const url of [
@@ -385,11 +406,21 @@ console.log(`Static verification passed (${requiredFiles.length} required files)
 const socialCards = JSON.parse(
   await readFile(path.join(out, "social/cards.json"), "utf8")
 );
+assert(socialCards.schemaVersion === 2, "social index must publish schema version 2");
 assert(socialCards.site === "https://pundits.pro", "social index must carry the site origin");
 assert(Array.isArray(socialCards.takes) && socialCards.takes.length > 0, "social index must list takes");
 assert(Array.isArray(socialCards.events) && socialCards.events.length > 0, "social index must list events");
 for (const take of socialCards.takes) {
   const rel = take.ogCard.replace("https://pundits.pro/", "");
+  const info = await stat(path.join(out, rel));
+  assert(info.size > 0, `social index points at missing card ${rel}`);
+}
+for (const row of [
+  ...socialCards.teams,
+  ...socialCards.weeks,
+  ...socialCards.pages,
+]) {
+  const rel = row.ogCard.replace("https://pundits.pro/", "");
   const info = await stat(path.join(out, rel));
   assert(info.size > 0, `social index points at missing card ${rel}`);
 }

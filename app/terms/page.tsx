@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { CONTACT_HREF, LEGAL_NAME, pageMeta } from "@/lib/site";
+import { socialPageMeta } from "@/lib/social-card/metadata";
+import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
 
-export const metadata: Metadata = pageMeta(
+export const metadata: Metadata = socialPageMeta(
+  "terms",
   "Terms",
   "Pundits is not a sportsbook and not gambling advice. Quotes are sourced public comments.",
-  "/terms"
 );
 
 export default function TermsPage() {

@@ -5,13 +5,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { organizationGraph } from "@/lib/seo";
+import { socialPageImage } from "@/lib/social-card/metadata";
 import {
   SITE_DESCRIPTION,
   SITE_ENTITY_NAME,
   SITE_NAME,
   SITE_TITLE,
+  OG_ALT,
   canonicalUrl,
-  ogImage,
   publicPath,
   siteOrigin,
 } from "@/lib/site";
@@ -33,7 +34,7 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-const image = ogImage();
+const image = socialPageImage("home", OG_ALT);
 const GA_MEASUREMENT_ID = "G-41GCD1K1PD";
 
 export const viewport: Viewport = {

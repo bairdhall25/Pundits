@@ -152,18 +152,13 @@ export function PersonPortrait({
   const uri = socialPhotoUri(person.portrait);
   if (!uri) return null;
   return (
-    <img
-      alt={person.name}
-      src={uri}
-      width={width}
-      height={height}
+    <div
       style={{
         display: "flex",
         width,
         height,
         flexShrink: 0,
-        objectFit: "cover",
-        objectPosition: objectPosition(person.portraitFocus),
+        overflow: "hidden",
         ...(circular
           ? {
               border: `2px solid ${SOCIAL_COLORS.green}`,
@@ -171,7 +166,22 @@ export function PersonPortrait({
             }
           : {}),
       }}
-    />
+    >
+      <img
+        alt={person.name}
+        src={uri}
+        width="100%"
+        height="100%"
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          flexShrink: 0,
+          objectFit: "cover",
+          objectPosition: objectPosition(person.portraitFocus),
+        }}
+      />
+    </div>
   );
 }
 

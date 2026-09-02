@@ -99,8 +99,31 @@ describe("socialIndex", () => {
   const index = socialIndex(calls, events, pundits, "2026-08-29T12:00:00.000Z");
 
   it("passes generatedAt and site through", () => {
+    expect(index.schemaVersion).toBe(2);
     expect(index.generatedAt).toBe("2026-08-29T12:00:00.000Z");
     expect(index.site).toBe("https://pundits.pro");
+  });
+
+  it("adds stable page and week landscape-card registries without changing existing rows", () => {
+    expect(index.pages).toHaveLength(10);
+    expect(index.pages.find((page) => page.key === "home")).toEqual({
+      key: "home",
+      pageUrl: "https://pundits.pro/",
+      ogCard: "https://pundits.pro/og/pages/home.png",
+    });
+    expect(index.pages.find((page) => page.key === "methodology")?.ogCard).toBe(
+      "https://pundits.pro/og/pages/methodology.png"
+    );
+    expect(index.weeks).toEqual([
+      {
+        sport: "ncaaf",
+        season: 2026,
+        week: 0,
+        pageUrl: "https://pundits.pro/ncaaf/2026/week-0/",
+        ogCard: "https://pundits.pro/og/weeks/ncaaf-2026-week-0.png",
+      },
+    ]);
+    expect(index.teams).toEqual([]);
   });
 
   it("lists every event with absolute page and card urls plus settled state", () => {

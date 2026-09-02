@@ -25,6 +25,10 @@ export const PORTRAIT_PRESENTATIONS = {
     punditId: "wrighster",
     focus: { x: 0.5, y: 0.22 },
   },
+  butler: {
+    punditId: "butler",
+    focus: { x: 0.5, y: 0.28 },
+  },
 } as const satisfies Record<string, PortraitPresentation>;
 
 export function isNormalizedPortraitFocus(
