@@ -22,6 +22,7 @@ Live code and JSON win on what is shipped. Current product documents win on inte
 | Capture, URL, release, and deployment rules | `docs/RUNBOOK.md` |
 | Capture vs homepage density | `docs/capture-policy.md` |
 | Homepage featured-game display | `docs/product/featured-games.md` |
+| Roster growth | `docs/product/roster-growth.md` |
 | Bot roles and handoffs | `bots/README.md` and the relevant bot file |
 | Active capture hunt | generated Dispatch, then `docs/capture-policy.md`, `docs/pick-shows.md`, `docs/news-beats.md`, and `bots/scout-x.md` |
 | SEO work | `docs/seo-plan.md` plus the latest dated audit/approved fix plan |

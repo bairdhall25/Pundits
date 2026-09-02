@@ -36,6 +36,7 @@ This file records durable product decisions and working assumptions. Change an a
 | Capture eagerly, mint lazily, feature reluctantly. | Homepage density and the verified-pick dataset are different jobs. See `docs/capture-policy.md`. | Accepted 2026-09-01 |
 | Do not delete published event slugs, including zero-pick games. | Append-only URLs. Miami and Baylor already have permalinks, sitemap rows, and 301s. | Accepted 2026-09-01 |
 | Homepage featured games use an ordered waterfall, not a score. | Pin, then when, then coverage (faces / both sides / disagreement), then size as a tie-break. No audience-timezone tweak. Empty side may sit in a section; it must not beat a two-sided open game for the hero. See `docs/product/featured-games.md`. | Accepted 2026-09-01 |
+| Roster grows by association on roster factories; team analysts are not pundits. | Guests/fill-ins on Cover 3 / Herd / Finebaum / On3 / GameDay are the next class. Team podcasts may be sources. A beat or homer picking their own team is not a pundit. See `docs/product/roster-growth.md`. | Accepted 2026-09-01 |
 
 ## Working assumptions
 
