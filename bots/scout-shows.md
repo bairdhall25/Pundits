@@ -50,7 +50,7 @@ When a hard pick has real supporting rationale, keep the decisive verbatim quote
 - **Radio speaker** = an individually named personality. The station, show, caller pool, or audience is never the pundit.
 - **Photo** = required to roster. Candidates may use `photoUrl=needed`.
 - YES = away. Wrong year → drop. Title/SB stays on futures slugs. Never stretch onto a game.
-- **Intake** = existing `punditId` only. **Candidates** = add-list or other named off-roster SU on these shows. Never write `data/`. Never mint an id. Unnamed show take → Dropped.
+- **Intake** = existing `punditId` only. **Candidates** = add-list or other named off-roster SU on these shows. A guest/fill-in on a roster factory is association (`docs/product/roster-growth.md`). A team-show host picking that team is a team analyst — still stage if the SU is real, note `team-analyst`, do not treat as roster-eligible. Never write `data/`. Never mint an id. Unnamed show take → Dropped.
 
 Skip same pundit+event. Same URL, different named speaker → new row.
 

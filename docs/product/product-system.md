@@ -17,7 +17,7 @@ The application derives pages, records, structured data, feeds, sitemaps, and im
 
 ### Pundit
 
-A named public sports voice with a stable ID, display name, outlet, photo, and sport scope. A roster entry without a captured call is a thin shell and should remain non-indexable.
+A named public sports voice who picks winners as independent analysis, with a stable ID, display name, outlet, photo, and sport scope. A team beat or homer covering one program is not a pundit. A roster entry without a captured call is a thin shell and should remain non-indexable.
 
 ### Call
 

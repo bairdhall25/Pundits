@@ -117,7 +117,7 @@ For an under-dense Dispatch game that remains unresolved after the listed nation
 1. Open at most **two** credible local archived programs for that matchup.
 2. Prefer official station, team-affiliate, YouTube, podcast, transcript, or show-note pages published in the last ~3 days.
 3. Search the team names plus `pick`, `who wins`, `give me`, or `I'll take` inside the archive.
-4. Stage a named off-roster host as a Candidate only when the radio-pilot rules in `docs/add-list.md` are satisfied.
+4. Stage a named off-roster host as a Candidate only when the radio-pilot rules in `docs/add-list.md` are satisfied. Team-show hosts picking that team are `team-analyst` Candidates, not roster-growth (`docs/product/roster-growth.md`). Independent guests on those shows may still be association-eligible.
 5. Record the programs opened and outcome in the run file’s `Radio coverage` table.
 
 Run one radio fallback per sport/pick window. Do not add another daily routine, reopen the same dry episode, or scan multi-hour live audio without a durable replay location.

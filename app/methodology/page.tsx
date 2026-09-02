@@ -38,7 +38,7 @@ const FAQ = [
   {
     question: "How does a pundit join the roster?",
     answer:
-      "The site needs a named public sports voice, a verified public pick, and a verified photo. Empty sides stay empty rather than being filled with weak or unattributed claims.",
+      "The site needs a named public sports voice who picks as independent analysis, a verified public pick, and a verified photo. A team beat or homer covering one program is not a pundit. Empty sides stay empty rather than being filled with weak or unattributed claims.",
   },
 ];
 
@@ -65,7 +65,8 @@ export default function MethodologyPage() {
           A mapped pick must have a clear first-person lean from a named pundit,
           verbatim public quote, source URL and date, real event, explicit side,
           and objective grading rule. Vague commentary stays an unmapped take —
-          and stays out of the record. No pundit joins the public roster without
+          and stays out of the record. A pundit is an independent public voice,
+          not a team beat or homer. No pundit joins the public roster without
           a verified photo. An empty side stays empty until the evidence clears
           the bar.
         </p>
