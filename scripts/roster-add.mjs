@@ -54,16 +54,32 @@ function assertManifest(manifest, root) {
   }
 }
 
-function upsertPundit(pundits, manifest) {
-  if (pundits.some((pundit) => pundit.id === manifest.id)) return pundits;
-  pundits.push({
+function punditRow(manifest) {
+  return {
     id: manifest.id,
     name: manifest.name,
     outlet: manifest.outlet,
     photo: manifest.photo,
     sport: manifest.sport,
-  });
-  return pundits;
+  };
+}
+
+function compactPunditLine(row) {
+  return `  { "id": ${JSON.stringify(row.id)}, "name": ${JSON.stringify(row.name)}, "outlet": ${JSON.stringify(row.outlet)}, "photo": ${JSON.stringify(row.photo)}, "sport": ${JSON.stringify(row.sport)} }`;
+}
+
+function appendPunditFile(file, manifest) {
+  const raw = readFileSync(file, "utf8");
+  const pundits = JSON.parse(raw);
+  if (pundits.some((pundit) => pundit.id === manifest.id)) return;
+  const row = punditRow(manifest);
+  if (raw.includes('{ "id":')) {
+    const next = raw.replace(/\r?\n\]\s*$/, `,\n${compactPunditLine(row)}\n]\n`);
+    writeFileSync(file, next);
+    return;
+  }
+  pundits.push(row);
+  writeJson(file, pundits);
 }
 
 function callId(manifest, call) {
@@ -165,10 +181,7 @@ export function applyRosterAdd(manifest, root) {
   const scoutXFile = path.join(root, "bots", "scout-x.md");
   const pickShowsFile = path.join(root, "docs", "pick-shows.md");
 
-  const pundits = readJson(punditsFile);
-  if (!pundits.some((pundit) => pundit.id === manifest.id)) {
-    writeJson(punditsFile, upsertPundit(pundits, manifest));
-  }
+  appendPunditFile(punditsFile, manifest);
 
   const calls = readJson(callsFile);
   const before = calls.length;

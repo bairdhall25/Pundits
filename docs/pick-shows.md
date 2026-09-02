@@ -28,7 +28,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
 | Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
 | Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
-| The Herd / Sharp or Square | `cowherd`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
+| The Herd / Sharp or Square | `cowherd`, `jmac`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
 | Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
 
 ## Brand faces — only in their pick window

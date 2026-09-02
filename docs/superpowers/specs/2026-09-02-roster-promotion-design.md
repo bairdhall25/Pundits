@@ -26,10 +26,12 @@ shipped; `pick-shows.md` did not.
 2. **Promote is the only `data/` writer.** The helper is a gate Promote
    must run, not a Roster bot. Scout never runs it.
 
-3. **Photo is operator-confirmed.** The agent finds a rights-safe still
-   (Commons, outlet press room, official talent page). The operator
-   confirms the source. Then the file lands at `public/photos/{id}.jpg`
-   or `.png`. The helper does not download images. `photoUrl=needed`
+3. **Photo is operator-confirmed.** Default source is the official X
+   profile image for the handle on the roster row, when it is a usable
+   face (head and shoulders). If the avatar is a full-body shot, meme,
+   logo, or otherwise unreadable at scan-card size, fall back to a
+   Commons / outlet / official talent still. The operator confirms the
+   chosen file. The helper does not download images. `photoUrl=needed`
    cannot ship.
 
 4. **Eligibility is `docs/product/roster-growth.md`.** Association

@@ -140,6 +140,20 @@ describe("roster-add helper", () => {
     expect(() => checkRosterPipeline(root)).toThrow(/scout-x/);
   });
 
+  it("appends a compact one-line pundits.json row without reformatting the file", () => {
+    const root = fixture();
+    const compact = `[
+  { "id": "cowherd", "name": "Colin Cowherd", "outlet": "The Herd", "photo": "/photos/c.jpg", "sport": "nfl" }
+]
+`;
+    writeFileSync(path.join(root, "data", "pundits.json"), compact);
+    applyRosterAdd(manifest(), root);
+    const raw = readFileSync(path.join(root, "data", "pundits.json"), "utf8");
+    expect(raw).toContain('{ "id": "cowherd"');
+    expect(raw).toContain('{ "id": "jmac"');
+    expect(raw.split("\n").filter((line) => line.includes("{ \"id\":")).length).toBe(2);
+  });
+
   it("does not require historic roster ids on the ledger", () => {
     const root = fixture();
     writeFileSync(
