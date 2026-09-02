@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pundits social template matrix</title>
+  <style>
+    @font-face { font-family: Oswald; src: url('/node_modules/@fontsource/oswald/files/oswald-latin-700-normal.woff') format('woff'); font-weight: 700; }
+    @font-face { font-family: Inter; src: url('/node_modules/@fontsource/inter/files/inter-latin-400-normal.woff') format('woff'); font-weight: 400; }
+    @font-face { font-family: Inter; src: url('/node_modules/@fontsource/inter/files/inter-latin-700-normal.woff') format('woff'); font-weight: 700; }
+    @font-face { font-family: Plex; src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff') format('woff'); font-weight: 600; }
+
+    :root { --bg:#080908; --card:#111211; --ink:#f5f5f5; --muted:#a3a3a3; --green:#39ff14; --orange:#f56632; --purple:#461b78; --gold:#ffd100; --red:#ff4d4f; }
+    * { box-sizing:border-box; }
+    html, body { width:1200px; height:630px; margin:0; overflow:hidden; background:var(--bg); }
+    body { color:var(--ink); font-family:Inter,Arial,sans-serif; }
+    body.social-capture { width:1050px; height:551px; }
+    body.social-capture .artboard { transform:scale(.875); transform-origin:0 0; }
+    .artboard { position:relative; display:none; width:1200px; height:630px; overflow:hidden; border-top:8px solid var(--green); background:var(--bg); }
+    .artboard.active { display:block; }
+    .display { font-family:Oswald,Impact,sans-serif; text-transform:uppercase; }
+    .mono { font-family:Plex,monospace; text-transform:uppercase; letter-spacing:.08em; }
+    .brand { position:absolute; z-index:5; top:22px; left:32px; color:var(--green); font:700 32px/1 Oswald,sans-serif; letter-spacing:.11em; }
+    .brand span { color:var(--ink); }
+    .context { position:absolute; z-index:5; top:27px; right:32px; color:var(--muted); font:600 15px/1 Plex,monospace; letter-spacing:.06em; }
+    .proof { position:absolute; z-index:8; left:0; right:0; bottom:0; height:64px; display:flex; align-items:center; gap:24px; padding:0 28px; background:#071007; }
+    .proof strong { font:700 28px/1 Oswald,sans-serif; text-transform:uppercase; }
+    .proof .green { color:var(--green); }
+    .proof .note { margin-left:auto; color:var(--muted); font:600 14px/1 Plex,monospace; letter-spacing:.07em; }
+    .portrait { display:block; width:100%; height:100%; object-fit:cover; }
+    .chip { display:grid; place-items:center; flex:none; width:62px; height:62px; color:#fff; background:var(--orange); font:700 18px/1 Oswald,sans-serif; }
+    .kicker { color:var(--green); font:700 20px/1 Oswald,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+
+    /* Pundit — Quote/identity archetype */
+    .pundit .photo { position:absolute; left:0; top:0; bottom:64px; width:44%; overflow:hidden; border-right:7px solid var(--green); }
+    .pundit .photo .portrait { object-position:center 24%; }
+    .pundit .copy { position:absolute; left:44%; right:0; top:72px; bottom:64px; padding:22px 32px 18px 34px; }
+    .pundit .name { margin-top:10px; font-size:86px; line-height:.88; letter-spacing:-.015em; }
+    .pundit .stats { display:flex; gap:54px; margin-top:28px; }
+    .pundit .stat span { display:block; color:var(--muted); font:600 14px/1 Plex,monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .pundit .stat strong { display:block; margin-top:5px; font:700 64px/.9 Oswald,sans-serif; }
+    .pundit .latest { margin-top:29px; padding-left:18px; border-left:6px solid var(--green); color:var(--ink); font:700 29px/1.15 Oswald,sans-serif; text-transform:uppercase; }
+
+    /* Team — Editorial archetype */
+    .team .left { position:absolute; left:0; top:64px; bottom:64px; width:455px; padding:30px 28px 20px 32px; background:#0b0c0b; }
+    .team .team-title { display:flex; align-items:center; gap:16px; }
+    .team .team-title .chip { width:76px; height:76px; font-size:21px; }
+    .team .team-name { font-size:74px; line-height:.88; }
+    .team .count-block { margin-top:31px; }
+    .team .count-line { display:flex; align-items:baseline; gap:16px; font-family:Oswald,sans-serif; text-transform:uppercase; }
+    .team .count-line strong { width:80px; font-size:96px; line-height:.82; text-align:right; }
+    .team .count-line span { font-size:43px; }
+    .team .right { position:absolute; left:455px; right:0; top:64px; bottom:64px; display:grid; grid-template-rows:255px 1fr; }
+    .team .featured { display:grid; grid-template-columns:255px 1fr; border-top:7px solid var(--orange); }
+    .team .featured .portrait { object-position:center 22%; }
+    .team .feature-copy { display:flex; flex-direction:column; justify-content:center; padding:20px 28px; background:var(--card); }
+    .team .feature-copy b { font-size:31px; }
+    .team .feature-copy span { margin-top:9px; color:var(--green); font:700 20px/1.1 Oswald,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+    .support-row { display:grid; min-height:0; overflow:hidden; grid-template-columns:repeat(4,1fr); border-top:7px solid var(--purple); background:var(--card); }
+    .support { display:grid; min-width:0; min-height:0; height:100%; overflow:hidden; grid-template-rows:minmax(0,1fr) 43px; border-right:1px solid #292929; }
+    .support .portrait { min-height:0; object-position:center; }
+    .support b { display:flex; align-items:center; padding:0 9px; background:#0b0c0b; font-size:14px; line-height:1; }
+    .support.pate .portrait { object-position:center 53%; }
+    .support.finebaum .portrait { object-position:center 24%; }
+    .support.staples .portrait { object-position:center 18%; }
+    .support.mcelroy .portrait { object-position:center 22%; }
+
+    /* Week — Editorial archive archetype */
+    .week .left { position:absolute; left:0; top:64px; bottom:64px; width:455px; padding:27px 26px 16px 32px; background:#0b0c0b; }
+    .week .week-title { margin-top:12px; font-size:109px; line-height:.78; letter-spacing:-.02em; }
+    .week .right { position:absolute; left:455px; right:0; top:64px; bottom:64px; display:grid; grid-template-rows:1fr 164px; }
+    .week .marquee { position:relative; padding:26px 30px; border-top:7px solid var(--green); background:var(--card); }
+    .week .marquee h2 { margin:7px 0 0; font:700 68px/.92 Oswald,sans-serif; text-transform:uppercase; }
+    .week .split { display:flex; align-items:center; gap:18px; margin-top:26px; }
+    .week .split strong { font:700 86px/.8 Oswald,sans-serif; }
+    .week .split span { color:var(--muted); font:600 15px/1 Plex,monospace; letter-spacing:.07em; }
+    .week .faces { display:grid; min-height:0; overflow:hidden; grid-template-columns:repeat(5,1fr); border-top:7px solid var(--purple); }
+    .week .faces .support { grid-template-rows:1fr 38px; }
+
+    /* Collection — Editorial route archetype */
+    .collection .left { position:absolute; left:0; top:64px; bottom:64px; width:500px; padding:25px 30px 18px 32px; background:#0b0c0b; }
+    .collection .headline { margin-top:13px; font-size:102px; line-height:.8; letter-spacing:-.02em; }
+    .collection .count { margin-top:29px; color:var(--green); font:700 35px/1 Oswald,sans-serif; text-transform:uppercase; }
+    .collection .feed { position:absolute; left:500px; right:0; top:64px; bottom:64px; display:grid; grid-template-rows:repeat(3,1fr); border-top:7px solid var(--green); }
+    .feed-row { display:grid; grid-template-columns:164px 1fr; border-bottom:1px solid #292929; background:var(--card); }
+    .feed-row .portrait { object-position:center 22%; }
+    .feed-row.pate .portrait { object-position:center 53%; }
+    .feed-copy { display:flex; flex-direction:column; justify-content:center; padding:12px 20px; }
+    .feed-copy b { font:700 28px/1 Oswald,sans-serif; text-transform:uppercase; }
+    .feed-copy span { margin-top:8px; color:var(--muted); font-size:16px; line-height:1.2; }
+  </style>
+</head>
+<body>
+  <section class="artboard pundit" data-card="pundit">
+    <div class="photo"><img class="portrait" src="/public/photos/finebaum.jpg" alt="Paul Finebaum" /></div>
+    <div class="brand">PUNDITS<span>.</span></div>
+    <div class="context">EXPERT PICKS · QUOTES · RECEIPTS</div>
+    <div class="copy">
+      <div class="kicker">Finebaum / ESPN</div>
+      <div class="name display">Paul<br>Finebaum</div>
+      <div class="stats"><div class="stat"><span>Open picks</span><strong>6</strong></div><div class="stat"><span>2026 record</span><strong>0–1</strong></div></div>
+      <div class="latest">“It’s mass chaos in Chapel Hill.”</div>
+    </div>
+    <div class="proof"><strong>THE LEDGER</strong><strong class="green">1 GRADED</strong><span class="note">MAPPED TAKES · NOT BETS THEY PLACED</span></div>
+  </section>
+
+  <section class="artboard team" data-card="team">
+    <div class="brand">PUNDITS<span>.</span></div><div class="context">COLLEGE FOOTBALL · TEAM ARCHIVE</div>
+    <div class="left">
+      <div class="team-title"><span class="chip">CLEM</span><div class="team-name display">Clemson</div></div>
+      <div class="count-block"><div class="count-line"><strong>1</strong><span>with.</span></div><div class="count-line"><strong>4</strong><span>against.</span></div></div>
+    </div>
+    <div class="right">
+      <div class="featured"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /><div class="feature-copy"><b>George Wrighster</b><span>The lone Clemson call</span></div></div>
+      <div class="support-row">
+        <div class="support pate"><img class="portrait" src="/public/photos/pate.jpg" alt="Josh Pate" /><b>Josh Pate</b></div>
+        <div class="support finebaum"><img class="portrait" src="/public/photos/finebaum.jpg" alt="Paul Finebaum" /><b>Paul Finebaum</b></div>
+        <div class="support staples"><img class="portrait" src="/public/photos/staples.png" alt="Andy Staples" /><b>Andy Staples</b></div>
+        <div class="support mcelroy"><img class="portrait" src="/public/photos/mcelroy.jpg" alt="Greg McElroy" /><b>Greg McElroy</b></div>
+      </div>
+    </div>
+    <div class="proof"><strong>5 VERIFIED PICKS</strong><strong class="green">1 — 4 SPLIT</strong><span class="note">QUOTES · FROZEN MARKET CONTEXT · RESULTS</span></div>
+  </section>
+
+  <section class="artboard week" data-card="week">
+    <div class="brand">PUNDITS<span>.</span></div><div class="context">WEEK 1 · COLLEGE FOOTBALL</div>
+    <div class="left"><div class="kicker">Weekly archive</div><div class="week-title display">8<br>picks.<br>4<br>games.</div></div>
+    <div class="right">
+      <div class="marquee"><div class="kicker">Marquee disagreement</div><h2>Clemson at LSU</h2><div class="split"><strong>1 — 4</strong><span>EXPERT PICK SPLIT<br>CLEMSON 24¢ · LSU 78¢</span></div></div>
+      <div class="faces">
+        <div class="support"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /><b>Wrighster</b></div>
+        <div class="support pate"><img class="portrait" src="/public/photos/pate.jpg" alt="Josh Pate" /><b>Pate</b></div>
+        <div class="support finebaum"><img class="portrait" src="/public/photos/finebaum.jpg" alt="Paul Finebaum" /><b>Finebaum</b></div>
+        <div class="support staples"><img class="portrait" src="/public/photos/staples.png" alt="Andy Staples" /><b>Staples</b></div>
+        <div class="support mcelroy"><img class="portrait" src="/public/photos/mcelroy.jpg" alt="Greg McElroy" /><b>McElroy</b></div>
+      </div>
+    </div>
+    <div class="proof"><strong>NCAAF WEEK 1</strong><strong class="green">8 OPEN PICKS</strong><span class="note">RESULTS LAND AS GAMES GRADE</span></div>
+  </section>
+
+  <section class="artboard collection" data-card="collection">
+    <div class="brand">PUNDITS<span>.</span></div><div class="context">TAKES · NEWEST FIRST</div>
+    <div class="left"><div class="kicker">The receipts</div><div class="headline display">Who<br>picked<br>what.</div><div class="count">43 mapped picks</div></div>
+    <div class="feed">
+      <div class="feed-row"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /><div class="feed-copy"><b>Wrighster takes Clemson</b><span>“I’m taking Clemson in the upset.”</span></div></div>
+      <div class="feed-row pate"><img class="portrait" src="/public/photos/pate.jpg" alt="Josh Pate" /><div class="feed-copy"><b>Pate takes LSU</b><span>LSU by seven would surprise him less.</span></div></div>
+      <div class="feed-row"><img class="portrait" src="/public/photos/mcelroy.jpg" alt="Greg McElroy" /><div class="feed-copy"><b>McElroy takes LSU</b><span>Every take keeps the original quote and source.</span></div></div>
+    </div>
+    <div class="proof"><strong>REAL QUOTES</strong><strong>FROZEN PRICES</strong><strong class="green">FINAL RECEIPTS</strong><span class="note">PUNDITS.PRO</span></div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const card = params.get('card') || 'pundit';
+    if (params.get('capture') === 'social') document.body.classList.add('social-capture');
+    document.querySelector(`[data-card="${card}"]`)?.classList.add('active');
+  </script>
+</body>
+</html>
