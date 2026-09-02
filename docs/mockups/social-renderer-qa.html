@@ -2,17 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=1050, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pundits social renderer QA</title>
   <style>
-    * { box-sizing: border-box; }
-    html, body { width: 1050px; height: 551px; margin: 0; overflow: hidden; background: #080908; }
-    .stage { width: 1200px; height: 630px; transform: scale(.875); transform-origin: 0 0; }
-    img { display: block; width: 1200px; height: 630px; }
+    @font-face { font-family: Oswald; src: url('/node_modules/@fontsource/oswald/files/oswald-latin-700-normal.woff') format('woff'); font-weight: 700; }
+    @font-face { font-family: Inter; src: url('/node_modules/@fontsource/inter/files/inter-latin-400-normal.woff') format('woff'); font-weight: 400; }
+    @font-face { font-family: Plex; src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff') format('woff'); font-weight: 600; }
+
+    :root { --bg:#080908; --panel:#111211; --ink:#f5f5f5; --muted:#a3a3a3; --line:#292929; --green:#39ff14; }
+    * { box-sizing:border-box; }
+    html { background:var(--bg); }
+    body { min-width:320px; margin:0; color:var(--ink); background:var(--bg); font-family:Inter,Arial,sans-serif; }
+    .gallery { width:min(1120px, 100%); margin:0 auto; padding:28px clamp(16px, 4vw, 40px) 72px; }
+    .page-head { display:flex; align-items:end; justify-content:space-between; gap:24px; padding:0 0 24px; border-bottom:1px solid var(--line); }
+    .brand { color:var(--green); font:700 28px/1 Oswald,sans-serif; letter-spacing:.11em; }
+    .brand span { color:var(--ink); }
+    h1 { margin:10px 0 0; font:700 clamp(34px, 6vw, 62px)/1.02 Oswald,sans-serif; text-transform:uppercase; }
+    .lede { max-width:420px; margin:0; color:var(--muted); font:600 13px/1.5 Plex,monospace; letter-spacing:.04em; text-transform:uppercase; }
+    .fixtures { display:flex; flex-direction:column; gap:30px; margin-top:30px; }
+    .fixture { overflow:hidden; border:1px solid var(--line); background:var(--panel); }
+    .fixture.selected { border-color:var(--green); }
+    .fixture-head { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:56px; padding:12px 16px; border-bottom:1px solid var(--line); }
+    .fixture h2 { margin:0; font:700 22px/1 Oswald,sans-serif; text-transform:uppercase; }
+    .fixture a { color:var(--green); font:600 12px/1 Plex,monospace; letter-spacing:.05em; text-decoration:none; text-transform:uppercase; }
+    .fixture a:hover, .fixture a:focus-visible { text-decoration:underline; }
+    .fixture img { display:block; width:100%; height:auto; aspect-ratio:1200/630; background:var(--bg); }
+    .capture-stage { display:none; width:1050px; height:551px; overflow:hidden; background:var(--bg); }
+    .capture-stage img { display:block; width:1050px; height:551px; }
+
+    body.capture { width:1050px; height:551px; overflow:hidden; }
+    body.capture .gallery { display:none; }
+    body.capture .capture-stage { display:block; }
+
+    @media (max-width:720px) {
+      .page-head { align-items:flex-start; flex-direction:column; }
+      .fixture-head { align-items:flex-start; flex-direction:column; gap:8px; }
+    }
   </style>
 </head>
 <body>
-  <div class="stage"><img id="card" alt="Rendered Pundits social card fixture" /></div>
+  <main class="gallery">
+    <header class="page-head">
+      <div><div class="brand">PUNDITS<span>.</span></div><h1>Social card QA</h1></div>
+      <p class="lede">Every canonical fixture, fitted to the browser. Open exact capture for the deterministic 1050 × 551 test canvas.</p>
+    </header>
+    <section class="fixtures" aria-label="Social card fixtures">
+      <article class="fixture" data-card="event">
+        <div class="fixture-head"><h2>Event · one vs four</h2><a href="?capture=event">Open exact capture</a></div>
+        <img src="../../public/og/events/clemson-at-lsu-2026.png" alt="Clemson at LSU event social card" />
+      </article>
+      <article class="fixture" data-card="take">
+        <div class="fixture-head"><h2>Take · featured quote</h2><a href="?capture=take">Open exact capture</a></div>
+        <img src="../../public/og/takes/clemson-at-lsu-2026--wrighster.png" alt="George Wrighster Clemson take social card" />
+      </article>
+      <article class="fixture" data-card="pundit">
+        <div class="fixture-head"><h2>Pundit · identity</h2><a href="?capture=pundit">Open exact capture</a></div>
+        <img src="../../public/og/pundits/finebaum.png" alt="Paul Finebaum pundit social card" />
+      </article>
+      <article class="fixture" data-card="empty">
+        <div class="fixture-head"><h2>Event · honest empty state</h2><a href="?capture=empty">Open exact capture</a></div>
+        <img src="../../public/og/events/seahawks-sb-2026.png" alt="Seahawks Super Bowl empty market social card" />
+      </article>
+      <article class="fixture" data-card="long">
+        <div class="fixture-head"><h2>Take · long quote</h2><a href="?capture=long">Open exact capture</a></div>
+        <img src="../../public/og/takes/rams-sb-2026--orlovsky.png" alt="Dan Orlovsky long quote social card" />
+      </article>
+      <article class="fixture" data-card="future">
+        <div class="fixture-head"><h2>Future · long title and empty side</h2><a href="?capture=future">Open exact capture</a></div>
+        <img src="../../public/og/events/nd-title-2026.png" alt="Notre Dame national title future social card" />
+      </article>
+    </section>
+  </main>
+  <div class="capture-stage"><img id="capture-card" alt="Rendered Pundits social card fixture" /></div>
   <script>
     const fixtures = {
       event: "../../public/og/events/clemson-at-lsu-2026.png",
@@ -22,8 +83,19 @@
       long: "../../public/og/takes/rams-sb-2026--orlovsky.png",
       future: "../../public/og/events/nd-title-2026.png",
     };
-    const selected = new URLSearchParams(location.search).get("card") || "event";
-    document.querySelector("#card").src = fixtures[selected] || fixtures.event;
+    const params = new URLSearchParams(location.search);
+    const capture = params.get("capture");
+    if (capture && fixtures[capture]) {
+      document.body.classList.add("capture");
+      document.querySelector("#capture-card").src = fixtures[capture];
+    } else {
+      const selected = params.get("card");
+      const selectedCard = selected && document.querySelector(`[data-card="${selected}"]`);
+      if (selectedCard) {
+        selectedCard.classList.add("selected");
+        document.querySelector(".fixtures").prepend(selectedCard);
+      }
+    }
   </script>
 </body>
 </html>
