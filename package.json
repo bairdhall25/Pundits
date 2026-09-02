@@ -17,7 +17,7 @@
     "verify:production-urls": "node scripts/verify-production-permalinks.mjs",
     "deploy:guard": "node scripts/deploy-guard.mjs",
     "check": "npm test && npm run build && npm run verify:static",
-    "deploy": "npm run deploy:guard && npm run check && npm run deploy:guard && npm run verify:production-urls && wrangler pages deploy out --project-name pundits --branch main && npm run verify:deployed && node scripts/indexnow.mjs",
+    "deploy": "npm run deploy:guard && npm run check && npm run deploy:guard && npm run verify:production-urls && node scripts/indexnow.mjs --prepare && npm run deploy:guard && wrangler pages deploy out --project-name pundits --branch main && npm run verify:deployed && node scripts/indexnow.mjs",
     "email:dump": "wrangler kv key list --namespace-id cda9bfd1f31f441297a3082a8875363b --remote",
     "notify:deploy": "wrangler deploy -c workers/email-notify/wrangler.toml"
   },

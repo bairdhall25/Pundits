@@ -58,6 +58,11 @@ changing the permanent page URL. `npm run check` validates every indexed
 page's preview metadata and decodes every referenced image; blank, transparent,
 oversized, malformed, or incorrectly sized cards fail the release.
 
+The deploy command prepares an IndexNow hash manifest before upload and submits
+only added, changed, or deleted sitemap URLs after live verification. It checks
+the published key before notifying IndexNow and retries one verified 403 once;
+IndexNow remains non-blocking because the sitemap is the durable discovery path.
+
 ## URL permanence (SEO-critical)
 
 Data files are append-only. Never delete or rename a graded event, call, or
