@@ -33,6 +33,8 @@ This file records durable product decisions and working assumptions. Change an a
 | Homepage hero leads with the next game. | A fan should see matchup, time, and who is on it before the product pitch. | Accepted 2026-08-31 |
 | Scan cards do not lead with Kalshi. | Market source belongs on the detail card; scan is game, state, faces, price. | Accepted 2026-08-31 |
 | Every Scout pass hunts NCAAF and NFL together. | Parking a sport for a calendar window missed weekday CFB and delayed NFL empty-YES. Skip dense events, not a sport. | Accepted 2026-09-01 |
+| Capture eagerly, mint lazily, feature reluctantly. | Homepage density and the verified-pick dataset are different jobs. See `docs/capture-policy.md`. | Accepted 2026-09-01 |
+| Do not delete published event slugs, including zero-pick games. | Append-only URLs. Miami and Baylor already have permalinks, sitemap rows, and 301s. | Accepted 2026-09-01 |
 
 ## Working assumptions
 
@@ -45,7 +47,6 @@ This file records durable product decisions and working assumptions. Change an a
 | Fast grading materially improves trust and distribution. | Engagement and mentions correlated with settlement-to-grade latency. |
 | Market price makes calls more interesting without making the product feel like a sportsbook. | Comprehension studies and engagement with/without price framing. |
 | Marquee weekly games are the best initial acquisition wedge. | Engagement and repeat behavior compared with futures and long-tail events. |
-| Capture more games than the homepage features. | Watchlist + off-home ledger vs dumping every game on `/`. Reopen after 2026-09-05. |
 
 ## Parked scope
 

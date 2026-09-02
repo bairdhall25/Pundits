@@ -13,6 +13,7 @@ From https://github.com/bairdhall25/Pundits (main):
 - Live stories: https://pundits.pro/stories/
 - `bots/README.md` house rules (season, YES = away, name the speaker) — not `bots/scout.md`, which no longer hunts. An X `sourceUrl` must be a status URL (`x.com/{handle}/status/{id}` or twitter.com). The quote must be on that post. A radio source must be a durable episode, clip, transcript, or show-note URL that can be reopened.
 - `docs/board.md` — do-not-touch and game-first
+- `docs/capture-policy.md` — overflow unmapped rows are not a missing-slug fail
 
 ## Do
 
@@ -23,7 +24,7 @@ For each row, confirm all of:
 1. The `sourceUrl` loads.
 2. The verbatim quote is on that page (or a clearly linked transcript/clip described there). Paraphrase → fail.
 3. The speaker matches `punditId` in `pundits.json`. McAfee Show guests are the guest, never `mcafee`.
-4. `eventSlug` exists in `events.json`. Season is the regular-season start year. Wrong year → fail.
+4. If `eventSlug` is blank and `subject` names a matchup not in `events.json`, this is overflow (docs/capture-policy.md rule 4). Do not fail for a missing slug. Confirm the SU bar and speaker; verdict `ok-unmapped`. Never invent a slug. Else `eventSlug` must exist in `events.json`. Season is the regular-season start year. Wrong year → fail.
 5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail. A favorite laying points (`TCU -7.5 for the first win`) may still be hard SU for that favorite; a total-only row must not be Intake. Bets tables are not fail conditions.
 6. Not a restage of an already-booked pundit+event. Same `sourceUrl` on a different speaker is ok (one LOCKS episode, two SUs). Same pundit + same URL is a restage.
 7. Any `reasoning` capsule is 25–60 words, is a faithful paraphrase of at most two concrete factors that the same speaker gave in that source, and does not read like copied captions or added analysis. Blank reasoning is valid. Unsupported or speaker-mixed reasoning → fail; do not repair it by inventing copy.
@@ -39,9 +40,9 @@ Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed). Preserve every ear
 | pundit | eventSlug | side | verdict | note |
 ```
 
-`verdict` is `ok` or `fail`. One note per fail (dead URL, paraphrase, wrong year, wrong side, restage, off-roster).
+`verdict` is `ok`, `ok-unmapped`, or `fail`. One note per fail (dead URL, paraphrase, wrong year, wrong side, restage, off-roster). `ok-unmapped` is overflow waiting on an operator mint — it is not a fail.
 
-Then one line: `N ok / M fail / ready to promote K` where K is the count of new hard Intake rows marked `ok` and not already in `calls.json`.
+Then one line: `N ok / U ok-unmapped / M fail / ready to promote K` where K is the count of new **mapped** hard Intake rows marked `ok` and not already in `calls.json`. Unmapped ok rows are not in K.
 
 Update the Scout run file's status comment to `audit=ok` only if M = 0 for new hard rows. If any new hard row failed, `audit=fail`.
 

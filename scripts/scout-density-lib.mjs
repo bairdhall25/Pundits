@@ -46,9 +46,9 @@ const FLIP_WINDOW_MS = 72 * 60 * 60 * 1000;
 
 /**
  * Dense onHome games get one flip-check pass over already-carded pundits in
- * the final 72h before kickoff (docs/capture-policy.md rule 3). A quiet
- * reversal on the marquee card is an integrity miss, not a density miss.
- * kickoffDate is date-only, so the window opens from its UTC midnight.
+ * the last 3 calendar days of kickoffDate (docs/capture-policy.md rule 3).
+ * kickoffDate is date-only; the window is that UTC midnight minus 72h, not
+ * 72 clock hours before the local kickoff time.
  */
 export function inFlipWindow(event, now = Date.now()) {
   if (!event?.onHome || !event.kickoffDate) return false;
@@ -60,9 +60,10 @@ export function inFlipWindow(event, now = Date.now()) {
 export function huntHint(event, yes, no, status, { flipCheck = false } = {}) {
   if (status === "dense")
     return flipCheck
-      ? "flip-check carded pundits only (kickoff ≤72h)"
+      ? "flip-check carded pundits only (kickoff date ≤3 days)"
       : "skip";
-  if (status === "off-home") return "one roster SU to propose onHome";
+  if (status === "off-home")
+    return "one roster SU (off-home until operator flip)";
   if (status === "thin") return "keep hunting (stack OK)";
   const away = event.awayTeam ?? "away";
   const home = event.homeTeam ?? "home";

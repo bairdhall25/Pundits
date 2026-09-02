@@ -1,4 +1,6 @@
 <!-- pundits-run date=YYYY-MM-DD hard=0 candidates=0 audit=pending promoted=false -->
+Overflow unlisted SUs: leave `eventSlug` blank; name the matchup in the quote row. Do not invent a slug. See `docs/capture-policy.md`.
+
 ## Dispatch
 
 | eventSlug | sport | yes | no | status | hunt |

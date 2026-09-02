@@ -32,6 +32,7 @@ Supporting operational sources remain authoritative within their scope:
 
 - `docs/product/current-context.md` — concise, dated handoff for the current operating stage.
 - `docs/ROADMAP.md` — current implementation priorities.
+- `docs/capture-policy.md` — capture vs homepage-density doctrine (Scout / Promote).
 - `docs/RUNBOOK.md` — capture, publishing, URL permanence, and deployment.
 - `bots/README.md` — bot ownership and handoffs.
 - `docs/seo-plan.md` — programmatic search roadmap.
