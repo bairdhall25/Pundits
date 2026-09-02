@@ -28,8 +28,8 @@ Do not use “it was on Locked On Auburn” as the reason to *roster the host*. 
 1. Scout hunts the standing factories in `docs/pick-shows.md` because the current roster is on them (Cover 3, The Herd, Finebaum, On3, GameDay, McAfee, Eisen, and the rest of that map).
 2. A **named guest or fill-in** on those shows who makes a first-person SU is the next class of voice fans already heard next to the roster. That is **validation by association**.
 3. Audit reopens the URL. Real photo required. Empty `photoUrl=needed` stays a Candidate until a file exists in `public/photos/`.
-4. If the operator asks this Promote pass to roster them: map the pick. Off-home if the game is not featured. League page may show a thin card. `/` only if `docs/product/featured-games.md` says so.
-5. Add the new `punditId` to the X Scout table and the pick-shows map. Later hunts treat them as **Intake** and search them independently.
+4. If the operator asks this Promote pass to roster them: confirm a rights-safe photo, then run `node scripts/roster-add.mjs apply docs/runs/YYYY-MM-DD-roster-{id}.json`. That writes the pundit, the mapped hard SUs, the X handle, the pick-shows factory voice, and `docs/roster-pipeline.json`. Off-home if the game is not featured. League page may show a thin card. `/` only if `docs/product/featured-games.md` says so.
+5. Later hunts treat them as **Intake** and search them independently (X `from:{handle}`, Shows on their factory). Do not hand-patch a subset of those files.
 
 That is organic expansion: association → roster → independent search. It is not a crawl of every local archive.
 

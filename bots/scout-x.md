@@ -41,6 +41,7 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 
 | id | Name | handle |
 |---|---|---|
+| jmac | Jason McIntyre | jasonrmcintyre |
 | kanell | Danny Kanell | dannykanell |
 | patterson | Chip Patterson | Chip_Patterson |
 | walker | Brandon Walker | BFW |

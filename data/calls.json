@@ -888,5 +888,35 @@
     "status": "pending",
     "eventSlug": "clemson-at-lsu-2026",
     "side": "yes"
+  },
+  {
+    "id": "jmac-49ers-vs-rams-20260901",
+    "punditId": "jmac",
+    "claim": "So this is a pick. I'm going with the Rams here. Favorite by three and a half. Mostly because I don't know who's going to play for the Niners.",
+    "source": "The Herd Hour 2",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/the-herd-hour-2-nfl-week-1-picks-patriots-rams-bears/id1042368254?i=1000787245966",
+    "sourceDate": "2026-09-01",
+    "kind": "hard",
+    "subject": "Rams",
+    "paysOn": "49ers at Rams (Week 1, Melbourne)",
+    "status": "pending",
+    "eventSlug": "49ers-vs-rams-2026",
+    "side": "no",
+    "reasoning": "JMac takes the Rams as the favorite laying three and a half. He cites 49ers injury and availability uncertainty around Kittle, Bosa, and the receivers, and he doubts Aaron Donald even travels to Australia."
+  },
+  {
+    "id": "jmac-bills-at-texans-20260901",
+    "punditId": "jmac",
+    "claim": "I'm going with the Texans here… You guys know I got the Texans in the Super Bowl. So I've got the Texans winning this game.",
+    "source": "The Herd Hour 2",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/the-herd-hour-2-nfl-week-1-picks-patriots-rams-bears/id1042368254?i=1000787245966",
+    "sourceDate": "2026-09-01",
+    "kind": "hard",
+    "subject": "Texans",
+    "paysOn": "Bills at Texans (Week 1)",
+    "status": "pending",
+    "eventSlug": "bills-at-texans-2026",
+    "side": "no",
+    "reasoning": "He takes Houston outright, citing the Texans' career edge against Josh Allen, a nasty Houston defense, Buffalo's new offensive coordinator Joe Brady, and questions on the Bills defense."
   }
 ]
