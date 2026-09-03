@@ -27,7 +27,7 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NC
 3. Named add-list speakers on those same shows → Candidates (`photoUrl=needed` unless a real photo is already known).
 4. If the game remains under-dense, run the bounded radio fallback in `docs/pick-shows.md`.
 5. Skip `dense` rows unless a source you already opened names that game, or the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals. A reversal is a correction on the existing row, never a second card.
-6. **Overflow (docs/capture-policy.md rule 4):** while already inside a source for a Dispatch hole, if a rostered speaker drops a hard SU on a game that is **not in `events.json`**, stage it as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` blank with the matchup named in `subject`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a source, and it is not a license to vacuum the board.
+6. **Overflow (docs/capture-policy.md rule 4):** while already inside a source for a Dispatch hole, if a rostered speaker drops a hard SU on a game that is **not in `events.json`**, stage it as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` and `side` blank with the matchup named in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a source, and it is not a license to vacuum the board.
 
 PMT is comedy + guests, not a locks show. Stanford Steve on PMT is `coughlin`. Big Cat’s card is Pick Em / Picks Central / Barstool CFB Show, not PMT. GameDay / Big Noon only in their Saturday window (first 2026 GameDay is Baton Rouge Sep 5). A radio pick belongs to the named personality, never the station or show.
 
@@ -35,7 +35,7 @@ Do not sweep `from:{handle}`. If you land on a tweet while opening a show, you m
 
 **Tokens are not scarce, but radio is bounded.** After the listed factories, the radio limits below, and two reasonable named searches per under-dense game, record the miss in Dropped (what you opened) and move on. Do not invent a pick.
 
-When a hard pick has real supporting rationale, keep the decisive verbatim quote to the shortest one or two sentences that prove the SU (normally ≤60 words). Then a separate 25–60 word `reasoning` capsule in your own words, paraphrasing at most two concrete factors that speaker gave nearby in the same source. If they only named a winner, leave `reasoning` blank.
+When a hard pick has real supporting rationale, keep the decisive verbatim quote to the shortest one or two sentences that prove the SU (normally ≤60 words). Then a separate optional `reasoning` capsule of at most 60 words in your own words, paraphrasing at most two concrete factors that speaker gave nearby in the same source. If they only named a winner, leave `reasoning` blank. Put routing and operator instructions in `note`, never in reader-facing `reasoning`.
 
 ## Radio pilot limits
 
@@ -72,6 +72,8 @@ Tables: **Intake** · **Candidates** · **Bets** (totals/spreads/team totals; `b
 **Bets** is staging only. Do not invent a Kalshi contract if the line is ambiguous (full game vs team vs 1H). Leave `bet` as `unclear` and keep the quote. Promote will not ship these.
 
 Write **Home cards** only if you are the last pass of the day (no News/X still scheduled). Otherwise leave it for the later pass.
+
+Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject.
 
 ## Stop
 

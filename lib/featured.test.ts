@@ -347,7 +347,7 @@ describe("featured game display", () => {
 
     expect(featured.hero?.slug).toBe("clemson-at-lsu-2026");
     expect(homeHeroLede(featured.hero!, calls, livePundits)).toBe(
-      "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. George Wrighster picks Clemson."
+      "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. George Wrighster and Danny Kanell pick Clemson."
     );
     expect(featured.ncaaf.map((event) => event.slug)).toEqual([
       "clemson-at-lsu-2026",

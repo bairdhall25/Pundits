@@ -1,10 +1,12 @@
 # Capsule gate repair plan
 
-Status: Approved 2026-09-03 — ready for implementation
+Status: Historical — implemented 2026-09-03
 
 Date: 2026-09-03
 
 Owner: Codex
+
+Implementation: Audit now separates pick defects from capsule defects, Scout run tables have a run-only `note` field, staging validation is part of `npm run check`, and the September 3 capsule-only rows were re-verdict-ed. The mapped Kanell Clemson pick was promoted into the static record without the factually wrong capsule; the three genuine pick defects remain excluded. `npm run check` passed with 336 tests, 182 static pages, and 136 decoded preview images.
 
 ## Problem
 

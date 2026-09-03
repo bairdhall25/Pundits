@@ -174,7 +174,7 @@ describe("page social-card resolver", () => {
 });
 
 describe("event social-card resolver", () => {
-  it("resolves Clemson–LSU as the approved 1–4 Split card", () => {
+  it("resolves Clemson–LSU as the approved 2–4 Split card", () => {
     const event = events.find((candidate) => candidate.slug === "clemson-at-lsu-2026")!;
     const card = resolveEventSocialCard(event, calls, pundits, teams);
     expect(card.archetype).toBe("split");
@@ -182,7 +182,7 @@ describe("event social-card resolver", () => {
     expect(card.mode).toBe("game");
     expect(card.state).toBe("pending");
     expect(card.sides.map((side) => side.label)).toEqual(["Clemson", "LSU"]);
-    expect(card.sides.map((side) => side.people.total)).toEqual([1, 4]);
+    expect(card.sides.map((side) => side.people.total)).toEqual([2, 4]);
     expect(card.sides.map((side) => side.people.overflow)).toEqual([0, 0]);
     expect(card.sides[1].people.people.map((person) => person.name)).toEqual([
       "Josh Pate",
@@ -321,12 +321,12 @@ describe("Editorial social-card resolvers", () => {
     const card = resolveTeamSocialCard(team, events, calls, pundits);
     expect(card).toMatchObject({ archetype: "editorial", mode: "team" });
     expect(card.groups.map((group) => [group.label, group.count])).toEqual([
-      ["With", 1],
+      ["With", 2],
       ["Against", 4],
     ]);
     expect(card.feature).toMatchObject({
       kicker: "George Wrighster",
-      headline: "Lone Clemson call",
+      headline: "The Clemson call",
     });
   });
 
@@ -344,13 +344,13 @@ describe("Editorial social-card resolvers", () => {
       mode: "week",
       state: "pending",
       headline: "Week 1",
-      context: "10 picks · 5 games",
+      context: "11 picks · 5 games",
     });
     expect(card.feature).toMatchObject({
       headline: "Clemson at LSU",
-      context: "1 — 4 expert pick split",
+      context: "2 — 4 expert pick split",
     });
-    expect(card.people?.total).toBe(5);
+    expect(card.people?.total).toBe(6);
   });
 
   it("distinguishes partial and final week states", () => {

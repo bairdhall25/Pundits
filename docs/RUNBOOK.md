@@ -104,11 +104,13 @@ deployment, optionally spot-check:
 
 Do not set `GITHUB_PAGES` on Cloudflare or for a production-style local build.
 
-## Intake table schema (staging docs, e.g. docs/week1-leans.md)
-| pundit | eventSlug | side | verbatim quote | source | sourceUrl | sourceDate | hard/soft |
+## Intake table schema (staging docs, e.g. `docs/runs/YYYY-MM-DD.md`)
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
 
 Promotion: only verified hard rows become calls.json entries. The row's
 pundit must exist in data/pundits.json; the eventSlug in data/events.json.
+`reasoning` is optional reader-facing copy of at most 60 words. `note` is
+run-only routing context and never enters `data/`.
 
 ## Week 0 gate (Thursday 2026-08-27)
 Done for both: Finebaum Dublin (`unc-vs-tcu-2026`) and Kanell Charlottesville (`ncsu-at-uva-2026`).

@@ -947,5 +947,19 @@
     "status": "pending",
     "eventSlug": "smu-at-fsu-2026",
     "side": "no"
+  },
+  {
+    "id": "kanell-clemson-lsu-20260903",
+    "punditId": "kanell",
+    "claim": "Maybe he could be the type of guy that go in there to a low scoring game, keep it tight enough with that defense, show up and shock the world. Give me Clemson plus 325. I will take that one.",
+    "source": "Cover 3 Week 1 LOCKS (~1:08:20)",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/week-1-locks-best-bets-against-the-spread-picks/id1257913963?i=1000787691684",
+    "sourceDate": "2026-09-03",
+    "kind": "hard",
+    "subject": "Clemson",
+    "paysOn": "Clemson at LSU (Week 1)",
+    "status": "pending",
+    "eventSlug": "clemson-at-lsu-2026",
+    "side": "yes"
   }
 ]

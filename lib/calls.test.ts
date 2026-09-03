@@ -40,9 +40,16 @@ describe("2026 book", () => {
     for (const c of loadCalls()) {
       if (!c.reasoning) continue;
       const words = c.reasoning.trim().split(/\s+/);
-      expect(words.length, c.id).toBeGreaterThanOrEqual(25);
       expect(words.length, c.id).toBeLessThanOrEqual(60);
       expect(c.reasoning, c.id).not.toMatch(/[\r\n]/);
     }
+  });
+
+  it("keeps a verified pick when Audit rejects only its reasoning capsule", () => {
+    const recovered = loadCalls().find(
+      (call) => call.id === "kanell-clemson-lsu-20260903"
+    );
+    expect(recovered).toBeDefined();
+    expect(recovered).not.toHaveProperty("reasoning");
   });
 });

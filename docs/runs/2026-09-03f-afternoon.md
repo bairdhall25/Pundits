@@ -28,9 +28,9 @@ Fresh factory check at hunt time (iTunes lookup, not overnight table):
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|---|
-| mark-wahlberg | Mark Wahlberg | other | Rich Eisen Show (association guest; Win-Loss Game) | patriots-at-seahawks-2026 | yes | New England Patriots, opener against the defending Super Bowl champion Seahawks. Well, I think it's at Seattle. You know, I think they have championship hangover. I think we win that game. | Guest (not Eisen). In the Patriots Win-Loss Game he takes the Week 1 opener in Seattle, citing a Seahawks championship hangover, then marks 1–0 before the Steelers home cell. | https://podcasts.apple.com/us/podcast/hour-3-afc-north-predictions-actor-mark-wahlberg-talks/id926642601?i=1000787710984 | 2026-09-03 | needed |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| mark-wahlberg | Mark Wahlberg | other | Rich Eisen Show (association guest; Win-Loss Game) | patriots-at-seahawks-2026 | yes | New England Patriots, opener against the defending Super Bowl champion Seahawks. Well, I think it's at Seattle. You know, I think they have championship hangover. I think we win that game. | In the Patriots Win-Loss Game he takes the Week 1 opener in Seattle, citing a Seahawks championship hangover, then marks 1–0 before the Steelers home cell. | Guest, not Eisen. Association candidate. | https://podcasts.apple.com/us/podcast/hour-3-afc-north-predictions-actor-mark-wahlberg-talks/id926642601?i=1000787710984 | 2026-09-03 | needed |
 
 ### Bets
 

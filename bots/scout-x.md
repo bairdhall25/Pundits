@@ -30,11 +30,11 @@ For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (sk
 2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
 3. Per under-dense game, say in Dropped which handles you actually opened.
 4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent). Do not claim a sweep.
-5. **Overflow (docs/capture-policy.md rule 4):** if a handle you queried for a Dispatch hole also posted a hard SU on a game not in `events.json`, you may stage it as an unmapped Intake row — verbatim quote, status URL, post date, full SU bar, `eventSlug` blank with the matchup in `subject`. Never invent a slug; the operator mints or discards. Overflow never adds handles or queries beyond the Dispatch pass.
+5. **Overflow (docs/capture-policy.md rule 4):** if a handle you queried for a Dispatch hole also posted a hard SU on a game not in `events.json`, you may stage it as an unmapped Intake row — verbatim quote, status URL, post date, full SU bar, `eventSlug` and `side` blank with the matchup in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never adds handles or queries beyond the Dispatch pass.
 
 If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
 
-For a hard row, keep the decisive verbatim quote short. Add a 25–60 word `reasoning` capsule only when the same post contains concrete rationale; paraphrase at most two factors and do not import context from replies, another speaker, or a different post. Most short winner-only posts should leave `reasoning` blank.
+For a hard row, keep the decisive verbatim quote short. Add an optional `reasoning` capsule of at most 60 words only when the same post contains concrete rationale; paraphrase at most two factors and do not import context from replies, another speaker, or a different post. Most short winner-only posts should leave `reasoning` blank. Put routing and operator instructions in `note`, never in reader-facing `reasoning`.
 
 Query shape: `from:{handle} {away}` and `from:{handle} {home}`. Also `from:{handle} pick` / `I'll take` / `give me` if the team query is empty.
 
@@ -113,6 +113,8 @@ Same tables as Shows Scout, including the optional `reasoning` column:
 **Bets** is staging only. Do not invent a Kalshi contract if the line is ambiguous. Promote will not ship these.
 
 Write **Home cards** only if you are the last pass of the day (no News still scheduled). Otherwise leave it for the later pass.
+
+Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject.
 
 Empty Intake is a valid run. Say so.
 

@@ -1,5 +1,5 @@
 <!-- pundits-run date=YYYY-MM-DD hard=0 candidates=0 audit=pending promoted=false -->
-Overflow unlisted SUs: leave `eventSlug` blank; name the matchup in the quote row. Do not invent a slug. See `docs/capture-policy.md`.
+Overflow unlisted SUs: leave `eventSlug` and `side` blank; name the matchup in `note`, outside the verbatim quote. Do not invent a slug. See `docs/capture-policy.md`.
 
 ## Dispatch
 
@@ -25,15 +25,15 @@ Untrusted discovery leads only. A tip must clear the normal Scout, Audit, and Pr
 
 ### Intake
 
-| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | |
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | | |
 
 ### Bets
 
@@ -65,15 +65,15 @@ X (Twitter) only. Shows Scout owns episodes. News Scout owns columns.
 
 ### Intake
 
-| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | |
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | | |
 
 ### Bets
 
@@ -99,15 +99,15 @@ Bylined columns and expert-pick pages only.
 
 ### Intake
 
-| pundit | eventSlug | side | verbatim quote | reasoning | source | sourceUrl | sourceDate | hard/soft |
-|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | |
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
 
 ### Candidates
 
-| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | sourceUrl | sourceDate | photoUrl |
-|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | |
+| proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | | |
 
 ### Bets
 

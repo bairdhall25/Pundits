@@ -25,11 +25,11 @@ Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
 1. **Coordinator** writes `## Dispatch` into `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`) and imports the short-lived tip queue with `npm run tips:pull -- --date YYYY-MM-DD`. Never `data/`.
 2. **Shows / X / News** process their pending `## Community tips` rows for matching targets, then hunt Dispatch and append their passes to that run file. Raw tips are never promotable rows.
 3. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
-4. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
+4. **Promote** (this repo) loads that run file from `main`, ships only `ok` or `ok-no-reasoning` hard rows into JSON, tests, deploys, sets `promoted=true`.
 5. **Grader** after kickoff. **Recap** after Grader.
 6. **Reviewer** weekly (Monday ET): write `docs/runs/YYYY-MM-DD-social.md` and append `docs/social/scoreboard.md`. Propose one playbook change. Do not edit `docs/social/` playbook files.
 
-Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
+Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit when `hard>0` and `audit=pending`. Promote after Audit when the tally has at least one mapped row ready to promote. Do not ping a human to copy-paste the five blocks.
 
 ### Tip mailbox commands
 
@@ -86,7 +86,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Re-run scout-feeds.mjs at hunt time; skip only a fresh waiting/recap/short/wrong-year/off-topic/error. Open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass — never wipe a prior pass. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Re-run scout-feeds.mjs at hunt time; skip only a fresh waiting/recap/short/wrong-year/off-topic/error. Open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass — never wipe a prior pass. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **X Scout:**
@@ -98,7 +98,7 @@ At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **News Scout:**
@@ -111,7 +111,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-news.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/news-beats.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Chat is not the handoff.
+Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **Promote**
@@ -181,7 +181,7 @@ Account: @Pundits_
 Score the last 7 ET days of @Pundits_ against cards.json and the playbook. Write docs/runs/YYYY-MM-DD-social.md. Append one row to docs/social/scoreboard.md. Propose exactly one playbook change in the run file. Do not edit voice.md, schedule.md, reply-guide.md, post-patterns.md, or data/. Chat is not the mailbox.
 ```
 
-Cadence (Week 1): Coordinator daily (Dispatch from fresh origin/main; settled games are not hunt targets). **Every Shows / X / News pass hunts NCAAF and NFL Dispatch rows in the same run** — do not park a sport. Skip dense except flip-check. Factory windows still apply (GameDay / Big Noon Saturday). Radio is a bounded fallback inside Shows jobs, never an additional routine. X twice daily. Audit when `hard>0` and `audit=pending`. Promote mapped `ok` rows when `audit=ok`; mint overflow only if the operator asked. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
+Cadence (Week 1): Coordinator daily (Dispatch from fresh origin/main; settled games are not hunt targets). **Every Shows / X / News pass hunts NCAAF and NFL Dispatch rows in the same run** — do not park a sport. Skip dense except flip-check. Factory windows still apply (GameDay / Big Noon Saturday). Radio is a bounded fallback inside Shows jobs, never an additional routine. X twice daily. Audit when `hard>0` and `audit=pending`. Promote mapped `ok` and `ok-no-reasoning` rows when the Audit tally says they are ready; mint overflow only if the operator asked. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
 
 ## House rules
 
@@ -201,7 +201,7 @@ Owned here so the files do not fork them.
 7. **Wrong season → drop.** Same teams in a prior year is not this event. Event slugs always end in `-{season}` (`clemson-at-lsu-2026`), where season is the year the regular season starts — a January 2027 bowl/playoff/Super Bowl is still 2026. Next season's rematch is a new slug.
 8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
 9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
-10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional 25–60 word `reasoning` capsule that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank.
+10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional `reasoning` capsule of at most 60 words that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank. Routing notes go in `note`, never inside `reasoning`. `reasoning` is reader-facing copy and is the only field that can reach a pick page.
 11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
 12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
 13. **Reviewer writes only the social mailbox.** Allowed: `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. Forbidden: `data/`, playbook files under `docs/social/` except the scoreboard, posts, replies, follows, and grades. A playbook change is a proposal in the run file until the operator commits it.

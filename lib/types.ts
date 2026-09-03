@@ -71,7 +71,7 @@ export type Call = {
   id: string;
   punditId: string;
   claim: string;
-  /** Optional 25–60 word source-grounded paraphrase of why this speaker made the pick. */
+  /** Optional source-grounded paraphrase (at most 60 words) of why this speaker made the pick. */
   reasoning?: string;
   source: string;
   sourceUrl: string | null;
