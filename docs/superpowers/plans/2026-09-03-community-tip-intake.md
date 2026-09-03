@@ -1,10 +1,10 @@
 # Community tip intake implementation plan
 
-Status: Implemented locally; production KV binding pending
+Status: Implemented; production deployment pending
 
 Date: 2026-09-03
 
-Implementation outcome (2026-09-03): the shared contract, Pages Function, Scout mailbox importer, website flow, public trust copy, analytics, social card, and route verification are implemented. `npm run check` passes, the browser flow reaches local KV, and Design QA passes. Production release remains gated on re-authenticating Wrangler, creating the dedicated `PUNDITS_TIPS` production/preview namespaces, adding their binding to `wrangler.toml`, and running one live queue-to-mailbox smoke test. No `data/*.json` file was changed.
+Implementation outcome (2026-09-03): the shared contract, Pages Function, Scout mailbox importer, website flow, public trust copy, analytics, social card, and route verification are implemented. `npm run check` passes, the browser flow reaches local KV, and Design QA passes. Production and preview `PUNDITS_TIPS` namespaces are provisioned and bound in `wrangler.toml`; production release remains gated on deployment and one live queue-to-mailbox smoke test. The source link is the only required public field; Scout accepts and triages source-only leads. No `data/*.json` file was changed.
 
 > **For Codex:** community submissions are untrusted discovery leads. They never publish directly, never map themselves, and never write `data/*.json`.
 
@@ -50,7 +50,7 @@ Fields:
 | Field | Requirement | Notes |
 |---|---|---|
 | Public source URL | Required | Original source preferred; HTTP(S) only. |
-| Pundit name | Required | A hint for Scout, never trusted as attribution. |
+| Pundit name | Optional | A hint for Scout, never trusted as attribution. |
 | Game or prediction | Optional | Prefilled from an event page when available. |
 | Timestamp or where to look | Optional | Short plain text; useful for video/audio. |
 | Website | Honeypot | Hidden from people and excluded from storage. |
@@ -91,7 +91,7 @@ type TipSubmission = {
   receivedAt: string;         // server-generated ISO timestamp
   discovery: "website" | "x-dm";
   sourceUrl: string;
-  punditHint: string;
+  punditHint?: string;
   eventHint?: string;
   eventSlugHint?: string;
   sideHint?: "yes" | "no";  // event-link context only; never editorial mapping
@@ -173,7 +173,7 @@ Checklist:
 - [ ] Add `POST /api/tips`; return generic errors and never echo submitted content.
 - [ ] Store each valid tip under a time-sortable prefix such as `tip:{receivedAt}:{id}` with expiration.
 - [ ] Put bounded routing metadata on the KV entry so a pull can list efficiently without exposing a public read endpoint.
-- [ ] Create and bind a separate production/preview `PUNDITS_TIPS` KV namespace.
+- [x] Create and bind a separate production/preview `PUNDITS_TIPS` KV namespace.
 - [ ] Keep the endpoint same-origin. Do not add a public list, admin route, or GitHub token.
 - [ ] Start with the existing honeypot and bounded validation. Add Turnstile only if real abuse appears.
 

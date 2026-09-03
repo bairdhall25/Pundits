@@ -22,7 +22,7 @@ export default function SubmitPage() {
       <div className="eyebrow type-broadcast">Help fill the board</div>
       <h1 className="tip-submit-title">Found a pick we missed?</h1>
       <p className="tip-submit-lede lede">
-        Send the original public post, article, podcast, or video. We verify every source before anything reaches the board.
+        Send the original public post, article, podcast, or video. The link is enough; add any context you have. We verify every source before anything reaches the board.
       </p>
       <Suspense fallback={<div className="tip-submit-card" aria-busy="true">Loading form…</div>}>
         <TipSubmissionForm events={events} />

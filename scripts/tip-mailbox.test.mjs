@@ -44,6 +44,12 @@ describe("community tip mailbox", () => {
     expect(row).toMatch(/\| pending \|$/);
   });
 
+  it("keeps source-only tips visible for Scout", () => {
+    const row = renderCommunityTipRow({ ...tip, punditHint: undefined });
+    expect(row).toContain("| (not provided) |");
+    expect(row).toContain("https://x.com/example/status/1");
+  });
+
   it("inserts the block before Scout passes without wiping content", () => {
     const run = `<!-- pundits-run -->\n\n## Dispatch\n\nkeep dispatch\n\n## Shows pass 2026-09-03\n\nkeep shows\n`;
     const next = insertCommunityTips(run, [tip]);

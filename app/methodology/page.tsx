@@ -44,7 +44,7 @@ const FAQ = [
   {
     question: "Can I submit a pick we missed?",
     answer:
-      "Yes. Send the original public source through the submission page. A submission is an untrusted lead: Scout independently reopens the link and applies the same speaker, quote, event, side, Audit, and Promote rules before anything can appear on the site.",
+      "Yes. Send the original public source through the submission page. The link is required; the pundit, event, and location hints are optional. A submission is an untrusted lead: Scout independently reopens the link and applies the same speaker, quote, event, side, Audit, and Promote rules before anything can appear on the site.",
   },
 ];
 
@@ -90,6 +90,7 @@ export default function MethodologyPage() {
         </p>
         <p>
           Found a pick we missed? <a href="/submit/">Send the public source</a>.
+          The link is required; any pundit, event, or location hints are optional.
           A submission only enters Scout as a discovery lead. We independently
           reopen it and apply the same qualification, mapping, Audit, and Promote
           rules before anything can reach the public record.

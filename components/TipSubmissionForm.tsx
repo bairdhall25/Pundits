@@ -14,7 +14,7 @@ import {
 
 type EventOption = { slug: string; title: string; yesLabel: string; noLabel: string };
 type FormStatus = "idle" | "submitting" | "success" | "error";
-type FieldErrors = Partial<Record<"sourceUrl" | "punditHint", string>>;
+type FieldErrors = Partial<Record<"sourceUrl", string>>;
 
 function placementFrom(raw: string | null): TipPlacement {
   return raw === "event" || raw === "footer" ? raw : "direct";
@@ -33,7 +33,6 @@ export function TipSubmissionForm({ events }: { events: EventOption[] }) {
   const statusId = useId();
   const honeypotId = useId();
   const sourceRef = useRef<HTMLInputElement | null>(null);
-  const punditRef = useRef<HTMLInputElement | null>(null);
   const statusRef = useRef<HTMLElement | null>(null);
   const seenRef = useRef(false);
   const abortRef = useRef<AbortController | null>(null);
@@ -93,15 +92,13 @@ export function TipSubmissionForm({ events }: { events: EventOption[] }) {
     if (!normalizePublicSourceUrl(sourceUrl)) {
       nextErrors.sourceUrl = "Enter a public http or https source link.";
     }
-    if (!punditHint.trim()) nextErrors.punditHint = "Tell us who made the pick.";
     if (Object.keys(nextErrors).length) {
       setErrors(nextErrors);
       setStatus("error");
-      setMessage("Check the two required fields.");
+      setMessage("Check the source link.");
       trackTip("tip_error", analytics("validation"));
       requestAnimationFrame(() => {
-        if (nextErrors.sourceUrl) sourceRef.current?.focus();
-        else punditRef.current?.focus();
+        sourceRef.current?.focus();
       });
       return;
     }
@@ -213,32 +210,26 @@ export function TipSubmissionForm({ events }: { events: EventOption[] }) {
 
         <div className="tip-submit-field">
           <label htmlFor={punditId} className="tip-submit-label type-broadcast">
-            Who made the pick? <span aria-hidden="true">*</span>
+            Who made the pick? <span className="tip-submit-optional">Optional</span>
           </label>
           <input
             id={punditId}
-            ref={punditRef}
             className="tip-submit-input"
             name="punditHint"
             type="text"
             autoComplete="off"
             placeholder="George Wrighster"
             value={punditHint}
-            required
             disabled={disabled}
-            aria-invalid={Boolean(errors.punditHint)}
-            aria-describedby={errors.punditHint ? `${punditId}-error` : undefined}
-            onChange={(event) => {
-              setPunditHint(event.target.value);
-              clearFieldError("punditHint");
-            }}
+            onChange={(event) => setPunditHint(event.target.value)}
           />
-          {errors.punditHint ? <p id={`${punditId}-error`} className="tip-submit-error">{errors.punditHint}</p> : null}
         </div>
 
         <div className="tip-submit-grid">
           <div className="tip-submit-field">
-            <label htmlFor={eventId} className="tip-submit-label type-broadcast">Game or event</label>
+            <label htmlFor={eventId} className="tip-submit-label type-broadcast">
+              Game or event <span className="tip-submit-optional">Optional</span>
+            </label>
             <input
               id={eventId}
               className="tip-submit-input"
@@ -252,7 +243,9 @@ export function TipSubmissionForm({ events }: { events: EventOption[] }) {
             />
           </div>
           <div className="tip-submit-field">
-            <label htmlFor={whereId} className="tip-submit-label type-broadcast">Where in the source?</label>
+            <label htmlFor={whereId} className="tip-submit-label type-broadcast">
+              Where in the source? <span className="tip-submit-optional">Optional</span>
+            </label>
             <input
               id={whereId}
               className="tip-submit-input"
@@ -276,7 +269,7 @@ export function TipSubmissionForm({ events }: { events: EventOption[] }) {
           {disabled ? "Sending source…" : "Send to Scout"}
         </button>
         <p className="tip-submit-fineprint">
-          Public links only. Don’t send private messages, paywalled copies, or personal information. A submission is a lead, not a published pick. See our <Link href="/methodology/">methodology</Link> and <Link href="/privacy/">privacy policy</Link>.
+          Only the public source link is required. Add whatever context you have — Scout can sort out the rest. Don’t send private messages, paywalled copies, or personal information. A submission is a lead, not a published pick. See our <Link href="/methodology/">methodology</Link> and <Link href="/privacy/">privacy policy</Link>.
         </p>
         <p id={statusId} className="tip-submit-status" role="status" aria-live="polite">{message}</p>
       </form>

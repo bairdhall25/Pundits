@@ -1738,6 +1738,12 @@ a.empty.event-price-link { color: var(--muted); }
   text-transform: uppercase;
 }
 .tip-submit-label span { color: var(--green); }
+.tip-submit-label .tip-submit-optional {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
 .tip-submit-input {
   width: 100%;
   min-height: 48px;

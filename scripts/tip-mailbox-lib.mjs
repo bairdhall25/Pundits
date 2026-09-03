@@ -61,7 +61,7 @@ export function renderCommunityTipRow(tip) {
     escapeMarkdownCell(tip.receivedAt, 40),
     escapeMarkdownCell(tip.discovery, 20),
     routeTipLane(tip.sourceUrl),
-    escapeMarkdownCell(tip.punditHint, 120),
+    escapeMarkdownCell(tip.punditHint || "(not provided)", 120),
     escapeMarkdownCell(eventHint(tip), 180),
     escapeMarkdownCell(tip.sourceUrl, 2048),
     escapeMarkdownCell(tip.timestampHint || "", 160),

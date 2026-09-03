@@ -29,7 +29,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           If you submit a public pick source, we collect the public URL, the
-          pundit and event hints you enter, an optional timestamp or location
+          optional pundit and event hints you enter, an optional timestamp or location
           hint, and the time received. We do not ask for or store your name,
           email address, X handle, or other submitter identity with the tip.
           Website tips are held in a Cloudflare KV queue for up to 90 days,

@@ -54,6 +54,17 @@ describe("tip Pages Function", () => {
     expect(JSON.stringify(saved)).not.toMatch(/email|sender|ipAddress/i);
   });
 
+  it("stores a source even when no pundit hint is provided", async () => {
+    const store = fakeKV();
+    const response = await onRequestPost(
+      context(store, tipRequest({ punditHint: "" })) as never
+    );
+    expect(response.status).toBe(200);
+    const saved = JSON.parse(store.puts[0].value) as TipSubmission;
+    expect(saved.sourceUrl).toContain("x.com/georgewrighster/status/");
+    expect(saved).not.toHaveProperty("punditHint");
+  });
+
   it("accepts honeypot spam without storing it", async () => {
     const store = fakeKV();
     const response = await onRequestPost(context(store, tipRequest({ website: "spam" })) as never);

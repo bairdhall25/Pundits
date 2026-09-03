@@ -69,13 +69,22 @@ describe("tip submission contract", () => {
     ).toEqual({ kind: "spam" });
   });
 
-  it("rejects a missing pundit and preserves no submitted content in the result", () => {
+  it("accepts a public source without a pundit hint", () => {
     expect(
       parseTipFields(
         { sourceUrl: "https://example.com/pick", punditHint: "" },
         { id: "tip-1", receivedAt: "2026-09-03T12:00:00.000Z" }
       )
-    ).toEqual({ kind: "invalid" });
+    ).toEqual({
+      kind: "ok",
+      payload: {
+        id: "tip-1",
+        receivedAt: "2026-09-03T12:00:00.000Z",
+        discovery: "website",
+        sourceUrl: "https://example.com/pick",
+        placement: "direct",
+      },
+    });
   });
 
   it("serializes only the public-source form fields", () => {

@@ -7,7 +7,7 @@ export type TipSideHint = "yes" | "no";
 
 export type TipSubmissionInput = {
   sourceUrl: string;
-  punditHint: string;
+  punditHint?: string;
   eventHint?: string;
   eventSlugHint?: string;
   sideHint?: TipSideHint;
@@ -21,7 +21,7 @@ export type TipSubmission = {
   receivedAt: string;
   discovery: TipDiscovery;
   sourceUrl: string;
-  punditHint: string;
+  punditHint?: string;
   eventHint?: string;
   eventSlugHint?: string;
   sideHint?: TipSideHint;
@@ -103,7 +103,7 @@ export function buildTipSubmission(
 ): TipSubmission {
   const sourceUrl = normalizePublicSourceUrl(input.sourceUrl);
   const punditHint = normalizeText(input.punditHint, 120);
-  if (!sourceUrl || !punditHint) throw new Error("invalid tip");
+  if (!sourceUrl) throw new Error("invalid tip");
 
   const placement = PLACEMENTS.has(input.placement as TipPlacement)
     ? (input.placement as TipPlacement)
@@ -121,7 +121,7 @@ export function buildTipSubmission(
     receivedAt: server.receivedAt,
     discovery,
     sourceUrl,
-    punditHint,
+    ...(punditHint ? { punditHint } : {}),
     ...(eventHint ? { eventHint } : {}),
     ...(eventSlugHint ? { eventSlugHint } : {}),
     ...(sideHint ? { sideHint } : {}),
@@ -162,7 +162,7 @@ export function parseTipFields(
 export function tipFormBody(input: TipSubmissionInput): URLSearchParams {
   const body = new URLSearchParams();
   body.set("sourceUrl", input.sourceUrl);
-  body.set("punditHint", input.punditHint);
+  body.set("punditHint", input.punditHint ?? "");
   body.set("eventHint", input.eventHint ?? "");
   body.set("eventSlugHint", input.eventSlugHint ?? "");
   body.set("sideHint", input.sideHint ?? "");
