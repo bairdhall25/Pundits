@@ -487,6 +487,7 @@ export type SocialPageKey =
   | "leaderboard"
   | "ncaaf"
   | "nfl"
+  | "submit"
   | "about"
   | "methodology"
   | "privacy"
@@ -537,6 +538,13 @@ const PAGE_CONTENT: Record<
     context: "Current slate and permanent archive",
     proof: ["Games", "Futures", "Weekly archives"],
     disclosure: SOCIAL_DISCLOSURES.picks,
+  },
+  submit: {
+    kicker: "Help fill the board",
+    headline: "Found a public pick we missed?",
+    context: "Send the source · Scout verifies it",
+    proof: ["Public links", "Same evidence bar", "No automatic publishing"],
+    disclosure: SOCIAL_DISCLOSURES.evidence,
   },
   about: {
     kicker: "About Pundits.Pro",

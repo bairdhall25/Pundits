@@ -1662,6 +1662,165 @@ a.empty.event-price-link { color: var(--muted); }
   }
 }
 
+.tip-prompt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin: 12px 0 22px;
+  padding: 14px 18px;
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid var(--green);
+  background: var(--card);
+  max-width: 760px;
+}
+.tip-prompt-copy,
+.tip-prompt-link {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tip-prompt-copy { color: var(--ink); }
+.tip-prompt-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--green);
+  text-decoration: none;
+}
+.tip-prompt-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.tip-prompt-link:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.tip-submit-page { max-width: 920px; }
+.tip-submit-title {
+  margin: 4px 0 14px;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 0.92;
+}
+.tip-submit-lede { max-width: 720px; }
+.tip-submit-card {
+  margin: 26px 0 12px;
+  padding: clamp(18px, 4vw, 34px);
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid var(--green);
+  background: var(--card);
+}
+.tip-submit-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 0 0 24px;
+  padding: 12px 14px;
+  border: 1px solid #245c18;
+  background: #10200c;
+  color: var(--ink);
+  font-size: 13px;
+}
+.tip-submit-context span {
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tip-submit-form { display: grid; gap: 18px; }
+.tip-submit-grid { display: grid; gap: 18px; }
+.tip-submit-field { min-width: 0; }
+.tip-submit-label {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tip-submit-label span { color: var(--green); }
+.tip-submit-label .tip-submit-optional {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.tip-submit-input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #3a3a3a;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0 13px;
+  font-size: 16px;
+}
+.tip-submit-input::placeholder { color: #747474; }
+.tip-submit-input:focus-visible,
+.tip-submit-button:focus-visible,
+.tip-submit-back:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+.tip-submit-input[aria-invalid="true"] { border-color: var(--red); }
+.tip-submit-input:disabled,
+.tip-submit-button:disabled { cursor: not-allowed; opacity: 0.58; }
+.tip-submit-error,
+.tip-submit-status {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.tip-submit-error { color: #ff9b9c; }
+.tip-submit-status { min-height: 1.25em; color: var(--ink); }
+.tip-submit-button {
+  justify-self: start;
+  min-height: 48px;
+  border: 0;
+  background: var(--green);
+  color: #0a0a0a;
+  padding: 0 22px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tip-submit-button:hover:not(:disabled) { filter: brightness(1.08); }
+.tip-submit-fineprint {
+  max-width: 690px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.tip-submit-fineprint a,
+.tip-submit-back { color: var(--green); }
+.tip-submit-success { max-width: 720px; }
+.tip-submit-success:focus { outline: none; }
+.tip-submit-kicker {
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.tip-submit-heading {
+  margin: 6px 0 12px;
+  font-size: clamp(26px, 4vw, 38px);
+  letter-spacing: 0.04em;
+}
+.tip-submit-success p { color: var(--muted); line-height: 1.5; }
+.tip-submit-back {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@media (min-width: 720px) {
+  .tip-submit-grid { grid-template-columns: 1fr 1fr; }
+}
+
 .share-head {
   display: flex;
   align-items: flex-start;

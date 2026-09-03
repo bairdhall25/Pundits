@@ -6,7 +6,7 @@ import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
 export const metadata: Metadata = socialPageMeta(
   "privacy",
   "Privacy",
-  "How Pundits handles analytics and the early-access email list.",
+  "How Pundits handles analytics, public-source tips, and the early-access email list.",
 );
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <h1 className="mb-4 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">Privacy</h1>
       <div className="privacy-copy lede" style={{ maxWidth: 720 }}>
         <p>
-          {`Pundits is a project of ${LEGAL_NAME}. This page covers how the site handles analytics and the early-access email list.`}
+          {`Pundits is a project of ${LEGAL_NAME}. This page covers how the site handles analytics, public-source tips, and the early-access email list.`}
         </p>
         <p>
           We use Google Analytics to see which pages people open and which
@@ -26,6 +26,21 @@ export default function PrivacyPage() {
           shares, and filters). Those events use object IDs, never email
           addresses or quote text. Our email-form events also never include
           your address.
+        </p>
+        <p>
+          If you submit a public pick source, we collect the public URL, the
+          optional pundit and event hints you enter, an optional timestamp or location
+          hint, and the time received. We do not ask for or store your name,
+          email address, X handle, or other submitter identity with the tip.
+          Website tips are held in a Cloudflare KV queue for up to 90 days,
+          then expire. Sanitized operational rows may remain in the private Git
+          run record so Scout, Audit, and Promote can document what happened.
+        </p>
+        <p>
+          Tip-form analytics include placement, event and side context, and
+          error type. They never include the submitted URL, pundit name,
+          timestamp hint, or other free text. Do not submit private messages,
+          copied paywalled material, or personal information.
         </p>
         {config.active ? (
           <>

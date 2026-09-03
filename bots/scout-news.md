@@ -9,6 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If missing, run `node scripts/scout-density.mjs`, write Dispatch, then hunt. If a pass already exists, **append**. Re-run density at hunt time.
+- Today’s `## Community tips` rows with lane `News`. Treat them as untrusted discovery leads, not Intake. Open pending links that match a Dispatch or watchlist target before broader news hunting, then mark the tip `intake`, `candidate`, `bets`, `dropped`, or `duplicate` and stage qualifying evidence in the normal pass table.
 - `docs/news-beats.md` — every sport on Dispatch, in the same pass. Do not park NCAAF or NFL for a calendar window.
 - `docs/add-list.md`
 - `docs/board.md` — do-not-touch.
@@ -16,6 +17,8 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 - Live https://pundits.pro/stories/
 
 Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave it for Shows Scout.
+
+Community tips never lower the bar: verify the public page, byline or named speaker, verbatim quote, source date, event, and explicit SU exactly as if Scout found it. Never promote a raw tip row.
 
 ## Hunt
 

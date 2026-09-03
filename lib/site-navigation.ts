@@ -61,6 +61,7 @@ export const MORE_NAV_GROUPS: readonly SiteNavigationGroup[] = [
     id: "about",
     label: "About",
     items: [
+      { href: "/submit/", label: "Submit a source" },
       { href: "/about/", label: "About Pundits" },
       { href: "/methodology/", label: "Methodology" },
       { href: CONTACT_HREF, label: "Contact", external: true },
@@ -91,6 +92,7 @@ export const FOOTER_NAV_GROUPS: readonly SiteNavigationGroup[] = [
     id: "company",
     label: "About",
     items: [
+      { href: "/submit/", label: "Submit a source" },
       { href: "/about/", label: "About Pundits" },
       { href: "/methodology/", label: "Methodology" },
       { href: CONTACT_HREF, label: "Contact", external: true },

@@ -4,6 +4,7 @@ export const CORE_PAGES = [
   { url: "/stories/", file: "stories/index.html" },
   { url: "/book/", file: "book/index.html" },
   { url: "/leaderboard/", file: "leaderboard/index.html" },
+  { url: "/submit/", file: "submit/index.html" },
   { url: "/ncaaf/", file: "ncaaf/index.html" },
   { url: "/nfl/", file: "nfl/index.html" },
   { url: "/picks/unc-vs-tcu-2026/", file: "picks/unc-vs-tcu-2026/index.html" },

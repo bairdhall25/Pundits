@@ -167,6 +167,7 @@ test("header and footer expose the complete site navigation", async ({ page }, t
     "Takes",
     "Compact ledger",
     "Pundits",
+    "Submit a source",
     "About Pundits",
     "Methodology",
     "Contact",

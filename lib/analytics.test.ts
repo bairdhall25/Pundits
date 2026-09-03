@@ -6,6 +6,7 @@ import {
   pickStoryOpenParams,
   shareIntentParams,
   sourceOpenParams,
+  tipAnalyticsParams,
 } from "./analytics";
 
 describe("engagement params", () => {
@@ -79,5 +80,23 @@ describe("engagement params", () => {
       filter_name: "kind",
       filter_value: "game",
     });
+  });
+
+  it("records tip context without source URLs, names, or free text", () => {
+    const params = tipAnalyticsParams({
+      placement: "event",
+      eventSlug: "clemson-at-lsu-2026",
+      sideHint: "no",
+      pagePath: "/submit/",
+      errorType: "validation",
+    });
+    expect(params).toEqual({
+      placement: "event",
+      event_slug: "clemson-at-lsu-2026",
+      side_hint: "no",
+      page_path: "/submit/",
+      error_type: "validation",
+    });
+    expect(JSON.stringify(params)).not.toMatch(/https?:|Wrighster|quote/i);
   });
 });

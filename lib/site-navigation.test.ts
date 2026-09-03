@@ -46,6 +46,7 @@ describe("site navigation", () => {
       "/stories/",
       "/book/",
       "/leaderboard/",
+      "/submit/",
       "/about/",
       "/methodology/",
       "/privacy/",

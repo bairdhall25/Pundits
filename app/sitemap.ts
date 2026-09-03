@@ -60,6 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: canonicalUrl("/book/"), lastModified: corpus, changeFrequency: "daily", priority: 0.8 },
     { url: canonicalUrl("/stories/"), lastModified: corpus, changeFrequency: "daily", priority: 0.9 },
     { url: canonicalUrl("/leaderboard/"), lastModified: corpus, changeFrequency: "weekly", priority: 0.6 },
+    { url: canonicalUrl("/submit/"), lastModified: freeze, changeFrequency: "monthly", priority: 0.3 },
     { url: canonicalUrl("/privacy/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.2 },
     { url: canonicalUrl("/about/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.3 },
     { url: canonicalUrl("/methodology/"), lastModified: freeze, changeFrequency: "yearly", priority: 0.4 },

@@ -22,14 +22,20 @@ Scout does not grade and does not write JSON. Promote does not hunt new takes. A
 
 Git is the mailbox. Grok Build / Promote reads GitHub, not a pasted Scout reply.
 
-1. **Coordinator** writes `## Dispatch` into `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`). Never `data/`.
-2. **Shows / X / News** hunt Dispatch and append their passes to that run file.
+1. **Coordinator** writes `## Dispatch` into `docs/runs/YYYY-MM-DD.md` (`audit=pending`, `promoted=false`) and imports the short-lived tip queue with `npm run tips:pull -- --date YYYY-MM-DD`. Never `data/`.
+2. **Shows / X / News** process their pending `## Community tips` rows for matching targets, then hunt Dispatch and append their passes to that run file. Raw tips are never promotable rows.
 3. **Audit** re-opens every new hard URL, writes `docs/runs/YYYY-MM-DD-audit.md`, sets `audit=ok` or `audit=fail`.
 4. **Promote** (this repo) loads that run file from `main`, ships only `ok` hard rows into JSON, tests, deploys, sets `promoted=true`.
 5. **Grader** after kickoff. **Recap** after Grader.
 6. **Reviewer** weekly (Monday ET): write `docs/runs/YYYY-MM-DD-social.md` and append `docs/social/scoreboard.md`. Propose one playbook change. Do not edit `docs/social/` playbook files.
 
 Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit when `hard>0` and `audit=pending`. Promote when `audit=ok` and `hard>0`. Do not ping a human to copy-paste the five blocks.
+
+### Tip mailbox commands
+
+- `npm run tips:pull -- --date YYYY-MM-DD` imports website submissions from the short-lived Cloudflare KV queue into the dated run file without changing existing tip statuses.
+- `npm run tips:add -- --date YYYY-MM-DD --source-url "https://x.com/.../status/..." --pundit "Name" --event "Away at Home" --side yes --where "optional timestamp or quote cue"` records a tip received by X DM in the same mailbox. `yes` means away and `no` means home when the event is a game.
+- These commands require an existing run file. Coordinator creates the run file first; the source-lane Scout opens and verifies the link.
 
 ## Scheduled Git handoff
 

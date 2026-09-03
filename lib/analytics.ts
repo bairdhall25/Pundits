@@ -6,6 +6,14 @@ export type EmailInterestEvent =
 
 export type EmailInterestErrorType = "validation" | "network" | "provider" | "configuration";
 
+export type TipEvent =
+  | "tip_form_view"
+  | "tip_submit"
+  | "tip_success"
+  | "tip_error";
+
+export type TipErrorType = "validation" | "network" | "provider" | "configuration";
+
 export type EngagementSurface =
   | "home"
   | "ncaaf"
@@ -130,4 +138,24 @@ export function filterUseParams(input: {
 
 export function trackEmailInterest(event: EmailInterestEvent, params: EmailInterestParams): void {
   trackEvent(event, analyticsParams(params));
+}
+
+export function tipAnalyticsParams(input: {
+  placement: string;
+  eventSlug?: string;
+  sideHint?: string;
+  pagePath: string;
+  errorType?: TipErrorType;
+}) {
+  return engagementParams({
+    placement: input.placement,
+    event_slug: input.eventSlug,
+    side_hint: input.sideHint,
+    page_path: input.pagePath,
+    error_type: input.errorType,
+  });
+}
+
+export function trackTip(event: TipEvent, params: Record<string, string>): void {
+  trackEvent(event, params);
 }

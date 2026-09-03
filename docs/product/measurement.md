@@ -68,6 +68,14 @@ Target once grading begins: every objectively settled mapped pick is graded, wit
 - Graded-receipt views.
 - Email-interest view-to-success conversion by placement.
 
+### Community tip operations
+
+- Tips received and duplicate rate.
+- Received-to-mailbox and received-to-Audit latency.
+- Audit pass rate and promoted-tip rate.
+- Featured-event coverage holes filled by a community tip.
+- Tip handling time by source lane.
+
 ### Retention
 
 - Seven-day and 28-day return rate.
@@ -85,6 +93,7 @@ Behavioral analytics should use stable object IDs, never email addresses or quot
 - `share_intent`: `artifact_type`, `event_slug`, optional `pundit_id`, `status`.
 - `filter_use`: `surface`, `filter_name`, `filter_value`.
 - Existing email-interest events remain as implemented and must not include PII.
+- `tip_form_view`, `tip_submit`, `tip_success`, and `tip_error`: `placement`, optional `event_slug`, optional `side_hint`, `page_path`, and optional `error_type`. Never send the submitted URL, pundit name, timestamp hint, or free text.
 
 Do not add instrumentation merely because it is measurable. Each event should answer a named product question.
 

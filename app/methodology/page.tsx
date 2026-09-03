@@ -41,6 +41,11 @@ const FAQ = [
     answer:
       "The site needs a named public sports voice who picks as independent analysis, a verified public pick, and a verified photo. A team beat or homer covering one program is not a pundit. Empty sides stay empty rather than being filled with weak or unattributed claims.",
   },
+  {
+    question: "Can I submit a pick we missed?",
+    answer:
+      "Yes. Send the original public source through the submission page. The link is required; the pundit, event, and location hints are optional. A submission is an untrusted lead: Scout independently reopens the link and applies the same speaker, quote, event, side, Audit, and Promote rules before anything can appear on the site.",
+  },
 ];
 
 export default function MethodologyPage() {
@@ -82,6 +87,13 @@ export default function MethodologyPage() {
           source that preserves the quote and clearly identifies where it was
           made. We label the source we actually reviewed. We never pass a
           secondary report off as the original.
+        </p>
+        <p>
+          Found a pick we missed? <a href="/submit/">Send the public source</a>.
+          The link is required; any pundit, event, or location hints are optional.
+          A submission only enters Scout as a discovery lead. We independently
+          reopen it and apply the same qualification, mapping, Audit, and Promote
+          rules before anything can reach the public record.
         </p>
         <p>
           See a problem? <a href={CONTACT_HREF}>Contact us</a> with the

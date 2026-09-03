@@ -400,6 +400,7 @@ describe("Editorial social-card resolvers", () => {
       "leaderboard",
       "ncaaf",
       "nfl",
+      "submit",
       "about",
       "methodology",
       "privacy",

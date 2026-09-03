@@ -5,16 +5,19 @@ import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
 import { TrackView } from "@/components/TrackView";
+import { TipPrompt } from "@/components/TipPrompt";
 import { JsonLd } from "@/components/JsonLd";
 import { eventDetailOpenParams } from "@/lib/analytics";
 import {
   eventHasTakes,
+  eventKind,
   eventScanStatus,
   getEvent,
   loadCalls,
   loadEvents,
   loadPundits,
   loadTeams,
+  sidesForCard,
 } from "@/lib/data";
 import {
   breadcrumbList,
@@ -67,6 +70,9 @@ export default async function PickPage({
   const pundits = loadPundits();
   const slate = event.sport === "nfl" ? "/nfl" : "/ncaaf";
   const sportLabel = event.sport === "nfl" ? "NFL" : "NCAAF";
+  const sides = sidesForCard(event, calls);
+  const missingSides = sides.filter((side) => side.calls.length === 0);
+  const missingSide = eventKind(event) === "game" && missingSides.length === 1 ? missingSides[0] : undefined;
   const crumbs = [
     { name: "Picks", href: "/" },
     { name: sportLabel, href: slate },
@@ -124,6 +130,14 @@ export default async function PickPage({
         permalink={false}
         detail
       />
+      {eventScanStatus(event, calls) === "open" ? (
+        <TipPrompt
+          eventSlug={event.slug}
+          eventTitle={event.title}
+          sideHint={missingSide?.side}
+          sideLabel={missingSide?.label}
+        />
+      ) : null}
       {eventHasTakes(event.slug, calls) ? (
         <EmailInterestForm
           placement="pick_detail"

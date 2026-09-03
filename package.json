@@ -13,6 +13,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "scout:feeds": "node scripts/scout-feeds.mjs",
+    "tips:pull": "tsx scripts/tip-mailbox.mjs pull",
+    "tips:add": "tsx scripts/tip-mailbox.mjs add",
     "roster:add": "node scripts/roster-add.mjs",
     "verify:static": "node scripts/verify-static.mjs",
     "verify:live": "node scripts/verify-live.mjs",

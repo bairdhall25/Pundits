@@ -16,6 +16,7 @@ describe("social page registry", () => {
       "leaderboard",
       "ncaaf",
       "nfl",
+      "submit",
       "about",
       "methodology",
       "privacy",

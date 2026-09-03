@@ -6,6 +6,22 @@ pages_build_output_dir = "out"
 binding = "PUNDITS_EMAIL"
 id = "cda9bfd1f31f441297a3082a8875363b"
 
+[[kv_namespaces]]
+binding = "PUNDITS_TIPS"
+id = "dbba5a0ccb5747db8ee8a8be8ebec6b9"
+
 [[services]]
+binding = "EMAIL_NOTIFY"
+service = "pundits-email-notify"
+
+[[env.preview.kv_namespaces]]
+binding = "PUNDITS_EMAIL"
+id = "cda9bfd1f31f441297a3082a8875363b"
+
+[[env.preview.kv_namespaces]]
+binding = "PUNDITS_TIPS"
+id = "574285360e3f41038fbcfb3f6cf876bc"
+
+[[env.preview.services]]
 binding = "EMAIL_NOTIFY"
 service = "pundits-email-notify"

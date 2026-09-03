@@ -12,6 +12,7 @@ export const SOCIAL_PAGE_REGISTRY = {
   leaderboard: { route: "/leaderboard", image: "/og/pages/leaderboard.png" },
   ncaaf: { route: "/ncaaf", image: "/og/pages/ncaaf.png" },
   nfl: { route: "/nfl", image: "/og/pages/nfl.png" },
+  submit: { route: "/submit", image: "/og/pages/submit.png" },
   about: { route: "/about", image: "/og/pages/about.png" },
   methodology: { route: "/methodology", image: "/og/pages/methodology.png" },
   privacy: { route: "/privacy", image: "/og/pages/privacy.png" },

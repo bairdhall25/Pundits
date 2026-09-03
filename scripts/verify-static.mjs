@@ -43,6 +43,7 @@ for (const href of [
   "/stories/",
   "/book/",
   "/leaderboard/",
+  "/submit/",
   "/about/",
   "/methodology/",
   "/privacy/",

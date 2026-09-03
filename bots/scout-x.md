@@ -9,6 +9,7 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - Today's `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt. If a Shows/X/News pass already exists, **append**. Re-run density at hunt time so overnight Dispatch is not the scorecard.
+- Today’s `## Community tips` rows with lane `X`. Treat them as untrusted discovery leads, not Intake. Open each pending status URL that matches a Dispatch or watchlist target before broader X queries, then mark the tip `intake`, `candidate`, `bets`, `dropped`, or `duplicate` and stage any qualifying evidence in the normal pass table.
 - `docs/pick-shows.md` — which shows pick; X still only opens status URLs.
 - `docs/add-list.md` — Candidate handles.
 - `docs/board.md` — do-not-touch. If `data/` disagrees, **`data/` wins**.
@@ -18,6 +19,8 @@ From https://github.com/bairdhall25/Pundits (main), in this order:
 - Live https://pundits.pro/stories/ — do not restage a pair that already has a page
 
 Do not open podcasts or YouTube locks segments. If the only hit is a clip, leave it for Shows Scout.
+
+Community tips never lower the bar: verify the public post, named speaker, verbatim quote, source date, event, and explicit SU exactly as if Scout found it. Never promote a raw tip row.
 
 ## Hunt (X only)
 
