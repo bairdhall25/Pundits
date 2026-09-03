@@ -8,10 +8,14 @@ export type FeaturedPin = {
   until: string;
 };
 
+export type DisplayTier = "featured" | "full" | "compact";
+
 export type HomepageFeaturedGames = {
   hero: Event | undefined;
   ncaaf: Event[];
   nfl: Event[];
+  ncaafCompact: Event[];
+  nflCompact: Event[];
   ncaafFinal: Event[];
   nflFinal: Event[];
 };
@@ -152,21 +156,6 @@ function coverage(
   };
 }
 
-function primetimeNetwork(event: Event): boolean {
-  const network = event.network ?? "";
-  const match = event.kickoff?.match(/\b(\d{1,2}):\d{2}\b/);
-  const hour = match ? Number(match[1]) : -1;
-  return /\b(ABC|CBS|ESPN|FOX|NBC)\b/i.test(network) && hour >= 7 && hour < 12;
-}
-
-function showcase(event: Event): boolean {
-  return /GameDay|Big Noon/i.test(`${event.network ?? ""} ${event.kickoff ?? ""}`);
-}
-
-function rankedMatchup(event: Event): boolean {
-  return /(?:#|No\.\s*)\d+/i.test(event.title);
-}
-
 function activePinnedSlug(
   pin: FeaturedPin | null,
   pool: Event[],
@@ -193,13 +182,6 @@ export function sortFeaturedGames(
       Number(b.slug === pinnedSlug) - Number(a.slug === pinnedSlug);
     if (pinOrder) return pinOrder;
 
-    // An operator-designated home game takes a homepage slot before an off-home
-    // one. docs/board.md keeps watchlist games off `/` until an explicit
-    // `onHome` flip; without this, minting off-home overflow could displace a
-    // home game purely on kickoff order.
-    const homeOrder = Number(b.onHome) - Number(a.onHome);
-    if (homeOrder) return homeOrder;
-
     const when = dateValue(a) - dateValue(b);
     if (when) return when;
 
@@ -218,18 +200,53 @@ export function sortFeaturedGames(
       Number(bCoverage.disagreement) - Number(aCoverage.disagreement);
     if (disagreement) return disagreement;
 
-    const primetime = Number(primetimeNetwork(b)) - Number(primetimeNetwork(a));
-    if (primetime) return primetime;
-
-    const destination = Number(showcase(b)) - Number(showcase(a));
-    if (destination) return destination;
-
-    const ranked = Number(rankedMatchup(b)) - Number(rankedMatchup(a));
-    if (ranked) return ranked;
-
-    const homeRank = a.homeRank - b.homeRank;
-    return homeRank || a.slug.localeCompare(b.slug);
+    // Size remains deliberately deferred until it has an explicit data source.
+    return a.slug.localeCompare(b.slug);
   });
+}
+
+function selectFeaturedGame(
+  sorted: Event[],
+  calls: Call[],
+  pundits: Pundit[],
+  pin: FeaturedPin | null,
+  asOf: string
+): Event | undefined {
+  const pinnedSlug = activePinnedSlug(pin, sorted, asOf);
+  const pinned = pinnedSlug
+    ? sorted.find((event) => event.slug === pinnedSlug)
+    : undefined;
+  const twoSided = sorted.find(
+    (event) => coverage(event, calls, pundits).bothSides
+  );
+  return pinned ?? twoSided ?? sorted[0];
+}
+
+function nonFeaturedTier(
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): Exclude<DisplayTier, "featured"> {
+  const eventCoverage = coverage(event, calls, pundits);
+  return eventCoverage.bothSides || eventCoverage.faces >= 2
+    ? "full"
+    : "compact";
+}
+
+/** Display weight is contextual: `events` is the complete homepage candidate pool. */
+export function displayTier(
+  event: Event,
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[],
+  pin: FeaturedPin | null = null,
+  asOf = todayIso()
+): DisplayTier {
+  const sorted = sortFeaturedGames(events, calls, pundits, pin, asOf);
+  const featured = selectFeaturedGame(sorted, calls, pundits, pin, asOf);
+  return event.slug === featured?.slug
+    ? "featured"
+    : nonFeaturedTier(event, calls, pundits);
 }
 
 function sortFinalGames(
@@ -256,21 +273,30 @@ export function getHomepageFeaturedGames(
   sectionLimit = 3
 ): HomepageFeaturedGames {
   const sorted = sortFeaturedGames(events, calls, pundits, pin, asOf);
-  const pinnedSlug = activePinnedSlug(pin, sorted, asOf);
-  const pinned = pinnedSlug
-    ? sorted.find((event) => event.slug === pinnedSlug)
-    : undefined;
-  const twoSided = sorted.find(
-    (event) => coverage(event, calls, pundits).bothSides
-  );
+  const hero = selectFeaturedGame(sorted, calls, pundits, pin, asOf);
   const finals = sortFinalGames(events, calls, pundits);
+  const sections = (sport: Sport) => {
+    const candidates = sorted.filter(
+      (event) => event.sport === sport && event.slug !== hero?.slug
+    );
+    const full = candidates
+      .filter((event) => nonFeaturedTier(event, calls, pundits) === "full")
+      .slice(0, sectionLimit);
+    const fullSlugs = new Set(full.map((event) => event.slug));
+    return {
+      full,
+      compact: candidates.filter((event) => !fullSlugs.has(event.slug)),
+    };
+  };
+  const ncaaf = sections("ncaaf");
+  const nfl = sections("nfl");
 
   return {
-    hero: pinned ?? twoSided ?? sorted[0],
-    ncaaf: sorted
-      .filter((event) => event.sport === "ncaaf")
-      .slice(0, sectionLimit),
-    nfl: sorted.filter((event) => event.sport === "nfl").slice(0, sectionLimit),
+    hero,
+    ncaaf: ncaaf.full,
+    nfl: nfl.full,
+    ncaafCompact: ncaaf.compact,
+    nflCompact: nfl.compact,
     ncaafFinal: finals.filter((event) => event.sport === "ncaaf"),
     nflFinal: finals.filter((event) => event.sport === "nfl"),
   };

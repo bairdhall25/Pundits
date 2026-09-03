@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  displayTier,
   getHomepageFeaturedGames,
   getLeagueGames,
   loadFeaturedPin,
@@ -87,6 +88,38 @@ describe("featured game display", () => {
     );
 
     expect(featured.hero?.slug).toBe(clemson.slug);
+    expect(featured.ncaaf).toEqual([]);
+    expect(featured.nflCompact.map((event) => event.slug)).toEqual([
+      opener.slug,
+    ]);
+  });
+
+  it("derives featured, full, and compact tiers without using onHome", () => {
+    const pinned = game("pinned", "ncaaf", "2026-09-05", {
+      onHome: false,
+    });
+    const full = game("full", "ncaaf", "2026-09-05", { onHome: false });
+    const compact = game("compact", "ncaaf", "2026-09-05", {
+      onHome: true,
+    });
+    const events = [compact, full, pinned];
+    const calls = [
+      pick(pinned.slug, "face-1", "yes"),
+      pick(full.slug, "face-2", "no"),
+      pick(full.slug, "face-3", "no"),
+      pick(compact.slug, "face-4", "no"),
+    ];
+    const pin = { slug: pinned.slug, until: "2026-09-05" };
+
+    expect(displayTier(pinned, events, calls, pundits, pin, "2026-09-01")).toBe(
+      "featured"
+    );
+    expect(displayTier(full, events, calls, pundits, pin, "2026-09-01")).toBe(
+      "full"
+    );
+    expect(
+      displayTier(compact, events, calls, pundits, pin, "2026-09-01")
+    ).toBe("compact");
   });
 
   it("ignores an expired pin", () => {
@@ -133,7 +166,7 @@ describe("featured game display", () => {
     );
 
     expect(featured.hero?.slug).toBe(fight.slug);
-    expect(featured.nfl.map((event) => event.slug)).toContain(opener.slug);
+    expect(featured.nflCompact.map((event) => event.slug)).toContain(opener.slug);
   });
 
   it("keeps unpriced games off home but allows them on a league board", () => {
@@ -218,10 +251,19 @@ describe("featured game display", () => {
         events,
         calls,
         pundits,
+        null,
+        "2026-09-01"
+      ).ncaafCompact.map((event) => event.slug)
+    ).toContain(wisconsin.slug);
+    expect(
+      getHomepageFeaturedGames(
+        events,
+        calls,
+        pundits,
         { slug: wisconsin.slug, until: "2026-09-06" },
         "2026-09-01"
-      ).ncaaf.map((event) => event.slug)
-    ).toContain(wisconsin.slug);
+      ).hero?.slug
+    ).toBe(wisconsin.slug);
   });
 
   it("fills College and NFL independently", () => {
@@ -245,6 +287,35 @@ describe("featured game display", () => {
 
     expect(featured.ncaaf).toHaveLength(3);
     expect(featured.nfl).toHaveLength(2);
+  });
+
+  it("keeps full-card overflow on home by rendering it compactly", () => {
+    const pinned = game("pinned", "ncaaf", "2026-09-01");
+    const dense = Array.from({ length: 4 }, (_, index) =>
+      game(`dense-${index}`, "ncaaf", `2026-09-0${index + 2}`)
+    );
+    const events = [pinned, ...dense];
+    const calls = [
+      ...twoSided(pinned.slug),
+      ...dense.flatMap((event, index) => twoSided(event.slug, index + 3)),
+    ];
+    const featured = getHomepageFeaturedGames(
+      events,
+      calls,
+      pundits,
+      { slug: pinned.slug, until: "2026-09-05" },
+      "2026-09-01",
+      3
+    );
+
+    expect(featured.ncaaf.map((event) => event.slug)).toEqual([
+      "dense-0",
+      "dense-1",
+      "dense-2",
+    ]);
+    expect(featured.ncaafCompact.map((event) => event.slug)).toEqual([
+      "dense-3",
+    ]);
   });
 
   it("keeps settled games in Final rather than featured slots", () => {
@@ -319,8 +390,12 @@ describe("featured game display", () => {
   });
 
   it("uses unique pundits for the coverage tie-break", () => {
-    const duplicate = game("duplicate-face", "ncaaf", "2026-09-05");
-    const denser = game("two-faces", "ncaaf", "2026-09-05");
+    const duplicate = game("duplicate-face", "ncaaf", "2026-09-05", {
+      onHome: true,
+    });
+    const denser = game("two-faces", "ncaaf", "2026-09-05", {
+      onHome: false,
+    });
     const calls = [
       pick(duplicate.slug, "face-1", "no"),
       { ...pick(duplicate.slug, "face-1", "no"), id: "duplicate-call" },
@@ -350,8 +425,11 @@ describe("featured game display", () => {
       "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. George Wrighster and Danny Kanell pick Clemson."
     );
     expect(featured.ncaaf.map((event) => event.slug)).toEqual([
-      "clemson-at-lsu-2026",
       "ucla-at-cal-2026",
+      "wisconsin-vs-nd-2026",
+      "smu-at-fsu-2026",
+    ]);
+    expect(featured.ncaafCompact.map((event) => event.slug)).toEqual([
       "baylor-vs-auburn-2026",
     ]);
     expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
@@ -359,9 +437,17 @@ describe("featured game display", () => {
       "unc-vs-tcu-2026",
     ]);
     expect(featured.nfl.map((event) => event.slug)).toEqual([
-      "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
       "bills-at-texans-2026",
+    ]);
+    expect(featured.nflCompact.map((event) => event.slug)).toEqual([
+      "patriots-at-seahawks-2026",
+      "dolphins-at-raiders-2026",
+      "commanders-at-eagles-2026",
+      "cowboys-at-giants-2026",
+      "packers-at-vikings-2026",
+      "ravens-at-colts-2026",
+      "broncos-at-chiefs-2026",
     ]);
     expect(featured.nflFinal).toEqual([]);
   });

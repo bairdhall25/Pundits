@@ -24,9 +24,97 @@ import { KickoffTag } from "@/components/KickoffTag";
 import { MarketDetails } from "@/components/MarketDetails";
 import { americanOdds, statusChipText } from "@/lib/format";
 import { eventKalshiUrl } from "@/lib/kalshi";
+import { mappedHardCallsForEvent } from "@/lib/featured";
 import { isVsGame } from "@/lib/public-side";
 import { takePath } from "@/lib/seo";
 import type { Call, CardSide, Event, Pundit, Team } from "@/lib/types";
+
+export function CompactEventCard({
+  event,
+  calls,
+  pundits,
+  surface = "event",
+}: {
+  event: Event;
+  calls: Call[];
+  pundits: Pundit[];
+  surface?: EngagementSurface;
+}) {
+  const [yes, no] = sidesForCard(event, calls);
+  const eventHref = `/picks/${event.slug}`;
+  const status = eventScanStatus(event, calls);
+  const byId = new Map(pundits.map((pundit) => [pundit.id, pundit]));
+  const eligible = mappedHardCallsForEvent(event, calls).filter((call) => {
+    const pundit = byId.get(call.punditId);
+    return Boolean(pundit?.photo.trim());
+  });
+  const uniquePicks = Array.from(
+    new Map(eligible.map((call) => [call.punditId, call])).values()
+  );
+  const sideLabels = { yes: yes.label, no: no.label };
+  const pickCount = uniquePicks.length;
+
+  return (
+    <article
+      className={`compact-event ${eventHasFight(event.slug, calls) ? "fight" : ""}`}
+      data-kickoff={event.kickoffDate}
+    >
+      <div className="compact-event-main">
+        <div className="compact-event-copy">
+          <h3 className="compact-event-title type-broadcast">
+            <TrackLink
+              href={eventHref}
+              event="event_detail_open"
+              params={eventDetailOpenParams({
+                eventSlug: event.slug,
+                sport: event.sport,
+                surface,
+              })}
+            >
+              {event.title}
+            </TrackLink>
+          </h3>
+          <div className="compact-event-meta">
+            {status === "open" ? <KickoffTag date={event.kickoffDate} /> : null}
+            <span>
+              {status === "open"
+                ? formatGameWhen(event)
+                : eventStatusLine(event, calls)}
+            </span>
+          </div>
+        </div>
+        <Link
+          href={eventHref}
+          className="compact-event-market"
+          aria-label={`${event.title} frozen market: ${yes.label} ${formatCents(yes.cents)}, ${no.label} ${formatCents(no.cents)}`}
+        >
+          {[yes, no].map((side) => (
+            <span key={side.side} className="compact-market-side">
+              <span>{side.label}</span>
+              <strong className="type-broadcast">{formatCents(side.cents)}</strong>
+            </span>
+          ))}
+        </Link>
+      </div>
+      <div className="compact-event-picks">
+        <span className="compact-event-count">
+          {pickCount} verified {pickCount === 1 ? "pick" : "picks"}
+        </span>
+        <div className="compact-event-links" aria-label={`Picks for ${event.title}`}>
+          {uniquePicks.map((call) => {
+            const pundit = byId.get(call.punditId);
+            if (!pundit || !call.side) return null;
+            return (
+              <Link key={call.id} href={takePath(event.slug, pundit.id)}>
+                {pundit.name} → {sideLabels[call.side]}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </article>
+  );
+}
 
 function FaceRow({
   call,

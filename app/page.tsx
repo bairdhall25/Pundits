@@ -1,5 +1,5 @@
 import { EmailInterestForm } from "@/components/EmailInterestForm";
-import { EventCard } from "@/components/EventCard";
+import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { FinalRow } from "@/components/FinalRow";
 import { HowItWorks } from "@/components/HowItWorks";
 import { SportFilter } from "@/components/SportFilter";
@@ -31,6 +31,7 @@ function Weekend({
   when,
   href,
   events,
+  compactEvents,
   finals,
   calls,
   pundits,
@@ -42,6 +43,7 @@ function Weekend({
   when: string;
   href: string;
   events: Event[];
+  compactEvents: Event[];
   finals: Event[];
   calls: Call[];
   pundits: Pundit[];
@@ -68,6 +70,22 @@ function Weekend({
           surface="home"
         />
       ))}
+      {compactEvents.length ? (
+        <div className="compact-slate">
+          <h3 className="compact-slate-title type-broadcast">
+            More games with verified picks
+          </h3>
+          {compactEvents.map((event) => (
+            <CompactEventCard
+              key={event.slug}
+              event={event}
+              calls={calls}
+              pundits={pundits}
+              surface="home"
+            />
+          ))}
+        </div>
+      ) : null}
       {recap ? (
         <p className="week-recap">
           <a href={recap.href}>{recap.line}</a>
@@ -171,6 +189,7 @@ export default function HomePage() {
         when="Week 1 Sep 3–7 · Week 0 is final"
         href="/ncaaf/"
         events={ncaafCards}
+        compactEvents={featured.ncaafCompact}
         finals={featured.ncaafFinal}
         calls={calls}
         pundits={pundits}
@@ -183,6 +202,7 @@ export default function HomePage() {
         when="Week 1 · Sep 9–14 · regular season, not preseason"
         href="/nfl/"
         events={nflCards}
+        compactEvents={featured.nflCompact}
         finals={featured.nflFinal}
         calls={calls}
         pundits={pundits}

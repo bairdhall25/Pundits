@@ -11,11 +11,14 @@ A number that mixes size, kickoff, and face count is arbitrary, jumpy, and hard 
 
 ## Slots
 
-`/` has a hero plus two sections. Each section can hold **multiple** games.
+`/` has a hero plus two sections. Each section has full and compact display
+tiers.
 
 - **Hero** — one open (or grading) game.
-- **College** — up to three open/grading NCAAF games (hero may repeat here).
-- **NFL** — up to three open/grading NFL games.
+- **College** — up to three full open/grading NCAAF cards, then every remaining
+  complete game as a compact row. The hero does not repeat here.
+- **NFL** — up to three full open/grading NFL cards, then every remaining
+  complete game as a compact row. The hero does not repeat here.
 - **Final** — settled complete cards from those boards, as receipts, not as the lead. `onHome` is not the gate.
 
 `/ncaaf/` and `/nfl/` are the full slates: every **game** with ≥1 mapped hard pick. No zero-pick “waiting” rows on those pages. Futures stay in the futures block, not in this-week featured slots.
@@ -35,6 +38,27 @@ Settled games leave featured slots.
 
 Then fill College and NFL **separately** from that order so one sport cannot eat the page.
 
+Size remains an intended final tie-break, but is currently deferred. Until it
+has an explicit, consistently maintained source, an event slug is the stable
+final tie-break.
+
+## Display tiers
+
+Display weight is derived from the pool; it is not a new event flag and does
+not use `onHome`.
+
+- **Featured** — the active pin; otherwise the first two-sided game in waterfall
+  order; otherwise the first complete game.
+- **Full** — a non-featured game with both sides filled or at least two unique
+  rostered faces with photos.
+- **Compact** — every other non-featured complete game. Compact rows show the
+  teams, kickoff, frozen cents, face count, and direct links to each take without
+  a portrait row.
+
+The three-card section limit applies only to full cards. Additional full-tier
+games fall through to the uncapped compact list so no complete game is dropped
+from `/`.
+
 ## Hero vs section
 
 - Empty side is honest and may stay **in a section** (Patriots with nobody on the dog).
@@ -51,15 +75,10 @@ Do not reshuffle the hero on every Promote. Keep the current hero until it kicks
 - Not `onHome` as a taste flag forever. Today’s `onHome` is the shipped featured set. The target is this waterfall. Until code uses it, do not infer `onHome` flips from this file — Promote still needs an explicit operator flip (`docs/capture-policy.md` rule 7).
 - Not live trending, injury news, weather, handle, or follower counts.
 
-## This week (until the sort is implemented)
-
-Keep the shipped board: Clemson is the lead; the three NFL openers stay in the NFL section even with empty YES. Watchlist SUs stay off `/` unless pinned. Keep logging picks; league pages should grow as mapped faces land.
-
-## Later
-
-Replace `onHome` as the homepage gate with this sort. `onHome` can become the pin, or go away. Capture policy does not change.
-
 Implementation brief for the first PR: `docs/superpowers/plans/2026-09-01-featured-games.md`.
 
 Implemented in `lib/featured.ts`. The current operator pin lives at
 `data/featured-pin.json`; `until` is inclusive through that calendar day.
+`onHome` remains in the editorial and capture workflow for now, but the homepage
+does not consult it. A later pass may collapse it into the pin or remove it once
+the waterfall has settled. Capture policy does not change.

@@ -1,6 +1,6 @@
 # Homepage display tiers plan
 
-Status: Proposed — see § Operator decisions before implementing
+Status: Historical — implemented 2026-09-03 with the proposed operator defaults
 
 Date: 2026-09-03
 
@@ -154,6 +154,10 @@ featured/pin-adjacent signal and as the Dispatch input it is today. A later pass
 can collapse `onHome` into the pin once the waterfall has shipped and settled.
 
 ## Operator decisions
+
+Implemented with `faces >= 2`, no `onHome` full-card override, and no compact
+cap. Full-card overflow also falls through to compact display so every complete
+game remains linked from `/`.
 
 1. **Full-card threshold.** `faces >= 2` is proposed. `>= 3` gives a tighter
    board; two-sided always qualifies either way. Live data: at `>= 2` the NFL
