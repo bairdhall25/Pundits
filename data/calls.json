@@ -918,5 +918,34 @@
     "eventSlug": "bills-at-texans-2026",
     "side": "no",
     "reasoning": "He takes Houston outright, citing the Texans' career edge against Josh Allen, a nasty Houston defense, Buffalo's new offensive coordinator Joe Brady, and questions on the Bills defense."
+  },
+  {
+    "id": "kanell-baylor-vs-auburn-20260903",
+    "punditId": "kanell",
+    "claim": "I'm going to lay them with Auburn. I do not trust DJ Lagway just yet to kind of take over that program. I think Auburn's defense is really good. I think Byron Brown and Auburn's offense should be able to control the line of scrimmage even with an offensive line that's a little bit shaky, but I'll lay them with the Auburn Tigers.",
+    "reasoning": "Kanell lays Auburn because he does not trust Lagway to take over Baylor yet and because he thinks Auburn’s defense plus Byron Brown will control the line even with a shaky Tigers offensive line.",
+    "source": "Cover 3 Week 1 LOCKS (~1:00:04)",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/week-1-locks-best-bets-against-the-spread-picks/id1257913963?i=1000787691684",
+    "sourceDate": "2026-09-03",
+    "kind": "hard",
+    "subject": "Auburn",
+    "paysOn": "Baylor vs Auburn (Week 1, Atlanta)",
+    "status": "pending",
+    "eventSlug": "baylor-vs-auburn-2026",
+    "side": "no"
+  },
+  {
+    "id": "kanell-smu-at-fsu-20260903",
+    "punditId": "kanell",
+    "claim": "If SMU is that much better, why is it only a field goal? Give me Florida State to win outright.",
+    "source": "Cover 3 Week 1 LOCKS (~1:10:40)",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/week-1-locks-best-bets-against-the-spread-picks/id1257913963?i=1000787691684",
+    "sourceDate": "2026-09-03",
+    "kind": "hard",
+    "subject": "Florida State",
+    "paysOn": "SMU at Florida State (Week 1)",
+    "status": "pending",
+    "eventSlug": "smu-at-fsu-2026",
+    "side": "no"
   }
 ]

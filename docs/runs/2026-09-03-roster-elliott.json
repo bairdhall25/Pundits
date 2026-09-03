@@ -1,0 +1,13 @@
+{
+  "id": "elliott",
+  "name": "Bud Elliott",
+  "outlet": "CBS / Cover 3",
+  "sport": "ncaaf",
+  "photo": "/photos/elliott.jpg",
+  "photoSource": "Official X avatar for @BudElliott3, retrieved via the Muck Rack profile mirror (bud-elliott.jpeg, untransformed 400x400) because x.com returns HTTP 402 to direct fetch. NOT a talent headshot: candid in sunglasses against a striped background. Retained on explicit operator override of the rule 8 usable-face test on 2026-09-03; 247Sports serves a 1x1 placeholder and his CBS writers page carries no headshot. Replace when a real headshot exists.",
+  "xHandle": "BudElliott3",
+  "factory": "Cover 3 LOCKS",
+  "eligibility": "association",
+  "calls": [],
+  "note": "Staged, NOT applied. Audit 2026-09-03 never reviewed the candidate SUs (0 mentions in docs/runs/2026-09-03-audit.md). Photo, handle, factory and eligibility are verified and reusable. Calls were cleared: they were built from the superseded LOCKS sidecar and must be re-staged from the corrected text (commit f7eb6f7) after Audit clears them."
+}

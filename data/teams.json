@@ -27,5 +27,7 @@
   { "id": "chiefs", "name": "Chiefs", "abbr": "KC", "primary": "#E31837", "ink": "#FFB81C", "sport": "nfl" },
   { "id": "bengals", "name": "Bengals", "abbr": "CIN", "primary": "#FB4F14", "ink": "#000000", "sport": "nfl" },
   { "id": "chargers", "name": "Chargers", "abbr": "LAC", "primary": "#0080C6", "ink": "#FFC20E", "sport": "nfl" },
-  { "id": "eagles", "name": "Eagles", "abbr": "PHI", "primary": "#004C54", "ink": "#A5ACAF", "sport": "nfl" }
+  { "id": "eagles", "name": "Eagles", "abbr": "PHI", "primary": "#004C54", "ink": "#A5ACAF", "sport": "nfl" },
+  { "id": "smu", "name": "SMU", "abbr": "SMU", "primary": "#354CA1", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "florida-state", "name": "Florida State", "abbr": "FSU", "primary": "#782F40", "ink": "#CEB888", "sport": "ncaaf" }
 ]

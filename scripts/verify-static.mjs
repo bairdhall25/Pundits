@@ -353,8 +353,10 @@ assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, u
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
 assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
-assert.match(newsSitemap, /\/picks\/clemson-at-lsu-2026\/staples\//);
-assert.match(newsSitemap, /\/picks\/wisconsin-vs-nd-2026\//);
+// News sitemap is a 2-day rolling window (recentNewsTakes, days = 2), so these
+// track the newest promoted batch and move with each promote.
+assert.match(newsSitemap, /\/picks\/baylor-vs-auburn-2026\/kanell\//);
+assert.match(newsSitemap, /\/picks\/smu-at-fsu-2026\/kanell\//);
 assert.doesNotMatch(newsSitemap, /\/ncaaf\/2026\/week-0\//);
 assert.doesNotMatch(newsSitemap, /\/teams\//);
 
