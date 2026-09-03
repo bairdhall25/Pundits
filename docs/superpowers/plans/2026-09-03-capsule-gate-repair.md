@@ -1,6 +1,6 @@
 # Capsule gate repair plan
 
-Status: Proposed — needs one operator decision (§ Decision required) before implementation
+Status: Approved 2026-09-03 — ready for implementation
 
 Date: 2026-09-03
 
@@ -70,35 +70,50 @@ the pick is not trustworthy. A bad capsule costs the capsule, not the pick.
    row into `data/`.
 3. Promote still never writes, expands, or repairs a capsule.
 4. No change to pick semantics, URL structure, grading, or market semantics.
-5. The 60-word ceiling stays. It is the rule that actually prevents transcript
-   dumps.
+5. The 60-word ceiling stays. This pipeline runs on ASR and every 2026-09-03
+   Scout pass flagged noisy audio, so "capture the reason" degrades into pasting
+   transcript without a cap. House rule 10 already forbids play-by-play and
+   transcript dumps; 60 words is what makes that enforceable rather than a
+   judgment call.
+6. **There is no minimum.** See § Capsule length below.
+7. No limit of any kind applies to `claim`, the verbatim quote. A two-word pick
+   is a pick.
 
-## Decision required
+## Capsule length — decided
 
-**The 25-word floor is a weak proxy for "did you capture a reason."** Several
-rejected capsules were complete, source-grounded sentences:
+**The floor is removed. The ceiling stays. Faithfulness is the gate.**
+
+A word count cannot distinguish a good short capsule from a thin one:
 
 > "Patterson takes SMU laying three as the better, more experienced team with the
-> coaching edge over Florida State." — 18 words, rejected
+> coaching edge over Florida State." — 18 words, rejected under the old floor
 >
 > "Moneyline sprinkle. He is picking Cal to beat UCLA outright." — 10 words,
-> rejected
+> rejected under the old floor
 
-The first is a perfectly good capsule. The second is genuinely thin. A single
-word count cannot tell them apart, and after this plan's Change 1 the floor stops
-costing picks either way — it only decides whether a capsule renders.
+Both are true and source-grounded. The second is short but carries real context:
+"moneyline sprinkle" tells a reader this was a plus-money flyer rather than a
+conviction call. Discarding it leaves the pick page with no reason at all, which
+is worse for the reader and protects nothing.
 
-Operator picks one:
+What the floor was reaching for — "did you actually capture the reason" — is
+already covered, and covered better, by Audit's faithfulness test: a capsule must
+be a true paraphrase of at most two concrete factors the same speaker gave in
+that source, with no invented analysis. Audit judges that on the audio. A word
+count only guessed at it.
 
-- **(a) Lower the floor to 15 words**, keep the 60 ceiling. Recovers capsules like
-  Patterson's SMU line; still rejects the 8–14 word stubs. Requires updating
-  `lib/calls.test.ts`, house rule 10, and `bots/audit.md` rule 7.
-- **(b) Keep 25.** Change 1 alone stops the bleeding; more capsules simply ship
-  blank until Scout's staging improves.
-- **(c) Drop the floor entirely**, keep the ceiling and the faithfulness test.
-  Audit judges whether a capsule earns its place rather than counting words.
+Implementation:
 
-Implement (b) if no answer arrives — it is the no-op on existing thresholds.
+- `bots/README.md` house rule 10: drop the 25-word minimum, keep "at most 60
+  words", keep the two-factor faithfulness requirement and the no-transcript-dump
+  rule.
+- `bots/audit.md` rule 7: drop the minimum; see Change 1 for the rewritten rule.
+- `lib/calls.test.ts`: remove the `toBeGreaterThanOrEqual(25)` assertion on
+  `reasoning`; keep `toBeLessThanOrEqual(60)` and the single-paragraph check.
+- `scripts/validate-run.mjs` (Change 3): ceiling and single-paragraph only.
+
+No limit is introduced on `claim`. There has never been one and there should not
+be: "CATS win" is a complete straight-up pick.
 
 ## Change 1 — Audit verdicts separate pick defects from capsule defects
 
@@ -116,7 +131,7 @@ Add two verdicts:
 Reserve `fail` for defects in the pick itself. Rewrite rule 7 so the capsule
 clause cannot produce `fail`:
 
-> 7. Any `reasoning` capsule must be N–60 words, a faithful paraphrase of at most
+> 7. Any `reasoning` capsule must be at most 60 words, a faithful paraphrase of at most
 >    two concrete factors the same speaker gave in that source, and free of
 >    copied captions or added analysis. Blank reasoning is valid. A capsule that
 >    is out of range, unsupported, speaker-mixed, or factually wrong is a
@@ -187,7 +202,8 @@ in Audit.
 
 Per Intake/Candidates row, check:
 
-1. `reasoning`, when present, is N–60 words and single-paragraph.
+1. `reasoning`, when present, is at most 60 words and single-paragraph. There is
+   no minimum.
 2. `reasoning` contains no routing-clause markers — `Off-home`, `Dense game`,
    `Conflicts`, `Audit reopen`, `Audit must reopen`, `operator splits`,
    `Scout does not propose`, `not previously carded`, `not a flip`. These belong
@@ -233,7 +249,16 @@ failing row is yours to fix, not Audit's to reject."
 
 Once Change 1 lands, re-run Audit over the 16 capsule-only rows from
 2026-09-03 — they need no re-listening, only re-verdicting against the corrected
-rule — and Promote the mapped ones. Expected recovery from that single run:
+rule — and Promote the mapped ones.
+
+Note the floor removal compounds the recovery. 14 of those 16 rows failed on
+length alone, and their capsules were faithful; with no minimum most become plain
+`ok` and their capsules **render** rather than being dropped. Only the two rows
+with a factually wrong capsule (Kanell naming "Frazier", Cowherd naming Oklahoma
+State) ship as `ok-no-reasoning` with the field omitted, because those are
+content defects that Promote is forbidden to repair.
+
+Expected recovery from that single run:
 
 - `kanell` `clemson-at-lsu-2026` yes — capsule names the wrong quarterback; ships
   with `reasoning` omitted, so a second YES lands on the flagship home game
@@ -254,13 +279,14 @@ The 3 genuine pick defects stay out, which is the point.
 4. A fixture Audit row marked `ok-no-reasoning` is promoted by a Promote dry run
    with no `reasoning` key on the resulting call.
 5. `npm run build && npm run verify:static` green.
-6. `lib/calls.test.ts` still enforces the surviving floor and the 60 ceiling on
-   every committed capsule — this plan does not relax the standard for capsules
-   that actually ship.
+6. `lib/calls.test.ts` enforces the 60-word ceiling and single-paragraph shape on
+   every committed capsule, and no longer asserts a minimum. A fixture capsule of
+   61 words fails; a truthful 10-word capsule passes.
 
 ## Out of scope
 
 - Changing what counts as a straight-up pick. House rule 3 stands.
+- Any length rule on `claim`. The verbatim quote has no minimum or maximum.
 - Automating capsule authorship. No bot writes a capsule it did not hear.
 - Re-listening to 2026-09-03 audio. The backfill is a re-verdict, not a re-hunt.
 - Bets promotion. Bets stay out of `data/`.
