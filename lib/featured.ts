@@ -193,6 +193,13 @@ export function sortFeaturedGames(
       Number(b.slug === pinnedSlug) - Number(a.slug === pinnedSlug);
     if (pinOrder) return pinOrder;
 
+    // An operator-designated home game takes a homepage slot before an off-home
+    // one. docs/board.md keeps watchlist games off `/` until an explicit
+    // `onHome` flip; without this, minting off-home overflow could displace a
+    // home game purely on kickoff order.
+    const homeOrder = Number(b.onHome) - Number(a.onHome);
+    if (homeOrder) return homeOrder;
+
     const when = dateValue(a) - dateValue(b);
     if (when) return when;
 

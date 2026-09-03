@@ -344,7 +344,7 @@ describe("Editorial social-card resolvers", () => {
       mode: "week",
       state: "pending",
       headline: "Week 1",
-      context: "11 picks · 5 games",
+      context: "14 picks · 6 games",
     });
     expect(card.feature).toMatchObject({
       headline: "Clemson at LSU",

@@ -351,8 +351,8 @@ describe("featured game display", () => {
     );
     expect(featured.ncaaf.map((event) => event.slug)).toEqual([
       "clemson-at-lsu-2026",
+      "ucla-at-cal-2026",
       "baylor-vs-auburn-2026",
-      "wisconsin-vs-nd-2026",
     ]);
     expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
       "ncsu-at-uva-2026",

@@ -29,5 +29,16 @@
   { "id": "chargers", "name": "Chargers", "abbr": "LAC", "primary": "#0080C6", "ink": "#FFC20E", "sport": "nfl" },
   { "id": "eagles", "name": "Eagles", "abbr": "PHI", "primary": "#004C54", "ink": "#A5ACAF", "sport": "nfl" },
   { "id": "smu", "name": "SMU", "abbr": "SMU", "primary": "#354CA1", "ink": "#FFFFFF", "sport": "ncaaf" },
-  { "id": "florida-state", "name": "Florida State", "abbr": "FSU", "primary": "#782F40", "ink": "#CEB888", "sport": "ncaaf" }
+  { "id": "florida-state", "name": "Florida State", "abbr": "FSU", "primary": "#782F40", "ink": "#CEB888", "sport": "ncaaf" },
+  { "id": "ucla", "name": "UCLA", "abbr": "UCLA", "primary": "#2D68C4", "ink": "#FFD100", "sport": "ncaaf" },
+  { "id": "california", "name": "California", "abbr": "CAL", "primary": "#003262", "ink": "#FDB515", "sport": "ncaaf" },
+  { "id": "commanders", "name": "Commanders", "abbr": "WAS", "primary": "#5A1414", "ink": "#FFB612", "sport": "nfl" },
+  { "id": "cowboys", "name": "Cowboys", "abbr": "DAL", "primary": "#003594", "ink": "#FFFFFF", "sport": "nfl" },
+  { "id": "giants", "name": "Giants", "abbr": "NYG", "primary": "#0B2265", "ink": "#A71930", "sport": "nfl" },
+  { "id": "broncos", "name": "Broncos", "abbr": "DEN", "primary": "#FB4F14", "ink": "#002244", "sport": "nfl" },
+  { "id": "colts", "name": "Colts", "abbr": "IND", "primary": "#002C5F", "ink": "#FFFFFF", "sport": "nfl" },
+  { "id": "packers", "name": "Packers", "abbr": "GB", "primary": "#203731", "ink": "#FFB612", "sport": "nfl" },
+  { "id": "vikings", "name": "Vikings", "abbr": "MIN", "primary": "#4F2683", "ink": "#FFC62F", "sport": "nfl" },
+  { "id": "dolphins", "name": "Dolphins", "abbr": "MIA", "primary": "#008E97", "ink": "#FC4C02", "sport": "nfl" },
+  { "id": "raiders", "name": "Raiders", "abbr": "LV", "primary": "#000000", "ink": "#A5ACAF", "sport": "nfl" }
 ]
