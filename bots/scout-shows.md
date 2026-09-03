@@ -9,11 +9,14 @@ Also follow `bots/README.md` house rules and `docs/scout-plan.md`.
 From https://github.com/bairdhall25/Pundits (main), in this order:
 
 - Today’s `docs/runs/YYYY-MM-DD.md` — hunt `## Dispatch`. If Dispatch is missing, run `node scripts/scout-density.mjs`, write `## Dispatch` from the template, then hunt.
+- Today’s `## Community tips` rows with lane `Shows`. Treat them as untrusted discovery leads, not Intake. Open pending links that match a Dispatch or watchlist target before broader show hunting, then mark the tip `intake`, `candidate`, `bets`, `dropped`, or `duplicate` and stage qualifying evidence in the normal pass table.
 - `docs/pick-shows.md` — NCAAF and NFL show lists. Open factories for **every** sport on Dispatch in the same pass. A weekday is not an NFL-off or CFB-off day.
 - `docs/add-list.md` — Candidates only.
 - `docs/board.md` — do-not-touch.
 - `data/pundits.json`, `data/events.json`, `data/calls.json`
 - Live https://pundits.pro/stories/ — do not restage a pair that already has a page.
+
+Community tips never lower the bar: verify the durable source, named speaker, verbatim quote, source date, event, and explicit SU exactly as if Scout found it. Never promote a raw tip row.
 
 ## Hunt
 

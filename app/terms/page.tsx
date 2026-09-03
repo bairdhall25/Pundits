@@ -29,6 +29,12 @@ export default function TermsPage() {
           empty until a quote verifies.
         </p>
         <p>
+          Submissions must point to lawful public sources. Do not submit private
+          messages, personal information, paywalled copies, or material you are
+          not entitled to share. A submission is a discovery lead only and does
+          not guarantee publication, roster eligibility, mapping, or credit.
+        </p>
+        <p>
           If something is wrong, <a href={CONTACT_HREF}>contact us</a>. Using
           the site means you accept these terms.
         </p>

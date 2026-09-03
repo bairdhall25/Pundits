@@ -2,7 +2,7 @@
 
 Status: Operational
 
-Last updated: 2026-09-01
+Last updated: 2026-09-03
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
 
@@ -34,10 +34,11 @@ Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Li
 2. Grade Clemson–LSU after the final, then recap within 24 hours.
 3. Grade NFL Week 1 as those games settle.
 4. Instrument the minimum engagement events in `measurement.md`.
-5. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, and graded-receipt returns.
-6. Establish four to six weeks of operating and audience baselines.
-7. Select a retention experiment from observed behavior.
-8. Test monetization only after repeat value is visible.
+5. Soft-launch public-source tips through event pages and the footer. Treat every submission as an untrusted Scout lead; review quality and operational load after three settled slates.
+6. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, graded-receipt returns, and qualified tip yield.
+7. Establish four to six weeks of operating and audience baselines.
+8. Select a retention experiment from observed behavior.
+9. Test monetization only after repeat value is visible.
 
 ## Capture vs display
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { Drawer } from "@base-ui/react/drawer";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CallCard } from "@/components/CallCard";
@@ -34,6 +35,58 @@ function Select({
   );
 }
 
+function FilterControls({
+  filter,
+  active,
+  onChange,
+  onReset,
+}: {
+  filter: BookFilter;
+  active: boolean;
+  onChange: (name: "sport" | "kind" | "mapping", value: string) => void;
+  onReset: () => void;
+}) {
+  return (
+    <>
+      <Select
+        label="Sport"
+        value={filter.sport}
+        onChange={(value) => onChange("sport", value)}
+        options={[
+          { value: "all", label: "All" },
+          { value: "ncaaf", label: "NCAAF" },
+          { value: "nfl", label: "NFL" },
+        ]}
+      />
+      <Select
+        label="Kind"
+        value={filter.kind}
+        onChange={(value) => onChange("kind", value)}
+        options={[
+          { value: "all", label: "All" },
+          { value: "hard", label: "Hard" },
+          { value: "soft", label: "Soft" },
+        ]}
+      />
+      <Select
+        label="Mapping"
+        value={filter.mapping}
+        onChange={(value) => onChange("mapping", value)}
+        options={[
+          { value: "all", label: "All" },
+          { value: "mapped", label: "Mapped" },
+          { value: "unmapped", label: "Unmapped" },
+        ]}
+      />
+      {active ? (
+        <button type="button" className="lb-toggle" onClick={onReset}>
+          Reset
+        </button>
+      ) : null}
+    </>
+  );
+}
+
 export function BookLedger({
   calls,
   pundits,
@@ -52,6 +105,23 @@ export function BookLedger({
   const active =
     f.q.trim() !== "" || f.sport !== "all" || f.kind !== "all" || f.mapping !== "all";
   const secondaryActive = f.sport !== "all" || f.kind !== "all" || f.mapping !== "all";
+  const secondaryCount = [f.sport, f.kind, f.mapping].filter((value) => value !== "all").length;
+
+  function changeFilter(name: "sport" | "kind" | "mapping", value: string) {
+    trackEvent(
+      "filter_use",
+      filterUseParams({ surface: "book", filterName: name, filterValue: value })
+    );
+    setF({ ...f, [name]: value });
+  }
+
+  function resetFilters() {
+    trackEvent(
+      "filter_use",
+      filterUseParams({ surface: "book", filterName: "reset", filterValue: "all" })
+    );
+    setF(emptyBookFilter);
+  }
 
   return (
     <>
@@ -65,82 +135,61 @@ export function BookLedger({
             placeholder="Quote, pundit, source"
           />
         </label>
-        <details className="feed-more">
-          <summary className={secondaryActive ? "on" : undefined}>Filter &amp; sort</summary>
-          <div className="feed-more-panel book-more-panel">
-            <Select
-              label="Sport"
-              value={f.sport}
-              onChange={(v) => {
-                trackEvent(
-                  "filter_use",
-                  filterUseParams({ surface: "book", filterName: "sport", filterValue: v })
-                );
-                setF({ ...f, sport: v as BookFilter["sport"] });
-              }}
-              options={[
-                { value: "all", label: "All" },
-                { value: "ncaaf", label: "NCAAF" },
-                { value: "nfl", label: "NFL" },
-              ]}
-            />
-            <Select
-              label="Kind"
-              value={f.kind}
-              onChange={(v) => {
-                trackEvent(
-                  "filter_use",
-                  filterUseParams({ surface: "book", filterName: "kind", filterValue: v })
-                );
-                setF({ ...f, kind: v as BookFilter["kind"] });
-              }}
-              options={[
-                { value: "all", label: "All" },
-                { value: "hard", label: "Hard" },
-                { value: "soft", label: "Soft" },
-              ]}
-            />
-            <Select
-              label="Mapping"
-              value={f.mapping}
-              onChange={(v) => {
-                trackEvent(
-                  "filter_use",
-                  filterUseParams({
-                    surface: "book",
-                    filterName: "mapping",
-                    filterValue: v,
-                  })
-                );
-                setF({ ...f, mapping: v as BookFilter["mapping"] });
-              }}
-              options={[
-                { value: "all", label: "All" },
-                { value: "mapped", label: "Mapped" },
-                { value: "unmapped", label: "Unmapped" },
-              ]}
-            />
-            {active ? (
-              <button
-                type="button"
-                className="lb-toggle"
-                onClick={() => {
-                  trackEvent(
-                    "filter_use",
-                    filterUseParams({
-                      surface: "book",
-                      filterName: "reset",
-                      filterValue: "all",
-                    })
-                  );
-                  setF(emptyBookFilter);
-                }}
-              >
-                Reset
-              </button>
-            ) : null}
-          </div>
-        </details>
+        <div className="book-filter-desktop book-more-panel">
+          <FilterControls
+            filter={f}
+            active={active}
+            onChange={changeFilter}
+            onReset={resetFilters}
+          />
+        </div>
+        <div className="book-filter-mobile">
+          <Drawer.Root swipeDirection="down">
+            <Drawer.Trigger
+              className={`book-filter-trigger lb-toggle ${secondaryActive ? "on" : ""}`}
+            >
+              Filter &amp; sort
+              {secondaryCount ? (
+                <span className="book-filter-count" aria-label={`${secondaryCount} active filters`}>
+                  {secondaryCount}
+                </span>
+              ) : null}
+            </Drawer.Trigger>
+            <Drawer.Portal>
+              <Drawer.Backdrop className="book-drawer-backdrop" />
+              <Drawer.Viewport className="book-drawer-viewport">
+                <Drawer.Popup className="book-drawer-popup">
+                  <div className="book-drawer-handle" aria-hidden="true" />
+                  <Drawer.Content className="book-drawer-content">
+                    <Drawer.Close
+                      className="book-drawer-close type-broadcast"
+                      aria-label="Close filters"
+                    >
+                      Close
+                    </Drawer.Close>
+                    <Drawer.Title className="book-drawer-title type-broadcast">
+                      Filter &amp; sort
+                    </Drawer.Title>
+                    <Drawer.Description className="book-drawer-description">
+                      Narrow the ledger by sport, take type, or event mapping.
+                    </Drawer.Description>
+                    <div className="book-drawer-fields">
+                      <FilterControls
+                        filter={f}
+                        active={active}
+                        onChange={changeFilter}
+                        onReset={resetFilters}
+                      />
+                    </div>
+                    <Drawer.Close className="book-drawer-apply type-broadcast">
+                      Show {shown.length} take{shown.length === 1 ? "" : "s"}
+                    </Drawer.Close>
+                  </Drawer.Content>
+                </Drawer.Popup>
+              </Drawer.Viewport>
+            </Drawer.Portal>
+          </Drawer.Root>
+        </div>
       </div>
       <p className="when">{shown.length} take{shown.length === 1 ? "" : "s"}</p>
       {shown.length === 0 ? (

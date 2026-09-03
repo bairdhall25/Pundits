@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pundits social archetype proofs</title>
+  <style>
+    @font-face { font-family: Oswald; src: url('/node_modules/@fontsource/oswald/files/oswald-latin-700-normal.woff') format('woff'); font-weight: 700; }
+    @font-face { font-family: Inter; src: url('/node_modules/@fontsource/inter/files/inter-latin-400-normal.woff') format('woff'); font-weight: 400; }
+    @font-face { font-family: Inter; src: url('/node_modules/@fontsource/inter/files/inter-latin-700-normal.woff') format('woff'); font-weight: 700; }
+    @font-face { font-family: Plex; src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff') format('woff'); font-weight: 600; }
+
+    :root {
+      --bg: #080908;
+      --card: #121312;
+      --ink: #f5f5f5;
+      --muted: #a3a3a3;
+      --green: #39ff14;
+      --orange: #f56632;
+      --purple: #461b78;
+      --gold: #ffd100;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; background: var(--bg); }
+    body { color: var(--ink); font-family: Inter, Arial, sans-serif; }
+    body.browser-capture { width: 800px; height: 420px; }
+    body.browser-capture .artboard { transform: scale(0.6666666667); transform-origin: 0 0; }
+    body.social-capture { width: 1050px; height: 551px; }
+    body.social-capture .artboard { transform: scale(0.875); transform-origin: 0 0; }
+    .artboard { position: relative; width: 1200px; height: 630px; overflow: hidden; background: var(--bg); display: none; border-top: 8px solid var(--green); }
+    .artboard.active { display: block; }
+    .display { font-family: Oswald, Impact, sans-serif; text-transform: uppercase; letter-spacing: .015em; }
+    .mono { font-family: Plex, monospace; text-transform: uppercase; letter-spacing: .11em; }
+    .brand { position: absolute; top: 28px; left: 48px; font: 700 34px/1 Oswald, Impact, sans-serif; letter-spacing: .11em; color: var(--green); z-index: 5; }
+    .brand span { color: var(--ink); }
+    .schedule { position: absolute; top: 31px; right: 48px; color: var(--muted); font: 600 18px/1 Plex, monospace; letter-spacing: .06em; z-index: 5; }
+    .proof-rail { position: absolute; left: 48px; right: 48px; bottom: 24px; height: 58px; border: 1px solid #2b3229; display: flex; align-items: center; padding: 0 22px; gap: 22px; background: #0d100d; z-index: 5; }
+    .proof-rail .price { font: 700 25px/1 Oswald, sans-serif; white-space: nowrap; }
+    .proof-rail .note { margin-left: auto; color: var(--muted); font: 600 16px/1 Plex, monospace; letter-spacing: .08em; }
+    .team-chip { display: inline-grid; place-items: center; width: 66px; height: 66px; font: 700 19px/1 Oswald, sans-serif; flex: none; }
+    .team-chip.clem { background: var(--orange); color: #fff; }
+    .team-chip.lsu { background: var(--purple); color: var(--gold); }
+    .portrait { display: block; object-fit: cover; background: #222; }
+
+    /* Event split */
+    .event .title { position: absolute; top: 79px; left: 48px; font-size: 61px; line-height: .96; }
+    .event .kicker { position: absolute; top: 91px; right: 48px; color: var(--green); font: 700 20px/1 Oswald, sans-serif; letter-spacing: .18em; }
+    .event .versus { position: absolute; top: 158px; left: 48px; right: 48px; bottom: 102px; display: grid; grid-template-columns: .82fr 1.18fr; gap: 12px; }
+    .side { position: relative; background: var(--card); overflow: hidden; }
+    .side.clemson { border-left: 6px solid var(--orange); }
+    .side.lsu { border-left: 6px solid var(--purple); }
+    .side-head { height: 92px; display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #292929; }
+    .pick-count { margin-left: auto; text-align: right; }
+    .pick-count strong { display: block; font: 700 56px/.8 Oswald, sans-serif; }
+    .pick-count span { color: var(--muted); font: 600 14px/1 Plex, monospace; letter-spacing: .08em; }
+    .lone { display: grid; grid-template-columns: 178px 1fr; gap: 20px; padding: 20px; align-items: center; }
+    .lone .portrait { width: 178px; height: 192px; object-position: center 28%; }
+    .lone .name { font-size: 34px; line-height: .98; }
+    .lone .call { margin-top: 10px; color: var(--green); font: 700 20px/1.1 Oswald, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .grid-four { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; padding: 19px 20px; }
+    .mini-person { display: grid; grid-template-columns: 74px 1fr; align-items: center; gap: 12px; min-width: 0; }
+    .mini-person .portrait { width: 74px; height: 74px; object-position: center 25%; }
+    .mini-person .name { font: 700 22px/1.05 Inter, sans-serif; }
+    .mini-person .outlet { margin-top: 5px; color: var(--muted); font: 600 12px/1 Plex, monospace; letter-spacing: .04em; }
+
+    /* Individual take / receipt */
+    .take .photo-field { position: absolute; inset: 0 auto 0 0; width: 43%; overflow: hidden; }
+    .take .photo-field .portrait { width: 100%; height: 100%; object-position: 50% 22%; filter: saturate(.92) contrast(1.04); }
+    .take .photo-field::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,9,8,.05) 42%, rgba(8,9,8,.95) 100%), linear-gradient(0deg, rgba(8,9,8,.92), transparent 42%); }
+    .take .brand { text-shadow: 0 2px 18px #000; }
+    .take .copy { position: absolute; top: 99px; left: 40%; right: 54px; bottom: 106px; padding-left: 38px; z-index: 3; }
+    .take .eyebrow { color: var(--green); font: 700 22px/1 Oswald, sans-serif; letter-spacing: .17em; text-transform: uppercase; }
+    .take .quote { margin-top: 17px; font: 700 66px/.96 Oswald, sans-serif; text-transform: uppercase; max-width: 650px; }
+    .take .byline { margin-top: 24px; display: flex; align-items: center; gap: 15px; }
+    .take .byline .team-chip { width: 54px; height: 54px; font-size: 16px; }
+    .take .who { font: 700 27px/1 Inter, sans-serif; }
+    .take .who small { display: block; margin-top: 6px; color: var(--muted); font: 600 14px/1 Plex, monospace; letter-spacing: .06em; }
+    .take .counter { position: absolute; top: 32px; right: 48px; color: var(--muted); font: 600 17px/1 Plex, monospace; letter-spacing: .06em; z-index: 5; }
+    .take .proof-rail { left: 42%; }
+
+    /* Week/category summary */
+    .summary .hero { position: absolute; left: 48px; top: 101px; width: 526px; bottom: 104px; }
+    .summary .eyebrow { color: var(--green); font: 700 21px/1 Oswald, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+    .summary .headline { margin-top: 15px; font-size: 75px; line-height: .91; }
+    .summary .sub { margin-top: 22px; display: flex; align-items: center; gap: 14px; font: 700 25px/1 Inter, sans-serif; }
+    .summary .sub .team-chip { width: 58px; height: 58px; font-size: 17px; }
+    .summary .people { position: absolute; top: 104px; right: 48px; width: 535px; bottom: 104px; display: grid; grid-template-rows: 196px 1fr; gap: 12px; }
+    .summary .feature { position: relative; background: var(--card); border-left: 6px solid var(--orange); overflow: hidden; display: grid; grid-template-columns: 190px 1fr; }
+    .summary .feature .portrait { width: 190px; height: 196px; object-position: center 26%; }
+    .summary .feature-copy { padding: 25px 22px; }
+    .summary .feature-copy b { font: 700 30px/.98 Inter, sans-serif; }
+    .summary .feature-copy span { display: block; margin-top: 10px; color: var(--green); font: 700 17px/1.2 Oswald, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+    .summary .four-strip { background: var(--card); border-left: 6px solid var(--purple); padding: 14px 16px; }
+    .summary .four-title { display: flex; justify-content: space-between; align-items: baseline; }
+    .summary .four-title b { font: 700 28px/1 Oswald, sans-serif; text-transform: uppercase; }
+    .summary .four-title span { color: var(--muted); font: 600 13px/1 Plex, monospace; }
+    .summary .face-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 12px; }
+    .summary .face-strip .portrait { width: 100%; height: 76px; object-position: center 24%; }
+    .summary .face-strip span { display: block; margin-top: 6px; font: 700 13px/1 Inter, sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Density pass: preserve the archetypes, but return to the bold social-first target. */
+    .brand { top: 22px; left: 32px; font-size: 32px; }
+    .schedule { top: 27px; right: 32px; font-size: 15px; }
+    .proof-rail { left: 0; right: 0; bottom: 0; height: 64px; border: 0; padding: 0 28px; background: rgba(7, 9, 7, .96); }
+    .proof-rail .note { font-size: 14px; }
+
+    .event .title { top: 63px; left: 32px; font-size: 74px; line-height: 1.02; }
+    .event .kicker { top: 92px; right: 32px; font-size: 18px; }
+    .event .versus { top: 151px; left: 0; right: 0; bottom: 64px; gap: 0; grid-template-columns: .83fr 1.17fr; }
+    .event .side { background: #101110; }
+    .event .side.clemson { border-left: 0; border-top: 7px solid var(--orange); }
+    .event .side.lsu { border-left: 0; border-top: 7px solid var(--purple); }
+    .event .side-head { height: 78px; padding: 8px 15px; background: rgba(8, 9, 8, .96); }
+    .event .side-head .team-chip { width: 54px; height: 54px; font-size: 16px; }
+    .event .pick-count strong { font-size: 60px; }
+    .event .pick-count span { font-size: 12px; }
+    .event .lone { height: calc(100% - 78px); grid-template-columns: 57% 43%; gap: 0; padding: 0; align-items: stretch; }
+    .event .lone .portrait { width: 100%; height: 100%; object-position: center 24%; }
+    .event .lone > div { align-self: center; padding: 0 15px; }
+    .event .lone .name { font-size: 36px; line-height: .91; }
+    .event .lone .call { margin-top: 13px; font-size: 19px; }
+    .event .grid-four { height: calc(100% - 78px); grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; padding: 0; }
+    .event .mini-person { display: grid; grid-template-columns: 47% 53%; overflow: hidden; border-right: 1px solid #292929; border-bottom: 1px solid #292929; }
+    .event .mini-person .portrait { width: 100%; height: 100%; object-position: center; }
+    .event .mini-person > div { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 10px 12px; background: #0b0c0b; }
+    .event .mini-person .name { font-size: 22px; line-height: 1; }
+    .event .mini-person .outlet { margin-top: 6px; font-size: 10px; }
+
+    .take .photo-field { width: 47%; }
+    .take .photo-field .portrait { object-position: 50% 20%; }
+    .take .copy { top: 76px; left: 43%; right: 25px; bottom: 64px; padding-left: 30px; }
+    .take .eyebrow { font-size: 21px; }
+    .take .quote { margin-top: 12px; max-width: none; font-size: 86px; line-height: .86; letter-spacing: -.012em; }
+    .take .byline { position: absolute; left: 30px; bottom: 52px; margin-top: 0; gap: 13px; }
+    .take .byline .team-chip { width: 58px; height: 58px; }
+    .take .who { font-size: 27px; }
+    .take .counter { top: 27px; right: 32px; font-size: 14px; }
+    .take .proof-rail { left: 47%; right: 0; }
+
+    .summary .hero { left: 0; top: 64px; width: 440px; bottom: 64px; padding: 24px 22px 12px 32px; background: #0b0c0b; }
+    .summary .eyebrow { font-size: 20px; }
+    .summary .headline { margin-top: 11px; font-size: 110px; line-height: .8; letter-spacing: -.02em; }
+    .summary .sub { margin-top: 18px; gap: 12px; font-size: 23px; }
+    .summary .sub .team-chip { width: 62px; height: 62px; }
+    .summary .people { top: 64px; right: 0; width: 760px; bottom: 64px; grid-template-rows: 1fr 184px; gap: 0; }
+    .summary .feature { border-left: 0; border-top: 7px solid var(--orange); grid-template-columns: 330px 1fr; }
+    .summary .feature .portrait { width: 330px; height: 100%; object-position: center 22%; }
+    .summary .feature-copy { padding: 25px 20px; align-self: center; }
+    .summary .feature-copy b { font-size: 33px; }
+    .summary .feature-copy span { margin-top: 16px; font-size: 22px; line-height: 1.12; }
+    .summary .four-strip { border-left: 0; border-top: 7px solid var(--purple); padding: 10px 12px 8px; }
+    .summary .four-title b { font-size: 25px; }
+    .summary .face-strip { gap: 5px; margin-top: 8px; }
+    .summary .face-strip > div { display: grid; grid-template-columns: 84px 1fr; height: 80px; min-width: 0; background: #0b0c0b; overflow: hidden; }
+    .summary .face-strip .portrait { width: 84px; height: 80px; object-position: center; }
+    .summary .face-strip span { align-self: center; margin: 0; padding: 0 7px; font-size: 12px; line-height: 1.05; white-space: normal; overflow: visible; text-overflow: clip; }
+    .portrait.pate { object-position: center 53% !important; }
+    .portrait.finebaum { object-position: center 24% !important; }
+    .portrait.staples { object-position: center 18% !important; }
+    .portrait.mcelroy { object-position: center 22% !important; }
+  </style>
+</head>
+<body>
+  <section class="artboard event" data-card="event">
+    <div class="brand">PUNDITS<span>.</span></div>
+    <div class="schedule">SAT SEP 5 · 7:30 ET · ABC</div>
+    <div class="title display">Clemson at LSU</div>
+    <div class="kicker display">Expert pick split</div>
+    <div class="versus">
+      <div class="side clemson">
+        <div class="side-head"><span class="team-chip clem">CLEM</span><span class="display" style="font-size:30px">Clemson</span><span class="pick-count"><strong>1</strong><span>PICK</span></span></div>
+        <div class="lone"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /><div><div class="name display">George<br>Wrighster</div><div class="call">Calls the upset</div></div></div>
+      </div>
+      <div class="side lsu">
+        <div class="side-head"><span class="team-chip lsu">LSU</span><span class="display" style="font-size:30px">LSU</span><span class="pick-count"><strong>4</strong><span>PICKS</span></span></div>
+        <div class="grid-four">
+          <div class="mini-person"><img class="portrait pate" src="/public/photos/pate.jpg" alt="Josh Pate" /><div><div class="name">Josh Pate</div><div class="outlet">COLLEGE FOOTBALL SHOW</div></div></div>
+          <div class="mini-person"><img class="portrait finebaum" src="/public/photos/finebaum.jpg" alt="Paul Finebaum" /><div><div class="name">Paul Finebaum</div><div class="outlet">ESPN</div></div></div>
+          <div class="mini-person"><img class="portrait staples" src="/public/photos/staples.png" alt="Andy Staples" /><div><div class="name">Andy Staples</div><div class="outlet">ON3</div></div></div>
+          <div class="mini-person"><img class="portrait mcelroy" src="/public/photos/mcelroy.jpg" alt="Greg McElroy" /><div><div class="name">Greg McElroy</div><div class="outlet">ESPN</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-rail"><span class="team-chip clem" style="width:38px;height:38px;font-size:12px">CLEM</span><span class="price">CLEMSON 24¢</span><span class="team-chip lsu" style="width:38px;height:38px;font-size:12px">LSU</span><span class="price">LSU 78¢</span><span class="note">FROZEN MARKET SNAPSHOT · NOT A BET</span></div>
+  </section>
+
+  <section class="artboard take" data-card="take">
+    <div class="photo-field"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /></div>
+    <div class="brand">PUNDITS<span>.</span></div>
+    <div class="counter">CLEMSON AT LSU · 1 TAKES CLEMSON / 4 TAKE LSU</div>
+    <div class="copy">
+      <div class="eyebrow">Upset call</div>
+      <div class="quote">“I’m taking Clemson in the upset.”</div>
+      <div class="byline"><span class="team-chip clem">CLEM</span><div class="who">George Wrighster<small>ON3 / UNAFRAID SHOW</small></div></div>
+    </div>
+    <div class="proof-rail"><span class="price">CLEMSON 24¢</span><span class="price" style="color:var(--muted)">LSU 78¢</span><span class="note">SAT SEP 5 · 7:30 ET · ABC · FROZEN SNAPSHOT · NOT A BET</span></div>
+  </section>
+
+  <section class="artboard summary" data-card="summary">
+    <div class="brand">PUNDITS<span>.</span></div>
+    <div class="schedule">WEEK 1 · COLLEGE FOOTBALL</div>
+    <div class="hero">
+      <div class="eyebrow">Marquee watch</div>
+      <div class="headline display">One<br>takes the<br>dog.</div>
+      <div class="sub"><span class="team-chip clem">CLEM</span><span>George Wrighster → Clemson</span></div>
+    </div>
+    <div class="people">
+      <div class="feature"><img class="portrait" src="/public/photos/wrighster.jpg" alt="George Wrighster" /><div class="feature-copy"><b>George Wrighster</b><span>“I’m taking Clemson in the upset.”</span></div></div>
+      <div class="four-strip"><div class="four-title"><b>Four take LSU</b><span>THE OTHER SIDE</span></div><div class="face-strip">
+        <div><img class="portrait pate" src="/public/photos/pate.jpg" alt="Josh Pate" /><span>Josh Pate</span></div>
+        <div><img class="portrait finebaum" src="/public/photos/finebaum.jpg" alt="Paul Finebaum" /><span>Paul Finebaum</span></div>
+        <div><img class="portrait staples" src="/public/photos/staples.png" alt="Andy Staples" /><span>Andy Staples</span></div>
+        <div><img class="portrait mcelroy" src="/public/photos/mcelroy.jpg" alt="Greg McElroy" /><span>Greg McElroy</span></div>
+      </div></div>
+    </div>
+    <div class="proof-rail"><span class="price">CLEMSON AT LSU</span><span class="price" style="color:var(--green)">1 — 4 SPLIT</span><span class="note">CLEMSON 24¢ · LSU 78¢ · FROZEN MARKET SNAPSHOT</span></div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const card = params.get('card') || 'event';
+    if (params.get('capture') === '1') document.body.classList.add('browser-capture');
+    if (params.get('capture') === 'social') document.body.classList.add('social-capture');
+    document.querySelector(`[data-card="${card}"]`)?.classList.add('active');
+  </script>
+</body>
+</html>

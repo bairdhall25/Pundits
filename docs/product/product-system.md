@@ -56,18 +56,19 @@ A derived SEO and sharing object at `/picks/{eventSlug}/{punditId}/`. It is temp
 
 ## Lifecycle
 
-1. **Discover** — Scout searches high-yield shows, columns, podcasts, bounded durable sports-radio archives, and approved social sources.
-2. **Verify** — confirm the speaker, verbatim quote, publication date, and source URL.
-3. **Classify** — determine hard versus soft and reject vague or untestable statements.
-4. **Map** — attach an explicit event and side only when semantics match exactly.
-5. **Freeze** — record the relevant Kalshi price, source, ticker, and timestamp.
-6. **Audit** — reopen evidence before promotion.
-7. **Promote** — write validated rows to JSON, run checks, build, and publish.
-8. **Distribute** — mint pages, feeds, structured data, OG/story images, and social posts.
-9. **Grade** — after settlement, collect authoritative result evidence and propose hit/miss.
-10. **Promote result** — update the record without changing the original quote or frozen context.
-11. **Recap** — publish the receipt, record change, disagreement outcome, and archive context.
-12. **Correct** — preserve URL and history; apply an auditable correction rather than deleting the object.
+1. **Submit or discover** — readers may send a public source link as an untrusted lead; Scout also searches high-yield shows, columns, podcasts, bounded durable sports-radio archives, and approved social sources.
+2. **Mailbox** — queued community tips are imported into the dated Git run file and routed to Shows, X, or News. A mailbox row is not a call and has no publication authority.
+3. **Verify** — confirm the speaker, verbatim quote, publication date, and source URL.
+4. **Classify** — determine hard versus soft and reject vague or untestable statements.
+5. **Map** — attach an explicit event and side only when semantics match exactly.
+6. **Freeze** — record the relevant Kalshi price, source, ticker, and timestamp.
+7. **Audit** — reopen evidence before promotion.
+8. **Promote** — write validated rows to JSON, run checks, build, and publish.
+9. **Distribute** — mint pages, feeds, structured data, OG/story images, and social posts.
+10. **Grade** — after settlement, collect authoritative result evidence and propose hit/miss.
+11. **Promote result** — update the record without changing the original quote or frozen context.
+12. **Recap** — publish the receipt, record change, disagreement outcome, and archive context.
+13. **Correct** — preserve URL and history; apply an auditable correction rather than deleting the object.
 
 ## Public surfaces
 
@@ -83,6 +84,7 @@ A derived SEO and sharing object at `/picks/{eventSlug}/{punditId}/`. It is temp
 | `/pundits/{id}/` | Person history, open exposure, and settled record |
 | `/teams/{id}/` | Team-centered picks for and against |
 | `/leaderboard/` | Activity before grading; performance after results exist |
+| `/submit/` | Public-source tip intake; tips enter Scout for verification and are never published directly |
 
 Published routes are search equity. Data and URL sets are append-only; corrections require redirects or record updates, not deletion.
 
@@ -95,7 +97,7 @@ The code currently infers an event's winning side from consistent graded mapped 
 ## Operating boundaries
 
 - Static architecture is intentional at this stage.
-- Email early-access capture is the only current server-side persistence and uses Cloudflare KV.
+- Email early-access capture and the short-lived community-tip queue are the only current server-side persistence, both using Cloudflare KV. The editorial record remains static repository JSON.
 - There is no authentication, personalization, comments, live-odds service, or general application database.
 - Production is Cloudflare Pages project `pundits`; GitHub Actions verifies but does not deploy.
 - `npm test` protects data and logic. `npm run check` adds production build, route, canonical, sitemap, and redirect verification.

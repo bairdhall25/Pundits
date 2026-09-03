@@ -105,7 +105,7 @@ describe("socialIndex", () => {
   });
 
   it("adds stable page and week landscape-card registries without changing existing rows", () => {
-    expect(index.pages).toHaveLength(10);
+    expect(index.pages).toHaveLength(11);
     expect(index.pages.find((page) => page.key === "home")).toEqual({
       key: "home",
       pageUrl: "https://pundits.pro/",
@@ -114,6 +114,11 @@ describe("socialIndex", () => {
     expect(index.pages.find((page) => page.key === "methodology")?.ogCard).toBe(
       "https://pundits.pro/og/pages/methodology.png"
     );
+    expect(index.pages.find((page) => page.key === "submit")).toEqual({
+      key: "submit",
+      pageUrl: "https://pundits.pro/submit/",
+      ogCard: "https://pundits.pro/og/pages/submit.png",
+    });
     expect(index.weeks).toEqual([
       {
         sport: "ncaaf",

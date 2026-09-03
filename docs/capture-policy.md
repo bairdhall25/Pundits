@@ -27,6 +27,7 @@ Two customers, one ledger. Fans get a dense homepage of verified faces on games 
 8. Watchlist (`docs/bring-onto-home.json`) = current homepage holes + 2–4 operator-named games. Scout hunts them off-home. Every entry is a promise: mintable within a day of a hit, or it comes off. A stale watchlist row recreates the dead-event problem upstream.
 9. **Published event slugs are append-only.** Do not delete an event that already has a public `/picks/{slug}/` (Miami and Baylor already do). A zero-pick game that reaches kickoff is not graded into an empty Final and is not deleted — it stays off-home / waiting. Avoid *new* dead rows by not minting events that have no SU and are not watchlisted.
 10. Dataset floor, on-home or off: every call row machine-complete (`punditId`, `eventSlug` when mapped, `side`, `kind`, `sourceUrl`, `sourceDate`, `status`). No prose-only sourcing. Empty sides stay empty. Do not invent picks.
+11. Community tips are untrusted discovery leads. Import them into the run file’s `## Community tips` mailbox, route by source lane, and open pending links for matching Dispatch/watchlist targets before broader hunting. A tip never becomes a call directly and never relaxes the normal speaker, quote, date, URL, mapping, Audit, or Promote requirements.
 
 ## One-way doors (why these rules are strict)
 
@@ -45,6 +46,7 @@ Everything else here is a JSON/doc edit in git — cheap to amend.
 - Rule 7 (no inferred onHome): `bots/promote.md`; Dispatch hunt for off-home is “roster SU, stay off-home until operator flip.”
 - Rule 8 (watchlist): `docs/bring-onto-home.json`.
 - Rule 9 (append-only events): `bots/grader.md` and `bots/promote.md` do **not** delete events.
+- Rule 11 (community-tip isolation and routing): `scripts/tip-mailbox.mjs`, `bots/scout.md`, `bots/scout-shows.md`, `bots/scout-x.md`, and `bots/scout-news.md`.
 
 ## Standing operator decisions (as of 2026-09-01)
 

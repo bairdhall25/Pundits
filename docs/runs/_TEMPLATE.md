@@ -13,6 +13,14 @@ Overflow unlisted SUs: leave `eventSlug` blank; name the matchup in the quote ro
 |---|---|---|---|---|
 | | | | | |
 
+## Community tips
+
+Untrusted discovery leads only. A tip must clear the normal Scout, Audit, and Promote bar before it can become a pick.
+
+| tipId | receivedAt | discovery | lane | pundit hint | event hint | sourceUrl | where to look | status |
+|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | |
+
 ## Shows pass YYYY-MM-DD (Grok Bot)
 
 ### Intake
