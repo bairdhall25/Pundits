@@ -40,5 +40,15 @@
   { "id": "packers", "name": "Packers", "abbr": "GB", "primary": "#203731", "ink": "#FFB612", "sport": "nfl" },
   { "id": "vikings", "name": "Vikings", "abbr": "MIN", "primary": "#4F2683", "ink": "#FFC62F", "sport": "nfl" },
   { "id": "dolphins", "name": "Dolphins", "abbr": "MIA", "primary": "#008E97", "ink": "#FC4C02", "sport": "nfl" },
-  { "id": "raiders", "name": "Raiders", "abbr": "LV", "primary": "#000000", "ink": "#A5ACAF", "sport": "nfl" }
+  { "id": "raiders", "name": "Raiders", "abbr": "LV", "primary": "#000000", "ink": "#A5ACAF", "sport": "nfl" },
+  { "id": "boise-state", "name": "Boise State", "abbr": "BSU", "primary": "#0033A0", "ink": "#D64309", "sport": "ncaaf" },
+  { "id": "oregon", "name": "Oregon", "abbr": "ORE", "primary": "#154733", "ink": "#FEE123", "sport": "ncaaf" },
+  { "id": "western-michigan", "name": "Western Michigan", "abbr": "WMU", "primary": "#6C4023", "ink": "#B5A167", "sport": "ncaaf" },
+  { "id": "michigan", "name": "Michigan", "abbr": "MICH", "primary": "#00274C", "ink": "#FFCB05", "sport": "ncaaf" },
+  { "id": "fiu", "name": "FIU", "abbr": "FIU", "primary": "#081E3F", "ink": "#B6862C", "sport": "ncaaf" },
+  { "id": "usf", "name": "South Florida", "abbr": "USF", "primary": "#006747", "ink": "#CFC493", "sport": "ncaaf" },
+  { "id": "toledo", "name": "Toledo", "abbr": "TOL", "primary": "#15397F", "ink": "#FFC72C", "sport": "ncaaf" },
+  { "id": "michigan-state", "name": "Michigan State", "abbr": "MSU", "primary": "#18453B", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "oklahoma-state", "name": "Oklahoma State", "abbr": "OKST", "primary": "#FF7300", "ink": "#000000", "sport": "ncaaf" },
+  { "id": "tulsa", "name": "Tulsa", "abbr": "TLSA", "primary": "#002D72", "ink": "#C8102E", "sport": "ncaaf" }
 ]

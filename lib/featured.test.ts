@@ -430,6 +430,11 @@ describe("featured game display", () => {
       "smu-at-fsu-2026",
     ]);
     expect(featured.ncaafCompact.map((event) => event.slug)).toEqual([
+      "toledo-at-michigan-state-2026",
+      "fiu-at-usf-2026",
+      "oklahoma-state-at-tulsa-2026",
+      "boise-state-at-oregon-2026",
+      "western-michigan-at-michigan-2026",
       "baylor-vs-auburn-2026",
     ]);
     expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
