@@ -21,6 +21,7 @@ import {
   sidesForCard,
 } from "@/lib/data";
 import { KickoffTag } from "@/components/KickoffTag";
+import { MarketDetails } from "@/components/MarketDetails";
 import { americanOdds, statusChipText } from "@/lib/format";
 import { eventKalshiUrl } from "@/lib/kalshi";
 import { isVsGame } from "@/lib/public-side";
@@ -54,11 +55,12 @@ function FaceRow({
       </Link>
       {detail ? (
         <div className="src-meta">
-          {call.source}
-          {call.sourceDate ? ` · ${call.sourceDate}` : ""}
-          {call.sourceUrl ? (
-            <>
-              {" · "}
+          <div className="src-meta-line">
+            {call.source}
+            {call.sourceDate ? ` · ${call.sourceDate}` : ""}
+          </div>
+          <div className="src-actions">
+            {call.sourceUrl ? (
               <TrackAnchor
                 href={call.sourceUrl}
                 event="source_open"
@@ -70,14 +72,11 @@ function FaceRow({
               >
                 Open source →
               </TrackAnchor>
-            </>
-          ) : null}
-          {eventSlug ? (
-            <>
-              {" · "}
+            ) : null}
+            {eventSlug ? (
               <Link href={takePath(eventSlug, pundit.id)}>Full take →</Link>
-            </>
-          ) : null}
+            ) : null}
+          </div>
         </div>
       ) : null}
     </div>
@@ -299,8 +298,7 @@ export function EventCard({
         />
       </div>
       {detail ? (
-        <details className="market-details">
-          <summary>Market details</summary>
+        <MarketDetails>
           <p>
             {game
               ? isVsGame(event)
@@ -326,7 +324,7 @@ export function EventCard({
               </a>
             </p>
           ) : null}
-        </details>
+        </MarketDetails>
       ) : permalink ? (
         <Link href={eventHref} className="see-why">
           See why →

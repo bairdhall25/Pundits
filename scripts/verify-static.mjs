@@ -36,6 +36,26 @@ assert.match(home, /Paul Finebaum/);
 assert.match(home, /event-title-link/);
 assert.doesNotMatch(home, /class="event-hit"/);
 assert.match(home, /Most on record/);
+assert.match(home, /More site navigation/);
+for (const href of [
+  "/ncaaf/",
+  "/nfl/",
+  "/stories/",
+  "/book/",
+  "/leaderboard/",
+  "/about/",
+  "/methodology/",
+  "/privacy/",
+  "/terms/",
+]) {
+  assert(
+    home.includes(`href="${href}"`),
+    `home footer must link to ${href}`
+  );
+}
+for (const heading of ["Explore", "Follow the record", "About", "Legal"]) {
+  assert.match(home, new RegExp(`>${heading}<`));
+}
 assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>Yes</);
 assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>No</);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);

@@ -1,0 +1,12 @@
+:root {
+  --font-body: "Inter";
+  --font-display: "Oswald";
+  --font-mono: "IBM Plex Mono";
+}
+
+.storybook-stage {
+  width: min(100%, 1100px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}

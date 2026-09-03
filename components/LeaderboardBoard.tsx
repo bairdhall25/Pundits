@@ -25,7 +25,7 @@ export function LeaderboardBoard({
             className={`lb-toggle ${showAll ? "on" : ""}`}
             onClick={() => onShowAll(!showAll)}
           >
-            {showAll ? "Active only" : `All ${board.length}`}
+            {showAll ? "Show active only" : `Show all ${board.length} pundits`}
           </button>
           <span className="when" style={{ margin: 0 }}>
             {rows.length} shown
