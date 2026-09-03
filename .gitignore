@@ -17,3 +17,5 @@ public/social/cards.json
 .env*
 *.tsbuildinfo
 .vercel/
+storybook-static/
+test-results/
