@@ -26,6 +26,7 @@
     "indexnow:prepare": "node scripts/indexnow.mjs --prepare",
     "indexnow:submit": "node scripts/indexnow.mjs",
     "deploy:guard": "node scripts/deploy-guard.mjs",
+    "worktree": "node scripts/scheduled-worktree.mjs",
     "deploy:upload": "wrangler pages deploy out --project-name pundits --branch main",
     "doctor": "node scripts/agent-doctor.mjs",
     "check": "node scripts/check.mjs",

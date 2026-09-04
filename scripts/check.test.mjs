@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CHECK_STAGES,
@@ -135,6 +136,25 @@ describe("staged check runner", () => {
     expect(result.summary).toEqual(summary);
   });
 
+  it("stamps a successful release check with HEAD so deploy can bind out/", async () => {
+    const { files, mkdir, writeFile } = silentFs();
+    await runCheck({
+      stdout: io(),
+      stderr: io(),
+      mkdir,
+      writeFile,
+      cwd: "/repo",
+      now: () => Date.parse("2026-09-04T12:00:00Z"),
+      readHead: () => "abc123",
+      runCommand: async () => ({ exitCode: 0 }),
+    });
+    const stamp = JSON.parse(files.get(path.join("/repo", ".agent-artifacts", "release-stamp.json")));
+    expect(stamp).toEqual({
+      commit: "abc123",
+      createdAt: "2026-09-04T12:00:00.000Z",
+    });
+  });
+
   it("propagates the failed child exit code", async () => {
     const { mkdir, writeFile } = silentFs();
     const result = await runCheck({
@@ -233,6 +253,7 @@ describe("fast check gate", () => {
     expect(stdout.text).not.toMatch(/start: build/);
     expect(stdout.text).toContain(FAST_CHECK_NOTE);
     const summary = JSON.parse(files.get("/tmp/check-fast-summary.json"));
+    expect([...files.keys()].some((key) => String(key).includes("release-stamp"))).toBe(false);
     expect(summary.gate).toBe("fast");
     expect(summary.isReleaseGate).toBe(false);
     expect(summary.stages.map((stage) => stage.id)).toEqual([

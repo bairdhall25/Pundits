@@ -41,10 +41,10 @@ Cadence is below (Coordinator daily; Shows/X/News on their calendars). Audit whe
 
 Scheduled jobs start in the saved project only long enough to fetch and create their own worktree. They never inspect, edit, test, build, or deploy from the operator's checkout.
 
-1. `git fetch origin`, then create a unique worktree under the ignored `.worktrees/scheduled/` directory from the fetched `origin/main`. A deploy-only job may use detached HEAD. A job that commits uses a unique temporary `codex/` branch. The branch name does not need to be `main`; the safety invariant is a clean worktree whose starting `HEAD` equals `origin/main`.
-2. Build/deploy jobs run `npm ci` in the scheduled worktree before invoking package scripts. Never borrow generated files or `node_modules` from the operator's checkout.
+1. Create the worktree with `npm run worktree -- create --name <slug>` (or `node scripts/scheduled-worktree.mjs create --name <slug>`). That fetches `origin`, then adds a unique path under the ignored `.worktrees/scheduled/` directory from `origin/main` on a temporary `codex/` branch. A deploy-only job may use detached HEAD. The local branch name does not need to be `main`; the safety invariant is a clean worktree whose `HEAD` equals `origin/main`.
+2. Build/deploy jobs run `npm ci` in the scheduled worktree. That worktree owns its `node_modules`. Never junction, copy, or delete the operator checkout's `node_modules`. Shared social-card cache lives in the git common dir (`.git/pundits-agent-cache`); do not delete it when retiring a worktree.
 3. Before a writer pushes, fetch again. If `origin/main` advanced, rebase the task commit onto it, re-check the resulting diff, and rerun any required validation. Push explicitly to `origin HEAD:main` without force. On a conflict or non-fast-forward rejection, stop and report; never overwrite the mailbox.
-4. After a clean no-op or successful push/deploy, leave the worktree clean and remove it. Preserve a dirty or failed worktree only when its exact path and recovery state are reported.
+4. After the push, deploy from **the same worktree** once `HEAD` equals `origin/main`. Do not clone a second checkout to satisfy a branch name. After a clean no-op or successful push/deploy, remove the worktree with `npm run worktree -- remove --path .worktrees/scheduled/<slug>`. Preserve a dirty or failed worktree only when its exact path and recovery state are reported.
 5. GitHub, source URLs, npm, Cloudflare, and live verification require network access. If the unattended runtime cannot fetch, install, push, deploy, or verify, stop and report the missing capability rather than falling back to the operator's checkout.
 
 ## Pick stories (SEO)

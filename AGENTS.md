@@ -46,7 +46,7 @@ Do not edit editorial JSON during product or UI work merely to improve a screens
 - Keep the green/black broadcast identity unless a rebrand is explicitly authorized.
 - Treat `Live`, `Tonight`, `Open`, `Pending`, and `In play` as distinct states. Never call an unresolved season-long prediction live or in play.
 - Run `npm test` for data or logic changes. Run `npm run check:fast` during ordinary agent edits for inexpensive tests and run-file validation. Run `npm run check` for route, UI, SEO, build, or release-affecting changes. `check:fast` is not a release gate and is never sufficient for deployment.
-- Production is Cloudflare Pages project `pundits`; keep `GITHUB_PAGES` unset for the production-style build.
+- Production is Cloudflare Pages project `pundits`; keep `GITHUB_PAGES` unset for the production-style build. Production deploys require a clean tree whose `HEAD` equals `origin/main`; the local branch name need not be `main`.
 
 ## Public methodology synchronization
 

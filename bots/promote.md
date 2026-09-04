@@ -32,11 +32,23 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Publish
 
-`npx vitest run` && `npm run build` && `npm run verify:static` green, then commit, push, and deploy Cloudflare Pages project `pundits` with `GITHUB_PAGES` unset. Static verification may append newly minted URLs to `docs/seo/permalinks.txt`; include that ledger update in the promotion commit. `npm run build` renders per-page OG images before the static export. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+Work in a scheduled worktree. Never inspect, edit, test, build, or deploy from the operator checkout.
 
-Set the Scout run comment to `promoted=true` in the same commit (keep `hard=N`).
+1. `npm run worktree -- create --name promote-YYYYMMDD-slug`, then `npm ci` in that worktree.
+2. Write the JSON, then `npm run check` with `GITHUB_PAGES` unset so `verify:static` can append minted URLs to `docs/seo/permalinks.txt`. Include that ledger update in the promotion commit. `npm run build` renders per-page OG images before the static export. A promoted hard row mints `/picks/{eventSlug}/{punditId}/` on the next static build via `lib/seo.ts` `pickStory()`.
+3. Set the Scout run comment to `promoted=true` in the same commit (keep `hard=N`).
+4. Fetch again. If `origin/main` advanced, rebase, re-check the diff, and rerun `npm run check`. Push explicitly to `origin HEAD:main` without force.
+5. From **the same worktree**, run `npm run deploy`. The local branch may stay `codex/...` or detached; the guard requires a clean tree whose `HEAD` equals `origin/main`, `GITHUB_PAGES` unset, and generated `out/` stamped to that commit. Do not clone a second checkout to rename the branch `main`.
 
-Before pushing, follow the Scheduled Git handoff: fetch again, rebase and rerun the full validation gate if `origin/main` advanced, then push explicitly to `origin HEAD:main` without force. If deploy or live verification fails after the commit reaches `main`, report the pushed SHA and the failed stage prominently; do not claim the run shipped successfully. The daily deploy job is the recovery path for an already-committed promotion.
+If deploy or live verification fails after the commit reaches `main`, report the pushed SHA and the failed stage prominently; do not claim the run shipped successfully.
+
+| Failed stage | Rebuild? | Next |
+|---|---|---|
+| `check` / tests / build / `verify:static` | yes | `npm run check && npm run deploy` |
+| `deploy:guard` (dirty or `HEAD` ≠ `origin/main`) | no | fix git state; do not upload |
+| `verify:production-urls`, `indexnow:prepare`, `deploy:upload` | no, if the release stamp still matches `HEAD` | `npm run deploy -- --from <stage>` |
+| `verify:deployed` | no | report SHA; retry `npm run deploy -- --from verify:deployed`; the daily deploy job is the recovery path if live still fails |
+| `indexnow:submit` | no | `npm run indexnow:submit` (non-blocking) |
 
 ## Stop
 
