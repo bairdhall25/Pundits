@@ -10,6 +10,7 @@ public/og/pages/
 public/og/stories/
 public/social/cards.json
 .worktrees/
+.agent-artifacts/
 .claude/
 .codex-audit/
 .wrangler/
