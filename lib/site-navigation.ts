@@ -40,7 +40,8 @@ export const PRIMARY_NAV: readonly PrimaryDestination[] = [
   },
 ];
 
-export const TAKES_NAV: readonly SiteDestination[] = [
+export const PICKS_NAV: readonly SiteDestination[] = [
+  { href: "/", label: "All picks" },
   { href: "/ncaaf/", label: "NCAAF" },
   { href: "/nfl/", label: "NFL" },
 ];
