@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import sharp from "sharp";
 import {
+  mapLimit,
   metaValues,
   outputFileForUrl,
   previewImageFromHtml,
@@ -20,6 +21,26 @@ function previewHtml(image = "https://pundits.pro/og/takes/example.png?v=abc123"
     <meta name="twitter:image" content="${image}">
   </head>`;
 }
+
+describe("mapLimit", () => {
+  it("keeps at most the requested number of workers in flight", async () => {
+    let live = 0;
+    let max = 0;
+    const seen = [];
+    await mapLimit([1, 2, 3, 4, 5], 2, async (value) => {
+      live += 1;
+      max = Math.max(max, live);
+      seen.push(value);
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      live -= 1;
+      return value * 2;
+    }).then((results) => {
+      expect(results).toEqual([2, 4, 6, 8, 10]);
+    });
+    expect(max).toBeLessThanOrEqual(2);
+    expect(seen.sort()).toEqual([1, 2, 3, 4, 5]);
+  });
+});
 
 describe("preview metadata validation", () => {
   it("extracts sitemap and metadata values", () => {

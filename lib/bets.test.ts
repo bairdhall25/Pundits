@@ -18,6 +18,7 @@ import {
   partitionGames,
 } from "./data";
 import type { Call, Event } from "./types";
+import { fixtureFuture, fixtureGame, fixturePick } from "./test-fixtures";
 
 describe("v1 mapped book", () => {
   it("maps the Indiana title fight both ways", () => {
@@ -52,31 +53,56 @@ describe("v1 mapped book", () => {
   });
 
   it("puts fights first on the home list", () => {
-    const home = getHomeEvents(loadEvents(), loadCalls());
-    expect(home[0].slug).toBe("unc-vs-tcu-2026");
-    expect(home.map((e) => e.slug)).toContain("indiana-title-2026");
+    const fight = fixtureGame("fight-game-2026", { homeRank: 1 });
+    const lonely = fixtureGame("lonely-game-2026", { homeRank: 9 });
+    const title = fixtureFuture("title-2026", { homeRank: 2 });
+    const homeCalls = [
+      fixturePick({ eventSlug: fight.slug, punditId: "yes-voice", side: "yes" }),
+      fixturePick({ eventSlug: fight.slug, punditId: "no-voice", side: "no" }),
+      fixturePick({ eventSlug: lonely.slug, punditId: "yes-voice", side: "yes" }),
+      fixturePick({ eventSlug: title.slug, punditId: "yes-voice", side: "yes" }),
+      fixturePick({ eventSlug: title.slug, punditId: "no-voice", side: "no" }),
+    ];
+    const home = getHomeEvents([lonely, title, fight], homeCalls);
+    expect(home.map((e) => e.slug)).toEqual([fight.slug, title.slug, lonely.slug]);
     expect(home.every((e) => e.onHome)).toBe(true);
   });
 
-  it("counts Finebaum open $100 per mapped pending call", () => {
-    const n = mappedCalls(loadCalls()).filter(
-      (c) => c.punditId === "finebaum" && c.status === "pending"
-    ).length;
-    expect(impliedOpenDollars("finebaum", loadCalls())).toBe(n * 100);
-    expect(n).toBeGreaterThanOrEqual(4);
+  it("counts $100 per mapped pending call", () => {
+    const pending = [
+      fixturePick({ eventSlug: "game-a-2026", punditId: "voice", side: "yes" }),
+      fixturePick({ eventSlug: "game-b-2026", punditId: "voice", side: "no" }),
+      fixturePick({ eventSlug: "game-c-2026", punditId: "other", side: "yes" }),
+      { ...fixturePick({ eventSlug: "game-d-2026", punditId: "voice", side: "yes", status: "hit" }), id: "voice-hit" },
+    ];
+    expect(impliedOpenDollars("voice", pending)).toBe(200);
   });
 });
 
 describe("Top 10 boards", () => {
-  it("exposes 10 NCAAF home events and 10 NFL home events", () => {
-    const events = loadEvents();
-    const calls = loadCalls();
-    const ncaaf = getBoard("ncaaf", events, calls);
-    const nfl = getBoard("nfl", events, calls);
-    expect(ncaaf).toHaveLength(10);
-    expect(nfl).toHaveLength(10);
-    expect(ncaaf.every((e) => e.sport === "ncaaf" && e.onHome)).toBe(true);
-    expect(nfl.every((e) => e.sport === "nfl" && e.onHome)).toBe(true);
+  it("exposes only onHome futures for a sport board", () => {
+    const events = [
+      fixtureFuture("ncaaf-title-2026", { sport: "ncaaf", homeRank: 1 }),
+      fixtureFuture("ncaaf-cfp-2026", { sport: "ncaaf", homeRank: 2 }),
+      fixtureFuture("nfl-sb-2026", { sport: "nfl", homeRank: 1 }),
+      fixtureGame("ncaaf-game-2026", { sport: "ncaaf", homeRank: 0 }),
+      fixtureFuture("ncaaf-offhome-2026", { sport: "ncaaf", onHome: false, homeRank: 3 }),
+    ];
+    const ncaaf = getBoard("ncaaf", events, []);
+    const nfl = getBoard("nfl", events, []);
+    expect(ncaaf.map((e) => e.slug)).toEqual(["ncaaf-title-2026", "ncaaf-cfp-2026"]);
+    expect(nfl.map((e) => e.slug)).toEqual(["nfl-sb-2026"]);
+    expect(ncaaf.every((e) => e.sport === "ncaaf" && e.onHome && eventKind(e) === "future")).toBe(true);
+    expect(nfl.every((e) => e.sport === "nfl" && e.onHome && eventKind(e) === "future")).toBe(true);
+  });
+
+  it("keeps live sport boards as onHome futures", () => {
+    const ncaaf = getBoard("ncaaf", loadEvents(), loadCalls());
+    const nfl = getBoard("nfl", loadEvents(), loadCalls());
+    expect(ncaaf.length).toBeGreaterThan(0);
+    expect(nfl.length).toBeGreaterThan(0);
+    expect(ncaaf.every((e) => e.sport === "ncaaf" && e.onHome && eventKind(e) === "future")).toBe(true);
+    expect(nfl.every((e) => e.sport === "nfl" && e.onHome && eventKind(e) === "future")).toBe(true);
   });
 
   it("maps Herbstreit's Nonstop title bracket as clear leans", () => {
@@ -128,36 +154,29 @@ describe("Top 10 boards", () => {
 
 describe("weekend home", () => {
   it("lists onHome games separately from futures, ranked for the homepage", () => {
-    const events = loadEvents();
+    const events = [
+      fixtureGame("later-ncaaf-2026", { sport: "ncaaf", homeRank: 2 }),
+      fixtureGame("earlier-ncaaf-2026", { sport: "ncaaf", homeRank: 1 }),
+      fixtureGame("nfl-opener-2026", { sport: "nfl", homeRank: 1 }),
+      fixtureFuture("ncaaf-title-2026", { sport: "ncaaf", homeRank: 0 }),
+      fixtureGame("offhome-ncaaf-2026", { sport: "ncaaf", onHome: false, homeRank: 0 }),
+    ];
     const ncaaf = getWeekend("ncaaf", events);
     const nfl = getWeekend("nfl", events);
+    expect(ncaaf.map((e) => e.slug)).toEqual(["earlier-ncaaf-2026", "later-ncaaf-2026"]);
+    expect(nfl.map((e) => e.slug)).toEqual(["nfl-opener-2026"]);
     expect(ncaaf.every((e) => e.onHome && e.sport === "ncaaf" && eventKind(e) === "game")).toBe(
       true
     );
     expect(nfl.every((e) => e.onHome && e.sport === "nfl" && eventKind(e) === "game")).toBe(true);
-    expect(ncaaf.map((e) => e.homeRank)).toEqual(
-      [...ncaaf.map((e) => e.homeRank)].sort((a, b) => a - b)
-    );
-    expect(nfl.map((e) => e.homeRank)).toEqual(
-      [...nfl.map((e) => e.homeRank)].sort((a, b) => a - b)
-    );
-    expect(ncaaf.map((e) => e.slug)).toEqual(
-      expect.arrayContaining([
-        "unc-vs-tcu-2026",
-        "ncsu-at-uva-2026",
-        "clemson-at-lsu-2026",
-      ])
-    );
-    expect(nfl.map((e) => e.slug)).toEqual(
-      expect.arrayContaining([
-        "patriots-at-seahawks-2026",
-        "49ers-vs-rams-2026",
-        "bills-at-texans-2026",
-      ])
-    );
-    expect(getBoard("ncaaf", events, loadCalls()).every((e) => eventKind(e) === "future")).toBe(
-      true
-    );
+    expect(getBoard("ncaaf", events, []).every((e) => eventKind(e) === "future")).toBe(true);
+  });
+
+  it("keeps live weekend boards as onHome games", () => {
+    const ncaaf = getWeekend("ncaaf", loadEvents());
+    const nfl = getWeekend("nfl", loadEvents());
+    expect(ncaaf.every((e) => e.onHome && e.sport === "ncaaf" && eventKind(e) === "game")).toBe(true);
+    expect(nfl.every((e) => e.onHome && e.sport === "nfl" && eventKind(e) === "game")).toBe(true);
   });
 
   it("keeps off-home games on the full sport slate", () => {
@@ -221,46 +240,63 @@ describe("weekend home", () => {
   });
 
   it("peeks a short futures strip that still prefers fights", () => {
-    const peek = getFuturesPeek("ncaaf", loadEvents(), loadCalls(), 5);
-    expect(peek).toHaveLength(5);
-    expect(peek[0].slug).toBe("indiana-title-2026");
+    const fight = fixtureFuture("fight-title-2026", { homeRank: 4 });
+    const lonely = fixtureFuture("lonely-title-2026", { homeRank: 1 });
+    const extra = fixtureFuture("extra-title-2026", { homeRank: 2 });
+    const peekCalls = [
+      fixturePick({ eventSlug: fight.slug, punditId: "yes-voice", side: "yes" }),
+      fixturePick({ eventSlug: fight.slug, punditId: "no-voice", side: "no" }),
+      fixturePick({ eventSlug: lonely.slug, punditId: "yes-voice", side: "yes" }),
+      fixturePick({ eventSlug: extra.slug, punditId: "no-voice", side: "no" }),
+    ];
+    const peek = getFuturesPeek("ncaaf", [lonely, extra, fight], peekCalls, 5);
+    expect(peek.map((e) => e.slug)).toEqual([fight.slug, lonely.slug, extra.slug]);
     expect(peek.every((e) => eventKind(e) === "future")).toBe(true);
   });
 
   it("never peeks a future with no mapped pick", () => {
-    const nfl = getFuturesPeek("nfl", loadEvents(), loadCalls(), 10);
-    const calls = loadCalls();
-    expect(nfl.length).toBeGreaterThan(0);
-    for (const event of nfl) {
-      expect(mappedCalls(calls).some((c) => c.eventSlug === event.slug)).toBe(true);
-    }
-    expect(nfl.some((e) => e.slug === "seahawks-sb-2026")).toBe(false);
+    const faced = fixtureFuture("faced-sb-2026", { sport: "nfl", homeRank: 1 });
+    const waiting = fixtureFuture("waiting-sb-2026", { sport: "nfl", homeRank: 2 });
+    const peekCalls = [fixturePick({ eventSlug: faced.slug, punditId: "voice", side: "yes" })];
+    const nfl = getFuturesPeek("nfl", [faced, waiting], peekCalls, 10);
+    expect(nfl.map((e) => e.slug)).toEqual([faced.slug]);
+    expect(nfl.some((e) => e.slug === waiting.slug)).toBe(false);
   });
 
   it("splits NFL futures into faced cards and a waiting list", () => {
-    const { withPicks, waiting } = partitionFutures("nfl", loadEvents(), loadCalls());
-    expect(withPicks.some((e) => e.slug === "rams-sb-2026")).toBe(true);
-    expect(waiting.some((e) => e.slug === "seahawks-sb-2026")).toBe(true);
+    const faced = fixtureFuture("faced-sb-2026", { sport: "nfl", homeRank: 1 });
+    const waitingEvent = fixtureFuture("waiting-sb-2026", { sport: "nfl", homeRank: 2 });
+    const { withPicks, waiting } = partitionFutures(
+      "nfl",
+      [faced, waitingEvent],
+      [fixturePick({ eventSlug: faced.slug, punditId: "voice", side: "yes" })]
+    );
+    expect(withPicks.map((e) => e.slug)).toEqual([faced.slug]);
+    expect(waiting.map((e) => e.slug)).toEqual([waitingEvent.slug]);
   });
 
-  it("features the next open game, not a finished Week 0 card", () => {
-    const events = loadEvents();
-    const calls = loadCalls();
-    const ncaaf = getWeekend("ncaaf", events);
-    const nfl = getWeekend("nfl", events);
-    const marquee = marqueeGame(ncaaf, nfl, calls);
-    expect(marquee?.slug).toBe("clemson-at-lsu-2026");
-    const { open, grading, final } = partitionGames(ncaaf, calls);
-    expect(open.map((e) => e.slug)).toEqual([
-      "clemson-at-lsu-2026",
-      "baylor-vs-auburn-2026",
-    ]);
+  it("features the next open game, not a finished card", () => {
+    const openEarly = fixtureGame("open-early-2026", { homeRank: 2, kickoffDate: "2026-09-05" });
+    const openLate = fixtureGame("open-late-2026", { homeRank: 3, kickoffDate: "2026-09-06" });
+    const finished = fixtureGame("finished-2026", {
+      homeRank: 1,
+      kickoffDate: "2026-08-29",
+      awayScore: 15,
+      homeScore: 10,
+    });
+    const slate = [finished, openEarly, openLate];
+    const slateCalls = [
+      fixturePick({ eventSlug: openEarly.slug, punditId: "voice", side: "no" }),
+      fixturePick({ eventSlug: openLate.slug, punditId: "voice", side: "yes" }),
+      fixturePick({ eventSlug: finished.slug, punditId: "voice", side: "no", status: "miss" }),
+    ];
+    const marquee = marqueeGame(slate, [], slateCalls);
+    expect(marquee?.slug).toBe(openEarly.slug);
+    const { open, grading, final } = partitionGames(slate, slateCalls);
+    expect(open.map((e) => e.slug)).toEqual([openEarly.slug, openLate.slug]);
     expect([...open, ...grading].map((e) => e.slug)).toContain(marquee!.slug);
     expect(grading).toEqual([]);
-    expect(final.map((e) => e.slug)).toEqual([
-      "unc-vs-tcu-2026",
-      "ncsu-at-uva-2026",
-    ]);
+    expect(final.map((e) => e.slug)).toEqual([finished.slug]);
   });
 
   it("does not fall back to a final game when nothing is open", () => {

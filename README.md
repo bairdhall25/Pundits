@@ -12,7 +12,8 @@ Start with [`docs/product/README.md`](docs/product/README.md) for the canonical 
 
 - `npm run dev` starts the local Next.js server.
 - `npm test` runs the data, ledger, and SEO test suite.
-- `npm run check` runs tests, builds the production static export, and verifies routes, canonical URLs, the sitemap, and Cloudflare redirects.
+- `npm run check:fast` runs inexpensive deterministic tests and run-file validation. It is not a release gate.
+- `npm run check` is the mandatory release gate: tests, production static export, routes, canonical URLs, the sitemap, and Cloudflare redirects.
 - `npm run verify:live` checks the deployed routes and a representative 301 redirect.
 
 ## Deployment

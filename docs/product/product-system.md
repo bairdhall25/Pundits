@@ -100,7 +100,7 @@ The code currently infers an event's winning side from consistent graded mapped 
 - Email early-access capture and the short-lived community-tip queue are the only current server-side persistence, both using Cloudflare KV. The editorial record remains static repository JSON.
 - There is no authentication, personalization, comments, live-odds service, or general application database.
 - Production is Cloudflare Pages project `pundits`; GitHub Actions verifies but does not deploy.
-- `npm test` protects data and logic. `npm run check` adds production build, route, canonical, sitemap, and redirect verification.
+- `npm test` protects data and logic. `npm run check:fast` runs inexpensive tests and run-file validation during ordinary edits; it is not a release gate. `npm run check` remains mandatory for production build, route, canonical, sitemap, and redirect verification.
 
 ## Integrity checks future work must preserve
 
