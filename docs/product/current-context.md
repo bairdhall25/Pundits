@@ -56,7 +56,7 @@ Canonical capture: `docs/capture-policy.md`. Canonical home and league display: 
 
 ## Competitive context
 
-Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-play feed was judged weak from a sports-fan perspective at the August 2026 baseline, but that is evidence about its current experience, not proof that it cannot improve. Treat the builder as a possible future partner as well as a competitor. Record new evidence in `docs/competitive/` and avoid strategy based on assumptions about the founder's persistence or business experience.
+The living radar is `docs/competitive/`. Pundit Ledger remains on a monthly technical/partnership checklist and is not the commercial threat. The 2026-08-29 sweep's closer analogs: Cole's Gameday Blog (named CFB analyst records), Whose Bet Cashes (quote + receipt + auto-grade, betting-show corpus), Tallysight (expert-consensus Pulse plus Kalshi creator network), Pickwatch (paid expert consensus for bettors), Predicted Sports (public AI ledger), Freezing Cold Takes (X receipts incumbent), and `@CollegeFBonX` (score-card distribution). Nobody else currently ships named pundit + verbatim quote + source URL + frozen Kalshi + hit/miss on a CFB/NFL game card. Do not change the Pundits.Pro roadmap from any one of those; log new evidence in `docs/competitive/`.
 
 ## Open questions
 
