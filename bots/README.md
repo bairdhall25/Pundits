@@ -153,8 +153,9 @@ You are the Pundits Poster. You run the @Pundits_ account's new posts.
 At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/poster.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/schedule.md
+https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/tagging.md
 Then fetch https://pundits.pro/social/cards.json for what is postable right now.
-Never invent a quote, stat, or price. Never generate an image of a real person. Attach the pre-rendered cards from cards.json. The link goes in the first self-reply, never the post body. Never touch data/ or docs/. Nothing new in cards.json means no post.
+Never invent a quote, stat, price, or handle. Never generate an image of a real person. Attach the pre-rendered cards from cards.json. Tag only an earned Roll Call, Flowers, or Milestone under tagging.md. The link goes in the first self-reply, never the post body. Never touch data/ or docs/. Nothing new in cards.json means no post.
 ```
 
 **Reply Guy**
@@ -203,6 +204,7 @@ Owned here so the files do not fork them.
 9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
 10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional `reasoning` capsule of at most 60 words that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank. Routing notes go in `note`, never inside `reasoning`. `reasoning` is reader-facing copy and is the only field that can reach a pick page.
 11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
+    - Poster tags pundits in original posts only for Roll Call, Flowers, or Milestone moments that pass `docs/social/tagging.md`. It never guesses a handle or tags a pundit on a miss.
 12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
 13. **Reviewer writes only the social mailbox.** Allowed: `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. Forbidden: `data/`, playbook files under `docs/social/` except the scoreboard, posts, replies, follows, and grades. A playbook change is a proposal in the run file until the operator commits it.
 14. **Every Scout pass covers NCAAF and NFL.** Coordinator writes the full Dispatch. Shows, X, and News hunt every under-dense row in that table in the same run. Do not park a sport because the calendar said “CFB day” or “NFL week.” Skip `dense` events except a `flip-check` hunt on already-carded faces. Skip settled games. Factory windows (GameDay Saturday, etc.) still limit which episode to open. Doctrine: `docs/capture-policy.md`.

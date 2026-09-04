@@ -1,6 +1,6 @@
 # Pundits — The Social Engine (agentic X marketing system)
 
-Date: 2026-08-29
+Date: 2026-08-29; amended 2026-09-03
 Status: Current — approved design for the Grok Post Poster and Reply Guy system.
 Evidence base: `docs/social/research-2026-08-29.md` (Ringer / Barstool / data-flex account research, sourced).
 
@@ -14,6 +14,7 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 2. **Images: three tiers, chosen by what the post is about.** Tier 1 (mandatory for any post about a specific pundit/pick/event/result): attach the site's pre-rendered cards natively; link in a self-reply. Tier 2 (editorial/discussion posts): Grok may generate images only from brand-spec prompt templates. Tier 3 (replies): text-first. The bots can attach images from URLs (confirmed).
 3. **Scope:** bot instruction files, `docs/social/` playbook, weekly schedule, and a card-index build step. No posting automation in this repo, no analytics pipeline, X only, no pre-composed post queue.
 4. **Both bots are read-only.** They never touch `data/`, never write `docs/runs/`, never grade, never edit the site. They read the live site, the card index, and the playbook.
+5. **Tags are earned editorial signals.** Original posts tag pundits only for a qualifying pregame Roll Call, a notable hit Flowers, or a meaningful tracked-record Milestone. Routine captures and misses remain untagged; handles come from `docs/social/tagging.md` and are never guessed.
 
 ## Files
 
@@ -25,7 +26,8 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 | `docs/social/README.md` | Strategy overview; how playbook, bots, and card index fit |
 | `docs/social/voice.md` | Receipts Guy voice guide: the blend, registers, good/bad examples |
 | `docs/social/images.md` | The tier system + brand image spec + Tier-2 prompt templates |
-| `docs/social/post-patterns.md` | The ten archetypes (below), example-driven |
+| `docs/social/post-patterns.md` | The twelve archetypes (below), example-driven |
+| `docs/social/tagging.md` | Earned-tag gates, exclusions, approved handles, and measurement |
 | `docs/social/reply-guide.md` | Reply Guy targeting, value rules, caps, disengage rules |
 | `docs/social/schedule.md` | Weekly calendar keyed to the CFB/NFL rhythm |
 | `docs/social/research-2026-08-29.md` | Evidence base (committed alongside this spec) |
@@ -50,7 +52,7 @@ Pundits runs agentic social marketing on X via two Grok bots — a Post Poster (
 
 ## Post archetypes (full patterns in `docs/social/post-patterns.md`)
 
-The Receipt · The Flowers · The Freeze · The Number · The Disagreement · The Slate · The Ledger Move · Live register · The Self-Grade · The Harvest. Each pattern names its image tier and register; all example-driven, none scripted. The Flowers selectively celebrates a notable successful call with a Broadcast Spotlight or Quote-First Tier 1 treatment; it complements rather than replaces the ledger's even treatment of hits and misses.
+The Receipt · The Flowers · The Roll Call · The Freeze · The Number · The Disagreement · The Slate · The Ledger Move · The Milestone · Live register · The Self-Grade · The Harvest. Each pattern names its image tier and register; all example-driven, none scripted. Roll Call stages a dense pregame disagreement, Flowers selectively celebrates a notable successful call, and Milestone recognizes meaningful tracked history. Those are the only tagged originals. They complement rather than replace the ledger's even treatment of hits and misses.
 
 ## Guardrails (enforce verbatim in both bot files)
 

@@ -8,13 +8,13 @@ Git is the mailbox. Chat is not the review.
 
 ## Every job, in order
 
-1. Fetch `docs/social/README.md`, `docs/social/schedule.md`, `docs/social/post-patterns.md`, `docs/social/reply-guide.md`, `docs/social/voice.md`, and `docs/social/shakedown.md`.
+1. Fetch `docs/social/README.md`, `docs/social/schedule.md`, `docs/social/post-patterns.md`, `docs/social/tagging.md`, `docs/social/reply-guide.md`, `docs/social/voice.md`, and `docs/social/shakedown.md`.
 2. Fetch `docs/product/measurement.md` for what social success means at this stage.
 3. Fetch `docs/social/scoreboard.md` and the latest `docs/runs/YYYY-MM-DD-social.md` if one exists. Last week's experiment is required reading.
 4. Fetch `https://pundits.pro/social/cards.json`. Note `generatedAt`. On a game day, a file older than 24h is an ops miss.
 5. Read @Pundits_ posts and replies for the last 7 ET days. Build a row per post: time, archetype if obvious, tagged accounts, card yes/no, views, likes, replies, reposts, quotes, bookmarks, link-in-self-reply yes/no.
 6. Mark each post against `cards.json`: verified / unverifiable / off-book.
-7. Split performance into tagged receipt, untagged original, reply under someone else, and self-reply link.
+7. Split performance into tagged Roll Call, tagged Flowers, tagged Milestone, untagged original, reply under someone else, and self-reply link. Flag any tagged original outside the three earned moments as a playbook miss.
 8. Merge an Analytics CSV or pasted private metrics only if the operator provided them in this job. Never invent URL clicks or profile clicks.
 9. Write `docs/runs/YYYY-MM-DD-social.md` using the report format below. Use today's ET date.
 10. Append one row to `docs/social/scoreboard.md`. Do not rewrite older rows.
@@ -26,9 +26,10 @@ Grow the account by putting verified receipts into other people's conversations,
 
 This stage's scoreboard:
 
-- Tagged Receipt / Flowers / Ledger Move posts after a grade
+- Tagged Roll Call / Flowers / Milestone posts that pass `tagging.md`
 - Replies under tracked pundits or tracked-game debates that add a `cards.json` fact
-- Views on tagged posts vs untagged originals
+- Organic views on tagged posts vs untagged originals
+- Pundit/outlet amplification: reply, repost, or quote-post of the tagged post
 - URL clicks and profile clicks when an Analytics export is present
 - Playbook compliance: link in first self-reply, no invented numbers, no betting language, silence when nothing new
 
@@ -66,20 +67,7 @@ If those fields are missing, write `n/a` and proceed. Do not stall the review fo
 
 ## Working-set handles
 
-Reply targeting for this operating window. Update this list in a future playbook commit, not mid-review.
-
-- `@GregMcElroy`
-- `@Chip_Patterson`
-- `@finebaum`
-- `@dannykanell`
-- `@JoshPateCFB`
-- `@colincowherd`
-- `@richeisen`
-- `@_willcompton`
-- `@Cover3Podcast`
-- `@AlwaysCFB`
-- `@BFW`
-- `@BFWshow`
+Use the approved pundit and outlet handles in `docs/social/tagging.md` as the current working set. Update that registry in a future operator-accepted playbook commit, not mid-review.
 
 ## What you may write
 
@@ -128,7 +116,7 @@ Why:
 ## Do not do
 ```
 
-Under `## Scoreboard` include a table with at least: post or archetype, tagged yes/no, views, public engagements, URL clicks, profile clicks.
+Under `## Scoreboard` include a table with at least: post or archetype, tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`), views, public engagements, pundit/outlet amplification, URL clicks, profile clicks. Mark boosted reach explicitly and exclude it from organic comparisons.
 
 ## Chat report
 

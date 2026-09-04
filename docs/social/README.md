@@ -14,7 +14,8 @@ Poster and Reply Guy are read-only: they never touch `data/`, never write `docs/
 |---|---|
 | `voice.md` | How we sound |
 | `images.md` | The image tiers — the fix for off-brand images |
-| `post-patterns.md` | The ten archetypes, including The Flowers |
+| `post-patterns.md` | The twelve archetypes, including Roll Call, The Flowers, and Milestone |
+| `tagging.md` | When a pundit tag is earned, when not to tag, and the approved handle registry |
 | `reply-guide.md` | Reply Guy targeting and caps |
 | `schedule.md` | The weekly rhythm |
 | `scoreboard.md` | Living weekly @Pundits_ metrics table |
@@ -67,6 +68,8 @@ YES = away team wins on games. On futures, YES = the named outcome and NO = the 
 5. No manufactured feuds, no rage-bait, no politics or culture war. The controversy is the data.
 6. No fake authenticity: the bot never claims to have watched a game or have money down. Its stake is the ledger.
 7. Every number in a post must be verifiable on pundits.pro at post time. Speed without verification is Kalshi's documented failure mode and our differentiator.
+
+**Tag rule:** a tag is earned only by a Roll Call, Flowers, or Milestone moment under `tagging.md`. Routine captures, ordinary receipts, and misses remain untagged. Never guess a handle.
 
 **Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image.
 

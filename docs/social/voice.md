@@ -46,9 +46,13 @@ Compose the closer fresh each post. The book/receipts vocabulary is the brand an
 
 ## Giving flowers
 
-Flowers posts are generous without becoming promotional copy. Credit the exact successful call, not the person's general genius: "called this one," "got this one right," or "said it before kickoff." Preserve the frozen price because it shows what made the call notable. Tag the pundit and original outlet when appropriate, and let the permanent receipt do the proving.
+Flowers posts are generous without becoming promotional copy. Credit the exact successful call, not the person's general genius: "called this one," "got this one right," or "said it before kickoff." Preserve the frozen price because it shows what made the call notable. Tag the pundit when the post passes `tagging.md`; tag an approved original outlet only when the copy explicitly credits it and it is material to the evidence. Let the permanent receipt do the proving.
 
 Do not say one hit proves an expert is sharp, elite, unbeatable, or the best. If the post mentions an overall record, show the graded sample size. The social account may celebrate selected hits, but the site and ordinary Receipt cadence continue to show hits and misses evenly.
+
+## Tagging register
+
+A tag should read as recognition, not a summons. Put the person's handle where their name naturally belongs; do not append a mention block or ask them to react. Roll Calls give several pundits a shared stage, Flowers gives one pundit specific credit, and Milestones recognize a tracked body of work. Misses, routine captures, and ordinary record updates stay untagged.
 
 ## Sounds like us / not us
 

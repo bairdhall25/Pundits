@@ -8,19 +8,21 @@ Cards refresh on deploy. `RUNBOOK.md` requires a deploy whenever the book change
 
 | Day | Poster slots | Reply Guy |
 |---|---|---|
-| Tue | 1–2 posts — The Freeze as picks land; The Number. | Reply sweep (15 cap). |
-| Wed | 2 posts — The Disagreement (best both-sides event); The Freeze. | Reply sweep. |
+| Tue | 1–2 posts — The Number; one selective untagged Freeze only when it creates new tension. | Reply sweep (15 cap). |
+| Wed | 2 posts — Roll Call for the best qualifying game, tagging approved central voices; otherwise an untagged Disagreement. One selective Freeze. | Reply sweep. |
 | Thu | 2–3 posts — The Slate (if CFB tonight), Live register in window, The Receipt or selective Flowers same night. | Game-day sweep (25 cap). |
-| Fri | 2 posts — The Slate (weekend preview); The Freeze — favor pending takes at long cents (bold calls). | Reply sweep. |
+| Fri | 2 posts — Roll Call for a qualifying weekend game, tagging approved central voices, or The Slate; one selective untagged Freeze only for a genuinely bold call. | Reply sweep. |
 | Sat | 3–5 posts — The Slate (morning), Live register, The Receipt as games settle, selective Flowers for a notable hit, The Ledger Move (night). | Heavy sweep (25 cap). |
 | Sun | 3–5 posts — NFL mirror of Saturday, including selective Flowers. | Heavy sweep. |
-| Mon | 2–3 posts — choose 2–3 among: The Ledger Move, The Self-Grade, The Slate (MNF), The Receipt (same night), or the strongest uncelebrated Flowers from the weekend. | Recap sweep. |
+| Mon | 2–3 posts — choose 2–3 among: a qualifying Milestone, The Ledger Move, The Self-Grade, The Slate (MNF), The Receipt (same night), or the strongest uncelebrated Flowers from the weekend. | Recap sweep. |
 
 ## Budgets
 
 Poster: never more than 6 posts/day; never two identical archetypes in a row; every post body link-free (link in first self-reply) (sole exception: the Tier-1 attach-failure fallback in `images.md`). Reply Guy caps live in `reply-guide.md`.
 
 Flowers is selective and does not add a posting slot. It replaces an ordinary hit receipt when the call is specific and notable. Miss receipts remain in the mix so praise never turns the public record into a winners-only feed.
+
+Tags do not create extra slots. Roll Call, Flowers, and Milestone are the only tagged originals, and each must pass `tagging.md`. A routine Freeze is never tagged. A miss Receipt is never tagged.
 
 ## Dead air rule
 

@@ -1,6 +1,6 @@
 # Post patterns
 
-Ten archetypes cover every post the bots make. Each names its image tier (see `images.md`) and its register (see `voice.md`, `## Two registers`). The examples below are calibration, not scripts — compose freshly every time, following `voice.md`.
+Twelve archetypes cover every post the bots make. Each names its image tier (see `images.md`) and its register (see `voice.md`, `## Two registers`). The examples below are calibration, not scripts — compose freshly every time, following `voice.md`. Original-post tags follow `tagging.md`; no archetype outside Roll Call, Flowers, or Milestone earns a tag.
 
 ## The Receipt
 
@@ -16,13 +16,25 @@ Ten archetypes cover every post the bots make. Each names its image tier (see `i
 
 **When:** a notable mapped take grades `hit` and the pundit made a clear, specific call worth celebrating. Use selectively; not every hit needs flowers.
 
-**Shape:** name the pundit → preserve the strongest faithful fragment of the original call → state the frozen cents and final result → give specific credit. Prefer "called this one" or "got this one right" over claims that one result proves expertise. Tag the pundit and original outlet when appropriate.
+**Shape:** name the pundit → preserve the strongest faithful fragment of the original call → state the frozen cents and final result → give specific credit. Prefer "called this one" or "got this one right" over claims that one result proves expertise. Tag the pundit under `tagging.md`; tag an approved original outlet only when the copy explicitly credits it and it is material to the evidence.
 
 **Image:** Tier 1 take card using one of the approved Flowers treatments in `images.md`: Broadcast Spotlight or Quote-First.
 
 **Example** (calibration example — never repost verbatim): *"Give Chip Patterson his flowers. He took North Carolina outright at 41¢, on the record, before kickoff. Final: Carolina won. Called it. 💐"*
 
 **Boundary:** The Flowers is the celebratory layer, not the ledger. It never replaces The Receipt's even coverage of hits and misses, never hides the sample size behind an overall record, and never turns one correct pick into a claim of predictive skill.
+
+## The Roll Call
+
+**When:** before kickoff, a game has at least four distinct mapped pundits, both sides are represented, and the density itself has become the story. Follow the full gate and tag cap in `tagging.md`.
+
+**Shape:** number of tracked pundits → the split by team → name the central opposing voices → establish it as the contested game in the book. The post is about the field of disagreement, not a list of database rows.
+
+**Image:** Tier 1 event card.
+
+**Example** (calibration example — never repost verbatim): *"6 pundits. A 3-3 split on Clemson-LSU. The most contested game in the book this week has no safe side."*
+
+**Boundary:** one Roll Call per event. When approved handles exist, use no more than four pundit tags and include at least one tagged voice from each side. If the event misses the density gate, use an untagged Disagreement or Slate.
 
 ## The Freeze
 
@@ -72,11 +84,23 @@ Team language ("X says away, Y says home") is for `kind: "game"` only. On a `kin
 
 **When:** after a graded slate reshuffles records.
 
-**Shape:** the number is the headline — who leads, who slid.
+**Shape:** the number is the headline — who leads, who slid. This is untagged unless it independently meets the Milestone rule below.
 
 **Image:** Tier 1 pundit card of the mover.
 
 **Example** (calibration example — never repost verbatim): *"New leader in the book: Patterson, 5-1 on the season. Finebaum drops to 3-3. Standings don't argue."*
+
+## The Milestone
+
+**When:** a pundit reaches one of the meaningful tracked-record thresholds in `tagging.md`.
+
+**Shape:** milestone first → full tracked record and graded sample → narrow credit. Use `tracked record`, `on record`, or `on Pundits.Pro`; never imply that the ledger contains every prediction the pundit has made.
+
+**Image:** Tier 1 pundit card.
+
+**Example** (calibration example — never repost verbatim): *"10 graded picks. Patterson is 7-3 on the Pundits.Pro tracked record. A real sample has entered the chat."*
+
+**Boundary:** only positive or neutral milestones earn tags. Tiny samples and negative milestones remain untagged Numbers or ledger posts.
 
 ## Live register
 
@@ -118,4 +142,4 @@ Rules for any `kind: "future"` event, whatever the archetype:
 
 ## Selection rule
 
-Pick the archetype the moment calls for. If a hit fits both The Receipt and The Flowers, use Flowers only when the call is specific, notable, and likely to matter to the pundit's audience; otherwise use The Receipt. Prefer a Tier 1 card when two other archetypes fit. Never post the same archetype twice in a row. Never exceed the day's budget in `schedule.md`.
+Pick the archetype the moment calls for. If a hit fits both The Receipt and The Flowers, use Flowers only when the call is specific, notable, and likely to matter to the pundit's audience; otherwise use The Receipt. If a Ledger Move also meets a tracked threshold, use Milestone rather than tagging an ordinary Ledger Move. Prefer a Tier 1 card when two other archetypes fit. Never post the same archetype twice in a row. Never exceed the day's budget in `schedule.md`.
