@@ -1,28 +1,17 @@
-import { mkdir, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { ReactNode } from "react";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
 import {
-  callsForPundit,
   loadCalls,
   loadEvents,
   loadPundits,
   loadTeams,
-  toActivityRecord,
 } from "../lib/data";
 import { archiveWeeks } from "../lib/archive";
 import {
-  eventOgCard,
   ogQuote,
-  ogStoryEventPath,
-  ogStoryPunditPath,
-  ogStoryTakePath,
-  punditOgCard,
-  takeOgCard,
-  teamOgCard,
-  weekOgCard,
   type EventOgCard,
   type OgChip,
   type OgFace,
@@ -35,15 +24,18 @@ import {
 import { mappedTakes } from "../lib/seo";
 import {
   SOCIAL_PAGE_KEYS,
-  resolveEventSocialCard,
-  resolvePageSocialCard,
-  resolvePunditSocialCard,
-  resolveTakeSocialCard,
-  resolveTeamSocialCard,
-  resolveWeekSocialCard,
-  ogPagePath,
+  type SocialCardModel,
 } from "../lib/social-card";
+import { buildAssetManifest, type ManifestRow } from "./social-card/asset-manifest";
+import { resolveCardCache } from "./social-card/cache";
+import { publishSocialCards } from "./social-card/publish";
 import { landscapeSocialTree } from "./social-card/render";
+import {
+  gitCommonDir,
+  ogConcurrency,
+  productionFingerprintContext,
+} from "./social-card/runtime-context";
+import { validatePreviewImage } from "./preview-validation.mjs";
 
 const ROOT = process.cwd();
 const W = 1200;
@@ -1133,70 +1125,21 @@ export function punditStoryTree(card: PunditOgCard) {
   return <PunditStoryMarkup card={card} />;
 }
 
-function publicAbs(file: string) {
-  return path.join(ROOT, "public", file.replace(/^\//, ""));
-}
-
-async function writePng(file: string, png: Buffer) {
-  const abs = publicAbs(file);
-  await mkdir(path.dirname(abs), { recursive: true });
-  await writeFile(abs, png);
-}
-
-async function newestMtime(files: string[]): Promise<number> {
-  let max = 0;
-  for (const file of files) {
-    if (!existsSync(file)) continue;
-    const info = await stat(file);
-    if (info.mtimeMs > max) max = info.mtimeMs;
+async function renderManifestRow(row: ManifestRow): Promise<Buffer> {
+  const size = { width: row.width, height: row.height };
+  if (row.format === "landscape") {
+    return renderCardPng(landscapeSocialTree(row.model as SocialCardModel), size);
   }
-  return max;
-}
-
-async function dirFiles(dir: string): Promise<string[]> {
-  if (!existsSync(dir)) return [];
-  const names = await readdir(dir);
-  return names.map((n) => path.join(dir, n));
-}
-
-async function shouldSkip(expected: number): Promise<boolean> {
-  const dirs = [
-    "public/og/takes",
-    "public/og/events",
-    "public/og/pundits",
-    "public/og/teams",
-    "public/og/weeks",
-    "public/og/pages",
-    "public/og/stories/takes",
-    "public/og/stories/events",
-    "public/og/stories/pundits",
-  ].map((dir) => path.join(ROOT, dir));
-  const outs: string[] = [];
-  for (const dir of dirs) outs.push(...(await dirFiles(dir)));
-  const pngs = outs.filter((f) => f.endsWith(".png"));
-  if (pngs.length !== expected) return false;
-  const inputs = [
-    path.join(ROOT, "data/calls.json"),
-    path.join(ROOT, "data/events.json"),
-    path.join(ROOT, "data/pundits.json"),
-    path.join(ROOT, "data/teams.json"),
-    path.join(ROOT, "lib/og.ts"),
-    path.join(ROOT, "lib/social-card/model.ts"),
-    path.join(ROOT, "lib/social-card/portraits.ts"),
-    path.join(ROOT, "lib/social-card/registry.ts"),
-    path.join(ROOT, "lib/social-card/resolver.ts"),
-    path.join(ROOT, "scripts/social-card/assets.ts"),
-    path.join(ROOT, "scripts/social-card/tokens.ts"),
-    path.join(ROOT, "scripts/social-card/primitives.tsx"),
-    path.join(ROOT, "scripts/social-card/split.tsx"),
-    path.join(ROOT, "scripts/social-card/quote.tsx"),
-    path.join(ROOT, "scripts/social-card/editorial.tsx"),
-    path.join(ROOT, "scripts/social-card/render.tsx"),
-    path.join(ROOT, "scripts/render-og.tsx"),
-  ];
-  const inMax = await newestMtime(inputs);
-  const outMin = Math.min(...(await Promise.all(pngs.map(async (f) => (await stat(f)).mtimeMs))));
-  return outMin > inMax;
+  if (row.kind === "take") {
+    return renderCardPng(takeStoryTree(row.model as TakeOgCard), size);
+  }
+  if (row.kind === "event") {
+    return renderCardPng(eventStoryTree(row.model as EventOgCard), size);
+  }
+  if (row.kind === "pundit") {
+    return renderCardPng(punditStoryTree(row.model as PunditOgCard), size);
+  }
+  throw new Error(`no renderer for ${row.kind} ${row.format}`);
 }
 
 export async function renderAllOg(force = false): Promise<{
@@ -1206,6 +1149,9 @@ export async function renderAllOg(force = false): Promise<{
   teams: number;
   weeks: number;
   pages: number;
+  expected: number;
+  reused: number;
+  rendered: number;
 }> {
   const calls = loadCalls();
   const events = loadEvents();
@@ -1213,112 +1159,42 @@ export async function renderAllOg(force = false): Promise<{
   const teams = loadTeams();
   const takes = mappedTakes(calls, events, pundits);
   const weeks = archiveWeeks(events);
-  const expected =
-    (takes.length + events.length + pundits.length) * 2 +
-    teams.length +
-    weeks.length +
-    SOCIAL_PAGE_KEYS.length;
-  if (!force && (await shouldSkip(expected))) {
-    return {
-      takes: takes.length,
-      events: events.length,
-      pundits: pundits.length,
-      teams: teams.length,
-      weeks: weeks.length,
-      pages: SOCIAL_PAGE_KEYS.length,
-    };
-  }
-
-  const storySize = { width: STORY_W, height: STORY_H };
-  for (const dir of [
-    "public/og/takes",
-    "public/og/events",
-    "public/og/pundits",
-    "public/og/teams",
-    "public/og/weeks",
-    "public/og/pages",
-    "public/og/stories/takes",
-    "public/og/stories/events",
-    "public/og/stories/pundits",
-  ]) {
-    const abs = path.join(ROOT, dir);
-    await rm(abs, { recursive: true, force: true });
-    await mkdir(abs, { recursive: true });
-  }
-
-  for (const take of takes) {
-    const card = takeOgCard(take, calls, pundits, teams);
-    const socialCard = resolveTakeSocialCard(take, calls, pundits, teams);
-    try {
-      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
-      await writePng(ogStoryTakePath(take.event.slug, take.pundit.id), await renderCardPng(takeStoryTree(card), storySize));
-    } catch (err) {
-      throw new Error(`take ${card.file}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-  for (const event of events) {
-    const card = eventOgCard(event, calls, pundits, teams);
-    const socialCard = resolveEventSocialCard(event, calls, pundits, teams);
-    try {
-      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
-      await writePng(ogStoryEventPath(event.slug), await renderCardPng(eventStoryTree(card), storySize));
-    } catch (err) {
-      throw new Error(`event ${card.file}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-  for (const pundit of pundits) {
-    const record = toActivityRecord(pundit, calls);
-    const card = punditOgCard(record, callsForPundit(pundit.id, calls)[0]);
-    const socialCard = resolvePunditSocialCard(pundit, calls);
-    try {
-      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
-    } catch (err) {
-      throw new Error(`pundit landscape ${card.file}: ${err instanceof Error ? err.message : err}`);
-    }
-    try {
-      await writePng(ogStoryPunditPath(pundit.id), await renderCardPng(punditStoryTree(card), storySize));
-    } catch (err) {
-      throw new Error(`pundit story ${pundit.id}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-  for (const team of teams) {
-    const card = teamOgCard(team, events, calls, pundits);
-    const socialCard = resolveTeamSocialCard(team, events, calls, pundits);
-    try {
-      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
-    } catch (err) {
-      throw new Error(`team ${card.file}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-  for (const week of weeks) {
-    const card = weekOgCard(week.sport, week.season, week.week, events, calls);
-    const socialCard = resolveWeekSocialCard(
-      week.sport,
-      week.season,
-      week.week,
-      events,
-      calls,
-      pundits,
-      teams
-    );
-    try {
-      await writePng(card.file, await renderCardPng(landscapeSocialTree(socialCard)));
-    } catch (err) {
-      throw new Error(`week ${card.file}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-  for (const key of SOCIAL_PAGE_KEYS) {
-    const socialCard = resolvePageSocialCard(key, "landscape", {
-      events,
-      calls,
-      pundits,
-    });
-    try {
-      await writePng(ogPagePath(key), await renderCardPng(landscapeSocialTree(socialCard)));
-    } catch (err) {
-      throw new Error(`page ${key}: ${err instanceof Error ? err.message : err}`);
-    }
-  }
+  const rows = buildAssetManifest(
+    { calls, events, pundits, teams },
+    productionFingerprintContext(ROOT)
+  );
+  const cache = resolveCardCache(process.env, gitCommonDir(ROOT));
+  const published = await publishSocialCards({
+    rows,
+    publicDir: path.join(ROOT, "public"),
+    artifactDir: path.join(ROOT, ".agent-artifacts"),
+    reuse: !force && cache.kind !== "disabled",
+    cache,
+    concurrency: ogConcurrency(process.env),
+    render: async (row) => {
+      try {
+        return await renderManifestRow(row);
+      } catch (error) {
+        throw new Error(
+          `${row.kind} ${row.publicPath}: ${error instanceof Error ? error.message : error}`
+        );
+      }
+    },
+    validate: async (bytes, row) => {
+      await validatePreviewImage(bytes, row.publicPath, {
+        width: row.width,
+        height: row.height,
+      });
+    },
+    onProgress: (done, total, reused, rendered) => {
+      if (done === total || done % 25 === 0) {
+        console.log(`og: ${done}/${total} reused=${reused} rendered=${rendered}`);
+      }
+    },
+  });
+  console.log(
+    `og: expected=${published.expected} reused=${published.reused} rendered=${published.rendered} failed=${published.failed} cache=${published.cacheKind} ${published.elapsedMs}ms`
+  );
   return {
     takes: takes.length,
     events: events.length,
@@ -1326,6 +1202,9 @@ export async function renderAllOg(force = false): Promise<{
     teams: teams.length,
     weeks: weeks.length,
     pages: SOCIAL_PAGE_KEYS.length,
+    expected: published.expected,
+    reused: published.reused,
+    rendered: published.rendered,
   };
 }
 

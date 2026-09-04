@@ -23,5 +23,11 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: .git/pundits-agent-cache/social-cards
+          key: social-cards-${{ runner.os }}-${{ hashFiles('scripts/social-card/**', 'lib/social-card/**', 'scripts/render-og.tsx', 'lib/og.ts') }}
+          restore-keys: |
+            social-cards-${{ runner.os }}-
       - run: npm run doctor
       - run: npm run check
