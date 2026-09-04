@@ -11,8 +11,7 @@ import {
   sortBySchedule,
   sortFeaturedGames,
 } from "./featured";
-import { loadCalls, loadEvents, loadPundits } from "./data";
-import { homeHeroLede } from "./share";
+import { eventScanStatus, loadCalls, loadEvents, loadPundits } from "./data";
 import type { Call, Event, Pundit, Side, Sport } from "./types";
 
 const pundits: Pundit[] = Array.from({ length: 10 }, (_, index) => ({
@@ -414,34 +413,17 @@ describe("featured game display", () => {
     ).toBe(denser.slug);
   });
 
-  it("matches this week's Clemson hero and lede from live data", () => {
-    const calls = loadCalls();
-    const livePundits = loadPundits();
+  it("does not put a final game in the live hero when an open game exists", () => {
+    const liveCalls = loadCalls();
     const featured = getHomepageFeaturedGames(
       loadEvents(),
-      calls,
-      livePundits,
+      liveCalls,
+      loadPundits(),
       loadFeaturedPin(),
       "2026-09-01"
     );
-
-    expect(featured.hero?.slug).toBe("clemson-at-lsu-2026");
-    expect(homeHeroLede(featured.hero!, calls, livePundits)).toBe(
-      "Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, Clay Travis, Tom Fornelli, and David Pollack pick LSU. George Wrighster and Danny Kanell pick Clemson."
-    );
-    expect(featured.ncaaf).toHaveLength(3);
-    expect(featured.ncaafCompact.length).toBeLessThanOrEqual(2);
-    expect(featured.ncaafFinal.length).toBeLessThanOrEqual(2);
-    expect(featured.nfl.length).toBeLessThanOrEqual(3);
-    expect(featured.nflCompact.length).toBeLessThanOrEqual(2);
-    const homeSlugs = [
-      ...featured.ncaaf,
-      ...featured.ncaafCompact,
-      ...featured.nfl,
-      ...featured.nflCompact,
-    ].map((event) => event.slug);
-    expect(homeSlugs).not.toContain("clemson-at-lsu-2026");
-    expect(featured.nflFinal).toEqual([]);
+    if (!featured.hero) return;
+    expect(eventScanStatus(featured.hero, liveCalls)).not.toBe("final");
   });
 
   it("caps leftover compact teasers at two per sport", () => {

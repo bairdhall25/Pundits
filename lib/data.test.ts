@@ -25,6 +25,7 @@ import {
 } from "./data";
 import { filterBook, emptyBookFilter } from "./book-filter";
 import type { Call, Event, Pundit } from "./types";
+import { fixtureCall, fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
 
 const pundits: Pundit[] = [
   { id: "saban", name: "Nick Saban", outlet: "ESPN / GameDay", photo: "/photos/saban.jpg", sport: "ncaaf" },
@@ -173,11 +174,21 @@ describe("sortActivityBoard", () => {
     ]);
   });
 
-  it("on the live board, Patterson (1–1) outranks McElroy (1–0) by sample size", () => {
-    const board = getActivityBoard(loadPundits(), loadCalls());
-    const ids = sortActivityBoard(board, "results").map((p) => p.id);
-    expect(ids.indexOf("patterson")).toBeLessThan(ids.indexOf("mcelroy"));
-    expect(ids.indexOf("mcelroy")).toBeLessThan(ids.indexOf("herbstreit"));
+  it("ranks a 1-1 sample ahead of a 1-0 sample when sort is results", () => {
+    const people = [
+      fixturePundit("bigger-sample", { name: "Bigger Sample" }),
+      fixturePundit("hot-start", { name: "Hot Start" }),
+      fixturePundit("unmapped", { name: "Unmapped" }),
+    ];
+    const boardCalls = [
+      fixturePick({ eventSlug: "game-a-2026", punditId: "bigger-sample", side: "yes", status: "hit" }),
+      fixturePick({ eventSlug: "game-b-2026", punditId: "bigger-sample", side: "no", status: "miss" }),
+      fixturePick({ eventSlug: "game-a-2026", punditId: "hot-start", side: "yes", status: "hit" }),
+      fixtureCall({ id: "soft-1", punditId: "unmapped", claim: "a lean", kind: "soft" }),
+    ];
+    const ids = sortActivityBoard(getActivityBoard(people, boardCalls), "results").map((p) => p.id);
+    expect(ids.indexOf("bigger-sample")).toBeLessThan(ids.indexOf("hot-start"));
+    expect(ids.indexOf("hot-start")).toBeLessThan(ids.indexOf("unmapped"));
   });
 });
 
@@ -291,16 +302,34 @@ describe("settledSide", () => {
 
 describe("finalScoreLine", () => {
   it("formats the final score winner-first when both scores exist", () => {
-    const live = loadCalls();
-    const uva = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026")!;
-    expect(finalScoreLine(uva, live)).toBe("Virginia 34, NC State 8");
-    expect(finalScoreParts(uva, live)).toEqual({
+    const scored = fixtureGame("scored-2026", {
+      awayTeam: "NC State",
+      homeTeam: "Virginia",
+      awayScore: 8,
+      homeScore: 34,
+    });
+    const roadWin = fixtureGame("road-win-2026", {
+      awayTeam: "North Carolina",
+      homeTeam: "TCU",
+      awayScore: 15,
+      homeScore: 10,
+    });
+    const open = fixtureGame("open-2026");
+    expect(finalScoreLine(scored, [])).toBe("Virginia 34, NC State 8");
+    expect(finalScoreParts(scored, [])).toEqual({
       winner: "Virginia", loser: "NC State", winnerScore: 34, loserScore: 8,
     });
+    expect(finalScoreLine(roadWin, [])).toBe("North Carolina 15, TCU 10");
+    expect(finalScoreLine(open, [])).toBeNull();
+  });
+
+  it("keeps published Week 0 scores on the live ledger", () => {
+    const uva = loadEvents().find((e) => e.slug === "ncsu-at-uva-2026")!;
+    expect(uva.awayScore).toBe(8);
+    expect(uva.homeScore).toBe(34);
     const dublin = loadEvents().find((e) => e.slug === "unc-vs-tcu-2026")!;
-    expect(finalScoreLine(dublin, live)).toBe("North Carolina 15, TCU 10");
-    const open = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
-    expect(finalScoreLine(open, live)).toBeNull();
+    expect(dublin.awayScore).toBe(15);
+    expect(dublin.homeScore).toBe(10);
   });
 
   it("returns a score line for a scored event even when mapped calls are still pending", () => {
@@ -404,14 +433,12 @@ describe("event scan status", () => {
     expect(eventScanStatus(future, [{ ...futurePending, status: "hit" }])).toBe("final");
   });
 
-  it("classifies live Week 0 as final and Clemson as open", () => {
+  it("keeps published Week 0 games final on the live ledger", () => {
     const events = loadEvents();
-    const calls = loadCalls();
+    const liveCalls = loadCalls();
     const tcu = events.find((e) => e.slug === "unc-vs-tcu-2026")!;
-    const clem = events.find((e) => e.slug === "clemson-at-lsu-2026")!;
-    expect(eventScanStatus(tcu, calls)).toBe("final");
-    expect(eventScanStatus(clem, calls)).toBe("open");
-    expect(eventStatusLine(tcu, calls)).toBe("Final · North Carolina 15–10");
+    expect(eventScanStatus(tcu, liveCalls)).toBe("final");
+    expect(eventStatusLine(tcu, liveCalls)).toBe("Final · North Carolina 15–10");
   });
 });
 
@@ -482,12 +509,17 @@ describe("hasGradedRecords", () => {
 
 describe("eventHasTakes", () => {
   it("treats an event as empty until a mapped pick lands", () => {
-    const events = loadEvents();
-    const calls = loadCalls();
-    expect(eventHasTakes("unc-vs-tcu-2026", calls)).toBe(true);
-    expect(eventHasTakes("wisconsin-vs-nd-2026", calls)).toBe(true);
-    expect(eventHasTakes("miami-at-stanford-2026", calls)).toBe(true);
-    expect(eventHasTakes("seahawks-sb-2026", calls)).toBe(false);
-    expect(events.some((event) => event.slug === "miami-at-stanford-2026")).toBe(true);
+    const mapped = fixturePick({
+      eventSlug: "mapped-game-2026",
+      punditId: "voice",
+      side: "yes",
+    });
+    expect(eventHasTakes("mapped-game-2026", [mapped])).toBe(true);
+    expect(eventHasTakes("empty-future-2026", [mapped])).toBe(false);
+  });
+
+  it("keeps published mapped events non-empty on the live ledger", () => {
+    const liveCalls = loadCalls();
+    expect(eventHasTakes("unc-vs-tcu-2026", liveCalls)).toBe(true);
   });
 });

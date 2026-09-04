@@ -35,7 +35,8 @@ Scout is the critical job (`docs/scout-plan.md`, `bots/scout.md`). Hunt order: `
    Two speakers may share a URL).
    The next build mints a pick story at `/picks/{eventSlug}/{punditId}/`
    and lists it on `/stories/`. Do not paste article copy into JSON.
-   `npm run check` green, commit, push, deploy with `npm run deploy`, verify
+   `npm run check` green, commit, push, deploy with `npm run deploy`, verify.
+   `npm run check:fast` is for agent edits only and is not a release gate.
    the story URL on https://pundits.pro/. If the URL set grew, resubmit
    https://pundits.pro/sitemap.xml in Search Console / Bing.
 
@@ -82,7 +83,9 @@ Before deployment:
 4. Run `npm run deploy` from `main` for production. The command enforces the
    clean/synchronized branch, checks that the candidate preserves every URL in
    the current production sitemap, deploys, and then verifies the exact live
-   preview metadata and decoded images before notifying IndexNow.
+   preview metadata and decoded images before notifying IndexNow. Each deploy
+   stage is visible and timed in `.agent-artifacts/deploy-summary.json`. Do not
+   treat `npm run check:fast` as a substitute for this release path.
 
 For a branch preview, run `npm run check`, then use Wrangler with an explicit
 non-main branch name. Do not use the production `npm run deploy` command.

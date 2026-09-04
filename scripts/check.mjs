@@ -31,6 +31,47 @@ export const CHECK_STAGES = [
   },
 ];
 
+export const FAST_CHECK_NOTE =
+  "check:fast is not a release gate. Run npm run check before deploy or release-affecting completion.";
+
+export const FAST_CHECK_STAGES = [
+  {
+    id: "tests:fast",
+    name: "inexpensive tests",
+    command: ["npm", "run", "test:fast"],
+    next: "npm run test:fast",
+  },
+  {
+    id: "validate:runs",
+    name: "run-file validation",
+    command: ["npm", "run", "validate:runs"],
+    next: "npm run validate:runs",
+  },
+];
+
+export function parseCheckArgs(argv = process.argv.slice(2)) {
+  return { fast: argv.includes("--fast") };
+}
+
+export function resolveCheckOptions({ fast = false, cwd = process.cwd() } = {}) {
+  if (fast) {
+    return {
+      stages: FAST_CHECK_STAGES,
+      gate: "fast",
+      isReleaseGate: false,
+      successNote: FAST_CHECK_NOTE,
+      summaryPath: path.join(cwd, ".agent-artifacts", "check-fast-summary.json"),
+    };
+  }
+  return {
+    stages: CHECK_STAGES,
+    gate: "release",
+    isReleaseGate: true,
+    successNote: null,
+    summaryPath: path.join(cwd, ".agent-artifacts", "check-summary.json"),
+  };
+}
+
 export function npmProcessSpec(command, env = {}) {
   const args = command.slice(1);
   if (env.npm_execpath) {
@@ -76,6 +117,9 @@ function stageEnv(stage, env) {
 
 export async function runCheck({
   stages = CHECK_STAGES,
+  gate = "release",
+  isReleaseGate = true,
+  successNote = null,
   runCommand = defaultRunCommand,
   mkdir = fsMkdir,
   writeFile = fsWriteFile,
@@ -124,12 +168,18 @@ export async function runCheck({
     break;
   }
 
+  if (exitCode === 0 && successNote) {
+    stdout.write(`note: ${successNote}\n`);
+  }
+
   const summary = {
     ok: exitCode === 0,
     exitCode,
     elapsedMs: Math.max(0, now() - started),
     failedStage: failedStage?.id ?? null,
     next: failedStage?.next ?? null,
+    gate,
+    isReleaseGate,
     stages: results,
   };
 
@@ -144,7 +194,9 @@ export async function runCheck({
 }
 
 if (fileURLToPath(import.meta.url) === path.resolve(process.argv[1] ?? "")) {
-  runCheck()
+  const { fast } = parseCheckArgs();
+  const options = resolveCheckOptions({ fast });
+  runCheck(options)
     .then((result) => {
       process.exit(result.exitCode);
     })

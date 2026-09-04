@@ -6,6 +6,10 @@ import { validateStaticPreviews } from "./preview-validation.mjs";
 
 const root = process.cwd();
 const out = path.join(root, "out");
+const timings = [{ name: "start", at: Date.now() }];
+function mark(name) {
+  timings.push({ name, at: Date.now() });
+}
 
 const requiredFiles = [
   ...CORE_PAGES.map((page) => page.file),
@@ -18,6 +22,7 @@ for (const relative of requiredFiles) {
   assert(info.isFile(), `${relative} must be a generated file`);
   assert(info.size > 0, `${relative} must not be empty`);
 }
+mark("required-files");
 
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
@@ -305,6 +310,7 @@ for (const [file, key] of Object.entries(pageCardFiles)) {
   );
 }
 
+mark("html-contracts");
 const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
 for (const url of [
   "https://pundits.pro/",
@@ -370,10 +376,9 @@ assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, u
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
 assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
-// News sitemap is a 2-day rolling window (recentNewsTakes, days = 2), so these
-// track the newest promoted batch and move with each promote.
-assert.match(newsSitemap, /\/picks\/baylor-vs-auburn-2026\/kanell\//);
-assert.match(newsSitemap, /\/picks\/smu-at-fsu-2026\/kanell\//);
+// News sitemap is a 2-day rolling window (recentNewsTakes, days = 2). Assert
+// the contract, not a specific promoted batch that ages out of the window.
+assert.match(newsSitemap, /\/picks\/[^/]+\/[^/]+\//);
 assert.doesNotMatch(newsSitemap, /\/ncaaf\/2026\/week-0\//);
 assert.doesNotMatch(newsSitemap, /\/teams\//);
 
@@ -388,6 +393,7 @@ const sourceRedirects = await readFile(path.join(root, "public/_redirects"), "ut
 const outputRedirects = await readFile(path.join(out, "_redirects"), "utf8");
 assert.equal(outputRedirects, sourceRedirects, "Cloudflare redirects must survive the static export");
 assert.match(outputRedirects, /\/picks\/unc-vs-tcu\/ \/picks\/unc-vs-tcu-2026\/ 301/);
+mark("feeds");
 
 // --- Permalink permanence -------------------------------------------------
 // Once a URL has shipped in the sitemap it must resolve forever: a page in
@@ -444,6 +450,7 @@ if (added.length) {
   console.log(`Permalink ledger: +${added.length} new URLs (${ledger.length + added.length} total).`);
 }
 
+mark("permalinks");
 console.log(`Static verification passed (${requiredFiles.length} required files).`);
 
 const socialCards = JSON.parse(
@@ -468,7 +475,14 @@ for (const row of [
   assert(info.size > 0, `social index points at missing card ${rel}`);
 }
 
+mark("social-index");
 const previewSummary = await validateStaticPreviews({ outDir: out });
+mark("previews");
+for (let i = 1; i < timings.length; i += 1) {
+  console.log(
+    `verify:static ${timings[i].name} (${Math.max(0, timings[i].at - timings[i - 1].at)}ms)`
+  );
+}
 console.log(
   `Preview verification passed (${previewSummary.pages} pages, ${previewSummary.images} decoded images).`
 );

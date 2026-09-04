@@ -128,10 +128,13 @@ export function outputAssetForUrl(outDir, url) {
   return path.join(outDir, pathname);
 }
 
+export const DEFAULT_PREVIEW_CONCURRENCY = 4;
+
 export async function validateStaticPreviews({
   outDir,
   origin = "https://pundits.pro",
-}) {
+  concurrency = Number(process.env.PUNDITS_VERIFY_CONCURRENCY ?? DEFAULT_PREVIEW_CONCURRENCY),
+} = {}) {
   const sitemap = await readFile(path.join(outDir, "sitemap.xml"), "utf8");
   const pages = sitemapUrls(sitemap).filter((url) => new URL(url).origin === origin);
   const images = new Map();
@@ -142,10 +145,12 @@ export async function validateStaticPreviews({
     images.set(imageUrl.href, imageUrl);
   }
 
-  for (const imageUrl of images.values()) {
+  const uniqueImages = [...images.values()];
+  const limit = Number.isFinite(concurrency) && concurrency > 0 ? Math.floor(concurrency) : 1;
+  await mapLimit(uniqueImages, limit, async (imageUrl) => {
     const buffer = await readFile(outputAssetForUrl(outDir, imageUrl));
     await validatePreviewImage(buffer, imageUrl.href);
-  }
+  });
 
   return { pages: pages.length, images: images.size };
 }

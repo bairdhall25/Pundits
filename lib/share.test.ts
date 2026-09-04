@@ -4,6 +4,7 @@ import { sharePayload, tweetIntent } from "./share-link";
 import { getPundit, loadCalls, loadEvents, loadPundits } from "./data";
 import { absoluteUrl, siteOrigin } from "./site";
 import type { Call, Event, Pundit } from "./types";
+import { fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
 
 const pundits: Pundit[] = [
   {
@@ -50,11 +51,22 @@ const calls: Call[] = [
 
 describe("share copy", () => {
   it("names the marquee sides without cents or as-of", () => {
-    const event = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
-    const line = homeHeroLede(event, loadCalls(), loadPundits());
-    expect(line).toBe(
-      "Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, Clay Travis, Tom Fornelli, and David Pollack pick LSU. George Wrighster and Danny Kanell pick Clemson."
-    );
+    const marquee = fixtureGame("marquee-2026", {
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+    });
+    const voices = [
+      fixturePundit("pate", { name: "Josh Pate" }),
+      fixturePundit("finebaum", { name: "Paul Finebaum" }),
+      fixturePundit("kanell", { name: "Danny Kanell" }),
+    ];
+    const marqueeCalls = [
+      fixturePick({ eventSlug: marquee.slug, punditId: "pate", side: "no" }),
+      fixturePick({ eventSlug: marquee.slug, punditId: "finebaum", side: "no" }),
+      fixturePick({ eventSlug: marquee.slug, punditId: "kanell", side: "yes" }),
+    ];
+    const line = homeHeroLede(marquee, marqueeCalls, voices);
+    expect(line).toBe("Josh Pate and Paul Finebaum pick LSU. Danny Kanell picks Clemson.");
     expect(line).not.toMatch(/¢|as of/i);
   });
 

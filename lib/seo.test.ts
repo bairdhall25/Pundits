@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getActivityBoard, loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
 import type { Call, Event } from "./types";
+import { fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
 import {
   gradeSheet,
   mappedTakes,
@@ -122,24 +123,43 @@ describe("grade sheet", () => {
   });
 
   it("keeps open picks and futures on the sheet without a result row", () => {
-    const open = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.call.status === "pending"
-    )!;
-    const rows = gradeSheet(open, loadCalls(), loadPundits());
+    const pundit = fixturePundit("voice", { name: "Voice" });
+    const event = fixtureGame("open-game-2026", {
+      awayTeam: "Away",
+      homeTeam: "Home",
+      yesCents: 24,
+      noCents: 76,
+    });
+    const call = fixturePick({
+      eventSlug: event.slug,
+      punditId: pundit.id,
+      side: "yes",
+      claim: "Away wins the night.",
+    });
+    const take = mappedTakes([call], [event], [pundit])[0];
+    const rows = gradeSheet(take, [call], [pundit]);
     expect(rows[0].label).not.toBe("Result");
     expect(rows.map((r) => r.label)).toContain("The price");
     expect(rows.map((r) => r.label)).toContain("Record");
   });
 
   it("reports the same open count as the pundit profile", () => {
-    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
-      (t) => t.pundit.id === "mcelroy" && t.event.slug === "unc-vs-tcu-2026"
+    const pundit = fixturePundit("voice", { name: "Voice" });
+    const hitEvent = fixtureGame("hit-game-2026", { awayTeam: "Away", homeTeam: "Home" });
+    const openA = fixtureGame("open-a-2026", { awayTeam: "A", homeTeam: "B" });
+    const openB = fixtureGame("open-b-2026", { awayTeam: "C", homeTeam: "D" });
+    const fixtureCalls = [
+      fixturePick({ eventSlug: hitEvent.slug, punditId: pundit.id, side: "yes", status: "hit" }),
+      fixturePick({ eventSlug: openA.slug, punditId: pundit.id, side: "no" }),
+      fixturePick({ eventSlug: openB.slug, punditId: pundit.id, side: "yes" }),
+    ];
+    const take = mappedTakes(fixtureCalls, [hitEvent, openA, openB], [pundit]).find(
+      (row) => row.event.slug === hitEvent.slug
     )!;
-    const rows = gradeSheet(take, loadCalls(), loadPundits());
+    const rows = gradeSheet(take, fixtureCalls, [pundit]);
     const record = rows.find((r) => r.label === "Record")!;
-    const board = getActivityBoard(loadPundits(), loadCalls());
-    const mcelroy = board.find((p) => p.id === "mcelroy")!;
-    expect(mcelroy.mappedPending).toBe(2);
+    const board = getActivityBoard([pundit], fixtureCalls);
+    expect(board[0].mappedPending).toBe(2);
     expect(record.value).toContain("1–0");
     expect(record.value).toMatch(/with 2 open/);
   });
