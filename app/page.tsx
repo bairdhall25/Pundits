@@ -2,7 +2,6 @@ import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { FinalRow } from "@/components/FinalRow";
 import { HowItWorks } from "@/components/HowItWorks";
-import { SportFilter } from "@/components/SportFilter";
 import {
   BookPeek,
   FuturePeek,
@@ -175,7 +174,6 @@ export default function HomePage() {
           right. An empty side means no verified pick has been captured yet.
         </p>
       </HowItWorks>
-      <SportFilter current="all" />
       <nav className="board-jump" aria-label="Jump to section">
         <span className="board-jump-label">Jump to</span>
         <a href="#ncaaf">College</a>

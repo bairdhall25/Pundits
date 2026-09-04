@@ -105,6 +105,8 @@ Every social asset should work without site context and communicate:
 
 The best social moments are conflict and resolution, not database updates. Prioritize disagreements, bold calls, recognizable people, impending events, and receipts.
 
+Treat pundit tags as earned editorial signals, not default distribution metadata. Tag only when the post gives the pundit a meaningful stage in a heavily contested pregame Roll Call, specific credit for a notable correct call, or recognition of a meaningful tracked-record milestone. Routine captures and miss receipts remain untagged. The operational gates and approved handle registry live in `docs/social/tagging.md`.
+
 ## Distribution experiments before monetization
 
 - Ask smaller pundits to verify and share their profile or pick receipt.

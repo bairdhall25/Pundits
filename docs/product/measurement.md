@@ -57,6 +57,8 @@ Target once grading begins: every objectively settled mapped pick is graded, wit
 - Search impressions, clicks, and click-through rate by page type.
 - Social impressions, engagements, link clicks, and shares by artifact type.
 - Referral visits from covered pundits and outlets.
+- Organic performance by earned-tag moment: Roll Call, Flowers, and Milestone.
+- Tagged-pundit or outlet amplification: replies, reposts, and quote-posts; keep paid reach separate.
 - Indexed valid pages versus submitted valid pages.
 
 ### Activation and engagement

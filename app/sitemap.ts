@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
     { url: canonicalUrl("/"), lastModified: corpus, changeFrequency: "daily", priority: 1 },
     {
+      url: canonicalUrl("/picks/"),
+      lastModified: corpus,
+      changeFrequency: "daily",
+      priority: 0.95,
+    },
+    {
       url: canonicalUrl("/ncaaf/"),
       lastModified:
         callsLastModified(

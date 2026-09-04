@@ -44,6 +44,8 @@ Default for replies and conversational posts. Attach a Tier 1 card only when it 
 ## Decision rule
 
 - About a real pick, pundit, event, or result → Tier 1.
+- A qualifying Roll Call → Tier 1 event card.
 - A successful call selected for The Flowers → Tier 1 take card with Broadcast Spotlight or Quote-First treatment; standard take card until that treatment is rendered by the site.
+- A qualifying Milestone → Tier 1 pundit card with the sample size stated in the copy.
 - About the vibe of the week → Tier 2 or no image.
 - A reply → Tier 3.

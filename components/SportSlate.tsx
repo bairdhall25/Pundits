@@ -84,12 +84,12 @@ export function SportSlate({ sport }: { sport: Sport }) {
       />
       <JsonLd
         data={breadcrumbList([
-          { name: "Picks", path: "/" },
+          { name: "Picks", path: "/picks" },
           { name: copy.title, path: `/${sport}` },
         ])}
       />
       <Breadcrumbs
-        items={[{ name: "Picks", href: "/" }, { name: copy.title }]}
+        items={[{ name: "Picks", href: "/picks/" }, { name: copy.title }]}
       />
       <div className="eyebrow type-broadcast">{copy.kicker}</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">

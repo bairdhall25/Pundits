@@ -7,8 +7,8 @@ import {
   activeSiteSection,
   isExactNavigationPath,
   MORE_NAV_GROUPS,
+  PICKS_NAV,
   PRIMARY_NAV,
-  TAKES_NAV,
   type SiteDestination,
 } from "@/lib/site-navigation";
 
@@ -61,14 +61,14 @@ function MoreLink({ item, pathname }: { item: SiteDestination; pathname: string 
   );
 }
 
-function TakesMenu({ on, pathname }: { on: boolean; pathname: string }) {
+function PicksMenu({ on, pathname }: { on: boolean; pathname: string }) {
   return (
     <Menu.Root>
       <Menu.Trigger
-        className={`site-nav-takes${on ? " on" : ""}`}
-        aria-label="Takes — choose league"
+        className={`site-nav-picks${on ? " on" : ""}`}
+        aria-label="Picks — choose league"
       >
-        Takes <span aria-hidden="true">⌄</span>
+        Picks
       </Menu.Trigger>
       <Menu.Portal>
         <Menu.Positioner
@@ -78,7 +78,7 @@ function TakesMenu({ on, pathname }: { on: boolean; pathname: string }) {
           sideOffset={8}
         >
           <Menu.Popup className="site-menu-popup site-menu-popup-compact">
-            {TAKES_NAV.map((item) => (
+            {PICKS_NAV.map((item) => (
               <MoreLink key={item.href} item={item} pathname={pathname} />
             ))}
           </Menu.Popup>
@@ -95,8 +95,8 @@ export function NavLinks() {
   return (
     <nav className="site-nav" aria-label="Primary">
       {PRIMARY_NAV.map((item) =>
-        item.section === "takes" ? (
-          <TakesMenu
+        item.section === "picks" ? (
+          <PicksMenu
             key={item.href}
             on={activeSection === item.section}
             pathname={path}
