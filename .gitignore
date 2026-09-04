@@ -11,6 +11,7 @@ public/og/stories/
 public/social/cards.json
 .worktrees/
 .agent-artifacts/
+.agent-cache/
 .claude/
 .codex-audit/
 .wrangler/

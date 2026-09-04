@@ -91,7 +91,11 @@ export function previewImageFromHtml(html, pageUrl) {
   return imageUrl;
 }
 
-export async function validatePreviewImage(buffer, label) {
+export async function validatePreviewImage(
+  buffer,
+  label,
+  expected = { width: 1200, height: 630 }
+) {
   assert(buffer.length > 0, `${label} must not be empty`);
   assert(
     buffer.length <= MAX_ASSOCIATED_RESOURCE_BYTES,
@@ -100,8 +104,8 @@ export async function validatePreviewImage(buffer, label) {
   const image = sharp(buffer, { failOn: "error" });
   const [metadata, stats] = await Promise.all([image.metadata(), image.stats()]);
   assert.equal(metadata.format, "png", `${label} must decode as PNG`);
-  assert.equal(metadata.width, 1200, `${label} must decode at 1200 px wide`);
-  assert.equal(metadata.height, 630, `${label} must decode at 630 px high`);
+  assert.equal(metadata.width, expected.width, `${label} must decode at ${expected.width} px wide`);
+  assert.equal(metadata.height, expected.height, `${label} must decode at ${expected.height} px high`);
   assert(stats.isOpaque, `${label} must not contain transparent pixels`);
   assert(stats.entropy > 0.05, `${label} appears blank or nearly uniform`);
   const rgb = stats.channels.slice(0, 3);
