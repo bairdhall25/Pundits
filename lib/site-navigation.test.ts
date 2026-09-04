@@ -5,6 +5,7 @@ import {
   isExactNavigationPath,
   normalizeNavigationPath,
   PRIMARY_NAV,
+  TAKES_NAV,
 } from "./site-navigation";
 
 describe("site navigation", () => {
@@ -36,6 +37,10 @@ describe("site navigation", () => {
 
   it("keeps three primary sections and a complete footer destination set", () => {
     expect(PRIMARY_NAV.map((item) => item.label)).toEqual(["Picks", "Takes", "Pundits"]);
+    expect(TAKES_NAV).toEqual([
+      { href: "/ncaaf/", label: "NCAAF" },
+      { href: "/nfl/", label: "NFL" },
+    ]);
     const footerHrefs = FOOTER_NAV_GROUPS.flatMap((group) =>
       group.items.map((item) => item.href)
     );

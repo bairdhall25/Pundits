@@ -8,6 +8,7 @@ import {
   isExactNavigationPath,
   MORE_NAV_GROUPS,
   PRIMARY_NAV,
+  TAKES_NAV,
   type SiteDestination,
 } from "@/lib/site-navigation";
 
@@ -60,22 +61,57 @@ function MoreLink({ item, pathname }: { item: SiteDestination; pathname: string 
   );
 }
 
+function TakesMenu({ on, pathname }: { on: boolean; pathname: string }) {
+  return (
+    <Menu.Root>
+      <Menu.Trigger
+        className={`site-nav-takes${on ? " on" : ""}`}
+        aria-label="Takes — choose league"
+      >
+        Takes <span aria-hidden="true">⌄</span>
+      </Menu.Trigger>
+      <Menu.Portal>
+        <Menu.Positioner
+          className="site-menu-positioner"
+          side="bottom"
+          align="center"
+          sideOffset={8}
+        >
+          <Menu.Popup className="site-menu-popup site-menu-popup-compact">
+            {TAKES_NAV.map((item) => (
+              <MoreLink key={item.href} item={item} pathname={pathname} />
+            ))}
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
+    </Menu.Root>
+  );
+}
+
 export function NavLinks() {
   const path = usePathname() || "/";
   const activeSection = activeSiteSection(path);
 
   return (
     <nav className="site-nav" aria-label="Primary">
-      {PRIMARY_NAV.map((item) => (
-        <NavLink
-          key={item.href}
-          href={item.href}
-          label={item.label}
-          ariaLabel={item.ariaLabel}
-          on={activeSection === item.section}
-          current={isExactNavigationPath(path, item.href)}
-        />
-      ))}
+      {PRIMARY_NAV.map((item) =>
+        item.section === "takes" ? (
+          <TakesMenu
+            key={item.href}
+            on={activeSection === item.section}
+            pathname={path}
+          />
+        ) : (
+          <NavLink
+            key={item.href}
+            href={item.href}
+            label={item.label}
+            ariaLabel={item.ariaLabel}
+            on={activeSection === item.section}
+            current={isExactNavigationPath(path, item.href)}
+          />
+        )
+      )}
       <Menu.Root>
         <Menu.Trigger className="site-nav-more" aria-label="More site navigation">
           More

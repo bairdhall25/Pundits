@@ -40,6 +40,11 @@ export const PRIMARY_NAV: readonly PrimaryDestination[] = [
   },
 ];
 
+export const TAKES_NAV: readonly SiteDestination[] = [
+  { href: "/ncaaf/", label: "NCAAF" },
+  { href: "/nfl/", label: "NFL" },
+];
+
 export const MORE_NAV_GROUPS: readonly SiteNavigationGroup[] = [
   {
     id: "browse",
