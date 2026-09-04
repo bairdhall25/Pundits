@@ -11,7 +11,9 @@ A number that mixes size, kickoff, and face count is arbitrary, jumpy, and hard 
 
 ## Slots
 
-`/` is a featured board with a short hint to go deeper.
+`/` is a featured board with a short hint to go deeper. `/picks/` is the
+all-sports master slate; its All / College Football / NFL control leads to the
+combined board or the corresponding full league slate.
 
 - **Hero** — one open (or grading) complete card.
 - **College** — up to three full open/grading NCAAF cards, then the next two leftover complete games as compact rows. The hero does not repeat here.

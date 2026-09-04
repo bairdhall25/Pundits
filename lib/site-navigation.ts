@@ -1,6 +1,6 @@
 import { CONTACT_HREF } from "@/lib/site";
 
-export type SiteSection = "picks" | "takes" | "pundits";
+export type SiteSection = "home" | "picks" | "takes" | "pundits";
 
 export type SiteDestination = {
   href: string;
@@ -22,6 +22,12 @@ export type SiteNavigationGroup = {
 export const PRIMARY_NAV: readonly PrimaryDestination[] = [
   {
     href: "/",
+    label: "Home",
+    ariaLabel: "Home",
+    section: "home",
+  },
+  {
+    href: "/picks/",
     label: "Picks",
     ariaLabel: "Picks — browse by game",
     section: "picks",
@@ -41,7 +47,7 @@ export const PRIMARY_NAV: readonly PrimaryDestination[] = [
 ];
 
 export const PICKS_NAV: readonly SiteDestination[] = [
-  { href: "/", label: "All picks" },
+  { href: "/picks/", label: "All picks" },
   { href: "/ncaaf/", label: "NCAAF" },
   { href: "/nfl/", label: "NFL" },
 ];
@@ -80,7 +86,8 @@ export const FOOTER_NAV_GROUPS: readonly SiteNavigationGroup[] = [
     id: "explore",
     label: "Explore",
     items: [
-      { href: "/", label: "Picks" },
+      { href: "/", label: "Home" },
+      { href: "/picks/", label: "Picks" },
       { href: "/ncaaf/", label: "College Football" },
       { href: "/nfl/", label: "NFL" },
     ],
@@ -127,8 +134,10 @@ export function isExactNavigationPath(pathname: string, href: string): boolean {
 export function activeSiteSection(pathname: string): SiteSection | undefined {
   const path = normalizeNavigationPath(pathname);
 
+  if (path === "/") return "home";
+
   if (
-    path === "/" ||
+    path === "/picks" ||
     path === "/ncaaf" ||
     path.startsWith("/ncaaf/") ||
     path === "/nfl" ||

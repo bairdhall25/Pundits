@@ -16,7 +16,8 @@ describe("site navigation", () => {
   });
 
   it("maps public routes to their primary product section", () => {
-    expect(activeSiteSection("/")).toBe("picks");
+    expect(activeSiteSection("/")).toBe("home");
+    expect(activeSiteSection("/picks/")).toBe("picks");
     expect(activeSiteSection("/ncaaf/2026/week-0/")).toBe("picks");
     expect(activeSiteSection("/teams/tcu/")).toBe("picks");
     expect(activeSiteSection("/picks/clemson-at-lsu-2026/")).toBe("picks");
@@ -35,10 +36,15 @@ describe("site navigation", () => {
     expect(isExactNavigationPath("/methodology/", "mailto:test@example.com")).toBe(false);
   });
 
-  it("keeps three primary sections and a complete footer destination set", () => {
-    expect(PRIMARY_NAV.map((item) => item.label)).toEqual(["Picks", "Takes", "Pundits"]);
+  it("keeps distinct home and product sections with a complete footer destination set", () => {
+    expect(PRIMARY_NAV.map((item) => item.label)).toEqual([
+      "Home",
+      "Picks",
+      "Takes",
+      "Pundits",
+    ]);
     expect(PICKS_NAV).toEqual([
-      { href: "/", label: "All picks" },
+      { href: "/picks/", label: "All picks" },
       { href: "/ncaaf/", label: "NCAAF" },
       { href: "/nfl/", label: "NFL" },
     ]);
@@ -47,6 +53,7 @@ describe("site navigation", () => {
     );
     for (const href of [
       "/",
+      "/picks/",
       "/ncaaf/",
       "/nfl/",
       "/stories/",

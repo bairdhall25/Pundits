@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const ITEMS = [
-  { href: "/", id: "all" as const, label: "All" },
+  { href: "/picks/", id: "all" as const, label: "All" },
   { href: "/ncaaf/", id: "ncaaf" as const, label: "College Football" },
   { href: "/nfl/", id: "nfl" as const, label: "NFL" },
 ];
