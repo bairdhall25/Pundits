@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { DEPLOY_STAGES } from "./deploy.mjs";
+import {
+  DEPLOY_STAGES,
+  classifyDeployFailure,
+  parseDeployArgs,
+  resolveDeployStages,
+  runDeploy,
+} from "./deploy.mjs";
 import { runCheck } from "./check.mjs";
 
 function io() {
@@ -89,5 +95,81 @@ describe("timed deploy runner", () => {
     const summary = JSON.parse(files.get("/tmp/deploy-summary.json"));
     expect(summary.gate).toBe("deploy");
     expect(summary.stages.every((stage) => typeof stage.elapsedMs === "number")).toBe(true);
+  });
+
+  it("binds post-check output to the release commit before upload", () => {
+    expect(DEPLOY_STAGES.find((stage) => stage.id === "deploy:guard:post-check").command).toEqual([
+      "npm",
+      "run",
+      "deploy:guard",
+      "--",
+      "--require-out",
+    ]);
+    expect(DEPLOY_STAGES.find((stage) => stage.id === "deploy:guard:pre-upload").command).toEqual([
+      "npm",
+      "run",
+      "deploy:guard",
+      "--",
+      "--require-out",
+    ]);
+  });
+
+  it("classifies rebuild versus retryable distribution work", () => {
+    expect(classifyDeployFailure("check")).toMatchObject({
+      kind: "rebuild",
+      rebuild: true,
+      retryFrom: "check",
+    });
+    expect(classifyDeployFailure("deploy:upload")).toMatchObject({
+      kind: "retry-distribution",
+      rebuild: false,
+      retryFrom: "deploy:upload",
+    });
+    expect(classifyDeployFailure("verify:deployed")).toMatchObject({
+      kind: "report-and-retry-verify",
+      rebuild: false,
+      retryFrom: "verify:deployed",
+    });
+    expect(classifyDeployFailure("indexnow:submit")).toMatchObject({
+      kind: "retry-indexnow",
+      rebuild: false,
+      blocking: false,
+      retryFrom: "indexnow:submit",
+    });
+    expect(classifyDeployFailure("deploy:guard")).toMatchObject({
+      kind: "fix-git-state",
+      rebuild: false,
+      operatorReview: true,
+    });
+  });
+
+  it("resumes from a later stage and still prepends an output-bound guard", () => {
+    expect(parseDeployArgs(["--from", "deploy:upload"])).toEqual({ from: "deploy:upload" });
+    const stages = resolveDeployStages("deploy:upload");
+    expect(stages.map((stage) => stage.id)).toEqual([
+      "deploy:guard:pre-upload",
+      "deploy:upload",
+      "verify:deployed",
+      "indexnow:submit",
+    ]);
+  });
+
+  it("resumes deploy without rerunning a successful check", async () => {
+    const order = [];
+    const result = await runDeploy({
+      stdout: io(),
+      stderr: io(),
+      mkdir: async () => {},
+      writeFile: async () => {},
+      from: "verify:production-urls",
+      runCommand: async (stage) => {
+        order.push(stage.id);
+        return { exitCode: 0 };
+      },
+    });
+    expect(result.ok).toBe(true);
+    expect(order[0]).toBe("deploy:guard:pre-upload");
+    expect(order).toContain("verify:production-urls");
+    expect(order).not.toContain("check");
   });
 });

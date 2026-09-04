@@ -1,7 +1,8 @@
-import { spawn } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { mkdir as fsMkdir, writeFile as fsWriteFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { writeReleaseStamp } from "./deploy-guard.mjs";
 
 export const CHECK_STAGES = [
   {
@@ -84,6 +85,10 @@ export function npmProcessSpec(command, env = {}) {
   };
 }
 
+export function defaultReadHead({ cwd }) {
+  return execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8", cwd }).trim();
+}
+
 export function defaultRunCommand(stage, { cwd, env, stdout, stderr }) {
   const spec = npmProcessSpec(stage.command, env);
   return new Promise((resolve, reject) => {
@@ -129,6 +134,7 @@ export async function runCheck({
   env = process.env,
   cwd = process.cwd(),
   summaryPath = path.join(cwd, ".agent-artifacts", "check-summary.json"),
+  readHead = defaultReadHead,
 } = {}) {
   const started = now();
   const results = [];
@@ -188,6 +194,17 @@ export async function runCheck({
     await writeFile(summaryPath, `${JSON.stringify(summary, null, 2)}\n`);
   } catch (error) {
     stderr.write(`check: could not write summary: ${error.message}\n`);
+  }
+
+  if (exitCode === 0 && isReleaseGate) {
+    try {
+      const commit = readHead({ cwd });
+      if (commit) {
+        await writeReleaseStamp({ cwd, commit, mkdir, writeFile, now });
+      }
+    } catch (error) {
+      stderr.write(`check: could not write release stamp: ${error.message}\n`);
+    }
   }
 
   return { ...summary, summary };

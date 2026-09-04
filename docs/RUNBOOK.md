@@ -77,15 +77,23 @@ resolving. Commit ledger updates with the data that produced them.
 
 Before deployment:
 
-1. Confirm `main` is clean, pushed, and synchronized with `origin/main`.
+1. Confirm `HEAD` equals `origin/main` and the working tree is clean. The local
+   branch name need not be `main`; an isolated `codex/` worktree is valid after
+   it has pushed and fetched.
 2. Run `npm run check` with `GITHUB_PAGES` unset.
 3. Review the generated `out/_redirects` and `out/sitemap.xml` when routes changed.
-4. Run `npm run deploy` from `main` for production. The command enforces the
-   clean/synchronized branch, checks that the candidate preserves every URL in
-   the current production sitemap, deploys, and then verifies the exact live
-   preview metadata and decoded images before notifying IndexNow. Each deploy
-   stage is visible and timed in `.agent-artifacts/deploy-summary.json`. Do not
-   treat `npm run check:fast` as a substitute for this release path.
+4. Run `npm run deploy` from that same checkout. The command enforces commit
+   identity (not a local branch named `main`), checks that the candidate
+   preserves every URL in the current production sitemap, deploys, and then
+   verifies the exact live preview metadata and decoded images before notifying
+   IndexNow. Each deploy stage is visible and timed in
+   `.agent-artifacts/deploy-summary.json`. Do not treat `npm run check:fast` as
+   a substitute for this release path.
+
+Interrupted production deploys resume from the failed stage when the generated
+output still belongs to `HEAD`. Use `npm run deploy -- --from <stage>`. Rebuild
+only when `check` failed. A live-verification failure after upload is reported
+by SHA and retried; IndexNow remains non-blocking.
 
 For a branch preview, run `npm run check`, then use Wrangler with an explicit
 non-main branch name. Do not use the production `npm run deploy` command.
