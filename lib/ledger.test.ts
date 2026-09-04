@@ -26,7 +26,11 @@ describe("ledger integrity", () => {
   it("every call is sourced and real", () => {
     for (const c of calls) {
       expect(c.claim.toLowerCase(), c.id).not.toMatch(/lorem|placeholder|todo|tbd|illustrative/);
-      expect(c.claim.length, c.id).toBeGreaterThan(20);
+      // No length rule on `claim`. A verbatim pick can be very short —
+      // "I'm on Cal plus 115." is 20 chars and real. The placeholder regex
+      // above is the actual guard; a length floor is the same weak proxy we
+      // removed from `reasoning` in the capsule-gate repair.
+      expect(c.claim.trim().length, c.id).toBeGreaterThan(0);
       expect(c.sourceDate, c.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });

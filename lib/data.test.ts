@@ -486,7 +486,8 @@ describe("eventHasTakes", () => {
     const calls = loadCalls();
     expect(eventHasTakes("unc-vs-tcu-2026", calls)).toBe(true);
     expect(eventHasTakes("wisconsin-vs-nd-2026", calls)).toBe(true);
-    expect(eventHasTakes("miami-at-stanford-2026", calls)).toBe(false);
+    expect(eventHasTakes("miami-at-stanford-2026", calls)).toBe(true);
+    expect(eventHasTakes("seahawks-sb-2026", calls)).toBe(false);
     expect(events.some((event) => event.slug === "miami-at-stanford-2026")).toBe(true);
   });
 });

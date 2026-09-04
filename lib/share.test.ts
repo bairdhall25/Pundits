@@ -53,7 +53,7 @@ describe("share copy", () => {
     const event = loadEvents().find((e) => e.slug === "clemson-at-lsu-2026")!;
     const line = homeHeroLede(event, loadCalls(), loadPundits());
     expect(line).toBe(
-      "Josh Pate, Paul Finebaum, Andy Staples, and Greg McElroy pick LSU. George Wrighster and Danny Kanell pick Clemson."
+      "Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, Clay Travis, Tom Fornelli, and David Pollack pick LSU. George Wrighster and Danny Kanell pick Clemson."
     );
     expect(line).not.toMatch(/¢|as of/i);
   });

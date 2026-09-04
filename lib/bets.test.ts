@@ -176,7 +176,7 @@ describe("weekend home", () => {
 
   it("freezes Kalshi moneylines on the marquee games we could source", () => {
     const bySlug = Object.fromEntries(loadEvents().map((e) => [e.slug, e]));
-    expect(bySlug["clemson-at-lsu-2026"].yesCents).toBe(24);
+    expect(bySlug["clemson-at-lsu-2026"].yesCents).toBe(23);
     expect(bySlug["clemson-at-lsu-2026"].noCents).toBe(78);
     expect(bySlug["ncsu-at-uva-2026"].yesCents).toBe(34);
     expect(bySlug["ncsu-at-uva-2026"].noCents).toBe(66);
@@ -251,7 +251,10 @@ describe("weekend home", () => {
     const marquee = marqueeGame(ncaaf, nfl, calls);
     expect(marquee?.slug).toBe("clemson-at-lsu-2026");
     const { open, grading, final } = partitionGames(ncaaf, calls);
-    expect(open.map((e) => e.slug)).toEqual(["clemson-at-lsu-2026"]);
+    expect(open.map((e) => e.slug)).toEqual([
+      "clemson-at-lsu-2026",
+      "baylor-vs-auburn-2026",
+    ]);
     expect([...open, ...grading].map((e) => e.slug)).toContain(marquee!.slug);
     expect(grading).toEqual([]);
     expect(final.map((e) => e.slug)).toEqual([

@@ -20,7 +20,9 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 
 | Show | Voices (roster id) | Drop | Jump | Notes |
 |---|---|---|---|---|
-| Cover 3 LOCKS | `kanell`, `patterson`, Fornelli/Elliott (Candidates) | Thu/Fri | ATS locks, then **Moneyline Sprinkles** | Kanell Wolfpack ML and Patterson UNC ML both from Week 0 LOCKS `hhgxVGYo6Cc`. |
+| Cover 3 LOCKS | `kanell`, `patterson`, `elliott`, `fornelli` | Thu/Fri | ATS locks, then **Moneyline Sprinkles** | Kanell Wolfpack ML and Patterson UNC ML both from Week 0 LOCKS `hhgxVGYo6Cc`. |
+| See Ball Get Ball | `pollack`; Brent Rollins (parked, not rostered) | Wed/Thu in-season | Week 1 **PICKS** episode; both hosts name winners | On3 distribution partner, not a team factory. Wes Blankenship hosts/questions only — not a pick voice. Apple `id1769665459`; RSS.com audio is the reopenable source. |
+| Clay Travis Show / Outkick | `clay-travis` | weekday | solo Week 1 **PICKS** segment | Outkick national pick show, not a team factory. Durable Omny alongside Apple. Callers and unnamed voices are not pick voices. |
 | Josh Pate’s College Football Show | `pate` | almost daily | end-of-show winners / “I’ll take” | Already LSU. Only restage if he **flips** to Clemson. |
 | Bear Bets / FOX | `fallica` | column + Big Noon | bylined best bets | Dispatch empty-side / thin / off-home only. Futures are not this beat. |
 | GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | First 2026 show is **Baton Rouge Sat 9/5** (Clemson YES). Guest on PMT is `coughlin`, never `mcafee`. |

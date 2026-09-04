@@ -202,14 +202,27 @@ assert.match(
   /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png\?v=[a-z0-9]+"/
 );
 
+// An event with no mapped pick stays noindex. Every *game* now carries at least
+// one pick, so the empty-shell case is a Super Bowl future.
 const emptyEvent = await readFile(
-  path.join(out, "picks/miami-at-stanford-2026/index.html"),
+  path.join(out, "picks/chiefs-sb-2026/index.html"),
   "utf8"
 );
 assert.match(emptyEvent, /name="robots" content="noindex, follow"/);
 assert.doesNotMatch(emptyEvent, /Join the early list/);
 assert.match(
   emptyEvent,
+  /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/chiefs-sb-2026\/"/
+);
+
+// Miami took its first pick on 2026-09-03 (clay-travis) and must now be indexed.
+const miami = await readFile(
+  path.join(out, "picks/miami-at-stanford-2026/index.html"),
+  "utf8"
+);
+assert.doesNotMatch(miami, /name="robots" content="noindex, follow"/);
+assert.match(
+  miami,
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/miami-at-stanford-2026\/"/
 );
 
@@ -314,8 +327,12 @@ for (const url of [
   assert(sitemap.includes(`<loc>${url}</loc>`), `sitemap must contain ${url}`);
 }
 assert(
-  !sitemap.includes("https://pundits.pro/picks/miami-at-stanford-2026/"),
+  !sitemap.includes("https://pundits.pro/picks/chiefs-sb-2026/"),
   "empty event shells stay out of the sitemap until a mapped pick lands"
+);
+assert(
+  sitemap.includes("<loc>https://pundits.pro/picks/miami-at-stanford-2026/</loc>"),
+  "an event enters the sitemap once a mapped pick lands"
 );
 
 function sitemapLastModified(url) {
@@ -362,7 +379,10 @@ assert.doesNotMatch(newsSitemap, /\/teams\//);
 
 const feed = await readFile(path.join(out, "feed.xml"), "utf8");
 assert.match(feed, /<rss version="2\.0">/);
-assert.match(feed, /Paul Finebaum pick(s|ed) TCU over North Carolina/);
+// The feed carries the 50 most recent takes, so naming one pundit ages out as the
+// ledger grows. Assert the shape instead: real items with well-formed headlines.
+assert.match(feed, /<item>/);
+assert.match(feed, /<title>[^<]* picks? [^<]+ over [^<]+<\/title>/);
 
 const sourceRedirects = await readFile(path.join(root, "public/_redirects"), "utf8");
 const outputRedirects = await readFile(path.join(out, "_redirects"), "utf8");

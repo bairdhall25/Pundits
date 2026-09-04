@@ -49,5 +49,9 @@
   { "id": "newton", "name": "Cam Newton", "outlet": "4th&1", "photo": "/photos/newton.jpg", "sport": "nfl" },
   { "id": "compton", "name": "Will Compton", "outlet": "Bussin' With The Boys / ESPN", "photo": "/photos/compton.jpg", "sport": "both" },
   { "id": "wrighster", "name": "George Wrighster", "outlet": "On3 / Unafraid Show", "photo": "/photos/wrighster.jpg", "sport": "ncaaf" },
-  { "id": "jmac", "name": "Jason McIntyre", "outlet": "The Herd / FOX Sports", "photo": "/photos/jmac.jpg", "sport": "both" }
+  { "id": "jmac", "name": "Jason McIntyre", "outlet": "The Herd / FOX Sports", "photo": "/photos/jmac.jpg", "sport": "both" },
+  { "id": "clay-travis", "name": "Clay Travis", "outlet": "Outkick", "photo": "/photos/clay-travis.jpg", "sport": "both" },
+  { "id": "elliott", "name": "Bud Elliott", "outlet": "CBS / Cover 3", "photo": "/photos/elliott.jpg", "sport": "ncaaf" },
+  { "id": "fornelli", "name": "Tom Fornelli", "outlet": "CBS / Cover 3", "photo": "/photos/fornelli.png", "sport": "ncaaf" },
+  { "id": "pollack", "name": "David Pollack", "outlet": "On3 / See Ball Get Ball", "photo": "/photos/pollack.jpg", "sport": "ncaaf" }
 ]

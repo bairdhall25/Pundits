@@ -10,5 +10,29 @@
     "xHandle": "jasonrmcintyre",
     "factory": "The Herd",
     "photoSource": "FOX One official talent headshot (foxone_headshot_jasonmcIntyre-personality.jpg); X avatar @jasonrmcintyre was a full-body phone-booth photo, not a usable face."
+  },
+  {
+    "id": "elliott",
+    "xHandle": "BudElliott3",
+    "factory": "Cover 3 LOCKS",
+    "photoSource": "Official X avatar for @BudElliott3, retrieved via the Muck Rack profile mirror (bud-elliott.jpeg, untransformed 400x400) because x.com returns HTTP 402 to direct fetch. NOT a talent headshot: candid in sunglasses against a striped background. Retained on explicit operator override of the rule 8 usable-face test on 2026-09-03; 247Sports serves a 1x1 placeholder and his CBS writers page carries no headshot. Replace when a real headshot exists."
+  },
+  {
+    "id": "fornelli",
+    "xHandle": "TomFornelli",
+    "factory": "Cover 3 LOCKS",
+    "photoSource": "CBS Sports official author headshot (tom-fornelli-700.png, untransformed 700x700, transparent background) downscaled to 600x600. X avatar not inspectable: x.com returns HTTP 402 to fetch."
+  },
+  {
+    "id": "clay-travis",
+    "xHandle": "ClayTravis",
+    "factory": "Clay Travis Show / Outkick",
+    "photoSource": "Outkick official talent headshot (Clay_Travis_02_2023_5098_RETOUCH_CROP.jpeg, 800px variant) downscaled to 600x600. X avatar not inspectable: x.com returns HTTP 402 to fetch."
+  },
+  {
+    "id": "pollack",
+    "xHandle": "davidpollack47",
+    "factory": "See Ball Get Ball",
+    "photoSource": "Wikimedia Commons, CC0 1.0 Universal public domain dedication. File 'David Pollack - 2018 SEC Summerfest (cropped).jpg', credit Thomson200, shot 2018-07-15. Cropped from 2538x2765 to a 600x600 head-and-shoulders square."
   }
 ]

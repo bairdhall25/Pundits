@@ -44,6 +44,10 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 
 | id | Name | handle |
 |---|---|---|
+| pollack | David Pollack | davidpollack47 |
+| fornelli | Tom Fornelli | TomFornelli |
+| elliott | Bud Elliott | BudElliott3 |
+| clay-travis | Clay Travis | ClayTravis |
 | jmac | Jason McIntyre | jasonrmcintyre |
 | kanell | Danny Kanell | dannykanell |
 | patterson | Chip Patterson | Chip_Patterson |

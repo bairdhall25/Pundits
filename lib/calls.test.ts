@@ -31,7 +31,11 @@ describe("2026 book", () => {
   it("does not use placeholder claim text", () => {
     for (const c of loadCalls()) {
       expect(c.claim.toLowerCase()).not.toMatch(/lorem|placeholder|todo|tbd/);
-      expect(c.claim.length).toBeGreaterThan(20);
+      // No length rule on `claim`. A verbatim pick can be very short —
+      // "I'm on Cal plus 115." is 20 chars and real. The placeholder regex
+      // above is the actual guard; a length floor is the same weak proxy we
+      // removed from `reasoning` in the capsule-gate repair.
+      expect(c.claim.trim().length).toBeGreaterThan(0);
       expect(c.paysOn.length).toBeGreaterThan(3);
     }
   });
