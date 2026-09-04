@@ -27,7 +27,7 @@ For a concise handoff of the present thesis, product truth, immediate priorities
 - [Decision log](./decision-log.md): accepted, working, parked, and unresolved product decisions.
 - [Strategy QA](./strategy-qa-2026-08-29.md): dated assessment of what is right, what is unproven, and what should happen next.
 - [Dense marquee cards, hold through this week](./2026-08-30-dense-marquee-cards.md): 2026-08-30 decision to optimize for event SU density and defer Bets/fantasy/bulk roster until Week 1 capture is observed.
-- [Featured games](./featured-games.md): homepage display waterfall (pin, when, coverage, size). Not a score. Not capture.
+- [Featured games](./featured-games.md): home and league display waterfall (pin, when, coverage, size). Home is featured plus a short teaser. League pages are live-week slates. Not a score. Not capture.
 - [Roster growth](./roster-growth.md): validation by association; team analysts are not pundits.
 
 Supporting operational sources remain authoritative within their scope:

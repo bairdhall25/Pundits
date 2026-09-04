@@ -52,5 +52,5 @@ Everything else here is a JSON/doc edit in git — cheap to amend.
 
 - Aug 30 hold runs through 2026-09-05: fill Patriots / 49ers / Bills YES and Wisconsin YES; no extra homepage games; Lambeau off home until an operator `onHome` flip.
 - Miami at Stanford and Baylor vs Auburn: **watchlisted 2026-09-01**. Scout hunts them off-home; freeze on first verified SU; onHome only after the hold and per rule 7.
-- Homepage **display** (which games fill `/`) is `docs/product/featured-games.md`. That waterfall does not change Dispatch and does not authorize an `onHome` flip.
+- Home and league **display** (which games fill `/`, `/ncaaf/`, and `/nfl/`, and whether they render as full or compact cards) is `docs/product/featured-games.md`. That contract does not change Dispatch and does not authorize an `onHome` flip.
 - **Who may roster** is `docs/product/roster-growth.md`. Association on roster factories is eligible. Team analysts (beat/homer picking their team) are not pundits. Team podcasts may still be sources for independent voices.

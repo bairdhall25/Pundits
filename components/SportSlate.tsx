@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { EventCard } from "@/components/EventCard";
+import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { FinalRow } from "@/components/FinalRow";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
@@ -11,51 +11,75 @@ import {
   loadEvents,
   loadPundits,
   partitionFutures,
-  partitionGames,
   seasonLabel,
 } from "@/lib/data";
-import { getLeagueGames } from "@/lib/featured";
+import { coverageTier, getLeagueSlate } from "@/lib/featured";
 import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
-import type { Sport } from "@/lib/types";
+import type { Call, Event, Pundit, Sport } from "@/lib/types";
 
-const COPY: Record<
-  Sport,
-  { kicker: string; title: string; when: string }
-> = {
+const COPY: Record<Sport, { kicker: string; title: string }> = {
   ncaaf: {
     kicker: "College football",
     title: "College football",
-    when: "Week 1 Sep 3–7 · Week 0 is final",
   },
   nfl: {
     kicker: "Pro football",
     title: "NFL",
-    when: "Week 1 · Sep 9–14",
   },
 };
+
+function GameCard({
+  event,
+  calls,
+  pundits,
+  sport,
+}: {
+  event: Event;
+  calls: Call[];
+  pundits: Pundit[];
+  sport: Sport;
+}) {
+  const Card =
+    coverageTier(event, calls, pundits) === "full" ? EventCard : CompactEventCard;
+  return (
+    <Card
+      event={event}
+      calls={calls}
+      pundits={pundits}
+      surface={sport}
+    />
+  );
+}
 
 export function SportSlate({ sport }: { sport: Sport }) {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const games = getLeagueGames(sport, events, calls);
+  const slate = getLeagueSlate(sport, events, calls, pundits);
   const { withPicks: futurePicks, waiting: futureWaiting } = partitionFutures(
     sport,
     events,
     calls
   );
   const copy = COPY[sport];
-  const { open, grading, final } = partitionGames(games, calls);
+  const when = [
+    ...slate.weeks.map((week) => week.label),
+    slate.previous ? `Week ${slate.previous.week} is final` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const description =
+    sport === "nfl"
+      ? "Expert NFL picks for this week. Who the TV voices are taking, with the market price."
+      : "Expert CFB picks for this week. Who the TV voices are taking, with the market price next to each take.";
 
   return (
     <main id="main" className="shell">
       <JsonLd
         data={collectionPageJsonLd(
-          sport === "nfl" ? "NFL Week 1 picks" : "College football picks",
+          sport === "nfl" ? "NFL picks" : "College football picks",
           `/${sport}/`,
-          sport === "nfl"
-            ? "Expert NFL picks for Week 1. Who the TV voices are taking in the regular-season openers, with the market price."
-            : "Expert CFB picks for Week 1, plus Week 0 results. See who the TV voices are taking, with the market price next to each take."
+          description
         )}
       />
       <JsonLd
@@ -76,34 +100,56 @@ export function SportSlate({ sport }: { sport: Sport }) {
         verified pick. Prices are frozen when available.
       </p>
       <SportFilter current={sport} />
-      <div className="when">{copy.when}</div>
+      {when ? <div className="when">{when}</div> : null}
       <WeekArchivePathLinks sport={sport} />
+      {slate.previous ? (
+        <p className="week-recap">
+          <a href={slate.previous.href}>{slate.previous.line}</a>
+        </p>
+      ) : null}
 
-      <section className="board">
-        <div className="board-kicker type-broadcast">Games</div>
-        <h2 className="board-title type-broadcast">The slate</h2>
-        {[...open, ...grading].map((event) => (
-          <EventCard
-            key={event.slug}
-            event={event}
-            calls={calls}
-            pundits={pundits}
-            surface={sport}
-          />
-        ))}
-        {final.length ? (
-          <>
-            <h3 className="wait-head type-broadcast">Final</h3>
-            <ul className="wait-list">
-              {final.map((event) => (
-                <li key={event.slug}>
-                  <FinalRow event={event} calls={calls} />
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : null}
-      </section>
+      {slate.weeks.map((week) => (
+        <section key={`${week.season}-${week.week}`} className="board">
+          <div className="board-kicker type-broadcast">Games</div>
+          <h2 className="board-title type-broadcast">{week.label}</h2>
+          {week.open.map((event) => (
+            <GameCard
+              key={event.slug}
+              event={event}
+              calls={calls}
+              pundits={pundits}
+              sport={sport}
+            />
+          ))}
+          {week.final.length ? (
+            <>
+              <h3 className="wait-head type-broadcast">Final</h3>
+              <ul className="wait-list">
+                {week.final.map((event) => (
+                  <li key={event.slug}>
+                    <FinalRow event={event} calls={calls} />
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </section>
+      ))}
+      {slate.unscheduled.length ? (
+        <section className="board">
+          <div className="board-kicker type-broadcast">Games</div>
+          <h2 className="board-title type-broadcast">Also on the slate</h2>
+          {slate.unscheduled.map((event) => (
+            <GameCard
+              key={event.slug}
+              event={event}
+              calls={calls}
+              pundits={pundits}
+              sport={sport}
+            />
+          ))}
+        </section>
+      ) : null}
 
       <section className="board">
         <div className="board-kicker type-broadcast">Still open</div>

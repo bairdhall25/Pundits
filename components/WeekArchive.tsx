@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { EventCard } from "@/components/EventCard";
+import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import {
   archiveWeeks,
@@ -11,6 +11,7 @@ import {
   weekResults,
 } from "@/lib/archive";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
+import { coverageTier, getWeekArchiveGames } from "@/lib/featured";
 import { formatCents } from "@/lib/format";
 import { ogImageFor, weekOgCard } from "@/lib/og";
 import { breadcrumbList, collectionPageJsonLd, takePath } from "@/lib/seo";
@@ -69,8 +70,18 @@ export function WeekArchive({
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
-  const games = gamesForWeek(sport, season, week, events);
-  const record = weekRecord(games, calls);
+  const games = getWeekArchiveGames(
+    sport,
+    season,
+    week,
+    events,
+    calls,
+    pundits
+  );
+  const record = weekRecord(
+    gamesForWeek(sport, season, week, events),
+    calls
+  );
   const results = weekResults(games, calls, pundits);
   const graded = record.hits + record.misses > 0;
   const weeks = archiveWeeks(events).filter(
@@ -141,9 +152,20 @@ export function WeekArchive({
       ) : null}
 
       <section className="board">
-        {games.map((event) => (
-          <EventCard key={event.slug} event={event} calls={calls} pundits={pundits} />
-        ))}
+        {games.map((event) => {
+          const Card =
+            coverageTier(event, calls, pundits) === "full"
+              ? EventCard
+              : CompactEventCard;
+          return (
+            <Card
+              key={event.slug}
+              event={event}
+              calls={calls}
+              pundits={pundits}
+            />
+          );
+        })}
       </section>
 
       <nav className="week-nav" aria-label="More weeks">
