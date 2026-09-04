@@ -181,6 +181,7 @@ function SideCol({
   eventSlug,
   settled = false,
   eventHref,
+  collapseFacesOnMobile = false,
 }: {
   side: CardSide;
   pundits: Pundit[];
@@ -191,11 +192,29 @@ function SideCol({
   eventSlug: string;
   settled?: boolean;
   eventHref?: string;
+  collapseFacesOnMobile?: boolean;
 }) {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const vacant = side.calls.length === 0;
   const team = getTeam(side.teamId, teams);
   const odds = game && !settled ? americanOdds(side.cents) : null;
+  const visibleCalls = collapseFacesOnMobile
+    ? side.calls.slice(0, 2)
+    : side.calls;
+  const overflowCalls = collapseFacesOnMobile ? side.calls.slice(2) : [];
+  const renderFaceRow = (call: Call) => {
+    const pundit = byId[call.punditId];
+    if (!pundit) return null;
+    return (
+      <FaceRow
+        key={call.id}
+        call={call}
+        pundit={pundit}
+        detail={detail}
+        eventSlug={eventSlug}
+      />
+    );
+  };
   const teamBlock = (
     <div className="scan-team">
       <div className="who">
@@ -233,19 +252,25 @@ function SideCol({
           <div className="empty">No verified pundit pick yet</div>
         )
       ) : (
-        side.calls.map((c) => {
-          const p = byId[c.punditId];
-          if (!p) return null;
-          return (
-            <FaceRow
-              key={c.id}
-              call={c}
-              pundit={p}
-              detail={detail}
-              eventSlug={eventSlug}
-            />
-          );
-        })
+        <>
+          {visibleCalls.map(renderFaceRow)}
+          {overflowCalls.length ? (
+            <>
+              <details className="mobile-face-overflow">
+                <summary className="type-broadcast">
+                  +{overflowCalls.length} more pundit
+                  {overflowCalls.length === 1 ? "" : "s"}
+                </summary>
+                <div className="mobile-face-overflow-list">
+                  {overflowCalls.map(renderFaceRow)}
+                </div>
+              </details>
+              <div className="desktop-face-overflow">
+                {overflowCalls.map(renderFaceRow)}
+              </div>
+            </>
+          ) : null}
+        </>
       )}
     </div>
   );
@@ -258,6 +283,7 @@ export function EventCard({
   permalink = true,
   detail = false,
   surface = "event",
+  collapseFacesOnMobile = false,
 }: {
   event: Event;
   calls: Call[];
@@ -265,6 +291,7 @@ export function EventCard({
   permalink?: boolean;
   detail?: boolean;
   surface?: EngagementSurface;
+  collapseFacesOnMobile?: boolean;
 }) {
   const [yes, no] = sidesForCard(event, calls);
   const fight = eventHasFight(event.slug, calls);
@@ -372,6 +399,7 @@ export function EventCard({
           eventSlug={event.slug}
           settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
+          collapseFacesOnMobile={collapseFacesOnMobile}
         />
         <SideCol
           side={no}
@@ -383,6 +411,7 @@ export function EventCard({
           eventSlug={event.slug}
           settled={status === "final"}
           eventHref={permalink ? eventHref : undefined}
+          collapseFacesOnMobile={collapseFacesOnMobile}
         />
       </div>
       {detail ? (

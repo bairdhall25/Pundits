@@ -64,6 +64,58 @@ test("mobile home explains the product before the marquee", async ({ page }, tes
   expect(copyTop).toBeLessThan(cardTop);
 });
 
+test("mobile home shortens the marquee and stacks the slate action", async ({
+  page,
+}, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith("mobile"));
+  await page.goto("/");
+
+  const disclosure = page.locator(".hero-card .mobile-face-overflow");
+  const overflowFaces = disclosure.locator(".mobile-face-overflow-list");
+  await expect(disclosure).toBeVisible();
+  expect(await disclosure.evaluate((element) => (element as HTMLDetailsElement).open)).toBe(
+    false
+  );
+  await expect(overflowFaces).toBeHidden();
+  const accessibility = await new AxeBuilder({ page })
+    .include(".mobile-face-overflow > summary")
+    .analyze();
+  expect(accessibility.violations).toEqual([]);
+  await disclosure.locator("summary").click();
+  await expect(overflowFaces).toBeVisible();
+
+  await expect(page.locator("#ncaaf .row-head")).toHaveCSS("flex-direction", "column");
+  const slateActionHeight = await page
+    .locator("#ncaaf .row-head .see")
+    .evaluate((element) => element.getBoundingClientRect().height);
+  expect(slateActionHeight).toBeGreaterThanOrEqual(44);
+});
+
+test("mobile slate and archive links meet the minimum touch target", async ({
+  page,
+}, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith("mobile"));
+
+  await page.goto("/ncaaf/");
+  const slateTargets = page.locator(
+    ".compact-event-title a, .compact-event-links a, .event-title-link, .see-why"
+  );
+  const slateHeights = await slateTargets.evaluateAll((elements) =>
+    elements.map((element) => element.getBoundingClientRect().height)
+  );
+  expect(slateHeights.length).toBeGreaterThan(0);
+  expect(slateHeights.every((height) => height >= 44)).toBe(true);
+
+  await page.goto("/ncaaf/2026/week-0/");
+  const resultHeights = await page
+    .locator(".week-result-link")
+    .evaluateAll((elements) =>
+      elements.map((element) => element.getBoundingClientRect().height)
+    );
+  expect(resultHeights.length).toBeGreaterThan(0);
+  expect(resultHeights.every((height) => height >= 44)).toBe(true);
+});
+
 test("how it works uses an accessible disclosure", async ({ page }) => {
   await page.goto("/");
 

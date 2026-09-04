@@ -50,7 +50,7 @@ function Weekend({
   recap?: { href: string; line: string } | null;
 }) {
   return (
-    <section id={id} className="board">
+    <section id={id} className="board home-weekend">
       <div className="row-head">
         <div>
           <div className="board-kicker type-broadcast">{kicker}</div>
@@ -162,6 +162,7 @@ export default function HomePage() {
               calls={calls}
               pundits={pundits}
               surface="home"
+              collapseFacesOnMobile
             />
           </div>
         ) : null}

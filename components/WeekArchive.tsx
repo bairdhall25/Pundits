@@ -137,14 +137,22 @@ export function WeekArchive({
           <ol>
             {results.map((result) => (
               <li key={result.call.id}>
-                <Link href={`/pundits/${result.pundit.id}/`}>
-                  {result.pundit.name}
-                </Link>{" "}
-                {`— ${result.status} (`}
-                <Link href={takePath(result.event.slug, result.pundit.id)}>
-                  {result.pickLabel}
+                <Link
+                  className="week-result-link"
+                  href={takePath(result.event.slug, result.pundit.id)}
+                >
+                  <span className="week-result-pundit">
+                    {result.pundit.name}
+                  </span>
+                  <span>{`— ${result.status} (`}</span>
+                  <span className="week-result-pick">
+                    {result.pickLabel}
+                    {result.cents == null
+                      ? ""
+                      : `, ${formatCents(result.cents)}`}
+                    )
+                  </span>
                 </Link>
-                {result.cents == null ? "" : `, ${formatCents(result.cents)}`})
               </li>
             ))}
           </ol>
