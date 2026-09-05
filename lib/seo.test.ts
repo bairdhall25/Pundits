@@ -334,7 +334,9 @@ describe("json-ld", () => {
   });
 
   it("moves article and sitemap freshness forward when a pick is graded", () => {
-    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits())[0];
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
+    )!;
     const gradedAt = "2026-09-03";
     const graded = { ...take, call: { ...take.call, status: "hit", gradedAt } } as typeof take;
 

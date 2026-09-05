@@ -182,8 +182,8 @@ describe("event social-card resolver", () => {
     expect(card.mode).toBe("game");
     expect(card.state).toBe("pending");
     expect(card.sides.map((side) => side.label)).toEqual(["Clemson", "LSU"]);
-    expect(card.sides.map((side) => side.people.total)).toEqual([2, 7]);
-    expect(card.sides.map((side) => side.people.overflow)).toEqual([0, 3]);
+    expect(card.sides.map((side) => side.people.total)).toEqual([2, 10]);
+    expect(card.sides.map((side) => side.people.overflow)).toEqual([0, 6]);
     expect(card.sides[1].people.people.map((person) => person.name)).toEqual([
       "Josh Pate",
       "Paul Finebaum",
@@ -322,7 +322,7 @@ describe("Editorial social-card resolvers", () => {
     expect(card).toMatchObject({ archetype: "editorial", mode: "team" });
     expect(card.groups.map((group) => [group.label, group.count])).toEqual([
       ["With", 2],
-      ["Against", 7],
+      ["Against", 10],
     ]);
     expect(card.feature).toMatchObject({
       kicker: "George Wrighster",
@@ -344,13 +344,13 @@ describe("Editorial social-card resolvers", () => {
       mode: "week",
       state: "partial",
       headline: "Week 1",
-      context: "32 picks · 11 games",
+      context: "39 picks · 11 games",
     });
     expect(card.feature).toMatchObject({
       headline: "Clemson at LSU",
-      context: "2 — 7 expert pick split",
+      context: "2 — 10 expert pick split",
     });
-    expect(card.people?.total).toBe(9);
+    expect(card.people?.total).toBe(12);
   });
 
   it("distinguishes partial and final week states", () => {
