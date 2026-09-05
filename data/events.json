@@ -70,7 +70,10 @@
       "kickoffDate": "2026-09-04",
       "awayTeamId": "miami",
       "homeTeamId": "stanford",
-      "week": 1
+      "week": 1,
+      "awayScore": 45,
+      "homeScore": 6,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858206/miami-stanford"
     },
     {
       "slug": "baylor-vs-auburn-2026",
@@ -776,7 +779,10 @@
       "kickoffDate": "2026-09-04",
       "awayTeamId": "toledo",
       "homeTeamId": "michigan-state",
-      "week": 1
+      "week": 1,
+      "awayScore": 20,
+      "homeScore": 30,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858429/toledo-michigan-st"
     },
     {
       "slug": "oklahoma-state-at-tulsa-2026",

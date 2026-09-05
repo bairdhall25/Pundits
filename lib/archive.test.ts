@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/ncaaf/2026/week-0/");
+    expect(recap!.href).toBe("/ncaaf/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 0: experts went 2–4. Chip Patterson and Greg McElroy hit on North Carolina."
+      "Week 1: experts went 1–1. Clay Travis hit on Miami."
     );
   });
 

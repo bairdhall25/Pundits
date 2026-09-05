@@ -118,7 +118,7 @@ describe("grade sheet", () => {
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toBe("NC State over Virginia — called the upset.");
     expect(rows[2].value).toBe("34¢ at the freeze (≈ +194), as of Aug 28, 2026.");
-    expect(rows[3].value).toContain("1–1");
+    expect(rows[3].value).toContain("1–2");
     expect(rows[3]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
   });
 
@@ -357,7 +357,7 @@ describe("json-ld", () => {
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
     expect(teamLastModified("north-carolina", events, calls)).toBe("2026-08-29");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-03");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-05");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {

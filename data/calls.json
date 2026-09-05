@@ -1146,7 +1146,8 @@
     "kind": "hard",
     "subject": "Toledo",
     "paysOn": "Toledo at Michigan State (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-05",
     "eventSlug": "toledo-at-michigan-state-2026",
     "side": "yes"
   },
@@ -1175,7 +1176,8 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Stanford (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-05",
     "eventSlug": "miami-at-stanford-2026",
     "side": "yes",
     "reasoning": "Miami travels cross-country into a dead Stanford crowd he likens to low-energy Friday high-school ball. He still expects the Hurricanes to win by about 14–17 while the dog stays closer than the number, so Miami is the SU and Stanford is the cover."

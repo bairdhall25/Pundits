@@ -342,7 +342,7 @@ describe("Editorial social-card resolvers", () => {
     expect(card).toMatchObject({
       archetype: "editorial",
       mode: "week",
-      state: "pending",
+      state: "partial",
       headline: "Week 1",
       context: "32 picks · 11 games",
     });
