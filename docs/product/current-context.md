@@ -2,7 +2,7 @@
 
 Status: Operational
 
-Last updated: 2026-09-03
+Last updated: 2026-09-05
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
 
@@ -22,23 +22,28 @@ The operating target is **qualified event density**, not raw volume. A smaller s
 
 ## Current product truth
 
-Week 0 graded on 2026-08-29: Dublin 2–2 (Patterson and McElroy hit; Finebaum and Compton miss) and Charlottesville 0–2 (Kanell and Patterson miss). Recap is `docs/runs/2026-08-31-recap.md`. Live JSON wins for current counts.
+Week 0 graded on 2026-08-29: Dublin 2–2 (Patterson and McElroy hit; Finebaum and Compton miss) and Charlottesville 0–2 (Kanell and Patterson miss). Recap is `docs/runs/2026-08-31-recap.md`.
 
-The first slate closed on pick stories, event pages, records, leaderboard, and social cards. Repeat the loop on Clemson–LSU and the NFL openers before treating the promise as proven.
+Friday Week 1 graded on 2026-09-05 (`767f9e9`): Miami 45–6, Clay Travis hit; Toledo 20–30, Patterson miss. Proposal `docs/runs/2026-09-05-grade.md`. Live JSON wins for current counts.
+
+Clemson at LSU (Sat 7:30 ET ABC) is the open hero: 2–7 (Wrighster/Kanell Clemson YES; Pate, Finebaum, Staples, McElroy, Clay Travis, Fornelli, Pollack LSU NO). The first slate closed on pick stories, event pages, records, leaderboard, and social cards. Repeat the loop on Clemson–LSU and the NFL openers before treating the promise as proven.
 
 Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Live now` and `In play` for an event actually underway.
 
+Saturday operating mailbox: `docs/runs/2026-09-05-gameday-handoff.md`.
+
 ## Immediate order of operations
 
-1. Every Scout pass hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, Wisconsin YES, and the Miami / Baylor watchlist (off-home). Clemson is dense — flip-check already-carded faces once `kickoffDate` is within 3 calendar days; do not restage. Do not ship Bets pages, fantasy, bulk roster, or extra homepage games until after the 2026-09-05 week. Doctrine: `docs/capture-policy.md`.
-2. Grade Clemson–LSU after the final, then recap within 24 hours.
-3. Grade NFL Week 1 as those games settle.
-4. Instrument the minimum engagement events in `measurement.md`.
-5. Soft-launch public-source tips through event pages and the footer. Treat every submission as an untrusted Scout lead; review quality and operational load after three settled slates.
-6. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, graded-receipt returns, and qualified tip yield.
-7. Establish four to six weeks of operating and audience baselines.
-8. Select a retention experiment from observed behavior.
-9. Test monetization only after repeat value is visible.
+1. **Today only — GameDay desk on Clemson–LSU:** capture named first-person SUs from `herbstreit` / `saban` / `howard` / `davis` / `mcafee` / `coughlin` onto `clemson-at-lsu-2026` even though the card is already dense. Do not mint a second event. Ordinary dense-skip and flip-check-only still apply to everyone else. Name the speaker. See `docs/runs/2026-09-05-gameday-handoff.md`.
+2. Every other Scout pass still hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, Wisconsin YES. Miami is now Final — skip. Baylor is dense flip-check. Do not ship Bets pages, fantasy, bulk roster, extra homepage games, or a Wisconsin `onHome` flip until after the 2026-09-05 week. Doctrine: `docs/capture-policy.md`.
+3. Grade Saturday mapped games as they settle (Baylor first this afternoon), then Clemson–LSU after the final including any GameDay rows, then recap within 24 hours.
+4. Grade NFL Week 1 as those games settle.
+5. Instrument the minimum engagement events in `measurement.md`.
+6. Soft-launch public-source tips through event pages and the footer. Treat every submission as an untrusted Scout lead; review quality and operational load after three settled slates.
+7. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, graded-receipt returns, and qualified tip yield.
+8. Establish four to six weeks of operating and audience baselines.
+9. Select a retention experiment from observed behavior.
+10. Test monetization only after repeat value is visible.
 
 ## Capture vs display
 
@@ -78,3 +83,4 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - `docs/product/featured-games.md` is the homepage featured-game display rule.
 - `docs/product/roster-growth.md` is who may join the roster (association, not team analysts).
 - `AGENTS.md` defines repository-wide invariants and agent ownership.
+- `docs/runs/2026-09-05-gameday-handoff.md` is today’s Saturday operating mailbox (GameDay override, grade order, resume prompt).
