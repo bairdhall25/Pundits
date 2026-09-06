@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/ncaaf/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 1–1. Clay Travis hit on Miami."
+      "Week 1: experts went 5–2. Chip Patterson, Clay Travis, Danny Kanell, and David Pollack hit on Tulsa."
     );
   });
 

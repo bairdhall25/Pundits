@@ -96,7 +96,10 @@
       "kickoffDate": "2026-09-05",
       "awayTeamId": "baylor",
       "homeTeamId": "auburn",
-      "week": 1
+      "week": 1,
+      "awayScore": 16,
+      "homeScore": 17,
+      "resultUrl": "https://big12sports.com/boxscore.aspx?id=7ltyipP022aUJKmSgYVs3wXi7up73ghniwD5ElWyd07J7BNseBaMQePf0fY%2F3yUPiV9QlDgNhmnzwcGEXnAvLoOA%2F1nIfoP2GR%2BlVUQRpr2%2F4agqeGKo8foxgGKKiNqR%2FZDM8sFjg9wqX6GQlv8cAyKtYngEnef6r37g%2Fi3EX9fux9nnsZoDRpyYFNZO4XLe&path=football"
     },
     {
       "slug": "patriots-at-seahawks-2026",
@@ -716,7 +719,10 @@
       "kickoffDate": "2026-09-05",
       "awayTeamId": "boise-state",
       "homeTeamId": "oregon",
-      "week": 1
+      "week": 1,
+      "awayScore": 27,
+      "homeScore": 34,
+      "resultUrl": "https://goducks.com/game-center/24377"
     },
     {
       "slug": "western-michigan-at-michigan-2026",
@@ -803,7 +809,10 @@
       "kickoffDate": "2026-09-05",
       "awayTeamId": "oklahoma-state",
       "homeTeamId": "tulsa",
-      "week": 1
+      "week": 1,
+      "awayScore": 10,
+      "homeScore": 24,
+      "resultUrl": "https://okstate.com/game-center/17434"
     }
   ]
 }
