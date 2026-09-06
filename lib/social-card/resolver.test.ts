@@ -180,7 +180,7 @@ describe("event social-card resolver", () => {
     expect(card.archetype).toBe("split");
     if (card.archetype !== "split") throw new Error("expected split card");
     expect(card.mode).toBe("game");
-    expect(card.state).toBe("pending");
+    expect(card.state).toBe("final");
     expect(card.sides.map((side) => side.label)).toEqual(["Clemson", "LSU"]);
     expect(card.sides.map((side) => side.people.total)).toEqual([2, 10]);
     expect(card.sides.map((side) => side.people.overflow)).toEqual([0, 6]);

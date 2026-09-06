@@ -177,7 +177,7 @@ describe("page meta images", () => {
       outlet: "Finebaum / ESPN",
     });
     expect(card.latestQuote).toBeTruthy();
-    expect(card.recordLabel).toBe("0–1");
+    expect(card.recordLabel).toBe("1–1");
   });
 
   it("gives filled team pages a stable custom card", () => {

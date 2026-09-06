@@ -24,7 +24,10 @@
       "kickoffDate": "2026-09-05",
       "awayTeamId": "clemson",
       "homeTeamId": "lsu",
-      "week": 1
+      "week": 1,
+      "awayScore": 10,
+      "homeScore": 51,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856660/clemson-lsu"
     },
     {
       "slug": "wisconsin-vs-nd-2026",

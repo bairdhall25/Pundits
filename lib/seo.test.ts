@@ -347,7 +347,9 @@ describe("json-ld", () => {
   });
 
   it("keeps ungraded freshness tied to the existing source dates", () => {
-    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits())[0];
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.call.status === "pending"
+    )!;
     expect(takeLastModified(take.call)).toBe(take.call.sourceDate);
     expect(eventLastModified(take.event, [take.call])).toBe(
       [take.event.sourcedAt, take.call.sourceDate].filter(Boolean).sort().at(-1)
@@ -359,7 +361,7 @@ describe("json-ld", () => {
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
     expect(teamLastModified("north-carolina", events, calls)).toBe("2026-08-29");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-05");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-06");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {
