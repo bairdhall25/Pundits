@@ -743,7 +743,10 @@
       "kickoffDate": "2026-09-05",
       "awayTeamId": "western-michigan",
       "homeTeamId": "michigan",
-      "week": 1
+      "week": 1,
+      "awayScore": 12,
+      "homeScore": 13,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858428/w-michigan-michigan"
     },
     {
       "slug": "fiu-at-usf-2026",

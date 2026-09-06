@@ -1118,7 +1118,8 @@
     "kind": "hard",
     "subject": "Michigan",
     "paysOn": "Western Michigan at Michigan (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-05",
     "eventSlug": "western-michigan-at-michigan-2026",
     "side": "no"
   },
