@@ -995,7 +995,8 @@
     "kind": "hard",
     "subject": "California",
     "paysOn": "UCLA at California (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-06",
     "eventSlug": "ucla-at-cal-2026",
     "side": "no"
   },
@@ -1009,7 +1010,8 @@
     "kind": "hard",
     "subject": "California",
     "paysOn": "UCLA at California (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-06",
     "eventSlug": "ucla-at-cal-2026",
     "side": "no"
   },
@@ -1219,7 +1221,8 @@
     "kind": "hard",
     "subject": "UCLA",
     "paysOn": "UCLA at California (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-06",
     "eventSlug": "ucla-at-cal-2026",
     "side": "yes",
     "reasoning": "New UCLA coach Bob Chesney as a fix for Nico; he is not sold on Cal and expects the Bruins to win by a touchdown or more on the road, so the small lay is also the straight-up winner."
@@ -1296,7 +1299,8 @@
     "kind": "hard",
     "subject": "California",
     "paysOn": "UCLA at California (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-06",
     "eventSlug": "ucla-at-cal-2026",
     "side": "no",
     "reasoning": "Moneyline sprinkle (Cal wins)."
@@ -1358,7 +1362,8 @@
     "kind": "hard",
     "subject": "UCLA",
     "paysOn": "UCLA at California (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-06",
     "eventSlug": "ucla-at-cal-2026",
     "side": "yes",
     "reasoning": "Pollack picks UCLA 31–27. He is shaking his head at Nico Iamaleava's inconsistency after a laser first start that has not shown up since, and he likes UCLA's late add of Sun Belt defensive player of the year Trent Hendrick at linebacker."
