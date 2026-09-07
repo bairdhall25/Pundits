@@ -138,7 +138,8 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /No graded picks yet/);
+assert.match(herbstreitProfile, /2026 record 1–0/);
+assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
 const book = await readFile(path.join(out, "book/index.html"), "utf8");

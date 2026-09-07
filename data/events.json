@@ -50,7 +50,10 @@
       "kickoffDate": "2026-09-06",
       "awayTeamId": "wisconsin",
       "homeTeamId": "notre-dame",
-      "week": 1
+      "week": 1,
+      "awayScore": 13,
+      "homeScore": 41,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858438/wisconsin-notre-dame"
     },
     {
       "slug": "miami-at-stanford-2026",

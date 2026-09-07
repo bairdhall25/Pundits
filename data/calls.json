@@ -830,7 +830,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -845,7 +846,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -874,7 +876,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1, Lambeau)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -1438,7 +1441,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -1452,7 +1456,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -1466,7 +1471,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   },
@@ -1480,7 +1486,8 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Wisconsin vs Notre Dame (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
   }

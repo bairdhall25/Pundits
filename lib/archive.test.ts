@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/ncaaf/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 18–9. Andy Staples, Chip Patterson, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Greg McElroy, Josh Pate, Nick Saban, Pat McAfee, Paul Finebaum, and Tom Fornelli hit on LSU."
+      "Week 1: experts went 25–9. Andy Staples, Ari Wasserman, Chip Patterson, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Greg McElroy, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, Paul Finebaum, and Tom Fornelli hit on LSU."
     );
   });
 
