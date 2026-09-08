@@ -1495,5 +1495,20 @@
     "gradedAt": "2026-09-07",
     "eventSlug": "wisconsin-vs-nd-2026",
     "side": "no"
+  },
+  {
+    "id": "brandt-49ers-vs-rams-20260908",
+    "punditId": "brandt",
+    "claim": "The niners will beat the Rams in the opener.",
+    "source": "GMFB Tue Hour 1 Predictions",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000788488079",
+    "sourceDate": "2026-09-08",
+    "kind": "hard",
+    "subject": "49ers",
+    "paysOn": "49ers at Rams (Week 1, Melbourne)",
+    "status": "pending",
+    "eventSlug": "49ers-vs-rams-2026",
+    "side": "yes",
+    "reasoning": "GMFB predictions hour with helmet props; repeats Niners over Rams in week one. Clear W1 winner."
   }
 ]
