@@ -953,7 +953,8 @@
     "kind": "hard",
     "subject": "Florida State",
     "paysOn": "SMU at Florida State (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-08",
     "eventSlug": "smu-at-fsu-2026",
     "side": "no"
   },
@@ -983,7 +984,8 @@
     "kind": "hard",
     "subject": "SMU",
     "paysOn": "SMU at Florida State (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-08",
     "eventSlug": "smu-at-fsu-2026",
     "side": "yes"
   },
@@ -1240,7 +1242,8 @@
     "kind": "hard",
     "subject": "Florida State",
     "paysOn": "SMU at Florida State (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-08",
     "eventSlug": "smu-at-fsu-2026",
     "side": "no",
     "reasoning": "Statement spot after a soft prior week. He likes Florida State to win outright and will lay about three, so FSU is the SU (favorite laying)."
@@ -1350,7 +1353,8 @@
     "kind": "hard",
     "subject": "SMU",
     "paysOn": "SMU at Florida State (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-08",
     "eventSlug": "smu-at-fsu-2026",
     "side": "yes",
     "reasoning": "Pollack still picks SMU as the better, better-coached team going in the right direction. He scores it 27–24 and would not be shocked if Florida State won, because the home crowd and a week of getting kicked around keep the circumstances on the Seminoles' side."
@@ -1381,7 +1385,8 @@
     "kind": "hard",
     "subject": "SMU",
     "paysOn": "SMU at Florida State (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-08",
     "eventSlug": "smu-at-fsu-2026",
     "side": "yes",
     "reasoning": "Model has SMU −3; he declines to bet but names SMU outright and to cover on QB/talent edge vs FSU."

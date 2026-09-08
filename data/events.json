@@ -557,7 +557,10 @@
       "kickoffDate": "2026-09-07",
       "awayTeamId": "smu",
       "homeTeamId": "florida-state",
-      "week": 1
+      "week": 1,
+      "awayScore": 27,
+      "homeScore": 24,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858212/smu-florida-st"
     },
     {
       "slug": "ucla-at-cal-2026",
