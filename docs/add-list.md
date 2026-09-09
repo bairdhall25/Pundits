@@ -3,12 +3,10 @@
 Status: Operational
 Date: 2026-08-29
 
-Named people Scout may stage as **Candidates** this week. Promote does not auto-roster. A real photo is required before they mint a page.
+Discovery seeds, not an allowlist: Scout may stage qualifying associated voices absent from this list. Check live pundits.json first; Fornelli and Elliott are already rostered and belong in Intake. Promote does not auto-roster. A real photo is required before they mint a page.
 
 | proposedId | name | group | outlet | photo | X handle |
 |---|---|---|---|---|---|
-| fornelli | Tom Fornelli | other | CBS / Cover 3 | needed | TomFornelli |
-| elliott | Bud Elliott | other | CBS / Cover 3 | needed | find official, not a parody |
 | rico | Rico Bosco | barstool | Barstool Pick Em | needed | Return_Of_RB |
 
 ## Radio pilot

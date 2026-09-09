@@ -20,6 +20,10 @@ export function normalizeQuote(quote) {
 
 export function rowIdentity({
   pundit = "",
+  proposedId = "",
+  name = "",
+  association = "",
+  associationUrl = "",
   eventSlug = "",
   side = "",
   verbatimQuote = "",
@@ -32,7 +36,7 @@ export function rowIdentity({
 } = {}) {
   const canonical = [
     "evidence-v2",
-    String(pundit).trim().toLowerCase(),
+    String(pundit || proposedId).trim().toLowerCase(),
     String(eventSlug || "unmapped").trim().toLowerCase(),
     String(side || "").trim().toLowerCase(),
     normalizeQuote(verbatimQuote),
@@ -41,6 +45,7 @@ export function rowIdentity({
     normalizeQuote(reasoning),
     String(targetId || "").trim(),
     normalizeQuote(matchup || (!eventSlug ? note : "")),
+    ...(proposedId ? ["candidate-v1", normalizeQuote(name), normalizeQuote(association), String(associationUrl).trim()] : []),
   ].join("\u0000");
   return createHash("sha256").update(canonical).digest("hex").slice(0, 16);
 }
@@ -79,7 +84,7 @@ function matchingIntake(audit, intakeRows, intakeById) {
   if (audit.rowId && intakeById.has(audit.rowId)) return intakeById.get(audit.rowId);
   const sameSlot = (intakeRows ?? []).filter(
     (row) =>
-      (row.pundit || "") === (audit.pundit || "") &&
+      (row.pundit || row.proposedId || "") === (audit.pundit || audit.proposedId || "") &&
       (row.eventSlug || "") === (audit.eventSlug || "")
   );
   if (sameSlot.length === 1) return sameSlot[0];
@@ -104,6 +109,10 @@ export function promoteReadyRows(auditRows, intakeRows) {
     }
     if (audit.verdict === "fail") {
       blocked.push({ audit, intake, reason: "row failed Audit" });
+      continue;
+    }
+    if (intake.proposedId || intake.section === "Candidates") {
+      blocked.push({ audit, intake, reason: "candidate requires roster and photo approval; never ordinary Intake promotion" });
       continue;
     }
     if (PROMOTE_OK.has(audit.verdict) && intake.eventSlug) {
