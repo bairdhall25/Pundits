@@ -20,6 +20,7 @@ import {
   callsLastModified,
   teamLastModified,
   teamJsonLd,
+  teamPageJsonLd,
   collectionPageJsonLd,
 } from "./seo";
 import {
@@ -392,17 +393,26 @@ describe("json-ld", () => {
     expect(json.name).toBe("TCU");
     expect(json.url).toBe("https://pundits.pro/teams/tcu/");
     expect(json.sport).toBe("American Football");
+    const page = teamPageJsonLd(
+      team,
+      "TCU: tracked picks and results",
+      "No scheduled game on the board for TCU."
+    );
+    expect(page["@type"]).toBe("WebPage");
+    expect(page.name).toBe("TCU: tracked picks and results");
+    expect(page.mainEntity["@type"]).toBe("SportsTeam");
+    expect(JSON.stringify(page)).not.toMatch(/SportsEvent|FAQPage/);
   });
 
   it("describes hub and week archives as collection pages, not news articles", () => {
     const week = collectionPageJsonLd(
-      "College football Week 0 expert picks (2026)",
+      "College football Week 0: who got them right (2026)",
       "/ncaaf/2026/week-0/",
-      "Experts went 2–4 on verified Week 0 picks."
+      "Tracked Week 0 record: 2–4 on 6 graded picks."
     );
     expect(week["@type"]).toBe("CollectionPage");
     expect(week.url).toBe("https://pundits.pro/ncaaf/2026/week-0/");
-    expect(week.name).toBe("College football Week 0 expert picks (2026)");
+    expect(week.name).toBe("College football Week 0: who got them right (2026)");
     const stories = collectionPageJsonLd(
       "Expert picks",
       "/stories/",

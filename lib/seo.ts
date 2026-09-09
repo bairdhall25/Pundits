@@ -564,6 +564,27 @@ export function teamJsonLd(team: Team) {
   };
 }
 
+export function teamPageJsonLd(team: Team, name: string, description: string) {
+  const teamNode = teamJsonLd(team);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    url: teamNode.url,
+    description,
+    mainEntity: {
+      "@type": "SportsTeam",
+      name: teamNode.name,
+      url: teamNode.url,
+      sport: teamNode.sport,
+    },
+    about: {
+      "@type": "SportsTeam",
+      name: teamNode.name,
+    },
+  };
+}
+
 export function collectionPageJsonLd(
   name: string,
   path: string,

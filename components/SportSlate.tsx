@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
@@ -6,6 +7,9 @@ import { FinalRow } from "@/components/FinalRow";
 import { FuturePeek, PeekRow } from "@/components/PeekRow";
 import { SportFilter } from "@/components/SportFilter";
 import { WeekArchivePathLinks, TeamLinks } from "@/components/SlateLinks";
+import { TrackView } from "@/components/TrackView";
+import { weekArchivePath } from "@/lib/archive";
+import { leaguePageOpenParams } from "@/lib/analytics";
 import {
   loadCalls,
   loadEvents,
@@ -14,7 +18,10 @@ import {
   seasonLabel,
 } from "@/lib/data";
 import { coverageTier, getLeagueSlate } from "@/lib/featured";
+import { leagueContent } from "@/lib/page-content";
 import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
+import { pageMeta } from "@/lib/site";
+import { socialPageImage } from "@/lib/social-card/metadata";
 import type { Call, Event, Pundit, Sport } from "@/lib/types";
 
 const COPY: Record<Sport, { kicker: string; title: string }> = {
@@ -51,11 +58,22 @@ function GameCard({
   );
 }
 
+export function leaguePageMeta(sport: Sport): Metadata {
+  const content = leagueContent(sport, loadEvents(), loadCalls(), loadPundits());
+  return pageMeta(
+    content.title,
+    content.description,
+    `/${sport}/`,
+    socialPageImage(sport, content.title)
+  );
+}
+
 export function SportSlate({ sport }: { sport: Sport }) {
   const events = loadEvents();
   const calls = loadCalls();
   const pundits = loadPundits();
   const slate = getLeagueSlate(sport, events, calls, pundits);
+  const content = leagueContent(sport, events, calls, pundits);
   const { withPicks: futurePicks, waiting: futureWaiting } = partitionFutures(
     sport,
     events,
@@ -68,18 +86,18 @@ export function SportSlate({ sport }: { sport: Sport }) {
   ]
     .filter(Boolean)
     .join(" · ");
-  const description =
-    sport === "nfl"
-      ? "Expert NFL picks for this week. Who the TV voices are taking, with the market price."
-      : "Expert CFB picks for this week. Who the TV voices are taking, with the market price next to each take.";
 
   return (
-    <main id="main" className="shell">
+    <main id="main" className="shell" data-page-type="league">
+      <TrackView
+        event="league_page_open"
+        params={leaguePageOpenParams({ sport })}
+      />
       <JsonLd
         data={collectionPageJsonLd(
-          sport === "nfl" ? "NFL picks" : "College football picks",
+          content.title,
           `/${sport}/`,
-          description
+          content.description
         )}
       />
       <JsonLd
@@ -93,12 +111,10 @@ export function SportSlate({ sport }: { sport: Sport }) {
       />
       <div className="eyebrow type-broadcast">{copy.kicker}</div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {copy.title}
+        {content.h1}
       </h1>
-      <p className="lede">
-        Expert picks on this week’s games. Every game here has at least one
-        verified pick. Prices are frozen when available.
-      </p>
+      <p className="lede">{content.lede}</p>
+      <p className="coverage-note">{content.disclaimer}</p>
       <SportFilter current={sport} />
       {when ? <div className="when">{when}</div> : null}
       <WeekArchivePathLinks sport={sport} />
@@ -110,7 +126,12 @@ export function SportSlate({ sport }: { sport: Sport }) {
 
       {slate.weeks.map((week) => (
         <section key={`${week.season}-${week.week}`} className="board">
-          <div className="board-kicker type-broadcast">Games</div>
+          <div className="board-kicker type-broadcast">
+            Games ·{" "}
+            <Link href={weekArchivePath(sport, week.season, week.week)}>
+              Week {week.week} archive
+            </Link>
+          </div>
           <h2 className="board-title type-broadcast">{week.label}</h2>
           {week.open.map((event) => (
             <GameCard

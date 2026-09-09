@@ -22,9 +22,11 @@ export type EngagementSurface =
   | "stories"
   | "take"
   | "book"
-  | "profile";
+  | "profile"
+  | "team"
+  | "week";
 
-export type PageType = "receipt" | "game" | "profile";
+export type PageType = "receipt" | "game" | "profile" | "team" | "league" | "week";
 
 export type EmailInterestParams = {
   placement: string;
@@ -108,6 +110,37 @@ export function punditProfileOpenParams(input: { punditId: string }) {
     pundit_id: input.punditId,
     surface: "profile",
     page_type: "profile",
+  });
+}
+
+export function teamPageOpenParams(input: { teamId: string; sport: string }) {
+  return engagementParams({
+    team_id: input.teamId,
+    sport: input.sport,
+    surface: "team",
+    page_type: "team",
+  });
+}
+
+export function leaguePageOpenParams(input: { sport: "ncaaf" | "nfl" }) {
+  return engagementParams({
+    sport: input.sport,
+    surface: input.sport,
+    page_type: "league",
+  });
+}
+
+export function weekArchiveOpenParams(input: {
+  sport: "ncaaf" | "nfl";
+  season: number;
+  week: number;
+}) {
+  return engagementParams({
+    sport: input.sport,
+    season: String(input.season),
+    week: String(input.week),
+    surface: "week",
+    page_type: "week",
   });
 }
 

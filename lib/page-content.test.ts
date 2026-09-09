@@ -1,15 +1,34 @@
 import { describe, expect, it } from "vitest";
-import { getPundit, loadCalls, loadEvents, loadPundits } from "./data";
+import { getPundit, getTeam, loadCalls, loadEvents, loadPundits, loadTeams } from "./data";
 import {
   TRACKED_RECORD_DISCLAIMER,
   TRACKED_SUBSET_DISCLAIMER,
   gameComparison,
+  leagueContent,
   profileContent,
   receiptContextLinks,
   receiptDisagreement,
+  teamContent,
+  weekArchiveContent,
 } from "./page-content";
 import { mappedTakes } from "./seo";
 import { fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
+import type { Team } from "./types";
+
+function testTeam(id: string, patch: Partial<Team> = {}): Team {
+  return {
+    id,
+    name: id
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" "),
+    abbr: id.slice(0, 3).toUpperCase(),
+    primary: "#000000",
+    ink: "#ffffff",
+    sport: "ncaaf",
+    ...patch,
+  };
+}
 
 describe("game comparison contract", () => {
   it("names both sides, the tracked count, and disagreement on Dublin", () => {
@@ -159,5 +178,139 @@ describe("profile contract", () => {
     expect(profile.recordLine).toContain("No graded picks in the 2026 tracked sample yet");
     expect(profile.current).toEqual([]);
     expect(profile.historical).toEqual([]);
+  });
+});
+
+describe("team page contract", () => {
+  it("names the next covered matchup and who is picking the 49ers", () => {
+    const team = getTeam("49ers", loadTeams())!;
+    const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
+    expect(content.h1).toBe("49ers");
+    expect(content.title).toBe("49ers: who is picking them vs Rams");
+    expect(content.noScheduledGame).toBe(false);
+    expect(content.nextMatchup?.event.slug).toBe("49ers-vs-rams-2026");
+    expect(content.lede).toContain("Next covered matchup: 49ers vs Rams");
+    expect(content.lede).toContain("Kyle Brandt picks 49ers");
+    expect(content.lede).toMatch(/pick Rams/);
+    expect(content.disclaimer).toBe(TRACKED_SUBSET_DISCLAIMER);
+    expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
+    expect(content.title).not.toMatch(/best experts|expert picks/i);
+    expect(content.contextLinks.some((link) => link.href === "/nfl/")).toBe(true);
+    expect(content.contextLinks.some((link) => link.href === "/picks/49ers-vs-rams-2026")).toBe(
+      true
+    );
+  });
+
+  it("says no scheduled game on TCU and keeps the Dublin result", () => {
+    const team = getTeam("tcu", loadTeams())!;
+    const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
+    expect(content.noScheduledGame).toBe(true);
+    expect(content.nextMatchup).toBeNull();
+    expect(content.title).toBe("TCU: tracked picks and results");
+    expect(content.lede).toContain("No scheduled game on the board for TCU");
+    expect(content.lede).toContain("North Carolina beat TCU");
+    expect(content.lede).not.toContain("No captured pick yet.");
+    expect(content.historical[0]?.event.slug).toBe("unc-vs-tcu-2026");
+    expect(content.historical[0]?.noCapturedPick).toBe(false);
+  });
+
+  it("keeps Virginia's empty side distinct from a missing game", () => {
+    const team = getTeam("virginia", loadTeams())!;
+    const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
+    expect(content.noScheduledGame).toBe(true);
+    expect(content.lede).toContain("No scheduled game on the board for Virginia");
+    expect(content.lede).toContain("Virginia beat NC State");
+    expect(content.lede).toContain("No captured pick on Virginia");
+    expect(content.historical[0]?.noCapturedPick).toBe(true);
+    expect(content.historical[0]?.noCapturedPickOnGame).toBe(false);
+  });
+
+  it("distinguishes no captured pick on a scheduled game from no scheduled game", () => {
+    const team = testTeam("home", { name: "Home", sport: "ncaaf" });
+    const event = fixtureGame("open-empty-2026", {
+      awayTeam: "Away",
+      homeTeam: "Home",
+      awayTeamId: "away",
+      homeTeamId: "home",
+    });
+    const scheduled = teamContent(team, [event], [], []);
+    expect(scheduled.noScheduledGame).toBe(false);
+    expect(scheduled.nextMatchup?.noCapturedPickOnGame).toBe(true);
+    expect(scheduled.lede).toContain("Next covered matchup: Away at Home");
+    expect(scheduled.lede).toContain("No captured pick on Away at Home yet");
+    expect(scheduled.lede).not.toContain("No scheduled game");
+
+    const idle = teamContent(testTeam("ghost", { name: "Ghost" }), [], [], []);
+    expect(idle.noScheduledGame).toBe(true);
+    expect(idle.noCapturedPick).toBe(true);
+    expect(idle.lede).toContain("No scheduled game on the board for Ghost");
+    expect(idle.lede).toContain("No captured pick yet");
+    expect(idle.lede).not.toContain("Next covered matchup");
+  });
+});
+
+describe("league page contract", () => {
+  it("keeps the NFL live week and points at the permanent archive", () => {
+    const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
+    expect(content.h1).toBe("NFL");
+    expect(content.title).toBe("NFL Week 1: who picked whom");
+    expect(content.currentWeek?.week).toBe(1);
+    expect(content.currentWeek?.href).toBe("/nfl/2026/week-1/");
+    expect(content.lede).toContain("Week 1");
+    expect(content.lede).toMatch(/archive is the permanent record/);
+    expect(content.title).not.toMatch(/best experts|expert picks/i);
+    expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
+  });
+
+  it("treats a settled college live week as results and still links the archive", () => {
+    const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
+    expect(content.h1).toBe("College football");
+    expect(content.title).toBe("College football Week 1: who called it");
+    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-1/");
+    expect(content.lede).toContain("Week 1 is final");
+    expect(content.previous?.href).toBe("/ncaaf/2026/week-0/");
+    expect(content.title).not.toMatch(/best experts|expert picks/i);
+  });
+});
+
+describe("weekly archive contract", () => {
+  it("progresses a graded week to results and highlights disagreement receipts", () => {
+    const content = weekArchiveContent(
+      "ncaaf",
+      2026,
+      0,
+      loadEvents(),
+      loadCalls(),
+      loadPundits()
+    );
+    expect(content.h1).toBe("College football Week 0");
+    expect(content.title).toBe("College football Week 0: who got them right (2026)");
+    expect(content.graded).toBe(true);
+    expect(content.lede).toMatch(/Tracked Week 0 record: 2–4/);
+    expect(content.recap).toContain("North Carolina beat TCU");
+    expect(content.disagreements[0]?.href).toBe("/picks/unc-vs-tcu-2026");
+    expect(content.disagreements[0]?.receipts.some((row) => row.href.includes("/finebaum"))).toBe(
+      true
+    );
+    expect(content.title).not.toMatch(/best experts|expert picks/i);
+    expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
+  });
+
+  it("keeps an open week on the same URL before grades land", () => {
+    const content = weekArchiveContent(
+      "nfl",
+      2026,
+      1,
+      loadEvents(),
+      loadCalls(),
+      loadPundits()
+    );
+    expect(content.title).toBe("NFL Week 1: who picked whom (2026)");
+    expect(content.graded).toBe(false);
+    expect(content.lede).toContain("Results land on this same URL");
+    expect(content.recap).toContain("49ers vs Rams");
+    expect(content.disagreements.some((row) => row.event.slug === "49ers-vs-rams-2026")).toBe(
+      true
+    );
   });
 });

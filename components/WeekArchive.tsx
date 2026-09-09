@@ -3,58 +3,39 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
+import { TrackView } from "@/components/TrackView";
 import {
   archiveWeeks,
-  gamesForWeek,
   weekArchivePath,
-  weekRecord,
   weekResults,
 } from "@/lib/archive";
+import { weekArchiveOpenParams } from "@/lib/analytics";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { coverageTier, getWeekArchiveGames } from "@/lib/featured";
 import { formatCents } from "@/lib/format";
 import { ogImageFor, weekOgCard } from "@/lib/og";
+import { weekArchiveContent } from "@/lib/page-content";
 import { breadcrumbList, collectionPageJsonLd, takePath } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
-import type { Call, Event, Sport } from "@/lib/types";
+import type { Call, Event, Pundit, Sport } from "@/lib/types";
 
 export { weekArchivePath };
-
-const SPORT_LABEL: Record<Sport, string> = {
-  ncaaf: "College football",
-  nfl: "NFL",
-};
-
-export function weekArchiveTitle(sport: Sport, season: number, week: number): string {
-  return `${SPORT_LABEL[sport]} Week ${week} expert picks (${season})`;
-}
-
-export function weekArchiveDescription(
-  week: number,
-  record: { hits: number; misses: number; pending: number }
-): string {
-  const graded = record.hits + record.misses > 0;
-  return graded
-    ? `Experts went ${record.hits}–${record.misses} on verified Week ${week} picks. Every quote, frozen price, and result.`
-    : `Verified expert picks for every tracked Week ${week} game, with the quote and the frozen market price.`;
-}
 
 export function weekArchiveMeta(
   sport: Sport,
   season: number,
   week: number,
   events: Event[],
-  calls: Call[]
+  calls: Call[],
+  pundits: Pundit[]
 ): Metadata {
-  const games = gamesForWeek(sport, season, week, events);
-  const record = weekRecord(games, calls);
-  const title = weekArchiveTitle(sport, season, week);
+  const content = weekArchiveContent(sport, season, week, events, calls, pundits);
   const card = weekOgCard(sport, season, week, events, calls);
   return pageMeta(
-    title,
-    weekArchiveDescription(week, record),
+    content.title,
+    content.description,
     weekArchivePath(sport, season, week),
-    ogImageFor(card.file, title, card)
+    ogImageFor(card.file, content.title, card)
   );
 }
 
@@ -78,61 +59,92 @@ export function WeekArchive({
     calls,
     pundits
   );
-  const record = weekRecord(
-    gamesForWeek(sport, season, week, events),
-    calls
+  const content = weekArchiveContent(
+    sport,
+    season,
+    week,
+    events,
+    calls,
+    pundits
   );
   const results = weekResults(games, calls, pundits);
-  const graded = record.hits + record.misses > 0;
   const weeks = archiveWeeks(events).filter(
     (w) => w.sport === sport && w.season === season
   );
   const idx = weeks.findIndex((w) => w.week === week);
   const prev = idx > 0 ? weeks[idx - 1] : null;
   const next = idx >= 0 && idx < weeks.length - 1 ? weeks[idx + 1] : null;
-  const label = SPORT_LABEL[sport];
   const slate = `/${sport}/`;
-
-  const lede = graded
-    ? `Experts went ${record.hits}–${record.misses} on verified Week ${week} picks${
-        record.pending ? `, with ${record.pending} still open` : ""
-      }. Every pick below shows the quote, the frozen price, and the result.`
-    : `${games.length} tracked game${games.length === 1 ? "" : "s"} · ${
-        record.pending
-      } open expert pick${record.pending === 1 ? "" : "s"}. Results land after the games.`;
   const path = weekArchivePath(sport, season, week);
 
   return (
-    <main id="main" className="shell">
+    <main id="main" className="shell" data-page-type="week">
+      <TrackView
+        event="week_archive_open"
+        params={weekArchiveOpenParams({ sport, season, week })}
+      />
       <JsonLd
-        data={collectionPageJsonLd(weekArchiveTitle(sport, season, week), path, lede)}
+        data={collectionPageJsonLd(content.title, path, content.description)}
       />
       <JsonLd
         data={breadcrumbList([
           { name: "Picks", path: "/" },
-          { name: label, path: slate },
+          { name: content.sportLabel, path: slate },
           { name: `Week ${week}`, path },
         ])}
       />
       <Breadcrumbs
         items={[
           { name: "Picks", href: "/" },
-          { name: label, href: slate },
+          { name: content.sportLabel, href: slate },
           { name: `Week ${week}` },
         ]}
       />
       <div className="eyebrow type-broadcast">
-        {label} · {season}–{String(season + 1).slice(-2)}
+        {content.sportLabel} · {season}–{String(season + 1).slice(-2)}
       </div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {label} Week {week}
+        {content.h1}
       </h1>
-      <p className="lede">{lede}</p>
+      <p className="lede">{content.lede}</p>
+      <p className="coverage-note">{content.disclaimer}</p>
+
+      {content.disagreements.length ? (
+        <section className="week-results" aria-labelledby="week-disagreements-title">
+          <h2 id="week-disagreements-title" className="type-broadcast">
+            Verified disagreements
+          </h2>
+          <ol>
+            {content.disagreements.map((row) => (
+              <li key={row.event.slug}>
+                <Link className="week-result-link" href={row.href}>
+                  <span className="week-result-pundit">{row.event.title}</span>
+                </Link>
+                <span> — {row.line}</span>
+                <ul className="take-list">
+                  {row.receipts.map((entry) => (
+                    <li key={entry.href}>
+                      <Link href={entry.href}>
+                        {entry.name} → {entry.sideLabel}
+                        <span>
+                          {entry.source}
+                          {entry.sourceDate ? ` · ${entry.sourceDate}` : ""}
+                          {" · Receipt"}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
 
       {results.length ? (
         <section className="week-results" aria-labelledby="week-results-title">
           <h2 id="week-results-title" className="type-broadcast">
-            Who was right
+            Graded picks
           </h2>
           <ol>
             {results.map((result) => (
@@ -171,6 +183,7 @@ export function WeekArchive({
               event={event}
               calls={calls}
               pundits={pundits}
+              surface="week"
             />
           );
         })}
@@ -184,7 +197,7 @@ export function WeekArchive({
         ) : (
           <span />
         )}
-        <Link href={slate}>Current {label} slate</Link>
+        <Link href={slate}>Current {content.sportLabel} slate</Link>
         {next ? (
           <Link href={weekArchivePath(sport, season, next.week)}>
             Week {next.week} →
