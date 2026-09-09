@@ -1,10 +1,14 @@
 # Grok engineering handoff — growth engine
 
-Status: Active plan
+Status: In QA after Phase 2; later phases parked
 
 Product manager: Codex. Engineer: Grok. Product owner: Baird.
 
 ## Start here
+
+**Codex (now):** QA Phases 0–2 in this order: [#22](https://github.com/bairdhall25/Pundits/pull/22) → [#23](https://github.com/bairdhall25/Pundits/pull/23) → [#24](https://github.com/bairdhall25/Pundits/pull/24) (accuracy) → [#25](https://github.com/bairdhall25/Pundits/pull/25) (Scout). Do not treat #26/#27 or the un-PRed `phase-3b` / `phase-5` branches as the current review. Product decisions still owned by Codex are listed in the plan's QA handoff section.
+
+**Grok (after Codex QA):** Resume parked phases as separate PRs from the accepted stack. See [the plan](superpowers/plans/2026-09-08-growth-engine-implementation.md#qa-handoff-pause-after-phase-2).
 
 Implement the phased plan in [2026-09-08-growth-engine-implementation.md](superpowers/plans/2026-09-08-growth-engine-implementation.md). The product decisions and page-type SEO contracts are in [the execution brief](product/2026-09-08-growth-execution-brief.md). The evidence is in [the audit](audits/2026-09-08-growth-engine.md).
 
