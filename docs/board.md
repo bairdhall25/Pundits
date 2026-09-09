@@ -2,7 +2,7 @@
 
 Date: 2026-08-31. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs` plus approved rows in `docs/capture-targets.json`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
 
-Fan problem: homepage games are still one-sided favorites. Week 0 is Final. This week’s card is Clemson–LSU, then the three NFL openers. Do not pad with title/SB faces or extra faceless games.
+Fan problem: homepage games are still one-sided favorites. Week 0 and Clemson–LSU are Final. This week’s hunt is the three NFL openers (Patriots / 49ers / Bills). Do not pad with title/SB faces or extra faceless games.
 
 Do not pad the site with more title/SB faces until Dispatch holes are worked.
 

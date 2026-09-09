@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   coverageFlags,
@@ -373,6 +375,60 @@ describe("source completion vs density", () => {
     expect(row.sourceComplete).toBe(true);
     expect(row.hunt).toMatch(/source-complete designated voices/i);
     expect(row.hunt).not.toBe("skip");
+  });
+
+  it("source-completes an approved dense game more than 72h from kickoff without a flip-check", () => {
+    const targets = loadCaptureTargets({
+      version: 1,
+      targets: [
+        {
+          id: "clemson",
+          state: "approved",
+          sport: "ncaaf",
+          eventSlug: "clemson-at-lsu-2026",
+          kickoffDate: "2026-09-05",
+          priority: 1,
+          highValueSources: ["gameday"],
+        },
+      ],
+    });
+    const row = scoreEvent(clemson, denseCalls, {
+      now: Date.parse("2026-08-30T12:00:00Z"),
+      targets,
+    });
+    expect(row.status).toBe("dense");
+    expect(row.sourceComplete).toBe(true);
+    expect(row.flipCheck).toBe(false);
+    expect(row.hunt).toMatch(/source-complete designated voices/i);
+    expect(row.hunt).not.toMatch(/flip-check/i);
+  });
+});
+
+describe("live capture-target Dispatch", () => {
+  it("hunts Patriots then 49ers then Bills with an empty bring-onto-home list", () => {
+    const root = process.cwd();
+    const events = JSON.parse(readFileSync(path.join(root, "data", "events.json"), "utf8")).events;
+    const calls = JSON.parse(readFileSync(path.join(root, "data", "calls.json"), "utf8"));
+    const targets = loadCaptureTargets(
+      JSON.parse(readFileSync(path.join(root, "docs", "capture-targets.json"), "utf8"))
+    );
+    expect(JSON.parse(readFileSync(path.join(root, "docs", "bring-onto-home.json"), "utf8"))).toEqual(
+      []
+    );
+    const rows = scoreSlate({
+      events,
+      calls,
+      bringOntoHome: [],
+      targets,
+      now: Date.parse("2026-09-08T16:00:00Z"),
+    });
+    expect(
+      rows.filter((row) => row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
+    ).toEqual([
+      "patriots-at-seahawks-2026",
+      "49ers-vs-rams-2026",
+      "bills-at-texans-2026",
+    ]);
   });
 });
 

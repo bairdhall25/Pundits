@@ -28,7 +28,7 @@ Week 0 graded on 2026-08-29: Dublin 2–2 (Patterson and McElroy hit; Finebaum a
 
 Friday Week 1 graded on 2026-09-05 (`767f9e9`): Miami 45–6, Clay Travis hit; Toledo 20–30, Patterson miss. Proposal `docs/runs/2026-09-05-grade.md`. Live JSON wins for current counts.
 
-Clemson at LSU (Sat 7:30 ET ABC) is the open hero: 2–7 (Wrighster/Kanell Clemson YES; Pate, Finebaum, Staples, McElroy, Clay Travis, Fornelli, Pollack LSU NO). The first slate closed on pick stories, event pages, records, leaderboard, and social cards. Repeat the loop on Clemson–LSU and the NFL openers before treating the promise as proven.
+Clemson at LSU is graded Final (LSU 51–10, 2–7). The open hunt is NFL Week 1: Patriots at Seahawks (Wed), 49ers vs Rams (Thu; Brandt YES plus three Rams), Bills at Texans (Sun). Repeat the loop on those openers before treating the promise as proven.
 
 Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Live now` and `In play` for an event actually underway.
 

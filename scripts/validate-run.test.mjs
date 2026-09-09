@@ -3,8 +3,19 @@ import { validateRunContents } from "./validate-run.mjs";
 
 const EVENTS = ["clemson-at-lsu-2026"];
 
-function runFile({ reasoning = "A concise source-grounded explanation.", quote = "Give me Clemson.", eventSlug = "clemson-at-lsu-2026", side = "yes", sourceUrl = "https://example.com/episode", pass = "Shows" } = {}) {
-  return `## ${pass} pass 2026-09-03 (Scout)
+function laneStatus() {
+  return `## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-08 | opened Cover 3 |
+| X | not-run | 2026-09-08 | |
+| News | not-run | 2026-09-08 | |
+`;
+}
+
+function runFile({ reasoning = "A concise source-grounded explanation.", quote = "Give me Clemson.", eventSlug = "clemson-at-lsu-2026", side = "yes", sourceUrl = "https://example.com/episode", pass = "Shows", includeLaneStatus = true } = {}) {
+  const body = `## ${pass} pass 2026-09-03 (Scout)
 
 ### Intake
 
@@ -12,6 +23,7 @@ function runFile({ reasoning = "A concise source-grounded explanation.", quote =
 |---|---|---|---|---|---|---|---|---|---|
 | kanell | ${eventSlug} | ${side} | ${quote} | ${reasoning} |  | Cover 3 | ${sourceUrl} | 2026-09-03 | hard |
 `;
+  return includeLaneStatus ? `${laneStatus()}\n${body}` : body;
 }
 
 describe("run-file validation", () => {
@@ -28,7 +40,7 @@ describe("run-file validation", () => {
       eventSlugs: EVENTS,
     });
     expect(errors).toHaveLength(1);
-    expect(errors[0]).toMatch(/fixture\.md:7 Shows.*kanell\/clemson-at-lsu-2026.*61 words/);
+    expect(errors[0]).toMatch(/fixture\.md:\d+ Shows.*kanell\/clemson-at-lsu-2026.*61 words/);
   });
 
   it("moves routing language and Overflow labels out of reader-facing fields", () => {
@@ -75,7 +87,7 @@ describe("run-file validation", () => {
   });
 
   it("rejects a missing-run lane labeled dry", () => {
-    const contents = `${runFile()}
+    const contents = `${runFile({ includeLaneStatus: false })}
 ## Lane status
 
 | lane | status | asOf | note |
@@ -86,6 +98,22 @@ describe("run-file validation", () => {
 `;
     const errors = validateRunContents(contents, { eventSlugs: EVENTS });
     expect(errors.join("\n")).toMatch(/missing run is not a dry hunt/i);
+  });
+
+  it("requires a Lane status table on current-schema runs", () => {
+    const contents = `## Shows pass 2026-09-03 (Scout)
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| kanell | clemson-at-lsu-2026 | yes | Give me Clemson. | A concise source-grounded explanation. |  | Cover 3 | https://example.com/episode | 2026-09-03 | hard |
+`;
+    const errors = validateRunContents(contents, { eventSlugs: EVENTS });
+    expect(errors.join("\n")).toMatch(/Lane status table is required/i);
+    expect(
+      validateRunContents(contents, { eventSlugs: EVENTS, allowLegacySchema: true })
+    ).toEqual([]);
   });
 
   it("requires the note column for the current schema", () => {

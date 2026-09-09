@@ -70,10 +70,6 @@ export function supersededByQuoteChange(previousAudit, intakeRow) {
   return !approvalStillValid(previousAudit, intakeRow);
 }
 
-/**
- * Row-specific Promote gate. An unrelated fail does not block a verified mapped row
- * whose current quote still matches its Audit identity.
- */
 function matchingIntake(audit, intakeRows, intakeById) {
   if (audit.rowId && intakeById.has(audit.rowId)) return intakeById.get(audit.rowId);
   const sameSlot = (intakeRows ?? []).filter(
@@ -147,10 +143,17 @@ export function parseLaneStatus(contents) {
   return rows;
 }
 
-export function laneStatusErrors(contents) {
+export function laneStatusErrors(contents, { required = false } = {}) {
   const errors = [];
   const rows = parseLaneStatus(contents);
-  if (rows.length === 0) return errors;
+  if (rows.length === 0) {
+    if (required) {
+      errors.push(
+        "Lane status table is required; each Shows/X/News lane must report completed, dry, blocked, or not-run"
+      );
+    }
+    return errors;
+  }
   const seen = new Set();
   for (const row of rows) {
     seen.add(row.lane);

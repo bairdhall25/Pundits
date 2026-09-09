@@ -254,11 +254,6 @@ export function classifyItem(
   };
 }
 
-/**
- * All relevant recent episodes, not only the newest mixed-feed item.
- * Off-topic and wrong-year rows stay visible so a newer irrelevant drop
- * cannot hide an older inspectable episode.
- */
 export function classifyQueue(
   items,
   now,

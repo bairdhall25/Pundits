@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { laneStatusErrors } from "./scout-handoff-lib.mjs";
+import { laneStatusErrors, parseLaneStatus } from "./scout-handoff-lib.mjs";
 
 const ROUTING_MARKERS = [
   "Off-home",
@@ -106,7 +106,12 @@ export function parseRunFile(contents) {
 
 export function validateRunContents(
   contents,
-  { filePath = "run.md", eventSlugs = [], allowLegacySchema = false } = {}
+  {
+    filePath = "run.md",
+    eventSlugs = [],
+    allowLegacySchema = false,
+    requireLaneStatus = !allowLegacySchema,
+  } = {}
 ) {
   const errors = [];
   const knownEvents = new Set(eventSlugs);
@@ -175,8 +180,8 @@ export function validateRunContents(
     }
   }
 
-  if (!allowLegacySchema) {
-    for (const error of laneStatusErrors(contents)) {
+  if (requireLaneStatus || parseLaneStatus(contents).length > 0) {
+    for (const error of laneStatusErrors(contents, { required: requireLaneStatus })) {
       describeError(errors, filePath, error);
     }
   }
@@ -211,11 +216,14 @@ export function validateRunPath(targetPath, { root = process.cwd() } = {}) {
     const displayPath = path.relative(root, file) || file;
     const datedName = path.basename(file).match(/^(\d{4}-\d{2}-\d{2})/u);
     const allowLegacySchema = Boolean(datedName && datedName[1] < "2026-09-03");
+    // Existing 2026-09-03..08 mailbox files predate the lane-status table.
+    const requireLaneStatus = Boolean(datedName && datedName[1] >= "2026-09-09");
     errors.push(
       ...validateRunContents(readFileSync(file, "utf8"), {
         filePath: displayPath,
         eventSlugs,
         allowLegacySchema,
+        requireLaneStatus,
       })
     );
   }

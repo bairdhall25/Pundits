@@ -77,6 +77,13 @@ describe("lane status", () => {
     expect(errors).toMatch(/connector failure/i);
   });
 
+  it("errors when a required Lane status table is omitted", () => {
+    expect(laneStatusErrors("## Shows pass", { required: true }).join("\n")).toMatch(
+      /Lane status table is required/i
+    );
+    expect(laneStatusErrors("## Shows pass", { required: false })).toEqual([]);
+  });
+
   it("accepts completed, dry, blocked, and not-run", () => {
     const contents = `## Lane status
 
