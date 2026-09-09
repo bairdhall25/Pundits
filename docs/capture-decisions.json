@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-08",
+  "updated": "2026-09-09",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -25,6 +25,16 @@
         "nfl-w1-commanders-at-eagles",
         "nfl-w1-packers-at-vikings"
       ]
+    },
+    {
+      "id": "candidate-nick-wright",
+      "kind": "roster-candidate",
+      "needed": "Reopen audio/transcript to verify the Seattle 27-17 quote; operator must approve any photo. Association-eligible host of What's Wright / Herd factory. No roster or photo consent.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-09-growth-qa-scout-reaudit.md",
+      "proposalFile": "docs/runs/2026-09-09-nick-wright-proposal.json",
+      "owner": "Audit",
+      "note": "Growth QA Task 4 evidence packet. A pick on an already-covered NO side does not disqualify. Do not auto-roster or invent consent."
     },
     {
       "id": "candidate-jerry-ostroski",

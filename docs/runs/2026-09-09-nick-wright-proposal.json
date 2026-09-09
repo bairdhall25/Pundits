@@ -1,0 +1,53 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-nick-wright-87c6a4d31c8bac0b",
+      "kind": "roster-candidate",
+      "proposedId": "nick-wright",
+      "rowId": "87c6a4d31c8bac0b",
+      "sourceRun": "docs/runs/2026-09-09-growth-qa-scout-reaudit.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 84,
+        "pass": "Shows pass 2026-09-09 evidence reconstruction (not a hunt)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "nick-wright",
+        "name": "Nick Wright",
+        "group": "other",
+        "outlet": "What's Wright? with Nick Wright",
+        "eventSlug": "patriots-at-seahawks-2026",
+        "side": "no",
+        "verbatimQuote": "I'm going on the record. 27–17 Seattle. That's my pick.",
+        "reasoning": "",
+        "note": "Association host on Herd/Volume factory. Side = home = no (already-covered NO; does not disqualify). Quote not independently re-verified this pass. Apple i=1000788561935.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000788561935",
+        "sourceDate": "2026-09-08",
+        "photoUrl": "https://pbs.twimg.com/profile_images/1625257379330723842/xhgoMlnd.jpg",
+        "association": "Host of What's Wright? with Nick Wright on The Herd / The Volume factory",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000788561935",
+        "factory": "herd",
+        "xHandle": "getnickwright",
+        "photoSource": "Official X avatar @getnickwright; usage permission not confirmed"
+      },
+      "audit": {
+        "proposedId": "nick-wright",
+        "rowId": "87c6a4d31c8bac0b",
+        "auditedAt": "2026-09-09",
+        "eligibility": "association",
+        "eligibilityReason": "Host of What's Wright? with Nick Wright, a The Volume / The Herd factory program. Independent NFL voice, not a team analyst. A Seattle NO pick on an already-covered home side does not disqualify the voice.",
+        "note": "Apple i=1000788561935 and the Omny episode page load. Exact quote was not independently re-verified this pass: GET https://omny.fm/.../transcript returned 404; HEAD traffic.omny.fm transcript.srt and transcript.vtt returned 404; HEAD omnycontent clip info.json returned 404. Episode description names Nick Wright previewing Patriots-Seahawks. Official X handle @getnickwright. Proposed photo is that handle's X avatar; usage permission is not confirmed. No roster add."
+      },
+      "missing": [
+        "Pick evidence verdict"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

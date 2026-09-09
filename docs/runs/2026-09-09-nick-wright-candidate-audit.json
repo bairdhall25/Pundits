@@ -1,0 +1,10 @@
+[
+  {
+    "proposedId": "nick-wright",
+    "rowId": "87c6a4d31c8bac0b",
+    "auditedAt": "2026-09-09",
+    "eligibility": "association",
+    "eligibilityReason": "Host of What's Wright? with Nick Wright, a The Volume / The Herd factory program. Independent NFL voice, not a team analyst. A Seattle NO pick on an already-covered home side does not disqualify the voice.",
+    "note": "Apple i=1000788561935 and the Omny episode page load. Exact quote was not independently re-verified this pass: GET https://omny.fm/.../transcript returned 404; HEAD traffic.omny.fm transcript.srt and transcript.vtt returned 404; HEAD omnycontent clip info.json returned 404. Episode description names Nick Wright previewing Patriots-Seahawks. Official X handle @getnickwright. Proposed photo is that handle's X avatar; usage permission is not confirmed. No roster add."
+  }
+]
