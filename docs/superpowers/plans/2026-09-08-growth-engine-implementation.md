@@ -1,14 +1,59 @@
 # Growth engine implementation plan for Grok
 
-Status: Active plan
+Status: In QA after Phase 2; later phases parked
 
 Date: September 8, 2026. PM: Codex. Engineer: Grok. Owner: Baird.
+Paused for PM QA: 2026-09-08. Resume later phases only after Codex accepts Phases 1–2.
 
 ## Objective
 
 Make the verified-pick pipeline reliably produce timely, accurately attributed content that each search surface and social post can use. Preserve the existing product and card designs. Deliver small, reviewable engineering changes followed by a measurable three-slate experiment; do not equate implementation completion with proven growth.
 
 Read [the product brief](../../product/2026-09-08-growth-execution-brief.md) for decisions and page-type contracts, and [the audit](../../audits/2026-09-08-growth-engine.md) for evidence. This plan translates those decisions into work; the audit's alternative ideas are not an instruction to implement all of them.
+
+## QA handoff (pause after Phase 2)
+
+Engineering stopped expanding after Codex's correction: finish the current coherent work, report checks, and stop for review. Prioritize Scout's ability to find timely, verified picks and the accuracy fixes before SEO, social, or measurement expansion.
+
+Code/JSON baseline remains `6e4470a`. No production deploy. No live X. No `data/*.json` edits. Operator checkout was not used.
+
+### Codex QA queue (this order)
+
+| Order | PR | Phase | What to accept |
+|---|---|---|---|
+| 1 | [#22](https://github.com/bairdhall25/Pundits/pull/22) | Handoff docs | Plan, brief, audit, Grok assignment |
+| 2 | [#23](https://github.com/bairdhall25/Pundits/pull/23) | Phase 0 | Correction inventory; intended vs shipped pointers |
+| 3 | [#24](https://github.com/bairdhall25/Pundits/pull/24) | Phase 1 accuracy | Reported vs spoken, rationale visibility, publication dates, snapshot/winner-only language, methodology FAQ |
+| 4 | [#25](https://github.com/bairdhall25/Pundits/pull/25) | Phase 2 Scout | Rolling targets, source completion, episode state, row-level Audit/Promote |
+
+Phase 1 required `npm run check` (passed). Phase 2 required logic tests and `check:fast` (passed). Fast checks are not a release gate.
+
+### Parked — do not QA yet
+
+Drafts already opened, leave them until after Phases 1–2:
+
+- [#26](https://github.com/bairdhall25/Pundits/pull/26) Phase 3A SEO receipts/games/profiles
+- [#27](https://github.com/bairdhall25/Pundits/pull/27) Phase 4 social selection
+
+Remote branches, no PR:
+
+- `codex/growth-engine-phase-3b` — Phase 3B team/league/week SEO
+- `codex/growth-engine-phase-5` — Phase 5 measurement / three-slate scorecard
+
+### Resume (Grok, after Codex QA)
+
+1. Fetch current `origin/main`. If #22–#25 merged, start from that tip. If not, continue from the accepted phase branches.
+2. Isolated `codex/` worktree. Do not use the operator checkout.
+3. Reconcile against live `main` (baseline was `6e4470a`; do not quote old counts).
+4. Resume parked work as separate PRs in this order unless Codex changes it: 3A (depends on Phase 1) → 3B (depends on 3A) → 4 (depends on Phase 1+2) → 5 (depends on 3A+4). Rebase parked branches onto the accepted stack; do not reopen Phase 1–2 scope.
+5. Keep one PR per phase. Do not deploy or post to X from the engineering task.
+
+### Open Codex decisions (accuracy + Scout)
+
+1. If Audit cannot recover spoken GameDay wording for the seven Cole rows, keep the reported-selection display or add a void/correction state.
+2. Approve, replace, or defer the proposed NCAAF Week 2 shortlist and NFL add-ons. Silence is not “no college work.”
+3. Mixed reasoning capsules after Audit: keep or remove (`kanell-western-michigan-at-michigan-20260903`, `kanell-fiu-at-usf-20260903`, `patterson-oklahoma-state-at-tulsa-20260903`).
+4. Whether any historical `firstPublishedAt` can later be proven from Cloudflare deploy logs. Unknown stays unknown.
 
 ## Working protocol
 
