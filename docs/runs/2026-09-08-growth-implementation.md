@@ -131,8 +131,38 @@ Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-0
 
 ### Remaining Codex decisions
 
-1. Phase 3B team/league/week copy still uses “expert picks” boilerplate; left unchanged here.
-2. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
-3. GameDay original-evidence disposition remains from Phase 1.
+1. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
+2. GameDay original-evidence disposition remains from Phase 1.
 
-Phase 3B, 4, and 5 continue as separate PRs while Codex QAs Scout. SportsEvent, FAQ multiplication, production deploy, and live X remain parked.
+## Phase 3B — team, league, weekly archive
+
+Outcome required: each remaining page type answers its own question using the same verified ledger. No duplicate routes. No SportsEvent. No FAQ multiplication. No card redesign or new homepage/display sorting.
+
+Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-08-phase-3a-seo-contract.md) (extended, not duplicated).
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Team pages identify the next covered matchup and named picks, then historical results | yes | 49ers local page: next matchup 49ers vs Rams + Kyle Brandt receipt; TCU has no upcoming game and keeps Dublin result |
+| Distinguish no captured pick from no scheduled game | yes | Fixture and Chargers: no scheduled game; scheduled empty game says no captured pick; Virginia empty side is not a missing game |
+| League pages retain live-week board behavior and link the permanent archive | yes | NFL/NCAAF keep `getLeagueSlate`; each week kicker links `Week N archive`; previous-week recap unchanged |
+| Weekly archives progress from open picks to final results at the same URL | yes | NFL Week 1: who picked whom, results land on this URL; NCAAF Week 0: who got them right |
+| Recap synthesis highlights verified disagreements and linked receipts; no per-grade news route | yes | Week 0 “Verified disagreements” + receipt links; compact graded-pick index; no new grade URLs |
+| Titles/H1 identify team/league/week context; no best-experts claims | yes | `{team}: who is picking them vs {opponent}`; `{league} Week N: who picked whom / who called it / who got them right` |
+| Schema from the same content contract; no SportsEvent; no FAQPage on these pages | yes | Team WebPage+SportsTeam; league/week CollectionPage |
+| Preserve noindex/earned-indexing and permalink ledger | yes | Chargers stays noindex; TCU/49ers indexable; Week 0 remains indexable; `verify:static` permalink ledger |
+| Static HTML, existing cards, max-image-preview:large | yes | `data-page-type` in local `out/`; OG card previews unchanged |
+| Analytics hooks on existing event system | yes | `team_page_open` / `league_page_open` / `week_archive_open` with `page_type` |
+
+### Checks run
+
+`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 474 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production) inspected for 49ers pending team, TCU historical team, Virginia empty-side, Chargers no-game noindex shell, NFL live league, NCAAF settled league, NCAAF Week 0 graded archive, and NFL Week 1 pending archive. No production deploy. `data/*.json` untouched.
+
+### Remaining Codex decisions
+
+1. GameDay original-evidence disposition remains from Phase 1.
+2. Profile hypothetical $100 placement remains from Phase 3A.
+3. OG card artwork still says “expert picks”; left unchanged as existing card previews.
+
+Phase 4 and 5 continue as separate PRs while Codex QAs Scout. SportsEvent, FAQ multiplication, production deploy, and live X remain parked.

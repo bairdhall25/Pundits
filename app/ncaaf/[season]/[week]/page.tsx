@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { WeekArchive, weekArchiveMeta } from "@/components/WeekArchive";
 import { archiveWeeks, parseWeekParam } from "@/lib/archive";
-import { loadCalls, loadEvents } from "@/lib/data";
+import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { pageMeta } from "@/lib/site";
 
 const SPORT = "ncaaf" as const;
@@ -30,13 +30,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { season, week } = await params;
   const resolved = resolve(season, week);
-  if (!resolved) return pageMeta("Expert picks", "Weekly expert picks archive.");
+  if (!resolved) return pageMeta("Weekly picks", "Weekly picks archive.");
   return weekArchiveMeta(
     SPORT,
     resolved.season,
     resolved.week,
     loadEvents(),
-    loadCalls()
+    loadCalls(),
+    loadPundits()
   );
 }
 

@@ -1,11 +1,6 @@
-import { SportSlate } from "@/components/SportSlate";
-import { socialPageMeta } from "@/lib/social-card/metadata";
+import { SportSlate, leaguePageMeta } from "@/components/SportSlate";
 
-export const metadata = socialPageMeta(
-  "ncaaf",
-  "College football picks",
-  "Expert CFB picks for this week. See who the TV voices are taking, with the market price next to each take.",
-);
+export const generateMetadata = () => leaguePageMeta("ncaaf");
 
 export default function NcaafPage() {
   return <SportSlate sport="ncaaf" />;

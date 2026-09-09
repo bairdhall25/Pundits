@@ -3,11 +3,14 @@ import {
   engagementParams,
   eventDetailOpenParams,
   filterUseParams,
+  leaguePageOpenParams,
   pickStoryOpenParams,
   punditProfileOpenParams,
   shareIntentParams,
   sourceOpenParams,
+  teamPageOpenParams,
   tipAnalyticsParams,
+  weekArchiveOpenParams,
 } from "./analytics";
 
 describe("engagement params", () => {
@@ -48,6 +51,29 @@ describe("engagement params", () => {
       pundit_id: "kanell",
       surface: "profile",
       page_type: "profile",
+    });
+  });
+
+  it("emits team, league, and week page types", () => {
+    expect(teamPageOpenParams({ teamId: "49ers", sport: "nfl" })).toEqual({
+      team_id: "49ers",
+      sport: "nfl",
+      surface: "team",
+      page_type: "team",
+    });
+    expect(leaguePageOpenParams({ sport: "ncaaf" })).toEqual({
+      sport: "ncaaf",
+      surface: "ncaaf",
+      page_type: "league",
+    });
+    expect(
+      weekArchiveOpenParams({ sport: "ncaaf", season: 2026, week: 0 })
+    ).toEqual({
+      sport: "ncaaf",
+      season: "2026",
+      week: "0",
+      surface: "week",
+      page_type: "week",
     });
   });
 
