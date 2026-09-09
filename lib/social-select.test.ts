@@ -1,6 +1,10 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { socialIndex } from "./social";
 import {
+  RESOLUTION_WINDOW_DAYS,
+  countsTowardDailyCap,
   coverageKey,
   decideNovelty,
   inferCoverageState,
@@ -113,6 +117,12 @@ describe("lifecycle novelty", () => {
       action: "skip",
       reason: "duplicate",
     });
+  });
+
+  it("counts the daily cap on the Eastern calendar day, not the novelty lookback", () => {
+    const nextMorning = new Date("2026-09-09T08:00:00-04:00");
+    expect(countsTowardDailyCap("2026-09-08T23:40:00-04:00", nextMorning)).toBe(false);
+    expect(countsTowardDailyCap("2026-09-09T00:10:00-04:00", nextMorning)).toBe(true);
   });
 
   it("skips rather than assuming novelty when live coverage cannot be established", () => {
@@ -264,6 +274,20 @@ describe("editorial selection", () => {
     );
     const ranked = rankStories(index, new Date("2026-09-09T12:00:00-04:00"));
     expect(ranked.filter((row) => row.eventSlug === unc.slug)).toEqual([]);
+  });
+
+  it("keeps the 3 ET-day resolution window in the playbook Poster follows", () => {
+    expect(RESOLUTION_WINDOW_DAYS).toBe(3);
+    const window = `${RESOLUTION_WINDOW_DAYS} ET days`;
+    const files = [
+      "docs/social/post-patterns.md",
+      "bots/poster.md",
+      "docs/social/schedule.md",
+    ];
+    for (const file of files) {
+      const text = readFileSync(path.join(process.cwd(), file), "utf8");
+      expect(text, file).toContain(window);
+    }
   });
 });
 

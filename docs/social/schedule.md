@@ -20,10 +20,11 @@ Cards refresh on deploy. `RUNBOOK.md` requires a deploy whenever the book change
 
 Ranges are ceilings for days when the book actually has a new disagreement, a new result, or a notable individual call. Zero posts is a successful day when nothing new is on the ledger.
 
-Poster: never more than 6 originals/day. Do not post a different archetype merely to alternate formats. Every post body is link-free (link in first self-reply) (sole exception: the Tier-1 attach-failure fallback in `images.md`). Reply Guy caps live in `reply-guide.md` and are also ceilings.
+Poster: never more than 6 originals/day, counted from the live timeline since 12:00am ET. That ET-day count is the cap window; novelty search is a separate, longer lookback. Do not post a different archetype merely to alternate formats. Every post body is link-free (link in first self-reply) (sole exception: the Tier-1 attach-failure fallback in `images.md`). Reply Guy caps live in `reply-guide.md` and are also ceilings.
 
 Do not fill leftover cap with:
 
+- a settled disagreement whose `gradedAt` and `kickoffDate` are both older than 3 ET days;
 - a routine favorite win on a one-sided board;
 - a 1-0 / 0-1 / 1-1 record as if it were a milestone;
 - a Freeze of a pick already named in today's disagreement;

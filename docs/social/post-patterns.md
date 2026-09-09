@@ -20,9 +20,9 @@ Keep the existing Tier 1 cards. Use team, pundit, and event language first. Intr
 
 ### 2. Postgame resolution of that disagreement
 
-**When:** that same two-sided game grades.
+**When:** that same two-sided game grades, and `gradedAt` on a mapped take or the event `kickoffDate` is within 3 ET days. Older settled boards are not a resolution candidate. Do not backfill them to fill leftover cap.
 
-**Shape:** final score → who had each team → straight-up result. Hits and misses stay in the same post. Never "cover" from a winner-only grade. Never imply we watched the game.
+**Shape:** final score → who had each team → straight-up result. Hits and misses stay in the same post. Never "cover" from a winner-only grade. Never imply we watched the game. If the stored claim names a spread or cover, name the team and the straight-up result; do not quote the cover fragment.
 
 **Image:** Tier 1 event card — the same card family as the pregame post, now in its graded state if the build refreshed it.
 
@@ -32,7 +32,7 @@ Keep the existing Tier 1 cards. Use team, pundit, and event language first. Intr
 
 **When:** a single mapped take has a specific reason to care: underdog at the snapshot, holdout on a tracked board, or unusually specific verified evidence. Not every pending row, and not a 94¢ favorite that won.
 
-**Shape:** pundit → team → the reason it is notable → dated snapshot only if the price is the reason → result if graded.
+**Shape:** pundit → team → the reason it is notable → dated snapshot only if the price is the reason → result if graded. On `gradingScope: straight-up-winner`, never lead with a cover/ATS fragment even if that wording is in `claim`. Say the picked team, then that the tracked result is the straight-up winner.
 
 **Image:** Tier 1 take card.
 
@@ -82,4 +82,4 @@ Rules for any `kind: "future"` event, whatever the treatment:
 
 ## Selection rule
 
-Pick the treatment the moment calls for, in the primary order above. Do not rotate archetypes for variety. Prefer the event card for disagreement and resolution. Never exceed the day's cap in `schedule.md`. Never post to use leftover cap. Routine favorite wins and near-zero-sample records need a specific reason, or they stay off the timeline.
+Pick the treatment the moment calls for, in the primary order above. Do not rotate archetypes for variety. Prefer the event card for disagreement and resolution. A postgame resolution is eligible only when `gradedAt` or `kickoffDate` is within 3 ET days; skip older settled disagreements. Never exceed the day's cap in `schedule.md`. Never post to use leftover cap. Routine favorite wins and near-zero-sample records need a specific reason, or they stay off the timeline.

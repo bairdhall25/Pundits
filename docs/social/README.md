@@ -30,7 +30,7 @@ Other named patterns remain optional only when they add a fact those three do no
 | `shakedown.md` | Operator spot-check routine |
 | `research-2026-08-29.md` | Why — sourced evidence |
 
-Reviewer instructions live in `bots/reviewer.md`. Selection and novelty helpers live in `lib/social-select.ts` and `lib/social-copy.ts`. Bots still act from this playbook and `cards.json`; they do not write a publication log.
+Reviewer instructions live in `bots/reviewer.md`. Selection and novelty helpers in `lib/social-select.ts` and `lib/social-copy.ts` are the executable spec of this playbook (including the 3 ET-day resolution window). Poster still acts from this playbook and `cards.json`; it does not write a publication log.
 
 ## The card index
 

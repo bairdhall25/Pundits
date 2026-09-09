@@ -133,6 +133,56 @@ describe("draft copy", () => {
     ).toBe(true);
   });
 
+  it("does not quote cover/ATS fragments on a winner-only notable call", () => {
+    const oneSided = fixtureGame("spread-origin-2026", {
+      awayTeam: "Clemson",
+      homeTeam: "LSU",
+      kickoffDate: "2026-09-05",
+      yesCents: 23,
+      noCents: 78,
+      sourcedAt: "2026-09-03",
+      awayScore: 10,
+      homeScore: 51,
+    });
+    const index = socialIndex(
+      [
+        fixturePick({
+          eventSlug: oneSided.slug,
+          punditId: "kanell",
+          side: "yes",
+          status: "hit",
+          claim: "I'll take Clemson to cover this thing.",
+          reasoning: "Clemson plus double digits is the ATS play.",
+        }),
+      ],
+      [oneSided],
+      [kanell]
+    );
+    const story = rankStories(index, new Date("2026-09-06T12:00:00-04:00")).find(
+      (row) => row.archetype === "notable-call" && !row.skipReason
+    );
+    expect(story).toBeTruthy();
+    const draft = draftStory(index, story!);
+    expect(draft.body).toContain("Danny Kanell picked Clemson");
+    expect(draft.body).toMatch(/straight-up winner/i);
+    expect(draft.body).not.toMatch(/to cover this thing/i);
+    expect(draft.body).not.toMatch(/ATS play/i);
+    expect(
+      reviewCopy(draft.body, {
+        gradingScope: "straight-up-winner",
+        spreadOrigin: true,
+        usesPrice: draft.usesPrice,
+        snapshotAt: draft.snapshotAt,
+      })
+    ).toEqual({ ok: true, failures: [] });
+    expect(
+      reviewCopy(`Kanell said: “I'll take Clemson to cover this thing.” Straight-up hit.`, {
+        gradingScope: "straight-up-winner",
+        spreadOrigin: true,
+      }).failures
+    ).toContain("unsupported-cover");
+  });
+
   it("does not wrap a reported-selection notable call in quotation marks", () => {
     const oneSided = fixtureGame("miami-at-stanford-2026", {
       awayTeam: "Miami",

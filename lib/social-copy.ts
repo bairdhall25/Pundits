@@ -1,3 +1,4 @@
+import { winnerOnlyLine } from "./evidence";
 import { formatAsOf, formatShortDate } from "./format";
 import type { SocialEventRow, SocialIndex, SocialTakeRow } from "./social";
 import {
@@ -78,6 +79,11 @@ export type TimelineItem = {
 };
 
 const COVER_RE = /\bcover(?:ed|ing)?\b|\bATS\b/i;
+const WINNER_ONLY_DISCLAIMERS = [
+  "The original evidence names a point spread. The tracked result on Pundits.Pro is the straight-up winner, not whether a spread covered.",
+  "The tracked result is the straight-up winner, not whether a spread covered.",
+  "Tracked result is the straight-up winner, not a spread cover.",
+];
 const TOOK_AT_RE = /\btook\s+.+?\s+at\s+\d+\s*¢/i;
 const EMPTY_SIDE_RE = /\bempty side\b/i;
 const BETTING_RE = /\b(?:lock|can't lose|free money|guaranteed|hammer it)\b/i;
@@ -180,6 +186,39 @@ function claimFragment(take: SocialTakeRow): string {
   return take.claim;
 }
 
+function isSpreadOriginTake(take: SocialTakeRow): boolean {
+  return take.spreadOrigin || COVER_RE.test(take.claim);
+}
+
+function notableClaimLine(take: SocialTakeRow): string | null {
+  if (take.gradingScope === "straight-up-winner" && isSpreadOriginTake(take)) {
+    return null;
+  }
+  if (take.evidenceKind === "spoken-quote") return `“${claimFragment(take)}”`;
+  return `Reported selection: ${claimFragment(take)}.`;
+}
+
+function notableRationale(take: SocialTakeRow): string | null {
+  if (!take.rationale) return null;
+  if (take.gradingScope === "straight-up-winner" && COVER_RE.test(take.rationale)) {
+    return null;
+  }
+  return take.rationale;
+}
+
+function winnerOnlyDisclaimer(take: SocialTakeRow): string | null {
+  if (take.gradingScope !== "straight-up-winner") return null;
+  return winnerOnlyLine({ claim: take.claim }, true);
+}
+
+function textWithoutWinnerOnlyDisclaimer(text: string): string {
+  let out = text;
+  for (const line of WINNER_ONLY_DISCLAIMERS) {
+    out = out.replaceAll(line, " ");
+  }
+  return out;
+}
+
 export function draftStory(index: SocialIndex, story: RankedStory): Draft {
   const event = eventBySlug(index, story.eventSlug);
   if (!event) {
@@ -269,8 +308,6 @@ export function draftStory(index: SocialIndex, story: RankedStory): Draft {
   }
   const usesPrice = take.cents != null && take.cents < 50;
   const price = usesPrice ? snapshotPhrase(take.cents, take.snapshotAt) : null;
-  const quoted =
-    take.evidenceKind === "spoken-quote" ? `“${claimFragment(take)}”` : claimFragment(take);
   const result =
     take.status === "pending"
       ? null
@@ -282,10 +319,11 @@ export function draftStory(index: SocialIndex, story: RankedStory): Draft {
           .join(" ");
   const body = [
     `${take.punditName} picked ${take.sideLabel}.`,
-    take.evidenceKind === "spoken-quote" ? quoted : `Reported selection: ${quoted}.`,
-    take.rationale,
+    notableClaimLine(take),
+    notableRationale(take),
     price,
     result,
+    winnerOnlyDisclaimer(take),
   ]
     .filter(Boolean)
     .join(" ");
@@ -322,9 +360,8 @@ export function reviewCopy(
     failures.push("empty-side-contradiction");
   }
   if (
-    COVER_RE.test(text) &&
-    context.gradingScope === "straight-up-winner" &&
-    !/\bnot (?:a |whether a )?spread cover\b/i.test(text)
+    COVER_RE.test(textWithoutWinnerOnlyDisclaimer(text)) &&
+    (context.gradingScope === "straight-up-winner" || context.spreadOrigin)
   ) {
     failures.push("unsupported-cover");
   }

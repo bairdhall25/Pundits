@@ -10,6 +10,9 @@ export const ROUTINE_FAVORITE_CENTS = 80;
 /** Graded samples this small are not a record story by themselves. */
 export const THIN_RECORD_SAMPLE = 3;
 
+/** Post a resolution only when gradedAt or kickoffDate is within this many ET days. */
+export const RESOLUTION_WINDOW_DAYS = 3;
+
 export type StoryPriority =
   | "pregame-disagreement"
   | "postgame-resolution"
@@ -66,6 +69,13 @@ function easternDay(at: Date): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/New_York",
   }).format(at);
+}
+
+/** Cap window: Eastern calendar day of `now`. Distinct from novelty lookback. */
+export function countsTowardDailyCap(postedAt: string, now: Date): boolean {
+  const posted = new Date(postedAt);
+  if (Number.isNaN(posted.getTime())) return false;
+  return easternDay(posted) === easternDay(now);
 }
 
 export function canonicalizeDestination(url: string): string {
@@ -202,10 +212,10 @@ export function isFreshResolution(
     .map((take) => isoDay(take.gradedAt))
     .filter((day): day is string => Boolean(day))
     .map((day) => dayDiff(day, today));
-  if (gradedDays.some((days) => days >= 0 && days <= 3)) return true;
+  if (gradedDays.some((days) => days >= 0 && days <= RESOLUTION_WINDOW_DAYS)) return true;
   if (event.kickoffDate) {
     const sinceKick = dayDiff(event.kickoffDate, today);
-    if (sinceKick >= 0 && sinceKick <= 3) return true;
+    if (sinceKick >= 0 && sinceKick <= RESOLUTION_WINDOW_DAYS) return true;
   }
   return false;
 }
