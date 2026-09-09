@@ -23,7 +23,9 @@ This is a hypothesis until enough traffic exists to validate it. Raw sessions an
 ### Corpus quality
 
 - New verified mapped picks.
-- Promoted picks per capture hour and per source/show.
+- Newly promoted verified mapped picks per measured source hour in an explicit timezone-qualified `[start, end)` interval. Coverage inventory (mapped hard picks currently on approved targets) is a separate count, not the productivity numerator. The rate is `n/a` until both the interval and measured effort exist; do not divide lifetime inventory by a run's hours, and do not infer hours from episode runtime, wall-clock, or a run file existing. Zero qualifying promotions with positive measured effort is 0.
+- Promoted picks per source/show.
+- Hour-level source-to-live and pre-kickoff lead only from timezone-qualified instants. Date-only stamps are excluded from those medians, not parsed as midnight.
 - Audit pass rate by source and Scout workflow.
 - Rejection rate and reasons: vague, wrong speaker, wrong season, weak source, or semantic mismatch.
 - Share of mapped picks with primary/original sources versus secondary quotation sources.

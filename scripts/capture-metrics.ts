@@ -1,6 +1,11 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { captureMetrics, formatUnavailable, type CaptureTargetRow } from "../lib/capture-metrics";
+import {
+  captureMetrics,
+  formatCaptureReport,
+  parseCaptureProductivityInput,
+  type CaptureTargetRow,
+} from "../lib/capture-metrics";
 import { loadCalls, loadEvents } from "../lib/data";
 
 function argValue(flag: string): string | undefined {
@@ -11,11 +16,18 @@ function argValue(flag: string): string | undefined {
 
 function main() {
   const asOf = argValue("--as-of") ?? new Date().toISOString().slice(0, 10);
+  const reportPath = argValue("--report");
+  const fromFile = reportPath
+    ? parseCaptureProductivityInput(JSON.parse(readFileSync(path.resolve(reportPath), "utf8")))
+    : {};
+  const start = argValue("--start") ?? fromFile.interval?.start;
+  const end = argValue("--end") ?? fromFile.interval?.end;
   const hoursRaw = argValue("--source-hours");
-  const sourceHours = hoursRaw != null && hoursRaw !== "" ? Number(hoursRaw) : null;
-  if (hoursRaw != null && !Number.isFinite(sourceHours)) {
+  if (hoursRaw != null && hoursRaw !== "" && !Number.isFinite(Number(hoursRaw))) {
     throw new Error("--source-hours must be a number");
   }
+  const sourceHours =
+    hoursRaw != null && hoursRaw !== "" ? Number(hoursRaw) : fromFile.sourceHours ?? null;
   const doc = JSON.parse(
     readFileSync(path.join(process.cwd(), "docs", "capture-targets.json"), "utf8")
   ) as { targets: CaptureTargetRow[] };
@@ -25,27 +37,12 @@ function main() {
     targets: doc.targets,
     sourceHours,
     asOf,
+    interval: start || end ? { start: start ?? "", end: end ?? "" } : fromFile.interval,
+    evidence: fromFile.evidence,
+    runIds: fromFile.runIds,
   });
 
-  console.log(`# Capture metrics`);
-  console.log("");
-  console.log(`asOf: ${metrics.asOf}`);
-  console.log(`Approved targets: ${metrics.approvedTargets}`);
-  console.log(`Proposed targets (not hunted as a board): ${metrics.proposedTargets}`);
-  console.log(`Mapped hard picks on approved targets: ${metrics.mappedHardOnApproved}`);
-  console.log(`Picks per source-hour: ${formatUnavailable(metrics.picksPerSourceHour)}`);
-  console.log(`Source-to-live: ${formatUnavailable(metrics.sourceToLive)}`);
-  console.log(`Pre-kickoff lead: ${formatUnavailable(metrics.preKickoffLead)}`);
-  console.log(`Rework: ${formatUnavailable(metrics.rework)}`);
-  console.log(`Missing locators: ${metrics.missingLocators.length}`);
-  console.log("");
-  console.log("| target | eventSlug | mapped | yes | no | both sides | empty | missing locators |");
-  console.log("|---|---|---|---|---|---|---|---|");
-  for (const row of metrics.coverage) {
-    console.log(
-      `| ${row.id} | ${row.eventSlug ?? "n/a"} | ${row.mappedHard} | ${row.yes} | ${row.no} | ${row.bothSides ? "yes" : "no"} | ${row.emptySides.join(",") || "none"} | ${row.missingLocators} |`
-    );
-  }
+  console.log(formatCaptureReport(metrics));
 }
 
 main();

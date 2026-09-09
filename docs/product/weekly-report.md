@@ -27,16 +27,38 @@ Do not mark the three-slate experiment successful in this file unless all three 
 
 ## Capture
 
-Run `npm run metrics:capture` in this repository (optional `--as-of YYYY-MM-DD`, optional `--source-hours N` only when that duration was actually measured). Paste the table.
+Run `npm run metrics:capture` with an explicit timezone-qualified `--start` and `--end` (half-open `[start, end)`) and `--source-hours N` only when that duration was actually measured. Optional `--report path.json` supplies the same interval, hours, and evidence/run labels. Do not infer hours from episode runtime, elapsed wall-clock, or a run file existing. Paste the table.
+
+Example:
+
+```
+npm run metrics:capture -- --as-of 2026-09-09 --start 2026-09-09T12:00:00Z --end 2026-09-09T16:00:00Z --source-hours 4
+```
+
+Two newly promoted mapped picks in that window print `Picks per source-hour: 0.5`. A historical pick published before `start` is omitted. Missing interval or effort prints `n/a` with a reason. A complete window with positive effort and zero qualifying promotions prints `0`. Approved unpublished targets print `unpublished; no mapped coverage`, never `empty=none`.
+
+Optional report JSON (outside `data/`):
+
+```
+{
+  "interval": { "start": "2026-09-09T12:00:00Z", "end": "2026-09-09T16:00:00Z" },
+  "sourceHours": 4,
+  "evidence": ["docs/runs/YYYY-MM-DD.md"],
+  "runIds": ["YYYY-MM-DD-scout"]
+}
+```
+
+Evidence and run IDs are labels only.
 
 | Metric | How to reproduce | If missing |
 |---|---|---|
-| Mapped hard picks on approved targets | Output of `metrics:capture` | n/a |
-| Approved-target coverage / empty sides | Same table | n/a |
+| Mapped hard picks on approved targets | Coverage inventory in `metrics:capture`. Not the period numerator. | n/a |
+| Newly promoted mapped picks | Count of unique mapped hard calls whose `firstPublishedAt` is a timezone-qualified instant in `[start, end)` | No interval, or imprecise stamps overlapping the interval → n/a. Do not backfill `firstPublishedAt`. |
+| Approved-target coverage / empty sides | Same table. Mapped games keep honest YES/NO empties. Unpublished approved targets say `unpublished; no mapped coverage`. | n/a |
 | Missing locators | Same table | n/a |
-| Promoted picks per source-hour | Pass `--source-hours` from a timed Scout window | No duration → n/a. Do not use “a run file exists” as hours. |
-| Source-to-live lead | `firstPublishedAt` minus source time when both exist | Absent `firstPublishedAt` → n/a. Never substitute `sourceDate`. |
-| Pre-kickoff lead | `firstPublishedAt` vs event kickoff | Same |
+| Promoted picks per source-hour | Matching `--start`/`--end` and measured `--source-hours` | Missing/invalid interval or effort, uncertain numerator, or hours longer than the interval → n/a. Do not use “a run file exists” as hours. Zero qualifying promotions with positive effort → 0. |
+| Source-to-live lead | Hour-level median of timezone-qualified `firstPublishedAt` minus `sourceDate` | Date-only or timezone-less stamps are excluded, not parsed as midnight. Negative intervals are inconsistent evidence and are excluded. Absent `firstPublishedAt` → n/a. Never substitute `sourceDate` for publication. |
+| Pre-kickoff lead | Hour-level median of timezone-qualified kickoff minus `firstPublishedAt` | Date-only kickoff/publication pairs are excluded (a noon publication vs a September 9 date-only kickoff is not −12 hours). Display kickoff strings are not used. A negative lead is valid only with precise timestamps that show late publication. |
 | Rework | Count Audit restage/correction rows in the week's `docs/runs/` | Missing notes → n/a, not zero |
 
 Proposed targets in `docs/capture-targets.json` are not hunt coverage.

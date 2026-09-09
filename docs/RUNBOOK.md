@@ -129,7 +129,7 @@ Do not set `GITHUB_PAGES` on Cloudflare or for a production-style local build.
 
 ## Weekly measurement
 
-Copy `docs/product/weekly-report.md` into `docs/runs/YYYY-MM-DD-weekly.md`. Capture table: `npm run metrics:capture`. Three-slate dates come from approved rows in `docs/capture-targets.json`. Unavailable metrics stay `n/a` with a reason; do not infer retention from aggregate views.
+Copy `docs/product/weekly-report.md` into `docs/runs/YYYY-MM-DD-weekly.md`. Capture table: `npm run metrics:capture` with timezone-qualified `--start`/`--end` and measured `--source-hours` when a rate is claimed. Three-slate dates come from approved rows in `docs/capture-targets.json`. Unavailable metrics stay `n/a` with a reason; do not infer retention from aggregate views.
 
 ## Intake table schema (staging docs, e.g. `docs/runs/YYYY-MM-DD.md`)
 | pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
