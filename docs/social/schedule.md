@@ -36,4 +36,4 @@ Tags do not create extra slots. Roll Call, Flowers, and Milestone are the only t
 
 ## Dead air rule
 
-If live @Pundits_ timeline and destination search offer nothing new — no unposted pregame disagreement, newly graded resolution, or notable individual call — post nothing. Look across the pick/result lifecycle, not only since midnight. `generatedAt` proves freshness, not novelty. If coverage cannot be established, skip. Silence beats filler. Empty is better than false: this is a core product principle, not a style preference.
+If live @Pundits_ timeline and destination search offer nothing new — no unposted pregame disagreement, newly graded resolution, or notable individual call — post nothing. Look across the pick/result lifecycle, not only since midnight. `generatedAt` proves freshness, not novelty. If coverage cannot be established, or a prior post at the destination cannot be classified (a predicted score is not a result), skip. Silence beats filler. Empty is better than false: this is a core product principle, not a style preference.

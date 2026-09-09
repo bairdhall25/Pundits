@@ -148,6 +148,181 @@ describe("lifecycle novelty", () => {
   });
 });
 
+function postedRecord(
+  destination: string,
+  text: string,
+  subject: "take" | "event",
+  postedAt = "2026-09-08T23:40:00-04:00"
+) {
+  return {
+    destination,
+    state: inferCoverageState(text, subject),
+    postedAt,
+  };
+}
+
+describe("fail-closed coverage inference", () => {
+  const destination = "https://pundits.pro/picks/49ers-vs-rams-2026/";
+  const campaignDestination =
+    "https://pundits.pro/picks/49ers-vs-rams-2026/?utm_source=x&utm_medium=social&utm_campaign=organic-original&utm_content=game";
+  const seattlePregame = "Nick Wright picks Seattle to win 27–17 before kickoff";
+  const seattleScoreOnly = "Seattle to win 27–17 before kickoff";
+
+  it("does not treat a predicted score as an event result that reopens the same pregame destination", () => {
+    const inferred = inferCoverageState(seattlePregame, "event");
+    expect(inferred).toBe("pregame");
+    expect(inferCoverageState(seattleScoreOnly, "event")).toBe("pregame");
+    expect(inferCoverageState(seattleScoreOnly, "take")).toBe("pending");
+    const decision = decideNovelty(destination, "pregame", {
+      established: true,
+      records: [postedRecord(destination, seattlePregame, "event")],
+    });
+    expect(decision).toMatchObject({ action: "skip", reason: "duplicate" });
+  });
+
+  it("does not treat final 27–17 as proof that an individual pick hit", () => {
+    const inferred = inferCoverageState("final 27–17", "take");
+    expect(inferred).toBe("unknown");
+    const decision = decideNovelty(destination, "hit", {
+      established: true,
+      records: [postedRecord(destination, "final 27–17", "take")],
+    });
+    expect(decision).toMatchObject({ action: "skip", reason: "coverage-unknown" });
+    expect(decideNovelty(destination, "pending", {
+      established: true,
+      records: [postedRecord(destination, "final 27–17", "take")],
+    })).toMatchObject({ action: "skip", reason: "coverage-unknown" });
+  });
+
+  it("returns unknown for contradictory language and skips rather than allowing", () => {
+    expect(inferCoverageState("Straight-up hit and miss before kickoff.", "take")).toBe(
+      "unknown"
+    );
+    expect(inferCoverageState("Final 27–17 before kickoff", "event")).toBe("unknown");
+    const decision = decideNovelty(destination, "result", {
+      established: true,
+      records: [postedRecord(destination, "Final 27–17 before kickoff", "event")],
+    });
+    expect(decision).toMatchObject({ action: "skip", reason: "coverage-unknown" });
+  });
+
+  it("keeps explicit verified hit and miss decisions, including miss without extra result words", () => {
+    expect(inferCoverageState("Chip Patterson. Straight-up hit.", "take")).toBe("hit");
+    expect(inferCoverageState("Straight-up miss.", "take")).toBe("miss");
+    expect(
+      inferCoverageState("Final: North Carolina 15, TCU 10. Straight-up hit.", "take")
+    ).toBe("hit");
+    expect(
+      decideNovelty(destination, "hit", {
+        established: true,
+        records: [postedRecord(destination, "Chip Patterson. Straight-up hit.", "take")],
+      })
+    ).toMatchObject({ action: "skip", reason: "duplicate" });
+    expect(
+      decideNovelty(destination, "miss", {
+        established: true,
+        records: [postedRecord(destination, "Straight-up miss.", "take")],
+      })
+    ).toMatchObject({ action: "skip", reason: "duplicate" });
+    expect(inferCoverageState("Seattle came up short 27–17.", "take")).toBe("unknown");
+  });
+
+  it("skips a duplicate pregame post even when the prior URL carries campaign query params", () => {
+    const decision = decideNovelty(destination, "pregame", {
+      established: true,
+      records: [postedRecord(campaignDestination, seattleScoreOnly, "event")],
+    });
+    expect(decision).toMatchObject({ action: "skip", reason: "duplicate" });
+  });
+
+  it("still allows a genuine later result after a pregame score prediction", () => {
+    const inferred = inferCoverageState(seattlePregame, "event");
+    expect(inferred).toBe("pregame");
+    expect(
+      decideNovelty(destination, "result", {
+        established: true,
+        records: [postedRecord(destination, seattlePregame, "event")],
+      })
+    ).toMatchObject({ action: "allow" });
+  });
+
+  it("does not let an unknown inferred state become allow through selectStories", () => {
+    const now = new Date("2026-09-09T12:00:00-04:00");
+    const index = socialIndex(pendingRams, [rams], [brandt, cowherd, eisen]);
+    const selected = selectStories(index, {
+      now,
+      scan: {
+        established: true,
+        records: [postedRecord(destination, "final 27–17", "take")],
+      },
+    });
+    expect(selected.post).toEqual([]);
+    expect(selected.skipped[0]?.reason).toMatch(/coverage could not be established/i);
+  });
+
+  it("selects a supported later result after a pregame score-prediction post", () => {
+    const gradedRams = {
+      ...rams,
+      awayScore: 17,
+      homeScore: 24,
+    };
+    const index = socialIndex(
+      pendingRams.map((call, i) => ({
+        ...call,
+        status: i === 0 ? "miss" : "hit",
+        gradedAt: "2026-09-11",
+      })),
+      [gradedRams],
+      [brandt, cowherd, eisen],
+      "2026-09-11T08:00:00.000Z"
+    );
+    const selected = selectStories(index, {
+      now: new Date("2026-09-11T12:00:00-04:00"),
+      scan: {
+        established: true,
+        records: [
+          postedRecord(
+            destination,
+            "Kyle Brandt picks the 49ers to win 27–17 before kickoff",
+            "event"
+          ),
+        ],
+      },
+    });
+    expect(selected.post[0]).toMatchObject({
+      priority: "postgame-resolution",
+      state: "result",
+      eventSlug: rams.slug,
+    });
+  });
+
+  it("keeps connector failure unavailable rather than dry or novel in selectStories", () => {
+    const now = new Date("2026-09-09T12:00:00-04:00");
+    const index = socialIndex(pendingRams, [rams], [brandt, cowherd, eisen]);
+    const selected = selectStories(index, {
+      now,
+      scan: { established: false, records: [], detail: "X search unavailable" },
+    });
+    expect(selected.post).toEqual([]);
+    expect(selected.skipped[0]?.reason).toMatch(/coverage could not be established/i);
+  });
+
+  it("does not block a different destination when another post's state is unknown", () => {
+    expect(
+      decideNovelty(destination, "pregame", {
+        established: true,
+        records: [
+          postedRecord(
+            "https://pundits.pro/picks/unc-vs-tcu-2026/",
+            "final 27–17",
+            "take"
+          ),
+        ],
+      })
+    ).toMatchObject({ action: "allow" });
+  });
+});
+
 describe("editorial selection", () => {
   const now = new Date("2026-09-09T12:00:00-04:00");
 

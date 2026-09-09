@@ -23,7 +23,7 @@ export type CoverageState = "pending" | "hit" | "miss" | "pregame" | "result";
 
 export type CoverageRecord = {
   destination: string;
-  state: CoverageState;
+  state: CoverageState | "unknown";
   postedAt: string;
   postId?: string;
 };
@@ -100,7 +100,8 @@ export function coverageKey(destination: string, state: CoverageState): string {
 /**
  * Lifecycle novelty: a pending take posted yesterday still blocks the same
  * pending take today. A later grade is a different state and may post.
- * Unverified coverage is a skip, never an assumed green light.
+ * Unverified coverage, or a prior post at this destination whose state
+ * cannot be inferred, is a skip — never an assumed green light.
  */
 export function decideNovelty(
   destination: string,
@@ -117,9 +118,18 @@ export function decideNovelty(
     };
   }
   const dest = canonicalizeDestination(destination);
-  const duplicate = scan.records.find(
-    (row) => canonicalizeDestination(row.destination) === dest && row.state === state
+  const matching = scan.records.filter(
+    (row) => canonicalizeDestination(row.destination) === dest
   );
+  if (matching.some((row) => row.state === "unknown")) {
+    return {
+      action: "skip",
+      reason: "coverage-unknown",
+      key,
+      detail: `Prior coverage at ${dest} has an unknown state; skip rather than assume novelty.`,
+    };
+  }
+  const duplicate = matching.find((row) => row.state === state);
   if (duplicate) {
     return {
       action: "skip",
@@ -131,25 +141,44 @@ export function decideNovelty(
   return { action: "allow", key };
 }
 
-const RESULT_HINT =
-  /\b(?:hit|miss|final|graded|won|winner|score|called it)\b|\b\d+\s*[-–]\s*\d+\b/i;
-const PENDING_HINT = /\b(?:picked|picks|in the book|on the record|ahead of|before kickoff)\b/i;
+const PREGAME_TIMING_HINT =
+  /\b(?:in the book|on the record|ahead of|before kickoff|pending)\b/i;
+const PICK_HINT = /\b(?:picked|picks)\b/i;
+const OUTCOME_HINT = /\b(?:final|graded|hit|miss|called it)\b/i;
+const HIT_HINT = /\b(?:hit|called it)\b/i;
+const MISS_HINT = /\bmiss\b/i;
 
+function matches(pattern: RegExp, body: string): boolean {
+  pattern.lastIndex = 0;
+  return pattern.test(body);
+}
+
+/**
+ * Infer a historical post's state from that post's own language.
+ * Predicted scores are not results. Ambiguous outcome language is not a hit.
+ * Current ledger settlement is not an input and must not relabel a pregame post.
+ */
 export function inferCoverageState(
   text: string,
   subject: "take" | "event"
 ): CoverageState | "unknown" {
   const body = text.trim();
   if (!body) return "unknown";
+  const timing = matches(PREGAME_TIMING_HINT, body);
+  const pick = matches(PICK_HINT, body);
+  const outcome = matches(OUTCOME_HINT, body);
+  const hit = matches(HIT_HINT, body);
+  const miss = matches(MISS_HINT, body);
+  if (hit && miss) return "unknown";
+  if (timing && outcome) return "unknown";
   if (subject === "event") {
-    if (RESULT_HINT.test(body) && !/\bpending\b/i.test(body)) return "result";
-    if (PENDING_HINT.test(body)) return "pregame";
+    if (outcome) return "result";
+    if (timing || pick) return "pregame";
     return "unknown";
   }
-  if (/\bmiss\b/i.test(body) && !/\bhit\b/i.test(body)) return "miss";
-  if (/\bhit\b/i.test(body) || /\bcalled it\b/i.test(body)) return "hit";
-  if (RESULT_HINT.test(body)) return "hit";
-  if (PENDING_HINT.test(body)) return "pending";
+  if (miss) return "miss";
+  if (hit) return "hit";
+  if (timing || pick) return "pending";
   return "unknown";
 }
 
