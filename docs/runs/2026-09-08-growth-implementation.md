@@ -8,6 +8,14 @@ This journal records engineering progress on [the 2026-09-08 plan](../superpower
 
 Branch: `codex/growth-engine-phase-1`. Phase 0 inventory: `6287aba`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
 
+## QA pause (2026-09-08)
+
+Codex QAs accuracy and Scout first. Grok resumed later phases in parallel without touching #25.
+
+- Codex QA queue: [#22](https://github.com/bairdhall25/Pundits/pull/22) → [#23](https://github.com/bairdhall25/Pundits/pull/23) → [#24](https://github.com/bairdhall25/Pundits/pull/24) → [#25](https://github.com/bairdhall25/Pundits/pull/25)
+- Parallel engineering: [#26](https://github.com/bairdhall25/Pundits/pull/26) (3A), [#27](https://github.com/bairdhall25/Pundits/pull/27) (4); 3B and 5 follow as separate PRs
+- Do not deploy or post to X from this journal. Do not rebase onto Scout while Codex is reviewing it.
+
 ## Phase 0 — current truth and correction inventory
 
 Outcome required: engineering starts from current code and an inspectable list of affected records, not from assumptions about the September 8 snapshot.
@@ -45,10 +53,6 @@ None invented. Real gaps Phase 0 cannot close:
 4. **News-sitemap expiry ownership.** Phase 1B needs a proposed static-output refresh; whether a scheduled empty deploy is the mechanism is a later review item, not a claim that a schedule is running.
 
 Parked by the brief and not reopened: immutable per-call prices, ATS product, new sports, backends, aggregator enrollment, production deploy, live X posts.
-
-### Next phase
-
-Phase 1 implemented on this branch. Not production-shipped.
 
 ## Phase 1 — evidence presentation and publication semantics
 
@@ -100,7 +104,7 @@ Promote writes these on new live publication only.
 3. Whether any historical `firstPublishedAt` can later be populated from Cloudflare deploy logs. None were backfilled here.
 4. Empty-deploy cadence for news expiry: the workflow and RUNBOOK are reviewable; activating and observing them is an operations step, not claimed complete.
 
-Parked: Scout queue, page-type SEO expansion, social selection rewrite, ATS, backends, production deploy, live X.
+Parked from Phase 1: Scout queue (Codex QA in #25), ATS, backends, production deploy, live X.
 
 ## Phase 3A — receipts, game comparisons, pundit profiles
 
@@ -131,4 +135,4 @@ Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-0
 2. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
 3. GameDay original-evidence disposition remains from Phase 1.
 
-Parked: 3B templates, social posting policy, measurement dashboards, SportsEvent, FAQ multiplication, production deploy, live X.
+Phase 3B, 4, and 5 continue as separate PRs while Codex QAs Scout. SportsEvent, FAQ multiplication, production deploy, and live X remain parked.
