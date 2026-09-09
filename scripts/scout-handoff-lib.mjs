@@ -24,13 +24,23 @@ export function rowIdentity({
   side = "",
   verbatimQuote = "",
   sourceUrl = "",
+  sourceDate = "",
+  reasoning = "",
+  targetId = "",
+  matchup = "",
+  note = "",
 } = {}) {
   const canonical = [
+    "evidence-v2",
     String(pundit).trim().toLowerCase(),
     String(eventSlug || "unmapped").trim().toLowerCase(),
     String(side || "").trim().toLowerCase(),
     normalizeQuote(verbatimQuote),
     String(sourceUrl || "").trim(),
+    String(sourceDate || "").trim(),
+    normalizeQuote(reasoning),
+    String(targetId || "").trim(),
+    normalizeQuote(matchup || (!eventSlug ? note : "")),
   ].join("\u0000");
   return createHash("sha256").update(canonical).digest("hex").slice(0, 16);
 }
@@ -40,12 +50,7 @@ export function approvalStillValid(auditRow, intakeRow) {
   const currentId = rowIdentity(intakeRow);
   if (auditRow.rowId && auditRow.rowId !== currentId) return false;
   if (!auditRow.rowId) {
-    return (
-      normalizeQuote(auditRow.verbatimQuote) === normalizeQuote(intakeRow.verbatimQuote) &&
-      (auditRow.pundit || "") === (intakeRow.pundit || "") &&
-      (auditRow.eventSlug || "") === (intakeRow.eventSlug || "") &&
-      (auditRow.side || "") === (intakeRow.side || "")
-    );
+    return false; // Legacy approvals need explicit re-audit, never inferred migration.
   }
   return true;
 }
@@ -94,7 +99,7 @@ export function promoteReadyRows(auditRows, intakeRows) {
       continue;
     }
     if (supersededByQuoteChange(audit, intake)) {
-      blocked.push({ audit, intake, reason: "quote changed; previous approval is invalid" });
+      blocked.push({ audit, intake, reason: "evidence or quote changed, or legacy approval; re-audit required" });
       continue;
     }
     if (audit.verdict === "fail") {

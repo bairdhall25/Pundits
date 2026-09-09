@@ -78,3 +78,13 @@ Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A
 ## Stop
 
 Do not edit `data/`. Do not run tests. Do not deploy, tweet, or contact a personality. After the file is on GitHub: `ready to audit N hard rows` (`M candidates` if any).
+
+## Approved unpublished targets (acceptance correction)
+
+Read capture-targets.json with Dispatch. An approved matchup can be hunted before a public event exists. The four college Week 2 targets are approved for bounded scouting; extra NFL targets are deferred. Dispatch prints targetId, matchup/season, kickoff and designated sources. `(unpublished)` is a display label, never a slug. Do not hunt proposed, deferred, expired or past-date targets.
+
+Stage selected unpublished targets with blank eventSlug/side, matchup and season in note, plus additional targetId and matchup columns in Intake. Keep matchup outside the verbatim quote. Audit verifies the unmapped row; Promote still needs an explicit mint instruction. Never create editorial events just to make Dispatch work. Use designated sources, inspect relevant chapters first, and keep bounded attempts. Network uploads are discovery leads, not required full listens. Unknown relevance or failed access is not a dry inspection.
+
+## Recording episode coverage
+
+A hit/opened flag does not mean all speakers or targets were checked. Record coverage entries with targetId, locator (timestamp/segment) and status (partial/completed/dry/blocked). For a new approved target or unchecked speaker, set a specific reopenReason on the episode. Reopening remains inside the recent window. After inspection, call recordEpisodeInspection from scripts/scout-feeds-lib.mjs with the episode id, actual outcome, known inspectedAt and coverage. Persist the returned ledger. The helper preserves coverage/history and consumes reopenReason to avoid repeated retries. Coordinator stays print-only. Preserve prior evidence; never mark blocked access as dry.

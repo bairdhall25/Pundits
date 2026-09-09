@@ -51,7 +51,9 @@ Everything else here is a JSON/doc edit in git — cheap to amend.
 
 ## Standing operator decisions (as of 2026-09-01)
 
-- Approved NFL openers in `docs/capture-targets.json` stay active until they expire: Patriots / 49ers / Bills. Proposed NCAAF Week 2 and extra NFL add-ons wait on PM selection.
+- Approved NFL openers in `docs/capture-targets.json` stay active until they expire: Patriots / 49ers / Bills. The four NCAAF Week 2 targets are PM-approved for bounded scouting; extra NFL add-ons are deferred.
 - Wisconsin, Miami, and Baylor are expired-settled historical targets. Their public URLs stay. They are not pregame hunts.
 - Home and league **display** (which games fill `/`, `/ncaaf/`, and `/nfl/`, and whether they render as full or compact cards) is `docs/product/featured-games.md`. That contract does not change Dispatch and does not authorize an `onHome` flip.
 - **Who may roster** is `docs/product/roster-growth.md`. Association on roster factories is eligible. Team analysts (beat/homer picking their team) are not pundits. Team podcasts may still be sources for independent voices.
+
+Approved unpublished targets enter Dispatch by stable targetId and matchup/season, without a public event. Hunt them within the designated sources and stage unmapped evidence; retain the explicit Promote mint gate. Deferred, expired and past-date targets cannot authorize new pregame hunts.

@@ -217,14 +217,14 @@ export function classifyItem(
   const days = daysBetweenEastern(droppedEt, easternDay(now));
   const inWindow = Number.isFinite(days) && days >= 0 && days <= windowDays;
 
-  if (prior?.inspected && prior.outcome === "dry" && !prior.reopenReason) {
+  if (prior?.inspected && prior.outcome === "dry" && !prior.reopenReason?.trim()) {
     return {
       ...base,
       status: "dry",
       hunt: "already inspected dry; skip unless a new reason is stated",
     };
   }
-  if (prior?.inspected && (prior.outcome === "hit" || prior.outcome === "opened")) {
+  if (prior?.inspected && (prior.outcome === "hit" || prior.outcome === "opened") && !prior.reopenReason?.trim()) {
     return {
       ...base,
       status: "inspected",
@@ -232,6 +232,9 @@ export function classifyItem(
     };
   }
 
+  if (inWindow && prior?.reopenReason?.trim()) {
+    return { ...base, status: "unprocessed", hunt: `reopen: ${prior.reopenReason.trim()}` };
+  }
   if (inWindow && isRecapTitle(title)) {
     return { ...base, status: "recap", hunt: "not LOCKS" };
   }
@@ -374,4 +377,25 @@ export function mergeDiscoveredEpisodes(ledger, factoryId, items) {
     });
   }
   return next;
+}
+
+/** Shows records actual inspection, preserves segment evidence, and consumes a reopen request. */
+export function recordEpisodeInspection(ledger, id, { outcome, inspectedAt, coverage = [] }) {
+  if (!["hit", "dry", "opened"].includes(outcome) || !Number.isFinite(Date.parse(inspectedAt))) {
+    throw new Error("Inspection needs a hit/dry/opened outcome and known inspectedAt");
+  }
+  if (!Array.isArray(coverage) || coverage.some(row => !row.targetId || !row.locator ||
+      !["partial", "completed", "dry", "blocked"].includes(row.status))) {
+    throw new Error("Coverage needs targetId, locator and partial/completed/dry/blocked status");
+  }
+  if (!priorEpisode(ledger, id)) throw new Error(`Unknown episode: ${id}`);
+  return { ...ledger, episodes: ledger.episodes.map(row => {
+    if (row.id !== id) return row;
+    const { reopenReason, ...prior } = row;
+    return { ...prior, inspected: true, outcome, inspectedAt,
+      coverage: [...(prior.coverage ?? []), ...coverage],
+      inspections: [...(prior.inspections ?? []), { outcome, inspectedAt, coverage,
+        ...(reopenReason ? { reopenReason } : {}) }],
+    };
+  }) };
 }

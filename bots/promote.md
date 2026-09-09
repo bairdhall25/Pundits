@@ -54,3 +54,7 @@ If deploy or live verification fails after the commit reaches `main`, report the
 
 Do not hunt new takes (Scout). Do not grade (Grader). Do not write recap copy (Recap).
 Scores (`awayScore`, `homeScore`, `resultUrl`) may be written as soon as the authoritative box score exists, even if some mapped calls on that slug are still pending. Do not invent scores.
+
+## Evidence-version and unpublished-target correction
+
+Require a matching evidence-v2 rowId. Changed sourceDate, rationale, or matchup invalidates approval just like a changed quote. Missing/legacy rowId requires re-audit; never recalculate a hash to reuse an old verdict. Approved unpublished targets follow the unmapped verdict and explicit mint gate. Hunt approval does not authorize minting or homepage placement. Keep targetId/matchup in staging evidence, not editorial JSON.

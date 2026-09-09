@@ -423,7 +423,7 @@ describe("live capture-target Dispatch", () => {
       now: Date.parse("2026-09-08T16:00:00Z"),
     });
     expect(
-      rows.filter((row) => row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
+      rows.filter((row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
     ).toEqual([
       "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
