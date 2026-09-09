@@ -17,6 +17,21 @@ import {
 import { fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
 
 const brandt = fixturePundit("brandt", { name: "Kyle Brandt" });
+it("blocks ambiguous final-score receipts instead of treating them as pending", () => {
+  const destination = "https://pundits.pro/picks/fixture-2026/wright/";
+  for (const text of [
+    "Nick Wright picked Seattle. Final: Seattle 27, New England 17.",
+    "Nick Wright picked Seattle. Final: Seattle 17, New England 27.",
+    "Nick Wright picked Seattle. The receipt is graded.",
+  ]) {
+    const state = inferCoverageState(text, "take");
+    expect(state).toBe("unknown");
+    for (const next of ["hit", "miss"] as const) {
+      expect(decideNovelty(destination, next, { established: true, records: [{ destination, state, postedAt: "2026-09-09" }] }))
+        .toMatchObject({ action: "skip", reason: "coverage-unknown" });
+    }
+  }
+});
 const cowherd = fixturePundit("cowherd", { name: "Colin Cowherd" });
 const eisen = fixturePundit("eisen", { name: "Rich Eisen" });
 const ndFan = fixturePundit("staples", { name: "Andy Staples" });

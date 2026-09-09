@@ -1,6 +1,8 @@
 # Growth QA corrections and acceptance plan
 
-Status: Active plan
+Status: Historical
+
+Closeout, September 9: engineering corrections implemented, including the final missing-publication and ambiguous-result guards. Baird authorized release. Final release verification controls shipping; source recovery, candidate evidence, MCP access, and manual freshness remain operational follow-ups. Do not restart this plan as a feature project.
 
 Owner: Codex (product and acceptance); Grok (engineering). Requested by Baird September 9, 2026. This authorizes preparation of corrections and test evidence, not production deployment, editorial promotion, roster approval, or live social posting.
 

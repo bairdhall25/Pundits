@@ -91,3 +91,13 @@ none
 - `49ers-vs-rams-2026` YES — brandt already promoted
 
 ready to audit **0 hard rows (4 candidates)**. Empty Intake is valid. Did not touch `data/`.
+
+## Lane status
+
+PM compatibility annotation from the recorded passes; no new hunt or source verification.
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-09 | Recorded morning pass: 0 hard Intake, 4 Candidates; not an Audit approval. |
+| X | not-run | 2026-09-09 | This file records Shows only; see the daily run for X results. |
+| News | not-run | 2026-09-09 | No News pass recorded in this file. |

@@ -98,7 +98,7 @@ const INVALID_HOURS_REASON =
 const INCOMPATIBLE_SCOPE_REASON =
   "Measured source-hours exceed the reporting interval; scopes are incompatible.";
 const UNCERTAIN_NUMERATOR_REASON =
-  "Numerator is uncertain: imprecise firstPublishedAt stamps overlap the interval. Do not backfill publication times.";
+  "Numerator is uncertain: publication timestamps are missing or imprecise within the interval. Do not backfill publication times.";
 
 function mappedHardFor(eventSlug: string, calls: Call[]): Call[] {
   return calls.filter(
@@ -237,7 +237,7 @@ function promotedInInterval(
   const callIds: string[] = [];
   for (const call of calls) {
     const raw = call.firstPublishedAt?.trim();
-    if (!raw) continue;
+    if (!raw) return { ok: false, reason: UNCERTAIN_NUMERATOR_REASON };
     const precise = parsePreciseInstant(raw);
     if (precise) {
       if (precise.getTime() >= start.getTime() && precise.getTime() < end.getTime()) {
@@ -296,7 +296,10 @@ function collectSourceToLive(calls: Call[]): { samples: number[]; excluded: stri
   for (const call of calls) {
     const publishedRaw = call.firstPublishedAt?.trim();
     const sourceRaw = call.sourceDate?.trim();
-    if (!publishedRaw) continue;
+    if (!publishedRaw) {
+      excluded.push("missing endpoint");
+      continue;
+    }
     if (!sourceRaw) {
       excluded.push("missing endpoint");
       continue;
@@ -325,7 +328,10 @@ function collectPreKickoff(
   const excluded: string[] = [];
   for (const call of calls) {
     const publishedRaw = call.firstPublishedAt?.trim();
-    if (!publishedRaw) continue;
+    if (!publishedRaw) {
+      excluded.push("missing endpoint");
+      continue;
+    }
     const event = call.eventSlug ? eventsBySlug.get(call.eventSlug) : undefined;
     const kickoffRaw = event?.kickoffDate?.trim();
     if (!kickoffRaw) {

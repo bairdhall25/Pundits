@@ -178,6 +178,7 @@ export function inferCoverageState(
   }
   if (miss) return "miss";
   if (hit) return "hit";
+  if (outcome) return "unknown";
   if (timing || pick) return "pending";
   return "unknown";
 }

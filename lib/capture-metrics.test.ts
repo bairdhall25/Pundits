@@ -18,6 +18,23 @@ function approvedTarget(id: string, eventSlug: string | null) {
 }
 
 describe("capture metrics", () => {
+  it("keeps unknown publication unavailable without confusing it with an empty window", () => {
+    const event = fixtureGame("fixture-2026");
+    const base = { events: [event], targets: [approvedTarget("target", event.slug)], interval, sourceHours: 2 };
+    const known = fixturePick({ id: "known", punditId: "brandt", side: "yes", eventSlug: event.slug, firstPublishedAt: "2026-09-09T13:00:00Z" });
+    for (const firstPublishedAt of [undefined, "", "  "]) {
+      const unknown = fixturePick({ id: "unknown", punditId: "cowherd", side: "no", eventSlug: event.slug, firstPublishedAt });
+      for (const calls of [[unknown], [known, unknown]]) {
+        const metrics = captureMetrics({ ...base, calls });
+        expect(metrics.picksPerSourceHour.value).toBe("n/a");
+        expect(metrics.newlyPromotedMapped.value).toBe("n/a");
+      }
+      const metrics = captureMetrics({ ...base, calls: [unknown] });
+      expect(metrics.sourceToLive).toMatchObject({ value: "n/a", excluded: 1 });
+      expect(metrics.preKickoffLead).toMatchObject({ value: "n/a", excluded: 1 });
+    }
+    expect(captureMetrics({ ...base, calls: [] }).picksPerSourceHour).toMatchObject({ value: 0, promoted: 0 });
+  });
   it("does not invent efficiency or lead time when duration and firstPublishedAt are missing", () => {
     const event = fixtureGame("patriots-at-seahawks-2026", {
       awayTeam: "Patriots",
@@ -278,6 +295,7 @@ describe("period productivity", () => {
           eventSlug: event.slug,
           punditId: "brandt",
           side: "yes",
+          firstPublishedAt: "2026-09-08T12:00:00Z",
         }),
       ],
       events: [event],
