@@ -66,14 +66,16 @@ GA4 property `G-41GCD1K1PD`. Custom events only (do not double-count `page_view`
 
 | Question | Event | Breakdown |
 |---|---|---|
-| Game landings | `event_detail_open` | `page_type=game`, `surface` |
-| Receipt landings | `pick_story_open` | `page_type=receipt`, `surface` |
+| Game landings | `event_detail_open` + `surface=event` | `page_type=game` |
+| Receipt landings | `pick_story_open` + `surface=take` | `page_type=receipt` |
 | Profile landings | `pundit_profile_open` | `page_type=profile` |
+| Listing clicks to games | `event_detail_open` | `surface=home` / `ncaaf` / `nfl` |
+| Listing clicks to receipts | `pick_story_open` | `surface=stories` / `book` / `profile` |
 | Evidence use | `source_open` | `source_type` |
 | Native share | `share_intent` | `share_channel=native`, `page_type` |
 | Attributed social visits | event params `acq_source` / `acq_medium` / `acq_campaign` / `acq_content`, or GA session source/medium `x` / `social` | Keep `paid` separate |
 
-If the GA4 UI or export does not show a field, write `n/a`. Do not use unique-pageview vs view ratios as retention.
+Do not sum an event name across surfaces as landings. A listing click plus the destination view is two events. If the GA4 UI or export does not show a field, write `n/a`. Do not use unique-pageview vs view ratios as retention.
 
 ## Social
 

@@ -18,6 +18,8 @@ Reproduce capture rows with `npm run metrics:capture`. Reproduce search/social/s
 
 ## Capture (live JSON, 2026-09-08)
 
+Dated sample of live JSON on 2026-09-08, not a CI invariant. Later Promote onto an empty side can change these counts.
+
 | Slate | Mapped hard | Both sides | Empty | Missing locators | Picks / source-hour | Source-to-live | Pre-kickoff lead | Rework |
 |---|---|---|---|---|---|---|---|---|
 | Patriots at Seahawks | 1 | no | yes (Patriots) | 1 of 1 | n/a — no measured source-hours | n/a — `firstPublishedAt` absent | n/a — `firstPublishedAt` absent | n/a — not a JSON field |

@@ -94,7 +94,7 @@ Behavioral analytics should use stable object IDs, never email addresses or quot
 - `pick_story_open`: `event_slug`, `pundit_id`, `status`, `surface`, `page_type=receipt`.
 - `pundit_profile_open`: `pundit_id`, `surface=profile`, `page_type=profile`.
 - `source_open`: `event_slug`, `pundit_id`, `source_type`.
-- `share_intent`: `artifact_type`, `event_slug`, optional `pundit_id`, `status`.
+- `share_intent`: `artifact_type`, optional `event_slug`, optional `pundit_id`, optional `status`, `page_type`, `share_channel=native`. Profile shares omit `event_slug`.
 - `filter_use`: `surface`, `filter_name`, `filter_value`.
 - Existing email-interest events remain as implemented and must not include PII.
 - `tip_form_view`, `tip_submit`, `tip_success`, and `tip_error`: `placement`, optional `event_slug`, optional `side_hint`, `page_path`, and optional `error_type`. Never send the submitted URL, pundit name, timestamp hint, or free text.
