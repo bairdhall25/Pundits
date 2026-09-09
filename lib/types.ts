@@ -2,6 +2,19 @@ export type CallKind = "hard" | "soft";
 
 export type CallStatus = "pending" | "hit" | "miss";
 
+/** How the stored claim should be presented. Absent means infer from evidence. */
+export type EvidenceKind = "spoken-quote" | "reported-selection";
+
+/**
+ * Verified locator for the stored evidence. Every field is optional.
+ * Absent means unknown — do not guess a timestamp or transcript.
+ */
+export type SourceLocator = {
+  timestamp?: string;
+  section?: string;
+  transcriptUrl?: string;
+};
+
 export type PunditSport = "ncaaf" | "nfl" | "both";
 
 export type Pundit = {
@@ -84,6 +97,26 @@ export type Call = {
   gradedAt?: string;
   eventSlug?: string;
   side?: Side;
+  /**
+   * How to present `claim`. Spoken quotes stay quoted speech.
+   * Reported selections are labeled selections, not invented dialogue.
+   * Absent: infer (GameDay Cole URLs are reported-selection until Promote sets this).
+   */
+  evidenceKind?: EvidenceKind;
+  /** Verified locator only. Omit rather than guess. */
+  sourceLocator?: SourceLocator;
+  /**
+   * First live Pundits publication of this receipt.
+   * ISO date (`YYYY-MM-DD`) or datetime. Immutable once set.
+   * Absent means unknown — never fall back to sourceDate, build time, or noon.
+   * Promote sets this on new live publication; do not backfill historical rows.
+   */
+  firstPublishedAt?: string;
+  /**
+   * Last material editorial update distinct from sourceDate and gradedAt.
+   * ISO date or datetime. A grade may set or bump this without changing firstPublishedAt.
+   */
+  updatedAt?: string;
 };
 
 export type ActivityRecord = Pundit & {

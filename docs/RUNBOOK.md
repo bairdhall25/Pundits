@@ -47,7 +47,17 @@ Cloudflare Pages project: `pundits`. GitHub Actions runs CI only; it does not de
 Kickoff chips (Today / Tomorrow) are computed in the browser from Eastern
 time. A stale build does not freeze those labels. Deploy when the book
 changes (new pick, grade, freeze), not because the calendar flipped.
-A 6:30am ET empty deploy is optional.
+
+News sitemap expiry: `news-sitemap.xml` is static. Eligibility is the current
+two-day window on `firstPublishedAt` only — unknown or future timestamps are
+excluded, and an empty news sitemap is valid. After two quiet days the built
+file goes stale unless rebuilt. Ownership: operator / Promote runs an empty
+deploy with existing `npm run deploy`. GitHub Actions cannot deploy this
+project. `.github/workflows/news-sitemap-freshness.yml` is a prepared daily
+runtime check of the live sitemap (`npm run news:freshness`); it is not itself
+the rebuild. Do not call the news-sitemap fix operationally complete until
+that scheduled check is installed on `main` and empty-deploy ownership is
+actually active. A 6:30am ET empty deploy is the intended rebuild slot.
 
 `npm run build` skips OG PNGs when data and `lib/og.ts` are unchanged. Use
 `npm run og` to force a full card rebuild after OG layout changes.
@@ -82,7 +92,9 @@ Before deployment:
    it has pushed and fetched.
 2. Run `npm run check` with `GITHUB_PAGES` unset.
 3. Review the generated `out/_redirects` and `out/sitemap.xml` when routes changed.
-4. Run `npm run deploy` from that same checkout. The command enforces commit
+4. If calling the news-sitemap fix complete, confirm the daily freshness workflow
+   is on `main` and that empty-deploy ownership will rebuild when that check fails.
+5. Run `npm run deploy` from that same checkout. The command enforces commit
    identity (not a local branch named `main`), checks that the candidate
    preserves every URL in the current production sitemap, deploys, and then
    verifies the exact live preview metadata and decoded images before notifying

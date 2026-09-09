@@ -1,4 +1,5 @@
 import { settledSide, sidesForCard } from "./data";
+import { quotedEvidenceText } from "./evidence";
 import { formatAsOf, formatCents, formatGameDate, seasonSpan } from "./format";
 import type { ActivityRecord, Call, Event, Pundit } from "./types";
 
@@ -136,7 +137,9 @@ export function punditShare(
     pundit.mappedPending
       ? `${pundit.mappedPending} open pick${pundit.mappedPending === 1 ? "" : "s"}`
       : null,
-    latest ? `Latest: “${clipClaim(latest.claim)}”` : null,
+    latest
+      ? `Latest: ${quotedEvidenceText({ ...latest, claim: clipClaim(latest.claim) })}`
+      : null,
   ].filter(Boolean);
   return { title: `${pundit.name} picks`, description: `${bits.join(". ")}.` };
 }

@@ -5,7 +5,7 @@ import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
 export const metadata: Metadata = socialPageMeta(
   "terms",
   "Terms",
-  "Pundits is not a sportsbook and not gambling advice. Quotes are sourced public comments.",
+  "Pundits is not a sportsbook and not gambling advice. Picks are sourced public comments.",
 );
 
 export default function TermsPage() {
@@ -20,8 +20,10 @@ export default function TermsPage() {
         <p>
           Picks on this site are public comments from named experts, mapped to
           a Kalshi contract when we can verify a first-person winner. They are
-          not bets those people placed. The displayed price is a freeze, not a
-          live quote. Hypothetical $100 is our scoring device.
+          not bets those people placed. The displayed price is a dated Kalshi
+          snapshot, not a live quote and not necessarily the market when the
+          original prediction was spoken. Hypothetical $100 is our scoring
+          device. Game grades are straight-up winner only.
         </p>
         <p>
           We are not affiliated with Kalshi, ESPN, FOX, CBS, or the talent

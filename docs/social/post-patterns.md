@@ -10,7 +10,7 @@ Twelve archetypes cover every post the bots make. Each names its image tier (see
 
 **Image:** Tier 1 take card.
 
-**Example** (calibration example — never repost verbatim): *"Finebaum took TCU at 61¢ on Tuesday. Final: TCU won. Hit. The book remembers."*
+**Example** (calibration example — never repost verbatim): *"Finebaum picked TCU. Kalshi snapshot: 61¢, Tuesday. Final: TCU won. Hit. The book remembers."*
 
 ## The Flowers
 
@@ -20,7 +20,7 @@ Twelve archetypes cover every post the bots make. Each names its image tier (see
 
 **Image:** Tier 1 take card using one of the approved Flowers treatments in `images.md`: Broadcast Spotlight or Quote-First.
 
-**Example** (calibration example — never repost verbatim): *"Give Chip Patterson his flowers. He took North Carolina outright at 41¢, on the record, before kickoff. Final: Carolina won. Called it. 💐"*
+**Example** (calibration example — never repost verbatim): *"Give Chip Patterson his flowers. He picked North Carolina outright, on the record, before kickoff. Kalshi snapshot: 41¢. Final: Carolina won. Called it. 💐"*
 
 **Boundary:** The Flowers is the celebratory layer, not the ledger. It never replaces The Receipt's even coverage of hits and misses, never hides the sample size behind an overall record, and never turns one correct pick into a claim of predictive skill.
 
@@ -44,7 +44,7 @@ Twelve archetypes cover every post the bots make. Each names its image tier (see
 
 **Image:** Tier 1 take card.
 
-**Example** (calibration example — never repost verbatim): *"'Give me the Heels.' Chip Patterson is on North Carolina at 41¢. It's in the book."*
+**Example** (calibration example — never repost verbatim): *"'Give me the Heels.' Chip Patterson is on North Carolina. Kalshi snapshot: 41¢. It's in the book."*
 
 ## The Number
 

@@ -146,7 +146,7 @@ export default function HomePage() {
             {heroLede}
           </p>
           <ul className="trust-bar">
-            <li>Real quotes, linked to source</li>
+            <li>Sourced evidence, linked to source</li>
             <li>Prices frozen from Kalshi</li>
             <li>After the game, we mark who was right</li>
           </ul>
@@ -169,9 +169,10 @@ export default function HomePage() {
       <HowItWorks>
         <p>
           These are public comments from named experts, not bets they placed.
-          The number is a frozen Kalshi price, not a live sportsbook line.
-          Open a card for the quote and source. After the game we mark who was
-          right. An empty side means no verified pick has been captured yet.
+          The number is a dated Kalshi snapshot, not a live sportsbook line.
+          Open a card for the evidence and source. After the game we mark who
+          was right, straight up. An empty side means no verified pick has been
+          captured yet.
         </p>
       </HowItWorks>
       <nav className="board-jump" aria-label="Jump to section">

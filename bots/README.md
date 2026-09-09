@@ -51,10 +51,10 @@ Scheduled jobs start in the saved project only long enough to fetch and create t
 
 The web app, not the bots, writes crawlable stories.
 
-1. Scout stages a **story-ready** hard row (first-person, `eventSlug`, `side`, verbatim quote, source URL, date).
+1. Scout stages a **story-ready** hard row (first-person, `eventSlug`, `side`, verbatim quote, source URL, date). Recap-table labels are not verbatim quotes.
 2. Promote (Grok Build / Codex in this repo) writes it into `data/calls.json`.
-3. The next static build mints `/picks/{eventSlug}/{punditId}/` via `lib/seo.ts` `pickStory()` — headline like “Finebaum picks TCU over North Carolina,” underdog from Kalshi cents, then the quote.
-4. `/stories/` lists every minted story. Sitemap `lastmod` is the call’s `sourceDate`.
+3. The next static build mints `/picks/{eventSlug}/{punditId}/` via `lib/seo.ts` `pickStory()` — headline like “Finebaum picks TCU over North Carolina,” dated snapshot context, then the sourced evidence.
+4. `/stories/` lists every minted story. Sitemap `lastmod` follows first publication, grade, and material update when those exist; `datePublished` never falls back to `sourceDate`.
 
 Do not paste essay copy into `docs/`. If the quote is not first-person and on a listed event, there is no story. Soft rows stay in The Book only.
 

@@ -2,7 +2,7 @@
 
 > Expert college football and NFL picks from named TV voices. Quote, source, and the market price. Hypothetical $100 at a freeze. Not affiliated with Kalshi or the pundits.
 
-PUNDITS tracks who credible sports voices are picking. Faces are named experts. The number next to a take is a frozen Kalshi price, not a sportsbook line and not a bet they placed.
+PUNDITS tracks who credible sports voices are picking. Faces are named experts. The number next to a take is a dated Kalshi snapshot, not a sportsbook line and not a bet they placed.
 
 ## Site
 - https://pundits.pro/
@@ -29,7 +29,7 @@ PUNDITS tracks who credible sports voices are picking. Faces are named experts. 
 - `/pundits/{id}` is that voice's book.
 - `/teams/{id}` groups every mapped take involving that team, for and against.
 - `/{sport}/{season}/week-{week}` is a permanent weekly archive; college football Week 0 uses `week-0`.
-- Quotes are verified first-person. Soft takes stay in The Book; only hard calls explicitly mapped to an event and side become pick stories.
-- `pending` means the outcome is still open, not that the game is underway. `hit` and `miss` are assigned after authoritative settlement.
-- Grading updates the pick story, event, pundit record, weekly archive, and leaderboard while preserving the original quote and frozen price.
+- Spoken quotes are verified first-person. Reported-selection labels are not treated as invented dialogue. Soft takes stay in The Book; only hard calls explicitly mapped to an event and side become pick stories.
+- `pending` means the outcome is still open, not that the game is underway. `hit` and `miss` are assigned after authoritative settlement against the straight-up winner, not a spread cover.
+- Grading updates the pick story, event, pundit record, weekly archive, and leaderboard while preserving the original evidence and dated snapshot. It does not mint a new publication date.
 - Pundit pages show a season record only after at least one pick grades. Settled dollars use a hypothetical $100 at the frozen price of the picked side; it is analysis, not a bet the pundit placed.

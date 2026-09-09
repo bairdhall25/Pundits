@@ -23,6 +23,7 @@ import {
 import { KickoffTag } from "@/components/KickoffTag";
 import { MarketDetails } from "@/components/MarketDetails";
 import { americanOdds, statusChipText } from "@/lib/format";
+import { quotedEvidenceText } from "@/lib/evidence";
 import { eventKalshiUrl } from "@/lib/kalshi";
 import { mappedHardCallsForEvent } from "@/lib/featured";
 import { isVsGame } from "@/lib/public-side";
@@ -138,7 +139,7 @@ function FaceRow({
               <span className={`result-chip ${call.status}`}>{statusChipText(call.status)}</span>
             ) : null}
           </div>
-          {detail ? <div className="qt">“{call.claim}”</div> : null}
+          {detail ? <div className="qt">{quotedEvidenceText(call)}</div> : null}
         </div>
       </Link>
       {detail ? (
@@ -423,8 +424,10 @@ export function EventCard({
                 : `The away side is ${yes.label}; the home side is ${no.label}.`
               : "Takes it and Against are the two market sides."}{" "}
             Frozen at {formatCents(event.yesCents)} / {formatCents(event.noCents)}
-            {asOf ? ` ${asOf}` : ""}. Hypothetical $100 at that freeze — not a bet
-            the pundit placed.
+            {asOf ? ` ${asOf}` : ""}. That is a dated event-level Kalshi snapshot,
+            not live odds and not necessarily the market when a prediction was
+            spoken. Hypothetical $100 at that snapshot — not a bet the pundit
+            placed.
           </p>
           <p>
             <Link href="/methodology/">How grading works →</Link>

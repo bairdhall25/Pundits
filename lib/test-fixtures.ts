@@ -81,6 +81,7 @@ export function fixturePick({
   status = "pending",
   claim,
   sourceDate = "2026-09-01",
+  ...rest
 }: {
   eventSlug: string;
   punditId: string;
@@ -88,7 +89,7 @@ export function fixturePick({
   status?: Call["status"];
   claim?: string;
   sourceDate?: string;
-}): Call {
+} & Partial<Call>): Call {
   return fixtureCall({
     id: `${eventSlug}-${punditId}-${side}`,
     punditId,
@@ -99,6 +100,7 @@ export function fixturePick({
     sourceDate,
     subject: eventSlug,
     paysOn: eventSlug,
+    ...rest,
   });
 }
 

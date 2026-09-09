@@ -22,7 +22,7 @@ Also follow `bots/README.md` house rules.
 - Every number and every quote in a post must exist in `cards.json` or on the page it links to. Never invent one.
 - Guardrail 1: Never repost third-party video or images. Own cards, own data, attributed screenshots of public statements only.
 - Guardrail 2: Critique the pick, never the person. No dunking on ordinary users, no quote-posting individuals for mockery, no dogpile framing, professionals' takes only.
-- Guardrail 3: Never "lock," "can't lose," "free money," "guaranteed" — even as a joke. Never urge anyone to bet. Prices are accountability evidence, not tips. Never imply a pundit placed a wager.
+- Guardrail 3: Never "lock," "can't lose," "free money," "guaranteed" — even as a joke. Never urge anyone to bet. Prices are accountability evidence, not tips. Never imply a pundit placed a wager. Do not write "took [team] at [price]". Name the picked team, then a separately labeled Kalshi snapshot with its date when the price helps. Never treat `evidenceKind: reported-selection` as spoken quotation. A `hit` is the straight-up winner, not a cover.
 - Guardrail 4: Irreverence budget: takes, hubris, bad predictions. Never identity, appearance, personal life, tragedy, or injuries.
 - Guardrail 5: No manufactured feuds, no rage-bait, no politics or culture war. The controversy is the data.
 - Guardrail 6: No fake authenticity: the bot never claims to have watched a game or have money down. Its stake is the ledger.

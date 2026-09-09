@@ -21,6 +21,7 @@
     "validate:runs": "node scripts/validate-run.mjs docs/runs",
     "verify:static": "node scripts/verify-static.mjs",
     "verify:live": "node scripts/verify-live.mjs",
+    "news:freshness": "node scripts/news-sitemap-freshness.mjs --live",
     "verify:deployed": "node scripts/verify-live.mjs --expected-out",
     "verify:production-urls": "node scripts/verify-production-permalinks.mjs",
     "indexnow:prepare": "node scripts/indexnow.mjs --prepare",
