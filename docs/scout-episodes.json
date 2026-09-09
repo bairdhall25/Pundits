@@ -1,8 +1,6 @@
 {
   "version": 1,
   "windowDays": 3,
-  "updated": "2026-09-08",
-  "note": "Inspected status is written after a hunter opens the episode. A Coordinator feed check only discovers rows; it does not mark them inspected.",
   "episodes": [
     {
       "id": "gmfb:1000788488079",
@@ -15,6 +13,105 @@
       "inspectedAt": "2026-09-08T16:35:00-04:00",
       "outcome": "hit",
       "note": "Staged brandt 49ers YES in docs/runs/2026-09-08e-afternoon-shows.md. Do not reprocess without a new reason."
+    },
+    {
+      "id": "cover3:1000788507619",
+      "factoryId": "cover3",
+      "title": "BIG GAME BREAKDOWN",
+      "published": "2026-09-08T17:18:56Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000788507619",
+      "locator": "i=1000788507619",
+      "inspected": true,
+      "outcome": "dry",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [
+        {"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "dry", "locator": "chapter ~12:50 keys"},
+        {"targetId": "ncaaf-w2-oklahoma-at-michigan", "status": "dry", "locator": "chapter ~29:15 keys"},
+        {"targetId": "ncaaf-w2-alabama-at-kentucky", "status": "dry", "locator": "chapter ~41:35 upset-alert total"},
+        {"targetId": "ncaaf-w2-arizona-state-at-texas-am", "status": "dry", "locator": "chapter ~1:08:56 conditional"}
+      ],
+      "inspections": [{"outcome": "dry", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "dry", "locator": "chapter ~12:50 keys"}, {"targetId": "ncaaf-w2-oklahoma-at-michigan", "status": "dry", "locator": "chapter ~29:15 keys"}, {"targetId": "ncaaf-w2-alabama-at-kentucky", "status": "dry", "locator": "chapter ~41:35 upset-alert total"}, {"targetId": "ncaaf-w2-arizona-state-at-texas-am", "status": "dry", "locator": "chapter ~1:08:56 conditional"}]}]
+    },
+    {
+      "id": "pate:1000788580117",
+      "factoryId": "pate",
+      "title": "Week 2 Predictions",
+      "published": "2026-09-09T01:54:23Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1485905502?i=1000788580117",
+      "locator": "i=1000788580117",
+      "inspected": true,
+      "outcome": "hit",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [
+        {"targetId": "ncaaf-w2-oklahoma-at-michigan", "status": "completed", "locator": "~22:13 Oklahoma win+cover"},
+        {"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "completed", "locator": "~39:34 side Texas"},
+        {"targetId": "ncaaf-w2-alabama-at-kentucky", "status": "completed", "locator": "~57:03 Alabama win"},
+        {"targetId": "ncaaf-w2-arizona-state-at-texas-am", "status": "dry", "locator": "absent from Week 2 block"}
+      ],
+      "inspections": [{"outcome": "hit", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "ncaaf-w2-oklahoma-at-michigan", "status": "completed", "locator": "~22:13 Oklahoma win+cover"}, {"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "completed", "locator": "~39:34 side Texas"}, {"targetId": "ncaaf-w2-alabama-at-kentucky", "status": "completed", "locator": "~57:03 Alabama win"}, {"targetId": "ncaaf-w2-arizona-state-at-texas-am", "status": "dry", "locator": "absent from Week 2 block"}]}]
+    },
+    {
+      "id": "finebaum:1000788535757",
+      "factoryId": "finebaum",
+      "title": "Hour 1 Vince Young",
+      "published": "2026-09-08T21:01:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000788535757",
+      "locator": "i=1000788535757",
+      "inspected": true,
+      "outcome": "dry",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [{"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "dry", "locator": "Vince Young ~28:25 muddy"}],
+      "inspections": [{"outcome": "dry", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "ncaaf-w2-ohio-state-at-texas", "status": "dry", "locator": "Vince Young ~28:25 muddy"}]}]
+    },
+    {
+      "id": "herd:1000788584046",
+      "factoryId": "herd",
+      "title": "Sharp or Square W1",
+      "published": "2026-09-08T20:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000788584046",
+      "locator": "i=1000788584046",
+      "inspected": true,
+      "outcome": "dry",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [
+        {"targetId": "nfl-w1-patriots-at-seahawks", "status": "dry", "locator": "SEA favorite ATS desk"},
+        {"targetId": "nfl-w1-49ers-vs-rams", "status": "partial", "locator": "Niners dog ATS only"},
+        {"targetId": "nfl-w1-bills-at-texans", "status": "dry", "locator": "Houston +7.5 ATS"}
+      ],
+      "inspections": [{"outcome": "dry", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "nfl-w1-patriots-at-seahawks", "status": "dry", "locator": "SEA favorite ATS desk"}, {"targetId": "nfl-w1-49ers-vs-rams", "status": "partial", "locator": "Niners dog ATS only"}, {"targetId": "nfl-w1-bills-at-texans", "status": "dry", "locator": "Houston +7.5 ATS"}]}]
+    },
+    {
+      "id": "herd:1000788561935",
+      "factoryId": "herd",
+      "title": "What's Wright SEA-NE",
+      "published": "2026-09-08T19:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000788561935",
+      "locator": "i=1000788561935",
+      "inspected": true,
+      "outcome": "hit",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [{"targetId": "nfl-w1-patriots-at-seahawks", "status": "completed", "locator": "Nick Wright 27-17 Seattle Candidate NO"}],
+      "inspections": [{"outcome": "hit", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "nfl-w1-patriots-at-seahawks", "status": "completed", "locator": "Nick Wright 27-17 Seattle Candidate NO"}]}]
+    },
+    {
+      "id": "gmfb:1000788491419",
+      "factoryId": "gmfb",
+      "title": "GMFB Tue Hour 2",
+      "published": "2026-09-08T16:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000788491419",
+      "locator": "i=1000788491419",
+      "inspected": true,
+      "outcome": "dry",
+      "note": "Feed check only. Not inspected.",
+      "inspectedAt": "2026-09-09T03:45:00.000Z",
+      "coverage": [{"targetId": "nfl-w1-patriots-at-seahawks", "status": "dry", "locator": "season board / survivor menu"}],
+      "inspections": [{"outcome": "dry", "inspectedAt": "2026-09-09T03:45:00.000Z", "coverage": [{"targetId": "nfl-w1-patriots-at-seahawks", "status": "dry", "locator": "season board / survivor menu"}]}]
     }
-  ]
+  ],
+  "updated": "2026-09-08"
 }
