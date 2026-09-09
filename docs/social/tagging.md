@@ -4,7 +4,7 @@ Status: Operational
 
 ## Principle
 
-A tag is an earned editorial signal, not a notification for every ledger change and not a reach hack.
+A tag is an earned editorial signal, not a notification for every ledger change and not a reach hack. Do not add generic tagging or engagement bait. Preserve this registry; do not tag a handle that is not listed here.
 
 Tag a pundit in an original post only when Pundits.Pro is giving that person one of three things worth receiving: a stage in a notable pregame debate, specific credit for a notable correct call, or recognition of a meaningful tracked-record milestone. The tagged person must be central to the copy and visible in the attached Tier 1 card.
 

@@ -53,6 +53,7 @@ const calls: Call[] = [
     id: "c1",
     punditId: "fin",
     claim: "TCU wins this game.",
+    reasoning: "Chapel Hill is chaos and TCU should win outright.",
     source: "The Paul Finebaum Show",
     sourceUrl: "https://example.com/a",
     sourceDate: "2026-08-25",
@@ -63,6 +64,7 @@ const calls: Call[] = [
     gradedAt: "2026-08-30",
     eventSlug: "unc-vs-tcu-2026",
     side: "no",
+    sourceLocator: { timestamp: "01:12:00", section: "open" },
   },
   {
     id: "c2",
@@ -141,6 +143,10 @@ describe("socialIndex", () => {
     expect(settled.kickoffDate).toBe("2026-08-29");
     expect(settled.yesPundits).toEqual(["Chip Patterson"]);
     expect(settled.noPundits).toEqual(["Paul Finebaum"]);
+    expect(settled.snapshotAt).toBe("2026-08-25");
+    expect(settled.gradingScope).toBe("straight-up-winner");
+    expect(settled.bothSides).toBe(true);
+    expect(settled.trackedCount).toBe(2);
 
     const pending = index.events.find((e) => e.slug === "mia-vs-fsu-2026")!;
     expect(pending.pageUrl).toBe("https://pundits.pro/picks/mia-vs-fsu-2026/");
@@ -162,12 +168,36 @@ describe("socialIndex", () => {
     expect(hit.ogCard).toBe("https://pundits.pro/og/takes/unc-vs-tcu-2026--fin.png");
     expect(hit.storyCard).toBe("https://pundits.pro/og/stories/takes/unc-vs-tcu-2026--fin.png");
     expect(hit.sideLabel.length).toBeGreaterThan(0);
+    expect(hit.callId).toBe("c1");
+    expect(hit.source).toBe("The Paul Finebaum Show");
+    expect(hit.sourceUrl).toBe("https://example.com/a");
+    expect(hit.sourceLocator).toEqual({ timestamp: "01:12:00", section: "open" });
+    expect(hit.rationale).toBe("Chapel Hill is chaos and TCU should win outright.");
+    expect(hit.gradingScope).toBe("straight-up-winner");
+    expect(hit.spreadOrigin).toBe(false);
 
     const pending = index.takes.find((t) => t.eventSlug === "mia-vs-fsu-2026")!;
     expect(pending.status).toBe("pending");
     expect(pending.punditId).toBe("pat");
     expect(pending.claim).toBe("Hurricanes got this.");
     expect(pending.pageUrl).toBe("https://pundits.pro/picks/mia-vs-fsu-2026/pat/");
+    expect(pending.rationale).toBeNull();
+    expect(pending.sourceLocator).toBeNull();
+  });
+
+  it("omits operational rationale from the bot payload", () => {
+    const omitted = socialIndex(
+      [
+        {
+          ...calls[2],
+          id: "brandt-49ers-vs-rams-20260908",
+          reasoning: "GMFB predictions hour with helmet props; repeats Niners over Rams.",
+        },
+      ],
+      [events[1]],
+      pundits
+    ).takes[0];
+    expect(omitted.rationale).toBeNull();
   });
 
   it("lists every pundit with live record and card urls", () => {

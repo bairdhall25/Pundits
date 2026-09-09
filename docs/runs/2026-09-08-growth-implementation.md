@@ -143,3 +143,91 @@ Parked by the brief and not reopened: auto-roster, photo bypass, team-analyst el
 ### Next phase
 
 Phase 3 — SEO contract for existing page types (depends on Phase 1 content contract). Phase 4 — social selection (this branch).
+
+## Phase 4 — simplify social selection while preserving the cards
+
+Outcome required: the existing bots select meaningful verified stories and can be evaluated against actual outcomes. Cards and visual design are unchanged. No live X posts.
+
+This journal is not a Scout intake run and does not set `audit=` / `promoted=` flags.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Replay a fixture timeline crossing midnight and show duplicates skipped | yes | `lib/social-select.test.ts` pending take posted 23:40 ET still skipped next morning |
+| Newly graded result is distinct from its original pending post | yes | same destination, `pregame` skip / `result` allow |
+| If live coverage cannot be established, skip rather than assume novelty | yes | `coverage-unknown` fixture; Poster/Reply Guy remain read-only and do not write a log |
+| Contradictory “empty side” language fails review | yes | `lib/social-copy.test.ts` |
+| Unsupported cover language fails review | yes | “Cover crushed.” on a winner-only grade |
+| No false quotation or missing-price-time implication in drafts | yes | reported-selection drafts unquoted; prices require `snapshotAt` / “as of” |
+| All tags have approved provenance | yes | parser vs `docs/social/tagging.md`; unapproved `@randomfan` fails |
+| Unavailable metrics remain blank/n/a | yes | `metricCell(undefined) === "n/a"`; paid vs organic vs unavailable reach |
+| Reviewer separates originals, outside-thread replies, self-link replies, paid reach | yes | `classifyTimelineItem` + `bots/reviewer.md` |
+| Daily caps are ceilings, not quotas | yes | leftover-cap skip; schedule rewritten as ranges |
+| Routine favorite wins need a specific reason | yes | Wisconsin–ND / Miami–Stanford / Boise–Oregon / WMU–Michigan skipped |
+| Primary order is disagreement → resolution → notable call; no forced archetype rotation | yes | `rankStories` + `docs/social/post-patterns.md` |
+| Existing cards unchanged | yes | drafts reuse `ogCard` URLs; `docs/social/images.md` keeps the visual system |
+| Additive `cards.json` fields, schemaVersion 2 | yes | `callId`, locator, rationale, snapshot, gradingScope, scores; no renamed fields |
+| Offline review drafts, not live posts | yes | samples below |
+| Methodology unchanged | yes | no pick-eligibility / grading / snapshot-semantics change |
+| No `data/*.json` edits, no live X, no deploy | yes | this change |
+
+### Payload (compatible)
+
+`schemaVersion` stays **2**. Additive fields on existing arrays:
+
+- events: `snapshotAt`, `gradingScope`, `trackedCount`, `bothSides`, `awayScore`, `homeScore`, `resultUrl`
+- takes: `callId`, `source`, `sourceUrl`, `sourceLocator`, `rationale` (public only; operational capsules stay `null`), `gradingScope`, `spreadOrigin`
+
+`pageUrl` / `ogCard` / `storyCard` / status / side are unchanged.
+
+### Novelty contract
+
+Poster/Reply Guy remain read-only. Novelty is live timeline + destination search keyed by canonical `pageUrl` + state across the pick/result lifecycle, not since midnight. Unverified coverage is a skip. A persistent publication log is **not** shipped; see remaining decisions.
+
+### Offline drafts (review only)
+
+Same card URLs as current `cards.json`. Not posted.
+
+**1. 49ers vs Rams** (current pregame; no result draft — game is ungraded)
+
+- Chosen card: `https://pundits.pro/og/events/49ers-vs-rams-2026.png`
+- Why selected: only upcoming two-sided tracked game on 2026-09-09.
+- Pregame: *Kyle Brandt picks 49ers. Rich Eisen, Colin Cowherd, and Jason McIntyre pick Rams. 4 tracked calls, both sides on the record ahead of Sep 10, 2026. Kalshi snapshot: 49ers 36¢ / Rams 65¢, as of Sep 8, 2026*
+- Result: withheld. Inventing a score would manufacture evidence.
+
+**2. Clemson at LSU** (historical disagreement)
+
+- Chosen card: `https://pundits.pro/og/events/clemson-at-lsu-2026.png`
+- Why selected: 12 tracked calls, both sides; postgame is the resolution of that split.
+- Pregame reconstruction: *George Wrighster and Danny Kanell pick Clemson. Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, and 6 more pick LSU. 12 tracked calls, both sides on the record ahead of Sep 5, 2026. Kalshi snapshot: Clemson 23¢ / LSU 78¢, as of Sep 3, 2026*
+- Result: *LSU 51, Clemson 10. George Wrighster and Danny Kanell had Clemson. Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, and 6 more had LSU. Tracked result is the straight-up winner, not a spread cover. Kalshi snapshot: Clemson 23¢ / LSU 78¢, as of Sep 3, 2026*
+- Before (do not ship): “Kanell and Wrighster backing Clemson. Empty side.” / “Cover crushed.” Both fail review.
+
+**3. North Carolina vs TCU** (historical disagreement; underdog side hit)
+
+- Chosen card: `https://pundits.pro/og/events/unc-vs-tcu-2026.png`
+- Why selected: four tracked calls, both sides; snapshot 26–75 explains why the split mattered.
+- Pregame reconstruction: *Chip Patterson and Greg McElroy pick North Carolina. Paul Finebaum and Will Compton pick TCU. 4 tracked calls, both sides on the record ahead of Aug 29, 2026. Kalshi snapshot: North Carolina 26¢ / TCU 75¢, as of Aug 28, 2026*
+- Result: *North Carolina 15, TCU 10. Chip Patterson and Greg McElroy had North Carolina. Paul Finebaum and Will Compton had TCU. Tracked result is the straight-up winner, not a spread cover. Kalshi snapshot: North Carolina 26¢ / TCU 75¢, as of Aug 28, 2026*
+- Before (do not ship): “Finebaum took TCU at 75¢.” Fails `took-at-price`.
+
+Routine candidates skipped on a 2026-09-09 replay: Wisconsin–ND, Miami–Stanford, Boise State–Oregon, Western Michigan–Michigan (one-sided favorite wins); leftover-cap notable underdogs after the primary six; 1-0 records. SMU–FSU remains a valid disagreement/resolution when it is still inside the three-day result window.
+
+### Checks run
+
+On this worktree after the Phase 4 code and playbook edits:
+
+- Relevant logic tests (`lib/social.test.ts`, `lib/social-select.test.ts`, `lib/social-copy.test.ts`): **pass**.
+- `npm run check:fast`: **pass**. Inexpensive tests 506 passed / 52 files; `validate:runs` passed on `docs/runs`. Note: `check:fast is not a release gate.`
+- `npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 507 passed / 53 files; `validate:runs`; production build; `verify:static` including social-index `schemaVersion` 2 and 217 pages / 216 decoded images. OG generation reused all 430 cards (`rendered=0`) — images unchanged.
+
+No production deploy. No live X. No `data/*.json` edits. Images not regenerated.
+
+### Remaining Codex decisions
+
+1. **Publication log.** First implementation keeps Poster/Reply Guy read-only and uses live timeline/search. If that proves impractical in operation, a minimal append-only log (destination, state, post ID, timestamp) needs an explicit writer: Poster still should not write the repo. Candidate owner is Reviewer or Promote as a discrete later change, not a backend.
+2. **Operator edit pass.** These drafts are machine-composed review copy. Brief allows a small amount of operator editing on the highest-value posts; that is not automated here.
+3. **Roll Call tags on the 49ers card.** Four tracked pundits, both sides — density gate passes. Whether to tag Eisen/Cowherd (approved) plus Brandt (no approved handle → spelled, untagged) is a tagging.md application, not a new handle.
+
+Parked: live X, paid boosts, card redesign, Phase 3 SEO templates, Phase 5 dashboards, production deploy.
