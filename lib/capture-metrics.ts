@@ -487,10 +487,8 @@ export function formatUnavailable(
 }
 
 function formatInterval(interval: ReportingInterval | UnavailableMetric): string {
-  if ("start" in interval && typeof interval.start === "string") {
-    return `[${interval.start}, ${interval.end})`;
-  }
-  return formatUnavailable(interval);
+  if ("value" in interval) return formatUnavailable(interval);
+  return `[${interval.start}, ${interval.end})`;
 }
 
 function formatHours(hours: number | UnavailableMetric): string {
