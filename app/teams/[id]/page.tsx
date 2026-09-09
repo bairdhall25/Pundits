@@ -51,10 +51,6 @@ function MatchupPicks({
   teamName: string;
   matchup: TeamMatchup;
 }) {
-  const entries = [...matchup.forTeam, ...matchup.againstTeam];
-  if (!entries.length) {
-    return <p className="empty">{matchup.lede}</p>;
-  }
   return (
     <div className="team-split">
       <div>
@@ -75,7 +71,7 @@ function MatchupPicks({
             ))}
           </ul>
         ) : (
-          <p className="empty">{matchup.noCapturedPick ? matchup.lede : "Nobody yet"}</p>
+          <p className="empty">{matchup.emptyFor}</p>
         )}
       </div>
       <div>
@@ -96,7 +92,7 @@ function MatchupPicks({
             ))}
           </ul>
         ) : (
-          <p className="empty">Nobody yet</p>
+          <p className="empty">{matchup.emptyAgainst}</p>
         )}
       </div>
     </div>

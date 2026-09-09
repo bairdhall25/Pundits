@@ -460,6 +460,8 @@ export type TeamMatchup = {
   againstTeam: GamePickEntry[];
   noCapturedPick: boolean;
   noCapturedPickOnGame: boolean;
+  emptyFor: string;
+  emptyAgainst: string;
   lede: string;
 };
 
@@ -523,7 +525,7 @@ function teamMatchup(
           past
         )} ${opponent}.`
       : opponent
-        ? `Nobody on ${opponent} yet.`
+        ? `Nobody on ${opponent}${pendingBit}.`
         : null;
     lede = [forLine, againstLine].filter(Boolean).join(" ");
   }
@@ -537,6 +539,12 @@ function teamMatchup(
     againstTeam,
     noCapturedPick,
     noCapturedPickOnGame,
+    emptyFor: `No captured pick on ${team.name}${pendingBit}.`,
+    emptyAgainst: opponent
+      ? `Nobody on ${opponent}${pendingBit}.`
+      : past
+        ? "Nobody."
+        : "Nobody yet.",
     lede,
   };
 }
@@ -671,11 +679,8 @@ export function leagueContent(
     finalCount: week.final.length,
   }));
   const currentWeek = weekLinks[0] ?? null;
-  const openCount = weekLinks.reduce((sum, week) => sum + week.openCount, 0);
-  const finalOnly =
-    currentWeek != null &&
-    openCount === 0 &&
-    weekLinks.every((week) => week.openCount === 0);
+  const openWeeks = weekLinks.filter((week) => week.openCount > 0);
+  const finalOnly = currentWeek != null && openWeeks.length === 0;
   const title = currentWeek
     ? finalOnly
       ? `${sportLabel} Week ${currentWeek.week}: who called it`
@@ -690,11 +695,20 @@ export function leagueContent(
       n === 1 ? "" : "s"
     }. The Week ${currentWeek.week} archive is the permanent record.`;
   } else {
-    lede = `Tracked picks on this week's ${sportLabel} slate. ${openCount} open game${
-      openCount === 1 ? "" : "s"
-    } in Week ${currentWeek.week}. Open games stay on this board; the Week ${
-      currentWeek.week
-    } archive is the permanent record.`;
+    const openBit =
+      openWeeks.length === 1
+        ? `${openWeeks[0].openCount} open game${
+            openWeeks[0].openCount === 1 ? "" : "s"
+          } in Week ${openWeeks[0].week}`
+        : openWeeks
+            .map(
+              (week) =>
+                `Week ${week.week} has ${week.openCount} open game${
+                  week.openCount === 1 ? "" : "s"
+                }`
+            )
+            .join(". ");
+    lede = `Tracked picks on this week's ${sportLabel} slate. ${openBit}. Open games stay on this board; the Week ${currentWeek.week} archive is the permanent record.`;
   }
   return {
     title,

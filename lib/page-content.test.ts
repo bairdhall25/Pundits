@@ -223,6 +223,44 @@ describe("team page contract", () => {
     expect(content.lede).toContain("No captured pick on Virginia");
     expect(content.historical[0]?.noCapturedPick).toBe(true);
     expect(content.historical[0]?.noCapturedPickOnGame).toBe(false);
+    expect(content.historical[0]?.emptyFor).toBe("No captured pick on Virginia.");
+    expect(content.historical[0]?.emptyFor).not.toContain("Kanell");
+    expect(content.historical[0]?.emptyFor).not.toContain("Patterson");
+  });
+
+  it("does not say yet on a graded empty against side", () => {
+    const team = testTeam("away", { name: "Away" });
+    const event = fixtureGame("graded-empty-2026", {
+      awayTeam: "Away",
+      homeTeam: "Home",
+      awayTeamId: "away",
+      homeTeamId: "home",
+      awayScore: 21,
+      homeScore: 14,
+    });
+    const pundit = fixturePundit("voice", { name: "Voice" });
+    const call = fixturePick({
+      eventSlug: event.slug,
+      punditId: pundit.id,
+      side: "yes",
+      status: "hit",
+    });
+    const content = teamContent(team, [event], [call], [pundit]);
+    const matchup = content.historical[0];
+    expect(matchup?.lede).toBe("Voice picked Away. Nobody on Home.");
+    expect(matchup?.lede).not.toMatch(/yet/);
+    expect(matchup?.emptyAgainst).toBe("Nobody on Home.");
+    expect(matchup?.emptyAgainst).not.toMatch(/yet/);
+
+    const ncsu = teamContent(
+      getTeam("nc-state", loadTeams())!,
+      loadEvents(),
+      loadCalls(),
+      loadPundits()
+    ).historical[0];
+    expect(ncsu?.lede).toMatch(/Nobody on Virginia\./);
+    expect(ncsu?.lede).not.toMatch(/Nobody on Virginia yet/);
+    expect(ncsu?.emptyAgainst).toBe("Nobody on Virginia.");
   });
 
   it("distinguishes no captured pick on a scheduled game from no scheduled game", () => {
@@ -238,6 +276,8 @@ describe("team page contract", () => {
     expect(scheduled.nextMatchup?.noCapturedPickOnGame).toBe(true);
     expect(scheduled.lede).toContain("Next covered matchup: Away at Home");
     expect(scheduled.lede).toContain("No captured pick on Away at Home yet");
+    expect(scheduled.nextMatchup?.emptyFor).toBe("No captured pick on Home yet.");
+    expect(scheduled.nextMatchup?.emptyAgainst).toBe("Nobody on Away yet.");
     expect(scheduled.lede).not.toContain("No scheduled game");
 
     const idle = teamContent(testTeam("ghost", { name: "Ghost" }), [], [], []);
@@ -270,6 +310,37 @@ describe("league page contract", () => {
     expect(content.lede).toContain("Week 1 is final");
     expect(content.previous?.href).toBe("/ncaaf/2026/week-0/");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
+  });
+
+  it("does not pin every open game to week 1 when a later live week is also open", () => {
+    const week1 = fixtureGame("slate-w1-2026", {
+      week: 1,
+      season: 2026,
+      kickoffDate: "2026-09-05",
+      sport: "ncaaf",
+    });
+    const week2 = fixtureGame("slate-w2-2026", {
+      week: 2,
+      season: 2026,
+      kickoffDate: "2026-09-12",
+      sport: "ncaaf",
+    });
+    const first = fixturePundit("face-1");
+    const second = fixturePundit("face-2");
+    const content = leagueContent(
+      "ncaaf",
+      [week1, week2],
+      [
+        fixturePick({ eventSlug: week1.slug, punditId: first.id, side: "no" }),
+        fixturePick({ eventSlug: week2.slug, punditId: second.id, side: "yes" }),
+      ],
+      [first, second]
+    );
+    expect(content.weekLinks.map((week) => week.week)).toEqual([1, 2]);
+    expect(content.lede).toContain("Week 1 has 1 open game");
+    expect(content.lede).toContain("Week 2 has 1 open game");
+    expect(content.lede).not.toMatch(/2 open games in Week 1/);
+    expect(content.lede).toContain("the Week 1 archive is the permanent record");
   });
 });
 
