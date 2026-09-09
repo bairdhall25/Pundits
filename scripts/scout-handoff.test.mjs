@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   approvalStillValid,
+  callFieldsForPromotion,
   dayLevelFailBlocksReadyMappedRows,
   laneStatusErrors,
   loadDecisionQueue,
@@ -36,6 +37,55 @@ describe("row identity", () => {
 
   it("is stable for the same mapped row", () => {
     expect(rowIdentity(howard)).toBe(rowIdentity({ ...howard }));
+  });
+});
+
+describe("rationale vs pick validity", () => {
+  const intake = {
+    pundit: "pate",
+    eventSlug: "alabama-at-kentucky-2026",
+    side: "yes",
+    verbatimQuote: "I think Alabama's going to win this game.",
+    sourceUrl: "https://podcasts.apple.com/us/podcast/id1485905502?i=1000788580117",
+    sourceDate: "2026-09-08",
+    reasoning: "Separates SU (Alabama) from ATS (Kentucky +10.5); explicit win-the-game language.",
+  };
+
+  it("treats a changed rationale as a new identity that cannot reuse the old approval", () => {
+    const audit = { ...intake, rowId: rowIdentity(intake), verdict: "ok" };
+    const changed = { ...intake, reasoning: "Alabama's offensive line should wear Kentucky down." };
+    expect(rowIdentity(changed)).not.toBe(rowIdentity(intake));
+    expect(approvalStillValid(audit, changed)).toBe(false);
+    expect(promoteReadyRows([audit], [changed]).ready).toEqual([]);
+    expect(promoteReadyRows([audit], [changed]).blocked[0].reason).toMatch(/changed/i);
+  });
+
+  it("omits a rejected capsule on no-reasoning promotion while keeping the quote", () => {
+    const audit = { ...intake, rowId: rowIdentity(intake), verdict: "ok-no-reasoning" };
+    const { ready } = promoteReadyRows([audit], [intake]);
+    expect(ready).toHaveLength(1);
+    expect(ready[0].intake.verbatimQuote).toBe(intake.verbatimQuote);
+    const fields = callFieldsForPromotion(audit, intake);
+    expect(fields).not.toHaveProperty("reasoning");
+    expect(fields.claim).toBe(intake.verbatimQuote);
+    expect(fields.punditId).toBe("pate");
+  });
+
+  it("copies an approved capsule and omits an unmapped no-reasoning capsule", () => {
+    const approved = { ...intake, reasoning: "Kentucky's pass rush will not hold for four quarters." };
+    const okAudit = { ...approved, rowId: rowIdentity(approved), verdict: "ok" };
+    expect(callFieldsForPromotion(okAudit, approved).reasoning).toBe(approved.reasoning);
+    const unmapped = { ...intake, eventSlug: "", side: "" };
+    const unmappedAudit = {
+      ...unmapped,
+      rowId: rowIdentity(unmapped),
+      verdict: "ok-unmapped-no-reasoning",
+    };
+    const omitted = callFieldsForPromotion(unmappedAudit, unmapped);
+    expect(omitted).not.toHaveProperty("reasoning");
+    expect(omitted.claim).toBe(intake.verbatimQuote);
+    expect(promoteReadyRows([unmappedAudit], [unmapped]).ready).toEqual([]);
+    expect(promoteReadyRows([unmappedAudit], [unmapped]).blocked[0].reason).toMatch(/explicit operator mint/);
   });
 });
 

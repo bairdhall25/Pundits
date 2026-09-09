@@ -91,6 +91,25 @@ function matchingIntake(audit, intakeRows, intakeById) {
   return (intakeRows ?? []).find((row) => approvalStillValid(audit, row));
 }
 
+const NO_REASONING = new Set(["ok-no-reasoning", "ok-unmapped-no-reasoning"]);
+
+/** Copy an approved capsule; omit a rejected one. Never copy note. Quote stays. */
+export function callFieldsForPromotion(audit, intake) {
+  const fields = {
+    punditId: intake.pundit || intake.proposedId || "",
+    eventSlug: intake.eventSlug || "",
+    side: intake.side || "",
+    claim: intake.verbatimQuote || "",
+    sourceUrl: intake.sourceUrl || "",
+    sourceDate: intake.sourceDate || "",
+  };
+  const reasoning = String(intake.reasoning ?? "").trim();
+  if (reasoning && audit && !NO_REASONING.has(audit.verdict)) {
+    fields.reasoning = reasoning;
+  }
+  return fields;
+}
+
 export function promoteReadyRows(auditRows, intakeRows) {
   const intakeById = new Map(
     (intakeRows ?? []).map((row) => [rowIdentity(row), row])

@@ -353,6 +353,12 @@ export function youtubeFeedUrl(channelId) {
   return `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 }
 
+export const FEED_CHECK_NOTE = "Feed check only. Not inspected.";
+
+function noteAfterInspection(note) {
+  return note && note !== FEED_CHECK_NOTE ? note : undefined;
+}
+
 export function mergeDiscoveredEpisodes(ledger, factoryId, items) {
   const next = {
     version: 1,
@@ -373,7 +379,7 @@ export function mergeDiscoveredEpisodes(ledger, factoryId, items) {
       locator: episodeLocator(item.url),
       inspected: false,
       outcome: "discovered",
-      note: "Feed check only. Not inspected.",
+      note: FEED_CHECK_NOTE,
     });
   }
   return next;
@@ -391,8 +397,14 @@ export function recordEpisodeInspection(ledger, id, { outcome, inspectedAt, cove
   if (!priorEpisode(ledger, id)) throw new Error(`Unknown episode: ${id}`);
   return { ...ledger, episodes: ledger.episodes.map(row => {
     if (row.id !== id) return row;
-    const { reopenReason, ...prior } = row;
-    return { ...prior, inspected: true, outcome, inspectedAt,
+    const { reopenReason, note, ...prior } = row;
+    const keptNote = noteAfterInspection(note);
+    return {
+      ...prior,
+      inspected: true,
+      outcome,
+      inspectedAt,
+      ...(keptNote ? { note: keptNote } : {}),
       coverage: [...(prior.coverage ?? []), ...coverage],
       inspections: [...(prior.inspections ?? []), { outcome, inspectedAt, coverage,
         ...(reopenReason ? { reopenReason } : {}) }],

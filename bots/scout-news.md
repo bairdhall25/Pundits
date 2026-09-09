@@ -31,7 +31,7 @@ For each **approved** Dispatch row in printed order (`empty-side`, then `off-hom
 5. Skip ordinary `dense` hunting unless a page already open names that game, the row's hunt says `source-complete designated voices`, or hunt says `flip-check` — then check only already-carded pundits on that game for reversals (correction on the existing row, never a second card).
 6. **Overflow (docs/capture-policy.md rule 4):** on a page already open for a Dispatch hole, a rostered speaker's hard SU on a game not in `events.json` may be staged as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` and `side` blank with the matchup in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a page.
 
-Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical: optional, at most 60 words, source-grounded, and reader-facing; routing instructions belong in `note`. Decipher gambling copy (house rule 3): do not Drop a numbered line; split winner vs Bets. Player props stay parked.
+Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical: optional, at most 60 words, source-grounded why-the-pick factors, and reader-facing. Blank reasoning is valid. SU/ATS routing and quote-eligibility language belong in `note`, never in `reasoning`. Decipher gambling copy (house rule 3): do not Drop a numbered line; split winner vs Bets. Player props stay parked.
 
 Freeze only if this pass adds a new mapped roster face (or proposes Lambeau `onHome`). Kalshi page or reprint. Else `none`.
 

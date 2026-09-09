@@ -136,8 +136,10 @@ Copy `docs/product/weekly-report.md` into `docs/runs/YYYY-MM-DD-weekly.md`. Capt
 
 Promotion: only verified hard rows become calls.json entries. The row's
 pundit must exist in data/pundits.json; the eventSlug in data/events.json.
-`reasoning` is optional reader-facing copy of at most 60 words. `note` is
-run-only routing context and never enters `data/`.
+`reasoning` is optional reader-facing copy of at most 60 words explaining
+why the speaker picked that side. `note` is run-only routing context
+(including SU vs ATS splits) and never enters `data/`. Audit omits a
+defective capsule with `ok-no-reasoning` without failing a valid pick.
 
 ## Week 0 gate (Thursday 2026-08-27)
 Done for both: Finebaum Dublin (`unc-vs-tcu-2026`) and Kanell Charlottesville (`ncsu-at-uva-2026`).

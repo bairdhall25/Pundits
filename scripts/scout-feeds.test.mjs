@@ -12,8 +12,10 @@ import {
   isWrongYear,
   latestUsable,
   loadEpisodeLedger,
+  mergeDiscoveredEpisodes,
   parseAppleLookup,
   parseYoutubeAtom,
+  recordEpisodeInspection,
 } from "./scout-feeds-lib.mjs";
 
 const mondayEt = new Date("2026-08-31T20:00:00Z"); // 4pm ET
@@ -297,6 +299,70 @@ describe("episode queue", () => {
       ledger,
     });
     expect(row.status).toBe("unprocessed");
+  });
+});
+
+describe("episode inspection notes", () => {
+  const item = {
+    title: "Week 2 picks",
+    url: "https://example.org/episode?i=1000788580117",
+    published: mondayEt.toISOString(),
+  };
+
+  it("replaces the generated feed-check note after actual inspection", () => {
+    const discovered = mergeDiscoveredEpisodes({ version: 1, episodes: [] }, "pate", [item]);
+    expect(discovered.episodes[0].note).toBe("Feed check only. Not inspected.");
+    expect(discovered.episodes[0].inspected).toBe(false);
+    const id = discovered.episodes[0].id;
+    const updated = recordEpisodeInspection(discovered, id, {
+      outcome: "hit",
+      inspectedAt: mondayEt.toISOString(),
+      coverage: [{ targetId: "ncaaf-w2-alabama-at-kentucky", locator: "~57:03", status: "completed" }],
+    });
+    expect(updated.episodes[0].note).not.toBe("Feed check only. Not inspected.");
+    expect(updated.episodes[0]).not.toHaveProperty("note");
+    expect(updated.episodes[0].inspected).toBe(true);
+    expect(updated.episodes[0].outcome).toBe("hit");
+    expect(updated.episodes[0].id).toBe(id);
+    expect(updated.episodes[0].url).toBe(item.url);
+    expect(updated.episodes[0].coverage).toEqual([
+      { targetId: "ncaaf-w2-alabama-at-kentucky", locator: "~57:03", status: "completed" },
+    ]);
+  });
+
+  it("preserves a custom evidence note, coverage history, identity, and reopen consumption", () => {
+    const id = episodeId("pate", item);
+    const ledger = {
+      version: 1,
+      episodes: [
+        {
+          id,
+          factoryId: "pate",
+          title: item.title,
+          published: item.published,
+          url: item.url,
+          locator: "i=1000788580117",
+          inspected: true,
+          outcome: "hit",
+          note: "Staged pate Alabama SU. Do not reprocess without a new reason.",
+          coverage: [{ targetId: "old", locator: "00:01", status: "completed" }],
+          reopenReason: "New approved target; inspect second speaker at 00:20",
+        },
+      ],
+    };
+    const updated = recordEpisodeInspection(ledger, id, {
+      outcome: "opened",
+      inspectedAt: mondayEt.toISOString(),
+      coverage: [{ targetId: "new", locator: "00:20", status: "partial" }],
+    });
+    expect(updated.episodes[0].note).toBe("Staged pate Alabama SU. Do not reprocess without a new reason.");
+    expect(updated.episodes[0].coverage).toHaveLength(2);
+    expect(updated.episodes[0].id).toBe(id);
+    expect(updated.episodes[0].reopenReason).toBeUndefined();
+    expect(updated.episodes[0].inspections[0].reopenReason).toContain("second speaker");
+    expect(classifyItem(item, mondayEt, { factoryId: "pate", ledger: updated }).status).toBe("inspected");
+    expect(ledger.episodes[0].coverage).toHaveLength(1);
+    expect(ledger.episodes[0].reopenReason).toBeDefined();
   });
 });
 

@@ -35,7 +35,7 @@ Do not sweep `from:{handle}`. If you land on a tweet while opening a show, you m
 
 **Tokens are not scarce, but radio is bounded.** After the listed factories, the radio limits below, and two reasonable named searches per under-dense game, record the miss in Dropped (what you opened) and move on. Do not invent a pick.
 
-When a hard pick has real supporting rationale, keep the decisive verbatim quote to the shortest one or two sentences that prove the SU (normally ≤60 words). Then a separate optional `reasoning` capsule of at most 60 words in your own words, paraphrasing at most two concrete factors that speaker gave nearby in the same source. If they only named a winner, leave `reasoning` blank. Put routing and operator instructions in `note`, never in reader-facing `reasoning`.
+When a hard pick has real supporting rationale, keep the decisive verbatim quote to the shortest one or two sentences that prove the SU (normally ≤60 words). Then a separate optional `reasoning` capsule of at most 60 words in your own words, paraphrasing at most two concrete factors the same speaker gave for why that side should win, nearby in the same source. A capsule explains the pick, not SU/ATS routing, quote eligibility, or operator instructions. Blank reasoning is valid. If they only named a winner, leave `reasoning` blank. Put routing, wager-category restatements (including SU vs ATS splits and “explicit winner language”), and operator instructions in `note`, never in reader-facing `reasoning`.
 
 ## Radio pilot limits
 
@@ -87,7 +87,7 @@ Stage selected unpublished targets with blank eventSlug/side, matchup and season
 
 ## Recording episode coverage
 
-A hit/opened flag does not mean all speakers or targets were checked. Record coverage entries with targetId, locator (timestamp/segment) and status (partial/completed/dry/blocked). For a new approved target or unchecked speaker, set a specific reopenReason on the episode. Reopening remains inside the recent window. After inspection, call recordEpisodeInspection from scripts/scout-feeds-lib.mjs with the episode id, actual outcome, known inspectedAt and coverage. Persist the returned ledger. The helper preserves coverage/history and consumes reopenReason to avoid repeated retries. Coordinator stays print-only. Preserve prior evidence; never mark blocked access as dry.
+A hit/opened flag does not mean all speakers or targets were checked. Record coverage entries with targetId, locator (timestamp/segment) and status (partial/completed/dry/blocked). For a new approved target or unchecked speaker, set a specific reopenReason on the episode. Reopening remains inside the recent window. After inspection, call recordEpisodeInspection from scripts/scout-feeds-lib.mjs with the episode id, actual outcome, known inspectedAt and coverage. Persist the returned ledger. The helper replaces the generated “Feed check only. Not inspected.” note, preserves a custom evidence note, coverage/history, and episode identity, and consumes reopenReason to avoid repeated retries. Coordinator stays print-only. Preserve prior evidence; never mark blocked access as dry.
 
 ## Candidate handoff
 

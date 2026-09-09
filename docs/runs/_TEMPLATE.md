@@ -65,7 +65,7 @@ Untrusted discovery leads only. A tip must clear the normal Scout, Audit, and Pr
 
 ### Episode coverage
 
-Persist identity and target/segment coverage after opening with recordEpisodeInspection. It consumes an explicit reopenReason and preserves prior coverage. A feed check is not an inspection.
+Persist identity and target/segment coverage after opening with recordEpisodeInspection. It replaces the generated “Feed check only. Not inspected.” note, preserves a custom evidence note and prior coverage, and consumes an explicit reopenReason. A feed check is not an inspection.
 
 | episodeId | factory | published | inspected | outcome | locator | next check |
 |---|---|---|---|---|---|---|

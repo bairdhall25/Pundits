@@ -34,7 +34,7 @@ For each **approved** Dispatch row in printed order (`empty-side`, then `off-hom
 
 If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
 
-For a hard row, keep the decisive verbatim quote short. Add an optional `reasoning` capsule of at most 60 words only when the same post contains concrete rationale; paraphrase at most two factors and do not import context from replies, another speaker, or a different post. Most short winner-only posts should leave `reasoning` blank. Put routing and operator instructions in `note`, never in reader-facing `reasoning`.
+For a hard row, keep the decisive verbatim quote short. Add an optional `reasoning` capsule of at most 60 words only when the same post contains concrete why-the-pick rationale; paraphrase at most two factors the speaker gave for that side and do not import context from replies, another speaker, or a different post. A capsule is not SU/ATS routing or quote eligibility. Blank reasoning is valid. Most short winner-only posts should leave `reasoning` blank. Put routing and operator instructions in `note`, never in reader-facing `reasoning`.
 
 Query shape: `from:{handle} {away}` and `from:{handle} {home}`. Also `from:{handle} pick` / `I'll take` / `give me` if the team query is empty.
 
