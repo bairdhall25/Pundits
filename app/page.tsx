@@ -146,7 +146,7 @@ export default function HomePage() {
             {heroLede}
           </p>
           <ul className="trust-bar">
-            <li>Real quotes, linked to source</li>
+            <li>Sourced evidence, linked to source</li>
             <li>Prices frozen from Kalshi</li>
             <li>After the game, we mark who was right</li>
           </ul>

@@ -32,9 +32,8 @@ export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): stri
       const story = pickStory(take, calls, pundits);
       const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
       const published = firstPublishedAt(take.call);
-      const pubDate = published
-        ? `\n<pubDate>${rssPublicationDate(published)}</pubDate>`
-        : "";
+      const rssDate = published ? rssPublicationDate(published) : null;
+      const pubDate = rssDate ? `\n<pubDate>${rssDate}</pubDate>` : "";
       return `<item>
 <title>${xmlEscape(story.headline)}</title>
 <link>${xmlEscape(url)}</link>
@@ -56,7 +55,7 @@ export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): stri
 <link>${canonicalUrl("/")}</link>
 <description>${xmlEscape(SITE_DESCRIPTION)}</description>
 <language>en-us</language>
-<lastBuildDate>${rssPublicationDate(buildDay)}</lastBuildDate>
+<lastBuildDate>${rssPublicationDate(buildDay) ?? new Date("2026-01-01T00:00:00Z").toUTCString()}</lastBuildDate>
 ${items}
 </channel>
 </rss>`;

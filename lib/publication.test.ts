@@ -140,4 +140,23 @@ describe("news eligibility", () => {
     expect(xml).toContain("/picks/rss-2026/voice/");
     expect(xml).not.toContain("<pubDate>");
   });
+
+  it("omits RSS pubDate when firstPublishedAt is unparsable", () => {
+    expect(rssPublicationDate("not-a-date")).toBeNull();
+    expect(rssPublicationDate("2026-13-99")).toBeNull();
+    expect(rssPublicationDate("2026-02-30")).toBeNull();
+    const pundit = fixturePundit("voice", { name: "Voice" });
+    const event = fixtureGame("bad-pub-2026");
+    const call = fixturePick({
+      eventSlug: event.slug,
+      punditId: pundit.id,
+      side: "yes",
+      sourceDate: "2026-06-23",
+      firstPublishedAt: "not-a-date",
+    });
+    const xml = rssFeed([call], [event], [pundit]);
+    expect(xml).toContain("/picks/bad-pub-2026/voice/");
+    expect(xml).not.toContain("<pubDate>");
+    expect(xml).not.toContain("1970");
+  });
 });

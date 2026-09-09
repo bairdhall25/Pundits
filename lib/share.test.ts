@@ -94,7 +94,9 @@ describe("share copy", () => {
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description).toContain("Finebaum / ESPN");
     expect(share.description).toContain("2 open picks");
-    expect(share.description).toContain("I don't believe they'll win this game in Ireland");
+    expect(share.description).toContain(
+      "Latest: “I don't believe they'll win this game in Ireland”"
+    );
     expect(share.description).not.toContain("2026 record 0–0");
     expect(share.description).not.toMatch(/\.”\.$/);
   });
@@ -152,6 +154,19 @@ describe("share copy", () => {
     const share = punditShare(p!, latest);
     expect(share.title).toBe("Paul Finebaum picks");
     expect(share.description.length).toBeGreaterThan(20);
+  });
+
+  it("does not wrap a reported GameDay selection as spoken dialogue", () => {
+    const currentCalls = loadCalls();
+    const p = getPundit("saban", loadPundits(), currentCalls);
+    const reported = currentCalls.find(
+      (c) => c.punditId === "saban" && c.sourceUrl?.includes("gamedaycole.com")
+    );
+    expect(p).toBeTruthy();
+    expect(reported).toBeTruthy();
+    const share = punditShare(p!, reported);
+    expect(share.description).toContain(`Latest: ${reported!.claim}`);
+    expect(share.description).not.toContain(`“${reported!.claim}”`);
   });
 });
 

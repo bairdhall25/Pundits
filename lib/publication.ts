@@ -11,7 +11,9 @@ export function parsePublicationInstant(value: string | null | undefined): Date 
   const dayOnly = value.match(/^(\d{4}-\d{2}-\d{2})$/);
   if (dayOnly) {
     const instant = new Date(`${dayOnly[1]}T00:00:00Z`);
-    return Number.isNaN(instant.getTime()) ? null : instant;
+    if (Number.isNaN(instant.getTime())) return null;
+    if (instant.toISOString().slice(0, 10) !== dayOnly[1]) return null;
+    return instant;
   }
   const parsed = Date.parse(value);
   if (Number.isNaN(parsed)) return null;
@@ -75,12 +77,12 @@ export function isNewsEligible(
   return pubDay >= cutoff;
 }
 
-export function rssPublicationDate(value: string): string {
+export function rssPublicationDate(value: string): string | null {
+  const instant = parsePublicationInstant(value);
+  if (!instant) return null;
   const dayOnly = value.match(/^(\d{4}-\d{2}-\d{2})$/);
   if (dayOnly) return new Date(`${dayOnly[1]}T00:00:00Z`).toUTCString();
-  const instant = parsePublicationInstant(value);
-  if (instant) return instant.toUTCString();
-  return new Date(`${isoDay(value) ?? "1970-01-01"}T00:00:00Z`).toUTCString();
+  return instant.toUTCString();
 }
 
 export function newsPublicationDate(value: string): string {
