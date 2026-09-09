@@ -52,7 +52,7 @@ export function StoryFeed({ cards }: { cards: StoryCard[] }) {
               </div>
             </div>
             <h2 className="feed-hd">{card.headline}</h2>
-            <p className="feed-qt">“{card.quote}”</p>
+            <p className="feed-qt">{card.quoteIsSpoken ? `“${card.quote}”` : card.quote}</p>
             <div className="feed-meta">
               {card.sideChip}
               <span>{card.eventTitle}</span>

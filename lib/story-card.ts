@@ -6,6 +6,7 @@ export type StoryCard = {
   href: string;
   headline: string;
   quote: string;
+  quoteIsSpoken: boolean;
   name: string;
   photo: string;
   outlet: string;

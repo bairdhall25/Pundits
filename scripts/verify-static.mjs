@@ -79,7 +79,11 @@ assert.match(
 assert.match(story, /Paul Finebaum pick(s|ed) TCU over North Carolina/);
 assert.match(story, />Share</);
 // Take pages lead with the receipt: mono byline, stamp, grade sheet, tape.
+assert.match(story, /Published by/);
+assert.match(story, /Pundits\.Pro/);
 assert.match(story, /Source published Aug 25, 2026.*Graded Aug 29, 2026/);
+assert.match(story, /straight-up winner/);
+assert.doesNotMatch(story, /is backing the (market|snapshot) favorite/);
 assert.match(story, /receipt-stamp verdict-miss/);
 assert.match(story, /grade-sheet/);
 assert.match(story, /Full record →/);
@@ -87,7 +91,9 @@ assert.match(story, /Final <b>North Carolina 15, TCU 10<\/b>/);
 assert.match(story, /\"about\":\{\"@type\":\"Thing\"/);
 assert.doesNotMatch(story, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"/);
 assert.match(story, /\"@type\":\"NewsArticle\"/);
-assert.match(story, /\"name\":\"PUNDITS Staff\"/);
+assert.match(story, /\"name\":\"Pundits\.Pro\"/);
+assert.doesNotMatch(story, /\"name\":\"PUNDITS Staff\"/);
+assert.doesNotMatch(story, /\"datePublished\":\"2026-08-25\"/);
 
 const chipTake = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/patterson/index.html"),
@@ -191,6 +197,10 @@ assert.doesNotMatch(story, /property="og:image" content="https:\/\/pundits\.pro\
 const methodology = await readFile(path.join(out, "methodology/index.html"), "utf8");
 assert.match(methodology, /"@type":"FAQPage"/);
 assert.match(methodology, /What counts as a verified pick/);
+assert.match(methodology, /dated, event-level Kalshi snapshot/);
+assert.match(methodology, /straight-up winner/);
+assert.match(methodology, /reported-selection labels do not qualify as exact spoken quotes/);
+assert.doesNotMatch(methodology, /what the market believed at the time/);
 
 const kanell = await readFile(
   path.join(out, "picks/ncsu-at-uva-2026/kanell/index.html"),
@@ -376,12 +386,12 @@ assert(robots.includes("Content-Signal: search=yes, ai-input=yes, ai-train=no, u
 
 const newsSitemap = await readFile(path.join(out, "news-sitemap.xml"), "utf8");
 assert.match(newsSitemap, /xmlns:news="http:\/\/www\.google\.com\/schemas\/sitemap-news\/0\.9"/);
-assert.match(newsSitemap, /<news:name>PUNDITS<\/news:name>/);
-// News sitemap is a 2-day rolling window (recentNewsTakes, days = 2). Assert
-// the contract, not a specific promoted batch that ages out of the window.
-assert.match(newsSitemap, /\/picks\/[^/]+\/[^/]+\//);
 assert.doesNotMatch(newsSitemap, /\/ncaaf\/2026\/week-0\//);
 assert.doesNotMatch(newsSitemap, /\/teams\//);
+{
+  const { assertNewsSitemapFresh } = await import("./news-sitemap-freshness.mjs");
+  assertNewsSitemapFresh(newsSitemap, new Date());
+}
 
 const feed = await readFile(path.join(out, "feed.xml"), "utf8");
 assert.match(feed, /<rss version="2\.0">/);

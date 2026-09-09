@@ -15,6 +15,7 @@ import {
   ogTeamPath,
   ogWeekPath,
 } from "./og";
+import { evidenceKindFor } from "./evidence";
 import { mappedTakes, sideChip } from "./seo";
 import {
   SOCIAL_PAGE_KEYS,
@@ -55,7 +56,10 @@ export type SocialTakeRow = {
   sideLabel: string;
   cents: number | null;
   claim: string;
+  evidenceKind: "spoken-quote" | "reported-selection";
   sourceDate: string;
+  snapshotAt: string | null;
+  firstPublishedAt?: string;
   gradedAt?: string;
   pageUrl: string;
   ogCard: string;
@@ -162,7 +166,10 @@ export function socialIndex(
         sideLabel: sideChip(event, side),
         cents: side === "yes" ? event.yesCents : event.noCents,
         claim: call.claim,
+        evidenceKind: evidenceKindFor(call),
         sourceDate: call.sourceDate,
+        snapshotAt: event.sourcedAt,
+        firstPublishedAt: call.firstPublishedAt,
         gradedAt: call.gradedAt,
         pageUrl: `${SITE}/picks/${event.slug}/${pundit.id}/`,
         ogCard: `${SITE}${ogTakePath(event.slug, pundit.id)}`,

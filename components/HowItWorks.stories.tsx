@@ -8,7 +8,7 @@ const meta = {
     children: (
       <p>
         These are public comments from named experts, not bets they placed. The
-        number is a frozen market snapshot, not a live sportsbook line.
+        number is a dated Kalshi snapshot, not a live sportsbook line.
       </p>
     ),
   },

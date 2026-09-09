@@ -12,7 +12,7 @@ A mapped pick requires:
 
 - A named person, not an outlet, show, staff, or anonymous group.
 - A public statement attributable to that person.
-- A verbatim decisive quote preserved without changing its meaning.
+- A verbatim decisive quote preserved without changing its meaning. Newly mapped picks still need that quotation. A recap-table selection label is not an exact spoken quote and does not newly qualify a pick. Already-published table-label receipts stay at their permanent URLs and must be presented as reported selections until original wording is recovered.
 - A source URL and publication date.
 - A specific tracked event or future.
 - An explicit side that matches the event contract.
@@ -28,7 +28,7 @@ Prefer, in order:
 2. An official outlet clip or transcript that preserves the speaker and context.
 3. A reputable secondary source quoting the statement verbatim and linking or clearly identifying the original appearance.
 
-Record the source actually opened and verified. When a secondary source is necessary, label it honestly; do not make it appear to be the original source. Preserve enough context to distinguish a firm pick from a joke, question, hypothetical, or paraphrase.
+Record the source actually opened and verified. When a secondary source is necessary, label it honestly; do not make it appear to be the original source. Preserve enough context to distinguish a firm pick from a joke, question, hypothetical, or paraphrase. Store a source locator (timestamp, section, transcript URL) only when verified.
 
 ## Quote handling
 

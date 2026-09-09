@@ -6,7 +6,7 @@ Product manager: Codex. Engineer: Grok. Product owner: Baird.
 
 This journal records engineering progress on [the 2026-09-08 plan](../superpowers/plans/2026-09-08-growth-engine-implementation.md). It is not a Scout intake run. It does not set editorial `audit=` or `promoted=` flags. It does not edit `data/*.json`.
 
-Branch: `codex/growth-engine-phase-0`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
+Branch: `codex/growth-engine-phase-1`. Phase 0 inventory: `6287aba`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
 
 ## Phase 0 — current truth and correction inventory
 
@@ -48,8 +48,60 @@ Parked by the brief and not reopened: immutable per-call prices, ATS product, ne
 
 ### Next phase
 
-Phase 1 — correct evidence presentation and publication semantics (quote vs reported selection, visible audited rationale, source date vs first publication, news window vs now, snapshot wording, methodology sync). No Scout queue work in Phase 1.
+Phase 1 implemented on this branch. Not production-shipped.
+
+## Phase 1 — evidence presentation and publication semantics
+
+Outcome required: a person, Google, and a social bot receive the same faithful description of what was said, when Pundits published it, and what the snapshot means.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Spoken quote stays quoted speech | yes | Brandt local story/JSON-LD: `Kyle Brandt said: “The niners will beat the Rams in the opener.”` |
+| Legacy GameDay table-label is a reported selection, not speech | yes | Saban local copy: Cole lists Saban selecting LSU over Clemson; `Nick Saban said` is gone; evidence-review note shown. Permanent URL kept. Grade unchanged. |
+| Winner-only source omits rationale section | yes | Finebaum LSU has no `reasoning`; no “Why Paul Finebaum picked them” |
+| Valid rationale renders | yes | Pollack LSU: `Why David Pollack picked them:` + stored capsule |
+| Operational/mixed capsules omitted by inventory call IDs | yes | `OMIT_PUBLIC_RATIONALE_CALL_IDS` in `lib/evidence.ts`; Brandt “helmet props” absent from articleBody |
+| June source does not become Pundits publication | yes | Finebaum LSU `sourceDate` 2026-06-23; `datePublished` omitted; byline “Source published Jun 23, 2026”; no “On Pundits” |
+| Spread-origin winner pick is explicit SU, not a cover | yes | Compton claim `TCU -7.5`; grading line names the spread and says the tracked result is the straight-up winner |
+| Refreshed event snapshot labeled as `sourcedAt` | yes | Cowherd 49ers sourceDate 2026-08-24; snapshot “as of Sep 8, 2026” |
+| Quiet period / unknown firstPublishedAt excluded from news | yes | Local `out/news-sitemap.xml` empty; all current rows lack `firstPublishedAt` |
+| Grade update does not mint a new publication | yes | Fixture `firstPublishedAt: 2026-08-26` + later `gradedAt` keeps `datePublished` 2026-08-26 |
+| Canonical URLs preserved | yes | `verify:static` permalink ledger passed; no `data/*.json` edits |
+| Methodology visible FAQ and FAQPage JSON-LD updated together | yes | `lib/methodology.ts` shared by page + `faqJsonLd`; `verify:static` asserts both |
+
+### Schema (optional; no backfill)
+
+On `Call` in `lib/types.ts`:
+
+- `evidenceKind?`: `spoken-quote` \| `reported-selection`. Absent infers GameDay Cole URLs as reported-selection.
+- `sourceLocator?`: optional `timestamp`, `section`, `transcriptUrl`. Absent = unknown.
+- `firstPublishedAt?`: ISO date or datetime of first live Pundits publication. Immutable once set. Absent = unknown. No `sourceDate` / now / noon fallback.
+- `updatedAt?`: material editorial update distinct from `sourceDate` and `gradedAt`.
+
+Promote writes these on new live publication only.
+
+### News expiry (prepared, not observed running)
+
+- Eligibility: current two-day window on `firstPublishedAt` vs now.
+- Rebuild: existing operator/Promote empty `npm run deploy`. GitHub Actions still does not deploy.
+- Runtime check: `.github/workflows/news-sitemap-freshness.yml` + `npm run news:freshness`. Prepared in this PR. Not claimed running until it has fired on `main`.
+- RUNBOOK release checklist requires that check to be installed and empty-deploy ownership active before calling the news-sitemap fix operationally complete.
+
+### Checks run
+
+`npm test`: **453 passed / 49 files**. `npm run check` with `GITHUB_PAGES` unset: **pass** (tests, `validate:runs`, production build, `verify:static` including 217 pages / 216 decoded images and permalink ledger). No production deploy.
+
+### Remaining Codex decisions
+
+1. GameDay record-disposition if Audit cannot recover spoken wording (legacy reported-selection display is shipped; void/correction state is not).
+2. Keep/remove for mixed capsules `kanell-western-michigan-at-michigan-20260903`, `kanell-fiu-at-usf-20260903`, `patterson-oklahoma-state-at-tulsa-20260903` after Audit. Engineering omits them from public copy until then.
+3. Whether any historical `firstPublishedAt` can later be populated from Cloudflare deploy logs. None were backfilled here.
+4. Empty-deploy cadence for news expiry: the workflow and RUNBOOK are reviewable; activating and observing them is an operations step, not claimed complete.
+
+Parked: Scout queue, page-type SEO expansion, social selection rewrite, ATS, backends, production deploy, live X.
 
 ## Later phases
 
-Phase 1+ not started.
+Phase 2+ not started.

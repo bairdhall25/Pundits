@@ -1,3 +1,9 @@
+import {
+  firstPublishedAt,
+  isNewsEligible,
+  newsPublicationDate,
+  rssPublicationDate,
+} from "./publication";
 import { callsLastModified, mappedTakes, pickStory, takePath, type MappedTake } from "./seo";
 import { canonicalUrl, SITE_DESCRIPTION, SITE_NAME } from "./site";
 import type { Call, Event, Pundit } from "./types";
@@ -11,20 +17,12 @@ export function xmlEscape(value: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function rssDate(day: string): string {
-  return new Date(`${day}T12:00:00Z`).toUTCString();
-}
-
-export function recentNewsTakes(takes: MappedTake[], days = 2): MappedTake[] {
-  if (!takes.length) return [];
-  const newest = takes.reduce(
-    (max, take) => (take.call.sourceDate > max ? take.call.sourceDate : max),
-    takes[0].call.sourceDate
-  );
-  const cutoff = new Date(`${newest}T00:00:00Z`);
-  cutoff.setUTCDate(cutoff.getUTCDate() - Math.max(0, days - 1));
-  const cutoffDay = cutoff.toISOString().slice(0, 10);
-  return takes.filter((take) => take.call.sourceDate >= cutoffDay);
+export function recentNewsTakes(
+  takes: MappedTake[],
+  days = 2,
+  now: Date = new Date()
+): MappedTake[] {
+  return takes.filter((take) => isNewsEligible(firstPublishedAt(take.call), now, days));
 }
 
 export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): string {
@@ -33,16 +31,23 @@ export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): stri
     .map((take) => {
       const story = pickStory(take, calls, pundits);
       const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
+      const published = firstPublishedAt(take.call);
+      const pubDate = published
+        ? `\n<pubDate>${rssPublicationDate(published)}</pubDate>`
+        : "";
       return `<item>
 <title>${xmlEscape(story.headline)}</title>
 <link>${xmlEscape(url)}</link>
-<guid isPermaLink="true">${xmlEscape(url)}</guid>
-<pubDate>${rssDate(take.call.sourceDate)}</pubDate>
+<guid isPermaLink="true">${xmlEscape(url)}</guid>${pubDate}
 <category>${take.event.sport === "nfl" ? "NFL" : "College Football"}</category>
 <description>${xmlEscape(story.dek)}</description>
 </item>`;
     })
     .join("\n");
+
+  const buildDay =
+    callsLastModified(calls, mappedTakes(calls, events, pundits)[0]?.call.sourceDate) ??
+    "2026-01-01";
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
@@ -51,25 +56,33 @@ export function rssFeed(calls: Call[], events: Event[], pundits: Pundit[]): stri
 <link>${canonicalUrl("/")}</link>
 <description>${xmlEscape(SITE_DESCRIPTION)}</description>
 <language>en-us</language>
-<lastBuildDate>${rssDate(callsLastModified(calls, mappedTakes(calls, events, pundits)[0]?.call.sourceDate) ?? "2026-01-01")}</lastBuildDate>
+<lastBuildDate>${rssPublicationDate(buildDay)}</lastBuildDate>
 ${items}
 </channel>
 </rss>`;
 }
 
-export function newsSitemap(calls: Call[], events: Event[], pundits: Pundit[]): string {
-  const urls = recentNewsTakes(mappedTakes(calls, events, pundits))
+export function newsSitemap(
+  calls: Call[],
+  events: Event[],
+  pundits: Pundit[],
+  now: Date = new Date()
+): string {
+  const urls = recentNewsTakes(mappedTakes(calls, events, pundits), 2, now)
     .map((take) => {
       const story = pickStory(take, calls, pundits);
+      const published = firstPublishedAt(take.call);
+      if (!published) return "";
       return `<url>
 <loc>${xmlEscape(canonicalUrl(takePath(take.event.slug, take.pundit.id)))}</loc>
 <news:news>
 <news:publication><news:name>${SITE_NAME}</news:name><news:language>en</news:language></news:publication>
-<news:publication_date>${take.call.sourceDate}</news:publication_date>
+<news:publication_date>${xmlEscape(newsPublicationDate(published))}</news:publication_date>
 <news:title>${xmlEscape(story.headline)}</news:title>
 </news:news>
 </url>`;
     })
+    .filter(Boolean)
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>

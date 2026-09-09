@@ -155,6 +155,9 @@ describe("socialIndex", () => {
     expect(hit.side).toBe("no");
     expect(hit.cents).toBe(61);
     expect(hit.claim).toBe("TCU wins this game.");
+    expect(hit.evidenceKind).toBe("spoken-quote");
+    expect(hit.snapshotAt).toBe("2026-08-25");
+    expect(hit.firstPublishedAt).toBeUndefined();
     expect(hit.pageUrl).toBe("https://pundits.pro/picks/unc-vs-tcu-2026/fin/");
     expect(hit.ogCard).toBe("https://pundits.pro/og/takes/unc-vs-tcu-2026--fin.png");
     expect(hit.storyCard).toBe("https://pundits.pro/og/stories/takes/unc-vs-tcu-2026--fin.png");

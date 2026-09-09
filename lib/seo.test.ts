@@ -114,12 +114,19 @@ describe("grade sheet", () => {
       (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "patterson"
     )!;
     const rows = gradeSheet(take, loadCalls(), loadPundits());
-    expect(rows.map((r) => r.label)).toEqual(["Result", "The call", "The price", "Record"]);
+    expect(rows.map((r) => r.label)).toEqual([
+      "Result",
+      "The call",
+      "Kalshi snapshot",
+      "Grading",
+      "Record",
+    ]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toBe("NC State over Virginia — called the upset.");
-    expect(rows[2].value).toBe("34¢ at the freeze (≈ +194), as of Aug 28, 2026.");
-    expect(rows[3].value).toContain("3–2");
-    expect(rows[3]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
+    expect(rows[2].value).toBe("34¢ displayed snapshot (≈ +194), as of Aug 28, 2026.");
+    expect(rows[3].value).toMatch(/straight-up winner/);
+    expect(rows[4].value).toContain("3–2");
+    expect(rows[4]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
   });
 
   it("keeps open picks and futures on the sheet without a result row", () => {
@@ -139,7 +146,7 @@ describe("grade sheet", () => {
     const take = mappedTakes([call], [event], [pundit])[0];
     const rows = gradeSheet(take, [call], [pundit]);
     expect(rows[0].label).not.toBe("Result");
-    expect(rows.map((r) => r.label)).toContain("The price");
+    expect(rows.map((r) => r.label)).toContain("Kalshi snapshot");
     expect(rows.map((r) => r.label)).toContain("Record");
   });
 
@@ -176,9 +183,10 @@ describe("pick stories", () => {
     const enriched = { ...take!, call: { ...take!.call, reasoning } };
     const story = pickStory(enriched);
     expect(story.paragraphs).toContain(
-      `The reasoning Danny Kanell gave: ${reasoning}`
+      `Why Danny Kanell picked them: ${reasoning}`
     );
     expect(articleJsonLd(enriched).articleBody).toContain(reasoning);
+    expect(articleJsonLd(enriched).articleBody).not.toContain("The reasoning Danny Kanell gave");
   });
 
   it("does not pad stories when the source contains no reasoning", () => {
@@ -186,7 +194,7 @@ describe("pick stories", () => {
       (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "patterson"
     );
     expect(take).toBeTruthy();
-    expect(pickStory(take!).paragraphs.join(" ")).not.toContain("The reasoning");
+    expect(pickStory(take!).paragraphs.join(" ")).not.toContain("Why Chip Patterson picked them");
   });
 
   it("announces Finebaum on Dublin from the ledger only", () => {
@@ -307,12 +315,12 @@ describe("json-ld", () => {
       about: { name: "Named college football and NFL pundit picks" },
     });
     expect(SITE_DESCRIPTION).toMatch(/^Pundits\.Pro tracks named pundits/i);
-    expect(SITE_DESCRIPTION).toMatch(/frozen.not live.Kalshi snapshots/i);
-    expect(SITE_DESCRIPTION).toMatch(/graded results/i);
+    expect(SITE_DESCRIPTION).toMatch(/dated.not live.Kalshi snapshots/i);
+    expect(SITE_DESCRIPTION).toMatch(/graded winner-only results/i);
     expect(SITE_DESCRIPTION.length).toBeLessThanOrEqual(160);
   });
 
-  it("marks a take as a staff-written NewsArticle about the pundit", () => {
+  it("marks a take as a publisher-written NewsArticle about the pundit", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "unc-vs-tcu-2026" && t.pundit.id === "finebaum"
     );
@@ -322,7 +330,8 @@ describe("json-ld", () => {
     expect(json.headline).toBe(
       "Paul Finebaum picked TCU over North Carolina — and missed (North Carolina won)"
     );
-    expect(json.author).toMatchObject({ name: "PUNDITS Staff" });
+    expect(json.author).toMatchObject({ name: SITE_ENTITY_NAME, url: "https://pundits.pro/about/" });
+    expect(json).not.toHaveProperty("datePublished");
     expect(json.mentions).toMatchObject({ name: "Paul Finebaum" });
     expect(json.about).toMatchObject({
       "@type": "Thing",
@@ -340,7 +349,7 @@ describe("json-ld", () => {
     const gradedAt = "2026-09-03";
     const graded = { ...take, call: { ...take.call, status: "hit", gradedAt } } as typeof take;
 
-    expect(articleJsonLd(graded).datePublished).toBe(take.call.sourceDate);
+    expect(articleJsonLd(graded)).not.toHaveProperty("datePublished");
     expect(articleJsonLd(graded).dateModified).toBe(gradedAt);
     expect(takeLastModified(graded.call)).toBe(gradedAt);
     expect(eventLastModified(graded.event, [graded.call])).toBe(gradedAt);
@@ -508,5 +517,8 @@ describe("graded take headlines", () => {
     });
     expect(story.paragraphs[0]).toContain("TCU won");
     expect(story.paragraphs[0]).toContain("hit");
+    expect(story.paragraphs.join(" ")).not.toMatch(/is backing the (market|snapshot) favorite/);
+    expect(story.paragraphs.join(" ")).toContain("Paul Finebaum picked TCU over North Carolina");
+    expect(story.dek).not.toMatch(/\btook\b/);
   });
 });

@@ -8,20 +8,21 @@ import { Receipt } from "@/components/Receipt";
 import { TrackView } from "@/components/TrackView";
 import { pickStoryOpenParams } from "@/lib/analytics";
 import { getEvent, loadCalls, loadEvents, loadPundits, loadTeams } from "@/lib/data";
+import { firstPublishedAt, materialUpdatedAt } from "@/lib/publication";
 import {
   articleJsonLd,
   breadcrumbList,
   gradeSheet,
   mappedTakes,
   pickStory,
+  storyByline,
   takeHeadline,
   takePath,
   toStoryCard,
-  latestDay,
 } from "@/lib/seo";
 import { ogImageFor, ogStoryTakePath, ogTakePath, takeOgCard } from "@/lib/og";
 import { sharePayload } from "@/lib/share";
-import { formatShortDate, statusChipText, verdictClass } from "@/lib/format";
+import { statusChipText, verdictClass } from "@/lib/format";
 import { matchupSentence } from "@/lib/public-side";
 import { articleMeta, pageMeta } from "@/lib/site";
 
@@ -52,8 +53,8 @@ export async function generateMetadata({
     story.dek,
     takePath(slug, punditId),
     ogImageFor(ogTakePath(slug, punditId), story.headline, card),
-    take.call.sourceDate,
-    latestDay([take.call.sourceDate, take.event.sourcedAt, take.call.gradedAt])
+    firstPublishedAt(take.call),
+    materialUpdatedAt(take.call, take.event)
   );
 }
 
@@ -138,14 +139,26 @@ export default async function TakePage({
         />
       </div>
       <p className="story-byline type-mono">
-        {formatShortDate(take.call.sourceDate)
-          ? `Source published ${formatShortDate(take.call.sourceDate)}`
-          : "Verified source"}
-        {formatShortDate(take.call.gradedAt)
-          ? ` · Graded ${formatShortDate(take.call.gradedAt)}`
-          : ""}
+        {storyByline(take).map((part, index) => (
+          <span key={`${part.label}-${part.value}`}>
+            {index > 0 ? " · " : ""}
+            {part.href ? (
+              <>
+                {`${part.label} `}
+                <Link href={part.href}>{part.value}</Link>
+              </>
+            ) : (
+              `${part.label} ${part.value}`
+            )}
+          </span>
+        ))}
       </p>
       <Receipt take={take} calls={calls} />
+      <div className="story">
+        {story.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
 
       <dl className="grade-sheet">
         {gradeSheet(take, calls, pundits).map((row) => (

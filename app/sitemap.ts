@@ -102,7 +102,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return {
         url: canonicalUrl(`/pundits/${pundit.id}/`),
         lastModified:
-          latestDay(mine.flatMap((c) => [c.sourceDate, c.gradedAt])) ?? freeze,
+          latestDay(
+            mine.flatMap((c) => [
+              c.firstPublishedAt,
+              c.updatedAt,
+              c.sourceDate,
+              c.gradedAt,
+            ])
+          ) ?? freeze,
         changeFrequency: "weekly",
         priority: live.length ? 0.7 : 0.3,
       };
@@ -116,7 +123,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified:
         latestDay([
           ...games.map((e) => e.sourcedAt),
-          ...on.flatMap((c) => [c.sourceDate, c.gradedAt]),
+          ...on.flatMap((c) => [
+            c.firstPublishedAt,
+            c.updatedAt,
+            c.sourceDate,
+            c.gradedAt,
+          ]),
         ]) ?? freeze,
       changeFrequency: "weekly",
       priority: 0.7,

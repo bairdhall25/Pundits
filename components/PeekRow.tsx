@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { TeamChip } from "@/components/TeamChip";
 import { callsForEvent, eventHasFight, formatCents, getTeam, loadTeams } from "@/lib/data";
+import { quotedEvidenceText } from "@/lib/evidence";
 import { publicSideLabel } from "@/lib/public-side";
 import type { ActivityRecord, Call, Event, Pundit } from "@/lib/types";
 
@@ -126,7 +127,7 @@ export function BookPeek({
       : `/pundits/${pundit.id}`;
   return (
     <Link href={href} className="peek book-card">
-      <div className="book-quote">“{call.claim}”</div>
+      <div className="book-quote">{quotedEvidenceText(call)}</div>
       <div className="book-by">
         <PunditAvatar src={pundit.photo} alt={pundit.name} size="peek" />
         <div>

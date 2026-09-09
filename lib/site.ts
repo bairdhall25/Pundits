@@ -7,7 +7,7 @@ export const SITE_ENTITY_NAME = "Pundits.Pro";
 export const SITE_TITLE = "PUNDITS — Expert CFB and NFL picks";
 
 export const SITE_DESCRIPTION =
-  "Pundits.Pro tracks named pundits’ college football and NFL picks with original quotes, source links, frozen—not live—Kalshi snapshots, and graded results.";
+  "Pundits.Pro tracks named pundits’ college football and NFL picks with sourced public evidence, dated—not live—Kalshi snapshots, and graded winner-only results.";
 
 export const OG_ALT = "PUNDITS. Expert CFB and NFL picks.";
 

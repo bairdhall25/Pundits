@@ -27,6 +27,10 @@ A preserved public statement by a pundit.
 - `soft`: relevant commentary that does not meet the mapping threshold.
 - `pending`, `hit`, `miss`: lifecycle states. Unmapped and soft calls remain pending.
 - `gradedAt`: optional date added when a mapped hard call leaves pending status, used for audit and crawler freshness.
+- `evidenceKind`: optional `spoken-quote` or `reported-selection`. Absent rows are inferred: GameDay Cole `sourceUrl` values present as reported selections until Promote sets the field. New mapped picks still require a verified quotation; a reported-selection label does not newly qualify a pick.
+- `sourceLocator`: optional verified timestamp, section, and/or transcript URL. Absent means unknown. Do not guess.
+- `firstPublishedAt`: optional ISO date (`YYYY-MM-DD`) or datetime of first live Pundits publication. Immutable once set. Absent means unknown. Never fall back to `sourceDate`, build time, or noon. Promote sets this on new live publication only; do not backfill historical rows.
+- `updatedAt`: optional ISO date or datetime of a material editorial update distinct from `sourceDate` and `gradedAt`. A grade may change updated time without changing `firstPublishedAt`.
 
 A call is not automatically a pick. Only a hard call with `eventSlug` and `side` is a mapped pick.
 

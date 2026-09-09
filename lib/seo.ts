@@ -1,5 +1,10 @@
 import { takesOnTeam } from "./archive";
 import { finalScoreParts, isMapped, seasonFromCalls, sidesForCard } from "./data";
+import {
+  evidenceKindFor,
+  presentEvidence,
+  winnerOnlyLine,
+} from "./evidence";
 import { publicSideLabel } from "./public-side";
 import {
   americanOdds,
@@ -8,6 +13,8 @@ import {
   formatGameWhen,
   formatShortDate,
 } from "./format";
+import { firstPublishedAt, materialUpdatedAt } from "./publication";
+import { isoDay, latestDay } from "./seo-dates";
 import { eventShare } from "./share";
 import {
   LEGAL_NAME,
@@ -20,6 +27,8 @@ import {
 } from "./site";
 import type { StoryCard } from "./story-card";
 import type { Call, Event, Pundit, Team } from "./types";
+
+export { isoDay, latestDay } from "./seo-dates";
 
 export type MappedTake = {
   call: Call;
@@ -61,13 +70,18 @@ export type PickStory = {
   paragraphs: string[];
 };
 
-function priceLine(event: Event, call: Call): string | null {
+function snapshotLine(event: Event, call: Call): string | null {
   const game = gamePick(event, call);
-  if (!game || game.pickedCents == null) return null;
   const asOf = formatAsOf(event.sourcedAt);
-  return `The market price on ${game.picked} was ${formatCents(game.pickedCents)} on Kalshi${
-    asOf ? ` ${asOf}` : ""
-  }`;
+  const asOfBit = asOf ? ` ${asOf}` : "";
+  const disclaimer =
+    "That figure is a dated event-level Kalshi snapshot, not live odds and not necessarily the market when the original prediction was spoken or first captured.";
+  if (game && game.pickedCents != null) {
+    return `Displayed Kalshi snapshot: ${game.picked} ${formatCents(game.pickedCents)}${asOfBit}. ${disclaimer}`;
+  }
+  const cents = call.side === "no" ? event.noCents : event.yesCents;
+  if (cents == null) return null;
+  return `Displayed Kalshi snapshot: ${formatCents(cents)}${asOfBit}. ${disclaimer}`;
 }
 
 function gamePick(event: Event, call: Call): {
@@ -100,7 +114,7 @@ function underdogLine(event: Event): string | null {
   const dog = event.yesCents < event.noCents ? event.awayTeam : event.homeTeam;
   const cents = Math.min(event.yesCents, event.noCents);
   const asOf = formatAsOf(event.sourcedAt);
-  return `The market had ${dog} as the underdog at ${formatCents(cents)} on Kalshi${
+  return `The snapshot had ${dog} as the underdog at ${formatCents(cents)}${
     asOf ? `, ${asOf}` : ""
   }.`;
 }
@@ -150,6 +164,7 @@ export function toStoryCard(take: MappedTake): StoryCard {
     href: takePath(event.slug, pundit.id),
     headline: takeHeadline(pundit, event, call),
     quote: call.claim,
+    quoteIsSpoken: evidenceKindFor(call) === "spoken-quote",
     name: pundit.name,
     photo: pundit.photo,
     outlet: pundit.outlet,
@@ -178,7 +193,10 @@ export function pickStory(
   const dog = underdogLine(event);
   const when = formatGameWhen(event);
   const day = formatShortDate(call.sourceDate);
-  const price = priceLine(event, call);
+  const snapshot = snapshotLine(event, call);
+  const evidence = presentEvidence(call, pundit.name, day);
+  const isGame = Boolean(event.awayTeam && event.homeTeam);
+  const grading = winnerOnlyLine(call, isGame);
 
   const graded = call.status === "hit" || call.status === "miss";
   const paragraphs: string[] = [];
@@ -191,49 +209,32 @@ export function pickStory(
     paragraphs.push(`Result: this take graded a ${call.status === "hit" ? "hit" : "miss"}.`);
   }
   if (game) {
-    const posture =
-      game.pickedCents != null && game.otherCents != null && game.pickedCents < game.otherCents
-        ? "is calling for the upset"
-        : "is backing the market favorite";
-    paragraphs.push(
-      `${pundit.name} ${posture}: ${game.picked} over ${game.other}. ${
-        price ? `${price}.` : ""
-      }`.trim()
-    );
+    const verb = graded ? "picked" : "picks";
+    paragraphs.push(`${pundit.name} ${verb} ${game.picked} over ${game.other}.`);
   } else if (call.side === "no") {
-    paragraphs.push(
-      `${negativeOutcome(pundit, event.title)}. The market priced that position at ${formatCents(
-        event.noCents
-      )}${formatAsOf(event.sourcedAt) ? ` ${formatAsOf(event.sourcedAt)}` : ""}.`
-    );
+    paragraphs.push(`${negativeOutcome(pundit, event.title, graded)}.`);
   } else {
-    paragraphs.push(
-      `${pundit.name} is planting a flag on ${outcomePhrase(event.title)}. The market priced that outcome at ${formatCents(
-        event.yesCents
-      )}${formatAsOf(event.sourcedAt) ? ` ${formatAsOf(event.sourcedAt)}` : ""}.`
-    );
+    const verb = graded ? "picked" : "picks";
+    paragraphs.push(`${pundit.name} ${verb} ${outcomePhrase(event.title)}.`);
   }
 
-  if (game) {
-    const marketBits = [
-      dog,
-      when ? `The game is listed for ${when}.` : null,
-      "That price is a frozen market snapshot, not a bet the expert placed.",
-    ].filter(Boolean);
-    paragraphs.push(marketBits.join(" "));
-  } else {
-    paragraphs.push(
-      `${when ? `The market covers the ${when}. ` : ""}The price is a frozen snapshot, not a bet the expert placed.`
-    );
+  paragraphs.push(evidence.evidenceLine);
+  if (evidence.locatorLine) {
+    paragraphs.push(`Source locator: ${evidence.locatorLine}.`);
   }
-
-  const said = day
-    ? `The receipt comes from ${call.source} on ${day}. ${pundit.name} said: “${call.claim}”`
-    : `The receipt comes from ${call.source}. ${pundit.name} said: “${call.claim}”`;
-  paragraphs.push(said);
-
-  if (call.reasoning?.trim()) {
-    paragraphs.push(`The reasoning ${pundit.name} gave: ${call.reasoning.trim()}`);
+  if (evidence.correctionNote) {
+    paragraphs.push(evidence.correctionNote);
+  }
+  if (evidence.rationale) {
+    paragraphs.push(`Why ${pundit.name} picked them: ${evidence.rationale}`);
+  }
+  if (grading) paragraphs.push(grading);
+  if (snapshot) paragraphs.push(snapshot);
+  if (dog) paragraphs.push(dog);
+  if (when) {
+    paragraphs.push(
+      graded ? `The game was listed for ${when}.` : `The game is listed for ${when}.`
+    );
   }
 
   const others = allCalls.filter(
@@ -265,14 +266,17 @@ export function pickStory(
               call.status === "hit" ? "hit" : "missed"
             }.`
           : null,
-        `${pundit.name} ${graded ? "took" : "is taking"} ${game.picked} over ${game.other}.`,
-        price ? `${price}.` : null,
+        `${pundit.name} ${graded ? "picked" : "picks"} ${game.picked} over ${game.other}.`,
         dog,
-        `Here is the quote and the context behind the pick.`,
+        evidence.kind === "reported-selection"
+          ? "Here is the reported selection and the snapshot context."
+          : "Here is the sourced evidence and the snapshot context.",
       ]
         .filter(Boolean)
         .join(" ")
-    : [headline + ".", dog, "Here is the quote and the market context."].filter(Boolean).join(" ");
+    : [headline + ".", dog, "Here is the sourced evidence and the snapshot context."]
+        .filter(Boolean)
+        .join(" ");
   return { headline, dek, paragraphs };
 }
 
@@ -308,15 +312,15 @@ export function gradeSheet(take: MappedTake, calls: Call[], pundits: Pundit[]): 
         ? "called the upset"
         : "calling the upset"
       : graded
-        ? "backed the market favorite"
-        : "backing the market favorite";
+        ? "backed the snapshot favorite"
+        : "backing the snapshot favorite";
     rows.push({ label: "The call", value: `${game.picked} over ${game.other} — ${posture}.` });
   } else if (call.side === "no") {
     rows.push({ label: "The call", value: `${negativeOutcome(pundit, event.title, graded)}.` });
   } else {
     rows.push({
       label: "The call",
-      value: `${pundit.name} ${graded ? "took" : "is taking"} ${outcomePhrase(event.title)}.`,
+      value: `${pundit.name} ${graded ? "picked" : "picks"} ${outcomePhrase(event.title)}.`,
     });
   }
 
@@ -325,9 +329,14 @@ export function gradeSheet(take: MappedTake, calls: Call[], pundits: Pundit[]): 
     const odds = americanOdds(cents);
     const asOf = formatAsOf(event.sourcedAt);
     rows.push({
-      label: "The price",
-      value: `${formatCents(cents)} at the freeze${odds ? ` (≈ ${odds})` : ""}${asOf ? `, ${asOf}` : ""}.`,
+      label: "Kalshi snapshot",
+      value: `${formatCents(cents)} displayed snapshot${odds ? ` (≈ ${odds})` : ""}${asOf ? `, ${asOf}` : ""}.`,
     });
+  }
+
+  const grading = winnerOnlyLine(call, Boolean(game));
+  if (grading) {
+    rows.push({ label: "Grading", value: grading });
   }
 
   const season = seasonFromCalls(pundit.id, calls);
@@ -357,6 +366,29 @@ export function takeDescription(
   return pickStory({ pundit, event, call }).dek;
 }
 
+export type BylinePart = { label: string; value: string; href?: string };
+
+export function storyByline(take: MappedTake): BylinePart[] {
+  const parts: BylinePart[] = [
+    { label: "Published by", value: SITE_ENTITY_NAME, href: "/about" },
+  ];
+  const sourceDay = formatShortDate(take.call.sourceDate);
+  if (sourceDay) parts.push({ label: "Source published", value: sourceDay });
+  const publishedDay = formatShortDate(firstPublishedAt(take.call));
+  if (publishedDay) parts.push({ label: "On Pundits", value: publishedDay });
+  const gradedDay = formatShortDate(take.call.gradedAt);
+  if (gradedDay) parts.push({ label: "Graded", value: gradedDay });
+  const updatedDay = formatShortDate(take.call.updatedAt);
+  if (
+    updatedDay &&
+    take.call.updatedAt !== take.call.firstPublishedAt &&
+    take.call.updatedAt !== take.call.gradedAt
+  ) {
+    parts.push({ label: "Updated", value: updatedDay });
+  }
+  return parts;
+}
+
 export function pickLede(
   event: Event,
   calls: Call[],
@@ -371,26 +403,24 @@ export function pickLede(
   return share.description.endsWith(".") ? share.description : `${share.description}.`;
 }
 
-export function isoDay(value: string | null | undefined): string | undefined {
-  if (!value) return undefined;
-  const m = value.match(/^(\d{4}-\d{2}-\d{2})/);
-  return m?.[1];
-}
-
-export function latestDay(dates: Array<string | null | undefined>): string | undefined {
-  const days = dates.map(isoDay).filter((d): d is string => Boolean(d));
-  if (!days.length) return undefined;
-  return days.sort()[days.length - 1];
-}
-
 export function takeLastModified(call: Call): string | undefined {
-  return latestDay([call.sourceDate, call.gradedAt]);
+  return latestDay([
+    call.firstPublishedAt,
+    call.updatedAt,
+    call.gradedAt,
+    call.sourceDate,
+  ]);
 }
 
 export function eventLastModified(event: Event, calls: Call[]): string | undefined {
   return latestDay([
     event.sourcedAt,
-    ...calls.flatMap((call) => [call.sourceDate, call.gradedAt]),
+    ...calls.flatMap((call) => [
+      call.firstPublishedAt,
+      call.updatedAt,
+      call.sourceDate,
+      call.gradedAt,
+    ]),
   ]);
 }
 
@@ -399,7 +429,12 @@ export function callsLastModified(
   fallback?: string | null
 ): string | undefined {
   return latestDay([
-    ...calls.flatMap((call) => [call.sourceDate, call.gradedAt]),
+    ...calls.flatMap((call) => [
+      call.firstPublishedAt,
+      call.updatedAt,
+      call.sourceDate,
+      call.gradedAt,
+    ]),
     fallback,
   ]);
 }
@@ -412,6 +447,8 @@ export function teamLastModified(
   const takes = takesOnTeam(teamId, events, calls);
   return latestDay(
     [...takes.for, ...takes.against].flatMap((call) => [
+      call.firstPublishedAt,
+      call.updatedAt,
       call.sourceDate,
       call.gradedAt,
     ])
@@ -549,16 +586,13 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
   const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
   const story = pickStory(take, allCalls, pundits);
   const image = canonicalUrl(`/og/takes/${take.event.slug}--${take.pundit.id}.png`);
+  const published = isoDay(firstPublishedAt(take.call));
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: story.headline,
-    datePublished: isoDay(take.call.sourceDate),
-    dateModified: latestDay([
-      take.call.sourceDate,
-      take.event.sourcedAt,
-      take.call.gradedAt,
-    ]),
+    ...(published ? { datePublished: published } : {}),
+    dateModified: materialUpdatedAt(take.call, take.event),
     url,
     mainEntityOfPage: url,
     description: story.dek,
@@ -568,7 +602,7 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
     image: [image],
     author: {
       "@type": "Organization",
-      name: `${SITE_NAME} Staff`,
+      name: SITE_ENTITY_NAME,
       url: canonicalUrl("/about"),
     },
     publisher: {
