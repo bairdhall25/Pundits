@@ -1,5 +1,8 @@
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { validateRunContents } from "./validate-run.mjs";
+import { shouldRequireLaneStatus, validateRunContents, validateRunPath } from "./validate-run.mjs";
 
 const EVENTS = ["clemson-at-lsu-2026"];
 
@@ -114,6 +117,53 @@ describe("run-file validation", () => {
     expect(
       validateRunContents(contents, { eventSlugs: EVENTS, allowLegacySchema: true })
     ).toEqual([]);
+  });
+
+  it("requires Lane status only on Scout intake files on or after 2026-09-09", () => {
+    const dir = mkdtempSync(path.join(os.tmpdir(), "pundits-runs-"));
+    const intake = `## Dispatch
+
+## Shows pass 2026-09-09 (Scout)
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| kanell | clemson-at-lsu-2026 | yes | Give me Clemson. | A concise source-grounded explanation. |  | Cover 3 | https://example.com/episode | 2026-09-09 | hard |
+`;
+    const audit = `# Audit — 2026-09-09
+
+| pundit | eventSlug | side | verdict | note |
+|---|---|---|---|---|
+`;
+    const journal = `# Growth-engine implementation journal\n\nStatus: Evidence\n`;
+    try {
+      writeFileSync(path.join(dir, "2026-09-09.md"), intake);
+      writeFileSync(path.join(dir, "2026-09-09-audit.md"), audit);
+      writeFileSync(path.join(dir, "2026-09-09-grade.md"), "# Grade\n");
+      writeFileSync(path.join(dir, "2026-09-09-recap.md"), "# Recap\n");
+      writeFileSync(path.join(dir, "2026-09-09-social.md"), "# Social\n");
+      writeFileSync(path.join(dir, "2026-09-09-growth-implementation.md"), journal);
+      writeFileSync(path.join(dir, "2026-09-08.md"), intake.replaceAll("2026-09-09", "2026-09-08"));
+
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09.md", intake)).toBe(true);
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09-audit.md", audit)).toBe(false);
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09-growth-implementation.md", journal)).toBe(
+        false
+      );
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-08.md", intake)).toBe(false);
+
+      const errors = validateRunPath(dir, { root: dir }).join("\n");
+      expect(errors).toMatch(/2026-09-09\.md.*Lane status table is required/i);
+      expect(errors).not.toMatch(/2026-09-09-audit/);
+      expect(errors).not.toMatch(/2026-09-09-grade/);
+      expect(errors).not.toMatch(/2026-09-09-recap/);
+      expect(errors).not.toMatch(/2026-09-09-social/);
+      expect(errors).not.toMatch(/growth-implementation/);
+      expect(errors).not.toMatch(/2026-09-08\.md/);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it("requires the note column for the current schema", () => {

@@ -200,6 +200,14 @@ function markdownFiles(targetPath) {
     .map((entry) => path.join(targetPath, entry.name));
 }
 
+export function shouldRequireLaneStatus(filePath, contents) {
+  const base = path.basename(filePath);
+  const datedName = base.match(/^(\d{4}-\d{2}-\d{2})/u);
+  if (!datedName || datedName[1] < "2026-09-09") return false;
+  if (/^\d{4}-\d{2}-\d{2}\.md$/u.test(base)) return true;
+  return /^\s*##\s+(Shows|X|News)\s+pass\b/imu.test(contents);
+}
+
 export function validateRunPath(targetPath, { root = process.cwd() } = {}) {
   const resolvedTarget = path.resolve(root, targetPath);
   if (!existsSync(resolvedTarget)) throw new Error(`Run path does not exist: ${targetPath}`);
@@ -216,14 +224,13 @@ export function validateRunPath(targetPath, { root = process.cwd() } = {}) {
     const displayPath = path.relative(root, file) || file;
     const datedName = path.basename(file).match(/^(\d{4}-\d{2}-\d{2})/u);
     const allowLegacySchema = Boolean(datedName && datedName[1] < "2026-09-03");
-    // Existing 2026-09-03..08 mailbox files predate the lane-status table.
-    const requireLaneStatus = Boolean(datedName && datedName[1] >= "2026-09-09");
+    const contents = readFileSync(file, "utf8");
     errors.push(
-      ...validateRunContents(readFileSync(file, "utf8"), {
+      ...validateRunContents(contents, {
         filePath: displayPath,
         eventSlugs,
         allowLegacySchema,
-        requireLaneStatus,
+        requireLaneStatus: shouldRequireLaneStatus(file, contents),
       })
     );
   }
