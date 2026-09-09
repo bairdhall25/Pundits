@@ -1,4 +1,4 @@
-import type { CallStatus, Side, Sport } from "../types";
+import type { CallStatus, EvidenceKind, Side, Sport } from "../types";
 
 export type SocialArchetype = "split" | "quote" | "editorial";
 
@@ -31,6 +31,7 @@ export type SocialPerson = {
   portrait: string | null;
   portraitFocus?: PortraitFocus;
   quote?: string;
+  evidenceKind?: EvidenceKind;
   status?: CallStatus;
 };
 
@@ -103,6 +104,7 @@ export type QuoteSocialCardModel = SocialCardBase & {
   subject: SocialPerson;
   quote: string | null;
   quoteExcerpt: string | null;
+  evidenceKind: EvidenceKind | null;
   metrics: SocialMetric[];
   sides: [SocialSide, SocialSide] | null;
   result: SocialResult | null;

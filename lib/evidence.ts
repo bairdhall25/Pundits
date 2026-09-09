@@ -33,9 +33,23 @@ export function isSpokenQuote(call: Pick<Call, "sourceUrl" | "evidenceKind">): b
   return evidenceKindFor(call) === "spoken-quote";
 }
 
+/** Readable label for reported selections. Spoken quotes keep quotation treatment instead. */
+export const REPORTED_SELECTION_LABEL = "Reported selection";
+
+/**
+ * Present already-classified evidence text.
+ * Only spoken quotations receive quotation marks; unknown kind does not gain stronger attribution.
+ */
+export function formatAttributedText(
+  text: string,
+  kind: EvidenceKind | null | undefined
+): string {
+  return kind === "spoken-quote" ? `“${text}”` : text;
+}
+
 /** Claim text as it should appear to a reader. Does not invent wording. */
 export function quotedEvidenceText(call: Pick<Call, "claim" | "sourceUrl" | "evidenceKind">): string {
-  return isSpokenQuote(call) ? `“${call.claim}”` : call.claim;
+  return formatAttributedText(call.claim, evidenceKindFor(call));
 }
 
 export function publicRationale(call: Pick<Call, "id" | "reasoning">): string | null {

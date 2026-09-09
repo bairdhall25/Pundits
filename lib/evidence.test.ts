@@ -2,11 +2,13 @@ import { describe, expect, it } from "vitest";
 import { loadCalls, loadEvents, loadPundits } from "./data";
 import {
   evidenceKindFor,
+  formatAttributedText,
   looksLikeSpreadOrigin,
   OMIT_PUBLIC_RATIONALE_CALL_IDS,
   presentEvidence,
   publicRationale,
   quotedEvidenceText,
+  REPORTED_SELECTION_LABEL,
   winnerOnlyLine,
 } from "./evidence";
 import { articleJsonLd, mappedTakes, pickStory } from "./seo";
@@ -21,6 +23,18 @@ function liveTake(eventSlug: string, punditId: string) {
 }
 
 describe("evidence presentation", () => {
+  it("does not give unknown or reported evidence stronger quotation attribution", () => {
+    expect(formatAttributedText("LSU over Clemson", undefined)).toBe("LSU over Clemson");
+    expect(formatAttributedText("LSU over Clemson", null)).toBe("LSU over Clemson");
+    expect(formatAttributedText("LSU over Clemson", "reported-selection")).toBe(
+      "LSU over Clemson"
+    );
+    expect(formatAttributedText("LSU over Clemson", "spoken-quote")).toBe(
+      "“LSU over Clemson”"
+    );
+    expect(REPORTED_SELECTION_LABEL).toBe("Reported selection");
+  });
+
   it("treats Brandt's GMFB claim as spoken quotation", () => {
     const take = liveTake("49ers-vs-rams-2026", "brandt");
     expect(evidenceKindFor(take.call)).toBe("spoken-quote");

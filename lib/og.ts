@@ -1,9 +1,24 @@
 import { gamesForWeek, takesOnTeam, weekRecord } from "./archive";
 import { formatCents, formatGameWhen } from "./format";
 import { finalScoreLine, getTeam, sidesForCard } from "./data";
+import {
+  evidenceKindFor,
+  formatAttributedText,
+  REPORTED_SELECTION_LABEL,
+} from "./evidence";
 import { sideChip, takeHeadline, type MappedTake } from "./seo";
 import { canonicalUrl, ogImage, takePath } from "./site";
-import type { ActivityRecord, Call, CallStatus, CardSide, Event, Pundit, Sport, Team } from "./types";
+import type {
+  ActivityRecord,
+  Call,
+  CallStatus,
+  CardSide,
+  Event,
+  EvidenceKind,
+  Pundit,
+  Sport,
+  Team,
+} from "./types";
 
 export const OG_LAYOUT_VERSION = 2;
 
@@ -34,6 +49,7 @@ export type TakeOgCard = {
   kicker: string;
   headline: string;
   quote: string;
+  evidenceKind: EvidenceKind;
   when: string | null;
   photo: string;
   name: string;
@@ -61,6 +77,7 @@ export type PunditOgCard = {
   losses: number;
   recordLabel: string;
   latestQuote: string | null;
+  evidenceKind: EvidenceKind | null;
 };
 
 export type TeamOgCard = {
@@ -125,13 +142,21 @@ export function ogQuote(claim: string, max = 140): string {
   return `${window.replace(/\s+\S*$/, "")}…`;
 }
 
+function takeTweetClaimLine(card: TakeOgCard): string {
+  const excerpt = ogQuote(card.quote, 160);
+  if (card.evidenceKind === "reported-selection") {
+    return `${REPORTED_SELECTION_LABEL}: ${excerpt}`;
+  }
+  return formatAttributedText(excerpt, card.evidenceKind);
+}
+
 export function takeTweetText(card: TakeOgCard, slug: string, punditId: string): string {
   const [yes, no] = card.sides;
   const price = `${yes.label} ${yes.cents} · ${no.label} ${no.cents}`;
   return [
     card.headline,
     "",
-    `“${ogQuote(card.quote, 160)}”`,
+    takeTweetClaimLine(card),
     "",
     price,
     card.when,
@@ -219,6 +244,7 @@ export function takeOgCard(
     kicker: take.pundit.outlet,
     headline: takeHeadline(take.pundit, take.event, take.call),
     quote: take.call.claim,
+    evidenceKind: evidenceKindFor(take.call),
     when: formatGameWhen(take.event),
     photo: take.pundit.photo,
     name: take.pundit.name,
@@ -268,6 +294,7 @@ export function punditOgCard(
         ? "—"
         : `${pundit.season2026.wins}–${pundit.season2026.losses}`,
     latestQuote: latest?.claim ?? null,
+    evidenceKind: latest ? evidenceKindFor(latest) : null,
   };
 }
 

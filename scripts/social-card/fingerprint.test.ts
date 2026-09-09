@@ -96,4 +96,34 @@ describe("cardFingerprint", () => {
     });
     expect(story).not.toBe(landscape);
   });
+
+  it("changes when evidence kind or display text on the model changes with renderer version held constant", () => {
+    const spoken = cardFingerprint({
+      ...base,
+      model: {
+        quote: "LSU over Clemson",
+        evidenceKind: "spoken-quote",
+        proof: ["Original public quote"],
+      },
+    });
+    const reported = cardFingerprint({
+      ...base,
+      model: {
+        quote: "LSU over Clemson",
+        evidenceKind: "reported-selection",
+        proof: ["Reported selection"],
+      },
+    });
+    const reportedRelabeled = cardFingerprint({
+      ...base,
+      model: {
+        quote: "LSU over Clemson",
+        evidenceKind: "reported-selection",
+        proof: ["Reported selection", "Open pick"],
+      },
+    });
+    expect(reported).not.toBe(spoken);
+    expect(reportedRelabeled).not.toBe(reported);
+    expect(spoken).toMatch(/^[a-f0-9]{64}$/);
+  });
 });

@@ -313,6 +313,53 @@ describe("Quote social-card resolvers", () => {
     );
     expect(missingPhoto.subject.portrait).toBeNull();
   });
+
+  it("presents Saban's Clemson recap as a reported selection, not a spoken quote", () => {
+    const take = mappedTakes(calls, events, pundits).find(
+      (candidate) =>
+        candidate.event.slug === "clemson-at-lsu-2026" &&
+        candidate.pundit.id === "saban"
+    )!;
+    const card = resolveTakeSocialCard(take, calls, pundits, teams);
+    expect(card.evidenceKind).toBe("reported-selection");
+    expect(card.subject.evidenceKind).toBe("reported-selection");
+    expect(card.quote).toBe("LSU over Clemson");
+    expect(card.quoteExcerpt).toBe("LSU over Clemson");
+    expect(card.quote).not.toMatch(/[“”"]/);
+    expect(card.proof).toContain("Reported selection");
+    expect(card.proof.join(" ")).not.toMatch(/Original public quote/i);
+  });
+
+  it("keeps quotation treatment on a verified spoken-quote take", () => {
+    const take = mappedTakes(calls, events, pundits).find(
+      (candidate) => candidate.call.id === "orlovsky-rams-sb-20260515"
+    )!;
+    const card = resolveTakeSocialCard(take, calls, pundits, teams);
+    expect(card.evidenceKind).toBe("spoken-quote");
+    expect(card.subject.evidenceKind).toBe("spoken-quote");
+    expect(card.quote).toBe(take.call.claim);
+    expect(card.quoteExcerpt).toBe(quoteExcerpt(take.call.claim, 160));
+    expect(card.proof).toContain("Original public quote");
+    expect(card.proof).not.toContain("Reported selection");
+  });
+
+  it("uses the same evidence kind on the profile quote card as the take", () => {
+    const saban = pundits.find((pundit) => pundit.id === "saban")!;
+    const profile = resolvePunditSocialCard(saban, calls);
+    const take = mappedTakes(calls, events, pundits).find(
+      (candidate) =>
+        candidate.event.slug === "clemson-at-lsu-2026" &&
+        candidate.pundit.id === "saban"
+    )!;
+    expect(profile.evidenceKind).toBe("reported-selection");
+    expect(profile.subject.evidenceKind).toBe("reported-selection");
+    expect(profile.evidenceKind).toBe(
+      resolveTakeSocialCard(take, calls, pundits, teams).evidenceKind
+    );
+    expect(profile.quote).toBe("LSU over Clemson");
+    expect(profile.quoteExcerpt).toBe("LSU over Clemson");
+    expect(profile.proof.join(" ")).not.toMatch(/Original public quote/i);
+  });
 });
 
 describe("Editorial social-card resolvers", () => {

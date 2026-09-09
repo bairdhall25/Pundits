@@ -10,6 +10,10 @@ import {
   sidesForCard,
   toActivityRecord,
 } from "../data";
+import {
+  evidenceKindFor,
+  REPORTED_SELECTION_LABEL,
+} from "../evidence";
 import { formatCents, formatGameWhen } from "../format";
 import { takeHeadline, type MappedTake } from "../seo";
 import type {
@@ -54,8 +58,15 @@ function personFromPundit(pundit: Pundit, call?: Call): SocialPerson {
     portrait: pundit.photo?.trim() || null,
     ...(presentation.focus ? { portraitFocus: presentation.focus } : {}),
     ...(call?.claim ? { quote: call.claim } : {}),
+    ...(call ? { evidenceKind: evidenceKindFor(call) } : {}),
     ...(call?.status ? { status: call.status } : {}),
   };
+}
+
+function takeEvidenceProofLine(call: Call): string {
+  return evidenceKindFor(call) === "reported-selection"
+    ? REPORTED_SELECTION_LABEL
+    : "Original public quote";
 }
 
 function peopleFromCalls(calls: Call[], pundits: Pundit[]): SocialPerson[] {
@@ -251,6 +262,7 @@ export function resolveTakeSocialCard(
     subject: personFromPundit(take.pundit, take.call),
     quote: take.call.claim,
     quoteExcerpt: quoteExcerpt(take.call.claim, format === "story" ? 110 : 160),
+    evidenceKind: evidenceKindFor(take.call),
     metrics: [
       { label: "Picked", value: pickedSide.label },
       { label: "Frozen", value: formatCents(pickedSide.cents) },
@@ -260,7 +272,7 @@ export function resolveTakeSocialCard(
     proof: [
       `${pickedSide.label} ${formatCents(pickedSide.cents)}`,
       take.call.status === "pending" ? "Open pick" : result!.label,
-      "Original public quote",
+      takeEvidenceProofLine(take.call),
     ],
     disclosure: SOCIAL_DISCLOSURES.picks,
   };
@@ -287,6 +299,7 @@ export function resolvePunditSocialCard(
     quoteExcerpt: latest
       ? quoteExcerpt(latest.claim, format === "story" ? 110 : 140)
       : null,
+    evidenceKind: latest ? evidenceKindFor(latest) : null,
     metrics: [
       { label: "Open picks", value: String(record.mappedPending) },
       {

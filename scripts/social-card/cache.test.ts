@@ -7,6 +7,7 @@ import {
   resolveCardCache,
   writeCachedCard,
 } from "./cache";
+import { cardFingerprint } from "./fingerprint";
 
 async function tempDir(prefix: string) {
   return mkdtemp(path.join(os.tmpdir(), prefix));
@@ -67,6 +68,51 @@ describe("social card cache", () => {
     const root = await tempDir("pundits-og-cache-");
     await mkdir(root, { recursive: true });
     await expect(readCachedCard(root, "ff".repeat(32))).resolves.toBeNull();
+  });
+
+  it("misses the warm cache after an evidence-only model change and hits on the second identical build", async () => {
+    const root = await tempDir("pundits-og-evidence-");
+    const parts = {
+      rendererVersion: "renderer-a",
+      portraits: [{ id: "saban", hash: "portrait-saban" }],
+      fonts: [{ name: "Oswald", hash: "font-oswald" }],
+      width: 1200,
+      height: 630,
+      encoding: "png",
+    };
+    const spokenFp = cardFingerprint({
+      ...parts,
+      model: { quote: "LSU over Clemson", evidenceKind: "spoken-quote" },
+    });
+    const reportedFp = cardFingerprint({
+      ...parts,
+      model: { quote: "LSU over Clemson", evidenceKind: "reported-selection" },
+    });
+    expect(reportedFp).not.toBe(spokenFp);
+
+    await writeCachedCard({
+      root,
+      fingerprint: spokenFp,
+      bytes: Buffer.from("spoken-png"),
+      validate: async () => {},
+    });
+    await expect(readCachedCard(root, reportedFp)).resolves.toBeNull();
+
+    await writeCachedCard({
+      root,
+      fingerprint: reportedFp,
+      bytes: Buffer.from("reported-png"),
+      validate: async () => {},
+    });
+    await expect(readCachedCard(root, reportedFp)).resolves.toEqual(
+      Buffer.from("reported-png")
+    );
+    await expect(readCachedCard(root, reportedFp)).resolves.toEqual(
+      Buffer.from("reported-png")
+    );
+    await expect(readCachedCard(root, spokenFp)).resolves.toEqual(
+      Buffer.from("spoken-png")
+    );
   });
 
   it("treats a corrupt cached object as a miss after the caller rejects it", async () => {

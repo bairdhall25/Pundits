@@ -11,6 +11,10 @@ import {
 } from "../lib/data";
 import { archiveWeeks } from "../lib/archive";
 import {
+  formatAttributedText,
+  REPORTED_SELECTION_LABEL,
+} from "../lib/evidence";
+import {
   ogQuote,
   type EventOgCard,
   type OgChip,
@@ -345,7 +349,7 @@ function Stamp({
 
 function TakeMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
-  const quote = ogQuote(card.quote, 100);
+  const quote = formatAttributedText(ogQuote(card.quote, 100), card.evidenceKind);
   const quoteSize = quote.length > 78 ? 21 : 25;
   const verdictColor = card.status === "hit" ? GREEN : card.status === "miss" ? RED : GREEN;
   return (
@@ -434,6 +438,8 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
           >
             <div
               style={{
+                display: "flex",
+                flexDirection: "column",
                 color: INK,
                 fontFamily: "Inter",
                 fontSize: quoteSize,
@@ -441,7 +447,21 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
                 fontWeight: 400,
               }}
             >
-              {`“${quote}”`}
+              {card.evidenceKind === "reported-selection" ? (
+                <div
+                  style={{
+                    color: GREEN,
+                    fontFamily: "Oswald",
+                    fontSize: 14,
+                    letterSpacing: 2,
+                    textTransform: "uppercase",
+                    marginBottom: 6,
+                  }}
+                >
+                  {REPORTED_SELECTION_LABEL}
+                </div>
+              ) : null}
+              {quote}
             </div>
           </div>
         </div>
@@ -632,7 +652,9 @@ function WeekMarkup({ card }: { card: WeekOgCard }) {
 
 function PunditMarkup({ card }: { card: PunditOgCard }) {
   const uri = photoUri(card.photo);
-  const quote = card.latestQuote ? ogQuote(card.latestQuote, 130) : null;
+  const quote = card.latestQuote
+    ? formatAttributedText(ogQuote(card.latestQuote, 130), card.evidenceKind)
+    : null;
   return (
     <Shell>
       <Wordmark right="Expert picks · Quotes · Receipts" />
@@ -657,7 +679,9 @@ function PunditMarkup({ card }: { card: PunditOgCard }) {
           </div>
           {quote ? (
             <div style={{ display: "flex", borderLeft: `4px solid ${GREEN}`, paddingLeft: 16, marginTop: 22, maxHeight: 76, overflow: "hidden", color: INK, fontFamily: "Inter", fontSize: 21, lineHeight: 1.3 }}>
-              {`Latest: “${quote}”`}
+              {card.evidenceKind === "reported-selection"
+                ? `${REPORTED_SELECTION_LABEL}: ${quote}`
+                : `Latest: ${quote}`}
             </div>
           ) : null}
         </div>
@@ -793,7 +817,7 @@ function StoryPrice({ side, accent }: { side: OgSide; accent?: string }) {
 
 function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
   const uri = photoUri(card.photo);
-  const quote = storyQuote(card.quote, 110);
+  const quote = formatAttributedText(storyQuote(card.quote, 110), card.evidenceKind);
   const verdictColor = card.status === "hit" ? GREEN : card.status === "miss" ? RED : GREEN;
   const rest = card.headline.startsWith(card.name)
     ? card.headline.slice(card.name.length).trim()
@@ -889,9 +913,25 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
             color: INK,
             fontSize: 34,
             lineHeight: 1.28,
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          {`“${quote}”`}
+          {card.evidenceKind === "reported-selection" ? (
+            <div
+              style={{
+                color: GREEN,
+                fontFamily: "Oswald",
+                fontSize: 20,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              {REPORTED_SELECTION_LABEL}
+            </div>
+          ) : null}
+          {quote}
         </div>
       </div>
       <div style={{ padding: "0 64px 20px", display: "flex", flexDirection: "column" }}>
@@ -1028,7 +1068,9 @@ function EventStoryMarkup({ card }: { card: EventOgCard }) {
 
 function PunditStoryMarkup({ card }: { card: PunditOgCard }) {
   const uri = photoUri(card.photo);
-  const quote = card.latestQuote ? ogQuote(card.latestQuote, 140) : null;
+  const quote = card.latestQuote
+    ? formatAttributedText(ogQuote(card.latestQuote, 140), card.evidenceKind)
+    : null;
   return (
     <div
       style={{
@@ -1099,9 +1141,25 @@ function PunditStoryMarkup({ card }: { card: PunditOgCard }) {
               color: INK,
               fontSize: 34,
               lineHeight: 1.28,
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            {`“${quote}”`}
+            {card.evidenceKind === "reported-selection" ? (
+              <div
+                style={{
+                  color: GREEN,
+                  fontFamily: "Oswald",
+                  fontSize: 20,
+                  letterSpacing: 3,
+                  textTransform: "uppercase",
+                  marginBottom: 10,
+                }}
+              >
+                {REPORTED_SELECTION_LABEL}
+              </div>
+            ) : null}
+            {quote}
           </div>
         ) : null}
       </div>

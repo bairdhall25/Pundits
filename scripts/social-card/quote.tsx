@@ -1,3 +1,7 @@
+import {
+  formatAttributedText,
+  REPORTED_SELECTION_LABEL,
+} from "../../lib/evidence";
 import type { QuoteSocialCardModel, SocialMetric } from "../../lib/social-card";
 import {
   Kicker,
@@ -51,8 +55,14 @@ function Metric({ metric }: { metric: SocialMetric }) {
   );
 }
 
+function takeKicker(model: QuoteSocialCardModel): string {
+  if (model.evidenceKind === "reported-selection") return REPORTED_SELECTION_LABEL;
+  return model.result ? `${model.result.label} receipt` : "Public prediction";
+}
+
 function TakeCard({ model }: { model: QuoteSocialCardModel }) {
-  const quote = model.quoteExcerpt ?? model.headline;
+  const excerpt = model.quoteExcerpt ?? model.headline;
+  const quote = formatAttributedText(excerpt, model.evidenceKind);
   const hasPhoto = Boolean(model.subject.portrait);
   const picked = metricValue(model, "Picked");
   const frozen = metricValue(model, "Frozen");
@@ -84,7 +94,7 @@ function TakeCard({ model }: { model: QuoteSocialCardModel }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Kicker>{model.result ? `${model.result.label} receipt` : "Public prediction"}</Kicker>
+          <Kicker>{takeKicker(model)}</Kicker>
           {model.state === "hit" || model.state === "miss" ? <ResultStamp state={model.state} /> : null}
         </div>
         <div
@@ -96,14 +106,14 @@ function TakeCard({ model }: { model: QuoteSocialCardModel }) {
             padding: "12px 0 8px",
             color: SOCIAL_COLORS.ink,
             fontFamily: SOCIAL_FONTS.display,
-            fontSize: dominantQuoteSize(quote),
+            fontSize: dominantQuoteSize(excerpt),
             fontWeight: 700,
             lineHeight: 1.02,
             letterSpacing: -0.5,
             textTransform: "uppercase",
           }}
         >
-          {`“${quote}”`}
+          {quote}
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 66 }}>
           <PickSignature model={model} />
@@ -160,10 +170,10 @@ function PunditCard({ model }: { model: QuoteSocialCardModel }) {
         {model.quoteExcerpt ? (
           <div style={{ display: "flex", flex: 1, minHeight: 118, flexDirection: "column", justifyContent: "center", marginTop: 16, padding: "14px 18px", overflow: "hidden", borderLeft: `6px solid ${SOCIAL_COLORS.green}`, background: SOCIAL_COLORS.panel }}>
             <div style={{ display: "flex", color: SOCIAL_COLORS.green, fontFamily: SOCIAL_FONTS.mono, fontSize: 12, fontWeight: 600, lineHeight: 1, letterSpacing: 1, textTransform: "uppercase" }}>
-              Latest mapped take
+              {model.evidenceKind === "reported-selection" ? REPORTED_SELECTION_LABEL : "Latest mapped take"}
             </div>
             <div style={{ display: "flex", marginTop: 8, color: SOCIAL_COLORS.ink, fontFamily: SOCIAL_FONTS.display, fontSize: model.quoteExcerpt.length > 105 ? 22 : 27, fontWeight: 700, lineHeight: 1.12, textTransform: "uppercase" }}>
-              {`“${model.quoteExcerpt}”`}
+              {formatAttributedText(model.quoteExcerpt, model.evidenceKind)}
             </div>
           </div>
         ) : (

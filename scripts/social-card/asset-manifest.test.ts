@@ -6,6 +6,10 @@ import {
   buildAssetManifest,
   type FingerprintContext,
 } from "./asset-manifest";
+import {
+  LANDSCAPE_RENDERER_SOURCES,
+  STORY_RENDERER_SOURCES,
+} from "./runtime-context";
 
 function game(overrides: Partial<Event> = {}): Event {
   return {
@@ -279,5 +283,39 @@ describe("asset manifest", () => {
     expect(row(bumped, ogEventPath("empty-at-nowhere-2026")).fingerprint).toBe(
       row(baseline, ogEventPath("empty-at-nowhere-2026")).fingerprint
     );
+  });
+
+  it("changes take and profile fingerprints when only evidence kind changes", () => {
+    const baseline = world();
+    const reported = world();
+    reported.calls = reported.calls.map((entry) =>
+      entry.id === "alice-away"
+        ? { ...entry, evidenceKind: "reported-selection" as const }
+        : entry
+    );
+    const takePath = ogTakePath("away-at-home-2026", "alice");
+    const punditPath = ogPunditPath("alice");
+    const ctx = context();
+    expect(row(buildAssetManifest(reported, ctx), takePath).fingerprint).not.toBe(
+      row(buildAssetManifest(baseline, ctx), takePath).fingerprint
+    );
+    expect(row(buildAssetManifest(reported, ctx), punditPath).fingerprint).not.toBe(
+      row(buildAssetManifest(baseline, ctx), punditPath).fingerprint
+    );
+    const reportedModel = row(buildAssetManifest(reported, ctx), takePath).model as {
+      evidenceKind?: string;
+      proof?: string[];
+    };
+    expect(reportedModel.evidenceKind).toBe("reported-selection");
+    expect(reportedModel.proof?.join(" ")).not.toMatch(/Original public quote/i);
+  });
+
+  it("hashes quote renderer sources so wrapping changes invalidate landscape and story assets", () => {
+    expect(LANDSCAPE_RENDERER_SOURCES).toContain("scripts/social-card/quote.tsx");
+    expect(LANDSCAPE_RENDERER_SOURCES).toContain("scripts/render-og.tsx");
+    expect(LANDSCAPE_RENDERER_SOURCES).toContain("lib/evidence.ts");
+    expect(STORY_RENDERER_SOURCES).toContain("scripts/render-og.tsx");
+    expect(STORY_RENDERER_SOURCES).toContain("lib/og.ts");
+    expect(STORY_RENDERER_SOURCES).toContain("lib/evidence.ts");
   });
 });

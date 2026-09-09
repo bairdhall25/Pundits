@@ -1,3 +1,4 @@
+import { formatAttributedText } from "../../lib/evidence";
 import type {
   EditorialSocialCardModel,
   SocialMetric,
@@ -221,7 +222,7 @@ function PagePersonRow({ person }: { person: SocialPerson }) {
       <div style={{ display: "flex", flex: 1, minWidth: 0, flexDirection: "column", marginLeft: person.portrait ? 20 : 0 }}>
         <div style={{ display: "flex", color: SOCIAL_COLORS.ink, fontFamily: SOCIAL_FONTS.display, fontSize: 28, fontWeight: 700, lineHeight: 1, textTransform: "uppercase" }}>{person.name}</div>
         <div style={{ display: "flex", marginTop: 8, color: quote ? SOCIAL_COLORS.muted : SOCIAL_COLORS.green, fontFamily: quote ? SOCIAL_FONTS.body : SOCIAL_FONTS.mono, fontSize: quote ? 16 : 12, fontWeight: quote ? 400 : 600, lineHeight: quote ? 1.2 : 1, letterSpacing: quote ? 0 : 0.6, textTransform: quote ? "none" : "uppercase" }}>
-          {quote ? `“${quote}”` : person.outlet}
+          {quote ? formatAttributedText(quote, person.evidenceKind) : person.outlet}
         </div>
       </div>
     </div>

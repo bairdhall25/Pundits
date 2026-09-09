@@ -1,11 +1,16 @@
+import { renderToStaticMarkup } from "react-dom/server";
 import sharp from "sharp";
 import { describe, expect, it } from "vitest";
 import {
+  callsForPundit,
+  isMapped,
   loadCalls,
   loadEvents,
   loadPundits,
   loadTeams,
+  toActivityRecord,
 } from "../../lib/data";
+import { punditOgCard, takeOgCard } from "../../lib/og";
 import { mappedTakes } from "../../lib/seo";
 import {
   resolveEventSocialCard,
@@ -15,7 +20,7 @@ import {
   resolveTeamSocialCard,
   resolveWeekSocialCard,
 } from "../../lib/social-card";
-import { renderCardPng } from "../render-og";
+import { punditStoryTree, renderCardPng, takeStoryTree } from "../render-og";
 import { landscapeSocialTree } from "./render";
 
 describe("landscape social renderer", () => {
@@ -64,5 +69,84 @@ describe("landscape social renderer", () => {
       expect(metadata.width).toBe(1200);
       expect(metadata.height).toBe(630);
     }
+  }, 60_000);
+
+  it("renders Saban's Clemson take and profile without spoken-quote marks", async () => {
+    const calls = loadCalls();
+    const events = loadEvents();
+    const pundits = loadPundits();
+    const teams = loadTeams();
+    const take = mappedTakes(calls, events, pundits).find(
+      (candidate) =>
+        candidate.event.slug === "clemson-at-lsu-2026" &&
+        candidate.pundit.id === "saban"
+    )!;
+    const saban = pundits.find((candidate) => candidate.id === "saban")!;
+    const landscapeTake = resolveTakeSocialCard(take, calls, pundits, teams);
+    const landscapeProfile = resolvePunditSocialCard(saban, calls);
+    const storyTake = takeOgCard(take, calls, pundits, teams);
+    const storyProfile = punditOgCard(
+      toActivityRecord(saban, calls),
+      callsForPundit(saban.id, calls).find(isMapped)
+    );
+
+    const landscapeTakeHtml = renderToStaticMarkup(landscapeSocialTree(landscapeTake));
+    const landscapeProfileHtml = renderToStaticMarkup(
+      landscapeSocialTree(landscapeProfile)
+    );
+    const storyTakeHtml = renderToStaticMarkup(takeStoryTree(storyTake));
+    const storyProfileHtml = renderToStaticMarkup(punditStoryTree(storyProfile));
+
+    for (const html of [
+      landscapeTakeHtml,
+      landscapeProfileHtml,
+      storyTakeHtml,
+      storyProfileHtml,
+    ]) {
+      expect(html).toContain("LSU over Clemson");
+      expect(html).toContain("Reported selection");
+      expect(html).not.toContain("“LSU over Clemson”");
+      expect(html).not.toContain("Original public quote");
+    }
+
+    const pngs = await Promise.all([
+      renderCardPng(landscapeSocialTree(landscapeTake)),
+      renderCardPng(landscapeSocialTree(landscapeProfile)),
+      renderCardPng(takeStoryTree(storyTake), { width: 1080, height: 1920 }),
+      renderCardPng(punditStoryTree(storyProfile), { width: 1080, height: 1920 }),
+    ]);
+    const landscapeMeta = await sharp(pngs[0]).metadata();
+    const storyMeta = await sharp(pngs[2]).metadata();
+    expect(landscapeMeta).toMatchObject({ format: "png", width: 1200, height: 630 });
+    expect(storyMeta).toMatchObject({ format: "png", width: 1080, height: 1920 });
+  }, 60_000);
+
+  it("keeps quotation marks on a spoken-quote take and profile control", async () => {
+    const calls = loadCalls();
+    const events = loadEvents();
+    const pundits = loadPundits();
+    const teams = loadTeams();
+    const take = mappedTakes(calls, events, pundits).find(
+      (candidate) =>
+        candidate.event.slug === "ncsu-at-uva-2026" &&
+        candidate.pundit.id === "kanell"
+    )!;
+    const kanell = pundits.find((candidate) => candidate.id === "kanell")!;
+    const landscapeTake = resolveTakeSocialCard(take, calls, pundits, teams);
+    const landscapeProfile = resolvePunditSocialCard(kanell, calls);
+    const storyTake = takeOgCard(take, calls, pundits, teams);
+
+    const landscapeHtml = renderToStaticMarkup(landscapeSocialTree(landscapeTake));
+    const profileHtml = renderToStaticMarkup(landscapeSocialTree(landscapeProfile));
+    const storyHtml = renderToStaticMarkup(takeStoryTree(storyTake));
+
+    expect(landscapeHtml).toMatch(/“[^”]*Wolfpack/i);
+    expect(storyHtml).toMatch(/“[^”]*Wolfpack/i);
+    expect(landscapeHtml).not.toContain("Reported selection");
+    expect(profileHtml).toMatch(/“/);
+    expect(profileHtml).not.toContain("Reported selection");
+
+    const png = await renderCardPng(landscapeSocialTree(landscapeTake));
+    expect((await sharp(png).metadata()).format).toBe("png");
   }, 60_000);
 });

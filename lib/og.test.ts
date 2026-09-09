@@ -91,6 +91,23 @@ describe("take cards", () => {
     expect(tweet).toContain("https://pundits.pro/picks/ncsu-at-uva-2026/kanell/");
     expect(tweet).not.toMatch(/@/);
     expect(tweet.length).toBeLessThanOrEqual(280);
+    expect(tweet).toMatch(/“/);
+    expect(card.evidenceKind).toBe("spoken-quote");
+  });
+
+  it("does not wrap Saban's Clemson reported selection in speech quotes", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "clemson-at-lsu-2026" && row.pundit.id === "saban"
+    );
+    expect(take).toBeTruthy();
+    const card = takeOgCard(take!, loadCalls(), loadPundits(), loadTeams());
+    expect(card.evidenceKind).toBe("reported-selection");
+    expect(card.quote).toBe("LSU over Clemson");
+    const tweet = takeTweetText(card, "clemson-at-lsu-2026", "saban");
+    expect(tweet).toContain("LSU over Clemson");
+    expect(tweet).not.toContain("“LSU over Clemson”");
+    expect(tweet).toContain("Reported selection");
+    expect(tweet).toContain("https://pundits.pro/picks/clemson-at-lsu-2026/saban/");
   });
 
   it("clips a long quote on a word, not a short first sentence", () => {
@@ -178,6 +195,18 @@ describe("page meta images", () => {
     });
     expect(card.latestQuote).toBeTruthy();
     expect(card.recordLabel).toBe("1–1");
+    expect(card.evidenceKind).toBe("spoken-quote");
+  });
+
+  it("carries reported-selection evidence onto Saban's profile quote card", () => {
+    const calls = loadCalls();
+    const pundit = getPundit("saban", loadPundits(), calls)!;
+    const latest = calls.find(
+      (call) => call.punditId === "saban" && call.eventSlug === "clemson-at-lsu-2026"
+    );
+    const card = punditOgCard(pundit, latest);
+    expect(card.evidenceKind).toBe("reported-selection");
+    expect(card.latestQuote).toBe("LSU over Clemson");
   });
 
   it("gives filled team pages a stable custom card", () => {

@@ -4,7 +4,7 @@ import path from "node:path";
 import type { FingerprintContext } from "./asset-manifest";
 import { sha256 } from "./fingerprint";
 
-const LANDSCAPE_SOURCES = [
+export const LANDSCAPE_RENDERER_SOURCES = [
   "scripts/social-card/tokens.ts",
   "scripts/social-card/primitives.tsx",
   "scripts/social-card/split.tsx",
@@ -13,9 +13,14 @@ const LANDSCAPE_SOURCES = [
   "scripts/social-card/render.tsx",
   "scripts/social-card/assets.ts",
   "scripts/render-og.tsx",
+  "lib/evidence.ts",
 ];
 
-const STORY_SOURCES = ["scripts/render-og.tsx", "lib/og.ts"];
+export const STORY_RENDERER_SOURCES = [
+  "scripts/render-og.tsx",
+  "lib/og.ts",
+  "lib/evidence.ts",
+];
 
 const FONT_FILES = [
   { name: "Oswald", file: "node_modules/@fontsource/oswald/files/oswald-latin-700-normal.woff" },
@@ -52,8 +57,8 @@ export function gitCommonDir(root: string): string | null {
 export function productionFingerprintContext(root: string): FingerprintContext {
   return {
     rendererVersions: {
-      landscape: versionFor(root, LANDSCAPE_SOURCES),
-      story: versionFor(root, STORY_SOURCES),
+      landscape: versionFor(root, LANDSCAPE_RENDERER_SOURCES),
+      story: versionFor(root, STORY_RENDERER_SOURCES),
     },
     fontHashes: FONT_FILES.map((font) => ({
       name: font.name,
