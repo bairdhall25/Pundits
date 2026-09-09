@@ -18,6 +18,8 @@ For a concise handoff of the present thesis, product truth, immediate priorities
 
 ## Canonical documents
 
+Current growth QA follow-up: [September 9 correction and acceptance plan](../superpowers/plans/2026-09-09-growth-qa-corrections.md), based on the [integrated QA findings](../audits/2026-09-09-growth-integrated-qa.md). This is the next bounded engineering pass; it does not mark the growth phases deployed.
+
 Active growth initiative (2026-09-08): [execution brief](./2026-09-08-growth-execution-brief.md), [Grok engineering handoff](../grok-growth-handoff.md), and [implementation plan](../superpowers/plans/2026-09-08-growth-engine-implementation.md). These distinguish planned evidence, Scout, SEO, and social changes from shipped behavior. Codex is the product manager; Grok is the engineer. The [dated audit](../audits/2026-09-08-growth-engine.md) supplies evidence, not automatic permission to implement every alternative. Phase 0 current-truth inventory and journal: [correction inventory](../runs/2026-09-08-growth-correction-inventory.md), [implementation journal](../runs/2026-09-08-growth-implementation.md).
 
 - [Product brief](./product-brief.md): customer, problem, value proposition, stage, moat, and success definition.
