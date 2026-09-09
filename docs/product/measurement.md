@@ -59,6 +59,7 @@ Target once grading begins: every objectively settled mapped pick is graded, wit
 - Referral visits from covered pundits and outlets.
 - Organic performance by earned-tag moment: Roll Call, Flowers, and Milestone.
 - Tagged-pundit or outlet amplification: replies, reposts, and quote-posts; keep paid reach separate.
+- Separate originals, outside-thread replies, and self-link replies. Unavailable metrics stay n/a.
 - Indexed valid pages versus submitted valid pages.
 
 ### Activation and engagement

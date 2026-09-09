@@ -20,7 +20,7 @@ The system's key property: **every fix is a doc commit.** The bots fetch their i
 
 - **Run reports.** Check the Poster's job output for skips and attach failures. Repeated attach failures mean the link-only fallback is kicking in and reach is suffering — fix the attach path before blaming the content.
 - **Freshness.** Confirm game-day deploys actually happened (`generatedAt` in `https://pundits.pro/social/cards.json` should be same-day on game days).
-- **Reweight.** Note which archetypes earned replies/quote-posts and adjust `schedule.md`. The schedule is a starting hypothesis, not doctrine.
+- **Reweight.** Note which story types earned outside replies/quote-posts. Do not treat an unfilled daily cap as a miss. The schedule is a cap, not doctrine.
 - **Earned-tag experiment.** Compare Roll Call, Flowers, and Milestone separately against untagged originals: pundit/outlet reposts, replies, quote-posts, profile visits, and referral visits where analytics are available. Keep smaller creators and national personalities separate. Separate paid reach and do not infer success from impressions alone.
 
 ## Where fixes go
