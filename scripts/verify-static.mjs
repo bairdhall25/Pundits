@@ -332,6 +332,36 @@ assert.match(
   /property="og:image" content="https:\/\/pundits\.pro\/og\/teams\/tcu\.png\?v=[a-z0-9]+"/
 );
 assert.match(teamPage, /"@type":"SportsTeam"/);
+assert.match(teamPage, /"@type":"WebPage"/);
+assert.match(teamPage, /data-page-type="team"/);
+assert.match(teamPage, /No scheduled game on the board for TCU/);
+assert.match(teamPage, /North Carolina beat TCU/);
+assert.match(teamPage, /not a survey of all experts/);
+assert.doesNotMatch(teamPage, /best experts/i);
+assert.doesNotMatch(teamPage, /"@type":"SportsEvent"|"@type":"FAQPage"/);
+
+const teamPending = await readFile(path.join(out, "teams/49ers/index.html"), "utf8");
+assert.match(teamPending, /data-page-type="team"/);
+assert.match(teamPending, /Next covered matchup: 49ers vs Rams/);
+assert.match(teamPending, /Kyle Brandt/);
+assert.match(teamPending, /href="\/picks\/49ers-vs-rams-2026\/brandt/);
+assert.doesNotMatch(teamPending, /name="robots" content="noindex, follow"/);
+
+const teamEmptySide = await readFile(
+  path.join(out, "teams/virginia/index.html"),
+  "utf8"
+);
+assert.match(teamEmptySide, /No scheduled game on the board for Virginia/);
+assert.match(teamEmptySide, /No captured pick on Virginia/);
+assert.match(teamEmptySide, /Virginia beat NC State/);
+
+const teamNoGame = await readFile(
+  path.join(out, "teams/chargers/index.html"),
+  "utf8"
+);
+assert.match(teamNoGame, /name="robots" content="noindex, follow"/);
+assert.match(teamNoGame, /No scheduled game on the board for Chargers/);
+assert.match(teamNoGame, /No captured pick yet/);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
 assert.match(
@@ -339,6 +369,35 @@ assert.match(
   /property="og:image" content="https:\/\/pundits\.pro\/og\/weeks\/ncaaf-2026-week-0\.png\?v=[a-z0-9]+"/
 );
 assert.match(week0, /"@type":"CollectionPage"/);
+assert.match(week0, /data-page-type="week"/);
+assert.match(week0, /who got them right/);
+assert.match(week0, /Verified disagreements/);
+assert.match(week0, /North Carolina beat TCU/);
+assert.match(week0, /href="\/picks\/unc-vs-tcu-2026\/finebaum/);
+assert.doesNotMatch(week0, /name="robots" content="noindex, follow"/);
+assert.doesNotMatch(week0, /best experts/i);
+assert.doesNotMatch(week0, /"@type":"SportsEvent"|"@type":"FAQPage"/);
+
+const weekNfl = await readFile(path.join(out, "nfl/2026/week-1/index.html"), "utf8");
+assert.match(weekNfl, /data-page-type="week"/);
+assert.match(weekNfl, /who picked whom/);
+assert.match(weekNfl, /Results land on this same URL/);
+assert.match(weekNfl, /49ers vs Rams/);
+
+const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
+assert.match(nflSlate, /data-page-type="league"/);
+assert.match(nflSlate, /NFL Week 1: who picked whom/);
+assert.match(nflSlate, /Week 1 archive/);
+assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
+assert.doesNotMatch(nflSlate, /best experts/i);
+assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
+
+const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
+assert.match(ncaafSlate, /data-page-type="league"/);
+assert.match(ncaafSlate, /College football Week 1: who called it/);
+assert.match(ncaafSlate, /Week 1 is final/);
+assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-1\//);
+assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-0\//);
 
 const pageCardFiles = {
   "index.html": "home",

@@ -1,17 +1,35 @@
-import { weekArchivePath } from "./archive";
 import {
+  gamesForWeek,
+  teamEvents,
+  teamHasTakes,
+  weekArchivePath,
+  weekRecord,
+} from "./archive";
+import {
+  eventKind,
   eventScanStatus,
   finalScoreLine,
+  finalScoreParts,
   getTeam,
   isMapped,
   otherTakes,
   sidesForCard,
 } from "./data";
 import { quotedEvidenceText } from "./evidence";
-import { formatGameWhen, formatShortDate, seasonLabel } from "./format";
+import { getLeagueSlate, getWeekArchiveGames } from "./featured";
+import { formatGameWhen, formatShortDate, seasonLabel, sportChip } from "./format";
 import { andList, eventShare, namesOn } from "./share";
 import { takePath } from "./site";
-import type { ActivityRecord, Call, CallStatus, Event, Pundit, Side } from "./types";
+import type {
+  ActivityRecord,
+  Call,
+  CallStatus,
+  Event,
+  Pundit,
+  Side,
+  Sport,
+  Team,
+} from "./types";
 
 export const TRACKED_SUBSET_DISCLAIMER =
   "This is the tracked subset on Pundits.Pro, not a survey of all experts.";
@@ -406,5 +424,428 @@ export function profileContent(
     current,
     historical,
     unmapped,
+  };
+}
+
+function kickoffValue(event: Event): number {
+  if (!event.kickoffDate) return Number.POSITIVE_INFINITY;
+  return Date.parse(`${event.kickoffDate}T00:00:00Z`);
+}
+
+function opponentName(teamId: string, event: Event): string | null {
+  if (event.awayTeamId === teamId) return event.homeTeam ?? null;
+  if (event.homeTeamId === teamId) return event.awayTeam ?? null;
+  return null;
+}
+
+function teamSideFor(teamId: string, event: Event): Side | null {
+  if (event.awayTeamId === teamId) return "yes";
+  if (event.homeTeamId === teamId) return "no";
+  if (event.teamId === teamId) return "yes";
+  return null;
+}
+
+function beatLine(event: Event, calls: Call[]): string | null {
+  const parts = finalScoreParts(event, calls);
+  return parts ? `${parts.winner} beat ${parts.loser}` : null;
+}
+
+export type TeamMatchup = {
+  event: Event;
+  href: string;
+  when: string | null;
+  resultLine: string | null;
+  beatLine: string | null;
+  forTeam: GamePickEntry[];
+  againstTeam: GamePickEntry[];
+  noCapturedPick: boolean;
+  noCapturedPickOnGame: boolean;
+  emptyFor: string;
+  emptyAgainst: string;
+  lede: string;
+};
+
+export type TeamContent = {
+  title: string;
+  h1: string;
+  lede: string;
+  description: string;
+  disclaimer: string;
+  noScheduledGame: boolean;
+  noCapturedPick: boolean;
+  nextMatchup: TeamMatchup | null;
+  upcoming: TeamMatchup[];
+  historical: TeamMatchup[];
+  otherMarkets: Event[];
+  contextLinks: ContextLink[];
+};
+
+function teamMatchup(
+  team: Team,
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): TeamMatchup {
+  const comparison = gameComparison(event, calls, pundits);
+  const side = teamSideFor(team.id, event);
+  const forTeam = side
+    ? comparison.entries.filter((entry) => entry.side === side)
+    : [];
+  const againstTeam = side
+    ? comparison.entries.filter((entry) => entry.side !== side)
+    : comparison.entries;
+  const opponent = opponentName(team.id, event);
+  const past =
+    eventScanStatus(event, calls) === "final" ||
+    eventScanStatus(event, calls) === "grading";
+  const noCapturedPickOnGame = comparison.trackedCount === 0;
+  const noCapturedPick = forTeam.length === 0;
+  let lede: string;
+  const pendingBit = past ? "" : " yet";
+  if (noCapturedPickOnGame) {
+    lede = `No captured pick on ${event.title}${pendingBit}.`;
+  } else if (noCapturedPick) {
+    const againstLine = againstTeam.length && opponent
+      ? `${andList(againstTeam.map((entry) => entry.name))} ${verbFor(
+          againstTeam.length,
+          past
+        )} ${opponent}.`
+      : null;
+    lede = [`No captured pick on ${team.name}${pendingBit}.`, againstLine]
+      .filter(Boolean)
+      .join(" ");
+  } else {
+    const forLine = `${andList(forTeam.map((entry) => entry.name))} ${verbFor(
+      forTeam.length,
+      past
+    )} ${team.name}.`;
+    const againstLine = againstTeam.length && opponent
+      ? `${andList(againstTeam.map((entry) => entry.name))} ${verbFor(
+          againstTeam.length,
+          past
+        )} ${opponent}.`
+      : opponent
+        ? `Nobody on ${opponent}${pendingBit}.`
+        : null;
+    lede = [forLine, againstLine].filter(Boolean).join(" ");
+  }
+  return {
+    event,
+    href: `/picks/${event.slug}`,
+    when: comparison.when,
+    resultLine: comparison.resultLine,
+    beatLine: beatLine(event, calls),
+    forTeam,
+    againstTeam,
+    noCapturedPick,
+    noCapturedPickOnGame,
+    emptyFor: `No captured pick on ${team.name}${pendingBit}.`,
+    emptyAgainst: opponent
+      ? `Nobody on ${opponent}${pendingBit}.`
+      : past
+        ? "Nobody."
+        : "Nobody yet.",
+    lede,
+  };
+}
+
+export function teamContent(
+  team: Team,
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): TeamContent {
+  const involved = teamEvents(team.id, events);
+  const games = involved
+    .filter((event) => eventKind(event) === "game")
+    .sort(
+      (a, b) =>
+        kickoffValue(a) - kickoffValue(b) || a.slug.localeCompare(b.slug)
+    );
+  const openGames = games.filter((event) => {
+    const status = eventScanStatus(event, calls);
+    return status === "open" || status === "grading";
+  });
+  const historicalGames = games
+    .filter((event) => eventScanStatus(event, calls) === "final")
+    .sort(
+      (a, b) =>
+        kickoffValue(b) - kickoffValue(a) || a.slug.localeCompare(b.slug)
+    );
+  const nextMatchup = openGames[0]
+    ? teamMatchup(team, openGames[0], calls, pundits)
+    : null;
+  const upcoming = openGames
+    .slice(1)
+    .map((event) => teamMatchup(team, event, calls, pundits));
+  const historical = historicalGames.map((event) =>
+    teamMatchup(team, event, calls, pundits)
+  );
+  const otherMarkets = involved.filter((event) => eventKind(event) === "future");
+  const noScheduledGame = nextMatchup == null;
+  const hasTakes = teamHasTakes(team.id, events, calls);
+  const noCapturedPick = nextMatchup
+    ? nextMatchup.noCapturedPick
+    : !hasTakes;
+  const opponent = nextMatchup
+    ? opponentName(team.id, nextMatchup.event)
+    : null;
+  const title = nextMatchup && opponent
+    ? `${team.name}: who is picking them vs ${opponent}`
+    : historical.length
+      ? `${team.name}: tracked picks and results`
+      : `${team.name}: tracked picks`;
+  const bits: string[] = [];
+  if (nextMatchup) {
+    bits.push(`Next covered matchup: ${nextMatchup.event.title}.`);
+    bits.push(nextMatchup.lede);
+  } else {
+    bits.push(`No scheduled game on the board for ${team.name}.`);
+    if (!hasTakes) {
+      bits.push("No captured pick yet.");
+    } else if (historical[0]) {
+      bits.push(
+        `Last tracked result: ${historical[0].beatLine ?? historical[0].event.title}.`
+      );
+      bits.push(historical[0].lede);
+    }
+  }
+  const lede = bits.join(" ");
+  const focus = nextMatchup ?? historical[0] ?? null;
+  const contextLinks: ContextLink[] = [
+    { href: `/${team.sport}/`, label: sportChip(team.sport) },
+  ];
+  if (focus) {
+    contextLinks.push({ href: focus.href, label: "Game comparison" });
+    if (focus.event.season != null && focus.event.week != null) {
+      contextLinks.push({
+        href: weekArchivePath(team.sport, focus.event.season, focus.event.week),
+        label: `Week ${focus.event.week} archive`,
+      });
+    }
+  }
+  return {
+    title,
+    h1: team.name,
+    lede,
+    description: `${lede} ${TRACKED_SUBSET_DISCLAIMER}`,
+    disclaimer: TRACKED_SUBSET_DISCLAIMER,
+    noScheduledGame,
+    noCapturedPick,
+    nextMatchup,
+    upcoming,
+    historical,
+    otherMarkets,
+    contextLinks,
+  };
+}
+
+export type LeagueWeekLink = {
+  season: number;
+  week: number;
+  label: string;
+  href: string;
+  openCount: number;
+  finalCount: number;
+};
+
+export type LeagueContent = {
+  title: string;
+  h1: string;
+  lede: string;
+  description: string;
+  disclaimer: string;
+  sportLabel: string;
+  currentWeek: LeagueWeekLink | null;
+  weekLinks: LeagueWeekLink[];
+  previous: { href: string; line: string } | null;
+};
+
+export function leagueContent(
+  sport: Sport,
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): LeagueContent {
+  const slate = getLeagueSlate(sport, events, calls, pundits);
+  const sportLabel = sportChip(sport);
+  const h1 = sport === "nfl" ? "NFL" : "College football";
+  const weekLinks: LeagueWeekLink[] = slate.weeks.map((week) => ({
+    season: week.season,
+    week: week.week,
+    label: week.label,
+    href: weekArchivePath(sport, week.season, week.week),
+    openCount: week.open.length,
+    finalCount: week.final.length,
+  }));
+  const currentWeek = weekLinks[0] ?? null;
+  const openWeeks = weekLinks.filter((week) => week.openCount > 0);
+  const finalOnly = currentWeek != null && openWeeks.length === 0;
+  const title = currentWeek
+    ? finalOnly
+      ? `${sportLabel} Week ${currentWeek.week}: who called it`
+      : `${sportLabel} Week ${currentWeek.week}: who picked whom`
+    : `${sportLabel}: tracked picks this week`;
+  let lede: string;
+  if (!currentWeek) {
+    lede = `No tracked ${sportLabel} games on the live board yet.`;
+  } else if (finalOnly) {
+    const n = currentWeek.finalCount;
+    lede = `Week ${currentWeek.week} is final on this ${sportLabel} board. ${n} tracked game${
+      n === 1 ? "" : "s"
+    }. The Week ${currentWeek.week} archive is the permanent record.`;
+  } else {
+    const openBit =
+      openWeeks.length === 1
+        ? `${openWeeks[0].openCount} open game${
+            openWeeks[0].openCount === 1 ? "" : "s"
+          } in Week ${openWeeks[0].week}`
+        : openWeeks
+            .map(
+              (week) =>
+                `Week ${week.week} has ${week.openCount} open game${
+                  week.openCount === 1 ? "" : "s"
+                }`
+            )
+            .join(". ");
+    lede = `Tracked picks on this week's ${sportLabel} slate. ${openBit}. Open games stay on this board; the Week ${currentWeek.week} archive is the permanent record.`;
+  }
+  return {
+    title,
+    h1,
+    lede,
+    description: `${lede} ${TRACKED_SUBSET_DISCLAIMER}`,
+    disclaimer: TRACKED_SUBSET_DISCLAIMER,
+    sportLabel,
+    currentWeek,
+    weekLinks,
+    previous: slate.previous
+      ? { href: slate.previous.href, line: slate.previous.line }
+      : null,
+  };
+}
+
+export type WeekDisagreement = {
+  event: Event;
+  href: string;
+  line: string;
+  receipts: GamePickEntry[];
+};
+
+export type WeekArchiveContent = {
+  title: string;
+  h1: string;
+  lede: string;
+  description: string;
+  disclaimer: string;
+  sportLabel: string;
+  graded: boolean;
+  trackedCount: number;
+  record: { hits: number; misses: number; pending: number };
+  disagreements: WeekDisagreement[];
+  recap: string | null;
+  contextLinks: ContextLink[];
+};
+
+function weekDisagreement(
+  event: Event,
+  calls: Call[],
+  pundits: Pundit[]
+): WeekDisagreement | null {
+  const comparison = gameComparison(event, calls, pundits);
+  if (!comparison.disagreement) return null;
+  const past =
+    eventScanStatus(event, calls) === "final" ||
+    eventScanStatus(event, calls) === "grading";
+  const winner = finalScoreParts(event, calls);
+  let line = comparison.disagreement;
+  if (past && winner) {
+    const hitNames = comparison.entries
+      .filter((entry) => entry.status === "hit")
+      .map((entry) => entry.name);
+    const missNames = comparison.entries
+      .filter((entry) => entry.status === "miss")
+      .map((entry) => entry.name);
+    line = [
+      `${winner.winner} beat ${winner.loser}.`,
+      hitNames.length
+        ? `${andList(hitNames)} called ${winner.winner}.`
+        : null,
+      missNames.length
+        ? `${andList(missNames)} picked ${winner.loser}.`
+        : null,
+    ]
+      .filter(Boolean)
+      .join(" ");
+  }
+  return {
+    event,
+    href: `/picks/${event.slug}`,
+    line,
+    receipts: comparison.entries,
+  };
+}
+
+export function weekArchiveContent(
+  sport: Sport,
+  season: number,
+  week: number,
+  events: Event[],
+  calls: Call[],
+  pundits: Pundit[]
+): WeekArchiveContent {
+  const sportLabel = sportChip(sport);
+  const displayGames = getWeekArchiveGames(
+    sport,
+    season,
+    week,
+    events,
+    calls,
+    pundits
+  );
+  const record = weekRecord(gamesForWeek(sport, season, week, events), calls);
+  const graded = record.hits + record.misses > 0;
+  const disagreements = displayGames.flatMap((event) => {
+    const row = weekDisagreement(event, calls, pundits);
+    return row ? [row] : [];
+  });
+  const recap = disagreements.length
+    ? disagreements
+        .map((row) => `${row.event.title}: ${row.line}`)
+        .join(" ")
+    : null;
+  const title = graded
+    ? `${sportLabel} Week ${week}: who got them right (${season})`
+    : `${sportLabel} Week ${week}: who picked whom (${season})`;
+  const h1 = `${sportLabel} Week ${week}`;
+  const openBit = record.pending
+    ? `, with ${record.pending} still open`
+    : "";
+  const lede = graded
+    ? `Tracked Week ${week} record: ${record.hits}–${record.misses} on ${
+        record.hits + record.misses
+      } graded pick${record.hits + record.misses === 1 ? "" : "s"}${openBit}. ${
+        recap ?? "No verified disagreement in this tracked set."
+      }`
+    : `${displayGames.length} tracked game${
+        displayGames.length === 1 ? "" : "s"
+      } on the Week ${week} slate, ${record.pending} open pick${
+        record.pending === 1 ? "" : "s"
+      }. Results land on this same URL.`;
+  return {
+    title,
+    h1,
+    lede,
+    description: `${lede} ${TRACKED_SUBSET_DISCLAIMER}`,
+    disclaimer: TRACKED_SUBSET_DISCLAIMER,
+    sportLabel,
+    graded,
+    trackedCount: displayGames.length,
+    record,
+    disagreements,
+    recap,
+    contextLinks: [
+      { href: `/${sport}/`, label: `${sportLabel} slate` },
+    ],
   };
 }

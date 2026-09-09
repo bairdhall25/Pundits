@@ -8,6 +8,14 @@ This journal records engineering progress on [the 2026-09-08 plan](../superpower
 
 Phase 0 inventory: `6287aba`. Phase 1 HEAD: `cae79e9`. Phase 2 HEAD: `773e708`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
 
+## QA pause (2026-09-08)
+
+Codex QAs accuracy and Scout first. Grok resumed later phases in parallel without touching #25.
+
+- Codex QA queue: [#22](https://github.com/bairdhall25/Pundits/pull/22) → [#23](https://github.com/bairdhall25/Pundits/pull/23) → [#24](https://github.com/bairdhall25/Pundits/pull/24) → [#25](https://github.com/bairdhall25/Pundits/pull/25)
+- Parallel engineering: [#26](https://github.com/bairdhall25/Pundits/pull/26) (3A), [#27](https://github.com/bairdhall25/Pundits/pull/27) (4); 3B and 5 follow as separate PRs
+- Do not deploy or post to X from this journal. Do not rebase onto Scout while Codex is reviewing it.
+
 ## Phase 0 — current truth and correction inventory
 
 Outcome required: engineering starts from current code and an inspectable list of affected records, not from assumptions about the September 8 snapshot.
@@ -139,6 +147,7 @@ No production deploy. No `data/*.json` edits. Methodology page was not changed: 
 4. **Episode ledger writer.** Shows is instructed to persist inspection outcomes in `docs/scout-episodes.json`. Coordinator feed checks only discover. Whether Coordinator should auto-write `outcome: discovered` on every feeds run is left to Codex; the CLI remains print-only by default so a dry run cannot mark episodes inspected.
 
 Parked by the brief and not reopened: auto-roster, photo bypass, team-analyst eligibility, bulk event minting, new bots, `data/*.json` edits, production deploy, live X.
+Parked from Phase 1: Scout queue (Codex QA in #25), ATS, backends, production deploy, live X.
 
 ## Phase 3A — receipts, game comparisons, pundit profiles
 
@@ -254,6 +263,14 @@ Parked: live X, paid boosts, card redesign, Phase 3B team/league/week templates,
 ## Phase 5 — measurement and the three-slate readout
 
 Outcome required: the next prioritization decision is based on useful evidence, not counts of posts or pages. Engineering delivers instrumentation and a sample report. Operational owners run subsequent reviews. The three-slate experiment is **not** marked successful.
+1. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
+2. GameDay original-evidence disposition remains from Phase 1.
+
+## Phase 3B — team, league, weekly archive
+
+Outcome required: each remaining page type answers its own question using the same verified ledger. No duplicate routes. No SportsEvent. No FAQ multiplication. No card redesign or new homepage/display sorting.
+
+Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-08-phase-3a-seo-contract.md) (extended, not duplicated).
 
 ### Acceptance criteria
 
@@ -292,3 +309,25 @@ No production deploy. No live X. No `data/*.json` edits.
 4. **24h/72h social snapshots.** Reviewer currently has current metrics. Timed snapshots are an operating habit, not a new backend.
 
 Parked: dashboards, backends, PII, eligibility changes, erasing losing receipts, production deploy, live X, claiming experiment success.
+| Team pages identify the next covered matchup and named picks, then historical results | yes | 49ers local page: next matchup 49ers vs Rams + Kyle Brandt receipt; TCU has no upcoming game and keeps Dublin result |
+| Distinguish no captured pick from no scheduled game | yes | Fixture and Chargers: no scheduled game; scheduled empty game says no captured pick; Virginia empty side is not a missing game |
+| League pages retain live-week board behavior and link the permanent archive | yes | NFL/NCAAF keep `getLeagueSlate`; each week kicker links `Week N archive`; previous-week recap unchanged |
+| Weekly archives progress from open picks to final results at the same URL | yes | NFL Week 1: who picked whom, results land on this URL; NCAAF Week 0: who got them right |
+| Recap synthesis highlights verified disagreements and linked receipts; no per-grade news route | yes | Week 0 “Verified disagreements” + receipt links; compact graded-pick index; no new grade URLs |
+| Titles/H1 identify team/league/week context; no best-experts claims | yes | `{team}: who is picking them vs {opponent}`; `{league} Week N: who picked whom / who called it / who got them right` |
+| Schema from the same content contract; no SportsEvent; no FAQPage on these pages | yes | Team WebPage+SportsTeam; league/week CollectionPage |
+| Preserve noindex/earned-indexing and permalink ledger | yes | Chargers stays noindex; TCU/49ers indexable; Week 0 remains indexable; `verify:static` permalink ledger |
+| Static HTML, existing cards, max-image-preview:large | yes | `data-page-type` in local `out/`; OG card previews unchanged |
+| Analytics hooks on existing event system | yes | `team_page_open` / `league_page_open` / `week_archive_open` with `page_type` |
+
+### Checks run
+
+`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 474 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production) inspected for 49ers pending team, TCU historical team, Virginia empty-side, Chargers no-game noindex shell, NFL live league, NCAAF settled league, NCAAF Week 0 graded archive, and NFL Week 1 pending archive. No production deploy. `data/*.json` untouched.
+
+### Remaining Codex decisions
+
+1. GameDay original-evidence disposition remains from Phase 1.
+2. Profile hypothetical $100 placement remains from Phase 3A.
+3. OG card artwork still says “expert picks”; left unchanged as existing card previews.
+
+Phase 4 and 5 continue as separate PRs while Codex QAs Scout. SportsEvent, FAQ multiplication, production deploy, and live X remain parked.

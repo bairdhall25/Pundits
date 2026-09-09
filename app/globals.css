@@ -800,6 +800,7 @@ h1, h2, .type-broadcast {
 }
 .all-picks-league-head { margin-bottom: 8px; }
 .board-kicker { color: var(--green); font-size: 11px; letter-spacing: 0.18em; }
+.board-kicker a { color: var(--green); }
 .board-title { font-size: clamp(24px, 6vw, 38px); margin: 2px 0 4px; }
 .when { color: var(--muted); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
 .week-recap {
@@ -2107,6 +2108,7 @@ a.empty.event-price-link { color: var(--muted); }
 .week-results h2 { margin: 0 0 10px; font-size: 22px; letter-spacing: 0.08em; }
 .week-results ol { margin: 0; padding-left: 24px; }
 .week-results li { margin: 8px 0; line-height: 1.45; }
+.week-results .take-list { margin-top: 8px; }
 .week-result-link {
   align-items: center;
   color: var(--ink);
@@ -2133,8 +2135,14 @@ a.empty.event-price-link { color: var(--muted); }
   max-width: 560px;
 }
 .team-split ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.team-split .take-list { margin-top: 6px; }
 .team-split li a { color: var(--ink); min-height: 32px; display: inline-flex; align-items: center; }
 .team-split li a:hover { color: var(--green); }
+.team-split .take-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .past-weeks, .team-links {
   display: flex;
   flex-wrap: wrap;
