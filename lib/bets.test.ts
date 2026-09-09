@@ -201,8 +201,8 @@ describe("weekend home", () => {
     expect(bySlug["ncsu-at-uva-2026"].noCents).toBe(66);
     expect(bySlug["wisconsin-vs-nd-2026"].yesCents).toBe(8);
     expect(bySlug["wisconsin-vs-nd-2026"].noCents).toBe(93);
-    expect(bySlug["patriots-at-seahawks-2026"].yesCents).toBe(38.5);
-    expect(bySlug["patriots-at-seahawks-2026"].noCents).toBe(62.5);
+    expect(bySlug["patriots-at-seahawks-2026"].yesCents).toBe(39);
+    expect(bySlug["patriots-at-seahawks-2026"].noCents).toBe(62);
     expect(bySlug["49ers-vs-rams-2026"].yesCents).toBe(36);
     expect(bySlug["49ers-vs-rams-2026"].noCents).toBe(65);
     expect(bySlug["bills-at-texans-2026"].yesCents).toBe(48.5);

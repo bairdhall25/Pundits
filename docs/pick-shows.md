@@ -30,7 +30,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Barstool College Football Show | `walker`, `bigcat`, `portnoy` (name the speaker; Kayce only if she picks) | Saturday | **gambling locks of the week** | This is the Barstool game-SU show. PMT is not. 2026 Week 0 not posted. |
 | Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
 | Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
-| The Herd / Sharp or Square | `cowherd`, `jmac`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
+| The Herd / Sharp or Square | `cowherd`, `jmac`, `nick-wright`, `john-middlekauff`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
 | GMFB / NFL Daily | `brandt`; name the speaker | weekday predictions hour | helmet props / “who wins” Week 1–N | Apple `id1171438277` (verified from the 2026-09-08 Brandt row). Co-hosts are the co-host, never `brandt` unless Kyle says it. |
 | Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
 
@@ -98,7 +98,8 @@ Hunt only when Dispatch includes `sport=nfl` rows that are `empty-side`, `thin`,
 | Show | Voices (roster id) | Drop | Jump | Notes |
 |---|---|---|---|---|
 | The Rich Eisen Show | `eisen`; guests are the guest | weekday | “who wins” / locks | AFC East lean ≠ Patriots–Seahawks |
-| The Herd | `cowherd`; guests (Duck, etc.) | weekday | bold predictions | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards |
+| The Herd | `cowherd`, `nick-wright`, `john-middlekauff`; guests (Duck, etc.) | weekday | bold predictions | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards |
+| Nightcap (Deebo & Joe) | `joe-haden` | weekday | Super Chats / who wins | Cohost SU is `joe-haden`. Deebo is the other cohost, never `joe-haden`. Apple `id1706534198`; Omny is the reopenable transcript. |
 | Ringer NFL Show / gambling pods | `kapadia`, `sal`, `simmons` | weekly | named winner | Win totals ≠ Week 1 SU. `ruiz` is FOX now — do not hunt him here |
 | McAfee Show | `mcafee` only if Pat picks | weekday | locks | Guests are the guest (`pft`, etc.), never `mcafee` |
 | PFT video / PFT Live | `florio`, `simms` | weekday | “who wins” | Column version is News |

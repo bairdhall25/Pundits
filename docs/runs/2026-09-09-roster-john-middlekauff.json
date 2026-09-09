@@ -1,0 +1,24 @@
+{
+  "id": "john-middlekauff",
+  "name": "John Middlekauff",
+  "outlet": "3 & Out / The Volume",
+  "sport": "nfl",
+  "photo": "/photos/john-middlekauff.jpg",
+  "photoSource": "Official 3 & Out with John Middlekauff YouTube channel avatar (@3andout_pod, s900). X avatar @JohnMiddlekauff was a full-body outdoor shot, not a usable face.",
+  "xHandle": "JohnMiddlekauff",
+  "factory": "The Herd",
+  "eligibility": "association",
+  "calls": [
+    {
+      "eventSlug": "patriots-at-seahawks-2026",
+      "side": "no",
+      "claim": "I think Seattle. I don't know if the game looks exactly like last year. I don't expect. It's week one. … But to me, this is a 10-point game by Seattle.",
+      "reasoning": "He believes in Mike Macdonald's operation and Sam Darnold. New England's injured backs and left tackle make this a bad Week 1 matchup; he still sees it closer than last year's Super Bowl.",
+      "source": "3 & Out with John Middlekauff",
+      "sourceUrl": "https://omny.fm/shows/3-and-out-with-john-middlekauff/2026-nfl-kickoff-patriots-seahawks-predictions-baker-mayfield-gets-paid-aaron-donald-out-for-week-1",
+      "sourceDate": "2026-09-09",
+      "subject": "Seahawks",
+      "paysOn": "Patriots at Seahawks (Week 1)"
+    }
+  ]
+}

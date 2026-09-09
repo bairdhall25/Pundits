@@ -1510,5 +1510,50 @@
     "eventSlug": "49ers-vs-rams-2026",
     "side": "yes",
     "reasoning": "GMFB predictions hour with helmet props; repeats Niners over Rams in week one. Clear W1 winner."
+  },
+  {
+    "id": "joe-haden-patriots-at-seahawks-20260907",
+    "punditId": "joe-haden",
+    "claim": "I think I still like the Patriots.",
+    "source": "Nightcap (Deebo & Joe) Part 2",
+    "sourceUrl": "https://omny.fm/shows/deebo-joe/deebo-joe-part-2-will-aaron-donald-play-week-1-will-nfl-suspend-puka-nacua",
+    "sourceDate": "2026-09-07",
+    "kind": "hard",
+    "subject": "Patriots",
+    "paysOn": "Patriots at Seahawks (Week 1)",
+    "status": "pending",
+    "eventSlug": "patriots-at-seahawks-2026",
+    "side": "yes",
+    "reasoning": "He says New England got a little better. Seattle lost Kenneth Walker, which he thinks will hurt them."
+  },
+  {
+    "id": "nick-wright-patriots-at-seahawks-20260908",
+    "punditId": "nick-wright",
+    "claim": "I'm going on the record. 27-17 Seattle. That's my pick.",
+    "source": "What's Wright? with Nick Wright",
+    "sourceUrl": "https://omny.fm/shows/whats-wright-with-nick-wright/seahawks-patriots-super-bowl-rematch-chiefs-catching-strays-biggest-storylines-of-the-nfl-season",
+    "sourceDate": "2026-09-08",
+    "kind": "hard",
+    "subject": "Seahawks",
+    "paysOn": "Patriots at Seahawks (Week 1)",
+    "status": "pending",
+    "eventSlug": "patriots-at-seahawks-2026",
+    "side": "no",
+    "reasoning": "He expects Seattle to stay excellent. New England was dominated in last year's Super Bowl (2 yards per play, down 19-0 through three quarters), and a similar beating would make the opening month ugly."
+  },
+  {
+    "id": "john-middlekauff-patriots-at-seahawks-20260909",
+    "punditId": "john-middlekauff",
+    "claim": "I think Seattle. I don't know if the game looks exactly like last year. I don't expect. It's week one. … But to me, this is a 10-point game by Seattle.",
+    "source": "3 & Out with John Middlekauff",
+    "sourceUrl": "https://omny.fm/shows/3-and-out-with-john-middlekauff/2026-nfl-kickoff-patriots-seahawks-predictions-baker-mayfield-gets-paid-aaron-donald-out-for-week-1",
+    "sourceDate": "2026-09-09",
+    "kind": "hard",
+    "subject": "Seahawks",
+    "paysOn": "Patriots at Seahawks (Week 1)",
+    "status": "pending",
+    "eventSlug": "patriots-at-seahawks-2026",
+    "side": "no",
+    "reasoning": "He believes in Mike Macdonald's operation and Sam Darnold. New England's injured backs and left tackle make this a bad Week 1 matchup; he still sees it closer than last year's Super Bowl."
   }
 ]

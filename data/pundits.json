@@ -53,5 +53,8 @@
   { "id": "clay-travis", "name": "Clay Travis", "outlet": "Outkick", "photo": "/photos/clay-travis.jpg", "sport": "both" },
   { "id": "elliott", "name": "Bud Elliott", "outlet": "CBS / Cover 3", "photo": "/photos/elliott.jpg", "sport": "ncaaf" },
   { "id": "fornelli", "name": "Tom Fornelli", "outlet": "CBS / Cover 3", "photo": "/photos/fornelli.png", "sport": "ncaaf" },
-  { "id": "pollack", "name": "David Pollack", "outlet": "On3 / See Ball Get Ball", "photo": "/photos/pollack.jpg", "sport": "ncaaf" }
+  { "id": "pollack", "name": "David Pollack", "outlet": "On3 / See Ball Get Ball", "photo": "/photos/pollack.jpg", "sport": "ncaaf" },
+  { "id": "joe-haden", "name": "Joe Haden", "outlet": "Nightcap (Deebo & Joe)", "photo": "/photos/joe-haden.jpg", "sport": "nfl" },
+  { "id": "nick-wright", "name": "Nick Wright", "outlet": "What's Wright? / FOX Sports", "photo": "/photos/nick-wright.jpg", "sport": "nfl" },
+  { "id": "john-middlekauff", "name": "John Middlekauff", "outlet": "3 & Out / The Volume", "photo": "/photos/john-middlekauff.jpg", "sport": "nfl" }
 ]

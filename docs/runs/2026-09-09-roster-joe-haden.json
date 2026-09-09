@@ -1,0 +1,24 @@
+{
+  "id": "joe-haden",
+  "name": "Joe Haden",
+  "outlet": "Nightcap (Deebo & Joe)",
+  "sport": "nfl",
+  "photo": "/photos/joe-haden.jpg",
+  "photoSource": "Wikimedia Commons, CC BY 2.0. File 'Joe Haden in 2019 (cropped).jpg', credit Erik Drost, shot 2019-06-15 at the Jarvis Landry Celebrity Softball Game. Cropped head-and-shoulders from Flickr 48086691413. X avatar @joehaden23 was a full-body couple photo on a field, not a usable face.",
+  "xHandle": "joehaden23",
+  "factory": "Nightcap (Deebo & Joe)",
+  "eligibility": "association",
+  "calls": [
+    {
+      "eventSlug": "patriots-at-seahawks-2026",
+      "side": "yes",
+      "claim": "I think I still like the Patriots.",
+      "reasoning": "He says New England got a little better. Seattle lost Kenneth Walker, which he thinks will hurt them.",
+      "source": "Nightcap (Deebo & Joe) Part 2",
+      "sourceUrl": "https://omny.fm/shows/deebo-joe/deebo-joe-part-2-will-aaron-donald-play-week-1-will-nfl-suspend-puka-nacua",
+      "sourceDate": "2026-09-07",
+      "subject": "Patriots",
+      "paysOn": "Patriots at Seahawks (Week 1)"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "nick-wright",
+  "name": "Nick Wright",
+  "outlet": "What's Wright? / FOX Sports",
+  "sport": "nfl",
+  "photo": "/photos/nick-wright.jpg",
+  "photoSource": "Official talent still from getnickwright.com (1x1NickWright.jpg, untransformed). FOX Sports personality crop is chroma-green. X avatar @getnickwright was a TV-screen grab with chyron, not a usable face.",
+  "xHandle": "getnickwright",
+  "factory": "The Herd",
+  "eligibility": "association",
+  "calls": [
+    {
+      "eventSlug": "patriots-at-seahawks-2026",
+      "side": "no",
+      "claim": "I'm going on the record. 27-17 Seattle. That's my pick.",
+      "reasoning": "He expects Seattle to stay excellent. New England was dominated in last year's Super Bowl (2 yards per play, down 19-0 through three quarters), and a similar beating would make the opening month ugly.",
+      "source": "What's Wright? with Nick Wright",
+      "sourceUrl": "https://omny.fm/shows/whats-wright-with-nick-wright/seahawks-patriots-super-bowl-rematch-chiefs-catching-strays-biggest-storylines-of-the-nfl-season",
+      "sourceDate": "2026-09-08",
+      "subject": "Seahawks",
+      "paysOn": "Patriots at Seahawks (Week 1)"
+    }
+  ]
+}

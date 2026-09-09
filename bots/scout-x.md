@@ -44,6 +44,9 @@ Skip parody / quote accounts (`*quotes`, `Not Kirk`, satire Finebaum). Resolve t
 
 | id | Name | handle |
 |---|---|---|
+| john-middlekauff | John Middlekauff | JohnMiddlekauff |
+| nick-wright | Nick Wright | getnickwright |
+| joe-haden | Joe Haden | joehaden23 |
 | pollack | David Pollack | davidpollack47 |
 | fornelli | Tom Fornelli | TomFornelli |
 | elliott | Bud Elliott | BudElliott3 |
