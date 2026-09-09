@@ -61,6 +61,22 @@ describe("game comparison contract", () => {
     expect(comparison.disclaimer).toBe(TRACKED_SUBSET_DISCLAIMER);
     expect(comparison.resultLine).toBeNull();
   });
+
+  it("does not repeat the empty-shell sentence in coverage or Takes it/Against lines", () => {
+    const event = loadEvents().find((row) => row.slug === "chiefs-sb-2026")!;
+    const comparison = gameComparison(event, loadCalls(), loadPundits());
+    expect(comparison.trackedCount).toBe(0);
+    expect(comparison.lede).toBe(`No verified pick on ${event.title} yet.`);
+    expect(comparison.coverageLine).toBeNull();
+    expect(comparison.emptyLine).toBeNull();
+    expect(comparison.description).toBe(
+      `No verified pick on ${event.title} yet. ${TRACKED_SUBSET_DISCLAIMER}`
+    );
+    expect(comparison.description.match(/No verified pick on /g)?.length).toBe(1);
+    expect(comparison.contextLinks.find((link) => link.href === "/teams/chiefs")?.label).toBe(
+      "Chiefs"
+    );
+  });
 });
 
 describe("receipt contract extras", () => {
@@ -95,6 +111,23 @@ describe("receipt contract extras", () => {
         "/ncaaf/2026/week-1/",
       ])
     );
+    expect(links.find((link) => link.href === "/picks/clemson-at-lsu-2026")?.label).toBe(
+      "Game comparison"
+    );
+  });
+
+  it("labels a futures receipt with Market page and the team name", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "texas-cfp-2026" && row.pundit.id === "fallica"
+    )!;
+    const links = receiptContextLinks(take.event, take.pundit);
+    expect(links.find((link) => link.href === "/picks/texas-cfp-2026")?.label).toBe(
+      "Market page"
+    );
+    expect(links.find((link) => link.href.startsWith("/teams/"))?.label).not.toBe(
+      take.event.title
+    );
+    expect(links.some((link) => link.label === "Game comparison")).toBe(false);
   });
 });
 

@@ -128,8 +128,9 @@ export default async function PickPage({
       {comparison.resultLine ? <p className="lede">{comparison.resultLine}</p> : null}
       <p className="lede">{comparison.lede}</p>
       <p className="coverage-note">
-        {comparison.coverageLine} {comparison.disclaimer}
-        {comparison.emptyLine ? ` ${comparison.emptyLine}` : ""}
+        {[comparison.coverageLine, comparison.disclaimer, comparison.emptyLine]
+          .filter(Boolean)
+          .join(" ")}
       </p>
       <EventCard
         event={event}

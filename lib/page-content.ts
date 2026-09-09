@@ -2,6 +2,7 @@ import { weekArchivePath } from "./archive";
 import {
   eventScanStatus,
   finalScoreLine,
+  getTeam,
   isMapped,
   otherTakes,
   sidesForCard,
@@ -48,7 +49,7 @@ export type GameComparison = {
   h1: string;
   lede: string;
   description: string;
-  coverageLine: string;
+  coverageLine: string | null;
   trackedCount: number;
   disclaimer: string;
   disagreement: string | null;
@@ -171,7 +172,10 @@ export function gameContextLinks(event: Event): ContextLink[] {
     links.push({ href: `/teams/${event.homeTeamId}`, label: event.homeTeam });
   }
   if (event.teamId && !event.awayTeam) {
-    links.push({ href: `/teams/${event.teamId}`, label: event.title });
+    links.push({
+      href: `/teams/${event.teamId}`,
+      label: getTeam(event.teamId)?.name ?? "Team page",
+    });
   }
   if (event.season != null && event.week != null) {
     links.push({
@@ -180,6 +184,34 @@ export function gameContextLinks(event: Event): ContextLink[] {
     });
   }
   return links;
+}
+
+function futureSubject(event: Event): string {
+  return getTeam(event.teamId)?.name ?? event.title;
+}
+
+function emptySideNote(
+  event: Event,
+  sides: Array<{ side: Side; label: string; calls: Call[] }>,
+  isGame: boolean,
+  trackedCount: number
+): string | null {
+  if (trackedCount === 0) return null;
+  const emptySides = sides.filter((side) => side.calls.length === 0);
+  if (!emptySides.length) return null;
+  if (isGame) {
+    return emptySides
+      .map((side) => `No verified pick on ${side.label} in this tracked set.`)
+      .join(" ");
+  }
+  const subject = futureSubject(event);
+  return emptySides
+    .map((side) =>
+      side.side === "yes"
+        ? `No verified pick taking ${subject} in this tracked set.`
+        : `No verified pick against ${subject} in this tracked set.`
+    )
+    .join(" ");
 }
 
 export function gameComparison(
@@ -198,7 +230,7 @@ export function gameComparison(
   const isGame = Boolean(event.awayTeam && event.homeTeam);
   const coverageLine =
     trackedCount === 0
-      ? `No verified pick on ${event.title} yet.`
+      ? null
       : `${trackedCount} tracked ${trackedCount === 1 ? "pick" : "picks"} on Pundits.Pro.`;
   const score = finalScoreLine(event, calls);
   const resultLine =
@@ -209,13 +241,7 @@ export function gameComparison(
         : share.description.startsWith("Final:")
           ? share.description.split(". ")[0] + "."
           : null;
-  const emptySides = [yes, no].filter((side) => side.calls.length === 0);
-  const emptyLine =
-    emptySides.length === 0
-      ? null
-      : emptySides
-          .map((side) => `No verified pick on ${side.label} in this tracked set.`)
-          .join(" ");
+  const emptyLine = emptySideNote(event, [yes, no], isGame, trackedCount);
   const lede = whoPickedLine(event, calls, pundits, past);
   const description = [resultLine, lede, coverageLine, TRACKED_SUBSET_DISCLAIMER]
     .filter(Boolean)
@@ -314,8 +340,10 @@ export function receiptDisagreement(
 }
 
 export function receiptContextLinks(event: Event, pundit: Pundit): ContextLink[] {
+  const eventLabel =
+    event.awayTeam && event.homeTeam ? "Game comparison" : "Market page";
   const links: ContextLink[] = [
-    { href: `/picks/${event.slug}`, label: "Game comparison" },
+    { href: `/picks/${event.slug}`, label: eventLabel },
     { href: `/pundits/${pundit.id}`, label: `${pundit.name} profile` },
   ];
   return [...links, ...gameContextLinks(event)];
