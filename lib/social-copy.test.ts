@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCalls, loadEvents, loadPundits } from "./data";
-import { draftStory, reviewCopy, classifyTimelineItem, metricCell, parseApprovedHandleRegistry, APPROVED_PUNDIT_HANDLES } from "./social-copy";
+import { draftStory, reviewCopy, classifyTimelineItem, metricCell, organicResponseAllowed, organicSuccessMetrics, organicWindowStatus, parseApprovedHandleRegistry, APPROVED_PUNDIT_HANDLES } from "./social-copy";
+import { canonicalFromHref } from "./campaign";
 import { rankStories } from "./social-select";
 import { socialIndex } from "./social";
 import { fixtureGame, fixturePick, fixturePundit } from "./test-fixtures";
@@ -84,7 +85,10 @@ describe("draft copy", () => {
     expect(draft.body).toContain("Rams");
     expect(draft.body).toMatch(/Kalshi snapshot:.*as of Sep 8, 2026/);
     expect(draft.body).not.toMatch(/took .+ at/i);
-    expect(draft.selfReply).toBe(index.events[0].pageUrl);
+    expect(draft.pageUrl).toBe(index.events[0].pageUrl);
+    expect(draft.selfReply).toContain("utm_source=x");
+    expect(draft.selfReply).toContain("utm_campaign=organic-original");
+    expect(canonicalFromHref(draft.selfReply)).toBe(index.events[0].pageUrl);
     expect(
       reviewCopy(draft.body, {
         bothSides: true,
@@ -329,6 +333,23 @@ describe("reviewer classification", () => {
     });
     expect(unknown.reach).toBe("unavailable");
     expect(metricCell(unknown.privateMetrics.profileClicks)).toBe("n/a");
+    expect(organicResponseAllowed(original)).toBe(true);
+    expect(organicResponseAllowed(selfLink)).toBe(false);
+    expect(organicResponseAllowed(paid)).toBe(false);
+    const scored = organicSuccessMetrics([original, selfLink, outside, paid, unknown]);
+    expect(scored.organicOriginals).toBe(1);
+    expect(scored.outsideReplies).toBe(1);
+    expect(scored.selfReplies).toBe(1);
+    expect(scored.organicViews).toBe(32);
+    expect(scored.paidViews).toBe(6911);
+    expect(
+      organicWindowStatus("2026-09-09T12:00:00Z", new Date("2026-09-09T18:00:00Z"), 24, false)
+        .status
+    ).toBe("pending");
+    expect(
+      organicWindowStatus("2026-09-09T12:00:00Z", new Date("2026-09-11T12:00:00Z"), 24, false)
+        .status
+    ).toBe("unavailable");
   });
 });
 

@@ -16,7 +16,7 @@ Live code and JSON win on what is shipped. Current product documents win on inte
 |---|---|
 | Product strategy | `docs/product/` |
 | Product decisions | `docs/product/decision-log.md` |
-| Measurement | `docs/product/measurement.md` |
+| Measurement | `docs/product/measurement.md` and weekly collection in `docs/product/weekly-report.md` |
 | Editorial trust and corrections | `docs/product/editorial-and-corrections.md` |
 | Implementation priorities | `docs/ROADMAP.md` |
 | Capture, URL, release, and deployment rules | `docs/RUNBOOK.md` |

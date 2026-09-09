@@ -26,6 +26,7 @@ mark("required-files");
 
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
+assert.doesNotMatch(home, /rel="canonical"[^>]+utm_/i);
 assert.match(home, /max-image-preview:\s*large/);
 assert.match(home, /<title>PUNDITS\b/);
 assert.match(home, /Created by Indie Labs LLC\. © 2026 Indie Labs LLC\./);
@@ -76,6 +77,8 @@ assert.match(
   story,
   /<link rel="canonical" href="https:\/\/pundits\.pro\/picks\/unc-vs-tcu-2026\/finebaum\/"/
 );
+assert.doesNotMatch(story, /rel="canonical"[^>]+utm_/i);
+assert.doesNotMatch(story, /utm_source=x/);
 // Tense flips to "picked … — and hit/missed" once the game grades.
 assert.match(story, /Paul Finebaum pick(s|ed) TCU over North Carolina/);
 assert.match(story, />Share</);

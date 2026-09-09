@@ -6,7 +6,7 @@ Living table for @Pundits_ weekly reviews. Reviewer appends one row per run. Do 
 
 Public engagement rate is `(likes + replies + reposts + quotes + bookmarks) / views`. Treat it as noise under ~200 views. Private click columns stay `n/a` until a logged-in surface or export actually shows them. Do not rewrite older rows.
 
-From 2026-09-08 reviews onward, classify each item in the run file as original / outside-thread reply / self-link reply / other self-reply, and mark reach as organic / paid / n/a. Self-link replies and paid impressions are not organic response. Unavailable metrics stay `n/a`, never invented zeros.
+From 2026-09-08 reviews onward, classify each item in the run file as original / outside-thread reply / self-link reply / other self-reply, and mark reach as organic / paid / n/a. Self-link replies and paid impressions are not organic response. 24h and 72h organic columns stay `n/a` unless a snapshot was captured at that age. Unavailable metrics stay `n/a`, never invented zeros. Weekly collection: `docs/product/weekly-report.md`.
 
 | Week ending | Best archetype | Best post views | Untagged original median views | Tagged original views (lane) | Pundit/outlet amplification | URL clicks | Profile clicks | Experiment next week |
 |---|---|---|---|---|---|---|---|---|

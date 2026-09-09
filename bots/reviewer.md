@@ -30,7 +30,7 @@ This stage's scoreboard:
 - Selective notable individual calls with a specific reason to care
 - Tagged Roll Call / Flowers / Milestone posts that pass `tagging.md`
 - Outside-thread replies that add a `cards.json` fact
-- Organic response on originals, excluding self-link replies and paid reach
+- Organic response on originals at 24h and 72h when a snapshot was captured at that age, excluding self-link replies and paid reach. Current metrics after the window are not a 24h reading. Missing snapshots stay n/a.
 - Pundit/outlet amplification: reply, repost, or quote-post of the tagged post
 - URL clicks and profile clicks only when the logged-in surface or an export actually shows them
 - Playbook compliance: link in first self-reply, no invented numbers, no betting language, silence when nothing new
@@ -115,7 +115,7 @@ Why:
 ## Do not do
 ```
 
-Under `## Scoreboard` include a table with at least: post, class (`original` / `outside-thread-reply` / `self-link-reply` / `other-self-reply`), tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`), reach (`organic` / `paid` / `n/a`), views, public engagements, pundit/outlet amplification, URL clicks, profile clicks. Mark boosted reach explicitly and exclude it from organic comparisons. Self-link replies are listed, not counted as outside response.
+Under `## Scoreboard` include a table with at least: post, class (`original` / `outside-thread-reply` / `self-link-reply` / `other-self-reply`), tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`), reach (`organic` / `paid` / `n/a`), views, public engagements, pundit/outlet amplification, URL clicks, profile clicks, 24h organic (`n/a` unless a 24h snapshot exists), 72h organic (`n/a` unless a 72h snapshot exists). Mark boosted reach explicitly and exclude it from organic comparisons. Self-link replies are listed, not counted as outside response. Weekly search/site collection lives in `docs/product/weekly-report.md`; do not invent Search Console or GA numbers here.
 
 ## Chat report
 

@@ -16,7 +16,7 @@ Skip: gambling-loss complaints, beefs between individuals, politics-adjacent thr
 - Lead with the fact.
 - Two sentences maximum.
 - Attach a Tier-1 card only when it directly answers the thread.
-- Include the site link only if someone asks where the data lives.
+- Include the site link only if someone asks where the data lives. If you include one, use a bot-distributed campaign URL: canonical `pageUrl` plus `utm_source=x&utm_medium=social&utm_campaign=organic-reply&utm_content=game|receipt|profile`. Never paste a native share URL with no campaign params, and never invent a new path.
 - Never open with "Actually".
 
 ## Hard caps

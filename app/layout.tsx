@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { IBM_Plex_Mono, Inter, Oswald } from "next/font/google";
+import { CampaignAttribution } from "@/components/CampaignAttribution";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -110,6 +111,7 @@ gtag('config', '${GA_MEASUREMENT_ID}');`,
           Skip to content
         </a>
         <SiteHeader />
+        <CampaignAttribution />
         <JsonLd data={organizationGraph()} />
         {children}
         <SiteFooter />

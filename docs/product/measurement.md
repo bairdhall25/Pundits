@@ -101,6 +101,36 @@ Behavioral analytics should use stable object IDs, never email addresses or quot
 
 Do not add instrumentation merely because it is measurable. Each event should answer a named product question.
 
+## Fire-once contract
+
+GA4 `page_view` comes from the existing `gtag('config')` snippet on first load. Custom events are not a second page-view system. Do not add another analytics product, and do not sum `page_view` with `event_detail_open` / `pick_story_open` / `pundit_profile_open` as two page loads.
+
+| Event | Fires once when | Named question |
+|---|---|---|
+| `event_detail_open` `surface=home` (or league) | Click from a listing card | Homepage-to-event (or league-to-event) open rate |
+| `event_detail_open` `surface=event` | Game page view | Game-page landings, including search |
+| `pick_story_open` `surface=stories` / `book` / `profile` | Click from that listing | Feed/profile-to-receipt movement |
+| `pick_story_open` `surface=take` | Receipt page view | Receipt landings and evidence-ready views |
+| `pundit_profile_open` | Profile page view | Profile landings |
+| `source_open` | Click of evidence or Kalshi | Evidence-source click rate |
+| `share_intent` `share_channel=native` | On-site Share sheet action | Native share use by page type |
+
+`page_type` is `game` / `receipt` / `profile` so Search Console and on-site events can be compared on the same page contracts. Stable IDs only: `event_slug`, `pundit_id`. Never email, quote text, or submitted tip URLs.
+
+Native site Share copies the canonical URL. Bot-distributed links are separate campaign URLs. See [weekly report](./weekly-report.md) for collection.
+
+## Campaign links
+
+Bot self-replies and other bot-distributed destination links use `utm_source=x`, `utm_medium=social`, `utm_campaign=organic-original` or `organic-reply`, and `utm_content=game|receipt|profile`. Paid links, if they ever exist, use `utm_medium=paid` and stay out of organic totals.
+
+Those query params are not indexable URL variants: canonical tags, sitemaps, Open Graph `og:url`, and native share links stay on the slash-terminated canonical with no `utm_`. Campaign params on a landing URL survive trailing-slash normalization and are stored in `sessionStorage` as allowlisted `acq_*` fields so later custom events stay attributed after in-site navigation. Arbitrary query values are dropped so campaign fields cannot carry PII.
+
+Novelty matching strips query strings. Searching live coverage by canonical `pageUrl` still matches a campaign self-reply.
+
+## Retention
+
+Seven-day and 28-day return, and “viewed a pick then a later result,” require a consent-compatible analytics cohort. Aggregate page views, even if they exceed sessions, are not repeat visitors. If GA4 returning-user or cohort reports are not available, write `n/a` and the sample size. Small cohorts stay labeled small; do not announce statistical significance.
+
 ## Stage gates
 
 ### Gate 1 — accountability works

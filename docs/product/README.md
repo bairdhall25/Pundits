@@ -25,6 +25,7 @@ Active growth initiative (2026-09-08): [execution brief](./2026-09-08-growth-exe
 - [Product system](./product-system.md): objects, states, routes, data ownership, lifecycle, and architecture contracts.
 - [Growth and content loop](./growth-and-content-loop.md): how captured and graded picks become search, social, and retention inventory.
 - [Measurement framework](./measurement.md): operating metrics, product signals, and stage gates.
+- [Weekly growth report](./weekly-report.md): collection steps for Search Console, X, and site analytics. Sample three-slate scorecard: [2026-09-08-three-slate-scorecard.md](../runs/2026-09-08-three-slate-scorecard.md).
 - [Editorial and corrections policy](./editorial-and-corrections.md): attribution, source hierarchy, disputes, corrections, and rights boundaries.
 - [Decision log](./decision-log.md): accepted, working, parked, and unresolved product decisions.
 - [Strategy QA](./strategy-qa-2026-08-29.md): dated assessment of what is right, what is unproven, and what should happen next.

@@ -69,8 +69,24 @@ describe("engagement params", () => {
     expect(params).toEqual({
       artifact_type: "event",
       event_slug: "clemson-at-lsu-2026",
+      page_type: "game",
+      share_channel: "native",
     });
     expect(params).not.toHaveProperty("pundit_id");
+  });
+
+  it("tracks native profile share without requiring an event slug", () => {
+    expect(
+      shareIntentParams({
+        artifactType: "pundit",
+        punditId: "kanell",
+      })
+    ).toEqual({
+      artifact_type: "pundit",
+      pundit_id: "kanell",
+      page_type: "profile",
+      share_channel: "native",
+    });
   });
 
   it("drops blank values from the gtag payload", () => {

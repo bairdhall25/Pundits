@@ -116,6 +116,7 @@ export default async function PunditPage({
                 image: ogPunditPath(p.id),
                 story: ogStoryPunditPath(p.id),
                 artifactType: "pundit",
+                punditId: p.id,
               })}
             />
           </div>
@@ -160,7 +161,7 @@ export default async function PunditPage({
         </h2>
         {profile.current.length ? (
           profile.current.map((c) => (
-            <CallCard key={c.id} call={c} events={events} showKind={false} />
+            <CallCard key={c.id} call={c} events={events} showKind={false} surface="profile" />
           ))
         ) : (
           <p className="lede">No current mapped picks.</p>
@@ -173,7 +174,7 @@ export default async function PunditPage({
             Past receipts
           </h2>
           {profile.historical.map((c) => (
-            <CallCard key={c.id} call={c} events={events} showKind={false} />
+            <CallCard key={c.id} call={c} events={events} showKind={false} surface="profile" />
           ))}
         </section>
       ) : null}
@@ -228,7 +229,9 @@ export default async function PunditPage({
           <h2 id="more-takes" className="pundit-profile-section-title">
             More takes
           </h2>
-          {profile.unmapped.map((c) => <CallCard key={c.id} call={c} events={events} />)}
+          {profile.unmapped.map((c) => (
+            <CallCard key={c.id} call={c} events={events} surface="profile" />
+          ))}
         </section>
       ) : null}
 
