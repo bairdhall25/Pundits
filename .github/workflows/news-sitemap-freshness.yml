@@ -1,3 +1,8 @@
+# Check-only runtime check of https://pundits.pro/news-sitemap.xml.
+# Not a rebuild and not a deploy. Failures appear on this workflow.
+# Recovery is operator/Promote `npm run deploy` at the intended 6:30am ET slot.
+# Unattended freshness remains pending until this workflow is on main and that
+# empty-rebuild ownership is actually active.
 name: News sitemap freshness
 
 on:

@@ -50,6 +50,28 @@ If deploy or live verification fails after the commit reaches `main`, report the
 | `verify:deployed` | no | report SHA; retry `npm run deploy -- --from verify:deployed`; the daily deploy job is the recovery path if live still fails |
 | `indexnow:submit` | no | `npm run indexnow:submit` (non-blocking) |
 
+## News sitemap empty rebuild (unattended: pending)
+
+`news-sitemap.xml` is static. After two quiet days the built file goes stale
+unless rebuilt. GitHub Actions workflow `News sitemap freshness` is check-only
+(`node scripts/news-sitemap-freshness.mjs --live`); it is not a rebuild and
+cannot deploy. A proposed owner is not an active owner. Unattended freshness
+stays **pending** until the workflow is on `main` and this 6:30am ET empty
+rebuild is actually running. Do not create a new scheduler, CI production
+credentials, or host. Do not claim Google News or Discover inclusion.
+
+Intended slot, once activated: **6:30am ET**, operator / Promote, existing
+local authenticated Cloudflare contract. Failures appear in GitHub → Actions →
+`News sitemap freshness` (cron `20 10 * * *`, 10:20 UTC / 6:20am EDT) or from
+`npm run news:freshness`.
+
+Recovery, from a scheduled worktree, no `data/*.json` edits:
+
+1. `npm run worktree -- create --name news-sitemap-YYYYMMDD`, then `npm ci`.
+2. Confirm the tree is clean and `HEAD` equals `origin/main`. Keep `GITHUB_PAGES` unset.
+3. `npm run deploy`. Interrupted deploys: `npm run deploy -- --from <stage>`.
+4. Empty news sitemaps are valid. Ordinary sitemap URLs stay. Do not invent `firstPublishedAt`.
+
 ## Stop
 
 Do not hunt new takes (Scout). Do not grade (Grader). Do not write recap copy (Recap).

@@ -74,15 +74,38 @@ export async function readNewsSitemap(source) {
   return readFile(source, "utf8");
 }
 
+export function parseNewsFreshnessArgs(argv = process.argv.slice(2)) {
+  const args = [...argv];
+  let now = null;
+  const nowIndex = args.indexOf("--now");
+  if (nowIndex >= 0) {
+    const value = args[nowIndex + 1];
+    if (!value || value.startsWith("--")) {
+      throw new Error("--now requires an ISO timestamp");
+    }
+    now = new Date(value);
+    if (Number.isNaN(now.getTime())) {
+      throw new Error(`--now is not a valid timestamp: ${value}`);
+    }
+    args.splice(nowIndex, 2);
+  }
+  if (args.length > 1) {
+    throw new Error(`unexpected arguments: ${args.slice(1).join(" ")}`);
+  }
+  return { source: args[0] ?? "--live", now };
+}
+
 const isMain = process.argv[1] && process.argv[1].endsWith("news-sitemap-freshness.mjs");
 if (isMain) {
-  const source = process.argv[2] ?? "--live";
+  const { source, now: parsedNow } = parseNewsFreshnessArgs();
+  const now = parsedNow ?? new Date();
   const xml = await readNewsSitemap(source);
-  const result = assertNewsSitemapFresh(xml, new Date());
+  const result = assertNewsSitemapFresh(xml, now);
   const where = source === "--live" ? LIVE_URL : source;
+  const clock = now.toISOString();
   console.log(
     result.empty
-      ? `news sitemap empty and valid: ${where}`
-      : `news sitemap fresh: ${result.urls} URL(s) in ${where}`
+      ? `news sitemap empty and valid: ${where} at ${clock}`
+      : `news sitemap fresh: ${result.urls} URL(s) in ${where} at ${clock}`
   );
 }

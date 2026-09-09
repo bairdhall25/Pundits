@@ -83,6 +83,22 @@ describe("news eligibility", () => {
     expect(isNewsEligible("2026-09-06", now)).toBe(false);
   });
 
+  it("expires a currently eligible firstPublishedAt after the two-day window", () => {
+    const published = "2026-09-08";
+    const inWindow = new Date("2026-09-08T18:00:00Z");
+    const lastInWindow = new Date("2026-09-09T23:59:59Z");
+    const firstExpired = new Date("2026-09-10T00:00:00Z");
+    const rebuildSlot = new Date("2026-09-10T10:30:00Z");
+
+    expect(isNewsEligible(published, inWindow)).toBe(true);
+    expect(isNewsEligible(published, lastInWindow)).toBe(true);
+    expect(isNewsEligible(published, firstExpired)).toBe(false);
+    expect(isNewsEligible(published, rebuildSlot)).toBe(false);
+    expect(isNewsEligible(undefined, rebuildSlot)).toBe(false);
+    expect(isNewsEligible("2026-09-11", rebuildSlot)).toBe(false);
+    expect(isNewsEligible("2026-09-10T12:00:00Z", rebuildSlot)).toBe(false);
+  });
+
   it("does not use sourceDate as a news publication fallback", () => {
     const pundit = fixturePundit("voice", { name: "Voice" });
     const older = fixtureGame("older-2026", { awayTeam: "A", homeTeam: "B" });

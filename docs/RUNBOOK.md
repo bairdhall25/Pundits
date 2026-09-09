@@ -48,16 +48,31 @@ Kickoff chips (Today / Tomorrow) are computed in the browser from Eastern
 time. A stale build does not freeze those labels. Deploy when the book
 changes (new pick, grade, freeze), not because the calendar flipped.
 
-News sitemap expiry: `news-sitemap.xml` is static. Eligibility is the current
-two-day window on `firstPublishedAt` only — unknown or future timestamps are
-excluded, and an empty news sitemap is valid. After two quiet days the built
-file goes stale unless rebuilt. Ownership: operator / Promote runs an empty
-deploy with existing `npm run deploy`. GitHub Actions cannot deploy this
-project. `.github/workflows/news-sitemap-freshness.yml` is a prepared daily
-runtime check of the live sitemap (`npm run news:freshness`); it is not itself
-the rebuild. Do not call the news-sitemap fix operationally complete until
-that scheduled check is installed on `main` and empty-deploy ownership is
-actually active. A 6:30am ET empty deploy is the intended rebuild slot.
+### News sitemap freshness — unattended ownership: pending
+
+`news-sitemap.xml` is static. Eligibility is the current two-day UTC window on
+`firstPublishedAt` only. Unknown or future timestamps are excluded. An empty
+news sitemap is valid; do not invent `firstPublishedAt` to keep it populated.
+Ordinary sitemap URLs stay permanent when news entries expire. A valid news
+sitemap or `NewsArticle` label is not Google News or Discover inclusion.
+
+**Activation: pending.** A check-only workflow is not a rebuild, and a proposed
+owner is not an active owner. This plan does not create a recurring task, CI
+production credentials, or a new host. Do not call the news-sitemap fix
+operationally complete until both are true:
+
+1. `.github/workflows/news-sitemap-freshness.yml` is installed on `main` and has
+   been observed to run.
+2. Operator / Promote has actually activated the 6:30am ET empty-rebuild slot.
+
+| Role | Duty |
+|---|---|
+| GitHub Actions `News sitemap freshness` | Check-only. Cron `20 10 * * *` (10:20 UTC; 6:20am EDT). Runs `node scripts/news-sitemap-freshness.mjs --live` (`npm run news:freshness`). Permissions: `contents: read`. Does not rebuild or deploy. |
+| Operator / Promote (intended owner) | 6:30am ET empty rebuild through the existing local authenticated Cloudflare contract. No `data/*.json` edits. GitHub Actions cannot deploy this project. |
+
+**Where failures appear:** GitHub → Actions → workflow `News sitemap freshness` (schedule or `workflow_dispatch`). Local equivalent: `npm run news:freshness`. Fixed-clock check of a built file: `node scripts/news-sitemap-freshness.mjs out/news-sitemap.xml --now 2026-09-10T10:30:00Z`.
+
+**Recovery command:** from a scheduled worktree (`npm run worktree -- create --name news-sitemap-YYYYMMDD`) whose tree is clean and whose `HEAD` equals `origin/main`, with `GITHUB_PAGES` unset: `npm run deploy`. That rebuilds static output at deploy time, including a valid empty news sitemap when nothing remains in the two-day window. Interrupted deploys resume with `npm run deploy -- --from <stage>`. Do not add a backend, a new host, or CI Wrangler credentials to make this unattended.
 
 `npm run build` skips OG PNGs when data and `lib/og.ts` are unchanged. Use
 `npm run og` to force a full card rebuild after OG layout changes.
@@ -93,7 +108,8 @@ Before deployment:
 2. Run `npm run check` with `GITHUB_PAGES` unset.
 3. Review the generated `out/_redirects` and `out/sitemap.xml` when routes changed.
 4. If calling the news-sitemap fix complete, confirm the daily freshness workflow
-   is on `main` and that empty-deploy ownership will rebuild when that check fails.
+   is on `main` and that empty-deploy ownership is actually active (not merely
+   proposed). Until then, unattended freshness stays **pending**.
 5. Run `npm run deploy` from that same checkout. The command enforces commit
    identity (not a local branch named `main`), checks that the candidate
    preserves every URL in the current production sitemap, deploys, and then

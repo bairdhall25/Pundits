@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   assertNewsSitemapFresh,
   isNewsPublicationFresh,
+  parseNewsFreshnessArgs,
   parseNewsSitemap,
 } from "./news-sitemap-freshness.mjs";
 
@@ -43,5 +44,30 @@ describe("news sitemap freshness", () => {
     expect(() =>
       assertNewsSitemapFresh(sitemap("2026-09-08", "https://pundits.pro/ncaaf/2026/week-0/"), now)
     ).toThrow(/not a pick receipt/);
+  });
+
+  it("treats the same publication as stale after the clock leaves the two-day window", () => {
+    const xml = sitemap("2026-09-08");
+    const rebuildSlot = new Date("2026-09-10T10:30:00Z");
+    expect(isNewsPublicationFresh("2026-09-08", now)).toBe(true);
+    expect(assertNewsSitemapFresh(xml, now).urls).toBe(1);
+    expect(isNewsPublicationFresh("2026-09-08", rebuildSlot)).toBe(false);
+    expect(() => assertNewsSitemapFresh(xml, rebuildSlot)).toThrow(/outside the 2-day window/);
+    expect(assertNewsSitemapFresh(empty, rebuildSlot)).toEqual({ urls: 0, empty: true });
+  });
+
+  it("parses a fixed --now clock without treating it as a source path", () => {
+    expect(parseNewsFreshnessArgs(["--now", "2026-09-10T10:30:00Z"])).toEqual({
+      source: "--live",
+      now: new Date("2026-09-10T10:30:00Z"),
+    });
+    expect(parseNewsFreshnessArgs(["out/news-sitemap.xml", "--now", "2026-09-10T10:30:00Z"])).toEqual({
+      source: "out/news-sitemap.xml",
+      now: new Date("2026-09-10T10:30:00Z"),
+    });
+    expect(parseNewsFreshnessArgs(["--live", "--now", "2026-09-10T10:30:00Z"]).source).toBe("--live");
+    expect(parseNewsFreshnessArgs([])).toEqual({ source: "--live", now: null });
+    expect(() => parseNewsFreshnessArgs(["--now"])).toThrow(/--now requires an ISO timestamp/);
+    expect(() => parseNewsFreshnessArgs(["--now", "not-a-date"])).toThrow(/not a valid timestamp/);
   });
 });
