@@ -2,12 +2,16 @@ import { describe, expect, it } from "vitest";
 import {
   FACTORIES,
   classifyItem,
+  classifyQueue,
   easternDay,
+  episodeId,
   formatFeeds,
+  inspectableEpisodes,
   isOffTopic,
   isShortLink,
   isWrongYear,
   latestUsable,
+  loadEpisodeLedger,
   parseAppleLookup,
   parseYoutubeAtom,
 } from "./scout-feeds-lib.mjs";
@@ -96,18 +100,34 @@ describe("parseYoutubeAtom", () => {
 });
 
 describe("classifyItem", () => {
-  it("marks Friday Finebaum as waiting on Monday", () => {
+  it("keeps an unseen yesterday episode inspectable", () => {
+    const row = classifyItem(
+      {
+        title: "NFL Picks Hour",
+        published: "2026-08-30T22:00:00Z",
+        url: "https://podcasts.apple.com/us/podcast/nfl-picks/id1042368254?i=1001",
+        factoryId: "herd",
+      },
+      mondayEt,
+      { sport: "nfl", factoryId: "herd" }
+    );
+    expect(row.status).toBe("unprocessed");
+    expect(row.hunt).toMatch(/open/i);
+  });
+
+  it("marks a five-day-old Finebaum hour as waiting", () => {
     const row = classifyItem(
       {
         title: "Hour 4: Week Zero",
-        published: "2026-08-28T22:23:00Z",
+        published: "2026-08-26T22:23:00Z",
         url: "https://podcasts.apple.com/us/podcast/hour-4-week-zero/id687989405?i=1",
       },
-      mondayEt
+      mondayEt,
+      { factoryId: "finebaum" }
     );
     expect(row.status).toBe("waiting");
-    expect(row.hunt).toMatch(/do not burn tokens/i);
-    expect(row.droppedEt).toBe("2026-08-28");
+    expect(row.hunt).toMatch(/outside the recent-unprocessed window/i);
+    expect(row.droppedEt).toBe("2026-08-26");
   });
 
   it("marks a Herd 3 & Out fill-in as recap, not Colin locks", () => {
@@ -150,16 +170,19 @@ describe("classifyItem", () => {
     expect(row.hunt).toMatch(/open/i);
   });
 
-  it("skips YouTube shorts", () => {
+  it("does not reject an official short clip for duration alone", () => {
     const row = classifyItem(
       {
-        title: "Brandon has concerns with the Texas Longhorns",
+        title: "Brandon locks Texas",
         published: "2026-08-31T16:00:01Z",
         url: "https://www.youtube.com/shorts/A1uhHd1eM1A",
       },
-      mondayEt
+      mondayEt,
+      { factoryId: "bfw" }
     );
-    expect(row.status).toBe("short");
+    expect(row.status).toBe("today");
+    expect(row.hunt).toMatch(/duration is not a reject/i);
+    expect(row.short).toBe(true);
   });
 
   it("drops last year's LOCKS even if the title omits the year", () => {
@@ -207,21 +230,73 @@ describe("latestUsable", () => {
     );
     expect(picked.title).toMatch(/Donald/);
   });
+});
 
-  it("prefers the latest long episode over a flood of shorts", () => {
-    const picked = latestUsable([
-      {
-        title: "short",
-        published: "2026-08-31T19:00:25Z",
-        url: "https://www.youtube.com/shorts/jm9iHg1Z82Q",
-      },
-      {
-        title: "SEC & Big 12 Predictions | The BFW Show 8.27.26",
-        published: "2026-08-27T23:00:05Z",
-        url: "https://www.youtube.com/watch?v=xqh7eqmhPnk",
-      },
-    ]);
-    expect(picked.url).toContain("xqh7eqmhPnk");
+describe("episode queue", () => {
+  const nflPicks = {
+    title: "NFL Picks Hour",
+    published: "2026-08-30T22:00:00Z",
+    url: "https://podcasts.apple.com/us/podcast/nfl-picks/id1042368254?i=1001",
+  };
+  const nbaHour = {
+    title: "Hoops Tonight - NBA Player Rankings #8: Anthony Edwards / Minnesota Timberwolves",
+    published: "2026-08-31T16:00:00Z",
+    url: "https://podcasts.apple.com/us/podcast/hoops/id1042368254?i=2",
+  };
+
+  it("does not let a newer irrelevant episode hide a relevant one", () => {
+    const classified = classifyQueue([nbaHour, nflPicks], mondayEt, {
+      sport: "nfl",
+      factoryId: "herd",
+    });
+    const inspectable = inspectableEpisodes(classified);
+    expect(inspectable.map((row) => row.title)).toEqual(["NFL Picks Hour"]);
+    expect(classified[0].status).toBe("off-topic");
+  });
+
+  it("does not reprocess a dry episode without a new reason", () => {
+    const id = episodeId("herd", nflPicks);
+    const ledger = loadEpisodeLedger({
+      version: 1,
+      episodes: [
+        {
+          id,
+          factoryId: "herd",
+          inspected: true,
+          outcome: "dry",
+          inspectedAt: "2026-08-30T23:00:00Z",
+        },
+      ],
+    });
+    const row = classifyItem(nflPicks, mondayEt, {
+      sport: "nfl",
+      factoryId: "herd",
+      ledger,
+    });
+    expect(row.status).toBe("dry");
+    expect(row.hunt).toMatch(/skip unless a new reason/i);
+  });
+
+  it("reopens a dry episode when a new reason is stated", () => {
+    const id = episodeId("herd", nflPicks);
+    const ledger = loadEpisodeLedger({
+      version: 1,
+      episodes: [
+        {
+          id,
+          factoryId: "herd",
+          inspected: true,
+          outcome: "dry",
+          reopenReason: "named winner chapter was added to show notes",
+        },
+      ],
+    });
+    const row = classifyItem(nflPicks, mondayEt, {
+      sport: "nfl",
+      factoryId: "herd",
+      ledger,
+    });
+    expect(row.status).toBe("unprocessed");
   });
 });
 
@@ -252,5 +327,20 @@ describe("FACTORIES", () => {
     const bfw = FACTORIES.find((factory) => factory.id === "bfw");
     expect(bfw.kind).toBe("apple");
     expect(bfw.appleId).toBe("1375714621");
+  });
+
+  it("adds verified Apple ids for GMFB, See Ball Get Ball, and Clay Travis", () => {
+    expect(FACTORIES.find((factory) => factory.id === "gmfb")).toMatchObject({
+      appleId: "1171438277",
+      kind: "apple",
+    });
+    expect(FACTORIES.find((factory) => factory.id === "see-ball")).toMatchObject({
+      appleId: "1769665459",
+      kind: "apple",
+    });
+    expect(FACTORIES.find((factory) => factory.id === "clay-travis")).toMatchObject({
+      appleId: "1498106610",
+      kind: "apple",
+    });
   });
 });

@@ -1,8 +1,8 @@
 # Capture assignment
 
-Date: 2026-08-31. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
+Date: 2026-08-31. **Live JSON wins** if this file and `data/` disagree. This file is do-not-touch, not the hunt order. Hunt order is today’s `## Dispatch` from `node scripts/scout-density.mjs` plus approved rows in `docs/capture-targets.json`. Why Scout matters: `docs/scout-plan.md`. Which shows pick: `docs/pick-shows.md`.
 
-Fan problem: homepage games are still one-sided favorites. Week 0 is Final. This week’s card is Clemson–LSU, then the three NFL openers. Do not pad with title/SB faces or extra faceless games.
+Fan problem: homepage games are still one-sided favorites. Week 0 and Clemson–LSU are Final. This week’s hunt is the three NFL openers (Patriots / 49ers / Bills). Do not pad with title/SB faces or extra faceless games.
 
 Do not pad the site with more title/SB faces until Dispatch holes are worked.
 
@@ -28,9 +28,9 @@ Empty sides stay empty if nothing verifies. Do not invent.
 ## How to hunt now
 
 1. Run `node scripts/scout-density.mjs` (or read `## Dispatch` in today’s run file). Run `node scripts/scout-feeds.mjs` before opening a factory.
-2. Shows / X / News hunt `empty-side`, then `off-home`, then `thin`. Skip `dense` unless Dispatch hunt says `flip-check`. Every pass covers **both** NCAAF and NFL Dispatch rows. Watchlist games (Wisconsin, Miami, Baylor) are hunted off-home; do not put them on `/` without an operator `onHome` flip. Doctrine: `docs/capture-policy.md`.
+2. Shows / X / News hunt approved Dispatch rows by priority then kickoff: `empty-side`, then `off-home`, then `thin`. Source-complete designated voices on approved dense games; otherwise skip `dense` unless hunt says `flip-check`. Every pass covers **both** NCAAF and NFL approved rows. Proposed shortlist games are not hunted until PM selects them. Doctrine: `docs/capture-policy.md`.
 3. Shows uses the bounded sports-radio fallback in `docs/pick-shows.md` only after its normal high-yield programs.
-4. Add-list: `docs/add-list.md`. Bring onto home: `docs/bring-onto-home.json`.
+4. Add-list: `docs/add-list.md`. Capture targets: `docs/capture-targets.json`.
 5. Futures are not the hunt target.
 
 If this file and `data/` disagree, **`data/` wins**.
