@@ -48,8 +48,50 @@ Parked by the brief and not reopened: immutable per-call prices, ATS product, ne
 
 ### Next phase
 
-Phase 1 — correct evidence presentation and publication semantics (quote vs reported selection, visible audited rationale, source date vs first publication, news window vs now, snapshot wording, methodology sync). No Scout queue work in Phase 1.
+Phase 1 — correct evidence presentation and publication semantics (quote vs reported selection, visible audited rationale, source date vs first publication, news window vs now, snapshot wording, methodology sync). No Scout queue work in Phase 1. Phase 2 may land in parallel.
 
-## Later phases
+## Phase 2 — Scout queue, source completion, and handoffs
 
-Phase 1+ not started.
+Outcome required: the next week's relevant evidence is found before kickoff without grinding indefinitely on the same empty side.
+
+Branch: `codex/growth-engine-phase-2`. Base SHA: `6287abaf07ab910cba1addec9ad6e373fde46f44`. This journal is not a Scout intake run and does not set `audit=` / `promoted=` flags.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Upcoming NCAAF absence is flagged | yes | Live `ncaafAbsenceFlag` on current `data/events.json` + `docs/capture-targets.json`; Dispatch coverage flag. Proposed Week 2 shortlist is labeled proposed. |
+| Approved dense game still source-completes a newly available GameDay voice | yes | `scripts/scout-density.test.mjs` source-completion fixture |
+| Unseen yesterday episode remains eligible | yes | `classifyItem` unprocessed fixture in `scripts/scout-feeds.test.mjs` |
+| Newer irrelevant episode does not hide a relevant one | yes | `classifyQueue` / `inspectableEpisodes` fixture |
+| Dry episode is not reprocessed without cause | yes | ledger `outcome: dry` fixture; reopen only with `reopenReason` |
+| Same-day imminent target precedes a later equal-priority one | yes | Patriots before Bills at equal priority |
+| Unrelated failed row does not block an approved row | yes | `promoteReadyRows` Howard ok + Portnoy fail |
+| Modified row cannot reuse approval | yes | quote change invalidates `rowId` |
+| Past or settled event cannot receive pregame hunting | yes | settled → Grader or omit; past kickoff without a final → Grader; missing kickoff is not live |
+| Current-main dry run does not publish data | yes | `node scripts/scout-density.mjs --dry-run` and `node scripts/scout-feeds.mjs --dry-run` print only |
+| Journal is not a Scout intake and does not set editorial flags | yes | this file |
+
+### Checks run
+
+On this worktree after the Phase 2 code and operating-doc edits:
+
+- `npm test`: **pass**, 453 tests / 47 files.
+- `npm run check:fast`: **pass**. Inexpensive tests 452 passed / 46 files; `validate:runs` passed on `docs/runs`. Note: `check:fast is not a release gate.`
+- `node scripts/scout-density.mjs --dry-run`: printed Dispatch + proposed shortlist + decision queue. Coverage flag: upcoming NCAAF game events: 0. Hunt order Patriots (Sep 9 empty-side) → 49ers (Sep 10 dense source-complete) → Bills (Sep 13 empty-side). Did not write `data/*.json`.
+- `node scripts/scout-feeds.mjs --dry-run`: printed the recent-unprocessed queue including GMFB / See Ball / Clay Travis. GMFB `i=1000788488079` stayed inspected/hit and was not re-queued. Did not write `data/*.json` or mark new episodes inspected.
+
+No production deploy. No `data/*.json` edits. Methodology page was not changed: this phase is operating policy, not public pick-eligibility semantics.
+
+### Remaining product decisions
+
+1. **NCAAF Week 2 shortlist.** Engineering bootstrapped four source-backed proposed games (Oklahoma at Michigan; Ohio State at Texas; Arizona State at Texas A&M; Alabama at Kentucky). Codex/PM must approve, replace, or defer. Silence is not “no college work” and is not permission to scout every game. No public events were minted.
+2. **NFL add-ons.** Broncos–Chiefs, Commanders–Eagles, and Packers–Vikings are proposed only. Approved openers stay Patriots / 49ers / Bills.
+3. **Factory IDs.** GMFB Apple `1171438277`, See Ball Get Ball `1769665459`, and Clay Travis `1498106610` are verified from existing repo URLs. No guessed IDs. No remaining factory-ID gap for those three.
+4. **Episode ledger writer.** Shows is instructed to persist inspection outcomes in `docs/scout-episodes.json`. Coordinator feed checks only discover. Whether Coordinator should auto-write `outcome: discovered` on every feeds run is left to Codex; the CLI remains print-only by default so a dry run cannot mark episodes inspected.
+
+Parked by the brief and not reopened: auto-roster, photo bypass, team-analyst eligibility, bulk event minting, new bots, `data/*.json` edits, production deploy, live X.
+
+### Next phase
+
+Phase 3 — SEO contract for existing page types (depends on Phase 1 content contract). Phase 2 does not implement Phase 1 rendering or Phase 3 templates.

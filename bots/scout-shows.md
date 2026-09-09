@@ -20,13 +20,13 @@ Community tips never lower the bar: verify the durable source, named speaker, ve
 
 ## Hunt
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NCAAF and NFL in the same pass):
+For each **approved** Dispatch row in printed order (priority, then kickoff, then `empty-side` / `off-home` / `thin`; NCAAF and NFL in the same pass). Do not hunt proposed-only matchups:
 
-1. Re-run `node scripts/scout-feeds.mjs` **at hunt time**. Replace `## Factory feeds` in today’s run file. Do not skip a factory because an overnight pass marked it `waiting`. Skip only the **fresh** status: `waiting`, `recap`, `short`, `wrong-year`, `off-topic`, or `error`. Open `today` rows. Jump locks / moneyline / “I’ll take.” Captions count. If today’s run file already has a Shows/X/News pass, **append**. Never wipe a prior pass to PLACEHOLDER. Do not restage a pair already in `calls.json`, or an Intake row Audit already marked `ok`.
+1. Re-run `node scripts/scout-feeds.mjs` **at hunt time**. Replace `## Factory feeds` in today’s run file. Do not skip a factory because an overnight pass marked it `waiting`. Skip only the **fresh** status: `waiting`, `recap`, `dry`, `wrong-year`, `off-topic`, or `error`. Open `today` and `unprocessed` rows, including an unseen yesterday episode. A newer off-topic item does not hide an older inspectable one. Official short clips are eligible when they contain a complete named winner. Jump locks / moneyline / “I’ll take.” Captions count. After opening, record episode identity, publication time, inspected status, locator, and outcome in `### Episode coverage` and `docs/scout-episodes.json`. A feed check is not an inspection. Do not reopen a dry episode unless you state a new reason. If today’s run file already has a Shows/X/News pass, **append**. Never wipe a prior pass to PLACEHOLDER. Do not restage a pair already in `calls.json`, or an Intake row Audit already marked `ok`.
 2. Then idle roster voices if their pick window in that file is open.
 3. Named add-list speakers on those same shows → Candidates (`photoUrl=needed` unless a real photo is already known).
 4. If the game remains under-dense, run the bounded radio fallback in `docs/pick-shows.md`.
-5. Skip `dense` rows unless a source you already opened names that game, or the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals. A reversal is a correction on the existing row, never a second card.
+5. Skip ordinary `dense` hunting unless a source you already opened names that game, the row's hunt says `source-complete designated voices` — then complete those named selections, including favorite-side voices, as new calls — or hunt says `flip-check` — then check only already-carded pundits on that game for reversals. A reversal is a correction on the existing row, never a second card. Source completion is not a whole-board scrape.
 6. **Overflow (docs/capture-policy.md rule 4):** while already inside a source for a Dispatch hole, if a rostered speaker drops a hard SU on a game that is **not in `events.json`**, stage it as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` and `side` blank with the matchup named in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a source, and it is not a license to vacuum the board.
 
 PMT is comedy + guests, not a locks show. Stanford Steve on PMT is `coughlin`. Big Cat’s card is Pick Em / Picks Central / Barstool CFB Show, not PMT. GameDay / Big Noon only in their Saturday window (first 2026 GameDay is Baton Rouge Sep 5). A radio pick belongs to the named personality, never the station or show.
@@ -65,7 +65,7 @@ Append `## Shows pass YYYY-MM-DD (Grok Bot)` to `docs/runs/YYYY-MM-DD.md`. Do no
 
 If the file does not exist, create it from `docs/runs/_TEMPLATE.md`, write Dispatch (fallback), then the Shows pass.
 
-Update the first-line `hard=` / `candidates=` counts (sum of new rows across passes). If you added hard, `audit=pending`. Never set `promoted=true`. If the file was `promoted=true` and you added hard, set `promoted=false`.
+Update the first-line `hard=` / `candidates=` counts (sum of new rows across passes). If you added hard, `audit=pending`. Never set `promoted=true`. If the file was `promoted=true` and you added hard, set `promoted=false`. Set `## Lane status` Shows to `completed`, `dry`, `blocked`, or `not-run`. A connector or source-access failure is `blocked`, not a dry sweep. After source windows and bounded attempts, record a dry target and the next meaningful check. Honest empty sides are acceptable.
 
 Tables: **Intake** · **Candidates** · **Bets** (totals/spreads/team totals; `bet` like `TCU team total under 23.5` or `unclear`) · **Radio coverage** (event, programs opened, outcome, notes) · **Dropped** (per under-dense game: what you opened) · **Freeze** · **Stories this would mint**.
 

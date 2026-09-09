@@ -39,14 +39,18 @@ A row is `fail` only when the pick cannot be trusted: the `sourceUrl` is dead, t
 Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed). Preserve every earlier audit row and dated section in that file:
 
 ```
-| pundit | eventSlug | side | verdict | note |
+| pundit | eventSlug | side | rowId | verdict | note |
 ```
 
 `verdict` is `ok`, `ok-unmapped`, `ok-no-reasoning`, `ok-unmapped-no-reasoning`, or `fail`. One note per defect. `ok-unmapped` and `ok-unmapped-no-reasoning` are overflow waiting on an operator mint — they are not failures.
 
-Then one line: `N ok / U ok-unmapped / R ok-no-reasoning / S ok-unmapped-no-reasoning / M fail / ready to promote K` where K is the count of new **mapped** hard Intake rows marked `ok` or `ok-no-reasoning` and not already in `calls.json`. Unmapped rows are not in K.
+Include `rowId` from `node -e` / `scripts/scout-handoff-lib.mjs` `rowIdentity` (pundit + eventSlug + side + verbatim quote + sourceUrl). A changed quote is a new identity and cannot reuse the old approval.
 
-Update the Scout run file's status comment to `audit=ok` when no new hard row is `fail`. Capsule defects do not flip a run to `audit=fail`. If any new hard row has a pick defect, use `audit=fail`.
+Then one line: `N ok / U ok-unmapped / R ok-no-reasoning / S ok-unmapped-no-reasoning / M fail / ready to promote K` where K is the count of new **mapped** hard Intake rows marked `ok` or `ok-no-reasoning` and not already in `calls.json`. Unmapped rows are not in K. Record `auditedAt` when known. Do not copy `sourceDate` into that field.
+
+Row disposition is authoritative. An unrelated failed overflow or Candidate row does **not** block other verified mapped `ok` rows. Day-level `audit=fail` is a warning that at least one row failed; it is not a batch gate. Promote reads per-row verdicts plus matching `rowId`, never a day tally and never “URL returned 200.”
+
+Update the Scout run file's status comment to `audit=ok` when no new hard row is `fail`. Capsule defects do not flip a run to `audit=fail`. If any new hard row has a pick defect, use `audit=fail` as the run warning, and still list each ok mapped row as ready to promote.
 
 Never touch `data/`.
 
