@@ -224,7 +224,7 @@ describe("pick stories", () => {
     expect(story.dek).toContain("NC State as the underdog at 34¢");
     expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
     expect(story.paragraphs.join(" ")).toContain(
-      "Chip Patterson has also weighed in on this game"
+      "Chip Patterson also picked NC State"
     );
     expect(story.paragraphs.join(" ")).not.toMatch(/Tarheels/i);
   });
@@ -278,7 +278,7 @@ describe("pick copy", () => {
       sport: "ncaaf",
       homeRank: 9,
     };
-    expect(pickLede(event, [], [])).toMatch(/no verified expert pick/i);
+    expect(pickLede(event, [], [])).toMatch(/no verified pick on a vs b yet/i);
   });
 });
 
@@ -425,6 +425,7 @@ describe("json-ld", () => {
     expect(pending).not.toHaveProperty("startDate");
     expect(pending).not.toHaveProperty("eventStatus");
     expect(JSON.stringify(pending)).not.toMatch(/SportsEvent|\"@type\":\"Event\"/);
+    expect(pending.description).toContain("not a survey of all experts");
     expect(graded["@type"]).toBe("WebPage");
     expect(graded).not.toHaveProperty("eventStatus");
     expect(JSON.stringify(graded)).not.toMatch(/SportsEvent|\"@type\":\"Event\"/);

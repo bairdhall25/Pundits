@@ -140,9 +140,28 @@ No production deploy. No `data/*.json` edits. Methodology page was not changed: 
 
 Parked by the brief and not reopened: auto-roster, photo bypass, team-analyst eligibility, bulk event minting, new bots, `data/*.json` edits, production deploy, live X.
 
-### Next phase
+## Phase 3A — receipts, game comparisons, pundit profiles
 
-Phase 3 — SEO contract for existing page types (depends on Phase 1 content contract). Phase 4 — social selection (this branch).
+Outcome required: each URL answers its own question using the same verified ledger. No duplicate routes. No SportsEvent. No FAQ multiplication.
+
+Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-08-phase-3a-seo-contract.md).
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Receipts: direct answer, source, actual rationale only, publisher/timestamps, named disagreement, dated snapshot, grading scope | yes | Finebaum Dublin H1 + receipt + story; Finebaum LSU has no synthesized “Why”; Brandt pending has no rationale section |
+| Game pages: who picked each team, tracked counts, named disagreement, empty sides honest, not a complete survey | yes | Dublin names both sides + disclaimer; NC State at Virginia keeps Virginia empty |
+| Profiles: current mapped picks, dated season record with sample, linked historical receipts, outlet, no career-skill claim | yes | Kanell current vs past receipts; tracked-sample disclaimer; empty shells stay noindex |
+| Contextual links: receipt → game/source/profile; game → receipts/team/week; profile → evidence | yes | `receiptContextLinks` / `gameContextLinks`; CallCard receipt links unchanged |
+| Titles/H1 identify person/teams/event; no best-experts claims | yes | Game pending title `who picked whom`; graded `who called it`; profile `{name}: current picks and tracked record` |
+| Schema from the same content contract; no SportsEvent; no FAQPage on these pages | yes | Receipt NewsArticle; game WebPage; profile WebPage+Person |
+| Static HTML, not client-only; existing cards; max-image-preview:large; permalinks | yes | `data-page-type` in `out/`; `verify:static` permalink ledger; robots max-image-preview |
+| Analytics hooks on existing event system | yes | `page_type` on `pick_story_open` / `event_detail_open`; new `pundit_profile_open` |
+
+### Checks run
+
+`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 463 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production). No production deploy.
 
 ## Phase 4 — simplify social selection while preserving the cards
 
@@ -230,4 +249,46 @@ No production deploy. No live X. No `data/*.json` edits. Images not regenerated.
 2. **Operator edit pass.** These drafts are machine-composed review copy. Brief allows a small amount of operator editing on the highest-value posts; that is not automated here.
 3. **Roll Call tags on the 49ers card.** Four tracked pundits, both sides — density gate passes. Whether to tag Eisen/Cowherd (approved) plus Brandt (no approved handle → spelled, untagged) is a tagging.md application, not a new handle.
 
-Parked: live X, paid boosts, card redesign, Phase 3 SEO templates, Phase 5 dashboards, production deploy.
+Parked: live X, paid boosts, card redesign, Phase 3B team/league/week templates, production deploy.
+
+## Phase 5 — measurement and the three-slate readout
+
+Outcome required: the next prioritization decision is based on useful evidence, not counts of posts or pages. Engineering delivers instrumentation and a sample report. Operational owners run subsequent reviews. The three-slate experiment is **not** marked successful.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Existing analytics events fire once at the intended click or view; no second analytics system; no double-counted page loads | yes | `TrackView` still sends one custom event per mount; GA `page_view` stays the existing `gtag('config')` snippet. `CampaignAttribution` persists params only. Measurement fire-once table documents listing click vs page view via `surface`. |
+| `page_type` and stable object IDs on page-contract events | yes | Existing `page_type` on open events; `share_intent` now includes `page_type` and `share_channel=native`. Profile CallCards emit `pick_story_open` / `source_open`. |
+| Bot-distributed campaign links without changing canonicals or creating indexable URL variants | yes | `botDistributedUrl` appends allowlisted UTM. `cards.json` `pageUrl`, native `sharePayload.url`, and HTML `rel=canonical` stay clean. `verify:static` asserts Finebaum receipt canonical has no `utm_`. |
+| Native site share separate from bot links | yes | Share button copies canonical URL; drafts put UTM only on `selfReply`. |
+| Campaign params survive navigation; canonical metadata stays clean | yes | `lib/campaign.test.ts` trailing-slash parse + session persist after a clean later URL. Novelty strips query via `canonicalizeDestination`. |
+| Weekly report template + reproducible Search Console / X / site collection | yes | [weekly-report.md](../product/weekly-report.md). Web, News tab, Google News app/site, and AI rows are distinct. Not exposed ≠ zero. |
+| Scout promoted picks per source-hour, lead times, coverage, locators, rework | yes | `npm run metrics:capture`. No duration → no efficiency. No `firstPublishedAt` → no lead time. Rework is not a JSON field. |
+| Search clicks and landing engagement by type; organic social 24/72; outside vs self; paid separate; attributed site engagement | yes | Template + `organicWindowStatus` / `organicSuccessMetrics`. Self-replies and paid cannot enter organic totals. |
+| Retention only with consent-compatible evidence; small cohorts labeled | yes | measurement.md Retention section; sample scorecard retention is `n/a`. |
+| Three-slate scorecard with approved dates; sample uses available data; rest pending; not marked successful | yes | [2026-09-08-three-slate-scorecard.md](./2026-09-08-three-slate-scorecard.md). Dates: 2026-09-09 Patriots, 2026-09-10 49ers, 2026-09-13 Bills. |
+| Operator can reproduce every reported metric or see why it is unavailable | yes | Collection table names the UI/CLI. `n/a` always has a reason. |
+| Each page contract has a measurable action | yes | Game view/click, receipt view/click + source + native share, profile view + receipt/source/share. |
+| Report ends with one next experiment/decision | yes | Scorecard last section. |
+| Methodology unchanged | yes | No eligibility / grading / snapshot-semantics change. |
+| No `data/*.json` edits, no live X, no deploy | yes | this change |
+
+### Checks run
+
+On this worktree after the Phase 5 code and operating-doc edits:
+
+- `npm run metrics:capture -- --as-of 2026-09-08`: Patriots 1 mapped (empty YES), 49ers 4 mapped both sides, Bills 2 mapped (empty YES). Lead time / source-hours / rework `n/a` with reasons. Did not write `data/*.json`.
+- `npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 530 passed / 56 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Canonical HTML has no `utm_`. OG generation reused all 430 cards (`rendered=0`).
+
+No production deploy. No live X. No `data/*.json` edits.
+
+### Remaining Codex / operator work
+
+1. **Run the three slates.** Engineering did not observe settlement reviews. Fill the scorecard after Patriots (Sep 9), 49ers (Sep 10), and Bills (Sep 13) are graded and distributed.
+2. **GA4 / Search Console exports.** This PR cannot log into those consoles. First weekly file after deploy should paste actual exports or keep `n/a`.
+3. **Source-hours.** Operators must time a Scout window before `metrics:capture --source-hours` is valid.
+4. **24h/72h social snapshots.** Reviewer currently has current metrics. Timed snapshots are an operating habit, not a new backend.
+
+Parked: dashboards, backends, PII, eligibility changes, erasing losing receipts, production deploy, live X, claiming experiment success.

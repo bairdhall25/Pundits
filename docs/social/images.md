@@ -6,7 +6,7 @@ The site pre-renders a branded 1200×630 landscape card for every shareable rout
 
 ## Tier 1 — Receipts (mandatory)
 
-Any post about a specific pundit, pick, event, or result attaches the pre-rendered card from `cards.json` — `ogCard` for feed posts, `storyCard` for vertical formats. Post the image natively. `pageUrl` goes in the first self-reply, never in the post body. If attaching the image fails, fall back to a link post (X renders the OG card from the link) and note the failure in the run summary.
+Any post about a specific pundit, pick, event, or result attaches the pre-rendered card from `cards.json` — `ogCard` for feed posts, `storyCard` for vertical formats. Post the image natively. The first self-reply carries a bot-distributed campaign URL derived from canonical `pageUrl` (`utm_source=x`, `utm_medium=social`, `utm_campaign=organic-original`, `utm_content=game|receipt`). Never put that campaign query on native site share links or in `cards.json`. If attaching the image fails, fall back to a link post (X renders the OG card from the link) and note the failure in the run summary.
 
 ### Flowers treatments
 

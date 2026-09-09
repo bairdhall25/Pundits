@@ -34,7 +34,7 @@ Reviewer instructions live in `bots/reviewer.md`. Selection and novelty helpers 
 
 ## The card index
 
-Bots fetch `https://pundits.pro/social/cards.json` at job start. `schemaVersion` is `2`. New fields are additive; existing `pageUrl` / `ogCard` / `storyCard` / status / side fields are unchanged.
+Bots fetch `https://pundits.pro/social/cards.json` at job start. `schemaVersion` is `2`. New fields are additive; existing `pageUrl` / `ogCard` / `storyCard` / status / side fields are unchanged. `pageUrl` is the canonical destination with no `utm_`. Poster and Reply Guy append campaign params only on the outbound X link. Native on-site share stays canonical.
 
 - `generatedAt` — ISO timestamp of the build that wrote the file.
 - `site` — `"https://pundits.pro"`.

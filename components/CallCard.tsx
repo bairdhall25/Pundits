@@ -1,4 +1,9 @@
-import Link from "next/link";
+import { TrackAnchor, TrackLink } from "@/components/TrackLink";
+import {
+  pickStoryOpenParams,
+  sourceOpenParams,
+  type EngagementSurface,
+} from "@/lib/analytics";
 import { statusLabel } from "@/lib/format";
 import { mappedStakeLine } from "@/lib/public-side";
 import { takePath } from "@/lib/site";
@@ -8,10 +13,12 @@ export function CallCard({
   call,
   events = [],
   showKind = true,
+  surface = "book",
 }: {
   call: Call;
   events?: Event[];
   showKind?: boolean;
+  surface?: EngagementSurface;
 }) {
   const event = call.eventSlug
     ? events.find((e) => e.slug === call.eventSlug) ?? null
@@ -60,24 +67,46 @@ export function CallCard({
           {call.sourceDate ? ` · ${call.sourceDate}` : ""}
         </span>
         {call.sourceUrl ? (
-          <a
-            href={call.sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="call-card-source"
-          >
-            Open source →
-          </a>
+          event ? (
+            <TrackAnchor
+              href={call.sourceUrl}
+              className="call-card-source"
+              event="source_open"
+              params={sourceOpenParams({
+                eventSlug: event.slug,
+                punditId: call.punditId,
+                sourceType: "evidence",
+              })}
+            >
+              Open source →
+            </TrackAnchor>
+          ) : (
+            <a
+              href={call.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="call-card-source"
+            >
+              Open source →
+            </a>
+          )
         ) : null}
       </div>
       {event && stake ? (
-        <Link
+        <TrackLink
           className="call-card-receipt"
           href={takePath(event.slug, call.punditId)}
+          event="pick_story_open"
+          params={pickStoryOpenParams({
+            eventSlug: event.slug,
+            punditId: call.punditId,
+            status: call.status,
+            surface,
+          })}
         >
           <span>{stake.line}</span>
           <span className="call-card-receipt-action">View receipt →</span>
-        </Link>
+        </TrackLink>
       ) : null}
     </article>
   );

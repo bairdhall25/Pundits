@@ -1,3 +1,5 @@
+import { browserCampaignEventParams } from "./campaign";
+
 export type EmailInterestEvent =
   | "email_interest_view"
   | "email_interest_submit"
@@ -21,7 +23,10 @@ export type EngagementSurface =
   | "event"
   | "stories"
   | "take"
-  | "book";
+  | "book"
+  | "profile";
+
+export type PageType = "receipt" | "game" | "profile";
 
 export type EmailInterestParams = {
   placement: string;
@@ -69,7 +74,14 @@ export function trackEvent(
   params: Record<string, string | undefined>
 ): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", event, engagementParams(params));
+  window.gtag(
+    "event",
+    event,
+    engagementParams({
+      ...browserCampaignEventParams(),
+      ...params,
+    })
+  );
 }
 
 export function eventDetailOpenParams(input: {
@@ -81,6 +93,7 @@ export function eventDetailOpenParams(input: {
     event_slug: input.eventSlug,
     sport: input.sport,
     surface: input.surface,
+    page_type: "game",
   });
 }
 
@@ -95,6 +108,15 @@ export function pickStoryOpenParams(input: {
     pundit_id: input.punditId,
     status: input.status,
     surface: input.surface,
+    page_type: "receipt",
+  });
+}
+
+export function punditProfileOpenParams(input: { punditId: string }) {
+  return engagementParams({
+    pundit_id: input.punditId,
+    surface: "profile",
+    page_type: "profile",
   });
 }
 
@@ -112,15 +134,23 @@ export function sourceOpenParams(input: {
 
 export function shareIntentParams(input: {
   artifactType: "event" | "take" | "pundit";
-  eventSlug: string;
+  eventSlug?: string;
   punditId?: string;
   status?: string;
 }) {
+  const pageType =
+    input.artifactType === "event"
+      ? "game"
+      : input.artifactType === "take"
+        ? "receipt"
+        : "profile";
   return engagementParams({
     artifact_type: input.artifactType,
     event_slug: input.eventSlug,
     pundit_id: input.punditId,
     status: input.status,
+    page_type: pageType,
+    share_channel: "native",
   });
 }
 

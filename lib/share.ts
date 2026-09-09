@@ -5,7 +5,7 @@ import type { ActivityRecord, Call, Event, Pundit } from "./types";
 
 export { sharePayload, tweetIntent, type SharePayload } from "./share-link";
 
-function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
+export function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p.name]));
   const seen = new Set<string>();
   const out: string[] = [];
@@ -18,7 +18,7 @@ function namesOn(sideCalls: Call[], pundits: Pundit[]): string[] {
   return out;
 }
 
-function andList(names: string[]): string {
+export function andList(names: string[]): string {
   if (names.length === 1) return names[0];
   if (names.length === 2) return `${names[0]} and ${names[1]}`;
   return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
@@ -80,7 +80,10 @@ export function eventShare(
     const winner =
       winnerSide === "yes" ? event.awayTeam : winnerSide === "no" ? event.homeTeam : null;
     const loser = winnerSide === "yes" ? event.homeTeam : event.awayTeam;
-    const settledTitle = winner ? `${winner} beat ${loser}: who called it` : title;
+    const pendingTitle = when
+      ? `${event.title}: who picked whom · ${when}`
+      : `${event.title}: who picked whom`;
+    const settledTitle = winner ? `${winner} beat ${loser}: who called it` : pendingTitle;
     const who = [
       picksLine(noNames, event.homeTeam, Boolean(winner)),
       picksLine(yesNames, event.awayTeam, Boolean(winner)),
@@ -128,11 +131,12 @@ export function punditShare(
 ): { title: string; description: string } {
   const showRecord =
     options.showRecord ?? pundit.season2026.wins + pundit.season2026.losses > 0;
+  const graded = pundit.season2026.wins + pundit.season2026.losses;
   const bits = [
-    `${pundit.name} expert picks`,
-    pundit.outlet,
+    `${pundit.name} on ${pundit.outlet}`,
+    "Current mapped picks and the 2026 tracked record on Pundits.Pro",
     showRecord
-      ? `2026 record ${pundit.season2026.wins}–${pundit.season2026.losses}`
+      ? `2026 tracked record ${pundit.season2026.wins}–${pundit.season2026.losses} on ${graded} graded pick${graded === 1 ? "" : "s"}`
       : null,
     pundit.mappedPending
       ? `${pundit.mappedPending} open pick${pundit.mappedPending === 1 ? "" : "s"}`
@@ -141,5 +145,8 @@ export function punditShare(
       ? `Latest: ${quotedEvidenceText({ ...latest, claim: clipClaim(latest.claim) })}`
       : null,
   ].filter(Boolean);
-  return { title: `${pundit.name} picks`, description: `${bits.join(". ")}.` };
+  return {
+    title: `${pundit.name}: current picks and tracked record`,
+    description: `${bits.join(". ")}.`,
+  };
 }

@@ -31,11 +31,12 @@ export function ShareButton({
   const menuId = useId();
 
   function trackShareIntent() {
-    if (!share.eventSlug) return;
+    const artifactType = share.artifactType ?? "take";
+    if (artifactType !== "pundit" && !share.eventSlug) return;
     trackEvent(
       "share_intent",
       shareIntentParams({
-        artifactType: share.artifactType ?? "take",
+        artifactType,
         eventSlug: share.eventSlug,
         punditId: share.punditId,
         status: share.status,

@@ -408,6 +408,34 @@ body {
   text-transform: uppercase;
   color: var(--muted);
 }
+.coverage-note,
+.profile-note {
+  color: var(--muted);
+  max-width: 720px;
+  line-height: 1.5;
+  margin: -6px 0 18px;
+  font-size: 15px;
+}
+.profile-note {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+.context-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 20px 0 8px;
+}
+.context-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .story {
   max-width: 640px;
   margin: 0 0 22px;

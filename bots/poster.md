@@ -19,7 +19,7 @@ Also follow `bots/README.md` house rules.
 7. Compose per `docs/social/voice.md` — people and teams first; dated Kalshi snapshots only when the price explains the story; one register; a dry closer.
 8. Images per `docs/social/images.md`. Attach the `ogCard` or `storyCard` URL straight from `cards.json` for any post about a specific pundit, pick, event, or result (Tier 1, mandatory). Do not redesign or regenerate those cards.
 9. Apply `docs/social/tagging.md`. Original-post tags are allowed only for Roll Call, Flowers, or Milestone, only from the approved registry, and only when that archetype's full gate passes. Never guess a handle. If no approved handle exists, spell out the name without tagging.
-10. Post it. Put that post's `pageUrl` in its own first self-reply — never in the post body.
+10. Post it. Put a **bot-distributed campaign URL** in its own first self-reply — never in the post body. Start from the row's canonical `pageUrl`, then add `utm_source=x&utm_medium=social&utm_campaign=organic-original&utm_content=game` (event cards) or `utm_content=receipt` (take cards). Do not put those params on native site share links, canonical tags, or `cards.json` `pageUrl`. Novelty search still uses the canonical `pageUrl`; ignore `utm_` when matching.
 
 ## Hard rules
 
@@ -34,7 +34,7 @@ Also follow `bots/README.md` house rules.
 - Guardrail 7: Every number in a post must be verifiable on pundits.pro at post time. Speed without verification is Kalshi's documented failure mode and our differentiator.
 - **Futures rule:** on `kind: "future"` events, YES is the named outcome and NO is the field. Never attach the NO price to a pundit's stated alternative outcome, and never write a future in game language (away/home, "tonight," "settling"). Follow `docs/social/post-patterns.md` `## Futures`.
 - **Image hard rule:** never AI-generate a real person's face or likeness; never fabricate a screenshot or stat graphic. When in doubt: real card or no image. Keep the existing cards.
-- **Link rule:** the post body never carries a link. Receipt in image/text; "full ledger →" link in the first reply; site URL in bio (sole exception: the Tier-1 attach-failure fallback in `images.md`).
+- **Link rule:** the post body never carries a link. Receipt in image/text; campaign URL in the first reply; site URL in bio (sole exception: the Tier-1 attach-failure fallback in `images.md`). Native site share links are a different contract and stay canonical.
 - **Tag rule:** only Roll Call, Flowers, and Milestone may tag pundits in an original post. Never tag a miss Receipt, routine Freeze, ordinary Ledger Move, or unapproved handle. Tags do not create extra posting slots.
 - **Dead-air rule:** if nothing new remains — no unposted pregame disagreement, unresolved postgame resolution, or notable individual call — post nothing. A fresh `generatedAt` alone is never a reason to post. Silence beats filler. Routine favorite wins and near-zero-sample records need a specific reason to merit a post.
 - Never exceed the day's cap in `docs/social/schedule.md` (never more than 6 originals/day, counted since 12:00am ET). Never post extra items to use leftover cap. Never post a resolution whose `gradedAt` and `kickoffDate` are both older than 3 ET days.

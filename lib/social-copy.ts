@@ -1,3 +1,4 @@
+import { botDistributedUrl } from "./campaign";
 import { winnerOnlyLine } from "./evidence";
 import { formatAsOf, formatShortDate } from "./format";
 import type { SocialEventRow, SocialIndex, SocialTakeRow } from "./social";
@@ -253,7 +254,10 @@ export function draftStory(index: SocialIndex, story: RankedStory): Draft {
     return {
       archetype: "disagreement",
       body,
-      selfReply: event.pageUrl,
+      selfReply: botDistributedUrl(event.pageUrl, {
+        kind: "original",
+        pageType: "game",
+      }),
       cardUrl: event.ogCard,
       tags: [],
       eventSlug: event.slug,
@@ -290,7 +294,10 @@ export function draftStory(index: SocialIndex, story: RankedStory): Draft {
     return {
       archetype: "resolution",
       body,
-      selfReply: event.pageUrl,
+      selfReply: botDistributedUrl(event.pageUrl, {
+        kind: "original",
+        pageType: "game",
+      }),
       cardUrl: event.ogCard,
       tags: [],
       eventSlug: event.slug,
@@ -331,7 +338,10 @@ export function draftStory(index: SocialIndex, story: RankedStory): Draft {
   return {
     archetype: "notable-call",
     body,
-    selfReply: take.pageUrl,
+    selfReply: botDistributedUrl(take.pageUrl, {
+      kind: "original",
+      pageType: "receipt",
+    }),
     cardUrl: take.ogCard,
     tags: [],
     eventSlug: event.slug,
@@ -434,4 +444,69 @@ export function classifyTimelineItem(item: TimelineItem): ClassifiedPost {
 
 export function organicResponseAllowed(post: ClassifiedPost): boolean {
   return post.kind === "original" && post.reach === "organic";
+}
+
+export function ageHours(createdAt: string, now: Date): number | null {
+  const created = new Date(createdAt);
+  if (Number.isNaN(created.getTime())) return null;
+  return (now.getTime() - created.getTime()) / 3_600_000;
+}
+
+export type OrganicWindowStatus = "pending" | "available" | "unavailable";
+
+/**
+ * 24h/72h organic response needs a snapshot captured at that age.
+ * Current metrics after the window are not backfilled as a 24h or 72h reading.
+ * Missing snapshots stay unavailable, never zero.
+ */
+export function organicWindowStatus(
+  createdAt: string,
+  now: Date,
+  hours: 24 | 72,
+  snapshotCaptured: boolean
+): { status: OrganicWindowStatus; note: string } {
+  const age = ageHours(createdAt, now);
+  if (age == null) {
+    return { status: "unavailable", note: "Post time is missing or invalid." };
+  }
+  if (age < hours) {
+    return {
+      status: "pending",
+      note: `Post is ${age.toFixed(1)}h old; ${hours}h window has not elapsed.`,
+    };
+  }
+  if (!snapshotCaptured) {
+    return {
+      status: "unavailable",
+      note: `No ${hours}h snapshot was recorded. Current metrics are not a ${hours}h reading.`,
+    };
+  }
+  return { status: "available", note: `${hours}h snapshot recorded.` };
+}
+
+export function organicSuccessMetrics(posts: ClassifiedPost[]): {
+  organicOriginals: number;
+  outsideReplies: number;
+  selfReplies: number;
+  paidViews: number | "n/a";
+  organicViews: number | "n/a";
+} {
+  const organic = posts.filter(organicResponseAllowed);
+  const paid = posts.filter((post) => post.reach === "paid");
+  const self = posts.filter(
+    (post) => post.kind === "self-link-reply" || post.kind === "other-self-reply"
+  );
+  const outside = posts.filter((post) => post.kind === "outside-thread-reply");
+  return {
+    organicOriginals: organic.length,
+    outsideReplies: outside.length,
+    selfReplies: self.length,
+    paidViews: sumMetric(paid.map((post) => post.publicMetrics.views)),
+    organicViews: sumMetric(organic.map((post) => post.publicMetrics.views)),
+  };
+}
+
+function sumMetric(values: Array<number | null>): number | "n/a" {
+  if (values.some((value) => value == null)) return "n/a";
+  return values.reduce<number>((sum, value) => sum + (value ?? 0), 0);
 }
