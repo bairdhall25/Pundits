@@ -89,8 +89,9 @@ Target once grading begins: every objectively settled mapped pick is graded, wit
 
 Behavioral analytics should use stable object IDs, never email addresses or quote text:
 
-- `event_detail_open`: `event_slug`, `sport`, `surface`.
-- `pick_story_open`: `event_slug`, `pundit_id`, `status`, `surface`.
+- `event_detail_open`: `event_slug`, `sport`, `surface`, `page_type=game`.
+- `pick_story_open`: `event_slug`, `pundit_id`, `status`, `surface`, `page_type=receipt`.
+- `pundit_profile_open`: `pundit_id`, `surface=profile`, `page_type=profile`.
 - `source_open`: `event_slug`, `pundit_id`, `source_type`.
 - `share_intent`: `artifact_type`, `event_slug`, optional `pundit_id`, `status`.
 - `filter_use`: `surface`, `filter_name`, `filter_value`.

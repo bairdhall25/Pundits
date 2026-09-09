@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContextLinks } from "@/components/ContextLinks";
 import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { EventCard } from "@/components/EventCard";
 import { ShareButton } from "@/components/ShareButton";
@@ -19,15 +21,15 @@ import {
   loadTeams,
   sidesForCard,
 } from "@/lib/data";
+import { gameComparison } from "@/lib/page-content";
 import {
   breadcrumbList,
   eventJsonLd,
-  pickLede,
 } from "@/lib/seo";
 import { formatGameWhen, seasonLabel, seasonSpan } from "@/lib/format";
 import { eventOgCard, ogEventPath, ogImageFor, ogStoryEventPath } from "@/lib/og";
 import { pageMeta } from "@/lib/site";
-import { eventShare, sharePayload } from "@/lib/share";
+import { sharePayload } from "@/lib/share";
 
 export function generateStaticParams() {
   return loadEvents().map((e) => ({ slug: e.slug }));
@@ -43,13 +45,13 @@ export async function generateMetadata({
   if (!event) return pageMeta("Expert picks", "Who the experts are taking.");
   const calls = loadCalls();
   const pundits = loadPundits();
-  const share = eventShare(event, calls, pundits);
+  const comparison = gameComparison(event, calls, pundits);
   const card = eventOgCard(event, calls, pundits, loadTeams());
   const meta = pageMeta(
-    share.title,
-    share.description,
+    comparison.title,
+    comparison.description,
     `/picks/${slug}`,
-    ogImageFor(card.file, share.title, card)
+    ogImageFor(card.file, comparison.title, card)
   );
   if (!eventHasTakes(slug, calls)) {
     return { ...meta, robots: { index: false, follow: true } };
@@ -73,6 +75,7 @@ export default async function PickPage({
   const sides = sidesForCard(event, calls);
   const missingSides = sides.filter((side) => side.calls.length === 0);
   const missingSide = eventKind(event) === "game" && missingSides.length === 1 ? missingSides[0] : undefined;
+  const comparison = gameComparison(event, calls, pundits);
   const crumbs = [
     { name: "Picks", href: "/" },
     { name: sportLabel, href: slate },
@@ -80,7 +83,7 @@ export default async function PickPage({
   ];
 
   return (
-    <main id="main" className="shell">
+    <main id="main" className="shell" data-page-type="game">
       <TrackView
         event="event_detail_open"
         params={eventDetailOpenParams({
@@ -104,12 +107,12 @@ export default async function PickPage({
       </div>
       <div className="share-head mb-2 mt-1">
         <h1 className="text-[clamp(36px,6vw,64px)] leading-[0.92]">
-          {event.title}
+          {comparison.h1}
         </h1>
         <ShareButton
           share={sharePayload({
             title: event.title,
-            text: pickLede(event, calls, pundits),
+            text: comparison.lede,
             path: `/picks/${event.slug}`,
             image: ogEventPath(event.slug),
             story: ogStoryEventPath(event.slug),
@@ -120,9 +123,14 @@ export default async function PickPage({
         />
       </div>
       <p className="when">
-        {formatGameWhen(event) ?? seasonLabel(event.season) ?? "Kalshi market"}
+        {comparison.when ?? formatGameWhen(event) ?? seasonLabel(event.season) ?? "Kalshi market"}
       </p>
-      <p className="lede">{pickLede(event, calls, pundits)}</p>
+      {comparison.resultLine ? <p className="lede">{comparison.resultLine}</p> : null}
+      <p className="lede">{comparison.lede}</p>
+      <p className="coverage-note">
+        {comparison.coverageLine} {comparison.disclaimer}
+        {comparison.emptyLine ? ` ${comparison.emptyLine}` : ""}
+      </p>
       <EventCard
         event={event}
         calls={calls}
@@ -130,6 +138,28 @@ export default async function PickPage({
         permalink={false}
         detail
       />
+      {comparison.entries.length ? (
+        <section className="mt-8" aria-labelledby="who-picked">
+          <h2 id="who-picked" className="type-broadcast mb-3 text-[22px] tracking-widest">
+            {comparison.isGame ? "Who picked this game" : "Who is on this market"}
+          </h2>
+          <ul className="take-list">
+            {comparison.entries.map((entry) => (
+              <li key={entry.href}>
+                <Link href={entry.href}>
+                  {entry.name} → {entry.sideLabel}
+                  <span>
+                    {entry.source}
+                    {entry.sourceDate ? ` · ${entry.sourceDate}` : ""}
+                    {" · Receipt"}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      <ContextLinks links={comparison.contextLinks} label="Teams and week" />
       {eventScanStatus(event, calls) === "open" ? (
         <TipPrompt
           eventSlug={event.slug}

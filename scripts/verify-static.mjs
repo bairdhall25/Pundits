@@ -26,6 +26,7 @@ mark("required-files");
 
 const home = await readFile(path.join(out, "index.html"), "utf8");
 assert.match(home, /<link rel="canonical" href="https:\/\/pundits\.pro\/"/);
+assert.match(home, /max-image-preview:\s*large/);
 assert.match(home, /<title>PUNDITS\b/);
 assert.match(home, /Created by Indie Labs LLC\. © 2026 Indie Labs LLC\./);
 assert.match(home, /mailto:bairdhall25@gmail.com/);
@@ -94,6 +95,11 @@ assert.match(story, /\"@type\":\"NewsArticle\"/);
 assert.match(story, /\"name\":\"Pundits\.Pro\"/);
 assert.doesNotMatch(story, /\"name\":\"PUNDITS Staff\"/);
 assert.doesNotMatch(story, /\"datePublished\":\"2026-08-25\"/);
+assert.match(story, /data-page-type="receipt"/);
+assert.match(story, /Game comparison/);
+assert.match(story, /Paul Finebaum profile/);
+assert.match(story, /href="\/pundits\/finebaum/);
+assert.match(story, /href="\/picks\/unc-vs-tcu-2026\/"/);
 
 const chipTake = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/patterson/index.html"),
@@ -121,6 +127,13 @@ assert.match(dublinDetail, /data-kickoff="2026-08-29"/);
 assert.match(dublinDetail, /KXNCAAFGAME-26AUG29UNCTCU/);
 assert.match(dublinDetail, /\"@type\":\"WebPage\"/);
 assert.doesNotMatch(dublinDetail, /\"@type\":\"SportsEvent\"|\"@type\":\"Event\"/);
+assert.match(dublinDetail, /data-page-type="game"/);
+assert.match(dublinDetail, /Who picked this game/);
+assert.match(dublinDetail, /not a survey of all experts/);
+assert.match(dublinDetail, /Chip Patterson/);
+assert.match(dublinDetail, /Paul Finebaum/);
+assert.match(dublinDetail, /href="\/picks\/unc-vs-tcu-2026\/finebaum/);
+assert.match(dublinDetail, /Week 0 archive/);
 
 const punditProfile = await readFile(path.join(out, "pundits/kanell/index.html"), "utf8");
 assert.match(punditProfile, /Get new Danny Kanell picks\./);
@@ -135,16 +148,21 @@ assert.doesNotMatch(punditProfile, /No unmapped takes on file/);
 assert.doesNotMatch(punditProfile, /at risk/i);
 assert.doesNotMatch(punditProfile, />hard</i);
 assert.match(punditProfile, /Hypothetical \$100 at the frozen Kalshi price/);
+assert.match(punditProfile, /data-page-type="profile"/);
+assert.match(punditProfile, /current picks and tracked record/);
+assert.match(punditProfile, /not a complete career record/);
+assert.match(punditProfile, /Current mapped picks/);
+assert.match(punditProfile, /\"@type\":\"WebPage\"/);
 assert(
-  punditProfile.indexOf("Tracked picks") < punditProfile.indexOf("Hypothetical record"),
-  "pundit profile must put tracked picks before hypothetical totals"
+  punditProfile.indexOf("Current mapped picks") < punditProfile.indexOf("Hypothetical record"),
+  "pundit profile must put current mapped picks before hypothetical totals"
 );
 
 const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 record 1–0/);
+assert.match(herbstreitProfile, /2026 tracked record: 1–0/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -217,6 +235,10 @@ assert.match(
   ncsu,
   /property="og:image" content="https:\/\/pundits\.pro\/og\/events\/ncsu-at-uva-2026\.png\?v=[a-z0-9]+"/
 );
+assert.match(ncsu, /Nobody on Virginia yet/);
+assert.match(ncsu, /No verified pick on Virginia in this tracked set/);
+assert.match(ncsu, /not a survey of all experts/);
+assert.doesNotMatch(ncsu, /survey of all experts on Virginia/);
 
 // An event with no mapped pick stays noindex. Every *game* now carries at least
 // one pick, so the empty-shell case is a Super Bowl future.
@@ -272,6 +294,23 @@ const pateTake = await readFile(
   "utf8"
 );
 assert.match(pateTake, />Takes</);
+
+const finebaumLsu = await readFile(
+  path.join(out, "picks/clemson-at-lsu-2026/finebaum/index.html"),
+  "utf8"
+);
+assert.match(finebaumLsu, /Paul Finebaum pick(?:s|ed) LSU over Clemson/);
+assert.doesNotMatch(finebaumLsu, /Why Paul Finebaum picked them/);
+assert.match(finebaumLsu, /Game comparison/);
+assert.match(finebaumLsu, /href="\/picks\/clemson-at-lsu-2026\/"/);
+
+const brandtTake = await readFile(
+  path.join(out, "picks/49ers-vs-rams-2026/brandt/index.html"),
+  "utf8"
+);
+assert.match(brandtTake, /Kyle Brandt picks .+ over /);
+assert.doesNotMatch(brandtTake, /Why Kyle Brandt picked them/);
+assert.match(brandtTake, /data-page-type="receipt"/);
 
 assert.doesNotMatch(finebaum, />ncaaf</);
 assert.match(finebaum, /College football/);

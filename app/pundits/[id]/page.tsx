@@ -6,22 +6,23 @@ import { EmailInterestForm } from "@/components/EmailInterestForm";
 import { JsonLd } from "@/components/JsonLd";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { ShareButton } from "@/components/ShareButton";
+import { TrackView } from "@/components/TrackView";
+import { punditProfileOpenParams } from "@/lib/analytics";
 import {
   callsForPundit,
   getPundit,
   impliedOpenDollars,
-  isMapped,
   loadCalls,
   loadEvents,
   loadPundits,
-  otherTakes,
 } from "@/lib/data";
+import { profileContent } from "@/lib/page-content";
 import {
   formatNetDollars,
   punditIndexable,
   settledNetDollars,
 } from "@/lib/records";
-import { breadcrumbList, personJsonLd } from "@/lib/seo";
+import { breadcrumbList, personJsonLd, profilePageJsonLd } from "@/lib/seo";
 import { punditShare, sharePayload } from "@/lib/share";
 import { sportChip } from "@/lib/format";
 import { pageMeta } from "@/lib/site";
@@ -46,13 +47,13 @@ export async function generateMetadata({
   const p = getPundit(id, loadPundits(), calls);
   if (!p) return pageMeta("Expert picks", "Named expert on PUNDITS.");
   const latest = callsForPundit(p.id, calls)[0];
-  const share = punditShare(p, latest);
+  const profile = profileContent(p, calls);
   const card = punditOgCard(p, latest);
   const meta = pageMeta(
-    share.title,
-    share.description,
+    profile.title,
+    profile.description,
     `/pundits/${id}`,
-    ogImageFor(ogPunditPath(id), `${p.name} expert picks and record`, card)
+    ogImageFor(ogPunditPath(id), profile.title, card)
   );
   if (!punditIndexable(p.id, calls)) {
     // Thin shell until the first take lands; flips to indexable with content.
@@ -73,16 +74,21 @@ export default async function PunditPage({
   if (!p) notFound();
 
   const punditCalls = callsForPundit(p.id, calls);
-  const mapped = punditCalls.filter(isMapped);
-  const rest = otherTakes(p.id, calls);
+  const profile = profileContent(p, calls);
+  const mappedCount = profile.current.length + profile.historical.length;
   const open = impliedOpenDollars(p.id, calls);
   const events = loadEvents();
   const settled = settledNetDollars(p.id, calls, events);
-  const gradedCount = p.season2026.wins + p.season2026.losses;
+  const gradedCount = profile.gradedSample;
 
   return (
-    <main id="main" className="shell">
-      <JsonLd data={personJsonLd(p)} />
+    <main id="main" className="shell" data-page-type="profile">
+      <TrackView
+        event="pundit_profile_open"
+        params={punditProfileOpenParams({ punditId: p.id })}
+      />
+      <JsonLd data={profilePageJsonLd(p, profile.description)} />
+      <JsonLd data={personJsonLd(p, profile.description)} />
       <JsonLd
         data={breadcrumbList([
           { name: "Pundits", path: "/leaderboard" },
@@ -96,15 +102,15 @@ export default async function PunditPage({
         <PunditAvatar src={p.photo} alt={p.name} size="hero" />
         <div className="pundit-profile-copy">
           <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-            {p.outlet}
+            {profile.outlet}
           </div>
           <div className="share-head">
             <h1 className="mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-              {p.name}
+              {profile.h1}
             </h1>
             <ShareButton
               share={sharePayload({
-                title: `${p.name} picks`,
+                title: profile.title,
                 text: punditShare(p, punditCalls[0]).description,
                 path: `/pundits/${p.id}`,
                 image: ogPunditPath(p.id),
@@ -116,6 +122,10 @@ export default async function PunditPage({
           <div className="mt-2 inline-block border border-[#2a2a2a] px-2 py-0.5 text-[10px] uppercase tracking-widest text-[var(--muted)]">
             {sportChip(p.sport)}
           </div>
+          <p className="lede" style={{ marginTop: 12, marginBottom: 0 }}>
+            {profile.lede}
+          </p>
+          <p className="profile-note">{profile.recordDisclaimer}</p>
           <div className="pundit-profile-stats">
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
@@ -127,7 +137,7 @@ export default async function PunditPage({
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                2026 record
+                2026 tracked record
               </div>
               {gradedCount ? (
                 <div className="pundit-profile-record">
@@ -144,20 +154,31 @@ export default async function PunditPage({
         </div>
       </div>
 
-      <section aria-labelledby="tracked-picks">
-        <h2 id="tracked-picks" className="pundit-profile-section-title">
-          Tracked picks
+      <section aria-labelledby="current-picks">
+        <h2 id="current-picks" className="pundit-profile-section-title">
+          Current mapped picks
         </h2>
-        {mapped.length ? (
-          mapped.map((c) => (
+        {profile.current.length ? (
+          profile.current.map((c) => (
             <CallCard key={c.id} call={c} events={events} showKind={false} />
           ))
         ) : (
-          <p className="lede">No tracked picks yet.</p>
+          <p className="lede">No current mapped picks.</p>
         )}
       </section>
 
-      {mapped.length ? (
+      {profile.historical.length ? (
+        <section aria-labelledby="past-receipts">
+          <h2 id="past-receipts" className="pundit-profile-section-title">
+            Past receipts
+          </h2>
+          {profile.historical.map((c) => (
+            <CallCard key={c.id} call={c} events={events} showKind={false} />
+          ))}
+        </section>
+      ) : null}
+
+      {mappedCount ? (
         <section aria-labelledby="hypothetical-record">
           <h2 id="hypothetical-record" className="pundit-profile-section-title">
             Hypothetical record
@@ -202,12 +223,12 @@ export default async function PunditPage({
         </section>
       ) : null}
 
-      {rest.length ? (
+      {profile.unmapped.length ? (
         <section aria-labelledby="more-takes">
           <h2 id="more-takes" className="pundit-profile-section-title">
             More takes
           </h2>
-          {rest.map((c) => <CallCard key={c.id} call={c} events={events} />)}
+          {profile.unmapped.map((c) => <CallCard key={c.id} call={c} events={events} />)}
         </section>
       ) : null}
 
