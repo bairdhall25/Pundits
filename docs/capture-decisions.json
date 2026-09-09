@@ -29,10 +29,12 @@
     {
       "id": "candidate-jerry-ostroski",
       "kind": "roster-candidate",
-      "needed": "Photo + eligibility review. Staged as team-analyst on Locked On Bills. Team analysts are not pundits unless the operator overrides that definition.",
+      "needed": "Reopen candidate pick and independently assess eligibility; team-analyst exclusion remains. Packet records missing evidence, not approval.",
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-08e-afternoon-shows.md",
-      "note": "Do not auto-roster or bypass photo approval."
+      "note": "Do not auto-roster or bypass photo approval.",
+      "proposalFile": "docs/runs/2026-09-08-candidate-proposals.json",
+      "owner": "Audit"
     },
     {
       "id": "candidate-lainey-wilson",

@@ -58,3 +58,9 @@ Scores (`awayScore`, `homeScore`, `resultUrl`) may be written as soon as the aut
 ## Evidence-version and unpublished-target correction
 
 Require a matching evidence-v2 rowId. Changed sourceDate, rationale, or matchup invalidates approval just like a changed quote. Missing/legacy rowId requires re-audit; never recalculate a hash to reuse an old verdict. Approved unpublished targets follow the unmapped verdict and explicit mint gate. Hunt approval does not authorize minting or homepage placement. Keep targetId/matchup in staging evidence, not editorial JSON.
+
+## Prepare candidate decisions even on publication no-ops
+
+Promote owns assembling the review packet after Candidate Audit, independently of whether any Intake can publish. Read the candidate packet links in capture-decisions.json. Find the official identity/handle, future Scout factory, and a proposed usable photo with provenance/permission basis. Show the actual photo and source for operator review. Do not treat possession of a photo URL as permission or approval. Route missing pick/association evidence to Audit; do not generate it yourself. Regenerate roster-proposals after evidence changes.
+
+Surface one combined roster-and-photo decision per ready candidate, with verified pick, source locator, association explanation, proposed photo, and future hunt source. Keep needs-evidence, rejected, deferred and completed decisions recorded. On approval, use the existing roster-add workflow and publish checks; include a separate explicit event-mint decision for unpublished matchups. Approval is never inferred from ready-for-review. After successful roster publication, close the decision with commit/run links and reconcile add-list against the new live roster so later picks use Intake.

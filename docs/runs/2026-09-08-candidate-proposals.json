@@ -1,0 +1,49 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-jerry-ostroski-fdccee3132ed2bd8",
+      "kind": "roster-candidate",
+      "proposedId": "jerry-ostroski",
+      "rowId": "fdccee3132ed2bd8",
+      "sourceRun": "docs/runs/2026-09-08e-afternoon-shows.md",
+      "status": "awaiting-audit",
+      "owner": "Audit",
+      "candidate": {
+        "line": 16,
+        "pass": "Shows pass 2026-09-08 Tuesday afternoon (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "jerry-ostroski",
+        "name": "Jerry Ostroski",
+        "group": "other",
+        "outlet": "Locked On Bills (radio pilot)",
+        "eventSlug": "bills-at-texans-2026",
+        "side": "yes",
+        "verbatimQuote": "My confidence in the Buffalo Bills getting the victory week one in Houston has me wondering… is my mind playing tricks on me.",
+        "reasoning": "Cold-open first-person confidence Bills get the W1 victory (winner language). Scarface “mind playing tricks” = Houston-curse self-doubt framing, not a retract.",
+        "note": "team-analyst · radio pilot. Body (~5m) “I just feel really good about this game” = vibes, not second SU.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1145479962?i=1000788525168",
+        "sourceDate": "2026-09-08",
+        "photoUrl": "needed"
+      },
+      "audit": null,
+      "missing": [
+        "Independent Audit of current candidate evidence",
+        "Known Audit timestamp",
+        "Association role and source URL",
+        "Evidence-backed eligibility explanation",
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Future Scout source/factory",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Audit reopens pick and association sources even when hard=0",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

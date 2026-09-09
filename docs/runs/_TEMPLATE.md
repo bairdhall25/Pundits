@@ -154,3 +154,5 @@ none
 ### Stories this would mint
 
 *(none)*
+
+Candidate tables may add association, associationUrl, factory, xHandle and photoSource columns. Missing photo is valid. Any new/changed Candidate triggers Audit even when hard=0. Candidate verdict JSON and prepared roster packets follow bots/audit.md and scripts/roster-proposals.mjs.
