@@ -8,6 +8,15 @@ This journal records engineering progress on [the 2026-09-08 plan](../superpower
 
 Branch: `codex/growth-engine-phase-0`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
 
+## QA pause (2026-09-08)
+
+Engineering paused after Phase 2 per Codex: QA accuracy and Scout before expanding into SEO, social, or measurement.
+
+- QA queue: [#22](https://github.com/bairdhall25/Pundits/pull/22) → [#23](https://github.com/bairdhall25/Pundits/pull/23) → [#24](https://github.com/bairdhall25/Pundits/pull/24) → [#25](https://github.com/bairdhall25/Pundits/pull/25)
+- Parked drafts: [#26](https://github.com/bairdhall25/Pundits/pull/26) (3A), [#27](https://github.com/bairdhall25/Pundits/pull/27) (4)
+- Parked branches, no PR: `codex/growth-engine-phase-3b`, `codex/growth-engine-phase-5`
+- Grok resumes those later PRs after Codex accepts Phases 1–2. Do not deploy or post to X from this journal.
+
 ## Phase 0 — current truth and correction inventory
 
 Outcome required: engineering starts from current code and an inspectable list of affected records, not from assumptions about the September 8 snapshot.
@@ -48,8 +57,4 @@ Parked by the brief and not reopened: immutable per-call prices, ATS product, ne
 
 ### Next phase
 
-Phase 1 — correct evidence presentation and publication semantics (quote vs reported selection, visible audited rationale, source date vs first publication, news window vs now, snapshot wording, methodology sync). No Scout queue work in Phase 1.
-
-## Later phases
-
-Phase 1+ not started.
+Codex QA of Phase 1 ([#24](https://github.com/bairdhall25/Pundits/pull/24)) and Phase 2 ([#25](https://github.com/bairdhall25/Pundits/pull/25)). Grok does not start further phases until that review.
