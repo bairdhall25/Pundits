@@ -87,3 +87,13 @@ none (Promote freezes after Audit ok)
 - `49ers-vs-rams-2026` YES — brandt already
 
 ready to audit **1 hard row (0 candidates)**. Did not touch `data/`.
+
+## Lane status
+
+PM format repair from this file's recorded coverage; no new source verification or Audit approval.
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-09 | Afternoon pass recorded above: Simms Patriots YES Intake; Bills YES dry. |
+| X | not-run | 2026-09-09 | Not part of this Shows packet; the separate X pass is in the day file. |
+| News | not-run | 2026-09-09 | No News pass recorded in this packet. |
