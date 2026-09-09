@@ -73,7 +73,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/scout-plan.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Run `node scripts/scout-density.mjs` (or score the same way) and `node scripts/scout-feeds.mjs`. Write ## Dispatch and ## Factory feeds into docs/runs/YYYY-MM-DD.md from the template. Keep NCAAF and NFL rows on the same hit list. Fetch origin/main first. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
+Run `node scripts/scout-density.mjs` (or score the same way) and `node scripts/scout-feeds.mjs`. Write ## Dispatch and ## Factory feeds into docs/runs/YYYY-MM-DD.md from the template, including coverage flags, proposed shortlist, and the decision queue. Keep NCAAF and NFL rows on the same hit list. Fetch origin/main first. Do not open YouTube, X, or articles. Never touch data/. Commit the run file. Chat is not the handoff. Then: dispatch ready.
 ```
 
 **Shows Scout:**
@@ -86,7 +86,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-shows.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/pick-shows.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Re-run scout-feeds.mjs at hunt time; skip only a fresh waiting/recap/short/wrong-year/off-topic/error. Open today. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass — never wipe a prior pass. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
+Hunt approved ## Dispatch rows by priority then kickoff: empty-side, then off-home, then thin. Source-complete designated voices on approved dense games; otherwise skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Re-run scout-feeds.mjs at hunt time; skip only a fresh waiting/recap/dry/wrong-year/off-topic/error. Open today and unprocessed. Jump locks / I'll take / moneyline. Use normal programs first, then the bounded radio fallback. Name the speaker and record Radio coverage, including dry attempts. Named add-list and qualifying radio-pilot speakers are Candidates. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## Shows pass — never wipe a prior pass. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **X Scout:**
@@ -98,7 +98,7 @@ At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-x.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
+Hunt approved ## Dispatch rows by priority then kickoff: empty-side, then off-home, then thin. Source-complete designated voices on approved dense games; otherwise skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. from:{handle} {away} and from:{handle} {home}, last 48 hours. Open the status URL. Same Intake/Candidates/Dropped bar. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Never tweet. Append ## X pass to docs/runs/YYYY-MM-DD.md. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **News Scout:**
@@ -111,7 +111,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/scout-news.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/news-beats.md
 Repo: https://github.com/bairdhall25/Pundits
 
-Hunt ## Dispatch: empty-side, then off-home, then thin. Skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
+Hunt approved ## Dispatch rows by priority then kickoff: empty-side, then off-home, then thin. Source-complete designated voices on approved dense games; otherwise skip dense unless hunt says flip-check. NCAAF and NFL in the same pass — do not park a sport. Open the page. Name the speaker. "No Pick" and unnamed staff lists are Dropped. Overflow unlisted SUs stay unmapped (blank eventSlug). Never mint ids. Never touch data/. Append ## News pass to docs/runs/YYYY-MM-DD.md and write Home cards. Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject. Chat is not the handoff.
 ```
 
 **Promote**
@@ -155,7 +155,7 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/poster.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/schedule.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/tagging.md
 Then fetch https://pundits.pro/social/cards.json for what is postable right now.
-Never invent a quote, stat, price, or handle. Never generate an image of a real person. Attach the pre-rendered cards from cards.json. Tag only an earned Roll Call, Flowers, or Milestone under tagging.md. The link goes in the first self-reply, never the post body. Never touch data/ or docs/. Nothing new in cards.json means no post.
+Never invent a quote, stat, price, or handle. Never generate an image of a real person. Attach the pre-rendered cards from cards.json. Rank pregame disagreement, then postgame resolution only if gradedAt or kickoffDate is within 3 ET days, then a selective notable call. Count the daily cap from 12:00am ET; novelty lookback is not midnight-bounded. Skip if coverage cannot be established. Tag only an earned Roll Call, Flowers, or Milestone under tagging.md. The link goes in the first self-reply, never the post body. Never touch data/ or docs/. Caps are ceilings. Nothing new means no post.
 ```
 
 **Reply Guy**
@@ -166,7 +166,7 @@ At the start of every job, fetch and follow in order:
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/reply.md
 https://raw.githubusercontent.com/bairdhall25/Pundits/main/docs/social/voice.md
 Then fetch https://pundits.pro/social/cards.json for receipts.
-Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Never touch data/ or docs/.
+Every reply adds a fact from pundits.pro. Critique the pick, never the person. Text first; attach a card only when it answers the thread. One exchange per thread, then disengage. Do not fill leftover reply cap. Never touch data/ or docs/.
 ```
 
 **Reviewer**
@@ -179,17 +179,17 @@ https://raw.githubusercontent.com/bairdhall25/Pundits/main/bots/reviewer.md
 Repo: https://github.com/bairdhall25/Pundits
 Account: @Pundits_
 
-Score the last 7 ET days of @Pundits_ against cards.json and the playbook. Write docs/runs/YYYY-MM-DD-social.md. Append one row to docs/social/scoreboard.md. Propose exactly one playbook change in the run file. Do not edit voice.md, schedule.md, reply-guide.md, post-patterns.md, or data/. Chat is not the mailbox.
+Score the last 7 ET days of @Pundits_ against cards.json and the playbook. Classify originals, outside-thread replies, self-link replies, paid reach, and organic response. Record missing metrics as n/a. Write docs/runs/YYYY-MM-DD-social.md. Append one row to docs/social/scoreboard.md. Propose exactly one playbook change in the run file. Do not edit voice.md, schedule.md, reply-guide.md, post-patterns.md, or data/. Chat is not the mailbox.
 ```
 
-Cadence (Week 1): Coordinator daily (Dispatch from fresh origin/main; settled games are not hunt targets). **Every Shows / X / News pass hunts NCAAF and NFL Dispatch rows in the same run** — do not park a sport. Skip dense except flip-check. Factory windows still apply (GameDay / Big Noon Saturday). Radio is a bounded fallback inside Shows jobs, never an additional routine. X twice daily. Audit when `hard>0` and `audit=pending`. Promote mapped `ok` and `ok-no-reasoning` rows when the Audit tally says they are ready; mint overflow only if the operator asked. Grader after Clemson–LSU, then after each NFL opener. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md`. Reply Guy daily sweeps, heavier on game days. Reviewer weekly on Monday ET after weekend grades, or on request.
+Cadence: Coordinator daily (Dispatch from fresh origin/main plus the capture-target queue; settled and past-kickoff games are Grader flags, not hunt targets). Before midweek pick shows, propose the next 2–4 marquee games per sport. **Every Shows / X / News pass hunts approved NCAAF and NFL Dispatch rows in the same run** and reports completed/dry/blocked/not-run. Skip ordinary dense hunting except source-complete and flip-check. Factory windows still apply (GameDay / Big Noon Saturday). Radio is a bounded fallback inside Shows jobs, never an additional routine. X twice daily. Audit when `hard>0` and `audit=pending`, row by row. Promote mapped `ok` and `ok-no-reasoning` rows whose `rowId` still matches; mint overflow only if the operator asked. Operator reviews `docs/capture-decisions.json` Tue/Fri. Grader after each approved game settles. Recap after Grader, or on request. Poster daily per `docs/social/schedule.md` (caps, not quotas; skip when coverage is unknown). Reply Guy daily sweeps, heavier on game days, without filling leftover cap. Reviewer weekly on Monday ET after weekend grades, or on request.
 
 ## House rules
 
 Owned here so the files do not fork them.
 
 1. **Scout, Audit, Grader, and Recap do not edit** `data/calls.json`, `data/events.json`, or `data/pundits.json`. They stage in `docs/`. **Promote** is the one Bot that writes JSON, runs tests, and publishes.
-2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is today’s `## Dispatch` (from `node scripts/scout-density.mjs`). Shows Scout hunts `docs/pick-shows.md`. News Scout hunts `docs/news-beats.md`. X Scout hunts status URLs (`from:{handle}`, last 48 hours). Add-list is `docs/add-list.md`. Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster unless the operator asked this pass; who is eligible is `docs/product/roster-growth.md` (association on roster factories; team analysts are not pundits). Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
+2. **Roster and events are live files**, not memory. Load `data/pundits.json` and `data/events.json` at the start of the job. Hunt order is today’s `## Dispatch` (from `node scripts/scout-density.mjs` + `docs/capture-targets.json`). Shows Scout hunts `docs/pick-shows.md`. News Scout hunts `docs/news-beats.md`. X Scout hunts status URLs (`from:{handle}`, last 48 hours). Add-list is `docs/add-list.md`. Named off-roster speakers as Candidates. Never “the show.” Scout does not mint ids. Promote does not auto-roster unless the operator asked this pass; who is eligible is `docs/product/roster-growth.md` (association on roster factories; team analysts are not pundits). Group vs group is parked. Fantasy/props parked in `docs/fantasy.md`.
 3. **Winner vs bet — decipher gambling copy; do not dump it all in Dropped.** A listed-game **winner** is Intake (hard). Named **numbers** also go in **Bets** (Promote does not ship Bets). Player props stay parked (`docs/fantasy.md`).
    - **Favorite laying points** (`TCU -7.5`, `TCU -7.5 for the first win`) → SU for the favorite **and** Bets. You cannot lay points unless you think they win. Compton 2026-08-29.
    - **Dog getting points** (`UNC +7.5`, `Virginia to cover`) → **Bets only**, unless they also say the dog **wins**. Cover ≠ winner.
@@ -203,10 +203,10 @@ Owned here so the files do not fork them.
 8. Unverifiable quote → drop. Empty sides are fine. Fake quotes are not.
 9. **Same episode, two speakers is two rows.** Skip a restage of the same pundit+event (or this pundit already using that sourceUrl). Do not skip a second named speaker on the same URL.
 10. **Capture the reason, not the transcript.** For a new hard pick, keep the decisive verbatim quote short, then add an optional `reasoning` capsule of at most 60 words that paraphrases at most two concrete factors the same speaker actually gave in the same source. No new analysis, generic filler, play-by-play, or transcript dump. If the speaker gave only the pick, leave reasoning blank. Routing notes go in `note`, never inside `reasoning`. `reasoning` is reader-facing copy and is the only field that can reach a pick page.
-11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness.
-    - Poster tags pundits in original posts only for Roll Call, Flowers, or Milestone moments that pass `docs/social/tagging.md`. It never guesses a handle or tags a pundit on a miss.
+11. **Poster and Reply Guy never write to the repo.** Not `data/`, not `docs/`. They read the playbook (`docs/social/`) and `https://pundits.pro/social/cards.json`, and act on X only. Every number they post must be on pundits.pro at post time. They never repost third-party media and never AI-generate a real person's likeness. Novelty is live timeline/search keyed by canonical destination, call/event, and state across the pick/result lifecycle. If that coverage cannot be established, skip rather than assume novelty. They do not write a publication log.
+    - Poster tags pundits in original posts only for Roll Call, Flowers, or Milestone moments that pass `docs/social/tagging.md`. It never guesses a handle or tags a pundit on a miss. Daily caps are ceilings counted since 12:00am ET. A resolution older than 3 ET days is not a candidate. Routine favorite wins and thin records stay off the timeline unless they have a specific reason.
 12. **Radio is named-person evidence, not station consensus.** Shows may use durable episodes, clips, transcripts, or show notes that Audit can reopen. Live-only audio, callers, polls, anonymous consensus, and inaccessible snippets stay Dropped. National rostered programs come first; local fallback is capped at two archives per under-dense matchup.
 13. **Reviewer writes only the social mailbox.** Allowed: `docs/runs/YYYY-MM-DD-social.md` and one appended row on `docs/social/scoreboard.md`. Forbidden: `data/`, playbook files under `docs/social/` except the scoreboard, posts, replies, follows, and grades. A playbook change is a proposal in the run file until the operator commits it.
-14. **Every Scout pass covers NCAAF and NFL.** Coordinator writes the full Dispatch. Shows, X, and News hunt every under-dense row in that table in the same run. Do not park a sport because the calendar said “CFB day” or “NFL week.” Skip `dense` events except a `flip-check` hunt on already-carded faces. Skip settled games. Factory windows (GameDay Saturday, etc.) still limit which episode to open. Doctrine: `docs/capture-policy.md`.
+14. **Every Scout pass covers NCAAF and NFL approved targets.** Coordinator writes the full Dispatch. Shows, X, and News hunt approved rows in that table in the same run. Do not park a sport because the calendar said “CFB day” or “NFL week,” and do not treat a missing college approval as no college work. Skip ordinary `dense` hunting except `source-complete` on approved priority games and `flip-check` on already-carded faces. Skip settled and past-kickoff games. Factory windows (GameDay Saturday, etc.) still limit which episode to open. Doctrine: `docs/capture-policy.md`.
 
 Product rules in full: `docs/superpowers/specs/2026-08-25-pundits-v1-launch-design.md`. Capture checklist: `docs/RUNBOOK.md`.

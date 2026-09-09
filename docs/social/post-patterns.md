@@ -1,145 +1,85 @@
 # Post patterns
 
-Twelve archetypes cover every post the bots make. Each names its image tier (see `images.md`) and its register (see `voice.md`, `## Two registers`). The examples below are calibration, not scripts — compose freshly every time, following `voice.md`. Original-post tags follow `tagging.md`; no archetype outside Roll Call, Flowers, or Milestone earns a tag.
+The primary editorial order is the job. Named archetypes below are treatments, not a checklist. Compose freshly every time, following `voice.md`. Original-post tags follow `tagging.md`; no treatment outside Roll Call, Flowers, or Milestone earns a tag.
 
-## The Receipt
+Keep the existing Tier 1 cards. Use team, pundit, and event language first. Introduce a price only when it explains the story, and only as a dated Kalshi snapshot.
 
-**When:** a mapped take grades — `status` flips to `hit` or `miss` in `cards.json`.
+## Primary order
 
-**Shape:** what they said → frozen cents → the outcome (winner) → one-word verdict + closer. Evenly for hits AND misses — the FCT rule: the ledger, not a vendetta.
+### 1. Pregame disagreement
 
-**Image:** Tier 1 take card.
+**When:** a `kind: game` event has named pundits on both sides and is not yet settled.
 
-**Example** (calibration example — never repost verbatim): *"Finebaum picked TCU. Kalshi snapshot: 61¢, Tuesday. Final: TCU won. Hit. The book remembers."*
-
-## The Flowers
-
-**When:** a notable mapped take grades `hit` and the pundit made a clear, specific call worth celebrating. Use selectively; not every hit needs flowers.
-
-**Shape:** name the pundit → preserve the strongest faithful fragment of the original call → state the frozen cents and final result → give specific credit. Prefer "called this one" or "got this one right" over claims that one result proves expertise. Tag the pundit under `tagging.md`; tag an approved original outlet only when the copy explicitly credits it and it is material to the evidence.
-
-**Image:** Tier 1 take card using one of the approved Flowers treatments in `images.md`: Broadcast Spotlight or Quote-First.
-
-**Example** (calibration example — never repost verbatim): *"Give Chip Patterson his flowers. He picked North Carolina outright, on the record, before kickoff. Kalshi snapshot: 41¢. Final: Carolina won. Called it. 💐"*
-
-**Boundary:** The Flowers is the celebratory layer, not the ledger. It never replaces The Receipt's even coverage of hits and misses, never hides the sample size behind an overall record, and never turns one correct pick into a claim of predictive skill.
-
-## The Roll Call
-
-**When:** before kickoff, a game has at least four distinct mapped pundits, both sides are represented, and the density itself has become the story. Follow the full gate and tag cap in `tagging.md`.
-
-**Shape:** number of tracked pundits → the split by team → name the central opposing voices → establish it as the contested game in the book. The post is about the field of disagreement, not a list of database rows.
+**Shape:** name the people and the teams → why this split is the story (holdout, density, lopsided snapshot) → closer. The assertion is the post. Never a database dump, never a fake feud, never "empty side" when both arrays are populated.
 
 **Image:** Tier 1 event card.
 
-**Example** (calibration example — never repost verbatim): *"6 pundits. A 3-3 split on Clemson-LSU. The most contested game in the book this week has no safe side."*
+**Example** (calibration example — never repost verbatim): *"Kyle Brandt picks the 49ers. Cowherd, Eisen, and McIntyre pick the Rams. Four tracked calls, one holdout ahead of Thursday's opener."*
 
-**Boundary:** one Roll Call per event. When approved handles exist, use no more than four pundit tags and include at least one tagged voice from each side. If the event misses the density gate, use an untagged Disagreement or Slate.
+**Roll Call overlay:** if the event also passes the density gate in `tagging.md` (four distinct pundits, both sides), the same post may tag approved central voices. One Roll Call per event. If it misses that gate, post the disagreement untagged.
 
-## The Freeze
+### 2. Postgame resolution of that disagreement
 
-**When:** a new hard pick lands — a new take row, `status` pending.
+**When:** that same two-sided game grades, and `gradedAt` on a mapped take or the event `kickoffDate` is within 3 ET days. Older settled boards are not a resolution candidate. Do not backfill them to fill leftover cap.
 
-**Shape:** quote-lede (the most arguable short phrase of `claim`, in quotes) → pundit named → event + frozen cents.
+**Shape:** final score → who had each team → straight-up result. Hits and misses stay in the same post. Never "cover" from a winner-only grade. Never imply we watched the game. If the stored claim names a spread or cover, name the team and the straight-up result; do not quote the cover fragment.
+
+**Image:** Tier 1 event card — the same card family as the pregame post, now in its graded state if the build refreshed it.
+
+**Example** (calibration example — never repost verbatim): *"North Carolina 15, TCU 10. Patterson and McElroy had the Heels. Finebaum and Compton had TCU. Straight-up, the underdog side hit."*
+
+### 3. Selective notable individual call
+
+**When:** a single mapped take has a specific reason to care: underdog at the snapshot, holdout on a tracked board, or unusually specific verified evidence. Not every pending row, and not a 94¢ favorite that won.
+
+**Shape:** pundit → team → the reason it is notable → dated snapshot only if the price is the reason → result if graded. On `gradingScope: straight-up-winner`, never lead with a cover/ATS fragment even if that wording is in `claim`. Say the picked team, then that the tracked result is the straight-up winner.
 
 **Image:** Tier 1 take card.
 
-**Example** (calibration example — never repost verbatim): *"'Give me the Heels.' Chip Patterson is on North Carolina. Kalshi snapshot: 41¢. It's in the book."*
+**Example** (calibration example — never repost verbatim): *"Chip Patterson picked North Carolina. Kalshi snapshot: 26¢, as of Aug 28, 2026. Final: North Carolina 15, TCU 10. Straight-up hit."*
 
-## The Number
+**Flowers overlay:** a notable `hit` may use Flowers copy and the pundit tag when `tagging.md` passes. Flowers replaces an ordinary hit treatment; it does not add a second post about the same result. Never tag a miss.
 
-**When:** the ledger yields a stat with stakes — a streak, a first, a worst-since, a rank — computed only from `cards.json` records, never invented.
+## Optional treatments
 
-**Shape:** Opta anatomy — "N — fact with stakes. Closer."
+Use these only when they add a fact the primary order does not already tell.
 
-**Image:** Tier 1 pundit card, or none.
+### The Freeze
 
-**Example** (calibration example — never repost verbatim): *"3 — Finebaum has taken the road team three straight weeks. All three are in the book."*
+A newly captured pending take that is not already named in a disagreement post. Quote spoken claims; label reported selections as selections. Untagged.
 
-## The Disagreement
+### The Receipt
 
-**When:** an event has named pundits on both sides — `yesPundits` and `noPundits` both non-empty.
+An individual grade that is not already covered by a disagreement resolution or Flowers post. Even hits and misses. Never a cover claim from a winner-only grade.
 
-**Shape:** name the pundits on each side → the frozen price with each side attached to it → assert who is bolder at the price. Near a coin flip, the stake is that somebody's record takes the loss. When the price is lopsided, the story is the minority side: say what the underdog pundits put on the record, priced. The assertion is the post — never just a list of who-said-what.
+### The Number / The Ledger Move / The Milestone
 
-Team language ("X says away, Y says home") is for `kind: "game"` only. On a `kind: "future"` the sides are the named outcome vs. the field — follow `## Futures` below.
+A tracked-record fact with stakes and a printed sample size. Skip 1-0 and other near-zero samples. Milestone tags follow `tagging.md`. Ordinary ledger movement stays untagged.
 
-**Image:** Tier 1 event card.
+### The Slate
 
-**Example — game, near coin flip** (calibration example — never repost verbatim): *"Patterson says Heels. Finebaum says Frogs. Kalshi froze it 41–61. Somebody's going in the book."*
+Morning of a game day, only when several tracked picks actually resolve today and the marquee disagreement has not already been posted. Never a futures "tonight."
 
-**Example — future, lopsided price** (calibration example — never repost verbatim): *"'Stafford wins it.' Orlovsky and Butler both have the Rams winning it all, priced at 16¢. Bold, on the record, in the book."*
+### Live register
 
-## The Slate
+Only while a tracked game is genuinely underway. Pending pick plus the fact the game is in window. No scores, no manufactured viewing.
 
-**When:** morning of a game day — computed from `kickoff` at post time.
+### The Self-Grade
 
-**Shape:** how many tracked picks resolve today + the marquee disagreement.
+The site's own week-leans grade (`docs/week1-leans.md` lineage), when that slate actually grades.
 
-**Image:** Tier 1 event card of the marquee game.
+### The Harvest
 
-**Example** (calibration example — never repost verbatim): *"9 tracked picks settle today. The loudest: Patterson and Finebaum on opposite sides of UNC–TCU at 41–61."*
-
-## The Ledger Move
-
-**When:** after a graded slate reshuffles records.
-
-**Shape:** the number is the headline — who leads, who slid. This is untagged unless it independently meets the Milestone rule below.
-
-**Image:** Tier 1 pundit card of the mover.
-
-**Example** (calibration example — never repost verbatim): *"New leader in the book: Patterson, 5-1 on the season. Finebaum drops to 3-3. Standings don't argue."*
-
-## The Milestone
-
-**When:** a pundit reaches one of the meaningful tracked-record thresholds in `tagging.md`.
-
-**Shape:** milestone first → full tracked record and graded sample → narrow credit. Use `tracked record`, `on record`, or `on Pundits.Pro`; never imply that the ledger contains every prediction the pundit has made.
-
-**Image:** Tier 1 pundit card.
-
-**Example** (calibration example — never repost verbatim): *"10 graded picks. Patterson is 7-3 on the Pundits.Pro tracked record. A real sample has entered the chat."*
-
-**Boundary:** only positive or neutral milestones earn tags. Tiny samples and negative milestones remain untagged Numbers or ledger posts.
-
-## Live register
-
-**When:** games underway — computed from `kickoff`; only while genuinely in-window.
-
-**Shape:** fragments; no scores, no in-game stats — the post uses only what the index carries: the pending pick, the frozen price, and the fact the game is underway (computed from `kickoff`); never an outcome claim before the take settles.
-
-**Image:** none or Tier 1.
-
-**Example** (calibration example — never repost verbatim): *"Finebaum's TCU lean is live. 61¢ frozen on Tuesday, settling tonight. The book is watching."*
-
-## The Self-Grade
-
-**When:** the site's own week-leans grade (see `docs/week1-leans.md` lineage).
-
-**Shape:** our record first, dry.
-
-**Image:** Tier 1 or none.
-
-**Example** (calibration example — never repost verbatim): *"Our Week 0 leans went 1-2. The receipt cuts both ways."*
-
-## The Harvest
-
-**When:** 1–2x weekly, off game windows.
-
-**Shape:** prompt-shaped observation about takes culture (never a bare question); feature the best replies later by quoting them with credit.
-
-**Image:** Tier 2 or none.
-
-**Example** (calibration example — never repost verbatim): *"Every fanbase has one pundit they refuse to forgive. The book just writes down why."*
+Off-window observation about takes culture, at most rare, never to fill a quiet day.
 
 ## Futures
 
-Rules for any `kind: "future"` event, whatever the archetype:
+Rules for any `kind: "future"` event, whatever the treatment:
 
 - **YES is the named outcome; NO is the field** — everything else. The NO price is the price of "anyone but," never the price of a pundit's stated alternative. A separate outcome ("Bills win the Super Bowl") has its own event and its own price; if it isn't in `cards.json`, don't attach a number to it.
-- **A NO-side pundit whose claim names a specific alternative made a bolder call than the NO price implies.** "I have the Bills beating the Rams in the Super Bowl" is not an 84¢ position — it's a precise two-team call. Quote the claim and frame the boldness honestly, or give it its own post; never write "X says Bills … 16–84," which pins the field's price on one team.
+- **A NO-side pundit whose claim names a specific alternative made a bolder call than the NO price implies.** Quote the claim and frame the boldness honestly, or give it its own post; never write "X says Bills … 16–84," which pins the field's price on one team.
 - **Never write a future in game language.** No away/home, no "tonight," no "settling" — futures resolve at season's end. The Slate and Live register never include futures.
 
 ## Selection rule
 
-Pick the archetype the moment calls for. If a hit fits both The Receipt and The Flowers, use Flowers only when the call is specific, notable, and likely to matter to the pundit's audience; otherwise use The Receipt. If a Ledger Move also meets a tracked threshold, use Milestone rather than tagging an ordinary Ledger Move. Prefer a Tier 1 card when two other archetypes fit. Never post the same archetype twice in a row. Never exceed the day's budget in `schedule.md`.
+Pick the treatment the moment calls for, in the primary order above. Do not rotate archetypes for variety. Prefer the event card for disagreement and resolution. A postgame resolution is eligible only when `gradedAt` or `kickoffDate` is within 3 ET days; skip older settled disagreements. Never exceed the day's cap in `schedule.md`. Never post to use leftover cap. Routine favorite wins and near-zero-sample records need a specific reason, or they stay off the timeline.

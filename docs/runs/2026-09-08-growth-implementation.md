@@ -6,7 +6,7 @@ Product manager: Codex. Engineer: Grok. Product owner: Baird.
 
 This journal records engineering progress on [the 2026-09-08 plan](../superpowers/plans/2026-09-08-growth-engine-implementation.md). It is not a Scout intake run. It does not set editorial `audit=` or `promoted=` flags. It does not edit `data/*.json`.
 
-Branch: `codex/growth-engine-phase-1`. Phase 0 inventory: `6287aba`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
+Phase 0 inventory: `6287aba`. Phase 1 HEAD: `cae79e9`. Phase 2 HEAD: `773e708`. Code/JSON baseline: `6e4470a`. Docs handoff: `5a31459`.
 
 ## Phase 0 — current truth and correction inventory
 
@@ -45,10 +45,6 @@ None invented. Real gaps Phase 0 cannot close:
 4. **News-sitemap expiry ownership.** Phase 1B needs a proposed static-output refresh; whether a scheduled empty deploy is the mechanism is a later review item, not a claim that a schedule is running.
 
 Parked by the brief and not reopened: immutable per-call prices, ATS product, new sports, backends, aggregator enrollment, production deploy, live X posts.
-
-### Next phase
-
-Phase 1 implemented on this branch. Not production-shipped.
 
 ## Phase 1 — evidence presentation and publication semantics
 
@@ -100,7 +96,49 @@ Promote writes these on new live publication only.
 3. Whether any historical `firstPublishedAt` can later be populated from Cloudflare deploy logs. None were backfilled here.
 4. Empty-deploy cadence for news expiry: the workflow and RUNBOOK are reviewable; activating and observing them is an operations step, not claimed complete.
 
-Parked: Scout queue, page-type SEO expansion, social selection rewrite, ATS, backends, production deploy, live X.
+Parked from Phase 1: Scout queue (landed in Phase 2), page-type SEO expansion, social selection rewrite, ATS, backends, production deploy, live X.
+
+## Phase 2 — Scout queue, source completion, and handoffs
+
+Outcome required: the next week's relevant evidence is found before kickoff without grinding indefinitely on the same empty side.
+
+This journal is not a Scout intake run and does not set `audit=` / `promoted=` flags.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Upcoming NCAAF absence is flagged | yes | Live `ncaafAbsenceFlag` on current `data/events.json` + `docs/capture-targets.json`; Dispatch coverage flag. Proposed Week 2 shortlist is labeled proposed. |
+| Approved dense game still source-completes a newly available GameDay voice | yes | `scripts/scout-density.test.mjs` source-completion fixture |
+| Unseen yesterday episode remains eligible | yes | `classifyItem` unprocessed fixture in `scripts/scout-feeds.test.mjs` |
+| Newer irrelevant episode does not hide a relevant one | yes | `classifyQueue` / `inspectableEpisodes` fixture |
+| Dry episode is not reprocessed without cause | yes | ledger `outcome: dry` fixture; reopen only with `reopenReason` |
+| Same-day imminent target precedes a later equal-priority one | yes | Patriots before Bills at equal priority |
+| Unrelated failed row does not block an approved row | yes | `promoteReadyRows` Howard ok + Portnoy fail |
+| Modified row cannot reuse approval | yes | quote change invalidates `rowId` |
+| Past or settled event cannot receive pregame hunting | yes | settled → Grader or omit; past kickoff without a final → Grader; missing kickoff is not live |
+| Current-main dry run does not publish data | yes | `node scripts/scout-density.mjs --dry-run` and `node scripts/scout-feeds.mjs --dry-run` print only |
+| Journal is not a Scout intake and does not set editorial flags | yes | this file |
+
+### Checks run
+
+On this worktree after the Phase 2 code and operating-doc edits:
+
+- `npm test`: **pass**, 453 tests / 47 files.
+- `npm run check:fast`: **pass**. Inexpensive tests 452 passed / 46 files; `validate:runs` passed on `docs/runs`. Note: `check:fast is not a release gate.`
+- `node scripts/scout-density.mjs --dry-run`: printed Dispatch + proposed shortlist + decision queue. Coverage flag: upcoming NCAAF game events: 0. Hunt order Patriots (Sep 9 empty-side) → 49ers (Sep 10 dense source-complete) → Bills (Sep 13 empty-side). Did not write `data/*.json`.
+- `node scripts/scout-feeds.mjs --dry-run`: printed the recent-unprocessed queue including GMFB / See Ball / Clay Travis. GMFB `i=1000788488079` stayed inspected/hit and was not re-queued. Did not write `data/*.json` or mark new episodes inspected.
+
+No production deploy. No `data/*.json` edits. Methodology page was not changed: this phase is operating policy, not public pick-eligibility semantics.
+
+### Remaining product decisions
+
+1. **NCAAF Week 2 shortlist.** Engineering bootstrapped four source-backed proposed games (Oklahoma at Michigan; Ohio State at Texas; Arizona State at Texas A&M; Alabama at Kentucky). Codex/PM must approve, replace, or defer. Silence is not “no college work” and is not permission to scout every game. No public events were minted.
+2. **NFL add-ons.** Broncos–Chiefs, Commanders–Eagles, and Packers–Vikings are proposed only. Approved openers stay Patriots / 49ers / Bills.
+3. **Factory IDs.** GMFB Apple `1171438277`, See Ball Get Ball `1769665459`, and Clay Travis `1498106610` are verified from existing repo URLs. No guessed IDs. No remaining factory-ID gap for those three.
+4. **Episode ledger writer.** Shows is instructed to persist inspection outcomes in `docs/scout-episodes.json`. Coordinator feed checks only discover. Whether Coordinator should auto-write `outcome: discovered` on every feeds run is left to Codex; the CLI remains print-only by default so a dry run cannot mark episodes inspected.
+
+Parked by the brief and not reopened: auto-roster, photo bypass, team-analyst eligibility, bulk event minting, new bots, `data/*.json` edits, production deploy, live X.
 
 ## Phase 3A — receipts, game comparisons, pundit profiles
 
@@ -123,12 +161,92 @@ Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-0
 
 ### Checks run
 
-`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 463 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production) inspected for Finebaum Dublin, Finebaum LSU (no rationale), Brandt pending, Saban reported-selection, Dublin game, NC State empty-side, 49ers pending game, Kanell graded profile, Cowherd current-picks profile, and Simms empty noindex shell. No production deploy.
+`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 463 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production). No production deploy.
+
+## Phase 4 — simplify social selection while preserving the cards
+
+Outcome required: the existing bots select meaningful verified stories and can be evaluated against actual outcomes. Cards and visual design are unchanged. No live X posts.
+
+This journal is not a Scout intake run and does not set `audit=` / `promoted=` flags.
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Replay a fixture timeline crossing midnight and show duplicates skipped | yes | `lib/social-select.test.ts` pending take posted 23:40 ET still skipped next morning |
+| Newly graded result is distinct from its original pending post | yes | same destination, `pregame` skip / `result` allow |
+| If live coverage cannot be established, skip rather than assume novelty | yes | `coverage-unknown` fixture; Poster/Reply Guy remain read-only and do not write a log |
+| Contradictory “empty side” language fails review | yes | `lib/social-copy.test.ts` |
+| Unsupported cover language fails review | yes | “Cover crushed.” on a winner-only grade |
+| No false quotation or missing-price-time implication in drafts | yes | reported-selection drafts unquoted; prices require `snapshotAt` / “as of” |
+| All tags have approved provenance | yes | parser vs `docs/social/tagging.md`; unapproved `@randomfan` fails |
+| Unavailable metrics remain blank/n/a | yes | `metricCell(undefined) === "n/a"`; paid vs organic vs unavailable reach |
+| Reviewer separates originals, outside-thread replies, self-link replies, paid reach | yes | `classifyTimelineItem` + `bots/reviewer.md` |
+| Daily caps are ceilings, not quotas | yes | leftover-cap skip; schedule rewritten as ranges |
+| Routine favorite wins need a specific reason | yes | Wisconsin–ND / Miami–Stanford / Boise–Oregon / WMU–Michigan skipped |
+| Primary order is disagreement → resolution → notable call; no forced archetype rotation | yes | `rankStories` + `docs/social/post-patterns.md` |
+| Existing cards unchanged | yes | drafts reuse `ogCard` URLs; `docs/social/images.md` keeps the visual system |
+| Additive `cards.json` fields, schemaVersion 2 | yes | `callId`, locator, rationale, snapshot, gradingScope, scores; no renamed fields |
+| Offline review drafts, not live posts | yes | samples below |
+| Methodology unchanged | yes | no pick-eligibility / grading / snapshot-semantics change |
+| No `data/*.json` edits, no live X, no deploy | yes | this change |
+
+### Payload (compatible)
+
+`schemaVersion` stays **2**. Additive fields on existing arrays:
+
+- events: `snapshotAt`, `gradingScope`, `trackedCount`, `bothSides`, `awayScore`, `homeScore`, `resultUrl`
+- takes: `callId`, `source`, `sourceUrl`, `sourceLocator`, `rationale` (public only; operational capsules stay `null`), `gradingScope`, `spreadOrigin`
+
+`pageUrl` / `ogCard` / `storyCard` / status / side are unchanged.
+
+### Novelty contract
+
+Poster/Reply Guy remain read-only. Novelty is live timeline + destination search keyed by canonical `pageUrl` + state across the pick/result lifecycle, not since midnight. Unverified coverage is a skip. A persistent publication log is **not** shipped; see remaining decisions.
+
+### Offline drafts (review only)
+
+Same card URLs as current `cards.json`. Not posted.
+
+**1. 49ers vs Rams** (current pregame; no result draft — game is ungraded)
+
+- Chosen card: `https://pundits.pro/og/events/49ers-vs-rams-2026.png`
+- Why selected: only upcoming two-sided tracked game on 2026-09-09.
+- Pregame: *Kyle Brandt picks 49ers. Rich Eisen, Colin Cowherd, and Jason McIntyre pick Rams. 4 tracked calls, both sides on the record ahead of Sep 10, 2026. Kalshi snapshot: 49ers 36¢ / Rams 65¢, as of Sep 8, 2026*
+- Result: withheld. Inventing a score would manufacture evidence.
+
+**2. Clemson at LSU** (historical disagreement)
+
+- Chosen card: `https://pundits.pro/og/events/clemson-at-lsu-2026.png`
+- Why selected: 12 tracked calls, both sides; postgame is the resolution of that split.
+- Pregame reconstruction: *George Wrighster and Danny Kanell pick Clemson. Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, and 6 more pick LSU. 12 tracked calls, both sides on the record ahead of Sep 5, 2026. Kalshi snapshot: Clemson 23¢ / LSU 78¢, as of Sep 3, 2026*
+- Result: *LSU 51, Clemson 10. George Wrighster and Danny Kanell had Clemson. Josh Pate, Paul Finebaum, Andy Staples, Greg McElroy, and 6 more had LSU. Tracked result is the straight-up winner, not a spread cover. Kalshi snapshot: Clemson 23¢ / LSU 78¢, as of Sep 3, 2026*
+- Before (do not ship): “Kanell and Wrighster backing Clemson. Empty side.” / “Cover crushed.” Both fail review.
+
+**3. North Carolina vs TCU** (historical disagreement; underdog side hit)
+
+- Chosen card: `https://pundits.pro/og/events/unc-vs-tcu-2026.png`
+- Why selected: four tracked calls, both sides; snapshot 26–75 explains why the split mattered.
+- Pregame reconstruction: *Chip Patterson and Greg McElroy pick North Carolina. Paul Finebaum and Will Compton pick TCU. 4 tracked calls, both sides on the record ahead of Aug 29, 2026. Kalshi snapshot: North Carolina 26¢ / TCU 75¢, as of Aug 28, 2026*
+- Result: *North Carolina 15, TCU 10. Chip Patterson and Greg McElroy had North Carolina. Paul Finebaum and Will Compton had TCU. Tracked result is the straight-up winner, not a spread cover. Kalshi snapshot: North Carolina 26¢ / TCU 75¢, as of Aug 28, 2026*
+- Before (do not ship): “Finebaum took TCU at 75¢.” Fails `took-at-price`.
+
+Routine candidates skipped on a 2026-09-09 replay: Wisconsin–ND, Miami–Stanford, Boise State–Oregon, Western Michigan–Michigan (one-sided favorite wins); leftover-cap notable underdogs after the primary six; 1-0 records. SMU–FSU remains a valid disagreement/resolution when it is still inside the three-day result window.
+
+### Checks run
+
+On this worktree after the Phase 4 code and playbook edits:
+
+- Relevant logic tests (`lib/social.test.ts`, `lib/social-select.test.ts`, `lib/social-copy.test.ts`): **pass**.
+- `npm run check:fast`: **pass**. Inexpensive tests 506 passed / 52 files; `validate:runs` passed on `docs/runs`. Note: `check:fast is not a release gate.`
+- `npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 507 passed / 53 files; `validate:runs`; production build; `verify:static` including social-index `schemaVersion` 2 and 217 pages / 216 decoded images. OG generation reused all 430 cards (`rendered=0`) — images unchanged.
+
+No production deploy. No live X. No `data/*.json` edits. Images not regenerated.
 
 ### Remaining Codex decisions
 
-1. Phase 3B team/league/week copy still uses “expert picks” boilerplate; left unchanged here.
-2. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
-3. GameDay original-evidence disposition remains from Phase 1.
+1. **Publication log.** First implementation keeps Poster/Reply Guy read-only and uses live timeline/search. If that proves impractical in operation, a minimal append-only log (destination, state, post ID, timestamp) needs an explicit writer: Poster still should not write the repo. Candidate owner is Reviewer or Promote as a discrete later change, not a backend.
+2. **Operator edit pass.** These drafts are machine-composed review copy. Brief allows a small amount of operator editing on the highest-value posts; that is not automated here.
+3. **Roll Call tags on the 49ers card.** Four tracked pundits, both sides — density gate passes. Whether to tag Eisen/Cowherd (approved) plus Brandt (no approved handle → spelled, untagged) is a tagging.md application, not a new handle.
 
-Parked: 3B templates, social posting policy, measurement dashboards, SportsEvent, FAQ multiplication, production deploy, live X.
+Parked: live X, paid boosts, card redesign, Phase 3B team/league/week templates, production deploy.

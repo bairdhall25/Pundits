@@ -15,7 +15,11 @@ import {
   ogTeamPath,
   ogWeekPath,
 } from "./og";
-import { evidenceKindFor } from "./evidence";
+import {
+  evidenceKindFor,
+  looksLikeSpreadOrigin,
+  publicRationale,
+} from "./evidence";
 import { mappedTakes, sideChip } from "./seo";
 import {
   SOCIAL_PAGE_KEYS,
@@ -23,9 +27,20 @@ import {
   socialPageRoute,
   type SocialPageKey,
 } from "./social-card";
-import type { Call, CallStatus, Event, Pundit, Side, Sport, Team } from "./types";
+import type {
+  Call,
+  CallStatus,
+  Event,
+  Pundit,
+  Side,
+  SourceLocator,
+  Sport,
+  Team,
+} from "./types";
 
 const SITE = "https://pundits.pro";
+
+export type SocialGradingScope = "straight-up-winner" | "named-outcome";
 
 export type SocialEventRow = {
   slug: string;
@@ -37,9 +52,16 @@ export type SocialEventRow = {
   kickoffDate?: string;
   yesCents: number | null;
   noCents: number | null;
+  snapshotAt: string | null;
   awayTeam?: string;
   homeTeam?: string;
+  awayScore?: number;
+  homeScore?: number;
+  resultUrl?: string;
   settled: boolean;
+  gradingScope: SocialGradingScope;
+  trackedCount: number;
+  bothSides: boolean;
   yesPundits: string[];
   noPundits: string[];
   pageUrl: string;
@@ -48,6 +70,7 @@ export type SocialEventRow = {
 };
 
 export type SocialTakeRow = {
+  callId: string;
   eventSlug: string;
   punditId: string;
   punditName: string;
@@ -57,10 +80,16 @@ export type SocialTakeRow = {
   cents: number | null;
   claim: string;
   evidenceKind: "spoken-quote" | "reported-selection";
+  source: string;
+  sourceUrl: string | null;
+  sourceLocator: SourceLocator | null;
+  rationale: string | null;
   sourceDate: string;
   snapshotAt: string | null;
   firstPublishedAt?: string;
   gradedAt?: string;
+  gradingScope: SocialGradingScope;
+  spreadOrigin: boolean;
   pageUrl: string;
   ogCard: string;
   storyCard: string;
@@ -133,19 +162,28 @@ export function socialIndex(
 ): SocialIndex {
   const eventRows: SocialEventRow[] = events.map((event) => {
     const [yes, no] = sidesForCard(event, calls);
+    const kind = eventKind(event);
+    const trackedCount = yes.calls.length + no.calls.length;
     return {
       slug: event.slug,
       title: event.title,
       sport: event.sport,
-      kind: eventKind(event),
+      kind,
       week: event.week,
       kickoff: event.kickoff,
       kickoffDate: event.kickoffDate,
       yesCents: event.yesCents,
       noCents: event.noCents,
+      snapshotAt: event.sourcedAt,
       awayTeam: event.awayTeam,
       homeTeam: event.homeTeam,
+      awayScore: event.awayScore,
+      homeScore: event.homeScore,
+      resultUrl: event.resultUrl,
       settled: settledSide(event, calls) !== null,
+      gradingScope: kind === "game" ? "straight-up-winner" : "named-outcome",
+      trackedCount,
+      bothSides: yes.calls.length > 0 && no.calls.length > 0,
       yesPundits: names(yes.calls.map((c) => c.punditId), pundits),
       noPundits: names(no.calls.map((c) => c.punditId), pundits),
       pageUrl: `${SITE}/picks/${event.slug}/`,
@@ -157,7 +195,9 @@ export function socialIndex(
   const takeRows: SocialTakeRow[] = mappedTakes(calls, events, pundits).map(
     ({ call, event, pundit }) => {
       const side = call.side ?? "no";
+      const kind = eventKind(event);
       return {
+        callId: call.id,
         eventSlug: event.slug,
         punditId: pundit.id,
         punditName: pundit.name,
@@ -167,10 +207,16 @@ export function socialIndex(
         cents: side === "yes" ? event.yesCents : event.noCents,
         claim: call.claim,
         evidenceKind: evidenceKindFor(call),
+        source: call.source,
+        sourceUrl: call.sourceUrl,
+        sourceLocator: call.sourceLocator ?? null,
+        rationale: publicRationale(call),
         sourceDate: call.sourceDate,
         snapshotAt: event.sourcedAt,
         firstPublishedAt: call.firstPublishedAt,
         gradedAt: call.gradedAt,
+        gradingScope: kind === "game" ? "straight-up-winner" : "named-outcome",
+        spreadOrigin: looksLikeSpreadOrigin(call),
         pageUrl: `${SITE}/picks/${event.slug}/${pundit.id}/`,
         ogCard: `${SITE}${ogTakePath(event.slug, pundit.id)}`,
         storyCard: `${SITE}${ogStoryTakePath(event.slug, pundit.id)}`,

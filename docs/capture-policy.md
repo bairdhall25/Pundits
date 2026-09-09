@@ -2,6 +2,7 @@
 
 Date: 2026-09-01. Operator-ratified after the capture-vs-homepage-density review.
 Cleanup 2026-09-01: published slugs stay append-only; overflow is Audit-ok and operator-gated to mint; flip-check is 3 calendar days on `kickoffDate`.
+Amended 2026-09-08: rolling capture-target queue; density is a display metric, not a stop on designated sources for approved priority games.
 
 This is doctrine. Hunt order stays in today's `## Dispatch`. Do-not-touch stays in `docs/board.md`. If this file and `data/` disagree, **live JSON wins**.
 
@@ -18,13 +19,13 @@ Two customers, one ledger. Fans get a dense homepage of verified faces on games 
 ## Operating rule (Scout / Promote / Coordinator)
 
 1. Coordinator computes Dispatch from **fresh `origin/main` JSON** at pass time — fetch first, or run in a scheduled worktree on `origin/main`. Never from a checkout that has not fetched today, and never from a prior Dispatch or from memory. (2026-09-01: a local `main` sat 33 commits behind origin and misread Clemson as one-sided.)
-2. Hunt order per pass, both sports: `empty-side` on homepage → watchlist (`off-home`) → `thin`. `dense` = ≥3 mapped hard AND both sides ≥1, verified against live JSON.
-3. Dense games are skipped, **except**: an `onHome` game whose `kickoffDate` is within **3 calendar days** (UTC date of that field minus 72 hours) gets one flip-check pass over already-carded pundits only. That is a date window, not 72 clock hours before 7:30 ET. A quiet reversal on the marquee card is an integrity miss, not a density miss. Reversal = correction on the existing row, never a second card.
+2. Hunt order per pass, both sports, on **approved** capture targets plus current `onHome` games: explicit priority, then verified kickoff proximity, then coverage deficit (`empty-side` → `off-home` → `thin`). Do not sort equal-priority empty games alphabetically ahead of imminent games. `dense` = ≥3 mapped hard AND both sides ≥1, verified against live JSON — a display/coverage metric, not a stop on designated high-value sources.
+3. Dense games skip ordinary new-voice hunting, **except**: (a) an approved priority game still **source-completes** designated high-value sources (GameDay desk, Cover 3, See Ball Get Ball, Clay Travis, GMFB, Finebaum, Pate, BFW, Herd, Eisen, McAfee) including favorite-side voices — this is new named picks, distinct from a flip-check; (b) an `onHome` game whose `kickoffDate` is within **3 calendar days** (UTC date of that field minus 72 hours) gets one flip-check pass over already-carded pundits only. That is a date window, not 72 clock hours before 7:30 ET. A quiet reversal on the marquee card is an integrity miss, not a density miss. Reversal = correction on the existing row, never a second card. Source completion is not a whole-board scrape.
 4. Overflow staging: a hunter already inside a source for a Dispatch hole may stage a hard SU on a listed game, or on an **unlisted** game as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` and `side` blank, matchup in `note`. The matchup label is not part of the verbatim quote. Overflow never justifies opening a source. No vacuuming the FBS/NFL board.
 5. Scout never mints events. Audit does **not** fail a blank `eventSlug` on an overflow row that otherwise clears the SU bar — verdict `ok-unmapped`, or `ok-unmapped-no-reasoning` when only the optional capsule is defective. Operator reviews both unmapped-ok verdicts: mint or discard.
 6. Promote maps ordinary `ok` and `ok-no-reasoning` rows as usual, omitting `reasoning` for the latter. It mints a new event from `ok-unmapped` or `ok-unmapped-no-reasoning` rows **only when the operator asked this pass to mint them**: `onHome: false`, freeze (cents + ticker + sourceUrl + sourcedAt) **in the same commit** when a Kalshi market exists, then the mapped call. No freeze backfills — a missing freeze blocks `onHome`, not capture. If the operator did not ask, list the unmapped rows in the commit message and leave `data/`.
 7. `onHome` floor: freeze + ≥1 verified SU face + **explicit operator flip this pass**. Both sides filled is a Dispatch hunt target, **not** an onHome gate (a both-sides gate would have delisted Patriots/Bills/49ers the week we proved the product). Scout does not propose the flip; Promote does not infer it.
-8. Watchlist (`docs/bring-onto-home.json`) = current homepage holes + 2–4 operator-named games. Scout hunts them off-home. Every entry is a promise: mintable within a day of a hit, or it comes off. A stale watchlist row recreates the dead-event problem upstream.
+8. Capture-target queue (`docs/capture-targets.json`) is independent of `onHome`. States are `proposed` / `approved` / expired. Coordinator proposes 2–4 marquee games per sport before midweek pick shows and retains active unsolved approved targets. Proposed is a PM review artifact, not a hunt list and not event minting. Lack of a new college selection must stay visible — it is not “no college work” and not permission to scout every game. Expire settled targets out of the active queue; preserve public URLs. Flag overdue ungraded games for Grader. Missing/uncertain kickoff is not a live state. `docs/bring-onto-home.json` is no longer a second hunt list.
 9. **Published event slugs are append-only.** Do not delete an event that already has a public `/picks/{slug}/` (Miami and Baylor already do). A zero-pick game that reaches kickoff is not graded into an empty Final and is not deleted — it stays off-home / waiting. Avoid *new* dead rows by not minting events that have no SU and are not watchlisted.
 10. Dataset floor, on-home or off: every call row machine-complete (`punditId`, `eventSlug` when mapped, `side`, `kind`, `sourceUrl`, `sourceDate`, `status`). No prose-only sourcing. Empty sides stay empty. Do not invent picks.
 11. Community tips are untrusted discovery leads. Import them into the run file’s `## Community tips` mailbox, route by source lane, and open pending links for matching Dispatch/watchlist targets before broader hunting. A tip never becomes a call directly and never relaxes the normal speaker, quote, date, URL, mapping, Audit, or Promote requirements.
@@ -39,18 +40,18 @@ Everything else here is a JSON/doc edit in git — cheap to amend.
 
 ## Where the rules are enforced
 
-- Rule 1 (fetch-first) and rule 3 (3-day flip-check): `bots/scout.md`; the flip-check is computed by `scripts/scout-density-lib.mjs` (`inFlipWindow`) and shows up in the Dispatch `hunt` column.
+- Rule 1 (fetch-first) and rule 3 (source-complete + 3-day flip-check): `bots/scout.md`; computed by `scripts/scout-density-lib.mjs` and shown in the Dispatch `hunt` column.
 - Rule 4 (overflow staging): `bots/scout-shows.md`, `bots/scout-x.md`, `bots/scout-news.md`.
 - Rule 5 (Audit unmapped-ok verdicts): `bots/audit.md`.
 - Rule 6 (when-to-mint + freeze-in-same-commit + operator mint gate): `bots/promote.md`.
 - Rule 7 (no inferred onHome): `bots/promote.md`; Dispatch hunt for off-home is “roster SU, stay off-home until operator flip.”
-- Rule 8 (watchlist): `docs/bring-onto-home.json`.
+- Rule 8 (capture-target queue): `docs/capture-targets.json`. Pending operator decisions: `docs/capture-decisions.json`. Episode inspection state: `docs/scout-episodes.json`.
 - Rule 9 (append-only events): `bots/grader.md` and `bots/promote.md` do **not** delete events.
 - Rule 11 (community-tip isolation and routing): `scripts/tip-mailbox.mjs`, `bots/scout.md`, `bots/scout-shows.md`, `bots/scout-x.md`, and `bots/scout-news.md`.
 
 ## Standing operator decisions (as of 2026-09-01)
 
-- Aug 30 hold runs through 2026-09-05: fill Patriots / 49ers / Bills YES and Wisconsin YES; no extra homepage games; Lambeau off home until an operator `onHome` flip.
-- Miami at Stanford and Baylor vs Auburn: **watchlisted 2026-09-01**. Scout hunts them off-home; freeze on first verified SU; onHome only after the hold and per rule 7.
+- Approved NFL openers in `docs/capture-targets.json` stay active until they expire: Patriots / 49ers / Bills. Proposed NCAAF Week 2 and extra NFL add-ons wait on PM selection.
+- Wisconsin, Miami, and Baylor are expired-settled historical targets. Their public URLs stay. They are not pregame hunts.
 - Home and league **display** (which games fill `/`, `/ncaaf/`, and `/nfl/`, and whether they render as full or compact cards) is `docs/product/featured-games.md`. That contract does not change Dispatch and does not authorize an `onHome` flip.
 - **Who may roster** is `docs/product/roster-growth.md`. Association on roster factories is eligible. Team analysts (beat/homer picking their team) are not pundits. Team podcasts may still be sources for independent voices.

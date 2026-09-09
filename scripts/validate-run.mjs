@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { laneStatusErrors, parseLaneStatus } from "./scout-handoff-lib.mjs";
 
 const ROUTING_MARKERS = [
   "Off-home",
@@ -105,7 +106,12 @@ export function parseRunFile(contents) {
 
 export function validateRunContents(
   contents,
-  { filePath = "run.md", eventSlugs = [], allowLegacySchema = false } = {}
+  {
+    filePath = "run.md",
+    eventSlugs = [],
+    allowLegacySchema = false,
+    requireLaneStatus = !allowLegacySchema,
+  } = {}
 ) {
   const errors = [];
   const knownEvents = new Set(eventSlugs);
@@ -174,6 +180,12 @@ export function validateRunContents(
     }
   }
 
+  if (requireLaneStatus || parseLaneStatus(contents).length > 0) {
+    for (const error of laneStatusErrors(contents, { required: requireLaneStatus })) {
+      describeError(errors, filePath, error);
+    }
+  }
+
   return errors;
 }
 
@@ -186,6 +198,14 @@ function markdownFiles(targetPath) {
   return readdirSync(targetPath, { withFileTypes: true })
     .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
     .map((entry) => path.join(targetPath, entry.name));
+}
+
+export function shouldRequireLaneStatus(filePath, contents) {
+  const base = path.basename(filePath);
+  const datedName = base.match(/^(\d{4}-\d{2}-\d{2})/u);
+  if (!datedName || datedName[1] < "2026-09-09") return false;
+  if (/^\d{4}-\d{2}-\d{2}\.md$/u.test(base)) return true;
+  return /^\s*##\s+(Shows|X|News)\s+pass\b/imu.test(contents);
 }
 
 export function validateRunPath(targetPath, { root = process.cwd() } = {}) {
@@ -204,11 +224,13 @@ export function validateRunPath(targetPath, { root = process.cwd() } = {}) {
     const displayPath = path.relative(root, file) || file;
     const datedName = path.basename(file).match(/^(\d{4}-\d{2}-\d{2})/u);
     const allowLegacySchema = Boolean(datedName && datedName[1] < "2026-09-03");
+    const contents = readFileSync(file, "utf8");
     errors.push(
-      ...validateRunContents(readFileSync(file, "utf8"), {
+      ...validateRunContents(contents, {
         filePath: displayPath,
         eventSlugs,
         allowLegacySchema,
+        requireLaneStatus: shouldRequireLaneStatus(file, contents),
       })
     );
   }

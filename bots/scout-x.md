@@ -24,12 +24,12 @@ Community tips never lower the bar: verify the public post, named speaker, verba
 
 ## Hunt (X only)
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (skip `dense`, unless the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals; a reversal is a correction on the existing row, never a second card). Hunt NCAAF and NFL rows in the same pass:
+For each **approved** Dispatch row in printed order (`empty-side`, then `off-home`, then `thin`; skip ordinary `dense` unless hunt says `source-complete` or `flip-check` — source-complete is new named picks from designated voices; flip-check is already-carded reversals only). Hunt NCAAF and NFL rows in the same pass:
 
 1. Roster handles below (and add-list handles in `docs/add-list.md`). Query **both** teams, last **48 hours**, this season only.
 2. Open the **status URL**. The quote must be on that post (or a quoted post by the same speaker). Paraphrase → drop.
 3. Per under-dense game, say in Dropped which handles you actually opened.
-4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent). Do not claim a sweep.
+4. If the X connector is down, Dropped `client-not-enrolled` (or equivalent) and set `## Lane status` X to `blocked`. Do not claim a sweep. A missing run is `not-run`, not `dry`.
 5. **Overflow (docs/capture-policy.md rule 4):** if a handle you queried for a Dispatch hole also posted a hard SU on a game not in `events.json`, you may stage it as an unmapped Intake row — verbatim quote, status URL, post date, full SU bar, `eventSlug` and `side` blank with the matchup in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never adds handles or queries beyond the Dispatch pass.
 
 If `## Dispatch` is missing, run `node scripts/scout-density.mjs`, write it, then hunt.
@@ -120,7 +120,7 @@ Write **Home cards** only if you are the last pass of the day (no News still sch
 
 Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject.
 
-Empty Intake is a valid run. Say so.
+Empty Intake is a valid run. Say so. Set `## Lane status` X to `completed`, `dry`, `blocked`, or `not-run`.
 
 ## Stop
 

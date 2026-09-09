@@ -22,13 +22,13 @@ Community tips never lower the bar: verify the public page, byline or named spea
 
 ## Hunt
 
-For each Dispatch row with status `empty-side`, then `off-home`, then `thin` (NCAAF and NFL in the same pass):
+For each **approved** Dispatch row in printed order (`empty-side`, then `off-home`, then `thin`; NCAAF and NFL in the same pass). Do not hunt proposed-only matchups:
 
 1. Open the outlets in `docs/news-beats.md` for that sport that published in the last ~7 days.
 2. Expert grids: read each roster name’s cell. “No Pick” → Dropped with the URL. A named winner → Intake.
 3. Bylines must be a person on the roster or add-list. “Staff picks” with no name → Dropped.
 4. Paywall / URL does not load → Dropped. Do not paraphrase a snippet.
-5. Skip `dense` unless a page already open names that game, or the row's hunt says `flip-check` — then check only already-carded pundits on that game for reversals (correction on the existing row, never a second card).
+5. Skip ordinary `dense` hunting unless a page already open names that game, the row's hunt says `source-complete designated voices`, or hunt says `flip-check` — then check only already-carded pundits on that game for reversals (correction on the existing row, never a second card).
 6. **Overflow (docs/capture-policy.md rule 4):** on a page already open for a Dispatch hole, a rostered speaker's hard SU on a game not in `events.json` may be staged as an unmapped Intake row — verbatim quote, source URL, source date, full SU bar, `eventSlug` and `side` blank with the matchup in `note`. Never prefix the quote with `Overflow:`. Never invent a slug; the operator mints or discards. Overflow never justifies opening a page.
 
 Same SU / URL / YES=away / no-data / no-mint bar as Shows Scout. Reasoning capsule rules identical: optional, at most 60 words, source-grounded, and reader-facing; routing instructions belong in `note`. Decipher gambling copy (house rule 3): do not Drop a numbered line; split winner vs Bets. Player props stay parked.
@@ -45,7 +45,7 @@ Tables: Intake · Candidates · **Bets** (totals/spreads/team totals; `bet` like
 
 **Bets** is staging only. Do not invent a Kalshi contract if the line is ambiguous. Promote will not ship these.
 
-You are usually the last pass — write Home cards.
+You are usually the last pass — write Home cards. Set `## Lane status` News to `completed`, `dry`, `blocked`, or `not-run`. A missing News pass is `not-run`, not a dry hunt.
 
 Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A failing row is yours to fix, not Audit's to reject.
 

@@ -6,8 +6,8 @@ If this file and `data/` disagree, **`data/` wins**.
 
 ## How to hunt (every run)
 
-1. Run `node scripts/scout-feeds.mjs` (Coordinator pastes `## Factory feeds`). Only open factories marked `today`. `waiting` / `recap` / `short` / `wrong-year` / `off-topic` / `error` means skip — do not burn a pass on Friday’s Finebaum or a UFR recap. Jump the locks / moneyline / “I’ll take” chapter. Captions count.
-2. Then `empty-side` / `off-home` / `thin` on today’s `## Dispatch` (`docs/board.md` is do-not-touch, not the scorecard). Hunt NCAAF and NFL rows in the same pass. Skip `dense` unless hunt says `flip-check`. Do not park a sport. Doctrine: `docs/capture-policy.md`.
+1. Run `node scripts/scout-feeds.mjs` (Coordinator pastes `## Factory feeds`). Open `today` and `unprocessed` rows in the recent-unprocessed queue. A feed check is not an inspection — persist episode identity in `docs/scout-episodes.json` after you open the episode. `waiting` / `recap` / `dry` / `wrong-year` / `off-topic` / `error` means skip. Do not reopen a dry episode unless a new reason is stated. Official short clips are eligible when they contain a complete named winner; duration alone is not a reject. Jump the locks / moneyline / “I’ll take” chapter. Captions count. Consider every relevant recent episode, not only the newest mixed-feed item.
+2. Then hunt **approved** `## Dispatch` rows by priority and kickoff (`docs/board.md` is do-not-touch, not the scorecard). Hunt NCAAF and NFL rows in the same pass. Source-complete designated factories on approved dense games. Skip ordinary `dense` hunting unless hunt says `flip-check`. Do not park a sport. Do not hunt the proposed shortlist until PM approves it. Doctrine: `docs/capture-policy.md`.
 3. Then idle roster voices **only if their pick window is open**.
 4. Named off-roster speakers on those same shows → Candidates. Never “the show likes UNC.”
 5. If the game remains under-dense, use the bounded sports-radio fallback below.
@@ -22,7 +22,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 |---|---|---|---|---|
 | Cover 3 LOCKS | `kanell`, `patterson`, `elliott`, `fornelli` | Thu/Fri | ATS locks, then **Moneyline Sprinkles** | Kanell Wolfpack ML and Patterson UNC ML both from Week 0 LOCKS `hhgxVGYo6Cc`. |
 | See Ball Get Ball | `pollack`; Brent Rollins (parked, not rostered) | Wed/Thu in-season | Week 1 **PICKS** episode; both hosts name winners | On3 distribution partner, not a team factory. Wes Blankenship hosts/questions only — not a pick voice. Apple `id1769665459`; RSS.com audio is the reopenable source. |
-| Clay Travis Show / Outkick | `clay-travis` | weekday | solo Week 1 **PICKS** segment | Outkick national pick show, not a team factory. Durable Omny alongside Apple. Callers and unnamed voices are not pick voices. |
+| Clay Travis Show / Outkick | `clay-travis` | weekday | solo **PICKS** segment | Outkick national pick show, not a team factory. Durable Omny alongside Apple `id1498106610`. Callers and unnamed voices are not pick voices. Factory alarm is on. |
 | Josh Pate’s College Football Show | `pate` | almost daily | end-of-show winners / “I’ll take” | Already LSU. Only restage if he **flips** to Clemson. |
 | Bear Bets / FOX | `fallica` | column + Big Noon | bylined best bets | Dispatch empty-side / thin / off-home only. Futures are not this beat. |
 | GameDay betting | `coughlin` | Sat 9am ET; midweek PMT guest | Stanford Steve card | First 2026 show is **Baton Rouge Sat 9/5** (Clemson YES). Guest on PMT is `coughlin`, never `mcafee`. |
@@ -31,6 +31,7 @@ Do not stop after `{name} {away} {home} 2026 pick`. A first empty query is not t
 | Picks Central | `walker`, `bigcat`, `portnoy` | daily | moneylines / locks | Name the speaker. Dormant as of 8/28 (last ep Jun 2026). |
 | Barstool Pick Em | `bigcat`, `portnoy`, Rico (Candidate until photo) | weekly once CFB is on | the card | Not PMT. 2026 Week 0 not dropped. Rico Bosco `Return_Of_RB` stays Candidate (no real headshot yet). |
 | The Herd / Sharp or Square | `cowherd`, `jmac`; guests (Duck, etc.) | weekday | bold predictions; gambling hour is often a **guest** | Guest ≠ Cowherd. Prefer a different NFL YES than Cowherd’s three home cards. |
+| GMFB / NFL Daily | `brandt`; name the speaker | weekday predictions hour | helmet props / “who wins” Week 1–N | Apple `id1171438277` (verified from the 2026-09-08 Brandt row). Co-hosts are the co-host, never `brandt` unless Kyle says it. |
 | Finebaum Show | `finebaum` | weekday | “who wins” | Dublin NO already booked. Do not restage. |
 
 ## Brand faces — only in their pick window

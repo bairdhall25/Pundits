@@ -7,7 +7,7 @@ News Scout owns **bylined articles and expert-pick pages**. Shows Scout owns You
 
 Open the page. Name the speaker. SU = they pick the winner of a Dispatch game. “No Pick” on a grid is Dropped with the URL. Unnamed “the desk likes Clemson” is Dropped. Paywall with no full article → drop.
 
-Hunt only sports that appear on today’s `## Dispatch`. Skip `dense` rows unless a page already open names that game.
+Hunt approved sports/rows on today’s `## Dispatch`. Source-complete a designated desk on an approved dense game. Skip ordinary `dense` rows unless a page already open names that game. Each News pass must record `completed`, `dry`, `blocked`, or `not-run` in `## Lane status`. A missing run is not a dry hunt.
 
 ## NCAAF
 

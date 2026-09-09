@@ -1,10 +1,24 @@
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { validateRunContents } from "./validate-run.mjs";
+import { shouldRequireLaneStatus, validateRunContents, validateRunPath } from "./validate-run.mjs";
 
 const EVENTS = ["clemson-at-lsu-2026"];
 
-function runFile({ reasoning = "A concise source-grounded explanation.", quote = "Give me Clemson.", eventSlug = "clemson-at-lsu-2026", side = "yes", sourceUrl = "https://example.com/episode", pass = "Shows" } = {}) {
-  return `## ${pass} pass 2026-09-03 (Scout)
+function laneStatus() {
+  return `## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-08 | opened Cover 3 |
+| X | not-run | 2026-09-08 | |
+| News | not-run | 2026-09-08 | |
+`;
+}
+
+function runFile({ reasoning = "A concise source-grounded explanation.", quote = "Give me Clemson.", eventSlug = "clemson-at-lsu-2026", side = "yes", sourceUrl = "https://example.com/episode", pass = "Shows", includeLaneStatus = true } = {}) {
+  const body = `## ${pass} pass 2026-09-03 (Scout)
 
 ### Intake
 
@@ -12,6 +26,7 @@ function runFile({ reasoning = "A concise source-grounded explanation.", quote =
 |---|---|---|---|---|---|---|---|---|---|
 | kanell | ${eventSlug} | ${side} | ${quote} | ${reasoning} |  | Cover 3 | ${sourceUrl} | 2026-09-03 | hard |
 `;
+  return includeLaneStatus ? `${laneStatus()}\n${body}` : body;
 }
 
 describe("run-file validation", () => {
@@ -28,7 +43,7 @@ describe("run-file validation", () => {
       eventSlugs: EVENTS,
     });
     expect(errors).toHaveLength(1);
-    expect(errors[0]).toMatch(/fixture\.md:7 Shows.*kanell\/clemson-at-lsu-2026.*61 words/);
+    expect(errors[0]).toMatch(/fixture\.md:\d+ Shows.*kanell\/clemson-at-lsu-2026.*61 words/);
   });
 
   it("moves routing language and Overflow labels out of reader-facing fields", () => {
@@ -72,6 +87,83 @@ describe("run-file validation", () => {
     expect(
       validateRunContents(contents, { eventSlugs: EVENTS, allowLegacySchema: true })
     ).toEqual([]);
+  });
+
+  it("rejects a missing-run lane labeled dry", () => {
+    const contents = `${runFile({ includeLaneStatus: false })}
+## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | dry | 2026-09-08 | not run this pass |
+| X | not-run | 2026-09-08 | |
+| News | not-run | 2026-09-08 | |
+`;
+    const errors = validateRunContents(contents, { eventSlugs: EVENTS });
+    expect(errors.join("\n")).toMatch(/missing run is not a dry hunt/i);
+  });
+
+  it("requires a Lane status table on current-schema runs", () => {
+    const contents = `## Shows pass 2026-09-03 (Scout)
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| kanell | clemson-at-lsu-2026 | yes | Give me Clemson. | A concise source-grounded explanation. |  | Cover 3 | https://example.com/episode | 2026-09-03 | hard |
+`;
+    const errors = validateRunContents(contents, { eventSlugs: EVENTS });
+    expect(errors.join("\n")).toMatch(/Lane status table is required/i);
+    expect(
+      validateRunContents(contents, { eventSlugs: EVENTS, allowLegacySchema: true })
+    ).toEqual([]);
+  });
+
+  it("requires Lane status only on Scout intake files on or after 2026-09-09", () => {
+    const dir = mkdtempSync(path.join(os.tmpdir(), "pundits-runs-"));
+    const intake = `## Dispatch
+
+## Shows pass 2026-09-09 (Scout)
+
+### Intake
+
+| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
+|---|---|---|---|---|---|---|---|---|---|
+| kanell | clemson-at-lsu-2026 | yes | Give me Clemson. | A concise source-grounded explanation. |  | Cover 3 | https://example.com/episode | 2026-09-09 | hard |
+`;
+    const audit = `# Audit — 2026-09-09
+
+| pundit | eventSlug | side | verdict | note |
+|---|---|---|---|---|
+`;
+    const journal = `# Growth-engine implementation journal\n\nStatus: Evidence\n`;
+    try {
+      writeFileSync(path.join(dir, "2026-09-09.md"), intake);
+      writeFileSync(path.join(dir, "2026-09-09-audit.md"), audit);
+      writeFileSync(path.join(dir, "2026-09-09-grade.md"), "# Grade\n");
+      writeFileSync(path.join(dir, "2026-09-09-recap.md"), "# Recap\n");
+      writeFileSync(path.join(dir, "2026-09-09-social.md"), "# Social\n");
+      writeFileSync(path.join(dir, "2026-09-09-growth-implementation.md"), journal);
+      writeFileSync(path.join(dir, "2026-09-08.md"), intake.replaceAll("2026-09-09", "2026-09-08"));
+
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09.md", intake)).toBe(true);
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09-audit.md", audit)).toBe(false);
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-09-growth-implementation.md", journal)).toBe(
+        false
+      );
+      expect(shouldRequireLaneStatus("docs/runs/2026-09-08.md", intake)).toBe(false);
+
+      const errors = validateRunPath(dir, { root: dir }).join("\n");
+      expect(errors).toMatch(/2026-09-09\.md.*Lane status table is required/i);
+      expect(errors).not.toMatch(/2026-09-09-audit/);
+      expect(errors).not.toMatch(/2026-09-09-grade/);
+      expect(errors).not.toMatch(/2026-09-09-recap/);
+      expect(errors).not.toMatch(/2026-09-09-social/);
+      expect(errors).not.toMatch(/growth-implementation/);
+      expect(errors).not.toMatch(/2026-09-08\.md/);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it("requires the note column for the current schema", () => {

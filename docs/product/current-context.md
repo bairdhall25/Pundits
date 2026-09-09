@@ -28,7 +28,7 @@ Week 0 graded on 2026-08-29: Dublin 2–2 (Patterson and McElroy hit; Finebaum a
 
 Friday Week 1 graded on 2026-09-05 (`767f9e9`): Miami 45–6, Clay Travis hit; Toledo 20–30, Patterson miss. Proposal `docs/runs/2026-09-05-grade.md`. Live JSON wins for current counts.
 
-Clemson at LSU (Sat 7:30 ET ABC) is the open hero: 2–7 (Wrighster/Kanell Clemson YES; Pate, Finebaum, Staples, McElroy, Clay Travis, Fornelli, Pollack LSU NO). The first slate closed on pick stories, event pages, records, leaderboard, and social cards. Repeat the loop on Clemson–LSU and the NFL openers before treating the promise as proven.
+Clemson at LSU is graded Final (LSU 51–10, 2–7). The open hunt is NFL Week 1: Patriots at Seahawks (Wed), 49ers vs Rams (Thu; Brandt YES plus three Rams), Bills at Texans (Sun). Repeat the loop on those openers before treating the promise as proven.
 
 Pending does not mean live. Use `Open` or `Pending` before an event. Reserve `Live now` and `In play` for an event actually underway.
 
@@ -36,20 +36,18 @@ Saturday operating mailbox: `docs/runs/2026-09-05-gameday-handoff.md`.
 
 ## Immediate order of operations
 
-1. **Today only — GameDay desk on Clemson–LSU:** capture named first-person SUs from `herbstreit` / `saban` / `howard` / `davis` / `mcafee` / `coughlin` onto `clemson-at-lsu-2026` even though the card is already dense. Do not mint a second event. Ordinary dense-skip and flip-check-only still apply to everyone else. Name the speaker. See `docs/runs/2026-09-05-gameday-handoff.md`.
-2. Every other Scout pass still hunts remaining empty-side SUs in **both** NCAAF and NFL: Patriots / 49ers / Bills YES, Wisconsin YES. Miami is now Final — skip. Baylor is dense flip-check. Do not ship Bets pages, fantasy, bulk roster, extra homepage games, or a Wisconsin `onHome` flip until after the 2026-09-05 week. Doctrine: `docs/capture-policy.md`.
-3. Grade Saturday mapped games as they settle (Baylor first this afternoon), then Clemson–LSU after the final including any GameDay rows, then recap within 24 hours.
-4. Grade NFL Week 1 as those games settle.
-5. Instrument the minimum engagement events in `measurement.md`.
-6. Soft-launch public-source tips through event pages and the footer. Treat every submission as an untrusted Scout lead; review quality and operational load after three settled slates.
-7. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, graded-receipt returns, and qualified tip yield.
-8. Establish four to six weeks of operating and audience baselines.
-9. Select a retention experiment from observed behavior.
-10. Test monetization only after repeat value is visible.
+1. **Scout queue (Phase 2):** hunt **approved** capture targets in `docs/capture-targets.json` — Patriots / 49ers / Bills — plus current `onHome` games. Upcoming public NCAAF events are 0; a proposed Week 2 shortlist is waiting on PM selection. Do not scout every college game. Density does not stop designated high-value sources on approved priority games. Doctrine: `docs/capture-policy.md`.
+2. Grade NFL Week 1 as those games settle (Patriots Wed, 49ers Thu, Bills Sun). Flag overdue ungraded games for Grader; do not keep pregame-hunting them.
+3. Soft-launch public-source tips through event pages and the footer. Treat every submission as an untrusted Scout lead; review quality and operational load after three settled slates.
+4. Instrument the minimum engagement events in `measurement.md`.
+5. Measure promoted picks per capture hour, audit pass rate, grading latency, evidence clicks, shares, graded-receipt returns, and qualified tip yield.
+6. Establish four to six weeks of operating and audience baselines.
+7. Select a retention experiment from observed behavior.
+8. Test monetization only after repeat value is visible.
 
 ## Capture vs display
 
-Canonical capture: `docs/capture-policy.md`. Canonical home and league display: `docs/product/featured-games.md` (implemented in `lib/featured.ts`). Canonical who-may-roster: `docs/product/roster-growth.md`. Capture eagerly, mint lazily, feature reluctantly. Featured is a waterfall (pin → when → coverage → size), not a score and not “both sides or nothing.” `/` derives featured, full (both sides or at least two faces), a two-game compact teaser, and at most two Final receipts per sport, without consulting `onHome`; the hero does not consume a full-card slot. `/picks/` combines the full NCAAF and NFL boards with All selected. League pages are live-week TV slates with the same full/compact coverage rule and no slot cap. Scout still hunts `onHome` games plus `docs/bring-onto-home.json` (Wisconsin, Miami, Baylor). Overflow unlisted SUs stage as unmapped rows; Promote mints them only when asked. Roster adds go through `scripts/roster-add.mjs` after the operator says yes and confirms the photo. Published event slugs are append-only. Do not infer an `onHome` flip from the featured waterfall.
+Canonical capture: `docs/capture-policy.md`. Canonical home and league display: `docs/product/featured-games.md` (implemented in `lib/featured.ts`). Canonical who-may-roster: `docs/product/roster-growth.md`. Capture eagerly, mint lazily, feature reluctantly. Featured is a waterfall (pin → when → coverage → size), not a score and not “both sides or nothing.” `/` derives featured, full (both sides or at least two faces), a two-game compact teaser, and at most two Final receipts per sport, without consulting `onHome`; the hero does not consume a full-card slot. `/picks/` combines the full NCAAF and NFL boards with All selected. League pages are live-week TV slates with the same full/compact coverage rule and no slot cap. Scout still hunts `onHome` games plus **approved** rows in `docs/capture-targets.json`. Proposed matchups are not hunt targets. Overflow unlisted SUs stage as unmapped rows; Promote mints them only when asked. Roster adds go through `scripts/roster-add.mjs` after the operator says yes and confirms the photo. Published event slugs are append-only. Do not infer an `onHome` flip from the featured waterfall.
 
 ## Guardrails
 

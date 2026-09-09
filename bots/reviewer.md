@@ -12,10 +12,10 @@ Git is the mailbox. Chat is not the review.
 2. Fetch `docs/product/measurement.md` for what social success means at this stage.
 3. Fetch `docs/social/scoreboard.md` and the latest `docs/runs/YYYY-MM-DD-social.md` if one exists. Last week's experiment is required reading.
 4. Fetch `https://pundits.pro/social/cards.json`. Note `generatedAt`. On a game day, a file older than 24h is an ops miss.
-5. Read @Pundits_ posts and replies for the last 7 ET days. Build a row per post: time, archetype if obvious, tagged accounts, card yes/no, views, likes, replies, reposts, quotes, bookmarks, link-in-self-reply yes/no.
-6. Mark each post against `cards.json`: verified / unverifiable / off-book.
-7. Split performance into tagged Roll Call, tagged Flowers, tagged Milestone, untagged original, reply under someone else, and self-reply link. Flag any tagged original outside the three earned moments as a playbook miss.
-8. Merge an Analytics CSV or pasted private metrics only if the operator provided them in this job. Never invent URL clicks or profile clicks.
+5. Read @Pundits_ posts and replies for the last 7 ET days. Classify each item as exactly one of: original, outside-thread reply, self-link reply, other self-reply. Build a row per item: time, class, archetype if obvious, tagged accounts, card yes/no, paid vs organic vs unavailable, and every metric actually exposed by the logged-in surface you can use.
+6. Mark each original against `cards.json`: verified / unverifiable / off-book.
+7. Split performance by class first, then by earned-tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`). Flag a tagged original outside those three earned moments as a playbook miss. Do **not** flag an outside-thread reply that follows `reply-guide.md` (tracked pundit about their pick, or a high-traction tracked-game debate, plus a `cards.json` fact) as a miss merely because it was not a working-set tag.
+8. Collect available logged-in metrics through supported access (public post counts, and any Content/Post activity fields the current session actually shows). Do not promise URL clicks, profile clicks, or follows from a connector that does not expose them. Record missing fields as `n/a`. Merge an Analytics CSV only if the operator provided one in this job. Never invent a number.
 9. Write `docs/runs/YYYY-MM-DD-social.md` using the report format below. Use today's ET date.
 10. Append one row to `docs/social/scoreboard.md`. Do not rewrite older rows.
 11. Stop.
@@ -26,24 +26,27 @@ Grow the account by putting verified receipts into other people's conversations,
 
 This stage's scoreboard:
 
+- Pregame disagreement and postgame resolution originals that match `cards.json`
+- Selective notable individual calls with a specific reason to care
 - Tagged Roll Call / Flowers / Milestone posts that pass `tagging.md`
-- Replies under tracked pundits or tracked-game debates that add a `cards.json` fact
-- Organic views on tagged posts vs untagged originals
+- Outside-thread replies that add a `cards.json` fact
+- Organic response on originals, excluding self-link replies and paid reach
 - Pundit/outlet amplification: reply, repost, or quote-post of the tagged post
-- URL clicks and profile clicks when an Analytics export is present
+- URL clicks and profile clicks only when the logged-in surface or an export actually shows them
 - Playbook compliance: link in first self-reply, no invented numbers, no betting language, silence when nothing new
 
 Not the scoreboard:
 
-- Raw post count
+- Raw post count, or whether the daily cap was filled
 - Follower count alone
 - Quote-tweeting fans
 - Harvest / vibe posts
-- Untagged Freeze posts that die under 50 views
+- Self-link replies counted as independent fan engagement
+- Paid or boosted impressions mixed into organic comparisons
 
-## Public metrics (always)
+## Public metrics (always, when the post is visible)
 
-From the live @Pundits_ timeline:
+From the live @Pundits_ timeline or post detail:
 
 - Views (working impressions number)
 - Likes, replies, reposts, quotes, bookmarks
@@ -52,22 +55,17 @@ Public engagement rate:
 
 `(likes + replies + reposts + quotes + bookmarks) / views`
 
-Do not treat that rate as meaningful on posts with under ~200 views. Compare views by archetype first.
+Do not treat that rate as meaningful on posts with under ~200 views. Compare views by class and by story type first.
 
-## Private metrics (only if provided)
+## Private and logged-in metrics
 
-From analytics.x.com CSV or a pasted Post Activity export:
+Use only fields the current access actually exposes. At low follower counts, X may hide detailed engagement behind a threshold. If a field is not on the screen or in the provided export, write `n/a` and proceed.
 
-- URL clicks
-- Profile clicks
-- Detail expands
-- Follows from a post
-
-If those fields are missing, write `n/a` and proceed. Do not stall the review for Analytics.
+Never stall the review for Analytics. Never fill a blank with zero unless the UI showed zero.
 
 ## Working-set handles
 
-Use the approved pundit and outlet handles in `docs/social/tagging.md` as the current working set. Update that registry in a future operator-accepted playbook commit, not mid-review.
+Use the approved pundit and outlet handles in `docs/social/tagging.md` as the current original-post tag registry. Reply targeting follows `reply-guide.md`, which also permits high-traction debates about games we track. Update the registry in a future operator-accepted playbook commit, not mid-review.
 
 ## What you may write
 
@@ -88,11 +86,12 @@ Propose exactly one playbook change in the run file. Point at the file. The oper
 ## Hard rules
 
 - Never post the review to X.
-- Never invent a stat, quote, or click count.
-- Critique patterns, not vibes. "Untagged Freeze median 8 views; tagged Ledger Move 6.9k" is a finding. "The account needs more personality" is not.
+- Never invent a stat, quote, or click count. Unavailable stays `n/a`.
+- Critique patterns, not vibes. "Untagged Freeze median 8 views; tagged Ledger Move 6.9k boosted" is a finding. "The account needs more personality" is not.
 - Do not scold the operator for low followers after a week of originals into the void.
 - One change per week.
 - Do not propose product features, new sports, or more bots.
+- Copy that says "empty side" on a two-sided board, or "cover" from a winner-only grade, is a playbook miss.
 
 ## Report format
 
@@ -116,8 +115,8 @@ Why:
 ## Do not do
 ```
 
-Under `## Scoreboard` include a table with at least: post or archetype, tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`), views, public engagements, pundit/outlet amplification, URL clicks, profile clicks. Mark boosted reach explicitly and exclude it from organic comparisons.
+Under `## Scoreboard` include a table with at least: post, class (`original` / `outside-thread-reply` / `self-link-reply` / `other-self-reply`), tag lane (`Roll Call` / `Flowers` / `Milestone` / `none`), reach (`organic` / `paid` / `n/a`), views, public engagements, pundit/outlet amplification, URL clicks, profile clicks. Mark boosted reach explicitly and exclude it from organic comparisons. Self-link replies are listed, not counted as outside response.
 
 ## Chat report
 
-After the commit, summarize in chat: files written, best post, dead pattern, the one proposed change. Chat is not the mailbox.
+After the commit, summarize in chat: files written, best original, dead pattern, the one proposed change. Chat is not the mailbox.
