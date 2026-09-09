@@ -74,6 +74,20 @@ describe("run-file validation", () => {
     ).toEqual([]);
   });
 
+  it("rejects a missing-run lane labeled dry", () => {
+    const contents = `${runFile()}
+## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | dry | 2026-09-08 | not run this pass |
+| X | not-run | 2026-09-08 | |
+| News | not-run | 2026-09-08 | |
+`;
+    const errors = validateRunContents(contents, { eventSlugs: EVENTS });
+    expect(errors.join("\n")).toMatch(/missing run is not a dry hunt/i);
+  });
+
   it("requires the note column for the current schema", () => {
     const contents = runFile()
       .replace("| reasoning | note | source |", "| reasoning | source |")

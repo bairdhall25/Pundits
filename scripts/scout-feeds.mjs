@@ -1,15 +1,19 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import {
   FACTORIES,
   appleLookupUrl,
-  classifyItem,
+  classifyQueue,
   formatFeeds,
-  latestUsable,
+  inspectableEpisodes,
+  loadEpisodeLedger,
   parseAppleLookup,
   parseYoutubeAtom,
   youtubeFeedUrl,
 } from "./scout-feeds-lib.mjs";
 
 const UA = "Pundits.Pro scout-feeds (+https://pundits.pro/)";
+const dryRun = process.argv.includes("--dry-run");
 
 async function fetchText(url) {
   const res = await fetch(url, {
@@ -29,25 +33,37 @@ async function loadFactory(factory) {
   return parseYoutubeAtom(xml);
 }
 
+const root = process.cwd();
+const ledger = loadEpisodeLedger(
+  JSON.parse(await readFile(path.join(root, "docs", "scout-episodes.json"), "utf8"))
+);
 const now = new Date();
 const rows = [];
 for (const factory of FACTORIES) {
   try {
     const items = await loadFactory(factory);
-    const item = latestUsable(items, { sport: factory.sport });
-    if (!item) {
+    const classified = classifyQueue(items, now, {
+      sport: factory.sport,
+      ledger,
+      factoryId: factory.id,
+      windowDays: ledger.windowDays,
+    });
+    const inspectable = inspectableEpisodes(classified);
+    if (inspectable.length === 0) {
+      const fallback = classified[0];
       rows.push({
         factory: factory.name,
-        droppedEt: "",
-        title: "(none)",
-        status: "error",
-        hunt: "feed empty",
-        url: "",
+        droppedEt: fallback?.droppedEt ?? "",
+        title: fallback?.title ?? "(none)",
+        status: fallback?.status ?? "error",
+        hunt: fallback?.hunt ?? "feed empty",
+        url: fallback?.url ?? "",
       });
       continue;
     }
-    const classified = classifyItem(item, now, { sport: factory.sport });
-    rows.push({ factory: factory.name, ...classified });
+    for (const item of inspectable) {
+      rows.push({ factory: factory.name, ...item });
+    }
   } catch (err) {
     rows.push({
       factory: factory.name,
@@ -63,4 +79,7 @@ for (const factory of FACTORIES) {
 console.log(formatFeeds(rows, now));
 for (const row of rows) {
   if (row.url) console.log(`<!-- ${row.factory}: ${row.url} -->`);
+}
+if (dryRun) {
+  console.error("dry-run: printed Factory feeds only; did not write data/*.json or mark episodes inspected");
 }

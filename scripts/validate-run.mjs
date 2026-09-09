@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { laneStatusErrors } from "./scout-handoff-lib.mjs";
 
 const ROUTING_MARKERS = [
   "Off-home",
@@ -171,6 +172,12 @@ export function validateRunContents(
       } else {
         seenMappedRows.set(duplicateKey, row.line);
       }
+    }
+  }
+
+  if (!allowLegacySchema) {
+    for (const error of laneStatusErrors(contents)) {
+      describeError(errors, filePath, error);
     }
   }
 

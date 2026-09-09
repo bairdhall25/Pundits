@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "updated": "2026-09-08",
+  "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
+  "items": [
+    {
+      "id": "ncaaf-week2-shortlist",
+      "kind": "target-selection",
+      "needed": "Approve, replace, or explicitly defer the proposed NCAAF Week 2 shortlist in docs/capture-targets.json. Silence is not 'no college work' and is not permission to scout every game.",
+      "status": "pending",
+      "relatedIds": [
+        "ncaaf-w2-oklahoma-at-michigan",
+        "ncaaf-w2-ohio-state-at-texas",
+        "ncaaf-w2-arizona-state-at-texas-am",
+        "ncaaf-w2-alabama-at-kentucky"
+      ]
+    },
+    {
+      "id": "nfl-w1-proposed-addons",
+      "kind": "target-selection",
+      "needed": "Approve or defer proposed NFL add-ons (Broncos–Chiefs, Commanders–Eagles, Packers–Vikings). Existing approved openers stay active either way.",
+      "status": "pending",
+      "relatedIds": [
+        "nfl-w1-broncos-at-chiefs",
+        "nfl-w1-commanders-at-eagles",
+        "nfl-w1-packers-at-vikings"
+      ]
+    },
+    {
+      "id": "candidate-jerry-ostroski",
+      "kind": "roster-candidate",
+      "needed": "Photo + eligibility review. Staged as team-analyst on Locked On Bills. Team analysts are not pundits unless the operator overrides that definition.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-08e-afternoon-shows.md",
+      "note": "Do not auto-roster or bypass photo approval."
+    },
+    {
+      "id": "candidate-lainey-wilson",
+      "kind": "roster-candidate",
+      "needed": "Photo + association review for GameDay celebrity guest picker. Not Intake.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-05f-gameday-restage.md",
+      "note": "Do not auto-roster."
+    },
+    {
+      "id": "overflow-walker-indiana",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit-ok unmapped Walker Indiana SU (North Texas at Indiana).",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-05-audit.md",
+      "note": "Promote must not mint unless this pass is asked. Do not invent a slug here."
+    }
+  ]
+}

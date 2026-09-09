@@ -1,4 +1,6 @@
-/** Factory drop-alarm. Posted = last usable item's pubDate is today's Eastern date. */
+/** Factory drop-alarm. Hunt uses a bounded recent-unprocessed episode queue, not "published today." */
+
+export const DEFAULT_EPISODE_WINDOW_DAYS = 3;
 
 export const FACTORIES = [
   {
@@ -30,6 +32,20 @@ export const FACTORIES = [
     appleId: "1485905502",
   },
   {
+    id: "see-ball",
+    name: "See Ball Get Ball",
+    sport: "ncaaf",
+    kind: "apple",
+    appleId: "1769665459",
+  },
+  {
+    id: "clay-travis",
+    name: "Clay Travis Show",
+    sport: "ncaaf",
+    kind: "apple",
+    appleId: "1498106610",
+  },
+  {
     id: "herd",
     name: "The Herd",
     sport: "nfl",
@@ -50,6 +66,27 @@ export const FACTORIES = [
     kind: "apple",
     appleId: "1435183458",
   },
+  {
+    id: "gmfb",
+    name: "GMFB",
+    sport: "nfl",
+    kind: "apple",
+    appleId: "1171438277",
+  },
+];
+
+export const HIGH_VALUE_SOURCE_IDS = [
+  "gameday",
+  "cover3",
+  "see-ball",
+  "clay-travis",
+  "gmfb",
+  "finebaum",
+  "pate",
+  "bfw",
+  "herd",
+  "eisen",
+  "mcafee",
 ];
 
 export function easternDay(at) {
@@ -95,73 +132,153 @@ function isRecapTitle(title) {
   );
 }
 
-export function classifyItem(item, now, { sport } = {}) {
+export function episodeLocator(url) {
+  if (!url) return "";
+  const apple = String(url).match(/[?&]i=(\d+)/i);
+  if (apple) return `i=${apple[1]}`;
+  const yt = String(url).match(/(?:v=|\/shorts\/|youtu\.be\/)([A-Za-z0-9_-]{6,})/i);
+  if (yt) return yt[1];
+  return url;
+}
+
+export function episodeId(factoryId, item) {
+  const locator = episodeLocator(item?.url);
+  if (factoryId && locator) return `${factoryId}:${locator.replace(/^i=/, "")}`;
+  return `${factoryId || "unknown"}:${item?.published || ""}:${item?.title || ""}`;
+}
+
+export function loadEpisodeLedger(raw) {
+  if (!raw) {
+    return { version: 1, windowDays: DEFAULT_EPISODE_WINDOW_DAYS, episodes: [] };
+  }
+  if (!raw || typeof raw !== "object" || !Array.isArray(raw.episodes)) {
+    throw new Error("docs/scout-episodes.json must be an object with an episodes array");
+  }
+  return {
+    version: raw.version ?? 1,
+    windowDays: Number(raw.windowDays) || DEFAULT_EPISODE_WINDOW_DAYS,
+    updated: raw.updated ?? "",
+    note: raw.note ?? "",
+    episodes: raw.episodes,
+  };
+}
+
+export function priorEpisode(ledger, id) {
+  return (ledger?.episodes ?? []).find((row) => row.id === id) ?? null;
+}
+
+function daysBetweenEastern(fromDay, toDay) {
+  if (!fromDay || !toDay) return Number.POSITIVE_INFINITY;
+  const from = Date.parse(`${fromDay}T00:00:00Z`);
+  const to = Date.parse(`${toDay}T00:00:00Z`);
+  if (!Number.isFinite(from) || !Number.isFinite(to)) return Number.POSITIVE_INFINITY;
+  return Math.round((to - from) / 86400000);
+}
+
+function locksHunt(title) {
+  return /locks|i.?ll take|who wins|moneyline|picks|predictions/i.test(title)
+    ? "open"
+    : "open if the chapter is a winner pick";
+}
+
+export function classifyItem(
+  item,
+  now,
+  { sport, ledger, factoryId, windowDays = DEFAULT_EPISODE_WINDOW_DAYS } = {}
+) {
   const title = item.title ?? "";
   const url = item.url ?? "";
   const published = item.published ?? "";
   const droppedEt = Number.isFinite(Date.parse(published))
     ? easternDay(new Date(published))
     : "";
-  if (isOffTopic(title, sport)) {
-    return {
-      title,
-      url,
-      droppedEt,
-      status: "off-topic",
-      hunt: "not a football locks hour",
-    };
-  }
-  if (isShortLink(url)) {
-    return {
-      title,
-      url,
-      droppedEt,
-      status: "short",
-      hunt: "skip clip; wait for long episode",
-    };
-  }
-  if (isWrongYear(title, published, now)) {
-    return {
-      title,
-      url,
-      droppedEt,
-      status: "wrong-year",
-      hunt: "drop (not this season)",
-    };
-  }
-  if (droppedEt === easternDay(now) && isRecapTitle(title)) {
-    return {
-      title,
-      url,
-      droppedEt,
-      status: "recap",
-      hunt: "not LOCKS",
-    };
-  }
-  if (droppedEt === easternDay(now)) {
-    return {
-      title,
-      url,
-      droppedEt,
-      status: "today",
-      hunt: /locks|i.?ll take|who wins|moneyline/i.test(title)
-        ? "open"
-        : "open if the chapter is a winner pick",
-    };
-  }
-  return {
+  const id = episodeId(factoryId || item.factoryId, item);
+  const prior = priorEpisode(ledger, id);
+  const short = isShortLink(url);
+  const base = {
+    id,
+    factoryId: factoryId || item.factoryId || "",
     title,
     url,
     droppedEt,
-    status: "waiting",
-    hunt: "do not burn tokens",
+    published,
+    locator: episodeLocator(url),
+    short,
+    inspected: Boolean(prior?.inspected),
   };
+
+  if (isOffTopic(title, sport)) {
+    return { ...base, status: "off-topic", hunt: "not a football locks hour" };
+  }
+  if (isWrongYear(title, published, now)) {
+    return { ...base, status: "wrong-year", hunt: "drop (not this season)" };
+  }
+
+  const days = daysBetweenEastern(droppedEt, easternDay(now));
+  const inWindow = Number.isFinite(days) && days >= 0 && days <= windowDays;
+
+  if (prior?.inspected && prior.outcome === "dry" && !prior.reopenReason) {
+    return {
+      ...base,
+      status: "dry",
+      hunt: "already inspected dry; skip unless a new reason is stated",
+    };
+  }
+  if (prior?.inspected && (prior.outcome === "hit" || prior.outcome === "opened")) {
+    return {
+      ...base,
+      status: "inspected",
+      hunt: "already processed",
+    };
+  }
+
+  if (inWindow && isRecapTitle(title)) {
+    return { ...base, status: "recap", hunt: "not LOCKS" };
+  }
+
+  if (inWindow) {
+    const hunt = short
+      ? "open if the official clip contains a complete named winner (duration is not a reject)"
+      : locksHunt(title);
+    return {
+      ...base,
+      status: days === 0 ? "today" : "unprocessed",
+      hunt,
+    };
+  }
+
+  return {
+    ...base,
+    status: "waiting",
+    hunt: "outside the recent-unprocessed window",
+  };
+}
+
+/**
+ * All relevant recent episodes, not only the newest mixed-feed item.
+ * Off-topic and wrong-year rows stay visible so a newer irrelevant drop
+ * cannot hide an older inspectable episode.
+ */
+export function classifyQueue(
+  items,
+  now,
+  { sport, ledger, factoryId, windowDays = DEFAULT_EPISODE_WINDOW_DAYS } = {}
+) {
+  return (items ?? []).map((item) =>
+    classifyItem(item, now, { sport, ledger, factoryId, windowDays })
+  );
+}
+
+export function inspectableEpisodes(classified) {
+  return (classified ?? []).filter((row) =>
+    row.status === "today" || row.status === "unprocessed"
+  );
 }
 
 export function latestUsable(items, { sport } = {}) {
   const list = items ?? [];
   const usable = list.find(
-    (item) => !isShortLink(item.url) && !isOffTopic(item.title, sport)
+    (item) => !isOffTopic(item.title, sport)
   );
   return usable ?? list[0] ?? null;
 }
@@ -217,7 +334,7 @@ export function formatFeeds(rows, now) {
   const lines = [
     "## Factory feeds",
     "",
-    `As of ${asOf} ET. Posted = last long episode's pubDate is today's Eastern date. Shorts and last year's LOCKS are not a hunt.`,
+    `As of ${asOf} ET. Hunt the recent-unprocessed queue, not only today's newest item. A feed check is not an inspection. Dry episodes stay dry unless a new reason is stated. Official short clips are eligible when they contain complete attributable evidence.`,
     "",
     "| factory | last drop (ET) | title | status | hunt |",
     "|---|---|---|---|---|",
@@ -236,4 +353,30 @@ export function appleLookupUrl(appleId) {
 
 export function youtubeFeedUrl(channelId) {
   return `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+}
+
+export function mergeDiscoveredEpisodes(ledger, factoryId, items) {
+  const next = {
+    version: 1,
+    windowDays: ledger?.windowDays || DEFAULT_EPISODE_WINDOW_DAYS,
+    episodes: [...(ledger?.episodes ?? [])],
+  };
+  const seen = new Set(next.episodes.map((row) => row.id));
+  for (const item of items ?? []) {
+    const id = episodeId(factoryId, item);
+    if (seen.has(id)) continue;
+    seen.add(id);
+    next.episodes.push({
+      id,
+      factoryId,
+      title: item.title ?? "",
+      published: item.published ?? "",
+      url: item.url ?? "",
+      locator: episodeLocator(item.url),
+      inspected: false,
+      outcome: "discovered",
+      note: "Feed check only. Not inspected.",
+    });
+  }
+  return next;
 }

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "windowDays": 3,
+  "updated": "2026-09-08",
+  "note": "Inspected status is written after a hunter opens the episode. A Coordinator feed check only discovers rows; it does not mark them inspected.",
+  "episodes": [
+    {
+      "id": "gmfb:1000788488079",
+      "factoryId": "gmfb",
+      "title": "GMFB Tue Hour 1 Predictions",
+      "published": "2026-09-08T15:11:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000788488079",
+      "locator": "i=1000788488079",
+      "inspected": true,
+      "inspectedAt": "2026-09-08T20:35:00-04:00",
+      "outcome": "hit",
+      "note": "Staged brandt 49ers YES in docs/runs/2026-09-08e-afternoon-shows.md. Do not reprocess without a new reason."
+    }
+  ]
+}
