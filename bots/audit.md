@@ -17,13 +17,13 @@ From https://github.com/bairdhall25/Pundits (main):
 
 ## Do
 
-Re-open every **hard** Intake row from **Shows pass**, **X pass**, and **News pass**, and every mapped hard call promoted since the previous audit. Do **not** fail the run because a **Bets** row exists. Bets are staging only (totals/spreads); optional URL spot-check, never promote. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
+Re-open every Candidate row, including candidate-only runs, and every **hard** Intake row from **Shows pass**, **X pass**, and **News pass**, and every mapped hard call promoted since the previous audit. Do **not** fail the run because a **Bets** row exists. Bets are staging only (totals/spreads); optional URL spot-check, never promote. **Game rows first** (empty-YES fills and Lambeau). Then futures. Follow `docs/board.md` do-not-touch: a restage of Finebaum Dublin or the morning eight is a fail.
 
 For each row, confirm all of:
 
 1. The `sourceUrl` loads.
 2. The verbatim quote is on that page (or a clearly linked transcript/clip described there). Paraphrase → fail. A recap-table selection label is not a spoken quotation. Do not mark table labels `ok` as if they were exact speech. If a published row still has only a recap label, say so in the note and keep `evidenceKind` as reported-selection until original wording is recovered.
-3. The speaker matches `punditId` in `pundits.json`. McAfee Show guests are the guest, never `mcafee`.
+3. For Intake, the speaker matches `punditId` in `pundits.json`. For Candidates, independently verify name and proposedId against the source; absence from the roster is expected. McAfee Show guests are the guest, never `mcafee`.
 4. If `eventSlug` and `side` are blank and `note` names a matchup not in `events.json`, this is overflow (docs/capture-policy.md rule 4). Do not fail for a missing slug. Confirm the SU bar and speaker; verdict `ok-unmapped` (or `ok-unmapped-no-reasoning` for a capsule defect). Never invent a slug. Else `eventSlug` must exist in `events.json`. Season is the regular-season start year. Wrong year → fail.
 5. Game `side` is `yes` = away, `no` = home. Futures stay on futures slugs. A title pick mapped onto a game → fail. A favorite laying points (`TCU -7.5 for the first win`) may still be hard SU for that favorite; a total-only row must not be Intake. Bets tables are not fail conditions.
 6. Not a restage of an already-booked pundit+event. Same `sourceUrl` on a different speaker is ok (one LOCKS episode, two SUs). Same pundit + same URL is a restage.
@@ -44,7 +44,7 @@ Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed). Preserve every ear
 
 `verdict` is `ok`, `ok-unmapped`, `ok-no-reasoning`, `ok-unmapped-no-reasoning`, or `fail`. One note per defect. `ok-unmapped` and `ok-unmapped-no-reasoning` are overflow waiting on an operator mint — they are not failures.
 
-Include `rowId` from `node -e` / `scripts/scout-handoff-lib.mjs` `rowIdentity` (pundit + eventSlug + side + verbatim quote + sourceUrl). A changed quote is a new identity and cannot reuse the old approval.
+Include `rowId` from `node -e` / `scripts/scout-handoff-lib.mjs` `rowIdentity` (evidence-v2: pundit + eventSlug + side + verbatim quote + sourceUrl + sourceDate + reasoning + targetId + matchup (legacy unmapped note if matchup is absent)). A changed quote is a new identity and cannot reuse the old approval.
 
 Then one line: `N ok / U ok-unmapped / R ok-no-reasoning / S ok-unmapped-no-reasoning / M fail / ready to promote K` where K is the count of new **mapped** hard Intake rows marked `ok` or `ok-no-reasoning` and not already in `calls.json`. Unmapped rows are not in K. Record `auditedAt` when known. Do not copy `sourceDate` into that field.
 
@@ -59,3 +59,13 @@ Before pushing, follow the Scheduled Git handoff and push explicitly to `origin 
 ## Stop
 
 Do not promote. Do not grade games. Do not scout new voices. Ping: "audit N ok / M fail."
+
+## Evidence-version correction
+
+Any substantive evidence edit, including sourceDate, rationale, or unmapped matchup, requires a new audit. Missing or legacy rowId fails closed: reopen evidence and issue a new verdict; never recalculate a hash to carry an old approval forward. Mapped routing notes and milestone timestamps are excluded. Approved unpublished Dispatch targets use the unmapped evidence bar: check targetId and matchup/season against capture-targets.json; leave eventSlug/side blank. Lack of a public event alone is not a failure.
+
+## Candidate-only Audit and proposal handoff
+
+Do not wait for hard>0. Reopen each Candidate pick and association URL. Verify the named person's role (guest/fill-in/independent analyst versus team analyst/caller); a show appearance alone does not override eligibility. A missing photo is not a pick failure. Record each candidate separately in a JSON array at docs/runs/YYYY-MM-DD-candidate-audits.json with proposedId, rowId, verdict (same pick verdicts as Intake), auditedAt, eligibility (association/ineligible/uncertain), eligibilityReason, and note. Preserve prior dated evidence. Hash the candidate as parsed by parseRunFile, including name, association and associationUrl. A changed identity/association invalidates the old audit. Never reuse a host's approval.
+
+Run node scripts/roster-proposals.mjs <run.md> <candidate-audits.json>. Save the generated proposals as a dated JSON packet under docs/runs and link it in capture-decisions.json, even if there are no promotable Intake rows. This is a candidate handoff, not roster approval. Keep rejected and uncertain candidates visible with reasons. Do not fabricate timestamps or eligibility evidence to make a packet ready.

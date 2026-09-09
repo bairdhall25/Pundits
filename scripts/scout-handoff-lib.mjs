@@ -20,17 +20,32 @@ export function normalizeQuote(quote) {
 
 export function rowIdentity({
   pundit = "",
+  proposedId = "",
+  name = "",
+  association = "",
+  associationUrl = "",
   eventSlug = "",
   side = "",
   verbatimQuote = "",
   sourceUrl = "",
+  sourceDate = "",
+  reasoning = "",
+  targetId = "",
+  matchup = "",
+  note = "",
 } = {}) {
   const canonical = [
-    String(pundit).trim().toLowerCase(),
+    "evidence-v2",
+    String(pundit || proposedId).trim().toLowerCase(),
     String(eventSlug || "unmapped").trim().toLowerCase(),
     String(side || "").trim().toLowerCase(),
     normalizeQuote(verbatimQuote),
     String(sourceUrl || "").trim(),
+    String(sourceDate || "").trim(),
+    normalizeQuote(reasoning),
+    String(targetId || "").trim(),
+    normalizeQuote(matchup || (!eventSlug ? note : "")),
+    ...(proposedId ? ["candidate-v1", normalizeQuote(name), normalizeQuote(association), String(associationUrl).trim()] : []),
   ].join("\u0000");
   return createHash("sha256").update(canonical).digest("hex").slice(0, 16);
 }
@@ -40,12 +55,7 @@ export function approvalStillValid(auditRow, intakeRow) {
   const currentId = rowIdentity(intakeRow);
   if (auditRow.rowId && auditRow.rowId !== currentId) return false;
   if (!auditRow.rowId) {
-    return (
-      normalizeQuote(auditRow.verbatimQuote) === normalizeQuote(intakeRow.verbatimQuote) &&
-      (auditRow.pundit || "") === (intakeRow.pundit || "") &&
-      (auditRow.eventSlug || "") === (intakeRow.eventSlug || "") &&
-      (auditRow.side || "") === (intakeRow.side || "")
-    );
+    return false; // Legacy approvals need explicit re-audit, never inferred migration.
   }
   return true;
 }
@@ -74,7 +84,7 @@ function matchingIntake(audit, intakeRows, intakeById) {
   if (audit.rowId && intakeById.has(audit.rowId)) return intakeById.get(audit.rowId);
   const sameSlot = (intakeRows ?? []).filter(
     (row) =>
-      (row.pundit || "") === (audit.pundit || "") &&
+      (row.pundit || row.proposedId || "") === (audit.pundit || audit.proposedId || "") &&
       (row.eventSlug || "") === (audit.eventSlug || "")
   );
   if (sameSlot.length === 1) return sameSlot[0];
@@ -94,11 +104,15 @@ export function promoteReadyRows(auditRows, intakeRows) {
       continue;
     }
     if (supersededByQuoteChange(audit, intake)) {
-      blocked.push({ audit, intake, reason: "quote changed; previous approval is invalid" });
+      blocked.push({ audit, intake, reason: "evidence or quote changed, or legacy approval; re-audit required" });
       continue;
     }
     if (audit.verdict === "fail") {
       blocked.push({ audit, intake, reason: "row failed Audit" });
+      continue;
+    }
+    if (intake.proposedId || intake.section === "Candidates") {
+      blocked.push({ audit, intake, reason: "candidate requires roster and photo approval; never ordinary Intake promotion" });
       continue;
     }
     if (PROMOTE_OK.has(audit.verdict) && intake.eventSlug) {

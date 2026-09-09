@@ -6,8 +6,8 @@
     {
       "id": "ncaaf-week2-shortlist",
       "kind": "target-selection",
-      "needed": "Approve, replace, or explicitly defer the proposed NCAAF Week 2 shortlist in docs/capture-targets.json. Silence is not 'no college work' and is not permission to scout every game.",
-      "status": "pending",
+      "needed": "PM approved all four college targets for bounded scouting; no mint or homepage approval.",
+      "status": "closed",
       "relatedIds": [
         "ncaaf-w2-oklahoma-at-michigan",
         "ncaaf-w2-ohio-state-at-texas",
@@ -18,8 +18,8 @@
     {
       "id": "nfl-w1-proposed-addons",
       "kind": "target-selection",
-      "needed": "Approve or defer proposed NFL add-ons (Broncos–Chiefs, Commanders–Eagles, Packers–Vikings). Existing approved openers stay active either way.",
-      "status": "pending",
+      "needed": "PM deferred extra NFL targets during the first acceptance run.",
+      "status": "deferred",
       "relatedIds": [
         "nfl-w1-broncos-at-chiefs",
         "nfl-w1-commanders-at-eagles",
@@ -29,10 +29,12 @@
     {
       "id": "candidate-jerry-ostroski",
       "kind": "roster-candidate",
-      "needed": "Photo + eligibility review. Staged as team-analyst on Locked On Bills. Team analysts are not pundits unless the operator overrides that definition.",
+      "needed": "Reopen candidate pick and independently assess eligibility; team-analyst exclusion remains. Packet records missing evidence, not approval.",
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-08e-afternoon-shows.md",
-      "note": "Do not auto-roster or bypass photo approval."
+      "note": "Do not auto-roster or bypass photo approval.",
+      "proposalFile": "docs/runs/2026-09-08-candidate-proposals.json",
+      "owner": "Audit"
     },
     {
       "id": "candidate-lainey-wilson",

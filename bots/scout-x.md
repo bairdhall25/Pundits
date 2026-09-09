@@ -125,3 +125,15 @@ Empty Intake is a valid run. Say so. Set `## Lane status` X to `completed`, `dry
 ## Stop
 
 Do not edit `data/`. Do not tweet. Do not tag experts. Poster is a different bot. After the file is on GitHub: `ready to audit N hard rows` (`M candidates` if any).
+
+## Approved unpublished targets (acceptance correction)
+
+Read capture-targets.json with Dispatch. An approved matchup can be hunted before a public event exists. The four college Week 2 targets are approved for bounded scouting; extra NFL targets are deferred. Dispatch prints targetId, matchup/season, kickoff and designated sources. `(unpublished)` is a display label, never a slug. Do not hunt proposed, deferred, expired or past-date targets.
+
+Stage selected unpublished targets with blank eventSlug/side, matchup and season in note, plus additional targetId and matchup columns in Intake. Keep matchup outside the verbatim quote. Audit verifies the unmapped row; Promote still needs an explicit mint instruction. Never create editorial events just to make Dispatch work. Use designated sources, inspect relevant chapters first, and keep bounded attempts. Network uploads are discovery leads, not required full listens. Unknown relevance or failed access is not a dry inspection.
+
+## Candidate handoff
+
+Discover beyond the add-list within the approved source/target scope. Stage named guests and fill-ins with proposedId (staging identity only), name, association (role and show), associationUrl, factory, and the exact pick evidence. Add these columns to Candidates. Include xHandle, photoUrl and photoSource when actually known; missing photos never block staging or Audit. Do not infer that every guest is an independent pundit: callers and team analysts retain existing exclusions, and uncertain roles await review. Existing roster IDs always go to Intake; check live pundits.json rather than trusting the dated add-list.
+
+New or changed Candidates trigger audit=pending even if hard=0. Report candidate count separately. Use rowIdentity on the parsed candidate fields; never substitute a host's pundit ID for a guest. Ask Audit to verify both the prediction and association. Never roster during Scout.

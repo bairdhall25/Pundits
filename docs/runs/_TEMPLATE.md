@@ -1,5 +1,6 @@
 <!-- pundits-run date=YYYY-MM-DD hard=0 candidates=0 audit=pending promoted=false -->
 Overflow unlisted SUs: leave `eventSlug` and `side` blank; name the matchup in `note`, outside the verbatim quote. Do not invent a slug. See `docs/capture-policy.md`.
+For approved unpublished targets, add targetId and matchup (including season) columns to Intake; also keep matchup in note. Leave eventSlug and side blank.
 Row-level Audit identity is `rowId` from `scripts/scout-handoff-lib.mjs`. A day-level fail does not block other ok mapped rows. Do not backfill publication milestones from sourceDate.
 
 ## Dispatch
@@ -64,7 +65,7 @@ Untrusted discovery leads only. A tip must clear the normal Scout, Audit, and Pr
 
 ### Episode coverage
 
-Persist identity in `docs/scout-episodes.json` after opening. A feed check is not an inspection.
+Persist identity and target/segment coverage after opening with recordEpisodeInspection. It consumes an explicit reopenReason and preserves prior coverage. A feed check is not an inspection.
 
 | episodeId | factory | published | inspected | outcome | locator | next check |
 |---|---|---|---|---|---|---|
@@ -153,3 +154,5 @@ none
 ### Stories this would mint
 
 *(none)*
+
+Candidate tables may add association, associationUrl, factory, xHandle and photoSource columns. Missing photo is valid. Any new/changed Candidate triggers Audit even when hard=0. Candidate verdict JSON and prepared roster packets follow bots/audit.md and scripts/roster-proposals.mjs.

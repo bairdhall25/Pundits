@@ -52,3 +52,11 @@ Radio-pilot fallback may still *record* a named host SU in Candidates so the ope
 - Scout never writes `data/`.
 - Promote does not invent photos or ids unless the operator asked this pass.
 - Homepage waterfall. A new rostered face on Miami does not auto-feature Miami.
+
+## Candidate workflow completion (2026-09-08)
+
+The add-list is a discovery seed, never an allowlist. Scout stages qualifying new voices from approved sources and targets, including guests/fill-ins absent from that list. Existing roster IDs are Intake. Scout records association role/source and proposedId as staging identity; public IDs are created only through the authorized roster-add flow.
+
+Candidate-only runs trigger Audit. Audit verifies pick evidence and association eligibility separately, regardless of photo availability, and writes a candidate audit JSON array with evidence-bound rowId. scripts/roster-proposals.mjs turns parsed Candidates plus those verdicts into inspectable packets: awaiting-audit, needs-evidence, rejected, or ready-for-review. Readiness is not approval. Each packet includes a concrete next action, source run, evidence, missing items, and whether an event mint would be needed.
+
+Audit creates the initial packet and links it from capture-decisions.json. Promote prepares identity, official handle, future factory, and a usable photo proposal even when ordinary publishing is a no-op. Coordinator surfaces unresolved packets. The operator makes one prepared roster/photo decision; no bot guesses consent. Approved additions still use roster-add and release verification, then close the decision and reconcile the add-list. Deferred/rejected evidence stays in the trail. Team-analyst exclusions and public eligibility are unchanged.
