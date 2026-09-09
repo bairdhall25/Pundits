@@ -2,9 +2,11 @@
 
 Status: Operational
 
-Last updated: 2026-09-05
+Last updated: 2026-09-08
 
 Read this as a short handoff before substantial product, growth, capture, grading, or agentic-development work. The linked canonical documents control when more detail is needed.
+
+A growth-engine implementation is active. Codex is the product manager; Grok is the engineer. Intended behavior is in the [2026-09-08 execution brief](./2026-09-08-growth-execution-brief.md) and [implementation plan](../superpowers/plans/2026-09-08-growth-engine-implementation.md). Shipped behavior remains live code and `data/*.json`. Phase 0 current-truth inventory: [correction inventory](../runs/2026-09-08-growth-correction-inventory.md). This pointer does not replace the capture and grade order of operations below.
 
 ## Business thesis
 

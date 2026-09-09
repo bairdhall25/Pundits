@@ -52,6 +52,7 @@ Exit criteria: routine releases are fast, assets are light, and editorial freshn
 
 ## Phase 4 — prove growth before expanding scope
 
+- Active implementation (not complete): [2026-09-08 growth-engine plan](superpowers/plans/2026-09-08-growth-engine-implementation.md). Codex is PM; Grok is engineer. Intended evidence, Scout, SEO, and social changes are not shipped until their phases land. Phase 0 current-truth inventory: [correction inventory](runs/2026-09-08-growth-correction-inventory.md) and [implementation journal](runs/2026-09-08-growth-implementation.md).
 - Measure qualified event density, not raw call or page count: covered events, two-sided events, picks per featured event, and resolution horizon.
 - Measure matchup-detail opens, take-story clicks, evidence-source clicks, settled-story shares, and return visits.
 - Revisit licensed team logos only after the source, rights, fallback, and accessibility plan is approved.
