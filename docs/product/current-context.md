@@ -84,3 +84,7 @@ Pundit Ledger is an active adjacent product worth monitoring monthly. Its in-pla
 - `docs/product/roster-growth.md` is who may join the roster (association, not team analysts).
 - `AGENTS.md` defines repository-wide invariants and agent ownership.
 - `docs/runs/2026-09-05-gameday-handoff.md` is today’s Saturday operating mailbox (GameDay override, grade order, resume prompt).
+
+## Scout acceptance correction (2026-09-08)
+
+The four Week 2 college targets in capture-targets.json are PM-approved for bounded scouting before public events exist. Extra NFL targets are deferred; existing openers remain active. Hunt approval does not mint events or approve homepage placement. Audit evidence-v2 binds source date and rationale; legacy pending approvals need re-audit. Shows preserves target/segment coverage and consumes episode reopen requests. This is correction-branch behavior, not a deployment claim.

@@ -83,14 +83,17 @@ function validateTarget(target, seen) {
   }
 }
 
-export function approvedHuntTargets(doc) {
+export function approvedHuntTargets(doc, { now = Date.now() } = {}) {
+  const today = easternDay(new Date(now));
   return (doc?.targets ?? []).filter(
-    (target) => target.state === "approved" && target.eventSlug
+    (target) => target.state === "approved" &&
+      (!target.expires || target.expires >= today) &&
+      (!target.kickoffDate || target.kickoffDate >= today)
   );
 }
 
-export function approvedHuntSlugs(doc) {
-  return approvedHuntTargets(doc).map((target) => target.eventSlug);
+export function approvedHuntSlugs(doc, options) {
+  return approvedHuntTargets(doc, options).map((target) => target.eventSlug).filter(Boolean);
 }
 
 export function proposedTargets(doc, { sport } = {}) {
@@ -141,7 +144,7 @@ export function upcomingSportAbsence(events, { sport, now = Date.now() } = {}) {
 
 export function ncaafAbsenceFlag(events, doc, { now = Date.now() } = {}) {
   const upcoming = upcomingSportAbsence(events, { sport: "ncaaf", now });
-  const approved = approvedHuntTargets(doc).filter((target) => target.sport === "ncaaf");
+  const approved = approvedHuntTargets(doc, { now }).filter((target) => target.sport === "ncaaf");
   const proposed = proposedTargets(doc, { sport: "ncaaf" });
   if (upcoming.count > 0 || approved.length > 0) return null;
   const proposedNote =

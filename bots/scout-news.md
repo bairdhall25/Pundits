@@ -52,3 +52,9 @@ Run `node scripts/validate-run.mjs docs/runs/YYYY-MM-DD.md` before you commit. A
 ## Stop
 
 Do not edit `data/`. After GitHub: `ready to audit N hard rows`.
+
+## Approved unpublished targets (acceptance correction)
+
+Read capture-targets.json with Dispatch. An approved matchup can be hunted before a public event exists. The four college Week 2 targets are approved for bounded scouting; extra NFL targets are deferred. Dispatch prints targetId, matchup/season, kickoff and designated sources. `(unpublished)` is a display label, never a slug. Do not hunt proposed, deferred, expired or past-date targets.
+
+Stage selected unpublished targets with blank eventSlug/side, matchup and season in note, plus additional targetId and matchup columns in Intake. Keep matchup outside the verbatim quote. Audit verifies the unmapped row; Promote still needs an explicit mint instruction. Never create editorial events just to make Dispatch work. Use designated sources, inspect relevant chapters first, and keep bounded attempts. Network uploads are discovery leads, not required full listens. Unknown relevance or failed access is not a dry inspection.

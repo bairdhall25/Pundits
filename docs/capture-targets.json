@@ -6,9 +6,7 @@
     "nfl": 4
   },
   "selectionRule": "Coordinator proposes 2–4 marquee games per sport before midweek pick shows, retaining active unsolved approved targets. This is a proposal cap, not automatic event minting and not permission to scout every game. PM must approve before a proposed matchup becomes a hunt target. Lack of a new college selection is visible; it is not 'no college work.'",
-  "gaps": [
-    "No PM-approved NCAAF Week 2 shortlist as of 2026-09-08. Upcoming public NCAAF game events with kickoffDate >= 2026-09-08: 0. Proposed Week 2 games below are labeled proposed and must not be hunted as a whole-board scrape."
-  ],
+  "gaps": [],
   "targets": [
     {
       "id": "nfl-w1-patriots-at-seahawks",
@@ -63,7 +61,7 @@
     },
     {
       "id": "nfl-w1-broncos-at-chiefs",
-      "state": "proposed",
+      "state": "deferred",
       "sport": "nfl",
       "season": 2026,
       "week": 1,
@@ -76,11 +74,11 @@
       "priority": 3,
       "highValueSources": ["gmfb", "herd", "eisen"],
       "expires": "2026-09-15",
-      "note": "Existing public event, off-home. Proposed add-on only. Do not hunt unless PM approves."
+      "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
     {
       "id": "nfl-w1-commanders-at-eagles",
-      "state": "proposed",
+      "state": "deferred",
       "sport": "nfl",
       "season": 2026,
       "week": 1,
@@ -93,11 +91,11 @@
       "priority": 3,
       "highValueSources": ["gmfb", "herd", "eisen"],
       "expires": "2026-09-14",
-      "note": "Existing public event, off-home. Proposed add-on only."
+      "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
     {
       "id": "nfl-w1-packers-at-vikings",
-      "state": "proposed",
+      "state": "deferred",
       "sport": "nfl",
       "season": 2026,
       "week": 1,
@@ -110,11 +108,11 @@
       "priority": 3,
       "highValueSources": ["gmfb", "herd", "eisen"],
       "expires": "2026-09-14",
-      "note": "Existing public event, off-home. Proposed add-on only."
+      "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
     {
       "id": "ncaaf-w2-oklahoma-at-michigan",
-      "state": "proposed",
+      "state": "approved",
       "sport": "ncaaf",
       "season": 2026,
       "week": 2,
@@ -123,15 +121,15 @@
       "eventSlug": null,
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 12:00 ET FOX",
-      "kickoffSource": "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview",
+      "kickoffSource": "https://app.mgoblue.com/2026MaizeOut",
       "priority": 1,
       "highValueSources": ["gameday", "cover3", "see-ball", "clay-travis", "finebaum", "pate"],
       "expires": "2026-09-13",
-      "note": "Source-backed Week 2 marquee. No public event yet. Do not mint until a verified pick exists."
+      "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
     {
       "id": "ncaaf-w2-ohio-state-at-texas",
-      "state": "proposed",
+      "state": "approved",
       "sport": "ncaaf",
       "season": 2026,
       "week": 2,
@@ -140,15 +138,15 @@
       "eventSlug": null,
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 7:30 ET ABC",
-      "kickoffSource": "https://www.on3.com/news/2026-sec-football-schedule-espn-announces-kickoff-times-windows-conference-games/",
+      "kickoffSource": "https://texaslonghorns.com/news/2026/5/12/football-set-for-primetime-matchups-vs-ohio-state-at-texas-am",
       "priority": 1,
       "highValueSources": ["gameday", "cover3", "see-ball", "clay-travis", "finebaum", "pate"],
       "expires": "2026-09-13",
-      "note": "Source-backed Week 2 marquee. No public event yet. Do not mint until a verified pick exists."
+      "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
     {
       "id": "ncaaf-w2-arizona-state-at-texas-am",
-      "state": "proposed",
+      "state": "approved",
       "sport": "ncaaf",
       "season": 2026,
       "week": 2,
@@ -157,15 +155,15 @@
       "eventSlug": null,
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 12:00 ET ABC",
-      "kickoffSource": "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview",
+      "kickoffSource": "https://12thman.com/news/2026/09/07/football-game-notes-arizona-state",
       "priority": 2,
       "highValueSources": ["cover3", "see-ball", "clay-travis", "pate"],
       "expires": "2026-09-13",
-      "note": "Source-backed Week 2 ABC noon. No public event yet."
+      "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
     {
       "id": "ncaaf-w2-alabama-at-kentucky",
-      "state": "proposed",
+      "state": "approved",
       "sport": "ncaaf",
       "season": 2026,
       "week": 2,
@@ -174,11 +172,11 @@
       "eventSlug": null,
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 3:30 ET ABC",
-      "kickoffSource": "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview",
+      "kickoffSource": "https://ukathletics.com/sports/football/schedule/season/2026/",
       "priority": 2,
       "highValueSources": ["gameday", "cover3", "see-ball", "finebaum", "pate"],
       "expires": "2026-09-13",
-      "note": "Source-backed Week 2 SEC conference game. No public event yet."
+      "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     }
   ],
   "expired": [

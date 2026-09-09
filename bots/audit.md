@@ -44,7 +44,7 @@ Append to `docs/runs/YYYY-MM-DD-audit.md` (create if needed). Preserve every ear
 
 `verdict` is `ok`, `ok-unmapped`, `ok-no-reasoning`, `ok-unmapped-no-reasoning`, or `fail`. One note per defect. `ok-unmapped` and `ok-unmapped-no-reasoning` are overflow waiting on an operator mint — they are not failures.
 
-Include `rowId` from `node -e` / `scripts/scout-handoff-lib.mjs` `rowIdentity` (pundit + eventSlug + side + verbatim quote + sourceUrl). A changed quote is a new identity and cannot reuse the old approval.
+Include `rowId` from `node -e` / `scripts/scout-handoff-lib.mjs` `rowIdentity` (evidence-v2: pundit + eventSlug + side + verbatim quote + sourceUrl + sourceDate + reasoning + targetId + matchup (legacy unmapped note if matchup is absent)). A changed quote is a new identity and cannot reuse the old approval.
 
 Then one line: `N ok / U ok-unmapped / R ok-no-reasoning / S ok-unmapped-no-reasoning / M fail / ready to promote K` where K is the count of new **mapped** hard Intake rows marked `ok` or `ok-no-reasoning` and not already in `calls.json`. Unmapped rows are not in K. Record `auditedAt` when known. Do not copy `sourceDate` into that field.
 
@@ -59,3 +59,7 @@ Before pushing, follow the Scheduled Git handoff and push explicitly to `origin 
 ## Stop
 
 Do not promote. Do not grade games. Do not scout new voices. Ping: "audit N ok / M fail."
+
+## Evidence-version correction
+
+Any substantive evidence edit, including sourceDate, rationale, or unmapped matchup, requires a new audit. Missing or legacy rowId fails closed: reopen evidence and issue a new verdict; never recalculate a hash to carry an old approval forward. Mapped routing notes and milestone timestamps are excluded. Approved unpublished Dispatch targets use the unmapped evidence bar: check targetId and matchup/season against capture-targets.json; leave eventSlug/side blank. Lack of a public event alone is not a failure.

@@ -1,8 +1,7 @@
 import { easternDay } from "./scout-feeds-lib.mjs";
 import {
-  approvedHuntSlugs,
+  approvedHuntTargets,
   formatProposedShortlist,
-  isApprovedPriorityTarget,
   loadCaptureTargets,
   ncaafAbsenceFlag,
   targetBySlug,
@@ -198,7 +197,7 @@ export function scoreEvent(
   });
   const flipCheck =
     eligibility.pregame && status === "dense" && inFlipWindow(event, now);
-  const approved = isApprovedPriorityTarget(targets, event.slug);
+  const approved = approvedHuntTargets(targets, { now }).some(target => target.eventSlug === event.slug);
   const complete =
     eligibility.pregame &&
     (sourceComplete || (approved && status === "dense"));
@@ -225,6 +224,9 @@ export function scoreEvent(
     priority: targetPriority(targets, event.slug, { onHome: event.onHome }),
     kickoffDate: event.kickoffDate ?? "",
     onHome: Boolean(event.onHome),
+    targetId: target?.id ?? "",
+    matchup: [event.awayTeam, event.homeTeam].filter(Boolean).join(" at "),
+    highValueSources: target?.highValueSources ?? [],
     approved,
     sourceComplete: complete,
     flipCheck,
@@ -257,8 +259,9 @@ export function scoreSlate({
   targets = null,
   now = Date.now(),
 }) {
+  const activeTargets = approvedHuntTargets(targets, { now });
   const approvedSlugs = targets
-    ? approvedHuntSlugs(targets)
+    ? activeTargets.map(t => t.eventSlug).filter(Boolean)
     : bringOntoHome;
   const offHomeSet = new Set(approvedSlugs);
   const seen = new Set();
@@ -266,7 +269,7 @@ export function scoreSlate({
   for (const event of events ?? []) {
     if (!isGameEvent(event)) continue;
     const listedOffHome = !event.onHome && offHomeSet.has(event.slug);
-    const approved = isApprovedPriorityTarget(targets, event.slug);
+    const approved = approvedSlugs.includes(event.slug);
     if (!event.onHome && !listedOffHome && !approved) continue;
     if (seen.has(event.slug)) continue;
     seen.add(event.slug);
@@ -278,11 +281,28 @@ export function scoreSlate({
     if (row.queue === "omit") continue;
     rows.push(row);
   }
+  // Staging targets are huntable before a public event exists. Never mint JSON here.
+  const publicSlugs = new Set((events ?? []).map(event => event.slug));
+  for (const target of activeTargets) {
+    if (target.eventSlug && publicSlugs.has(target.eventSlug)) continue;
+    if (!target.away || !target.home || !target.sport) continue;
+    const event = {
+      slug: target.id, kind: "game", sport: target.sport,
+      awayTeam: target.away, homeTeam: target.home, kickoffDate: target.kickoffDate,
+    };
+    const row = scoreEvent(event, [], { offHome: true, now });
+    rows.push({ ...row, eventSlug: "", targetId: target.id,
+      matchup: `${target.away} at ${target.home}`, season: target.season,
+      approved: true, priority: target.priority ?? 5,
+      highValueSources: target.highValueSources ?? [],
+      hunt: row.queue === "hunt" ? "stage verified SU unmapped; no public event yet" : row.hunt,
+    });
+  }
   rows.sort(compareDispatchRows);
   return rows;
 }
 
-function cell(ids) {
+function cell(ids = []) {
   return ids.length ? ids.join(", ") : "(none)";
 }
 
@@ -311,17 +331,17 @@ export function formatDispatch(rows, { events = [], targets = null, now = Date.n
   }
   lines.push("Hunt order is priority, then verified kickoff, then coverage. Density is a display metric; designated sources on approved priority games still source-complete.");
   lines.push("");
-  lines.push("| eventSlug | sport | yes | no | status | hunt | priority | kickoff |");
-  lines.push("|---|---|---|---|---|---|---|---|");
+  lines.push("| eventSlug | sport | yes | no | status | hunt | priority | kickoff | targetId / matchup | designated sources |");
+  lines.push("|---|---|---|---|---|---|---|---|---|---|");
   const huntRows = rows.filter((row) => row.queue !== "grader-flag" && row.queue !== "skip");
   const graderRows = rows.filter((row) => row.queue === "grader-flag");
   const skipped = rows.filter((row) => row.queue === "skip");
   if (huntRows.length === 0) {
-    lines.push("| *(none)* | | | | | | | |");
+    lines.push("| *(none)* | | | | | | | | | |");
   } else {
     for (const row of huntRows) {
       lines.push(
-        `| ${row.eventSlug} | ${row.sport} | ${cell(row.yes)} | ${cell(row.no)} | ${row.status} | ${row.hunt} | ${row.priority} | ${row.kickoffDate || "(unknown)"} |`
+        `| ${row.eventSlug || "(unpublished)"} | ${row.sport} | ${cell(row.yes)} | ${cell(row.no)} | ${row.status} | ${row.hunt} | ${row.priority} | ${row.kickoffDate || "(unknown)"} | ${row.targetId ?? ""} / ${row.matchup ?? ""}${row.season ? ` (${row.season})` : ""} | ${cell(row.highValueSources)} |`
       );
     }
   }
