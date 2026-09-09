@@ -102,6 +102,33 @@ Promote writes these on new live publication only.
 
 Parked: Scout queue, page-type SEO expansion, social selection rewrite, ATS, backends, production deploy, live X.
 
-## Later phases
+## Phase 3A — receipts, game comparisons, pundit profiles
 
-Phase 2+ not started.
+Outcome required: each URL answers its own question using the same verified ledger. No duplicate routes. No SportsEvent. No FAQ multiplication.
+
+Implemented contract: [2026-09-08-phase-3a-seo-contract.md](../product/2026-09-08-phase-3a-seo-contract.md).
+
+### Acceptance criteria
+
+| Criterion | Met? | Evidence |
+|---|---|---|
+| Receipts: direct answer, source, actual rationale only, publisher/timestamps, named disagreement, dated snapshot, grading scope | yes | Finebaum Dublin H1 + receipt + story; Finebaum LSU has no synthesized “Why”; Brandt pending has no rationale section |
+| Game pages: who picked each team, tracked counts, named disagreement, empty sides honest, not a complete survey | yes | Dublin names both sides + disclaimer; NC State at Virginia keeps Virginia empty |
+| Profiles: current mapped picks, dated season record with sample, linked historical receipts, outlet, no career-skill claim | yes | Kanell current vs past receipts; tracked-sample disclaimer; empty shells stay noindex |
+| Contextual links: receipt → game/source/profile; game → receipts/team/week; profile → evidence | yes | `receiptContextLinks` / `gameContextLinks`; CallCard receipt links unchanged |
+| Titles/H1 identify person/teams/event; no best-experts claims | yes | Game pending title `who picked whom`; graded `who called it`; profile `{name}: current picks and tracked record` |
+| Schema from the same content contract; no SportsEvent; no FAQPage on these pages | yes | Receipt NewsArticle; game WebPage; profile WebPage+Person |
+| Static HTML, not client-only; existing cards; max-image-preview:large; permalinks | yes | `data-page-type` in `out/`; `verify:static` permalink ledger; robots max-image-preview |
+| Analytics hooks on existing event system | yes | `page_type` on `pick_story_open` / `event_detail_open`; new `pundit_profile_open` |
+
+### Checks run
+
+`npm run check` with `GITHUB_PAGES` unset: **pass**. Tests 463 passed / 50 files; `validate:runs` passed; production build; `verify:static` including 217 pages / 216 decoded images and permalink ledger. Local `out/` HTML (not live production) inspected for Finebaum Dublin, Finebaum LSU (no rationale), Brandt pending, Saban reported-selection, Dublin game, NC State empty-side, 49ers pending game, Kanell graded profile, Cowherd current-picks profile, and Simms empty noindex shell. No production deploy.
+
+### Remaining Codex decisions
+
+1. Phase 3B team/league/week copy still uses “expert picks” boilerplate; left unchanged here.
+2. Whether profile hypothetical $100 should stay above or below past receipts (current: after past receipts, before unmapped takes).
+3. GameDay original-evidence disposition remains from Phase 1.
+
+Parked: 3B templates, social posting policy, measurement dashboards, SportsEvent, FAQ multiplication, production deploy, live X.

@@ -21,7 +21,10 @@ export type EngagementSurface =
   | "event"
   | "stories"
   | "take"
-  | "book";
+  | "book"
+  | "profile";
+
+export type PageType = "receipt" | "game" | "profile";
 
 export type EmailInterestParams = {
   placement: string;
@@ -81,6 +84,7 @@ export function eventDetailOpenParams(input: {
     event_slug: input.eventSlug,
     sport: input.sport,
     surface: input.surface,
+    page_type: "game",
   });
 }
 
@@ -95,6 +99,15 @@ export function pickStoryOpenParams(input: {
     pundit_id: input.punditId,
     status: input.status,
     surface: input.surface,
+    page_type: "receipt",
+  });
+}
+
+export function punditProfileOpenParams(input: { punditId: string }) {
+  return engagementParams({
+    pundit_id: input.punditId,
+    surface: "profile",
+    page_type: "profile",
   });
 }
 

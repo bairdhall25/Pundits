@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContextLinks } from "@/components/ContextLinks";
 import { ShareButton } from "@/components/ShareButton";
 import { JsonLd } from "@/components/JsonLd";
 import { Receipt } from "@/components/Receipt";
 import { TrackView } from "@/components/TrackView";
 import { pickStoryOpenParams } from "@/lib/analytics";
+import { receiptContextLinks } from "@/lib/page-content";
 import { getEvent, loadCalls, loadEvents, loadPundits, loadTeams } from "@/lib/data";
 import { firstPublishedAt, materialUpdatedAt } from "@/lib/publication";
 import {
@@ -87,7 +89,7 @@ export default async function TakePage({
   );
 
   return (
-    <main id="main" className="shell">
+    <main id="main" className="shell" data-page-type="receipt">
       <TrackView
         event="pick_story_open"
         params={pickStoryOpenParams({
@@ -209,6 +211,11 @@ export default async function TakePage({
           </ul>
         </section>
       ) : null}
+
+      <ContextLinks
+        links={receiptContextLinks(event, take.pundit)}
+        label="Game, profile, and week"
+      />
 
       <nav className="story-next" aria-label="More stories">
         {prev ? (

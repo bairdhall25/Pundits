@@ -4,6 +4,7 @@ import {
   eventDetailOpenParams,
   filterUseParams,
   pickStoryOpenParams,
+  punditProfileOpenParams,
   shareIntentParams,
   sourceOpenParams,
   tipAnalyticsParams,
@@ -20,6 +21,7 @@ describe("engagement params", () => {
       event_slug: "clemson-at-lsu-2026",
       sport: "ncaaf",
       surface: "home",
+      page_type: "game",
     });
     expect(JSON.stringify(params)).not.toMatch(/Pate|quote|"@/i);
   });
@@ -37,6 +39,15 @@ describe("engagement params", () => {
       pundit_id: "finebaum",
       status: "miss",
       surface: "take",
+      page_type: "receipt",
+    });
+  });
+
+  it("emits pundit_profile_open with page_type", () => {
+    expect(punditProfileOpenParams({ punditId: "kanell" })).toEqual({
+      pundit_id: "kanell",
+      surface: "profile",
+      page_type: "profile",
     });
   });
 

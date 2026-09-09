@@ -72,7 +72,7 @@ describe("share copy", () => {
 
   it("names sides and freeze on a game card", () => {
     const share = eventShare(event, calls, pundits);
-    expect(share.title).toBe("North Carolina vs TCU expert picks");
+    expect(share.title).toBe("North Carolina vs TCU: who picked whom");
     expect(share.description).toContain("Paul Finebaum picks TCU");
     expect(share.description).toContain("Nobody on North Carolina yet");
     expect(share.description).toContain("TCU 75¢");
@@ -91,9 +91,10 @@ describe("share copy", () => {
       },
       calls[0]
     );
-    expect(share.title).toBe("Paul Finebaum picks");
+    expect(share.title).toBe("Paul Finebaum: current picks and tracked record");
     expect(share.description).toContain("Finebaum / ESPN");
     expect(share.description).toContain("2 open picks");
+    expect(share.description).toContain("tracked record");
     expect(share.description).toContain(
       "Latest: “I don't believe they'll win this game in Ireland”"
     );
@@ -112,7 +113,7 @@ describe("share copy", () => {
       calls[0],
       { showRecord: true }
     );
-    expect(share.description).toContain("2026 record 0–0");
+    expect(share.description).toContain("2026 tracked record 0–0");
   });
 
   it("matches the current Dublin row", () => {
@@ -152,7 +153,7 @@ describe("share copy", () => {
     expect(p).toBeTruthy();
     const latest = currentCalls.find((c) => c.punditId === "finebaum");
     const share = punditShare(p!, latest);
-    expect(share.title).toBe("Paul Finebaum picks");
+    expect(share.title).toBe("Paul Finebaum: current picks and tracked record");
     expect(share.description.length).toBeGreaterThan(20);
   });
 

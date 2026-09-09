@@ -1,5 +1,5 @@
 import { takesOnTeam } from "./archive";
-import { finalScoreParts, isMapped, seasonFromCalls, sidesForCard } from "./data";
+import { finalScoreParts, isMapped, seasonFromCalls } from "./data";
 import {
   evidenceKindFor,
   presentEvidence,
@@ -15,7 +15,7 @@ import {
 } from "./format";
 import { firstPublishedAt, materialUpdatedAt } from "./publication";
 import { isoDay, latestDay } from "./seo-dates";
-import { eventShare } from "./share";
+import { gameComparison, receiptDisagreement } from "./page-content";
 import {
   LEGAL_NAME,
   SITE_DESCRIPTION,
@@ -237,27 +237,8 @@ export function pickStory(
     );
   }
 
-  const others = allCalls.filter(
-    (c) =>
-      isMapped(c) &&
-      c.eventSlug === event.slug &&
-      c.punditId !== pundit.id
-  );
-  if (others.length && pundits.length) {
-    const names = [...new Set(
-      others
-        .map((c) => pundits.find((p) => p.id === c.punditId)?.name)
-        .filter((n): n is string => Boolean(n))
-    )];
-    if (names.length) {
-      const place = event.awayTeam ? "this game" : "this pick";
-      paragraphs.push(
-        names.length === 1
-          ? `${names[0]} has also weighed in on ${place}; the full split is on the game page.`
-          : `${names.join(", ")} have also weighed in on ${place}; the full split is on the game page.`
-      );
-    }
-  }
+  const disagreement = receiptDisagreement(event, call, pundit, allCalls, pundits);
+  if (disagreement) paragraphs.push(disagreement);
 
   const dek = game
     ? [
@@ -394,13 +375,7 @@ export function pickLede(
   calls: Call[],
   pundits: Pundit[]
 ): string {
-  const share = eventShare(event, calls, pundits);
-  const [yes, no] = sidesForCard(event, calls);
-  const n = yes.calls.length + no.calls.length;
-  if (n === 0) {
-    return `No verified expert pick on ${event.title} yet.`;
-  }
-  return share.description.endsWith(".") ? share.description : `${share.description}.`;
+  return gameComparison(event, calls, pundits).lede;
 }
 
 export function takeLastModified(call: Call): string | undefined {
@@ -527,13 +502,13 @@ export function eventJsonLd(
   pundits: Pundit[]
 ) {
   const url = canonicalUrl(`/picks/${event.slug}`);
-  const share = eventShare(event, calls, pundits);
+  const comparison = gameComparison(event, calls, pundits);
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: event.title,
+    name: comparison.title,
     url,
-    description: share.description,
+    description: comparison.description,
     about:
       event.awayTeam && event.homeTeam
         ? [
@@ -544,7 +519,7 @@ export function eventJsonLd(
   };
 }
 
-export function personJsonLd(pundit: Pundit) {
+export function personJsonLd(pundit: Pundit, description?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -555,6 +530,27 @@ export function personJsonLd(pundit: Pundit) {
     image: pundit.photo.startsWith("http")
       ? pundit.photo
       : canonicalUrl(pundit.photo),
+    ...(description ? { description } : {}),
+  };
+}
+
+export function profilePageJsonLd(pundit: Pundit, description: string) {
+  const person = personJsonLd(pundit, description);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${pundit.name}: current picks and tracked record`,
+    url: person.url,
+    description,
+    mainEntity: {
+      "@type": "Person",
+      name: person.name,
+      url: person.url,
+      jobTitle: person.jobTitle,
+      worksFor: person.worksFor,
+      image: person.image,
+      description: person.description,
+    },
   };
 }
 
