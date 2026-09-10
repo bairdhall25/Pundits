@@ -1,15 +1,15 @@
 ## Shows pass 2026-09-09 Wednesday pregame (Grok Bot)
-hard=0 candidates=2. Did not touch data/.
+hard=1 candidates=2. Did not touch data/.
 
-Pregame Scout Sweep ~7:58–8:10 PM ET before Pats–SEA Kickoff. Live `data/calls.json` already has `joe-haden` Pats YES + Wright/Middlekauff SEA NOs — Pats not empty-side. **Primary hole: Bills YES.** Opened Sherman×Edelman Week 1 preds (Omny TX) + McAfee PMS 1620 kickoff board (YT captions) + Herd H2/H3 transcripts.
+Pregame Scout Sweep ~7:58–8:10 PM ET before Pats–SEA Kickoff. Live `data/calls.json` already has `joe-haden` Pats YES + Wright/Middlekauff SEA NOs — Pats not empty-side. **Primary hole: Bills YES.** Opened Sherman×Edelman Week 1 preds (Omny TX) + McAfee PMS 1620 kickoff board (YT captions) + Herd H2/H3 transcripts + **Simms corrected-quote reopen** (afternoon Audit fail).
 
-**Correction:** First push misread the Pats board. Sherman’s final was “I got Seattle 28-17” (supersedes 28-27 Pats banter; SEA NO dropped as booked-NO restage). Edelman’s “Twenty-eight. Seattle, twenty-four.” is **Pats 28 / SEA 24** (Pats YES), not a Seahawks SU.
+**Sherman/Edelman correction:** Sherman’s final was “I got Seattle 28-17” (supersedes 28-27 Pats banter; SEA NO dropped as booked-NO restage). Edelman’s “Twenty-eight. Seattle, twenty-four.” is **Pats 28 / SEA 24** (Pats YES).
 
 ### Intake
 
 | pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft |
 |---|---|---|---|---|---|---|---|---|---|
-| *(empty)* | | | | | | | | | |
+| simms | patriots-at-seahawks-2026 | yes | I'm going to take the Patriots to win the football game tonight. I'm going to get the three points. | Patriots chip-on-shoulder plus AJ Brown/Doubs unknown for Seattle; Drake Maye healthier. | Corrected restage after Audit fail (“get **to**” → “get **the**”). Exact-score also spoken: Patriots win 23–20 on the road. Dog +3 → Bets. Second Pats YES after joe-haden. Omny no published transcript; ASR+listen. rowId `13c28dd56ed4c1ae` locator ~55:38 | Chris Simms Unbuttoned | https://podcasts.apple.com/us/podcast/id1454809704?i=1000788734426 | 2026-09-09 | hard |
 
 ### Candidates
 
@@ -22,6 +22,7 @@ Pregame Scout Sweep ~7:58–8:10 PM ET before Pats–SEA Kickoff. Live `data/cal
 
 | pundit | eventSlug | bet | verbatim quote | sourceUrl | sourceDate |
 |---|---|---|---|---|---|
+| simms | patriots-at-seahawks-2026 | Patriots +3 | I'm going to get the three points. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000788734426 | 2026-09-09 |
 | (McAfee desk — Diggs / Tai / Hawk / Connor) | patriots-at-seahawks-2026 | Seahawks −3 / Pats +3 ATS | lean towards the Seattle Seahawks tonight minus the three / love Patriots plus three / taking the Seahawks minus three | https://podcasts.apple.com/us/podcast/id1435183458?i=1000788743166 | 2026-09-09 |
 
 ### Radio coverage
@@ -38,6 +39,7 @@ Pregame Scout Sweep ~7:58–8:10 PM ET before Pats–SEA Kickoff. Live `data/cal
 | McAfee PMS 1620 kickoff board | 1000788743166 | YT captions kickoff-picks | dry SU empty YES — ATS −3 board + TD props |
 | Herd H2 | 1000788740558 | Omny/srt | dry Bills YES |
 | Herd H3 | 1000788740477 | Omny/srt | dry Bills YES — Texans language = booked cowherd NO side |
+| Chris Simms Unbuttoned Kickoff | 1000788734426 | Apple/Omny audio + whisper/vosk | **Intake simms Pats YES** corrected (“the three points”) |
 
 ### Dropped
 
@@ -46,7 +48,8 @@ Pregame Scout Sweep ~7:58–8:10 PM ET before Pats–SEA Kickoff. Live `data/cal
 - **Edelman-as-SEA-NO** — misread of “Twenty-eight. Seattle, twenty-four.” Correct = Pats YES Candidate (above).
 - **McAfee 1620** — SEA −3 ATS / Pats +3 ATS / TD props ≠ hard W1 SU; no Bills YES.
 - **Herd H2/H3** — no first-person Bills YES.
-- **Do not restage** joe-haden / wright / middlekauff / cowherd / jmac / brandt / eisen 49ers; morning Cattles/Veenstra; failed simms until corrected quote.
+- **Afternoon simms fail** — superseded by corrected Intake above (same episode `i=1000788734426`).
+- **Do not restage** joe-haden / wright / middlekauff / cowherd / jmac / brandt / eisen 49ers; morning Cattles/Veenstra.
 
 ### Freeze
 
@@ -54,11 +57,11 @@ none
 
 ### Stories this would mint
 
-*(none)* — Candidates only; photo + id before Promote.
+- simms / patriots-at-seahawks-2026 / yes (after Audit ok + Promote)
 
 ### Still empty YES (mapped)
 
 - `bills-at-texans-2026` YES — still empty in `data/` (Sherman Candidate only)
-- `patriots-at-seahawks-2026` YES — filled by `joe-haden` in `data/` (+ Edelman Candidate)
+- `patriots-at-seahawks-2026` YES — filled by `joe-haden` in `data/` (+ simms restage + Edelman Candidate)
 
-ready to audit **0 hard rows (2 candidates)**. Did not touch `data/`.
+ready to audit **1 hard row (2 candidates)**. Did not touch `data/`.
