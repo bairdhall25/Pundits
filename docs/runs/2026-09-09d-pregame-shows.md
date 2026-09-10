@@ -65,3 +65,13 @@ none
 - `patriots-at-seahawks-2026` YES — filled by `joe-haden` in `data/` (+ simms restage + Edelman Candidate)
 
 ready to audit **1 hard row (2 candidates)**. Did not touch `data/`.
+
+## Lane status
+
+PM format repair from this file's recorded coverage; no new source verification.
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-09 | Pregame pass recorded above: corrected Simms Patriots YES Intake; Sherman/Edelman Candidates. |
+| X | not-run | 2026-09-09 | Not part of this Shows packet; the separate X pass is in the day file. |
+| News | not-run | 2026-09-09 | No News pass recorded in this packet. |

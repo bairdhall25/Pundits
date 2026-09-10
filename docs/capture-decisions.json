@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-09",
+  "updated": "2026-09-10",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -53,6 +53,24 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-05f-gameday-restage.md",
       "note": "Do not auto-roster."
+    },
+    {
+      "id": "candidate-richard-sherman",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Richard Sherman Bills YES (Audit ok, association). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-09d-pregame-shows.md",
+      "owner": "Promote",
+      "note": "Audit ok rowId 0794be4d98f1acee. Empty Bills YES. Not shipped 2026-09-10 Simms promote."
+    },
+    {
+      "id": "candidate-julian-edelman",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Julian Edelman Patriots YES (Audit ok-no-reasoning, association guest). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-09d-pregame-shows.md",
+      "owner": "Promote",
+      "note": "Audit ok-no-reasoning rowId 7b1d6f6451bf7e96. Not shipped 2026-09-10 Simms promote."
     },
     {
       "id": "overflow-walker-indiana",

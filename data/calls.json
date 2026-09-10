@@ -1555,5 +1555,20 @@
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "no",
     "reasoning": "He believes in Mike Macdonald's operation and Sam Darnold. New England's injured backs and left tackle make this a bad Week 1 matchup; he still sees it closer than last year's Super Bowl."
+  },
+  {
+    "id": "simms-patriots-at-seahawks-20260909",
+    "punditId": "simms",
+    "claim": "I'm going to take the Patriots to win the football game tonight. I'm going to get the three points.",
+    "source": "Chris Simms Unbuttoned",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000788734426",
+    "sourceDate": "2026-09-09",
+    "kind": "hard",
+    "subject": "Patriots",
+    "paysOn": "Patriots at Seahawks (Week 1)",
+    "status": "pending",
+    "eventSlug": "patriots-at-seahawks-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-10"
   }
 ]
