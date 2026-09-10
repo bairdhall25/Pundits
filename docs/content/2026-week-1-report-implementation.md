@@ -2,7 +2,7 @@
 
 Status: Evidence
 
-September 10, 2026. Branch: `codex/week1-report-design`, based on `origin/main` at `11cb108`. Local implementation only; no production deployment or tweet.
+September 10, 2026. Branch: `codex/week1-report-design`, based on `origin/main` at `11cb108`. Release through PR, merge and Cloudflare production deployment authorized by the user; deployment evidence belongs in the PR. No tweet is part of this release.
 
 ## Delivered
 
@@ -35,3 +35,13 @@ The design review caught and corrected an overflowing social-card headline that 
 ## Local preview
 
 The exported preview runs at `http://127.0.0.1:3118/ncaaf/2026/week-1/`. To restart from this worktree after building, run `node .agent-artifacts/report-server.mjs` (the helper is a local ignored verification artifact). Use the normal repository build/deployment workflow for release; the preview server is not deployment infrastructure.
+
+## Next week: template and league strategy decision
+
+Before the next weekly report, evaluate a reusable template for ongoing favorite/underdog coverage. This pilot does not automatically enable next week's article. The shared analysis helper, result bars, responsive table, source receipts, counting method and social-card renderer are the starting point for a common College Football/NFL layout.
+
+Whether the leagues need separate templates or only league-specific configuration and editorial strategy remains TBD. Review each league's coverage density, completed grading, meaningful sample size, publishing cadence and search intent before deciding. Keep their datasets and conclusions separate even if they share presentation code. Do not duplicate articles solely to target favorite and underdog keywords; evaluate whether each proposed article has a distinct, supported reader purpose.
+
+Next-cycle work: separate this issue's Tulsa-specific narrative and eligibility guard from reusable presentation; choose the supported weekly angle from the actual ledger; review title, description and social copy; verify denominators, source receipts and correction fallback; and inspect desktop, mobile and the final share image before publication. Establish sample/coverage criteria during that review rather than inventing a threshold in this pilot.
+
+The initial hypothesis is one shared visual template with reviewed league-specific copy and configuration. Compare reader response and available search/social evidence before investing in separate templates. Codex handles the article; Grok is reserved for separately authorized tweeting. The user plans to test this first production issue on the morning of September 11, 2026.
