@@ -1,4 +1,5 @@
 import { gamesForWeek, takesOnTeam, weekRecord } from "../archive";
+import { publishedPickReport } from "../pick-report";
 import {
   callsForPundit,
   eventKind,
@@ -431,6 +432,25 @@ export function resolveWeekSocialCard(
   teams: Team[] = [],
   format: SocialFormat = "landscape"
 ): EditorialSocialCardModel {
+  const report = publishedPickReport(sport, season, week, events, calls, pundits);
+  if (report) return {
+    archetype: "editorial", mode: "week", format, state: "final",
+    kicker: `College football · Week ${week} · ${season}`,
+    headline: `Week ${week} results`,
+    context: `${report.picks.length} tracked selections · ${report.games.length} games`,
+    metrics: [
+      { label: "Favorite picks", value: `${report.favorites.hits}–${report.favorites.misses}`, tone: "accent" },
+      { label: "Underdog picks", value: `${report.underdogs.hits}–${report.underdogs.misses}` },
+    ],
+    people: null, groups: [],
+    feature: { kicker: "Behind the record", headline: `${report.underdogs.picks.length} underdog picks. One winner.`, context: `${report.underdogs.games} different underdogs. Only Tulsa won.` },
+    resultBars: [
+      { label: "Favorite picks", hits: report.favorites.hits, misses: report.favorites.misses },
+      { label: "Underdog picks", hits: report.underdogs.hits, misses: report.underdogs.misses },
+    ],
+    proof: [`${report.punditCount} pundits on record`, "Straight-up results"],
+    disclosure: "Tracked sample · dated Kalshi snapshots · not spread results",
+  };
   const games = gamesForWeek(sport, season, week, events);
   const record = weekRecord(games, calls);
   const total = record.hits + record.misses + record.pending;

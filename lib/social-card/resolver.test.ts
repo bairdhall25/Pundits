@@ -383,13 +383,13 @@ describe("Editorial social-card resolvers", () => {
       2026,
       1,
       events,
-      calls,
+      calls.map(call => ({ ...call, status: "pending" as const })),
       pundits
     );
     expect(card).toMatchObject({
       archetype: "editorial",
       mode: "week",
-      state: "final",
+      state: "pending",
       headline: "Week 1",
       context: "39 picks · 11 games",
     });

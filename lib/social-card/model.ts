@@ -115,6 +115,7 @@ export type EditorialSocialCardModel = SocialCardBase & {
   mode: "event-empty" | "team" | "week" | "page";
   chip?: SocialTeamChip | null;
   metrics: SocialMetric[];
+  resultBars?: { label: string; hits: number; misses: number }[];
   people: SocialPeopleGroup | null;
   groups: SocialEditorialGroup[];
   feature: {

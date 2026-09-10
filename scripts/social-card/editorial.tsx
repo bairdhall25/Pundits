@@ -193,6 +193,13 @@ function WeekCard({ model }: { model: EditorialSocialCardModel }) {
         <div style={{ display: "flex", flex: 1, minHeight: 0, flexDirection: "column", padding: "20px 28px", borderTop: `6px solid ${SOCIAL_COLORS.green}`, background: SOCIAL_COLORS.panel }}>
           <Kicker>{model.feature?.kicker ?? "Weekly archive"}</Kicker>
           <div style={{ display: "flex", marginTop: 7, color: SOCIAL_COLORS.ink, fontFamily: SOCIAL_FONTS.display, fontSize: model.feature?.headline && model.feature.headline.length > 28 ? 48 : 58, fontWeight: 700, lineHeight: 1.02, textTransform: "uppercase" }}>{model.feature?.headline ?? "Results land as games grade"}</div>
+          {model.resultBars ? <div style={{ display: "flex", flexDirection: "column", marginTop: 24 }}>
+            <div style={{ display: "flex", fontFamily: SOCIAL_FONTS.body, fontSize: 20, color: SOCIAL_COLORS.muted }}>{model.feature?.context}</div>
+            {model.resultBars.map(bar => <div key={bar.label} style={{ display: "flex", flexDirection: "column", marginTop: 24 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontFamily: SOCIAL_FONTS.mono, fontSize: 15, color: SOCIAL_COLORS.ink }}><span>{bar.label}</span><span>Hits: {bar.hits} / Misses: {bar.misses}</span></div>
+              <div style={{ display: "flex", height: 15, background: "#74403f", marginTop: 10 }}><div style={{ width: `${bar.hits / Math.max(1, bar.hits + bar.misses) * 100}%`, background: SOCIAL_COLORS.green }} /></div>
+            </div>)}
+          </div> : null}
           {sides ? (
             <div style={{ display: "flex", flex: 1, alignItems: "flex-end", marginTop: 16 }}>
               <SplitSummary side={sides[0]} accent={sides[0].chip?.primary ?? SOCIAL_COLORS.green} />
