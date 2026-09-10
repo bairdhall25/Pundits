@@ -18,7 +18,6 @@ describe("loadCaptureTargets", () => {
     const doc = loadCaptureTargets(live);
     expect(doc.version).toBe(1);
     expect(approvedHuntSlugs(doc, { now: Date.parse("2026-09-08T16:00:00Z") })).toEqual([
-      "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
       "bills-at-texans-2026",
     ]);

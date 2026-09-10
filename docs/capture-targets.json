@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-08",
+  "updated": "2026-09-10",
   "proposedCap": {
     "ncaaf": 4,
     "nfl": 4
@@ -8,23 +8,6 @@
   "selectionRule": "Coordinator proposes 2–4 marquee games per sport before midweek pick shows, retaining active unsolved approved targets. This is a proposal cap, not automatic event minting and not permission to scout every game. PM must approve before a proposed matchup becomes a hunt target. Lack of a new college selection is visible; it is not 'no college work.'",
   "gaps": [],
   "targets": [
-    {
-      "id": "nfl-w1-patriots-at-seahawks",
-      "state": "approved",
-      "sport": "nfl",
-      "season": 2026,
-      "week": 1,
-      "away": "Patriots",
-      "home": "Seahawks",
-      "eventSlug": "patriots-at-seahawks-2026",
-      "kickoffDate": "2026-09-09",
-      "kickoffWindow": "Wed 8:20 ET NBC Kickoff",
-      "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP09NESEA",
-      "priority": 1,
-      "highValueSources": ["gmfb", "herd", "eisen", "mcafee"],
-      "expires": "2026-09-10",
-      "note": "Existing onHome opener. Empty Patriots YES."
-    },
     {
       "id": "nfl-w1-49ers-vs-rams",
       "state": "approved",
@@ -180,6 +163,15 @@
     }
   ],
   "expired": [
+    {
+      "id": "nfl-w1-patriots-at-seahawks",
+      "state": "expired-settled",
+      "sport": "nfl",
+      "eventSlug": "patriots-at-seahawks-2026",
+      "kickoffDate": "2026-09-09",
+      "expiredAt": "2026-09-09",
+      "reason": "Settled Patriots 10–13 Seahawks. Public URL preserved. Not a pregame hunt."
+    },
     {
       "id": "ncaaf-w1-wisconsin-vs-nd",
       "state": "expired-settled",
