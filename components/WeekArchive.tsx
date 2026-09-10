@@ -5,6 +5,7 @@ import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackView } from "@/components/TrackView";
 import { PickReport } from "@/components/PickReport";
+import reportStyles from "@/components/PickReport.module.css";
 import { publishedPickReport, pickReportMeta } from "@/lib/pick-report";
 import { resolveWeekSocialCard } from "@/lib/social-card/resolver";
 import {
@@ -89,39 +90,7 @@ export function WeekArchive({
   const report = publishedPickReport(sport, season, week, events, calls, pundits);
   const reportMeta = report ? pickReportMeta(report) : null;
 
-  return (
-    <main id="main" className="shell" data-page-type="week">
-      <TrackView
-        event="week_archive_open"
-        params={weekArchiveOpenParams({ sport, season, week })}
-      />
-      <JsonLd
-        data={collectionPageJsonLd(reportMeta?.title ?? content.title, path, reportMeta?.description ?? content.description)}
-      />
-      <JsonLd
-        data={breadcrumbList([
-          { name: "Picks", path: "/" },
-          { name: content.sportLabel, path: slate },
-          { name: `Week ${week}`, path },
-        ])}
-      />
-      <Breadcrumbs
-        items={[
-          { name: "Picks", href: "/" },
-          { name: content.sportLabel, href: slate },
-          { name: `Week ${week}` },
-        ]}
-      />
-      {report ? <PickReport report={report} /> : <><div className="eyebrow type-broadcast">
-        {content.sportLabel} · {season}–{String(season + 1).slice(-2)}
-      </div>
-      <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
-        {content.h1}
-      </h1>
-      <p className="lede">{content.lede}</p>
-      <p className="coverage-note">{content.disclaimer}</p>
-      </>}
-
+  const ledger = <>
       {content.disagreements.length ? (
         <section className="week-results" aria-labelledby="week-disagreements-title">
           <h2 id="week-disagreements-title" className="type-broadcast">
@@ -201,6 +170,46 @@ export function WeekArchive({
           );
         })}
       </section>
+
+  </>;
+
+  return (
+    <main id="main" className="shell" data-page-type="week">
+      <TrackView
+        event="week_archive_open"
+        params={weekArchiveOpenParams({ sport, season, week })}
+      />
+      <JsonLd
+        data={collectionPageJsonLd(reportMeta?.title ?? content.title, path, reportMeta?.description ?? content.description)}
+      />
+      <JsonLd
+        data={breadcrumbList([
+          { name: "Picks", path: "/" },
+          { name: content.sportLabel, path: slate },
+          { name: `Week ${week}`, path },
+        ])}
+      />
+      <Breadcrumbs
+        items={[
+          { name: "Picks", href: "/" },
+          { name: content.sportLabel, href: slate },
+          { name: `Week ${week}` },
+        ]}
+      />
+      {report ? <PickReport report={report} /> : <><div className="eyebrow type-broadcast">
+        {content.sportLabel} · {season}–{String(season + 1).slice(-2)}
+      </div>
+      <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
+        {content.h1}
+      </h1>
+      <p className="lede">{content.lede}</p>
+      <p className="coverage-note">{content.disclaimer}</p>
+      </>}
+
+      {report ? <details className={reportStyles.archive} id="week-ledger">
+        <summary><h2>Explore all Week {week} picks</h2><span>{results.length} graded picks · {games.length} games · Original receipts</span></summary>
+        {ledger}
+      </details> : ledger}
 
       <nav className="week-nav" aria-label="More weeks">
         {prev ? (
