@@ -45,3 +45,11 @@ Whether the leagues need separate templates or only league-specific configuratio
 Next-cycle work: separate this issue's Tulsa-specific narrative and eligibility guard from reusable presentation; choose the supported weekly angle from the actual ledger; review title, description and social copy; verify denominators, source receipts and correction fallback; and inspect desktop, mobile and the final share image before publication. Establish sample/coverage criteria during that review rather than inventing a threshold in this pilot.
 
 The initial hypothesis is one shared visual template with reviewed league-specific copy and configuration. Compare reader response and available search/social evidence before investing in separate templates. Codex handles the article; Grok is reserved for separately authorized tweeting. The user plans to test this first production issue on the morning of September 11, 2026.
+
+## Narrative refinement after production review
+
+The user found the report/archive combination too dense and approved a story-led revision. The revised component replaces repeated labels and statistics with approximately 300 words connecting the week's results, Patterson's Tulsa hit and Toledo miss, and LSU/Notre Dame's concentration in the favorite record. The Tulsa receipt now precedes the underdog table. The extra hero statistic, game-level chart and separate concluding panel are removed; game-level context remains in the prose.
+
+The full ledger is retained in server-rendered HTML inside a native, initially collapsed “Explore all Week 1 picks” disclosure. It supports keyboard use and works without JavaScript. Other week archives keep their existing expanded presentation. This supersedes the initial layout described above; the original editorial draft remains historical evidence.
+
+The narrative/disclosure pattern is a candidate for next week's shared template review. No data, grading rules, methodology claims, canonical URL or metadata changed. Verification covers disclosure opening/closing, all 39 graded selections, mobile overflow, original receipt navigation, article accessibility and the existing fallback archives, in addition to the full repository release check.
