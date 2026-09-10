@@ -39,7 +39,8 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
-assert.match(home, /Paul Finebaum/);
+assert.match(home, /Kyle Brandt/);
+assert.match(home, /49ers vs Rams/);
 assert.match(home, /event-title-link/);
 assert.doesNotMatch(home, /class="event-hit"/);
 assert.match(home, /Most on record/);
@@ -380,8 +381,9 @@ assert.doesNotMatch(week0, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const weekNfl = await readFile(path.join(out, "nfl/2026/week-1/index.html"), "utf8");
 assert.match(weekNfl, /data-page-type="week"/);
-assert.match(weekNfl, /who picked whom/);
-assert.match(weekNfl, /Results land on this same URL/);
+assert.match(weekNfl, /who got them right/);
+assert.match(weekNfl, /Tracked Week 1 record: 3–2/);
+assert.match(weekNfl, /Patriots at Seahawks/);
 assert.match(weekNfl, /49ers vs Rams/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");

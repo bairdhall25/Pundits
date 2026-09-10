@@ -367,7 +367,7 @@ describe("weekly archive contract", () => {
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
 
-  it("keeps an open week on the same URL before grades land", () => {
+  it("progresses NFL week 1 once the opener grades and keeps later games on the same URL", () => {
     const content = weekArchiveContent(
       "nfl",
       2026,
@@ -376,9 +376,11 @@ describe("weekly archive contract", () => {
       loadCalls(),
       loadPundits()
     );
-    expect(content.title).toBe("NFL Week 1: who picked whom (2026)");
-    expect(content.graded).toBe(false);
-    expect(content.lede).toContain("Results land on this same URL");
+    expect(content.title).toBe("NFL Week 1: who got them right (2026)");
+    expect(content.graded).toBe(true);
+    expect(content.lede).toMatch(/Tracked Week 1 record: 3–2 on 5 graded picks, with 12 still open/);
+    expect(content.recap).toContain("Patriots at Seahawks");
+    expect(content.recap).toContain("Seahawks beat Patriots");
     expect(content.recap).toContain("49ers vs Rams");
     expect(content.disagreements.some((row) => row.event.slug === "49ers-vs-rams-2026")).toBe(
       true

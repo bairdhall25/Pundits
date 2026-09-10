@@ -594,7 +594,8 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "Patriots at Seahawks (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-09",
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "no"
   },
@@ -1521,7 +1522,8 @@
     "kind": "hard",
     "subject": "Patriots",
     "paysOn": "Patriots at Seahawks (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-09",
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "yes",
     "reasoning": "He says New England got a little better. Seattle lost Kenneth Walker, which he thinks will hurt them."
@@ -1536,7 +1538,8 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "Patriots at Seahawks (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-09",
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "no",
     "reasoning": "He expects Seattle to stay excellent. New England was dominated in last year's Super Bowl (2 yards per play, down 19-0 through three quarters), and a similar beating would make the opening month ugly."
@@ -1551,7 +1554,8 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "Patriots at Seahawks (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-09",
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "no",
     "reasoning": "He believes in Mike Macdonald's operation and Sam Darnold. New England's injured backs and left tackle make this a bad Week 1 matchup; he still sees it closer than last year's Super Bowl."
@@ -1566,7 +1570,8 @@
     "kind": "hard",
     "subject": "Patriots",
     "paysOn": "Patriots at Seahawks (Week 1)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-09",
     "eventSlug": "patriots-at-seahawks-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-10"

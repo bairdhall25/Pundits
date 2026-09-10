@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/ncaaf/2026/week-1/");
+    expect(recap!.href).toBe("/nfl/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 28–11. Andy Staples, Ari Wasserman, Chip Patterson, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Greg McElroy, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, Paul Finebaum, and Tom Fornelli hit on LSU."
+      "Week 1: experts went 3–2. Colin Cowherd, John Middlekauff, and Nick Wright hit on Seahawks."
     );
   });
 

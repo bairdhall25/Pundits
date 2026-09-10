@@ -405,7 +405,7 @@ describe("source completion vs density", () => {
 });
 
 describe("live capture-target Dispatch", () => {
-  it("hunts Patriots then 49ers then Bills with an empty bring-onto-home list", () => {
+  it("hunts 49ers then Bills after Patriots settle, with an empty bring-onto-home list", () => {
     const root = process.cwd();
     const events = JSON.parse(readFileSync(path.join(root, "data", "events.json"), "utf8")).events;
     const calls = JSON.parse(readFileSync(path.join(root, "data", "calls.json"), "utf8"));
@@ -425,7 +425,6 @@ describe("live capture-target Dispatch", () => {
     expect(
       rows.filter((row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
     ).toEqual([
-      "patriots-at-seahawks-2026",
       "49ers-vs-rams-2026",
       "bills-at-texans-2026",
     ]);

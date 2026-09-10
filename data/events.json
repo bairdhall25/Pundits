@@ -128,7 +128,10 @@
       "kickoffDate": "2026-09-09",
       "awayTeamId": "patriots",
       "homeTeamId": "seahawks",
-      "week": 1
+      "week": 1,
+      "awayScore": 10,
+      "homeScore": 13,
+      "resultUrl": "https://www.nfl.com/games/patriots-at-seahawks-2026-reg-1"
     },
     {
       "slug": "49ers-vs-rams-2026",
