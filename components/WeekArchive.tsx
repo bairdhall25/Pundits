@@ -4,6 +4,9 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CompactEventCard, EventCard } from "@/components/EventCard";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackView } from "@/components/TrackView";
+import { PickReport } from "@/components/PickReport";
+import { publishedPickReport, pickReportMeta } from "@/lib/pick-report";
+import { resolveWeekSocialCard } from "@/lib/social-card/resolver";
 import {
   archiveWeeks,
   weekArchivePath,
@@ -31,12 +34,19 @@ export function weekArchiveMeta(
 ): Metadata {
   const content = weekArchiveContent(sport, season, week, events, calls, pundits);
   const card = weekOgCard(sport, season, week, events, calls);
-  return pageMeta(
-    content.title,
-    content.description,
+  const report = publishedPickReport(sport, season, week, events, calls, pundits);
+  const reportMeta = report ? pickReportMeta(report) : null;
+  const metadata = pageMeta(
+    reportMeta?.title ?? content.title,
+    reportMeta?.description ?? content.description,
     weekArchivePath(sport, season, week),
-    ogImageFor(card.file, content.title, card)
+    ogImageFor(card.file, reportMeta?.socialTitle ?? content.title, report ? resolveWeekSocialCard(sport, season, week, events, calls, pundits) : card)
   );
+  if (reportMeta) {
+    metadata.openGraph = { ...metadata.openGraph, title: reportMeta.socialTitle, description: reportMeta.socialDescription };
+    metadata.twitter = { ...metadata.twitter, title: reportMeta.socialTitle, description: reportMeta.socialDescription };
+  }
+  return metadata;
 }
 
 export function WeekArchive({
@@ -76,6 +86,8 @@ export function WeekArchive({
   const next = idx >= 0 && idx < weeks.length - 1 ? weeks[idx + 1] : null;
   const slate = `/${sport}/`;
   const path = weekArchivePath(sport, season, week);
+  const report = publishedPickReport(sport, season, week, events, calls, pundits);
+  const reportMeta = report ? pickReportMeta(report) : null;
 
   return (
     <main id="main" className="shell" data-page-type="week">
@@ -84,7 +96,7 @@ export function WeekArchive({
         params={weekArchiveOpenParams({ sport, season, week })}
       />
       <JsonLd
-        data={collectionPageJsonLd(content.title, path, content.description)}
+        data={collectionPageJsonLd(reportMeta?.title ?? content.title, path, reportMeta?.description ?? content.description)}
       />
       <JsonLd
         data={breadcrumbList([
@@ -100,7 +112,7 @@ export function WeekArchive({
           { name: `Week ${week}` },
         ]}
       />
-      <div className="eyebrow type-broadcast">
+      {report ? <PickReport report={report} /> : <><div className="eyebrow type-broadcast">
         {content.sportLabel} · {season}–{String(season + 1).slice(-2)}
       </div>
       <h1 className="mb-2 mt-1 text-[clamp(36px,6vw,64px)] leading-[0.92]">
@@ -108,6 +120,7 @@ export function WeekArchive({
       </h1>
       <p className="lede">{content.lede}</p>
       <p className="coverage-note">{content.disclaimer}</p>
+      </>}
 
       {content.disagreements.length ? (
         <section className="week-results" aria-labelledby="week-disagreements-title">
