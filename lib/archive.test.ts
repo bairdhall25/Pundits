@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 3–2. Colin Cowherd, John Middlekauff, and Nick Wright hit on Seahawks."
+      "Week 1: experts went 4–5. Colin Cowherd, John Middlekauff, Kyle Brandt, and Nick Wright hit on Seahawks."
     );
   });
 

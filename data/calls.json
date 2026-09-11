@@ -568,7 +568,8 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-11",
     "eventSlug": "49ers-vs-rams-2026",
     "side": "no"
   },
@@ -609,7 +610,8 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-11",
     "eventSlug": "49ers-vs-rams-2026",
     "side": "no"
   },
@@ -908,7 +910,8 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-09-11",
     "eventSlug": "49ers-vs-rams-2026",
     "side": "no",
     "reasoning": "JMac takes the Rams as the favorite laying three and a half. He cites 49ers injury and availability uncertainty around Kittle, Bosa, and the receivers, and he doubts Aaron Donald even travels to Australia."
@@ -1507,7 +1510,8 @@
     "kind": "hard",
     "subject": "49ers",
     "paysOn": "49ers at Rams (Week 1, Melbourne)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-11",
     "eventSlug": "49ers-vs-rams-2026",
     "side": "yes",
     "reasoning": "GMFB predictions hour with helmet props; repeats Niners over Rams in week one. Clear W1 winner."

@@ -377,18 +377,17 @@ describe("live evidence-backed matchup drafts", () => {
     return { story: story!, draft, event };
   }
 
-  it("drafts 49ers-Rams pregame disagreement on the existing event card", () => {
+  it("drafts 49ers-Rams result copy on the existing event card", () => {
     const { story, draft, event } = draftFor(
       "49ers-vs-rams-2026",
-      "2026-09-09T12:00:00-04:00"
+      "2026-09-11T12:00:00-04:00"
     );
-    expect(story.priority).toBe("pregame-disagreement");
+    expect(story.priority).toBe("postgame-resolution");
     expect(draft.cardUrl).toBe(event.ogCard);
+    expect(draft.body).toContain("49ers 27, Rams 7");
     expect(draft.body).toContain("Kyle Brandt");
-    expect(draft.body).toContain("49ers");
-    expect(draft.body).toContain("Rams");
-    expect(draft.body).toMatch(/Kalshi snapshot:.*as of Sep 8, 2026/);
-    expect(draft.body).not.toMatch(/[“”]/);
+    expect(draft.body).toMatch(/straight-up winner/i);
+    expect(draft.body).not.toMatch(/\bempty side\b/i);
   });
 
   it("drafts Clemson-LSU, UNC-TCU, and SMU-FSU result versions without cover or empty-side language", () => {
@@ -423,7 +422,7 @@ describe("live evidence-backed matchup drafts", () => {
   });
 
   it("can reconstruct a pregame disagreement draft for a now-settled matchup without changing the card URL", () => {
-    for (const slug of ["clemson-at-lsu-2026", "unc-vs-tcu-2026", "smu-at-fsu-2026"]) {
+    for (const slug of ["clemson-at-lsu-2026", "unc-vs-tcu-2026", "smu-at-fsu-2026", "49ers-vs-rams-2026"]) {
       const event = index.events.find((row) => row.slug === slug)!;
       const draft = draftStory(index, {
         priority: "pregame-disagreement",

@@ -39,10 +39,8 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
-assert.match(home, /Kyle Brandt/);
-assert.match(home, /49ers vs Rams/);
+assert.match(home, /Bills at Texans|Kyle Brandt|49ers vs Rams/);
 assert.match(home, /event-title-link/);
-assert.doesNotMatch(home, /class="event-hit"/);
 assert.match(home, /Most on record/);
 assert.match(home, /More site navigation/);
 for (const href of [
@@ -312,7 +310,8 @@ const brandtTake = await readFile(
   path.join(out, "picks/49ers-vs-rams-2026/brandt/index.html"),
   "utf8"
 );
-assert.match(brandtTake, /Kyle Brandt picks .+ over /);
+assert.match(brandtTake, /Kyle Brandt pick(?:s|ed) 49ers over Rams/);
+assert.match(brandtTake, /and hit/);
 assert.doesNotMatch(brandtTake, /Why Kyle Brandt picked them/);
 assert.match(brandtTake, /data-page-type="receipt"/);
 
@@ -343,8 +342,8 @@ assert.doesNotMatch(teamPage, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const teamPending = await readFile(path.join(out, "teams/49ers/index.html"), "utf8");
 assert.match(teamPending, /data-page-type="team"/);
-assert.match(teamPending, /Next covered matchup: 49ers vs Rams/);
-assert.match(teamPending, /Kyle Brandt/);
+assert.match(teamPending, /No scheduled game on the board for 49ers/);
+assert.match(teamPending, /49ers beat Rams/);
 assert.match(teamPending, /href="\/picks\/49ers-vs-rams-2026\/brandt/);
 assert.doesNotMatch(teamPending, /name="robots" content="noindex, follow"/);
 
@@ -382,7 +381,7 @@ assert.doesNotMatch(week0, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 const weekNfl = await readFile(path.join(out, "nfl/2026/week-1/index.html"), "utf8");
 assert.match(weekNfl, /data-page-type="week"/);
 assert.match(weekNfl, /who got them right/);
-assert.match(weekNfl, /Tracked Week 1 record: 3–2/);
+assert.match(weekNfl, /Tracked Week 1 record: 4–5/);
 assert.match(weekNfl, /Patriots at Seahawks/);
 assert.match(weekNfl, /49ers vs Rams/);
 

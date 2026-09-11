@@ -182,16 +182,15 @@ describe("profile contract", () => {
 });
 
 describe("team page contract", () => {
-  it("names the next covered matchup and who is picking the 49ers", () => {
+  it("keeps the Melbourne result after 49ers-Rams grades", () => {
     const team = getTeam("49ers", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("49ers");
-    expect(content.title).toBe("49ers: who is picking them vs Rams");
-    expect(content.noScheduledGame).toBe(false);
-    expect(content.nextMatchup?.event.slug).toBe("49ers-vs-rams-2026");
-    expect(content.lede).toContain("Next covered matchup: 49ers vs Rams");
-    expect(content.lede).toContain("Kyle Brandt picks 49ers");
-    expect(content.lede).toMatch(/pick Rams/);
+    expect(content.title).toBe("49ers: tracked picks and results");
+    expect(content.noScheduledGame).toBe(true);
+    expect(content.nextMatchup).toBeNull();
+    expect(content.lede).toContain("No scheduled game on the board for 49ers");
+    expect(content.lede).toContain("49ers beat Rams");
     expect(content.disclaimer).toBe(TRACKED_SUBSET_DISCLAIMER);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
     expect(content.title).not.toMatch(/best experts|expert picks/i);
@@ -199,6 +198,7 @@ describe("team page contract", () => {
     expect(content.contextLinks.some((link) => link.href === "/picks/49ers-vs-rams-2026")).toBe(
       true
     );
+    expect(content.historical[0]?.event.slug).toBe("49ers-vs-rams-2026");
   });
 
   it("says no scheduled game on TCU and keeps the Dublin result", () => {
@@ -378,10 +378,11 @@ describe("weekly archive contract", () => {
     );
     expect(content.title).toBe("NFL Week 1: who got them right (2026)");
     expect(content.graded).toBe(true);
-    expect(content.lede).toMatch(/Tracked Week 1 record: 3–2 on 5 graded picks, with 12 still open/);
+    expect(content.lede).toMatch(/Tracked Week 1 record: 4–5 on 9 graded picks, with 8 still open/);
     expect(content.recap).toContain("Patriots at Seahawks");
     expect(content.recap).toContain("Seahawks beat Patriots");
     expect(content.recap).toContain("49ers vs Rams");
+    expect(content.recap).toContain("49ers beat Rams");
     expect(content.disagreements.some((row) => row.event.slug === "49ers-vs-rams-2026")).toBe(
       true
     );

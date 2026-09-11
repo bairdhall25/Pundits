@@ -154,7 +154,10 @@
       "kickoffDate": "2026-09-10",
       "awayTeamId": "49ers",
       "homeTeamId": "rams",
-      "week": 1
+      "week": 1,
+      "awayScore": 27,
+      "homeScore": 7,
+      "resultUrl": "https://www.nfl.com/games/49ers-at-rams-2026-reg-1"
     },
     {
       "slug": "bills-at-texans-2026",
