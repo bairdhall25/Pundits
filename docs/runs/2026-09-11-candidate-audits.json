@@ -1,0 +1,29 @@
+[
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "2cd056d99d34debb",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-11T20:01:35Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost of The Locker Room (Bussin' With The Boys) and a recurring guest on the Josh Pate factory. Independent national CFB voice, not a team analyst.",
+    "note": "YouTube ASR captions on aNaYZ7YTiGw at 35:47–35:51 preserve single-speaker “I got five units on MICHIGAN MONEY LINE.” Compton stitch is after a speaker change and is not in this restage. Prior fail hash 1682d09397c726f9 is not this identity. Capsule omits: Underwood “judgment day” is not that spoken turn. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "chuck-pagano",
+    "rowId": "786bcffde5c8bb1d",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-09-11T20:01:35Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host.",
+    "note": "Apple i=1000788909142 does not contain the sentence. ESPN Best of clip kA55F82Dqvs captions preserve the spoken Rams winner and 28-20 after Chuck is asked who he is picking. Prior fail hash 476b8187a103083c is not this identity. Capsule omits: host graphics landslide is routing. Game already kicked. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "liam-blutman",
+    "rowId": "145cc86c4545e4fd",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-11T20:01:35Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst.",
+    "note": "YouTube ASR captions on y9VX9upuUgI preserve “It is tickling my nose quite a bit. … That's my upseller of the week.” after Walker names Arizona State at Texas A&M. Prior fail hash 3f81280026659fd8 is not this identity. Capsule omits: mixes Walker restatement and a later statement line. photoUrl=needed. Do not roster."
+  }
+]

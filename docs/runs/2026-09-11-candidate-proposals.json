@@ -1,0 +1,162 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-taylor-lewan-2cd056d99d34debb",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "2cd056d99d34debb",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 16,
+        "pass": "Shows pass 2026-09-11 Friday candidate restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "other",
+        "outlet": "The Locker Room",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I got five units on Michigan MONEY LINE.",
+        "reasoning": "Week two is where I judge my team — judgment day for Bryce Underwood.",
+        "note": "Restage of Audit-fail `1682d09397c726f9`; single-speaker only (no Compton stitch). Moneyline = SU home = NO if mapped; leave eventSlug/side blank. YT captions 35:48–35:51 (`t=2148`). photoUrl=needed.",
+        "sourceUrl": "https://www.youtube.com/watch?v=aNaYZ7YTiGw",
+        "sourceDate": "2026-09-09",
+        "photoUrl": "needed",
+        "association": "cohost The Locker Room (Bussin' With The Boys); recurring Pate-factory guest",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1485905502?i=1000788759018",
+        "factory": "pate / locker-room",
+        "targetId": "ncaaf-w2-oklahoma-at-michigan",
+        "matchup": "Oklahoma at Michigan (2026)"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "2cd056d99d34debb",
+        "verdict": "ok-unmapped-no-reasoning",
+        "auditedAt": "2026-09-11T20:01:35Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named cohost of The Locker Room (Bussin' With The Boys) and a recurring guest on the Josh Pate factory. Independent national CFB voice, not a team analyst.",
+        "note": "YouTube ASR captions on aNaYZ7YTiGw at 35:47–35:51 preserve single-speaker “I got five units on MICHIGAN MONEY LINE.” Compton stitch is after a speaker change and is not in this restage. Prior fail hash 1682d09397c726f9 is not this identity. Capsule omits: Underwood “judgment day” is not that spoken turn. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-chuck-pagano-786bcffde5c8bb1d",
+      "kind": "roster-candidate",
+      "proposedId": "chuck-pagano",
+      "rowId": "786bcffde5c8bb1d",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 17,
+        "pass": "Shows pass 2026-09-11 Friday candidate restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "chuck-pagano",
+        "name": "Chuck Pagano",
+        "group": "other",
+        "outlet": "The Pat McAfee Show (What the Chuck)",
+        "eventSlug": "49ers-vs-rams-2026",
+        "side": "no",
+        "verbatimQuote": "I'm going with the Rams. They're going to beat the 49ers in Australia down under.",
+        "reasoning": "Matchup graphics landslide; score call 28-20 (same segment).",
+        "note": "Restage of Audit-fail `476b8187a103083c`; quote is spoken audio (~1:44:49 on PMS 1621 / local ASR `win100_120.txt`), not Apple description text. Host recaps at ~2:12:43 / ~2:16:38 are not the quote. Game already kicked — Candidate evidence for roster packet only. photoUrl=needed.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000788909142",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "needed",
+        "association": "guest coach, What the Chuck on The Pat McAfee Show",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000788909142",
+        "factory": "mcafee",
+        "targetId": "",
+        "matchup": ""
+      },
+      "audit": {
+        "proposedId": "chuck-pagano",
+        "rowId": "786bcffde5c8bb1d",
+        "verdict": "ok-no-reasoning",
+        "auditedAt": "2026-09-11T20:01:35Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host.",
+        "note": "Apple i=1000788909142 does not contain the sentence. ESPN Best of clip kA55F82Dqvs captions preserve the spoken Rams winner and 28-20 after Chuck is asked who he is picking. Prior fail hash 476b8187a103083c is not this identity. Capsule omits: host graphics landslide is routing. Game already kicked. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    },
+    {
+      "id": "candidate-liam-blutman-145cc86c4545e4fd",
+      "kind": "roster-candidate",
+      "proposedId": "liam-blutman",
+      "rowId": "145cc86c4545e4fd",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 18,
+        "pass": "Shows pass 2026-09-11 Friday candidate restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "liam-blutman",
+        "name": "Liam Blutman",
+        "group": "other",
+        "outlet": "Brandon Walker College Football Show",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "It is tickling my nose quite a bit. That's my upseller of the week.",
+        "reasoning": "Nearby: needs Arizona State to go out and make a statement this week; lockstep bearish on A&M offense. Walker immediately: \"That's your upset alert.\"",
+        "note": "Restage of Audit-fail `3f81280026659fd8`; captions say upseller (likely upsetter); statement line stays in reasoning/note — not stitched onto quote. 14-pt dog — SU as dog wins if Audit agrees; blank slug/side (ASU away = YES if mapped). YT captions confirm wording. photoUrl=needed.",
+        "sourceUrl": "https://www.youtube.com/watch?v=y9VX9upuUgI",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "needed",
+        "association": "cohost / ball-watcher on Brandon Walker College Football Show",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000788967660",
+        "factory": "bfw",
+        "targetId": "ncaaf-w2-arizona-state-at-texas-am",
+        "matchup": "Arizona State at Texas A&M (2026)"
+      },
+      "audit": {
+        "proposedId": "liam-blutman",
+        "rowId": "145cc86c4545e4fd",
+        "verdict": "ok-unmapped-no-reasoning",
+        "auditedAt": "2026-09-11T20:01:35Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst.",
+        "note": "YouTube ASR captions on y9VX9upuUgI preserve “It is tickling my nose quite a bit. … That's my upseller of the week.” after Walker names Arizona State at Texas A&M. Prior fail hash 3f81280026659fd8 is not this identity. Capsule omits: mixes Walker restatement and a later statement line. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ],
+  "sourceRuns": [
+    "docs/runs/2026-09-11c-candidate-restage.md"
+  ],
+  "auditFile": "docs/runs/2026-09-11-candidate-audits.json"
+}

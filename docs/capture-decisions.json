@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -83,32 +83,32 @@
     {
       "id": "candidate-taylor-lewan",
       "kind": "roster-candidate",
-      "needed": "Audit fail on speaker-mixed Michigan ML quote (rowId 1682d09397c726f9). Association-eligible Locker Room / Pate-factory host. Do not roster. Restage a single-speaker quote if still hunting.",
+      "needed": "Operator photo + roster yes for Taylor Lewan Michigan ML (Audit ok-unmapped-no-reasoning, association, rowId 2cd056d99d34debb). Do not auto-roster.",
       "status": "pending",
-      "sourceRun": "docs/runs/2026-09-10b-afternoon-shows.md",
-      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Independent Omny re-audit 2026-09-11T01:17:07Z. Packet status rejected. Keep visible; do not auto-roster."
+      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 1682d09397c726f9 is a different identity. Keep visible; do not auto-roster."
     },
     {
       "id": "candidate-chuck-pagano",
       "kind": "roster-candidate",
-      "needed": "Audit fail: staged Rams quote is not on the Apple PMS 1621 page (rowId 476b8187a103083c). Association-eligible What the Chuck guest. Do not roster until original spoken wording is recovered.",
+      "needed": "Operator photo + roster yes for Chuck Pagano Rams NO (Audit ok-no-reasoning, association, rowId 786bcffde5c8bb1d). Game already final — roster packet only. Do not auto-roster.",
       "status": "pending",
-      "sourceRun": "docs/runs/2026-09-10c-evening-shows.md",
-      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Independent source-page re-audit 2026-09-11T01:17:07Z. Packet status rejected. Scout-note rowId 0c28592f538d8015 is not evidence-v2. Keep visible; do not auto-roster."
+      "note": "Restage Audit 2026-09-11T20:01:35Z. Spoken pick recovered on ESPN Best of clip captions, not Apple notes. Prior fail 476b8187a103083c is a different identity. Keep visible; do not auto-roster."
     },
     {
       "id": "candidate-liam-blutman",
       "kind": "roster-candidate",
-      "needed": "Audit fail: staged ASU upset quote is not on the BFW Apple/YouTube page (rowId 3f81280026659fd8). Association-eligible BFW cohost. Do not roster until original spoken wording is recovered.",
+      "needed": "Operator photo + roster yes for Liam Blutman ASU upset (Audit ok-unmapped-no-reasoning, association, rowId 145cc86c4545e4fd). Do not auto-roster.",
       "status": "pending",
-      "sourceRun": "docs/runs/2026-09-10d-night-shows.md",
-      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Night Audit 2026-09-11T01:50:05Z. Packet status rejected. Keep visible; do not auto-roster."
+      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 3f81280026659fd8 is a different identity. Keep visible; do not auto-roster."
     }
   ]
 }
