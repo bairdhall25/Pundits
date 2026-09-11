@@ -17,7 +17,7 @@ Shows Scout Friday ~4:16–4:45 PM ET (weekday after-afternoon routine). Hunt Di
 
 | proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl | targetId | matchup |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| *(empty this pass)* | | | | | | | | | | | | | |
+| *(empty)* | | | | | | | | | | | | | |
 
 ### Bets
 
