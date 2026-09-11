@@ -16,5 +16,14 @@
     "eligibility": "association",
     "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host. Association eligibility does not substitute for a spoken quote on the source page.",
     "note": "Apple i=1000788909142 identifies Pagano and says he makes an official 49ers–Rams pick. The staged sentence is not on that page. Recap-table / timestamp notes are not exact speech. Scout-note rowId 0c28592f538d8015 is not evidence-v2; 476b8187a103083c is authoritative. photoUrl=needed. Do not roster from this row."
+  },
+  {
+    "proposedId": "liam-blutman",
+    "rowId": "3f81280026659fd8",
+    "verdict": "fail",
+    "auditedAt": "2026-09-11T01:50:05Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst. Association eligibility does not substitute for a spoken quote on the source page.",
+    "note": "Apple i=1000788967660 and YouTube y9VX9upuUgI identify BFW 9.10.26. Scout flagged the staged “That's my upseller of the week.” as soft verbatim; the sentence is not on the Apple or YouTube page. Fail closed. photoUrl=needed. Do not roster from this row."
   }
 ]

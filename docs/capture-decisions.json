@@ -99,6 +99,16 @@
       "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
       "owner": "Promote",
       "note": "Independent source-page re-audit 2026-09-11T01:17:07Z. Packet status rejected. Scout-note rowId 0c28592f538d8015 is not evidence-v2. Keep visible; do not auto-roster."
+    },
+    {
+      "id": "candidate-liam-blutman",
+      "kind": "roster-candidate",
+      "needed": "Audit fail: staged ASU upset quote is not on the BFW Apple/YouTube page (rowId 3f81280026659fd8). Association-eligible BFW cohost. Do not roster until original spoken wording is recovered.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-10d-night-shows.md",
+      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Night Audit 2026-09-11T01:50:05Z. Packet status rejected. Keep visible; do not auto-roster."
     }
   ]
 }

@@ -2,7 +2,8 @@
   "needsAudit": false,
   "sourceRuns": [
     "docs/runs/2026-09-10b-afternoon-shows.md",
-    "docs/runs/2026-09-10c-evening-shows.md"
+    "docs/runs/2026-09-10c-evening-shows.md",
+    "docs/runs/2026-09-10d-night-shows.md"
   ],
   "auditFile": "docs/runs/2026-09-10-candidate-audits.json",
   "proposals": [
@@ -105,6 +106,57 @@
       "rosterApproved": false,
       "photoApproved": false,
       "mintRequired": false
+    },
+    {
+      "id": "candidate-liam-blutman-3f81280026659fd8",
+      "kind": "roster-candidate",
+      "proposedId": "liam-blutman",
+      "rowId": "3f81280026659fd8",
+      "sourceRun": "docs/runs/2026-09-10d-night-shows.md",
+      "status": "rejected",
+      "owner": "Promote",
+      "candidate": {
+        "line": 19,
+        "pass": "Shows pass 2026-09-10 Thursday night (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "liam-blutman",
+        "name": "Liam Blutman",
+        "group": "other",
+        "outlet": "Brandon Walker College Football Show",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "That's my upseller of the week.",
+        "reasoning": "ASU at A&M framed as his Week 2 upset / upsetter; Walker confirms \"That's your upset alert.\"",
+        "note": "association cohost/ball-watcher on BFW; implied ASU dog wins (A&M ~14-pt fav). photoUrl=needed. Soft verbatim — Audit verify audio ~5:40–6:00 on i=1000788967660.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000788967660",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "needed",
+        "association": "cohost / ball-watcher on BFW Show",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000788967660",
+        "factory": "bfw",
+        "targetId": "ncaaf-w2-arizona-state-at-texas-am",
+        "matchup": "Arizona State at Texas A&M (2026)"
+      },
+      "audit": {
+        "proposedId": "liam-blutman",
+        "rowId": "3f81280026659fd8",
+        "verdict": "fail",
+        "auditedAt": "2026-09-11T01:50:05Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst. Association eligibility does not substitute for a spoken quote on the source page.",
+        "note": "Apple i=1000788967660 and YouTube y9VX9upuUgI identify BFW 9.10.26. Scout flagged the staged “That's my upseller of the week.” as soft verbatim; the sentence is not on the Apple or YouTube page. Fail closed. photoUrl=needed. Do not roster from this row."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Retain evidence and rejection reason; do not roster",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
     }
   ]
 }
