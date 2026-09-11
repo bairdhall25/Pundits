@@ -333,7 +333,7 @@ describe("featured game display", () => {
       calls,
       pundits,
       null,
-      "2026-09-01"
+      "2026-08-29"
     );
 
     expect(featured.hero).toBeUndefined();
@@ -342,6 +342,15 @@ describe("featured game display", () => {
       settled.slug,
     ]);
     expect(getLeagueGames("ncaaf", [settled], calls)).toEqual([settled]);
+    expect(
+      getHomepageFeaturedGames(
+        [settled],
+        calls,
+        pundits,
+        null,
+        "2026-08-30"
+      ).ncaafFinal
+    ).toEqual([]);
   });
 
   it("puts an off-home settled complete card in homepage Final", () => {
@@ -363,13 +372,21 @@ describe("featured game display", () => {
       calls,
       pundits,
       null,
-      "2026-09-07"
+      "2026-09-06"
     );
 
     expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
       wisconsin.slug,
-      onHomeFinal.slug,
     ]);
+    expect(
+      getHomepageFeaturedGames(
+        [wisconsin, onHomeFinal],
+        calls,
+        pundits,
+        null,
+        "2026-09-07"
+      ).ncaafFinal
+    ).toEqual([]);
   });
 
   it("sorts by date without penalizing a Melbourne kickoff", () => {
@@ -448,11 +465,23 @@ describe("featured game display", () => {
     ]);
   });
 
-  it("caps Finals at two latest per sport", () => {
+  it("caps same-day Finals at two latest per sport", () => {
     const finals = [
-      game("old", "ncaaf", "2026-08-29", { awayScore: 1, homeScore: 2 }),
-      game("mid", "ncaaf", "2026-08-30", { awayScore: 1, homeScore: 2 }),
-      game("new", "ncaaf", "2026-08-31", { awayScore: 1, homeScore: 2 }),
+      game("old", "ncaaf", "2026-08-31", {
+        kickoff: "Sat 12:00 ET",
+        awayScore: 1,
+        homeScore: 2,
+      }),
+      game("mid", "ncaaf", "2026-08-31", {
+        kickoff: "Sat 3:30 ET",
+        awayScore: 1,
+        homeScore: 2,
+      }),
+      game("new", "ncaaf", "2026-08-31", {
+        kickoff: "Sat 7:30 ET",
+        awayScore: 1,
+        homeScore: 2,
+      }),
     ];
     const calls = finals.map((event, index) =>
       pick(event.slug, `face-${index + 1}`, "yes", "hit")
@@ -462,12 +491,38 @@ describe("featured game display", () => {
       calls,
       pundits,
       null,
-      "2026-09-01"
+      "2026-08-31"
     );
     expect(featured.ncaafFinal.map((event) => event.slug)).toEqual([
       "new",
       "mid",
     ]);
+  });
+
+  it("does not keep yesterday's settled game on the homepage Final list", () => {
+    const rams = game("49ers-vs-rams-2026", "nfl", "2026-09-10", {
+      kickoff: "Thu 8:35 ET",
+      awayScore: 27,
+      homeScore: 7,
+    });
+    const bills = game("bills-at-texans-2026", "nfl", "2026-09-13", {
+      kickoff: "Sun 1:00 ET",
+    });
+    const calls = [
+      pick(rams.slug, "face-1", "yes", "hit"),
+      pick(rams.slug, "face-2", "no", "miss"),
+      pick(bills.slug, "face-3", "no"),
+    ];
+    const featured = getHomepageFeaturedGames(
+      [rams, bills],
+      calls,
+      pundits,
+      null,
+      "2026-09-11"
+    );
+    expect(featured.hero?.slug).toBe(bills.slug);
+    expect(featured.nflFinal).toEqual([]);
+    expect(eventScanStatus(rams, calls)).toBe("final");
   });
 
   it("keeps leftover full-tier overflow in schedule order with compact-tier", () => {

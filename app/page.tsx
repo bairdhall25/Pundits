@@ -48,6 +48,14 @@ function Weekend({
   pundits: Pundit[];
   recap?: { href: string; line: string } | null;
 }) {
+  if (
+    events.length === 0 &&
+    compactEvents.length === 0 &&
+    finals.length === 0 &&
+    !recap
+  ) {
+    return null;
+  }
   return (
     <section id={id} className="board home-weekend">
       <div className="row-head">
@@ -128,6 +136,15 @@ export default function HomePage() {
   const marquee = featured.hero;
   const ncaafCards = featured.ncaaf;
   const nflCards = featured.nfl;
+  const showCollege =
+    ncaafCards.length > 0 ||
+    featured.ncaafCompact.length > 0 ||
+    featured.ncaafFinal.length > 0 ||
+    recap?.sport === "ncaaf";
+  const showNfl =
+    nflCards.length > 0 ||
+    featured.nflCompact.length > 0 ||
+    featured.nflFinal.length > 0;
   const heroLede = marquee
     ? homeHeroLede(marquee, calls, pundits)
     : "College football and NFL picks from named analysts and commentators.";
@@ -177,8 +194,8 @@ export default function HomePage() {
       </HowItWorks>
       <nav className="board-jump" aria-label="Jump to section">
         <span className="board-jump-label">Jump to</span>
-        <a href="#ncaaf">College</a>
-        <a href="#nfl">NFL</a>
+        {showCollege ? <a href="#ncaaf">College</a> : null}
+        {showNfl ? <a href="#nfl">NFL</a> : null}
         <a href="#futures">Disagreements</a>
       </nav>
 

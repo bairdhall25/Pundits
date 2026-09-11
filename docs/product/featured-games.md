@@ -18,7 +18,7 @@ combined board or the corresponding full league slate.
 - **Hero** — one open (or grading) complete card.
 - **College** — up to three full open/grading NCAAF cards, then the next two leftover complete games as compact rows. The hero does not repeat here.
 - **NFL** — up to three full open/grading NFL cards, then the next two leftover complete games as compact rows. The hero does not repeat here.
-- **Final** — at most two latest complete settled cards per sport, as receipts. `onHome` is not the gate.
+- **Final** — at most two complete settled cards per sport **whose `kickoffDate` is today**, as receipts. Yesterday's games leave `/` and live on the league page and week archive. `onHome` is not the gate.
 
 Remaining complete games leave `/`. They live on `/ncaaf/` and `/nfl/`.
 

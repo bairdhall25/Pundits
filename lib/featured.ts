@@ -361,7 +361,11 @@ export function getHomepageFeaturedGames(
   const ncaaf = sections("ncaaf");
   const nfl = sections("nfl");
   const sportFinals = (sport: Sport) =>
-    finals.filter((event) => event.sport === sport).slice(0, finalLimit);
+    finals
+      .filter(
+        (event) => event.sport === sport && event.kickoffDate === asOf
+      )
+      .slice(0, finalLimit);
 
   return {
     hero,
