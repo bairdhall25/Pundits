@@ -1,0 +1,20 @@
+[
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "1682d09397c726f9",
+    "verdict": "fail",
+    "auditedAt": "2026-09-11T01:17:07Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named co-host of The Locker Room / Bussin' With The Boys and a recurring guest on the Josh Pate factory. Independent national CFB voice, not a team analyst. Association eligibility does not repair a speaker-mixed quote.",
+    "note": "Omny transcript for Apple i=1000788759018 preserves Lewan's first-person “I got five units on Michigan Moneyline,” but the staged continuation stitches Compton's “If you're not going to back your team. Talk to them.” Verbatim quote fails closed. photoUrl=needed. Do not roster from this row. Restage a single-speaker quote."
+  },
+  {
+    "proposedId": "chuck-pagano",
+    "rowId": "476b8187a103083c",
+    "verdict": "fail",
+    "auditedAt": "2026-09-11T01:17:07Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host. Association eligibility does not substitute for a spoken quote on the source page.",
+    "note": "Apple i=1000788909142 identifies Pagano and says he makes an official 49ers–Rams pick. The staged sentence is not on that page. Recap-table / timestamp notes are not exact speech. Scout-note rowId 0c28592f538d8015 is not evidence-v2; 476b8187a103083c is authoritative. photoUrl=needed. Do not roster from this row."
+  }
+]

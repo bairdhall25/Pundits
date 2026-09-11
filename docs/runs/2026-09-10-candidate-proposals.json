@@ -1,0 +1,110 @@
+{
+  "needsAudit": false,
+  "sourceRuns": [
+    "docs/runs/2026-09-10b-afternoon-shows.md",
+    "docs/runs/2026-09-10c-evening-shows.md"
+  ],
+  "auditFile": "docs/runs/2026-09-10-candidate-audits.json",
+  "proposals": [
+    {
+      "id": "candidate-taylor-lewan-1682d09397c726f9",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "1682d09397c726f9",
+      "sourceRun": "docs/runs/2026-09-10b-afternoon-shows.md",
+      "status": "rejected",
+      "owner": "Promote",
+      "candidate": {
+        "line": 19,
+        "pass": "Shows pass 2026-09-10 Thursday afternoon (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "other",
+        "outlet": "The Locker Room (Bussin' With The Boys)",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I got five units on Michigan MONEY LINE. … I got five units Michigan money line. If you're not going to back your team, …",
+        "reasoning": "Week-2 judgment day for Bryce Underwood; backs Michigan through adversity.",
+        "note": "Association guest on Pate factory. Michigan ML = home = NO if mapped. YT `aNaYZ7YTiGw` ~35:48–35:54. Also later “Michigan wins this game.”",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1485905502?i=1000788759018",
+        "sourceDate": "2026-09-09",
+        "photoUrl": "needed",
+        "targetId": "ncaaf-w2-oklahoma-at-michigan",
+        "matchup": "Oklahoma at Michigan (2026)"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "1682d09397c726f9",
+        "verdict": "fail",
+        "auditedAt": "2026-09-11T01:17:07Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named co-host of The Locker Room / Bussin' With The Boys and a recurring guest on the Josh Pate factory. Independent national CFB voice, not a team analyst. Association eligibility does not repair a speaker-mixed quote.",
+        "note": "Omny transcript for Apple i=1000788759018 preserves Lewan's first-person “I got five units on Michigan Moneyline,” but the staged continuation stitches Compton's “If you're not going to back your team. Talk to them.” Verbatim quote fails closed. photoUrl=needed. Do not roster from this row. Restage a single-speaker quote."
+      },
+      "missing": [
+        "Association role and source URL",
+        "Verified official X handle",
+        "Future Scout source/factory",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Retain evidence and rejection reason; do not roster",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-chuck-pagano-476b8187a103083c",
+      "kind": "roster-candidate",
+      "proposedId": "chuck-pagano",
+      "rowId": "476b8187a103083c",
+      "sourceRun": "docs/runs/2026-09-10c-evening-shows.md",
+      "status": "rejected",
+      "owner": "Promote",
+      "candidate": {
+        "line": 16,
+        "pass": "Shows pass 2026-09-10 Thursday evening (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "chuck-pagano",
+        "name": "Chuck Pagano",
+        "group": "other",
+        "outlet": "The Pat McAfee Show (What the Chuck)",
+        "eventSlug": "49ers-vs-rams-2026",
+        "side": "no",
+        "verbatimQuote": "I'm going with the Rams. They're going to beat the 49ers in Australia down under.",
+        "reasoning": "Matchup graphics landslide for LA; projects 28-20.",
+        "note": "Association guest coach. Official pick ~1:44:49 + “28-20 Rams.” photoUrl=needed. rowId `0c28592f538d8015`.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000788909142",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "needed",
+        "targetId": "",
+        "matchup": ""
+      },
+      "audit": {
+        "proposedId": "chuck-pagano",
+        "rowId": "476b8187a103083c",
+        "verdict": "fail",
+        "auditedAt": "2026-09-11T01:17:07Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host. Association eligibility does not substitute for a spoken quote on the source page.",
+        "note": "Apple i=1000788909142 identifies Pagano and says he makes an official 49ers–Rams pick. The staged sentence is not on that page. Recap-table / timestamp notes are not exact speech. Scout-note rowId 0c28592f538d8015 is not evidence-v2; 476b8187a103083c is authoritative. photoUrl=needed. Do not roster from this row."
+      },
+      "missing": [
+        "Association role and source URL",
+        "Verified official X handle",
+        "Future Scout source/factory",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Retain evidence and rejection reason; do not roster",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

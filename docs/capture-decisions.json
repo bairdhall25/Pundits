@@ -79,6 +79,26 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-05-audit.md",
       "note": "Promote must not mint unless this pass is asked. Do not invent a slug here."
+    },
+    {
+      "id": "candidate-taylor-lewan",
+      "kind": "roster-candidate",
+      "needed": "Audit fail on speaker-mixed Michigan ML quote (rowId 1682d09397c726f9). Association-eligible Locker Room / Pate-factory host. Do not roster. Restage a single-speaker quote if still hunting.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-10b-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Independent Omny re-audit 2026-09-11T01:17:07Z. Packet status rejected. Keep visible; do not auto-roster."
+    },
+    {
+      "id": "candidate-chuck-pagano",
+      "kind": "roster-candidate",
+      "needed": "Audit fail: staged Rams quote is not on the Apple PMS 1621 page (rowId 476b8187a103083c). Association-eligible What the Chuck guest. Do not roster until original spoken wording is recovered.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-10c-evening-shows.md",
+      "proposalFile": "docs/runs/2026-09-10-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Independent source-page re-audit 2026-09-11T01:17:07Z. Packet status rejected. Scout-note rowId 0c28592f538d8015 is not evidence-v2. Keep visible; do not auto-roster."
     }
   ]
 }
