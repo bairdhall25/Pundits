@@ -147,7 +147,7 @@ describe("page meta images", () => {
       "/picks/ncsu-at-uva-2026/kanell",
       image
     );
-    expect(meta.openGraph?.type).toBe("website");
+    expect(meta.openGraph).toMatchObject({ type: "website" });
     expect(meta.openGraph?.images).toEqual([image]);
     expect(meta.twitter?.images).toEqual([image.url]);
     const home = pageMeta("PUNDITS — Expert CFB and NFL picks", "See which teams");
