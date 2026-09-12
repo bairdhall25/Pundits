@@ -1,0 +1,38 @@
+[
+  {
+    "proposedId": "glen-powell",
+    "rowId": "1170d90549322e91",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-12T16:49:38Z",
+    "eligibility": "association",
+    "eligibilityReason": "ESPN Press Room 2026-09-10 names Glen Powell as College GameDay celebrity guest picker in Austin. He is a celebrity guest on a roster factory, not a team analyst.",
+    "note": "Cole's Week 2 celebrity-guest table reports Texas over Ohio State but does not print Powell's name. ESPN's official release identifies him as this week's Austin guest picker. Keep reported-selection. Approved target ncaaf-w2-ohio-state-at-texas; Texas is home = NO if mapped onto existing ohio-state-at-texas-2026. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "glen-powell",
+    "rowId": "5affd9686e3939c2",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-12T16:49:38Z",
+    "eligibility": "association",
+    "eligibilityReason": "ESPN Press Room 2026-09-10 names Glen Powell as College GameDay celebrity guest picker in Austin. He is a celebrity guest on a roster factory, not a team analyst.",
+    "note": "The same Cole guest table reports Oklahoma over Michigan. Identity and GameDay association independently verified by ESPN, not by a name tag on Cole's page. Approved target; Oklahoma is away = YES if mapped onto existing oklahoma-at-michigan-2026. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "glen-powell",
+    "rowId": "1216d1540f86b6a3",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-12T16:49:38Z",
+    "eligibility": "association",
+    "eligibilityReason": "ESPN Press Room 2026-09-10 names Glen Powell as College GameDay celebrity guest picker in Austin. He is a celebrity guest on a roster factory, not a team analyst.",
+    "note": "The same Cole guest table reports Alabama over Kentucky. Identity and GameDay association independently verified by ESPN. Approved target; Alabama is away = YES if mapped onto existing alabama-at-kentucky-2026. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "glen-powell",
+    "rowId": "b5391b8b4ea4a926",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-12T16:49:38Z",
+    "eligibility": "association",
+    "eligibilityReason": "ESPN Press Room 2026-09-10 names Glen Powell as College GameDay celebrity guest picker in Austin. He is a celebrity guest on a roster factory, not a team analyst.",
+    "note": "The same Cole guest table reports Arizona State over Texas A&M. Identity and GameDay association independently verified by ESPN. Approved target; Arizona State is away = YES if mapped onto existing arizona-state-at-texas-am-2026. photoUrl=needed. Do not roster."
+  }
+]
