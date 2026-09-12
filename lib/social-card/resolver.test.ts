@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { gamesForWeek } from "../archive";
 import {
+  callsForPundit,
+  isMapped,
   loadCalls,
   loadEvents,
   loadPundits,
@@ -346,18 +348,17 @@ describe("Quote social-card resolvers", () => {
   it("uses the same evidence kind on the profile quote card as the take", () => {
     const saban = pundits.find((pundit) => pundit.id === "saban")!;
     const profile = resolvePunditSocialCard(saban, calls);
+    const latest = callsForPundit(saban.id, calls).find(isMapped)!;
     const take = mappedTakes(calls, events, pundits).find(
-      (candidate) =>
-        candidate.event.slug === "clemson-at-lsu-2026" &&
-        candidate.pundit.id === "saban"
+      (candidate) => candidate.call.id === latest.id
     )!;
     expect(profile.evidenceKind).toBe("reported-selection");
     expect(profile.subject.evidenceKind).toBe("reported-selection");
     expect(profile.evidenceKind).toBe(
       resolveTakeSocialCard(take, calls, pundits, teams).evidenceKind
     );
-    expect(profile.quote).toBe("LSU over Clemson");
-    expect(profile.quoteExcerpt).toBe("LSU over Clemson");
+    expect(profile.quote).toBe(latest.claim);
+    expect(profile.quoteExcerpt).toBe(latest.claim);
     expect(profile.proof.join(" ")).not.toMatch(/Original public quote/i);
   });
 });

@@ -113,7 +113,7 @@ none (unpublished — no mapped eventSlug to freeze)
 - Bills YES — Fri filled; no NEW this pass.
 - Decision queue: `candidate-glenn-powell` now has staged Candidate picks (photo + association still pending).
 
-ready to audit **22 hard rows (4 candidates) this pass**; day cumulative **hard=27 candidates=4** (morning 5 + this 22; X morning empty). `audit=ok` · `promoted=false`. Did not touch `data/`.
+ready to audit **22 hard rows (4 candidates) this pass**; day cumulative **hard=27 candidates=4** (morning 5 + this 22; X morning empty). `audit=ok` · `promoted=true`. Mapped onto existing Week 2 slugs; Glen Powell not rostered.
 
 ## Lane status
 

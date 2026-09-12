@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -139,6 +139,16 @@
       "proposalFile": "docs/runs/2026-09-11-night-candidate-proposals.json",
       "owner": "Scout",
       "note": "Audit fail rowId 078fac66eff588a6 at 2026-09-12T02:40:14Z. Association is eligible, but this candidate evidence cannot support rostering."
+    },
+    {
+      "id": "candidate-glenn-powell",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Glen Powell GameDay guest picker. Audit ok-unmapped ×4. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-12c-saturday-after-gameday.md",
+      "proposalFile": "docs/runs/2026-09-12-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-12T16:49:38Z. Cole recap labels; ESPN PR identifies Powell as Austin celebrity guest picker. photoUrl=needed. Association eligible. 2026-09-12 promote mapped 22 rostered after-GameDay rows and left these candidates unpublished."
     }
   ]
 }

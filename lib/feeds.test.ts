@@ -125,7 +125,7 @@ describe("editorial feeds", () => {
     expect(ordinary).toContain("https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/");
     expect(ordinary.some((url) => url.includes("/picks/"))).toBe(true);
 
-    const afterLiveReceiptsExpire = new Date("2026-09-13T10:30:00Z");
+    const afterLiveReceiptsExpire = new Date("2026-09-14T10:30:00Z");
     const liveNews = newsSitemap(loadCalls(), loadEvents(), loadPundits(), afterLiveReceiptsExpire);
     expect(liveNews).not.toContain("<url>");
     expect(assertNewsSitemapFresh(liveNews, afterLiveReceiptsExpire)).toEqual({ urls: 0, empty: true });

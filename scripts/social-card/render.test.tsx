@@ -96,16 +96,18 @@ describe("landscape social renderer", () => {
     );
     const storyTakeHtml = renderToStaticMarkup(takeStoryTree(storyTake));
     const storyProfileHtml = renderToStaticMarkup(punditStoryTree(storyProfile));
+    const latestClaim = landscapeProfile.quote!;
 
-    for (const html of [
-      landscapeTakeHtml,
-      landscapeProfileHtml,
-      storyTakeHtml,
-      storyProfileHtml,
-    ]) {
+    for (const html of [landscapeTakeHtml, storyTakeHtml]) {
       expect(html).toContain("LSU over Clemson");
       expect(html).toContain("Reported selection");
       expect(html).not.toContain("“LSU over Clemson”");
+      expect(html).not.toContain("Original public quote");
+    }
+    for (const html of [landscapeProfileHtml, storyProfileHtml]) {
+      expect(html).toContain(latestClaim);
+      expect(html).toContain("Reported selection");
+      expect(html).not.toContain(`“${latestClaim}”`);
       expect(html).not.toContain("Original public quote");
     }
 
