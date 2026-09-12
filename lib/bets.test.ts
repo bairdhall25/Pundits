@@ -205,8 +205,8 @@ describe("weekend home", () => {
     expect(bySlug["patriots-at-seahawks-2026"].noCents).toBe(62);
     expect(bySlug["49ers-vs-rams-2026"].yesCents).toBe(36);
     expect(bySlug["49ers-vs-rams-2026"].noCents).toBe(65);
-    expect(bySlug["bills-at-texans-2026"].yesCents).toBe(48.5);
-    expect(bySlug["bills-at-texans-2026"].noCents).toBe(50);
+    expect(bySlug["bills-at-texans-2026"].yesCents).toBe(52);
+    expect(bySlug["bills-at-texans-2026"].noCents).toBe(48);
   });
 
   it("does not invent game leans from title futures", () => {

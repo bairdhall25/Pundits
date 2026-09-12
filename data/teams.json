@@ -50,5 +50,10 @@
   { "id": "toledo", "name": "Toledo", "abbr": "TOL", "primary": "#15397F", "ink": "#FFC72C", "sport": "ncaaf" },
   { "id": "michigan-state", "name": "Michigan State", "abbr": "MSU", "primary": "#18453B", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "oklahoma-state", "name": "Oklahoma State", "abbr": "OKST", "primary": "#FF7300", "ink": "#000000", "sport": "ncaaf" },
-  { "id": "tulsa", "name": "Tulsa", "abbr": "TLSA", "primary": "#002D72", "ink": "#C8102E", "sport": "ncaaf" }
+  { "id": "tulsa", "name": "Tulsa", "abbr": "TLSA", "primary": "#002D72", "ink": "#C8102E", "sport": "ncaaf" },
+  { "id": "oklahoma", "name": "Oklahoma", "abbr": "OU", "primary": "#841617", "ink": "#FDF7E3", "sport": "ncaaf" },
+  { "id": "alabama", "name": "Alabama", "abbr": "ALA", "primary": "#9E1B32", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "kentucky", "name": "Kentucky", "abbr": "UK", "primary": "#0033A0", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "arizona-state", "name": "Arizona State", "abbr": "ASU", "primary": "#8C1D40", "ink": "#FFC627", "sport": "ncaaf" },
+  { "id": "texas-am", "name": "Texas A&M", "abbr": "TAMU", "primary": "#500000", "ink": "#FFFFFF", "sport": "ncaaf" }
 ]

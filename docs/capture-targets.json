@@ -21,7 +21,12 @@
       "kickoffWindow": "Thu 8:35 ET Netflix Melbourne",
       "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP10SFLAR",
       "priority": 1,
-      "highValueSources": ["gmfb", "herd", "eisen", "mcafee"],
+      "highValueSources": [
+        "gmfb",
+        "herd",
+        "eisen",
+        "mcafee"
+      ],
       "expires": "2026-09-11",
       "note": "Existing onHome opener. Brandt YES already mapped; source-complete remaining designated voices."
     },
@@ -38,7 +43,12 @@
       "kickoffWindow": "Sun 1:00 ET CBS",
       "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP13BUFHOU",
       "priority": 2,
-      "highValueSources": ["gmfb", "herd", "eisen", "mcafee"],
+      "highValueSources": [
+        "gmfb",
+        "herd",
+        "eisen",
+        "mcafee"
+      ],
       "expires": "2026-09-14",
       "note": "Existing onHome opener. Empty Bills YES. Equal-priority sort still loses to sooner kickoffs."
     },
@@ -55,7 +65,11 @@
       "kickoffWindow": "Mon night",
       "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP14DENKC",
       "priority": 3,
-      "highValueSources": ["gmfb", "herd", "eisen"],
+      "highValueSources": [
+        "gmfb",
+        "herd",
+        "eisen"
+      ],
       "expires": "2026-09-15",
       "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
@@ -72,7 +86,11 @@
       "kickoffWindow": "Sun",
       "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP13WASPHI",
       "priority": 3,
-      "highValueSources": ["gmfb", "herd", "eisen"],
+      "highValueSources": [
+        "gmfb",
+        "herd",
+        "eisen"
+      ],
       "expires": "2026-09-14",
       "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
@@ -89,7 +107,11 @@
       "kickoffWindow": "Sun",
       "kickoffSource": "data/events.json ticker KXNFLGAME-26SEP13GBMIN",
       "priority": 3,
-      "highValueSources": ["gmfb", "herd", "eisen"],
+      "highValueSources": [
+        "gmfb",
+        "herd",
+        "eisen"
+      ],
       "expires": "2026-09-14",
       "note": "PM deferred for first acceptance run; retain the three approved NFL openers."
     },
@@ -101,12 +123,19 @@
       "week": 2,
       "away": "Oklahoma",
       "home": "Michigan",
-      "eventSlug": null,
+      "eventSlug": "oklahoma-at-michigan-2026",
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 12:00 ET FOX",
       "kickoffSource": "https://app.mgoblue.com/2026MaizeOut",
       "priority": 1,
-      "highValueSources": ["gameday", "cover3", "see-ball", "clay-travis", "finebaum", "pate"],
+      "highValueSources": [
+        "gameday",
+        "cover3",
+        "see-ball",
+        "clay-travis",
+        "finebaum",
+        "pate"
+      ],
       "expires": "2026-09-13",
       "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
@@ -118,12 +147,19 @@
       "week": 2,
       "away": "Ohio State",
       "home": "Texas",
-      "eventSlug": null,
+      "eventSlug": "ohio-state-at-texas-2026",
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 7:30 ET ABC",
       "kickoffSource": "https://texaslonghorns.com/news/2026/5/12/football-set-for-primetime-matchups-vs-ohio-state-at-texas-am",
       "priority": 1,
-      "highValueSources": ["gameday", "cover3", "see-ball", "clay-travis", "finebaum", "pate"],
+      "highValueSources": [
+        "gameday",
+        "cover3",
+        "see-ball",
+        "clay-travis",
+        "finebaum",
+        "pate"
+      ],
       "expires": "2026-09-13",
       "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
@@ -135,12 +171,17 @@
       "week": 2,
       "away": "Arizona State",
       "home": "Texas A&M",
-      "eventSlug": null,
+      "eventSlug": "arizona-state-at-texas-am-2026",
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 12:00 ET ABC",
       "kickoffSource": "https://12thman.com/news/2026/09/07/football-game-notes-arizona-state",
       "priority": 2,
-      "highValueSources": ["cover3", "see-ball", "clay-travis", "pate"],
+      "highValueSources": [
+        "cover3",
+        "see-ball",
+        "clay-travis",
+        "pate"
+      ],
       "expires": "2026-09-13",
       "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     },
@@ -152,12 +193,18 @@
       "week": 2,
       "away": "Alabama",
       "home": "Kentucky",
-      "eventSlug": null,
+      "eventSlug": "alabama-at-kentucky-2026",
       "kickoffDate": "2026-09-12",
       "kickoffWindow": "Sat 3:30 ET ABC",
       "kickoffSource": "https://ukathletics.com/sports/football/schedule/season/2026/",
       "priority": 2,
-      "highValueSources": ["gameday", "cover3", "see-ball", "finebaum", "pate"],
+      "highValueSources": [
+        "gameday",
+        "cover3",
+        "see-ball",
+        "finebaum",
+        "pate"
+      ],
       "expires": "2026-09-13",
       "note": "PM approved for bounded scouting on 2026-09-08. Stage unmapped until Promote is explicitly asked to mint; no homepage approval."
     }

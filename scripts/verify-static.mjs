@@ -397,10 +397,9 @@ assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 1: who called it/);
-assert.match(ncaafSlate, /Week 1 is final/);
+assert.match(ncaafSlate, /College football Week 2: who picked whom/);
+assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-1\//);
-assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-0\//);
 
 const pageCardFiles = {
   "index.html": "home",

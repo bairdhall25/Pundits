@@ -20,7 +20,7 @@ describe("Scout acceptance workflow", () => {
     college.forEach(t => t.state = "approved");
     const rows = scoreSlate({ events, calls, targets, now: +now });
     expect(rows.filter(r => r.sport === "ncaaf")).toHaveLength(4);
-    expect(rows.filter(r => r.sport === "ncaaf").every(r => !r.eventSlug && r.targetId && r.matchup)).toBe(true);
+    expect(rows.filter(r => r.sport === "ncaaf").every(r => r.targetId && r.matchup)).toBe(true);
     expect(formatDispatch(rows, { events, targets, now: +now })).toContain("gameday, cover3");
     const text = `## Shows pass\n### Intake\n\n| pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft | targetId | matchup |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| fixture | | | I pick Oklahoma. | | Oklahoma at Michigan, 2026 | fixture | https://example.org/pick | 2026-09-08 | hard | ncaaf-w2-oklahoma-at-michigan | Oklahoma at Michigan, 2026 |`;
     const lanes = "\n## Lane status\n\n| lane | status | asOf | note |\n|---|---|---|---|\n| Shows | completed | 2026-09-08 | fixture |\n| X | not-run | | |\n| News | not-run | | |";

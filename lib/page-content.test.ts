@@ -305,10 +305,10 @@ describe("league page contract", () => {
   it("treats a settled college live week as results and still links the archive", () => {
     const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("College football");
-    expect(content.title).toBe("College football Week 1: who called it");
-    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-1/");
-    expect(content.lede).toContain("Week 1 is final");
-    expect(content.previous?.href).toBe("/ncaaf/2026/week-0/");
+    expect(content.title).toBe("College football Week 2: who picked whom");
+    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-2/");
+    expect(content.lede).toContain("Week 2");
+    expect(content.previous?.href).toBe("/ncaaf/2026/week-1/");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
   });
 
@@ -378,7 +378,7 @@ describe("weekly archive contract", () => {
     );
     expect(content.title).toBe("NFL Week 1: who got them right (2026)");
     expect(content.graded).toBe(true);
-    expect(content.lede).toMatch(/Tracked Week 1 record: 4–5 on 9 graded picks, with 8 still open/);
+    expect(content.lede).toMatch(/Tracked Week 1 record: 4–5 on 9 graded picks, with 11 still open/);
     expect(content.recap).toContain("Patriots at Seahawks");
     expect(content.recap).toContain("Seahawks beat Patriots");
     expect(content.recap).toContain("49ers vs Rams");

@@ -20,6 +20,10 @@ describe("loadCaptureTargets", () => {
     expect(approvedHuntSlugs(doc, { now: Date.parse("2026-09-08T16:00:00Z") })).toEqual([
       "49ers-vs-rams-2026",
       "bills-at-texans-2026",
+      "oklahoma-at-michigan-2026",
+      "ohio-state-at-texas-2026",
+      "arizona-state-at-texas-am-2026",
+      "alabama-at-kentucky-2026",
     ]);
     expect(approvedHuntTargets(doc, { now: Date.parse("2026-09-08T16:00:00Z") }).filter(row => row.sport === "ncaaf")).toHaveLength(4);
     expect(flagProposedCap(doc)).toEqual([]);
