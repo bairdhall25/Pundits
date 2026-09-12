@@ -153,6 +153,23 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
   return `${pundit.name} ${verb} ${outcomePhrase(event.title)}${verdict}`;
 }
 
+/** Compact search/social title; the full editorial headline stays on the page. */
+export function takeMetaTitle(pundit: Pundit, event: Event, call: Call): string {
+  const headline = takeHeadline(pundit, event, call);
+  if (`${headline} · ${SITE_NAME}`.length <= 70) return headline;
+  const graded = call.status === "hit" || call.status === "miss";
+  const verdict = graded ? ` — ${call.status === "hit" ? "Hit" : "Miss"}` : "";
+  const game = gamePick(event, call);
+  if (game) return `${pundit.name}: ${game.picked} over ${game.other}${verdict}`;
+
+  const title = event.title.replace(/the national title/i, "national title");
+  const outcome = title.match(/^(.+?) (wins|makes) (.+)$/i);
+  if (!outcome) return headline;
+  const verb = outcome[2].toLowerCase() === "wins" ? "win" : "make";
+  const prediction = `${call.side === "no" ? "not " : ""}to ${verb}`;
+  return `${pundit.name}: ${outcome[1]} ${prediction} ${outcome[3]}${verdict}`;
+}
+
 export function sideChip(event: Event, side: "yes" | "no"): string {
   return publicSideLabel(event, side);
 }

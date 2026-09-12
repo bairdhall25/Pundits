@@ -19,6 +19,7 @@ import {
   pickStory,
   storyByline,
   takeHeadline,
+  takeMetaTitle,
   takePath,
   toStoryCard,
 } from "@/lib/seo";
@@ -51,7 +52,7 @@ export async function generateMetadata({
   const story = pickStory(take);
   const card = takeOgCard(take, calls, pundits, loadTeams());
   return articleMeta(
-    story.headline,
+    takeMetaTitle(take.pundit, take.event, take.call),
     story.dek,
     takePath(slug, punditId),
     ogImageFor(ogTakePath(slug, punditId), story.headline, card),

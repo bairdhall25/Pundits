@@ -9,6 +9,7 @@ import {
   pickStory,
   sideChip,
   takeHeadline,
+  takeMetaTitle,
   takePath,
   toStoryCard,
   organizationGraph,
@@ -62,6 +63,31 @@ describe("canonical URLs", () => {
 });
 
 describe("mapped takes", () => {
+  it("keeps current receipt metadata within the title budget without changing headlines", () => {
+    for (const take of mappedTakes(loadCalls(), loadEvents(), loadPundits())) {
+      const title = takeMetaTitle(take.pundit, take.event, take.call);
+      expect(`${title} · ${SITE_NAME}`.length, takePath(take.event.slug, take.pundit.id)).toBeLessThanOrEqual(70);
+      expect(title).toContain(take.pundit.name);
+    }
+  });
+
+  it("keeps the picked side and verdict in compact titles for both game sides", () => {
+    const pundit = fixturePundit("fixture", { name: "A Long Named Expert" });
+    const event = fixtureGame("fixture-2026", { awayTeam: "North Carolina", homeTeam: "Michigan State" });
+    const call = fixturePick({ eventSlug: event.slug, punditId: pundit.id, side: "yes", status: "miss" });
+    expect(takeMetaTitle(pundit, event, call)).toBe("A Long Named Expert: North Carolina over Michigan State — Miss");
+    expect(takeMetaTitle(pundit, event, { ...call, side: "no", status: "hit" })).toBe("A Long Named Expert: Michigan State over North Carolina — Hit");
+    expect(takeHeadline(pundit, event, call)).toContain("and missed (Michigan State won)");
+  });
+
+  it("preserves a negative future pick even when that prediction misses", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (t) => t.event.slug === "indiana-title-2026" && t.pundit.id === "herbstreit"
+    )!;
+    expect(takeMetaTitle(take.pundit, take.event, take.call)).toBe("Kirk Herbstreit: Indiana not to win national title");
+    expect(takeMetaTitle(take.pundit, take.event, { ...take.call, status: "miss" })).toBe("Kirk Herbstreit: Indiana not to win national title — Miss");
+  });
+
   it("includes Finebaum on Dublin as a unique take", () => {
     const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
     const dublin = takes.find(
