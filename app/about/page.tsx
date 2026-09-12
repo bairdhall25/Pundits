@@ -1,6 +1,6 @@
+import { ContactLink } from "@/components/ContactLink";
 import type { Metadata } from "next";
 import {
-  CONTACT_HREF,
   LEGAL_NAME,
   SITE_DESCRIPTION,
 } from "@/lib/site";
@@ -60,13 +60,13 @@ export default function AboutPage() {
           Corrections
         </h2>
         <p>
-          See something wrong? <a href={CONTACT_HREF}>Contact us</a> with the
+          See something wrong? <ContactLink label="Contact us" /> with the
           Pundits.Pro page and supporting public evidence. We reopen the
           receipt, correct the public record when needed, and keep the permanent
           URL. No quiet deletes.
         </p>
         <p>
-          <a href={CONTACT_HREF}>Contact</a>
+          <ContactLink />
           {" · "}
           <a href="/privacy/">Privacy</a>
           {" · "}

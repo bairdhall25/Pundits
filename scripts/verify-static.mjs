@@ -31,6 +31,7 @@ assert.match(home, /max-image-preview:\s*large/);
 assert.match(home, /<title>PUNDITS\b/);
 assert.match(home, /Created by Indie Labs LLC\. © 2026 Indie Labs LLC\./);
 assert.match(home, /mailto:bairdhall25@gmail.com/);
+assert.match(home, /<!--email_off--><a href="mailto:bairdhall25@gmail.com">Contact<\/a><!--\/email_off-->/);
 assert.match(home, />Contact</);
 assert.doesNotMatch(home, />bairdhall25@gmail.com</);
 assert.match(home, /"legalName":"Indie Labs LLC"/);

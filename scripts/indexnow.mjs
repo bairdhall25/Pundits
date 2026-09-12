@@ -17,6 +17,8 @@ const manifestPath = path.join(outDir, "indexnow-manifest.json");
 const cacheDir = path.join(process.cwd(), "node_modules", ".cache", "pundits");
 const pendingPath = path.join(cacheDir, "indexnow-pending.json");
 const prepare = process.argv.includes("--prepare");
+const report = { stage: prepare ? "prepare" : "submit", status: "started", checkedAt: new Date().toISOString() };
+const reportPath = path.join(process.cwd(), ".agent-artifacts", `indexnow-${report.stage}.json`);
 
 function wait(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -62,6 +64,7 @@ async function prepareSubmission() {
   console.log(
     `IndexNow: prepared ${urlList.length} changed URL${urlList.length === 1 ? "" : "s"} from ${Object.keys(current.pages).length} sitemap pages.`
   );
+  Object.assign(report, { status: "prepared", urlCount: urlList.length });
 }
 
 async function pendingUrls() {
@@ -111,6 +114,7 @@ async function submit() {
   const urlList = await pendingUrls();
   if (!urlList.length) {
     console.log("IndexNow: no changed URLs to submit.");
+    Object.assign(report, { status: "no-changes", urlCount: 0 });
     return;
   }
   await verifyLiveKey();
@@ -125,13 +129,19 @@ async function submit() {
     throw new Error(`HTTP ${response.status}${body ? ` — ${body}` : ""}`);
   }
   console.log(`IndexNow: submitted ${urlList.length} changed URLs.`);
+  Object.assign(report, { status: "accepted", httpStatus: response.status, urlCount: urlList.length });
 }
 
 try {
   if (prepare) await prepareSubmission();
   else await submit();
 } catch (error) {
+  Object.assign(report, { status: "failed", error: error instanceof Error ? error.message : String(error) });
   console.warn(
     `IndexNow: ${prepare ? "preparation" : "submission"} skipped (${error instanceof Error ? error.message : error}).`
   );
+} finally {
+  await mkdir(path.dirname(reportPath), { recursive: true });
+  await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+  console.log(`IndexNow outcome: ${report.status} (${reportPath}).`);
 }

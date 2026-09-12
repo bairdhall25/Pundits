@@ -7,7 +7,8 @@ Shows Scout Friday ~9:04–10:30 PM ET (weekday after-night routine). Hunt Dispa
 
 | pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft | targetId | matchup |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| *(empty — night hard=0; Candidates below)* | | | | | | | | | | | |
+
+*(empty — night hard=0; Candidates below)*
 
 ### Candidates
 

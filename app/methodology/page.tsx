@@ -1,9 +1,9 @@
+import { ContactLink } from "@/components/ContactLink";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { METHODOLOGY_FAQ } from "@/lib/methodology";
 import { faqJsonLd } from "@/lib/seo";
 import { socialPageMeta } from "@/lib/social-card/metadata";
-import { CONTACT_HREF } from "@/lib/site";
 
 export const metadata: Metadata = socialPageMeta(
   "methodology",
@@ -71,7 +71,7 @@ export default function MethodologyPage() {
           rules before anything can reach the public record.
         </p>
         <p>
-          See a problem? <a href={CONTACT_HREF}>Contact us</a> with the
+          See a problem? <ContactLink label="Contact us" /> with the
           Pundits.Pro page and supporting public evidence. We reopen the source
           before changing the record. If a correction is warranted, we record
           the decision and keep the permanent receipt URL. No quiet deletes.

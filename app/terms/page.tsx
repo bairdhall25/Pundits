@@ -1,6 +1,7 @@
+import { ContactLink } from "@/components/ContactLink";
 import type { Metadata } from "next";
 import { socialPageMeta } from "@/lib/social-card/metadata";
-import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
+import { LEGAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = socialPageMeta(
   "terms",
@@ -37,7 +38,7 @@ export default function TermsPage() {
           not guarantee publication, roster eligibility, mapping, or credit.
         </p>
         <p>
-          If something is wrong, <a href={CONTACT_HREF}>contact us</a>. Using
+          If something is wrong, <ContactLink label="contact us" />. Using
           the site means you accept these terms.
         </p>
       </div>

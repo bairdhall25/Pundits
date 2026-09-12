@@ -1,7 +1,8 @@
+import { ContactLink } from "@/components/ContactLink";
 import type { Metadata } from "next";
 import { getEmailSignupConfig } from "@/lib/email-signup";
 import { socialPageMeta } from "@/lib/social-card/metadata";
-import { CONTACT_HREF, LEGAL_NAME } from "@/lib/site";
+import { LEGAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = socialPageMeta(
   "privacy",
@@ -53,14 +54,14 @@ export default function PrivacyPage() {
             </p>
             <p>
               To request deletion of an early-list address,{" "}
-              <a href={CONTACT_HREF}>contact us</a>.
+              <ContactLink label="contact us" />.
             </p>
           </>
         ) : (
           <p>Email collection is not active on this site right now.</p>
         )}
         <p>
-          Questions: <a href={CONTACT_HREF}>Contact</a>.
+          Questions: <ContactLink />.
         </p>
       </div>
     </main>

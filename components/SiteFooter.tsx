@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { ContactLink } from "@/components/ContactLink";
 import { COPYRIGHT_YEAR, LEGAL_NAME } from "@/lib/site";
 import { FOOTER_NAV_GROUPS, type SiteDestination } from "@/lib/site-navigation";
 
 function FooterLink({ item }: { item: SiteDestination }) {
+  if (item.href.startsWith("mailto:")) {
+    return <ContactLink />;
+  }
   if (item.external) return <a href={item.href}>{item.label}</a>;
   return <Link href={item.href}>{item.label}</Link>;
 }

@@ -88,6 +88,10 @@ The deploy command prepares an IndexNow hash manifest before upload and submits
 only added, changed, or deleted sitemap URLs after live verification. It checks
 the published key before notifying IndexNow and retries one verified 403 once;
 IndexNow remains non-blocking because the sitemap is the durable discovery path.
+Read `.agent-artifacts/indexnow-submit.json` for the actual submission outcome:
+`accepted` includes the HTTP status and URL count, `no-changes` means no request
+was needed, and `failed` includes the error. A green deployment alone does not
+prove acceptance. Preparation has a separate `indexnow-prepare.json` report.
 
 ## URL permanence (SEO-critical)
 
