@@ -19,7 +19,8 @@ Shows Scout Saturday ~9:30–9:40 AM ET (Sat morning Shows window open). Hunt Di
 
 | proposedId | name | group | outlet | eventSlug | side | verbatim quote | reasoning | note | sourceUrl | sourceDate | photoUrl | association | associationUrl | factory |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| *(empty — Glen Powell GameDay guest picker announced; no desk locks yet this pass → Decision queue, not Intake)* | | | | | | | | | | | | | | |
+
+*(empty — Glen Powell GameDay guest picker announced; no desk locks yet this pass → Decision queue, not Intake)*
 
 ### Bets
 
