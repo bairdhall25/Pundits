@@ -109,6 +109,36 @@
       "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
       "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 3f81280026659fd8 is a different identity. Keep visible; do not auto-roster."
+    },
+    {
+      "id": "candidate-chase-daniel",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Chase Daniel after two Audit-ok-unmapped picks (rowIds 1940e4f810be5ea4 and c74b22f98de6abb4). Replace the dead staged association URL during roster preparation. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-11e-night-shows.md",
+      "proposalFile": "docs/runs/2026-09-11-night-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-12T02:40:14Z. Association independently verified through official UK Athletics evidence; the staged ESPN contributor URL returns 404."
+    },
+    {
+      "id": "candidate-chris-doering",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes may use Doering's Alabama and Oklahoma Audit-ok-unmapped rows. The Ohio State row failed exact-quote review and must not be used. Replace the dead staged association URL. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-11e-night-shows.md",
+      "proposalFile": "docs/runs/2026-09-11-night-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-12T02:40:14Z. Valid rowIds 87d97b874717c1b0 and 3aa44fddb7e3bc46; rejected rowId faf4b023d14d5cb0. Association independently verified through official SEC evidence."
+    },
+    {
+      "id": "candidate-simon-hunter",
+      "kind": "roster-candidate",
+      "needed": "Rejected current evidence: the quote stitches two separated turns. Restage one continuous verbatim Houston passage and re-audit before any roster review.",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-09-11e-night-shows.md",
+      "proposalFile": "docs/runs/2026-09-11-night-candidate-proposals.json",
+      "owner": "Scout",
+      "note": "Audit fail rowId 078fac66eff588a6 at 2026-09-12T02:40:14Z. Association is eligible, but this candidate evidence cannot support rostering."
     }
   ]
 }
