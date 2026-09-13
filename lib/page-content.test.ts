@@ -378,7 +378,7 @@ describe("weekly archive contract", () => {
     );
     expect(content.title).toBe("NFL Week 1: who got them right (2026)");
     expect(content.graded).toBe(true);
-    expect(content.lede).toMatch(/Tracked Week 1 record: 4–5 on 9 graded picks, with 11 still open/);
+    expect(content.lede).toMatch(/Tracked Week 1 record: 4–5 on 9 graded picks, with 12 still open/);
     expect(content.recap).toContain("Patriots at Seahawks");
     expect(content.recap).toContain("Seahawks beat Patriots");
     expect(content.recap).toContain("49ers vs Rams");

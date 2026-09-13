@@ -80,7 +80,7 @@ none
 - Sunday TV desks (Countdown / FOX NFL Sunday / NFL Today) — **waiting**.
 - Mapped Bills YES already has hawk+mcafee in live `calls.json`; this pass adds **florio NO** (deepens NO stack with cowherd/jmac/herbstreit).
 
-ready to audit **1 hard + 2 candidates this pass**; day cumulative **hard=1 candidates=2**; `audit=ok`. Did not touch `data/`.
+ready to audit **1 hard + 2 candidates this pass**; day cumulative **hard=1 candidates=2**; `audit=ok` · `promoted=true`. Florio Bills NO mapped. Marino/Hickman not rostered.
 
 ## Lane status
 

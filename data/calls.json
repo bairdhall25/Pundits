@@ -2118,5 +2118,21 @@
     "side": "no",
     "firstPublishedAt": "2026-09-12",
     "reasoning": "ASU replacing starters; Marcel Reed year-3 QB at home."
+  },
+  {
+    "id": "florio-bills-at-texans-20260909",
+    "punditId": "florio",
+    "claim": "Texans 20, Bills 16.",
+    "source": "PFT / NBC Sports (Mike Florio)",
+    "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-1-2026-nfl-picks",
+    "sourceDate": "2026-09-09",
+    "kind": "hard",
+    "subject": "Texans",
+    "paysOn": "Bills at Texans (Week 1)",
+    "status": "pending",
+    "eventSlug": "bills-at-texans-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-13",
+    "reasoning": "Best defense in NFL (maybe better in 2026); Texans offense is a question but should hold serve at home toward an AFC top seed."
   }
 ]

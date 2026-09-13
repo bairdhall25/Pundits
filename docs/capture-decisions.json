@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-12",
+  "updated": "2026-09-13",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -149,6 +149,26 @@
       "proposalFile": "docs/runs/2026-09-12-candidate-proposals.json",
       "owner": "Promote",
       "note": "Audit 2026-09-12T16:49:38Z. Cole recap labels; ESPN PR identifies Powell as Austin celebrity guest picker. photoUrl=needed. Association eligible. 2026-09-12 promote mapped 22 rostered after-GameDay rows and left these candidates unpublished."
+    },
+    {
+      "id": "candidate-joe-marino",
+      "kind": "roster-candidate",
+      "needed": "Do not roster. Audit fail (stitched quote) and ineligible team-analyst (Locked On Bills host picking Buffalo).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-09-13b-sunday-shows.md",
+      "proposalFile": "docs/runs/2026-09-13-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-13T14:23:27Z rowId 52d3653ae54f8dd6. 2026-09-13 promote shipped Florio Bills NO only."
+    },
+    {
+      "id": "candidate-john-hickman",
+      "kind": "roster-candidate",
+      "needed": "Do not roster. Audit fail (inexact quote) and ineligible team-analyst (Locked On Texans host picking Houston).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-09-13b-sunday-shows.md",
+      "proposalFile": "docs/runs/2026-09-13-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-13T14:23:27Z rowId 25ad07b79da21e5b. 2026-09-13 promote shipped Florio Bills NO only."
     }
   ]
 }
