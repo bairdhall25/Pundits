@@ -1,0 +1,105 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-joe-marino-52d3653ae54f8dd6",
+      "kind": "roster-candidate",
+      "proposedId": "joe-marino",
+      "rowId": "52d3653ae54f8dd6",
+      "sourceRun": "docs/runs/2026-09-13b-sunday-shows.md",
+      "status": "rejected",
+      "owner": "Promote",
+      "candidate": {
+        "line": 16,
+        "pass": "Shows pass 2026-09-13 Sunday morning (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "joe-marino",
+        "name": "Joe Marino",
+        "group": "nfl",
+        "outlet": "Locked On Bills",
+        "eventSlug": "bills-at-texans-2026",
+        "side": "yes",
+        "verbatimQuote": "put me down for a bills win. … I think the bills win. I really do.",
+        "reasoning": "Tired of Houston house-of-horrors narrative; trusts Allen + continuity vs shaken Houston offense (new OL/RB/TE usage).",
+        "note": "Radio fallback (designated gmfb/herd/eisen/mcafee empty of NEW Sunday voices). LO Bills Sat “REDEMPTION” ASR end-card ~28:00+. Host ≠ `ostroski` (do not restage Ostroski). photoUrl=needed. Operator roster yes.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1145479962?i=1000789133189",
+        "sourceDate": "2026-09-12",
+        "photoUrl": "needed",
+        "association": "Locked On Bills host / Buffalo daily",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1145479962",
+        "factory": "radio-lo-bills"
+      },
+      "audit": {
+        "proposedId": "joe-marino",
+        "rowId": "52d3653ae54f8dd6",
+        "verdict": "fail",
+        "auditedAt": "2026-09-13T14:23:27Z",
+        "eligibility": "ineligible",
+        "eligibilityReason": "Joe Marino is the named host of Locked On Bills. A Locked On team-show host picking that team is a team-analyst, not a pundit.",
+        "note": "Apple i=1000789133189 identifies Marino and does not contain the staged sentence. YouTube KWwRMSeEH1w ASR preserves “put me down for a Bills win.” at 28:56–28:59; “I think the Bills win. I really do.” is a later restatement at 30:29–30:32. Stitched separated remarks fail. Team-analyst. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Retain evidence and rejection reason; do not roster",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    },
+    {
+      "id": "candidate-john-hickman-25ad07b79da21e5b",
+      "kind": "roster-candidate",
+      "proposedId": "john-hickman",
+      "rowId": "25ad07b79da21e5b",
+      "sourceRun": "docs/runs/2026-09-13b-sunday-shows.md",
+      "status": "rejected",
+      "owner": "Promote",
+      "candidate": {
+        "line": 17,
+        "pass": "Shows pass 2026-09-13 Sunday morning (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "john-hickman",
+        "name": "John Hickman",
+        "group": "nfl",
+        "outlet": "Locked On Texans",
+        "eventSlug": "bills-at-texans-2026",
+        "side": "no",
+        "verbatimQuote": "24, 20. I'm rolling with Houston and week one to open up. … They figured out Josh Allen … I have no reason to believe other.",
+        "reasoning": "Believes Houston D still owns Allen; run/screen game + TE usage offsets Bills pressure.",
+        "note": "Radio fallback #2 (Houston archive). LO Texans Sat “SHOCKING Predictions” ASR close. Score cue 24–20 then explicit Houston lean. photoUrl=needed. Operator roster yes.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1156158142?i=1000789176311",
+        "sourceDate": "2026-09-12",
+        "photoUrl": "needed",
+        "association": "Locked On Texans host / Houston daily",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1156158142",
+        "factory": "radio-lo-texans"
+      },
+      "audit": {
+        "proposedId": "john-hickman",
+        "rowId": "25ad07b79da21e5b",
+        "verdict": "fail",
+        "auditedAt": "2026-09-13T14:23:27Z",
+        "eligibility": "ineligible",
+        "eligibilityReason": "John Hickman is the named host of Locked On Texans. A Locked On team-show host picking that team is a team-analyst, not a pundit.",
+        "note": "Apple i=1000789176311 loads the episode and does not contain the staged sentence. YouTube K2JipiqHUCI ASR at 21:05–21:17 preserves continuous “24-20. I'm rolling with Houston in week one to open up their NFL regular season Sunday against the Buffalo Bills. They figured out Josh Allen in an offense at this point. I have no reason to believe other.” Staged wording is not that speech. Team-analyst. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Retain evidence and rejection reason; do not roster",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

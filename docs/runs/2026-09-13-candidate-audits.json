@@ -1,0 +1,20 @@
+[
+  {
+    "proposedId": "joe-marino",
+    "rowId": "52d3653ae54f8dd6",
+    "verdict": "fail",
+    "auditedAt": "2026-09-13T14:23:27Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Joe Marino is the named host of Locked On Bills. A Locked On team-show host picking that team is a team-analyst, not a pundit.",
+    "note": "Apple i=1000789133189 identifies Marino and does not contain the staged sentence. YouTube KWwRMSeEH1w ASR preserves “put me down for a Bills win.” at 28:56–28:59; “I think the Bills win. I really do.” is a later restatement at 30:29–30:32. Stitched separated remarks fail. Team-analyst. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "john-hickman",
+    "rowId": "25ad07b79da21e5b",
+    "verdict": "fail",
+    "auditedAt": "2026-09-13T14:23:27Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "John Hickman is the named host of Locked On Texans. A Locked On team-show host picking that team is a team-analyst, not a pundit.",
+    "note": "Apple i=1000789176311 loads the episode and does not contain the staged sentence. YouTube K2JipiqHUCI ASR at 21:05–21:17 preserves continuous “24-20. I'm rolling with Houston in week one to open up their NFL regular season Sunday against the Buffalo Bills. They figured out Josh Allen in an offense at this point. I have no reason to believe other.” Staged wording is not that speech. Team-analyst. photoUrl=needed. Do not roster."
+  }
+]
