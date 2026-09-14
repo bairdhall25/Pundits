@@ -307,7 +307,7 @@ describe("Quote social-card resolvers", () => {
     const fallica = pundits.find((pundit) => pundit.id === "fallica")!;
     const longName = resolvePunditSocialCard(fallica, calls);
     expect(longName.headline).toBe('Chris "The Bear" Fallica');
-    expect(longName.metrics.find((metric) => metric.label === "2026 record")?.value).toBe("—");
+    expect(longName.metrics.find((metric) => metric.label === "2026 record")?.value).toBe("1–0");
 
     const missingPhoto = resolvePunditSocialCard(
       { ...fallica, id: "no-photo", photo: "" },

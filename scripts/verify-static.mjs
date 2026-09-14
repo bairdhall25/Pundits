@@ -40,7 +40,7 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
-assert.match(home, /Bills at Texans/);
+assert.match(home, /Broncos at Chiefs/);
 assert.doesNotMatch(home, /Final · 49ers 27/);
 assert.match(home, /event-title-link/);
 assert.match(home, /Most on record/);
@@ -166,7 +166,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 1–0/);
+assert.match(herbstreitProfile, /2026 tracked record: 2–3/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -383,7 +383,7 @@ assert.doesNotMatch(week0, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 const weekNfl = await readFile(path.join(out, "nfl/2026/week-1/index.html"), "utf8");
 assert.match(weekNfl, /data-page-type="week"/);
 assert.match(weekNfl, /who got them right/);
-assert.match(weekNfl, /Tracked Week 1 record: 4–5/);
+assert.match(weekNfl, /Tracked Week 1 record: 9–11/);
 assert.match(weekNfl, /Patriots at Seahawks/);
 assert.match(weekNfl, /49ers vs Rams/);
 
@@ -397,7 +397,7 @@ assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 2: who picked whom/);
+assert.match(ncaafSlate, /College football Week 2: who called it/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-1\//);
 
@@ -501,7 +501,7 @@ assert.match(feed, /<rss version="2\.0">/);
 // The feed carries the 50 most recent takes, so naming one pundit ages out as the
 // ledger grows. Assert the shape instead: real items with well-formed headlines.
 assert.match(feed, /<item>/);
-assert.match(feed, /<title>[^<]* picks? [^<]+ over [^<]+<\/title>/);
+assert.match(feed, /<title>[^<]* pick(?:s|ed) [^<]+ over [^<]+<\/title>/);
 
 const sourceRedirects = await readFile(path.join(root, "public/_redirects"), "utf8");
 const outputRedirects = await readFile(path.join(out, "_redirects"), "utf8");

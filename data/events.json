@@ -180,7 +180,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "bills",
       "homeTeamId": "texans",
-      "week": 1
+      "week": 1,
+      "awayScore": 36,
+      "homeScore": 31,
+      "resultUrl": "https://www.nfl.com/games/bills-at-texans-2026-reg-1"
     },
     {
       "slug": "indiana-title-2026",
@@ -611,7 +614,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "commanders",
       "homeTeamId": "eagles",
-      "week": 1
+      "week": 1,
+      "awayScore": 22,
+      "homeScore": 24,
+      "resultUrl": "https://www.nfl.com/games/commanders-at-eagles-2026-reg-1"
     },
     {
       "slug": "cowboys-at-giants-2026",
@@ -632,7 +638,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "cowboys",
       "homeTeamId": "giants",
-      "week": 1
+      "week": 1,
+      "awayScore": 20,
+      "homeScore": 28,
+      "resultUrl": "https://www.nfl.com/games/cowboys-at-giants-2026-reg-1"
     },
     {
       "slug": "broncos-at-chiefs-2026",
@@ -674,7 +683,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "ravens",
       "homeTeamId": "colts",
-      "week": 1
+      "week": 1,
+      "awayScore": 41,
+      "homeScore": 23,
+      "resultUrl": "https://www.nfl.com/games/ravens-at-colts-2026-reg-1"
     },
     {
       "slug": "packers-at-vikings-2026",
@@ -695,7 +707,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "packers",
       "homeTeamId": "vikings",
-      "week": 1
+      "week": 1,
+      "awayScore": 22,
+      "homeScore": 39,
+      "resultUrl": "https://www.nfl.com/games/packers-at-vikings-2026-reg-1"
     },
     {
       "slug": "dolphins-at-raiders-2026",
@@ -716,7 +731,10 @@
       "kickoffDate": "2026-09-13",
       "awayTeamId": "dolphins",
       "homeTeamId": "raiders",
-      "week": 1
+      "week": 1,
+      "awayScore": 13,
+      "homeScore": 27,
+      "resultUrl": "https://www.nfl.com/games/dolphins-at-raiders-2026-reg-1"
     },
     {
       "slug": "boise-state-at-oregon-2026",
@@ -859,7 +877,10 @@
       "kickoffDate": "2026-09-12",
       "awayTeamId": "oklahoma",
       "homeTeamId": "michigan",
-      "week": 2
+      "week": 2,
+      "awayScore": 10,
+      "homeScore": 17,
+      "resultUrl": "https://mgoblue.com/sports/football/stats/2026/oklahoma/boxscore/30375"
     },
     {
       "slug": "arizona-state-at-texas-am-2026",
@@ -882,7 +903,10 @@
       "kickoffDate": "2026-09-12",
       "awayTeamId": "arizona-state",
       "homeTeamId": "texas-am",
-      "week": 2
+      "week": 2,
+      "awayScore": 20,
+      "homeScore": 48,
+      "resultUrl": "https://12thman.com/boxscore/3593"
     },
     {
       "slug": "alabama-at-kentucky-2026",
@@ -905,7 +929,10 @@
       "kickoffDate": "2026-09-12",
       "awayTeamId": "alabama",
       "homeTeamId": "kentucky",
-      "week": 2
+      "week": 2,
+      "awayScore": 45,
+      "homeScore": 17,
+      "resultUrl": "https://ukathletics.com/boxscore/alabama-56/"
     },
     {
       "slug": "ohio-state-at-texas-2026",
@@ -928,7 +955,10 @@
       "kickoffDate": "2026-09-12",
       "awayTeamId": "ohio-state",
       "homeTeamId": "texas",
-      "week": 2
+      "week": 2,
+      "awayScore": 23,
+      "homeScore": 24,
+      "resultUrl": "https://ohiostatebuckeyes.com/sports/football/stats/2026/texas/boxscore/22215"
     }
   ]
 }

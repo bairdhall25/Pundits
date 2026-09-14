@@ -405,7 +405,7 @@ describe("source completion vs density", () => {
 });
 
 describe("live capture-target Dispatch", () => {
-  it("hunts Bills after Patriots and 49ers settle, with an empty bring-onto-home list", () => {
+  it("omits settled Sunday NFL after Patriots, 49ers, and Bills grade, with an empty bring-onto-home list", () => {
     const root = process.cwd();
     const events = JSON.parse(readFileSync(path.join(root, "data", "events.json"), "utf8")).events;
     const calls = JSON.parse(readFileSync(path.join(root, "data", "calls.json"), "utf8"));
@@ -424,9 +424,7 @@ describe("live capture-target Dispatch", () => {
     });
     expect(
       rows.filter((row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
-    ).toEqual([
-      "bills-at-texans-2026",
-    ]);
+    ).toEqual([]);
   });
 });
 
