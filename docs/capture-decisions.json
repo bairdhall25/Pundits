@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -169,6 +169,15 @@
       "proposalFile": "docs/runs/2026-09-13-candidate-proposals.json",
       "owner": "Promote",
       "note": "Audit 2026-09-13T14:23:27Z rowId 25ad07b79da21e5b. 2026-09-13 promote shipped Florio Bills NO only."
+    },
+    {
+      "id": "overflow-pate-clemson",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit ok-unmapped-no-reasoning Pate Clemson SU (North Carolina at Clemson 2026).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-09-14-audit.md",
+      "owner": "Promote",
+      "note": "Operator mint yes 2026-09-14. Minted north-carolina-at-clemson-2026 onHome=false with Kalshi freeze KXNCAAFGAME-26SEP19UNCCLEM. Mapped pate NO (Clemson home). Capsule omitted. rowId d3dba4fbe4635c87."
     }
   ]
 }

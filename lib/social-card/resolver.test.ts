@@ -369,7 +369,7 @@ describe("Editorial social-card resolvers", () => {
     const card = resolveTeamSocialCard(team, events, calls, pundits);
     expect(card).toMatchObject({ archetype: "editorial", mode: "team" });
     expect(card.groups.map((group) => [group.label, group.count])).toEqual([
-      ["With", 2],
+      ["With", 3],
       ["Against", 10],
     ]);
     expect(card.feature).toMatchObject({

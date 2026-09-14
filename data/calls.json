@@ -2177,5 +2177,20 @@
     "side": "no",
     "firstPublishedAt": "2026-09-13",
     "reasoning": "Best defense in NFL (maybe better in 2026); Texans offense is a question but should hold serve at home toward an AFC top seed."
+  },
+  {
+    "id": "pate-north-carolina-at-clemson-20260913",
+    "punditId": "pate",
+    "claim": "Clemson is favored by three and a half this week. The number is too low. They're playing North Carolina for those of you interested. The number is too low. So says the model Clemson is one of my best bets of the week",
+    "source": "Josh Pate's College Football Show Ep 767",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/week-2-reaction-show-ap-poll-is-insane/id1485905502?i=1000789446376",
+    "sourceDate": "2026-09-13",
+    "kind": "hard",
+    "subject": "Clemson",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "pending",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-14"
   }
 ]

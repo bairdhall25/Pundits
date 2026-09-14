@@ -959,6 +959,29 @@
       "awayScore": 23,
       "homeScore": 24,
       "resultUrl": "https://ohiostatebuckeyes.com/sports/football/stats/2026/texas/boxscore/22215"
+    },
+    {
+      "slug": "north-carolina-at-clemson-2026",
+      "kind": "game",
+      "title": "North Carolina at Clemson",
+      "contractName": "North Carolina vs Clemson — moneyline",
+      "awayTeam": "North Carolina",
+      "homeTeam": "Clemson",
+      "kickoff": "Sat 12:00 ET",
+      "network": "ESPN",
+      "yesCents": 40,
+      "noCents": 62,
+      "ticker": "KXNCAAFGAME-26SEP19UNCCLEM",
+      "sourceUrl": "https://kalshi.com/markets/kxncaafgame/college-football-game/kxncaafgame-26sep19uncclem",
+      "sourcedAt": "2026-09-14",
+      "onHome": false,
+      "sport": "ncaaf",
+      "homeRank": 1,
+      "season": 2026,
+      "kickoffDate": "2026-09-19",
+      "awayTeamId": "north-carolina",
+      "homeTeamId": "clemson",
+      "week": 3
     }
   ]
 }

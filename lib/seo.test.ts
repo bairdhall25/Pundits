@@ -396,8 +396,8 @@ describe("json-ld", () => {
     const events = loadEvents();
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
-    expect(teamLastModified("north-carolina", events, calls)).toBe("2026-08-29");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-13");
+    expect(teamLastModified("north-carolina", events, calls)).toBe("2026-09-14");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-14");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {
