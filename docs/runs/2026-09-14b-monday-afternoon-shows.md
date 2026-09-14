@@ -1,4 +1,4 @@
-<!-- pundits-run date=2026-09-14 hard=1 candidates=0 audit=pending promoted=false -->
+<!-- pundits-run date=2026-09-14 hard=1 candidates=0 audit=ok promoted=false -->
 ## Shows pass 2026-09-14 Monday afternoon ~3:15–3:45 PM ET (Grok Bot)
 
 **hard=1 · candidates=0.** Did not touch `data/`. Did not mint ids / invent slugs. Never tweet.
