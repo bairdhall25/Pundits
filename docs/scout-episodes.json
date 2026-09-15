@@ -1,7 +1,7 @@
 {
   "version": 1,
   "windowDays": 3,
-  "updated": "2026-09-08",
+  "updated": "2026-09-15",
   "note": "Inspected status is written after a hunter opens the episode. A Coordinator feed check only discovers rows; it does not mark them inspected.",
   "episodes": [
     {
@@ -15,6 +15,78 @@
       "inspectedAt": "2026-09-08T16:35:00-04:00",
       "outcome": "hit",
       "note": "Staged brandt 49ers YES in docs/runs/2026-09-08e-afternoon-shows.md. Do not reprocess without a new reason."
+    },
+    {
+      "id": "bfw:1000789689942",
+      "factoryId": "bfw",
+      "title": "BFW Show 9.14.26 Week 2 Clean Up",
+      "published": "2026-09-15T00:55:48Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000789689942",
+      "locator": "i=1000789689942",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "hit",
+      "note": "Candidate Liam Blutman Louisville SU. YT GBCiLu0MXVg ~53:34."
+    },
+    {
+      "id": "see-ball:1000789786163",
+      "factoryId": "see-ball",
+      "title": "Oregon Oklahoma CFP See Ball",
+      "published": "2026-09-15T12:50:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000789786163",
+      "locator": "i=1000789786163",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "dry",
+      "note": "CFP futures; not game SU."
+    },
+    {
+      "id": "herd:1000789768684",
+      "factoryId": "herd",
+      "title": "3 & Out Tue MNF",
+      "published": "2026-09-15T10:01:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000789768684",
+      "locator": "i=1000789768684",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "dry",
+      "note": "LSU-Ole Miss no SU."
+    },
+    {
+      "id": "finebaum:1000789619788",
+      "factoryId": "finebaum",
+      "title": "Finebaum Mon H1 Emerson",
+      "published": "2026-09-14T20:14:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000789619788",
+      "locator": "i=1000789619788",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "dry",
+      "note": "Reaction; no SU."
+    },
+    {
+      "id": "gmfb:1000789802955",
+      "factoryId": "gmfb",
+      "title": "GMFB Tue H1",
+      "published": "2026-09-15T15:08:09Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000789802955",
+      "locator": "i=1000789802955",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "opened",
+      "note": "W1 reaction; not who-wins."
+    },
+    {
+      "id": "gmfb:1000789805791",
+      "factoryId": "gmfb",
+      "title": "GMFB Tue H2",
+      "published": "2026-09-15T15:38:05Z",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000789805791",
+      "locator": "i=1000789805791",
+      "inspected": true,
+      "inspectedAt": "2026-09-15T11:52:00-04:00",
+      "outcome": "opened",
+      "note": "Awards; not who-wins."
     }
   ]
 }
