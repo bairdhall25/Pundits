@@ -1,0 +1,170 @@
+{
+  "needsAudit": true,
+  "preparedAt": "2026-09-15",
+  "preparedBy": "Promote",
+  "sourceRuns": [
+    "docs/runs/2026-09-11c-candidate-restage.md",
+    "docs/runs/2026-09-15.md",
+    "docs/runs/2026-09-15a-weekday-shows.md"
+  ],
+  "auditFile": "docs/runs/2026-09-11-candidate-audits.json",
+  "louisvilleAuditFile": null,
+  "note": "Combined roster/photo packet for liam-blutman. Publication no-op: hard=0, no mapped Intake. Do not auto-roster. Do not mint SMU at Louisville unless the operator asks. Do not ship Bets. 2026-09-15-audit.md is not on origin/main; the Louisville row stays awaiting-audit.",
+  "identity": {
+    "proposedId": "liam-blutman",
+    "name": "Liam Blutman",
+    "outlet": "Brandon Walker College Football Show / Barstool Sports",
+    "sport": "ncaaf",
+    "xHandle": "Blutman27",
+    "xProfile": "https://x.com/Blutman27",
+    "xBio": "Host of the Brandon Walker College Football Show",
+    "factory": "bfw",
+    "futureHunt": "X from:Blutman27; Shows named-speaker on BFW (not walker). After roster, Intake not Candidate.",
+    "eligibility": "association",
+    "eligibilitySource": "2026-09-11 candidate audit rowId 145cc86c4545e4fd. Named cohost / ball-watcher on BFW, a roster factory. Independent national CFB voice, not a team analyst. Louisville pick still needs its own Audit; do not reuse the ASU rowId."
+  },
+  "photoReview": {
+    "photoApproved": false,
+    "rejectedXAvatar": {
+      "url": "https://pbs.twimg.com/profile_images/2096730148330700800/CuabR_wv.jpg",
+      "usable": false,
+      "reason": "Official X avatar @Blutman27 is a full-body crouch in a sneaker store. Face is too small for a scan-card. Spec: fall back from full-body / logo / meme."
+    },
+    "proposed": {
+      "url": "https://chumley.barstoolsports.com/content/2025/04/14/e132d02b.viral-ugc-thumbnail",
+      "page": "https://www.barstoolsports.com/bio/68111677/liam-blutman",
+      "kind": "outlet-talent-still",
+      "usableFace": "borderline-3-4-body",
+      "note": "Official Barstool bio portrait (alt text Liam Blutman). 3/4 body at Barstool Film Festival; face is identifiable. Not a tight head-and-shoulders talent still. If approved, crop to a 600x600 head-and-shoulders square before roster-add. Possession of this URL is not permission and not approval."
+    },
+    "permissionBasis": "Outlet-hosted personality still on the official Barstool bio. Usage permission is not confirmed. Do not write public/photos/liam-blutman.jpg until the operator confirms this file."
+  },
+  "eventMint": {
+    "askedThisPass": false,
+    "status": "not-minted",
+    "matchup": "SMU at Louisville (2026)",
+    "proposedSlugIfAsked": "smu-at-louisville-2026",
+    "sideIfMapped": "no",
+    "sideReason": "YES = away. SMU is away; Louisville is home.",
+    "kickoffDate": "2026-09-19",
+    "eventExists": false,
+    "blockedOn": [
+      "Independent Audit of Louisville candidate row 9127a975e0666385",
+      "Explicit operator mint ask this pass",
+      "Roster yes if the mapped face is Blutman (otherwise a pickless event is a dead row)"
+    ]
+  },
+  "bets": {
+    "staged": true,
+    "description": "Louisville win by double digits vs SMU",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000789689942",
+    "sourceDate": "2026-09-14",
+    "shipped": false,
+    "note": "Promote does not ship Bets this pass."
+  },
+  "proposals": [
+    {
+      "id": "candidate-liam-blutman-145cc86c4545e4fd",
+      "kind": "roster-candidate",
+      "proposedId": "liam-blutman",
+      "rowId": "145cc86c4545e4fd",
+      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
+      "status": "ready-for-review",
+      "owner": "Promote",
+      "candidate": {
+        "line": 18,
+        "pass": "Shows pass 2026-09-11 Friday candidate restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "liam-blutman",
+        "name": "Liam Blutman",
+        "group": "other",
+        "outlet": "Brandon Walker College Football Show",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "It is tickling my nose quite a bit. That's my upseller of the week.",
+        "reasoning": "Nearby: needs Arizona State to go out and make a statement this week; lockstep bearish on A&M offense. Walker immediately: \"That's your upset alert.\"",
+        "note": "Restage of Audit-fail `3f81280026659fd8`; captions say upseller (likely upsetter); statement line stays in reasoning/note — not stitched onto quote. 14-pt dog — SU as dog wins if Audit agrees; blank slug/side (ASU away = YES if mapped). YT captions confirm wording. photoUrl=needed.",
+        "sourceUrl": "https://www.youtube.com/watch?v=y9VX9upuUgI",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "https://chumley.barstoolsports.com/content/2025/04/14/e132d02b.viral-ugc-thumbnail",
+        "association": "cohost / ball-watcher on Brandon Walker College Football Show",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000788967660",
+        "factory": "bfw",
+        "targetId": "ncaaf-w2-arizona-state-at-texas-am",
+        "matchup": "Arizona State at Texas A&M (2026)",
+        "xHandle": "Blutman27",
+        "photoSource": "Barstool Sports official bio still at https://www.barstoolsports.com/bio/68111677/liam-blutman (asset e132d02b.viral-ugc-thumbnail). Official X avatar @Blutman27 is a full-body crouch and fails the usable-face test. Usage permission not confirmed."
+      },
+      "audit": {
+        "proposedId": "liam-blutman",
+        "rowId": "145cc86c4545e4fd",
+        "verdict": "ok-unmapped-no-reasoning",
+        "auditedAt": "2026-09-11T20:01:35Z",
+        "eligibility": "association",
+        "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst.",
+        "note": "YouTube ASR captions on y9VX9upuUgI preserve “It is tickling my nose quite a bit. … That's my upseller of the week.” after Walker names Arizona State at Texas A&M. Prior fail hash 3f81280026659fd8 is not this identity. Capsule omits: mixes Walker restatement and a later statement line. photoUrl=needed. Do not roster."
+      },
+      "missing": [],
+      "nextAction": "Ask operator to approve roster addition and the proposed photo together",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false,
+      "mappingIfRostered": {
+        "eventSlug": "arizona-state-at-texas-am-2026",
+        "side": "yes",
+        "eventExists": true,
+        "settled": true,
+        "result": "Arizona State 20, Texas A&M 48",
+        "note": "Game already final. Mapping would be away = YES. Grader would treat as miss. Not graded this pass. Roster packet may still use this audited pick."
+      }
+    },
+    {
+      "id": "candidate-liam-blutman-9127a975e0666385",
+      "kind": "roster-candidate",
+      "proposedId": "liam-blutman",
+      "rowId": "9127a975e0666385",
+      "sourceRun": "docs/runs/2026-09-15.md",
+      "status": "awaiting-audit",
+      "owner": "Audit",
+      "candidate": {
+        "line": 109,
+        "pass": "Shows pass 2026-09-15 (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "liam-blutman",
+        "name": "Liam Blutman",
+        "group": "other",
+        "outlet": "Brandon Walker College Football Show",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "Taking Louisville to win this game. Honestly, I'll take a win by double digits. I'm still not impressed by SMU. I'm not impressed by Kevin Jennings. I'll take Louisville for the big time statement win",
+        "reasoning": "Not impressed by SMU/Kevin Jennings; wants a Louisville statement win toward ACC title/playoff path.",
+        "note": "Overflow Week 3 CFB (unlisted). Matchup: **SMU at Louisville (2026)** Sat Sep 19 (Louisville home). Blank eventSlug/side — do not invent slug. Speaker is BFW cohost Liam (Walker handed picks 2–3). YT `GBCiLu0MXVg` ~53:34 Week 3 draft; Apple `i=1000789689942`. Also stage Bets double-digit. photoUrl=needed. Do not restage ASU upset Candidate. Full episode tables in sidecar.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000789689942",
+        "sourceDate": "2026-09-14",
+        "photoUrl": "https://chumley.barstoolsports.com/content/2025/04/14/e132d02b.viral-ugc-thumbnail",
+        "association": "cohost / ball-watcher on BFW Show",
+        "associationUrl": "https://www.youtube.com/watch?v=GBCiLu0MXVg",
+        "factory": "bfw",
+        "targetId": "",
+        "matchup": "SMU at Louisville (2026)",
+        "xHandle": "Blutman27",
+        "photoSource": "Barstool Sports official bio still at https://www.barstoolsports.com/bio/68111677/liam-blutman (asset e132d02b.viral-ugc-thumbnail). Official X avatar @Blutman27 is a full-body crouch and fails the usable-face test. Usage permission not confirmed."
+      },
+      "audit": null,
+      "missing": [
+        "Independent Audit of current candidate evidence",
+        "Known Audit timestamp",
+        "Evidence-backed eligibility explanation",
+        "Independent-pundit association verified"
+      ],
+      "nextAction": "Audit reopens pick and association sources even when hard=0",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ]
+}

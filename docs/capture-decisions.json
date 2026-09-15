@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-14",
+  "updated": "2026-09-15",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -103,12 +103,22 @@
     {
       "id": "candidate-liam-blutman",
       "kind": "roster-candidate",
-      "needed": "Operator photo + roster yes for Liam Blutman ASU upset (Audit ok-unmapped-no-reasoning, association, rowId 145cc86c4545e4fd). Do not auto-roster.",
+      "needed": "One combined roster/photo yes: audited ASU upset (rowId 145cc86c4545e4fd, ready-for-review) plus proposed Barstool bio still. Louisville SU (rowId 9127a975e0666385) is awaiting Audit — do not roster from that row yet. Do not auto-roster. Possession of a photo URL is not approval.",
       "status": "pending",
-      "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
-      "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
+      "sourceRun": "docs/runs/2026-09-15.md",
+      "proposalFile": "docs/runs/2026-09-15-candidate-liam-blutman-proposal.json",
       "owner": "Promote",
-      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 3f81280026659fd8 is a different identity. Keep visible; do not auto-roster."
+      "note": "2026-09-15 Promote prepared identity @Blutman27, factory bfw, and a Barstool bio still after the official X avatar failed the usable-face test (full-body crouch). ASU event already exists and is settled — mapping would be YES / likely miss; not graded this pass. Prior fail 3f81280026659fd8 is a different identity. Keep visible."
+    },
+    {
+      "id": "overflow-blutman-louisville",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for unpublished SMU at Louisville (2026). Conventional slug if asked: smu-at-louisville-2026. Louisville is home = NO. Blocked on Louisville candidate Audit (rowId 9127a975e0666385) and an explicit mint ask. Do not invent a slug here.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-15.md",
+      "proposalFile": "docs/runs/2026-09-15-candidate-liam-blutman-proposal.json",
+      "owner": "Promote",
+      "note": "2026-09-15 candidate-only promote: no mint this pass. A pickless event is a dead row until Blutman is rostered or another verified SU exists. Bets double-digit stays out of JSON."
     },
     {
       "id": "candidate-chase-daniel",
