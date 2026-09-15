@@ -383,13 +383,13 @@ assert.doesNotMatch(week0, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 const weekNfl = await readFile(path.join(out, "nfl/2026/week-1/index.html"), "utf8");
 assert.match(weekNfl, /data-page-type="week"/);
 assert.match(weekNfl, /who got them right/);
-assert.match(weekNfl, /Tracked Week 1 record: 9–11/);
+assert.match(weekNfl, /Tracked Week 1 record: 10–11/);
 assert.match(weekNfl, /Patriots at Seahawks/);
 assert.match(weekNfl, /49ers vs Rams/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 1: who picked whom/);
+assert.match(nflSlate, /NFL Week 1: who called it/);
 assert.match(nflSlate, /Week 1 archive/);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
 assert.doesNotMatch(nflSlate, /best experts/i);

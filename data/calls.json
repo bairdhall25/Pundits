@@ -1066,7 +1066,8 @@
     "kind": "hard",
     "subject": "Chiefs",
     "paysOn": "Broncos at Chiefs (Week 1)",
-    "status": "pending",
+    "status": "hit",
+    "gradedAt": "2026-09-14",
     "eventSlug": "broncos-at-chiefs-2026",
     "side": "no"
   },

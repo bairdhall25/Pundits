@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-1/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 9–11. A.J. Hawk, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Nick Wright, and Pat McAfee hit on Bills."
+      "Week 1: experts went 10–11. A.J. Hawk, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Nick Wright, and Pat McAfee hit on Bills."
     );
   });
 
