@@ -40,11 +40,21 @@ export function buildPickReport(sport: Sport, season: number, week: number, even
 
 export type PickReport = NonNullable<ReturnType<typeof buildPickReport>>;
 
-/** Only this issue has reviewed editorial copy. Later weeks retain the established archive. */
+/** Only reviewed issues are published. Corrections that invalidate their story restore the archive. */
 export function publishedPickReport(sport: Sport, season: number, week: number, events: Event[], calls: Call[], pundits: Pundit[]) {
-  if (sport !== "ncaaf" || season !== 2026 || week !== 1) return null;
+  if (sport !== "ncaaf" || season !== 2026 || ![1, 2].includes(week)) return null;
   const report = buildPickReport(sport, season, week, events, calls, pundits);
   if (!report) return null;
+  if (week === 2) {
+    const winners = report.underdogs.picks.filter(p => p.call.status === "hit");
+    const michigan = "oklahoma-at-michigan-2026";
+    const expectedGames = [michigan, "ohio-state-at-texas-2026", "alabama-at-kentucky-2026", "arizona-state-at-texas-am-2026"];
+    if (report.games.length !== expectedGames.length || !expectedGames.every(slug => report.games.some(e => e.slug === slug))) return null;
+    if (winners.length !== 2 || !["howard", "portnoy"].every(id => winners.some(p => p.pundit.id === id && p.event.slug === michigan && p.call.side === "no"))) return null;
+    if (report.favorites.misses === 0 || report.favorites.picks.some(p => p.call.status === "miss" && p.event.slug !== michigan)) return null;
+    if (!report.underdogs.picks.some(p => p.pundit.id === "portnoy" && p.event.slug === "ohio-state-at-texas-2026" && p.call.status === "miss")) return null;
+    return report;
+  }
   // These are the narrative's factual premises; fall back rather than publish stale analysis after a correction.
   if (report.underdogs.hits !== 1 || report.favorites.misses !== 0 || report.dogGames.filter(g => g.hit).length !== 1) return null;
   const winner = report.underdogs.picks.find(p => p.call.status === "hit")!;
@@ -53,10 +63,22 @@ export function publishedPickReport(sport: Sport, season: number, week: number, 
 }
 
 export function pickReportMeta(report: PickReport) {
+  if (report.week === 2) return {
+    title: `College Football Week 2 Pick Results: Michigan Upset (${report.season})`,
+    description: `Our tracked Week 2 picks went ${report.hits}–${report.misses}: favorites ${report.favorites.hits}–${report.favorites.misses}, underdogs ${report.underdogs.hits}–${report.underdogs.misses}. Howard and Portnoy picked Michigan. See the receipts and results.`,
+    socialTitle: "College football Week 2: Howard and Portnoy called Michigan.",
+    socialDescription: `Michigan delivered both underdog hits and all ${report.favorites.misses} favorite misses. ${report.picks.length} tracked picks across ${report.games.length} games, with the receipts.`,
+  };
   return {
     title: `College Football Week ${report.week} Pick Results: Underdogs ${report.underdogs.hits}–${report.underdogs.misses} (${report.season})`,
     description: `Our tracked college football Week ${report.week} picks went ${report.hits}–${report.misses}: favorites ${report.favorites.hits}–${report.favorites.misses}, underdogs ${report.underdogs.hits}–${report.underdogs.misses}. See the ${report.season} results, who picked Tulsa and how we counted.`,
     socialTitle: `College football Week ${report.week}: ${report.underdogs.picks.length} underdog picks. One winner.`,
     socialDescription: `Favorites went ${report.favorites.hits}–${report.favorites.misses} in our tracked selections. Underdogs went ${report.underdogs.hits}–${report.underdogs.misses} across ${report.underdogs.games} games. Chip Patterson had the only underdog hit: Tulsa.`,
   };
+}
+
+export function pickReportFeature(report: PickReport) {
+  return report.week === 2
+    ? { kicker: "Against the tracked majority", headline: "Howard + Portnoy called Michigan.", context: `${report.favorites.misses} picked Oklahoma. Michigan won.` }
+    : { kicker: "Behind the record", headline: `${report.underdogs.picks.length} underdog picks. One winner.`, context: `${report.underdogs.games} different underdogs. Only Tulsa won.` };
 }

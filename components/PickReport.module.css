@@ -59,6 +59,7 @@
 .receiptIntro { padding-top: 14px; }
 .receiptIntro p { color: #bbb; font-size: 16px; line-height: 1.8; max-width: 360px; margin-top: 20px; }
 .receiptCard { border: 1px solid #35512e; background: #11190f; padding: 26px; }
+.receiptCard > div + div:has(.face) { margin-top: 26px; }
 .face { display: flex; align-items: center; gap: 14px; }
 .face > div { flex: 1; }
 .face strong { font-size: 17px; }
