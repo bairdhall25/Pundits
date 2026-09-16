@@ -157,11 +157,13 @@ export default async function TakePage({
         ))}
       </p>
       <Receipt take={take} calls={calls} />
-      <div className="story">
-        {story.paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
+      {story.paragraphs.length ? (
+        <div className="story">
+          {story.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      ) : null}
 
       <dl className="grade-sheet">
         {gradeSheet(take, calls, pundits).map((row) => (

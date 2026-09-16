@@ -70,18 +70,39 @@ export type PickStory = {
   paragraphs: string[];
 };
 
-function snapshotLine(event: Event, call: Call): string | null {
+const SNAPSHOT_DISCLAIMER =
+  "The displayed number is a dated event-level Kalshi snapshot, not live odds and not necessarily the market when the original prediction was spoken or first captured.";
+
+function hasDisplayedSnapshot(event: Event, call: Call): boolean {
   const game = gamePick(event, call);
-  const asOf = formatAsOf(event.sourcedAt);
-  const asOfBit = asOf ? ` ${asOf}` : "";
-  const disclaimer =
-    "That figure is a dated event-level Kalshi snapshot, not live odds and not necessarily the market when the original prediction was spoken or first captured.";
-  if (game && game.pickedCents != null) {
-    return `Displayed Kalshi snapshot: ${game.picked} ${formatCents(game.pickedCents)}${asOfBit}. ${disclaimer}`;
-  }
+  if (game) return game.pickedCents != null;
   const cents = call.side === "no" ? event.noCents : event.yesCents;
-  if (cents == null) return null;
-  return `Displayed Kalshi snapshot: ${formatCents(cents)}${asOfBit}. ${disclaimer}`;
+  return cents != null;
+}
+
+function snapshotSide(label: string, cents: number | null): string {
+  const odds = americanOdds(cents);
+  return odds ? `${label} ${formatCents(cents)} (≈ ${odds})` : `${label} ${formatCents(cents)}`;
+}
+
+/** Receipt tape: both sides, cents, and American odds. */
+export function receiptSnapshotTape(event: Event): string {
+  if (event.awayTeam && event.homeTeam) {
+    return `${snapshotSide(event.awayTeam, event.yesCents)} / ${snapshotSide(event.homeTeam, event.noCents)}`;
+  }
+  return `${snapshotSide(publicSideLabel(event, "yes"), event.yesCents)} / ${snapshotSide(publicSideLabel(event, "no"), event.noCents)}`;
+}
+
+function resultLine(take: MappedTake): string | null {
+  const { event, call } = take;
+  const graded = call.status === "hit" || call.status === "miss";
+  if (!graded) return null;
+  const game = gamePick(event, call);
+  if (game) {
+    const winner = call.status === "hit" ? game.picked : game.other;
+    return `Result: ${winner} won. This pick graded a ${call.status === "hit" ? "hit" : "miss"}.`;
+  }
+  return `Result: this take graded a ${call.status === "hit" ? "hit" : "miss"}.`;
 }
 
 function gamePick(event: Event, call: Call): {
@@ -208,52 +229,20 @@ export function pickStory(
   const headline = takeHeadline(pundit, event, call);
   const game = gamePick(event, call);
   const dog = underdogLine(event);
-  const when = formatGameWhen(event);
   const day = formatShortDate(call.sourceDate);
-  const snapshot = snapshotLine(event, call);
   const evidence = presentEvidence(call, pundit.name, day);
-  const isGame = Boolean(event.awayTeam && event.homeTeam);
-  const grading = winnerOnlyLine(call, isGame);
-
   const graded = call.status === "hit" || call.status === "miss";
-  const paragraphs: string[] = [];
-  if (graded && game) {
-    const winner = call.status === "hit" ? game.picked : game.other;
-    paragraphs.push(
-      `Result: ${winner} won. This pick graded a ${call.status === "hit" ? "hit" : "miss"}.`
-    );
-  } else if (graded) {
-    paragraphs.push(`Result: this take graded a ${call.status === "hit" ? "hit" : "miss"}.`);
-  }
-  if (game) {
-    const verb = graded ? "picked" : "picks";
-    paragraphs.push(`${pundit.name} ${verb} ${game.picked} over ${game.other}.`);
-  } else if (call.side === "no") {
-    paragraphs.push(`${negativeOutcome(pundit, event.title, graded)}.`);
-  } else {
-    const verb = graded ? "picked" : "picks";
-    paragraphs.push(`${pundit.name} ${verb} ${outcomePhrase(event.title)}.`);
-  }
 
-  paragraphs.push(evidence.evidenceLine);
-  if (evidence.locatorLine) {
-    paragraphs.push(`Source locator: ${evidence.locatorLine}.`);
-  }
+  const paragraphs: string[] = [];
   if (evidence.correctionNote) {
     paragraphs.push(evidence.correctionNote);
   }
   if (evidence.rationale) {
     paragraphs.push(`Why ${pundit.name} picked them: ${evidence.rationale}`);
   }
-  if (grading) paragraphs.push(grading);
-  if (snapshot) paragraphs.push(snapshot);
-  if (dog) paragraphs.push(dog);
-  if (when) {
-    paragraphs.push(
-      graded ? `The game was listed for ${when}.` : `The game is listed for ${when}.`
-    );
+  if (hasDisplayedSnapshot(event, call)) {
+    paragraphs.push(SNAPSHOT_DISCLAIMER);
   }
-
   const disagreement = receiptDisagreement(event, call, pundit, allCalls, pundits);
   if (disagreement) paragraphs.push(disagreement);
 
@@ -300,36 +289,6 @@ export function gradeSheet(take: MappedTake, calls: Call[], pundits: Pundit[]): 
     } else {
       rows.push({ label: "Result", value: `Graded a ${call.status}.` });
     }
-  }
-
-  if (game) {
-    const upset =
-      game.pickedCents != null && game.otherCents != null && game.pickedCents < game.otherCents;
-    const posture = upset
-      ? graded
-        ? "called the upset"
-        : "calling the upset"
-      : graded
-        ? "backed the snapshot favorite"
-        : "backing the snapshot favorite";
-    rows.push({ label: "The call", value: `${game.picked} over ${game.other} — ${posture}.` });
-  } else if (call.side === "no") {
-    rows.push({ label: "The call", value: `${negativeOutcome(pundit, event.title, graded)}.` });
-  } else {
-    rows.push({
-      label: "The call",
-      value: `${pundit.name} ${graded ? "picked" : "picks"} ${outcomePhrase(event.title)}.`,
-    });
-  }
-
-  const cents = game ? game.pickedCents : call.side === "no" ? event.noCents : event.yesCents;
-  if (cents != null) {
-    const odds = americanOdds(cents);
-    const asOf = formatAsOf(event.sourcedAt);
-    rows.push({
-      label: "Kalshi snapshot",
-      value: `${formatCents(cents)} displayed snapshot${odds ? ` (≈ ${odds})` : ""}${asOf ? `, ${asOf}` : ""}.`,
-    });
   }
 
   const grading = winnerOnlyLine(call, Boolean(game));
@@ -619,6 +578,21 @@ export function collectionPageJsonLd(
 export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: Pundit[] = []) {
   const url = canonicalUrl(takePath(take.event.slug, take.pundit.id));
   const story = pickStory(take, allCalls, pundits);
+  const day = formatShortDate(take.call.sourceDate);
+  const evidence = presentEvidence(take.call, take.pundit.name, day);
+  const grading = winnerOnlyLine(
+    take.call,
+    Boolean(take.event.awayTeam && take.event.homeTeam)
+  );
+  const articleBody = [
+    resultLine(take),
+    evidence.evidenceLine,
+    evidence.locatorLine ? `Source locator: ${evidence.locatorLine}.` : null,
+    ...story.paragraphs,
+    grading,
+  ]
+    .filter(Boolean)
+    .join(" ");
   const image = canonicalUrl(`/og/takes/${take.event.slug}--${take.pundit.id}.png`);
   const published = isoDay(firstPublishedAt(take.call));
   return {
@@ -630,7 +604,7 @@ export function articleJsonLd(take: MappedTake, allCalls: Call[] = [], pundits: 
     url,
     mainEntityOfPage: url,
     description: story.dek,
-    articleBody: story.paragraphs.join(" "),
+    articleBody,
     articleSection: take.event.sport === "nfl" ? "NFL" : "College Football",
     isAccessibleForFree: true,
     image: [image],

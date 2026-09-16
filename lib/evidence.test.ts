@@ -40,8 +40,9 @@ describe("evidence presentation", () => {
     expect(evidenceKindFor(take.call)).toBe("spoken-quote");
     expect(quotedEvidenceText(take.call)).toBe(`“${take.call.claim}”`);
     const story = pickStory(take);
-    expect(story.paragraphs.join(" ")).toContain("Kyle Brandt said:");
-    expect(story.paragraphs.join(" ")).toContain(take.call.claim);
+    expect(story.paragraphs.join(" ")).not.toContain("Kyle Brandt said:");
+    expect(articleJsonLd(take).articleBody).toContain("Kyle Brandt said:");
+    expect(articleJsonLd(take).articleBody).toContain(take.call.claim);
     expect(story.paragraphs.join(" ")).not.toContain("helmet props");
     expect(publicRationale(take.call)).toBeNull();
   });
@@ -56,8 +57,9 @@ describe("evidence presentation", () => {
     expect(evidence.correctionNote).toMatch(/evidence review/i);
     const story = pickStory(take);
     expect(story.paragraphs.join(" ")).not.toContain("Nick Saban said:");
-    expect(story.paragraphs.join(" ")).toContain("reported selection");
-    expect(story.paragraphs.join(" ")).toContain("LSU over Clemson");
+    expect(story.paragraphs.join(" ")).toMatch(/evidence review/i);
+    expect(articleJsonLd(take).articleBody).toContain("reported selection");
+    expect(articleJsonLd(take).articleBody).toContain("LSU over Clemson");
   });
 
   it("omits a rationale section for winner-only Finebaum LSU", () => {
@@ -126,8 +128,9 @@ describe("winner-only grading language", () => {
     expect(winnerOnlyLine(take.call, true)).toMatch(/straight-up winner/i);
     expect(winnerOnlyLine(take.call, true)).toMatch(/not whether a spread covered/i);
     const story = pickStory(take);
-    expect(story.paragraphs.join(" ")).toMatch(/straight-up winner/);
-    expect(story.paragraphs.join(" ")).not.toMatch(/covered the spread/i);
+    expect(story.paragraphs.join(" ")).not.toMatch(/straight-up winner/);
+    expect(articleJsonLd(take).articleBody).toMatch(/straight-up winner/);
+    expect(articleJsonLd(take).articleBody).not.toMatch(/covered the spread/i);
     expect(story.dek).not.toMatch(/\btook\b/);
   });
 });
