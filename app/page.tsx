@@ -18,7 +18,12 @@ import {
   loadEvents,
   loadPundits,
 } from "@/lib/data";
-import { getHomepageFeaturedGames, loadFeaturedPin } from "@/lib/featured";
+import {
+  getHomepageFeaturedGames,
+  getLeagueSlate,
+  leagueWhenLine,
+  loadFeaturedPin,
+} from "@/lib/featured";
 import { mappedTakes, pickStory, takePath } from "@/lib/seo";
 import { homeHeroLede } from "@/lib/share";
 import type { Event, Call, Pundit } from "@/lib/types";
@@ -203,7 +208,7 @@ export default function HomePage() {
         id="ncaaf"
         kicker="This week"
         label="College football"
-        when="Week 1 Sep 3–7 · Week 0 is final"
+        when={leagueWhenLine(getLeagueSlate("ncaaf", events, calls, pundits))}
         href="/ncaaf/"
         events={ncaafCards}
         compactEvents={featured.ncaafCompact}
@@ -216,7 +221,7 @@ export default function HomePage() {
         id="nfl"
         kicker="Up next"
         label="NFL"
-        when="Week 1 · Sep 9–14 · regular season, not preseason"
+        when={leagueWhenLine(getLeagueSlate("nfl", events, calls, pundits))}
         href="/nfl/"
         events={nflCards}
         compactEvents={featured.nflCompact}

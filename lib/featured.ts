@@ -523,6 +523,16 @@ export function getLeagueSlate(
   return { weeks, previous, unscheduled };
 }
 
+/** Live-week line for `/` and league slates. Do not hardcode a launch week. */
+export function leagueWhenLine(slate: LeagueSlate): string {
+  return [
+    ...slate.weeks.map((week) => week.label),
+    slate.previous ? `Week ${slate.previous.week} is final` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
 export function getWeekArchiveGames(
   sport: Sport,
   season: number,

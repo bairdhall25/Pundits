@@ -17,7 +17,7 @@ import {
   partitionFutures,
   seasonLabel,
 } from "@/lib/data";
-import { coverageTier, getLeagueSlate } from "@/lib/featured";
+import { coverageTier, getLeagueSlate, leagueWhenLine } from "@/lib/featured";
 import { leagueContent } from "@/lib/page-content";
 import { breadcrumbList, collectionPageJsonLd } from "@/lib/seo";
 import { pageMeta } from "@/lib/site";
@@ -80,12 +80,7 @@ export function SportSlate({ sport }: { sport: Sport }) {
     calls
   );
   const copy = COPY[sport];
-  const when = [
-    ...slate.weeks.map((week) => week.label),
-    slate.previous ? `Week ${slate.previous.week} is final` : null,
-  ]
-    .filter(Boolean)
-    .join(" · ");
+  const when = leagueWhenLine(slate);
 
   return (
     <main id="main" className="shell" data-page-type="league">

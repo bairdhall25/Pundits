@@ -6,6 +6,7 @@ import {
   getLeagueGames,
   getLeagueSlate,
   getWeekArchiveGames,
+  leagueWhenLine,
   loadFeaturedPin,
   parseKickoffMinutes,
   sortBySchedule,
@@ -843,5 +844,57 @@ describe("getLeagueSlate", () => {
         pundits
       ).map((event) => event.slug)
     ).toEqual([early.slug, late.slug]);
+  });
+});
+
+describe("leagueWhenLine", () => {
+  it("joins live week labels with the previous-week final tease", () => {
+    expect(
+      leagueWhenLine({
+        weeks: [
+          {
+            season: 2026,
+            week: 3,
+            label: "Week 3 · Sep 19",
+            open: [],
+            final: [],
+          },
+        ],
+        previous: {
+          season: 2026,
+          week: 2,
+          href: "/ncaaf/2026/week-2/",
+          line: "Week 2 is final →",
+        },
+        unscheduled: [],
+      })
+    ).toBe("Week 3 · Sep 19 · Week 2 is final");
+  });
+
+  it("omits the previous tease when the slate has no earlier week", () => {
+    expect(
+      leagueWhenLine({
+        weeks: [
+          {
+            season: 2026,
+            week: 1,
+            label: "Week 1 · Sep 9–14",
+            open: [],
+            final: [],
+          },
+        ],
+        previous: null,
+        unscheduled: [],
+      })
+    ).toBe("Week 1 · Sep 9–14");
+  });
+
+  it("matches the live college slate instead of a hardcoded launch week", () => {
+    const line = leagueWhenLine(
+      getLeagueSlate("ncaaf", loadEvents(), loadCalls(), loadPundits())
+    );
+    expect(line).toContain("Week 3");
+    expect(line).toContain("Week 2 is final");
+    expect(line).not.toMatch(/Week 1 Sep 3/);
   });
 });
