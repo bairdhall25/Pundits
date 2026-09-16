@@ -28,7 +28,7 @@ Each profile should answer:
 
 ## Current radar
 
-Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on a monthly checklist; this pass did not re-audit it.
+Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on a monthly checklist; this pass did not re-audit it. Predicted Sports NFL board went live 2026-09-16 (see profile).
 
 | Product | Category | Current threat | Partnership potential | Profile |
 |---|---|---:|---:|---|
@@ -37,7 +37,7 @@ Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on 
 | Tallysight | Expert-consensus Pulse + Kalshi creator network | Highest distribution overlap of "who experts are taking" | Possible; they already route to Kalshi | [Profile](./tallysight.md) |
 | Pickwatch | Commercial expert-consensus + betting tools | Medium-high as the scaled "hottest expert" product | Unlikely; different customer | [Profile](./pickwatch.md) |
 | BettingPros | Handicapper consensus + accuracy app | Medium; betting writers not TV pundits | Low | Radar only |
-| Predicted Sports | AI pick board that also grades some human experts | Medium on the public-ledger/SEO story | Possible if they want quote receipts | [Profile](./predicted-sports.md) |
+| Predicted Sports | AI pick board that also grades some human experts | Medium on public-ledger/SEO (NFL board live 2026-09-16; still not named-pundit+Kalshi) | Possible if they want quote receipts | [Profile](./predicted-sports.md) |
 | Freezing Cold Takes | X receipts account (misses only) | High for X attention; low as a substitute product | Possible sourcing, not a product merge | [Profile](./freezing-cold-takes.md) |
 | College Football Zone | CFB score-prediction cards on X | Medium for feed format / replies; low as a product | Reply surface, not a partner | [Profile](./college-fb-on-x.md) |
 | StreetCred | Editorial accountability Substack | Low | Methodology conversation only | [Profile](./streetcred.md) |
