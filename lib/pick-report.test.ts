@@ -37,6 +37,7 @@ describe("weekly pick report", () => {
     expect(publishedPickReport("ncaaf", 2026, 0, events, calls, pundits)).toBeNull();
     expect(publishedPickReport("nfl", 2026, 1, events, calls, pundits)).toBeNull();
     expect(publishedPickReport("ncaaf", 2026, 1, events, calls, pundits)).not.toBeNull();
+    expect(publishedPickReport("ncaaf", 2026, 3, events, calls, pundits)).toBeNull();
   });
   it("keeps SEO copy and the share image consistent with the report", () => {
     const r = build()!;
@@ -45,5 +46,27 @@ describe("weekly pick report", () => {
     expect(card.feature?.headline).toBe("12 underdog picks. One winner.");
     expect(card.metrics.map(m => m.value)).toEqual(["27–0", "1–11"]);
     expect(card.context).toContain("11 games");
+  });
+  it("publishes Week 2 with two Michigan selectors but only one winning underdog game", () => {
+    const r = publishedPickReport("ncaaf", 2026, 2, events, calls, pundits)!;
+    expect([r.picks.length, r.punditCount, r.games.length, r.hits, r.misses]).toEqual([32, 13, 4, 22, 10]);
+    expect([r.favorites.hits, r.favorites.misses, r.underdogs.hits, r.underdogs.misses]).toEqual([20, 6, 2, 4]);
+    expect(r.dogGames.filter(g => g.hit).map(g => g.label)).toEqual(["Michigan"]);
+    expect(r.favoriteGames.filter(g => g.hit)).toHaveLength(3);
+    expect(pickReportMeta(r).socialDescription).toContain("both underdog hits and all 6 favorite misses");
+    const card = resolveWeekSocialCard("ncaaf", 2026, 2, events, calls, pundits);
+    expect(card.feature?.headline).toBe("Howard + Portnoy called Michigan.");
+    expect(card.metrics.map(m => m.value)).toEqual(["20–6", "2–4"]);
+    expect(JSON.stringify([pickReportMeta(r), card])).not.toMatch(/Tulsa|Patterson|One winner/);
+  });
+  it("withdraws Week 2 editorial when a correction changes the Michigan story", () => {
+    const slug = "oklahoma-at-michigan-2026";
+    const correctedEvents = events.map(e => e.slug === slug ? { ...e, awayScore: 17, homeScore: 10 } : e);
+    const correctedCalls = calls.map(c => c.eventSlug === slug ? { ...c, status: c.side === "yes" ? "hit" as const : "miss" as const } : c);
+    expect(buildPickReport("ncaaf", 2026, 2, correctedEvents, correctedCalls, pundits)).not.toBeNull();
+    expect(publishedPickReport("ncaaf", 2026, 2, correctedEvents, correctedCalls, pundits)).toBeNull();
+    const withoutHoward = calls.filter(c => !(c.eventSlug === slug && c.punditId === "howard"));
+    expect(publishedPickReport("ncaaf", 2026, 2, events, withoutHoward, pundits)).toBeNull();
+    expect(publishedPickReport("ncaaf", 2026, 2, events, calls.map(c => c.eventSlug === slug ? { ...c, status: "pending" as const } : c), pundits)).toBeNull();
   });
 });

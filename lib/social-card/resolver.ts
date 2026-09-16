@@ -1,5 +1,5 @@
 import { gamesForWeek, takesOnTeam, weekRecord } from "../archive";
-import { publishedPickReport } from "../pick-report";
+import { publishedPickReport, pickReportFeature } from "../pick-report";
 import {
   callsForPundit,
   eventKind,
@@ -443,7 +443,7 @@ export function resolveWeekSocialCard(
       { label: "Underdog picks", value: `${report.underdogs.hits}–${report.underdogs.misses}` },
     ],
     people: null, groups: [],
-    feature: { kicker: "Behind the record", headline: `${report.underdogs.picks.length} underdog picks. One winner.`, context: `${report.underdogs.games} different underdogs. Only Tulsa won.` },
+    feature: pickReportFeature(report),
     resultBars: [
       { label: "Favorite picks", hits: report.favorites.hits, misses: report.favorites.misses },
       { label: "Underdog picks", hits: report.underdogs.hits, misses: report.underdogs.misses },

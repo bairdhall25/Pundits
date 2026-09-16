@@ -158,8 +158,8 @@ function TeamCard({ model }: { model: EditorialSocialCardModel }) {
 function WeekMetric({ metric }: { metric: SocialMetric }) {
   return (
     <div style={{ display: "flex", alignItems: "baseline", marginTop: 12 }}>
-      <div style={{ display: "flex", color: metricColor(metric), fontFamily: SOCIAL_FONTS.display, fontSize: 86, fontWeight: 700, lineHeight: 0.82 }}>{metric.value}</div>
-      <div style={{ display: "flex", marginLeft: 14, color: SOCIAL_COLORS.ink, fontFamily: SOCIAL_FONTS.display, fontSize: 31, fontWeight: 700, lineHeight: 1, textTransform: "uppercase" }}>{metric.label}</div>
+      <div style={{ display: "flex", flexShrink: 0, whiteSpace: "nowrap", color: metricColor(metric), fontFamily: SOCIAL_FONTS.display, fontSize: 86, fontWeight: 700, lineHeight: 0.82 }}>{metric.value}</div>
+      <div style={{ display: "flex", flex: 1, minWidth: 0, marginLeft: 14, color: SOCIAL_COLORS.ink, fontFamily: SOCIAL_FONTS.display, fontSize: 31, fontWeight: 700, lineHeight: 1, textTransform: "uppercase" }}>{metric.label}</div>
     </div>
   );
 }
