@@ -55,5 +55,6 @@
   { "id": "alabama", "name": "Alabama", "abbr": "ALA", "primary": "#9E1B32", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "kentucky", "name": "Kentucky", "abbr": "UK", "primary": "#0033A0", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "arizona-state", "name": "Arizona State", "abbr": "ASU", "primary": "#8C1D40", "ink": "#FFC627", "sport": "ncaaf" },
-  { "id": "texas-am", "name": "Texas A&M", "abbr": "TAMU", "primary": "#500000", "ink": "#FFFFFF", "sport": "ncaaf" }
+  { "id": "texas-am", "name": "Texas A&M", "abbr": "TAMU", "primary": "#500000", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "ole-miss", "name": "Ole Miss", "abbr": "MISS", "primary": "#00205B", "ink": "#CE1126", "sport": "ncaaf" }
 ]

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -188,6 +188,24 @@
       "sourceRun": "docs/runs/2026-09-14-audit.md",
       "owner": "Promote",
       "note": "Operator mint yes 2026-09-14. Minted north-carolina-at-clemson-2026 onHome=false with Kalshi freeze KXNCAAFGAME-26SEP19UNCCLEM. Mapped pate NO (Clemson home). Capsule omitted. rowId d3dba4fbe4635c87."
+    },
+    {
+      "id": "overflow-cowherd-lsu",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit ok-unmapped Cowherd LSU SU (LSU at Ole Miss 2026).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-09-15-audit.md",
+      "owner": "Promote",
+      "note": "Operator mint yes 2026-09-15. Minted lsu-at-ole-miss-2026 onHome=false with Kalshi freeze KXNCAAFGAME-26SEP19LSUMISS. Mapped cowherd YES (LSU away). Capsule copied. rowId e6917d900ad741ae."
+    },
+    {
+      "id": "candidate-greg-rosenthal",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Greg Rosenthal Bills SU (Lions at Bills TNF). Candidate Audit has not run. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-15c-weekday-night-shows.md",
+      "owner": "Audit",
+      "note": "Night Shows 2026-09-15. Association via NFL Daily / Hot Fresh Takes (GMFB factory). photoUrl=needed. Overflow unmapped Lions at Bills. Bets -4.5 stays out of JSON. 2026-09-15-audit.md covered the cowherd Intake row only."
     }
   ]
 }

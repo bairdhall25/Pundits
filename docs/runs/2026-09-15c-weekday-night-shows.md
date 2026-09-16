@@ -88,7 +88,7 @@ none
 | candidates | 1 this pass (greg-rosenthal Bills); day=2 with morning liam-blutman |
 | bets | 1 (Bills −4.5 cover) |
 | approved hunt hits | 0 (slate empty) |
-| audit | pending |
-| promoted | false |
+| audit | ok |
+| promoted | true |
 
 ready to audit **1 hard row · 2 candidates** (day). Did not touch `data/`.

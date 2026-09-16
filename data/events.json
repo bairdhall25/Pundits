@@ -985,6 +985,29 @@
       "awayTeamId": "north-carolina",
       "homeTeamId": "clemson",
       "week": 3
+    },
+    {
+      "slug": "lsu-at-ole-miss-2026",
+      "kind": "game",
+      "title": "LSU at Ole Miss",
+      "contractName": "LSU vs Ole Miss — moneyline",
+      "awayTeam": "LSU",
+      "homeTeam": "Ole Miss",
+      "kickoff": "Sat 7:30 ET",
+      "network": "ABC",
+      "yesCents": 59,
+      "noCents": 42,
+      "ticker": "KXNCAAFGAME-26SEP19LSUMISS",
+      "sourceUrl": "https://kalshi.com/markets/kxncaafgame/college-football-game/kxncaafgame-26sep19lsumiss",
+      "sourcedAt": "2026-09-16",
+      "onHome": false,
+      "sport": "ncaaf",
+      "homeRank": 2,
+      "season": 2026,
+      "kickoffDate": "2026-09-19",
+      "awayTeamId": "lsu",
+      "homeTeamId": "ole-miss",
+      "week": 3
     }
   ]
 }

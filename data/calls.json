@@ -2193,5 +2193,21 @@
     "eventSlug": "north-carolina-at-clemson-2026",
     "side": "no",
     "firstPublishedAt": "2026-09-14"
+  },
+  {
+    "id": "cowherd-lsu-at-ole-miss-20260915",
+    "punditId": "cowherd",
+    "claim": "Well, LSU's going to win that game.",
+    "source": "The Herd",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000789850583",
+    "sourceDate": "2026-09-15",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "pending",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-16",
+    "reasoning": "Coaching advantage for LSU with Lane on the other sideline; player advantage — Ole Miss not showing anything after watching their last game's first half."
   }
 ]

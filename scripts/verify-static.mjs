@@ -40,7 +40,8 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
-assert.match(home, /Broncos at Chiefs/);
+assert.match(home, /North Carolina at Clemson/);
+assert.match(home, /LSU at Ole Miss/);
 assert.doesNotMatch(home, /Final · 49ers 27/);
 assert.match(home, /event-title-link/);
 assert.match(home, /Most on record/);
