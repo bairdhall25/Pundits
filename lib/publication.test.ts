@@ -21,8 +21,9 @@ describe("publication stamps", () => {
     const json = articleJsonLd(take);
     expect(json).not.toHaveProperty("datePublished");
     expect(json.dateModified).toBe("2026-09-06");
-    expect(pickStory(take).paragraphs.join(" ")).toContain("Jun 23, 2026");
-    expect(pickStory(take).paragraphs.join(" ")).toContain("as of Sep 3, 2026");
+    expect(pickStory(take).paragraphs.join(" ")).not.toContain("Jun 23, 2026");
+    expect(articleJsonLd(take).articleBody).toContain("Jun 23, 2026");
+    expect(pickStory(take).paragraphs.join(" ")).toContain("dated event-level Kalshi snapshot");
   });
 
   it("keeps a grade from minting a new publication", () => {
@@ -65,7 +66,7 @@ describe("publication stamps", () => {
     expect(take!.event.sourcedAt).toBe("2026-09-08");
     expect(take!.call.sourceDate < take!.event.sourcedAt!).toBe(true);
     const story = pickStory(take!);
-    expect(story.paragraphs.join(" ")).toContain("as of Sep 8, 2026");
+    expect(story.paragraphs.join(" ")).not.toContain("as of Sep 8, 2026");
     expect(story.paragraphs.join(" ")).toContain("dated event-level Kalshi snapshot");
     expect(story.dek).not.toMatch(/\btook\b/);
   });

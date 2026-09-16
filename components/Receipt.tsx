@@ -4,15 +4,8 @@ import { TrackAnchor } from "@/components/TrackLink";
 import { sourceOpenParams } from "@/lib/analytics";
 import { finalScoreLine } from "@/lib/data";
 import { presentEvidence } from "@/lib/evidence";
-import {
-  formatAsOf,
-  formatCents,
-  formatShortDate,
-  statusLabel,
-  verdictClass,
-} from "@/lib/format";
-import { publicSideLabel } from "@/lib/public-side";
-import type { MappedTake } from "@/lib/seo";
+import { formatAsOf, formatShortDate, statusLabel, verdictClass } from "@/lib/format";
+import { receiptSnapshotTape, type MappedTake } from "@/lib/seo";
 import type { Call } from "@/lib/types";
 
 export function Receipt({ take, calls }: { take: MappedTake; calls: Call[] }) {
@@ -22,10 +15,7 @@ export function Receipt({ take, calls }: { take: MappedTake; calls: Call[] }) {
   const gradedDay = formatShortDate(call.gradedAt);
   const asOf = formatAsOf(event.sourcedAt);
   const score = finalScoreLine(event, calls);
-  const game = Boolean(event.awayTeam && event.homeTeam);
-  const snapshot = game
-    ? `${event.awayTeam} ${formatCents(event.yesCents)} / ${event.homeTeam} ${formatCents(event.noCents)}`
-    : `${publicSideLabel(event, "yes")} ${formatCents(event.yesCents)} / ${publicSideLabel(event, "no")} ${formatCents(event.noCents)}`;
+  const snapshot = receiptSnapshotTape(event);
   const evidence = presentEvidence(call, pundit.name, day);
   const ClaimTag = evidence.isQuotedSpeech ? "blockquote" : "p";
 

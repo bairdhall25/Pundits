@@ -7,6 +7,7 @@ import {
   mappedTakes,
   pickLede,
   pickStory,
+  receiptSnapshotTape,
   sideChip,
   takeHeadline,
   takeMetaTitle,
@@ -130,7 +131,8 @@ describe("mapped takes", () => {
       const h = takeHeadline(take.pundit, take.event, take.call);
       expect(h, take.call.id).toMatch(/ pick(?:s|ed) .+ over /);
       const story = pickStory(take);
-      expect(story.paragraphs.join(" "), take.call.id).toContain(take.call.claim);
+      expect(articleJsonLd(take).articleBody, take.call.id).toContain(take.call.claim);
+      expect(story.headline, take.call.id).toMatch(/ pick(?:s|ed) .+ over /);
     }
   });
 });
@@ -141,19 +143,11 @@ describe("grade sheet", () => {
       (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "patterson"
     )!;
     const rows = gradeSheet(take, loadCalls(), loadPundits());
-    expect(rows.map((r) => r.label)).toEqual([
-      "Result",
-      "The call",
-      "Kalshi snapshot",
-      "Grading",
-      "Record",
-    ]);
+    expect(rows.map((r) => r.label)).toEqual(["Result", "Grading", "Record"]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
-    expect(rows[1].value).toBe("NC State over Virginia — called the upset.");
-    expect(rows[2].value).toBe("34¢ displayed snapshot (≈ +194), as of Aug 28, 2026.");
-    expect(rows[3].value).toMatch(/straight-up winner/);
-    expect(rows[4].value).toContain("3–2");
-    expect(rows[4]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
+    expect(rows[1].value).toMatch(/straight-up winner/);
+    expect(rows[2].value).toContain("3–2");
+    expect(rows[2]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
   });
 
   it("keeps open picks and futures on the sheet without a result row", () => {
@@ -173,7 +167,8 @@ describe("grade sheet", () => {
     const take = mappedTakes([call], [event], [pundit])[0];
     const rows = gradeSheet(take, [call], [pundit]);
     expect(rows[0].label).not.toBe("Result");
-    expect(rows.map((r) => r.label)).toContain("Kalshi snapshot");
+    expect(rows.map((r) => r.label)).not.toContain("The call");
+    expect(rows.map((r) => r.label)).not.toContain("Kalshi snapshot");
     expect(rows.map((r) => r.label)).toContain("Record");
   });
 
@@ -234,7 +229,10 @@ describe("pick stories", () => {
       "Paul Finebaum picked TCU over North Carolina — and missed (North Carolina won)"
     );
     expect(story.dek).toContain("North Carolina as the underdog at 26¢");
-    expect(story.paragraphs.join(" ")).toContain("mass chaos in Chapel Hill");
+    expect(story.paragraphs.join(" ")).not.toContain("mass chaos in Chapel Hill");
+    expect(articleJsonLd(take!, loadCalls(), loadPundits()).articleBody).toContain(
+      "mass chaos in Chapel Hill"
+    );
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
 
@@ -249,7 +247,10 @@ describe("pick stories", () => {
     );
     expect(story.dek).toContain("Result: Virginia won — this pick missed");
     expect(story.dek).toContain("NC State as the underdog at 34¢");
-    expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
+    expect(story.paragraphs.join(" ")).not.toContain("give me the Wolfpack");
+    expect(articleJsonLd(take!, loadCalls(), loadPundits()).articleBody).toContain(
+      "give me the Wolfpack"
+    );
     expect(story.paragraphs.join(" ")).toContain(
       "Chip Patterson also picked NC State"
     );
@@ -266,7 +267,10 @@ describe("pick stories", () => {
       "Chip Patterson picked North Carolina over TCU — and hit"
     );
     expect(story.dek).toContain("North Carolina as the underdog at 26¢");
-    expect(story.paragraphs.join(" ")).toContain("Tarheels to come back with the win");
+    expect(story.paragraphs.join(" ")).not.toContain("Tarheels to come back with the win");
+    expect(articleJsonLd(take!, loadCalls(), loadPundits()).articleBody).toContain(
+      "Tarheels to come back with the win"
+    );
     expect(story.paragraphs.join(" ")).not.toMatch(/Wolfpack|Kanell/i);
   });
 
@@ -547,15 +551,97 @@ describe("graded take headlines", () => {
   });
 
   it("leads the graded story with the result", () => {
-    const story = pickStory({
+    const take = {
       pundit,
       event: game,
       call: call({ side: "no", status: "hit", eventSlug: game.slug }),
-    });
-    expect(story.paragraphs[0]).toContain("TCU won");
-    expect(story.paragraphs[0]).toContain("hit");
+    };
+    const story = pickStory(take);
+    const json = articleJsonLd(take);
+    expect(json.articleBody).toContain("TCU won");
+    expect(json.articleBody).toContain("hit");
     expect(story.paragraphs.join(" ")).not.toMatch(/is backing the (market|snapshot) favorite/);
-    expect(story.paragraphs.join(" ")).toContain("Paul Finebaum picked TCU over North Carolina");
+    expect(story.paragraphs.join(" ")).not.toContain("Paul Finebaum picked TCU over North Carolina");
     expect(story.dek).not.toMatch(/\btook\b/);
+  });
+});
+
+describe("take page copy is additive", () => {
+  it("does not restate the headline, quote, price, or kickoff in story paragraphs", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "lsu-at-ole-miss-2026" && row.pundit.id === "cowherd"
+    );
+    expect(take).toBeTruthy();
+    const body = pickStory(take!, loadCalls(), loadPundits()).paragraphs.join(" ");
+    expect(body).not.toContain("Colin Cowherd picks LSU over Ole Miss.");
+    expect(body).not.toContain("Colin Cowherd said:");
+    expect(body).not.toContain("Displayed Kalshi snapshot");
+    expect(body).not.toContain("The snapshot had");
+    expect(body).not.toContain("The game is listed for");
+    expect(body).not.toMatch(/straight-up winner/);
+    expect(body).not.toMatch(/59¢/);
+    expect(body).toContain("Why Colin Cowherd picked them");
+    expect(body).toContain("dated event-level Kalshi snapshot");
+  });
+
+  it("keeps disagreement on the page and moves the quote into articleBody", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "ncsu-at-uva-2026" && row.pundit.id === "kanell"
+    );
+    expect(take).toBeTruthy();
+    const story = pickStory(take!, loadCalls(), loadPundits());
+    const body = story.paragraphs.join(" ");
+    expect(body).toContain("Chip Patterson also picked NC State");
+    expect(body).not.toContain("give me the Wolfpack");
+    expect(articleJsonLd(take!, loadCalls(), loadPundits()).articleBody).toContain(
+      "give me the Wolfpack"
+    );
+  });
+
+  it("keeps result, grading, and record on the grade sheet without restating the call or price", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "ncsu-at-uva-2026" && row.pundit.id === "patterson"
+    )!;
+    const rows = gradeSheet(take, loadCalls(), loadPundits());
+    expect(rows.map((row) => row.label)).toEqual(["Result", "Grading", "Record"]);
+    expect(rows[0].value).toBe("Virginia won 34–8.");
+    expect(rows[1].value).toMatch(/straight-up winner/);
+    expect(rows[2].value).toContain("3–2");
+  });
+
+  it("puts the graded result in articleBody instead of restating the pick in paragraphs", () => {
+    const pundit = fixturePundit("finebaum", { name: "Paul Finebaum" });
+    const event = fixtureGame("unc-vs-tcu-2026", {
+      title: "North Carolina vs TCU",
+      awayTeam: "North Carolina",
+      homeTeam: "TCU",
+      yesCents: 26,
+      noCents: 75,
+    });
+    const take = {
+      pundit,
+      event,
+      call: fixturePick({
+        punditId: pundit.id,
+        eventSlug: event.slug,
+        side: "no",
+        status: "hit",
+        claim: "TCU handles this.",
+      }),
+    };
+    const story = pickStory(take);
+    const body = story.paragraphs.join(" ");
+    expect(body).not.toContain("Paul Finebaum picked TCU over North Carolina");
+    expect(body).not.toContain("TCU won");
+    expect(articleJsonLd(take).articleBody).toContain("TCU won");
+    expect(articleJsonLd(take).articleBody).toContain("TCU handles this.");
+    expect(story.dek).not.toMatch(/\btook\b/);
+  });
+
+  it("puts American odds on the receipt tape instead of a second price row", () => {
+    const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
+      (row) => row.event.slug === "lsu-at-ole-miss-2026" && row.pundit.id === "cowherd"
+    )!;
+    expect(receiptSnapshotTape(take.event)).toBe("LSU 59¢ (≈ -144) / Ole Miss 42¢ (≈ +138)");
   });
 });
