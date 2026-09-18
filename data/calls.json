@@ -2263,5 +2263,113 @@
     "sourceLocator": {
       "timestamp": "1:31:48"
     }
+  },
+  {
+    "id": "nick-wright-lions-at-bills-20260917",
+    "punditId": "nick-wright",
+    "claim": "So I think the Bills, the Bills should be able to put up a bunch of points and they should be able to get enough stops as good as Gibbs and the Lions receiving core is enough stops to win this game relatively comfortably.",
+    "source": "What's Wright",
+    "sourceUrl": "https://www.youtube.com/watch?v=D5tHYADPVM0",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Bills",
+    "paysOn": "Lions at Bills (Week 2)",
+    "status": "pending",
+    "eventSlug": "lions-at-bills-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "36:27"
+    }
+  },
+  {
+    "id": "mcafee-lions-at-bills-20260917",
+    "punditId": "mcafee",
+    "claim": "All of us on this particular program are riding with the Buffalo Bills minus 5 and a half at home.",
+    "source": "Pat McAfee Show",
+    "sourceUrl": "https://www.youtube.com/watch?v=sph-Ri7vsrI",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Bills",
+    "paysOn": "Lions at Bills (Week 2)",
+    "status": "pending",
+    "eventSlug": "lions-at-bills-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "3:12:29"
+    }
+  },
+  {
+    "id": "hawk-lions-at-bills-20260917",
+    "punditId": "hawk",
+    "claim": "But with that being said, give me the Buffalo Bills minus five and a half at home.",
+    "source": "Pat McAfee Show",
+    "sourceUrl": "https://www.youtube.com/watch?v=sph-Ri7vsrI",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Bills",
+    "paysOn": "Lions at Bills (Week 2)",
+    "status": "pending",
+    "eventSlug": "lions-at-bills-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "3:07:42"
+    }
+  },
+  {
+    "id": "simms-lions-at-bills-20260917",
+    "punditId": "simms",
+    "claim": "I'm going to go with Buffalo winning the game, but I'm not going to have them covering the spread. I think that's just too much for me. I'm going to go 31-27 Buffalo.",
+    "source": "Simms Unbuttoned",
+    "sourceUrl": "https://www.youtube.com/watch?v=97GLiHzVueE",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Bills",
+    "paysOn": "Lions at Bills (Week 2)",
+    "status": "pending",
+    "eventSlug": "lions-at-bills-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "57:10"
+    }
+  },
+  {
+    "id": "elliott-smu-at-louisville-20260917",
+    "punditId": "elliott",
+    "claim": "I'm going with the cards.",
+    "source": "Cover 3 LOCKS",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Louisville",
+    "paysOn": "SMU at Louisville (Week 3)",
+    "status": "pending",
+    "eventSlug": "smu-at-louisville-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "29:04"
+    }
+  },
+  {
+    "id": "pate-smu-at-louisville-20260917",
+    "punditId": "pate",
+    "claim": "That's my pick. I'm taking Louisville to win. I'll take Louisville to cover.",
+    "source": "Josh Pate CFB",
+    "sourceUrl": "https://www.youtube.com/watch?v=eT4wbI7oRHA",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Louisville",
+    "paysOn": "SMU at Louisville (Week 3)",
+    "status": "pending",
+    "eventSlug": "smu-at-louisville-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "14:38"
+    }
   }
 ]

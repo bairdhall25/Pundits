@@ -394,8 +394,9 @@ assert.match(weekNfl, /49ers vs Rams/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 1: who called it/);
-assert.match(nflSlate, /Week 1 archive/);
+assert.match(nflSlate, /NFL Week 2: who picked whom/);
+assert.match(nflSlate, /Week 2 archive/);
+assert.match(nflSlate, /href="\/nfl\/2026\/week-2\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
 assert.doesNotMatch(nflSlate, /best experts/i);
 assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);

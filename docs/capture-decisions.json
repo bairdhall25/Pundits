@@ -231,19 +231,19 @@
       "id": "overflow-lions-at-bills",
       "kind": "overflow-mint",
       "needed": "Operator mint-or-discard for unpublished Lions at Bills (2026). Audit-ok unmapped: nick-wright, mcafee, simms, hawk (already rostered), chuck-pagano, connor-rogers. Do not restage greg-rosenthal.",
-      "status": "pending",
+      "status": "closed",
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "owner": "Promote",
-      "note": "TNF 2026-09-17. Bills home would map NO. Bets −5.5 / over stay out of JSON. hawk is already rostered; do not mint aj-hawk as a second id."
+      "note": "Operator mint yes 2026-09-18. Minted lions-at-bills-2026 onHome=false with Kalshi freeze KXNFLGAME-26SEP17DETBUF (in-play last 7/94). Mapped nick-wright, mcafee, hawk, simms NO. Pagano/Rogers not rostered. Bets out. Did not grade — Kalshi still active."
     },
     {
       "id": "overflow-pate-louisville",
       "kind": "overflow-mint",
       "needed": "Operator mint-or-discard for Audit ok-unmapped-no-reasoning Pate Louisville SU (SMU at Louisville 2026, rowId 01e4061f0ad96794). Same unpublished matchup as overflow-blutman-louisville.",
-      "status": "pending",
+      "status": "closed",
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "owner": "Promote",
-      "note": "New Pate SU. Not a restage of pate Clemson/Ole Miss/Auburn/Miss St/Texas Tech. Louisville home would map NO. Cover −3 is Bets only."
+      "note": "Operator mint yes 2026-09-18. Minted smu-at-louisville-2026 onHome=false with Kalshi freeze KXNCAAFGAME-26SEP19SMULOU 47/53. Mapped pate + elliott NO. Capsules omitted. Did not roster Liam. Cover −3 Bets out."
     }
   ]
 }

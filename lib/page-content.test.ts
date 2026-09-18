@@ -293,10 +293,11 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 1: who called it");
-    expect(content.currentWeek?.week).toBe(1);
-    expect(content.currentWeek?.href).toBe("/nfl/2026/week-1/");
-    expect(content.lede).toContain("Week 1");
+    expect(content.title).toBe("NFL Week 2: who picked whom");
+    expect(content.currentWeek?.week).toBe(2);
+    expect(content.currentWeek?.href).toBe("/nfl/2026/week-2/");
+    expect(content.lede).toContain("Week 2");
+    expect(content.previous?.href).toBe("/nfl/2026/week-1/");
     expect(content.lede).toMatch(/archive is the permanent record/);
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
