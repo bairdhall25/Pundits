@@ -243,7 +243,54 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "owner": "Promote",
-      "note": "New Pate SU. Not a restage of pate Clemson/Ole Miss/Auburn/Miss St/Texas Tech. Louisville home would map NO. Cover −3 is Bets only."
+      "note": "New Pate SU. Not a restage of pate Clemson/Ole Miss/Auburn/Miss St/Texas Tech. Louisville home would map NO. Cover −3 is Bets only. 2026-09-18 also: portnoy rowId f8011193f8fa73a7 (ok-unmapped-no-reasoning) and rico-bosco rowId 005f1ab567862087 (Candidate; do not roster)."
+    },
+    {
+      "id": "candidate-rico-bosco",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Rico Bosco Pick Em SUs (Audit ok-unmapped / ok-unmapped-no-reasoning / ok-no-reasoning, association). add-list seed is rico / Return_Of_RB — do not mint a second id. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
+      "proposalFile": "docs/runs/2026-09-18-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-18T17:52:00Z. photoUrl=needed. Mapped LSU YES rowId d4e363f3532b26d8 waits on roster. Overflow ASU London / Louisville / Florida wait on roster plus mint. Do not mint unpublished matchups this pass."
+    },
+    {
+      "id": "candidate-isaiah-stanback",
+      "kind": "roster-candidate",
+      "needed": "Rejected current evidence: staged Chicago SU is Kyle Brandt, not Isaiah Stanback. Restage a first-person Stanback winner and re-audit before any roster review.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
+      "proposalFile": "docs/runs/2026-09-18-candidate-proposals.json",
+      "owner": "Scout",
+      "note": "Audit fail rowId 8528fdc420ebfd94 at 2026-09-18T17:52:00Z. GMFB co-host is association-eligible. Do not invent a brandt replacement. Do not roster from this row."
+    },
+    {
+      "id": "overflow-middlekauff-pittsburgh",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit ok-unmapped Middlekauff Pittsburgh SU (Pittsburgh at New England 2026, rowId e608e5c14fcb99e0).",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
+      "owner": "Promote",
+      "note": "3 & Out Fri. Pittsburgh away would map YES. john-middlekauff is already rostered. Do not invent a slug here. NE not cover −5.5 stays Bets."
+    },
+    {
+      "id": "overflow-bigcat-asu-london",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit ok-unmapped Big Cat Arizona State SU (Kansas vs Arizona State London 2026, rowId 998ad1c1c193ce2d).",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
+      "owner": "Promote",
+      "note": "Pick Em Week 3. Neutral London site — do not invent a slug here. Portnoy Kansas +points is ATS only. rico-bosco ASU is Candidate (rowId cd5eff6587c74795)."
+    },
+    {
+      "id": "overflow-portnoy-auburn",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for Audit ok-unmapped Portnoy Auburn SU (Florida at Auburn 2026, rowId 9f2b60ada561edfd).",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
+      "owner": "Promote",
+      "note": "Pick Em Week 3. Auburn home would map NO. Not a restage of pate Auburn. rico-bosco Florida (rowId 09991ff3c1382ad6) is Candidate on the other side. Do not invent a slug here."
     }
   ]
 }

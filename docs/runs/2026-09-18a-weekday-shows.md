@@ -105,7 +105,7 @@ none
 | candidates | 5 |
 | bets | 8 |
 | approved hunt hits | 0 (slate empty; factory overflow) |
-| audit | pending |
+| audit | fail |
 | promoted | false |
 
-ready to audit **7 hard rows · 5 candidates**. Did not touch `data/`. Empty approved slate. Coordinator still owes next 2–4.
+Day-level `audit=fail` from Big Cat Texas Tech withdrawal; mapped `bigcat` LSU YES and `portnoy` Ole Miss NO remain ready to promote. Did not touch `data/`. Empty approved slate. Coordinator still owes next 2–4.

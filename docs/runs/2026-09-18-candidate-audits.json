@@ -1,0 +1,47 @@
+[
+  {
+    "proposedId": "rico-bosco",
+    "rowId": "cd5eff6587c74795",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T17:52:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named co-host of Barstool Pick Em, a roster factory. Independent national CFB voice, not a team analyst. add-list seed is rico / Return_Of_RB; do not mint a second id.",
+    "note": "YouTube ASR on N_FQfjwVVhk at 51:08–51:13 preserves first-person “I like Arizona State here and the over.” Overflow Kansas vs Arizona State London (2026). Capsule omits: “likes ASU + over in London” restates the pick. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "rico-bosco",
+    "rowId": "005f1ab567862087",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T17:52:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named co-host of Barstool Pick Em, a roster factory. Independent national CFB voice, not a team analyst. add-list seed is rico / Return_Of_RB; do not mint a second id.",
+    "note": "YouTube ASR at 1:02:25–1:02:26 preserves first-person “I really, really, really like Louisville here. I'm going to buy the hype.” Overflow SMU at Louisville (2026); Louisville home would be NO if minted. Capsule omits: restage routing. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "rico-bosco",
+    "rowId": "09991ff3c1382ad6",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-18T17:52:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named co-host of Barstool Pick Em, a roster factory. Independent national CFB voice, not a team analyst. add-list seed is rico / Return_Of_RB; do not mint a second id.",
+    "note": "YouTube ASR at 1:03:21–1:03:51 preserves one continuous Florida winner plus −2.5. Favorite laying points is SU. Overflow Florida at Auburn (2026); Florida away would be YES if minted. USF step-up / Florida-better capsule is supported. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "rico-bosco",
+    "rowId": "d4e363f3532b26d8",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-09-18T17:52:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named co-host of Barstool Pick Em, a roster factory. Independent national CFB voice, not a team analyst. add-list seed is rico / Return_Of_RB; do not mint a second id.",
+    "note": "YouTube ASR at 1:08:15 preserves first-person “I'm taking LSU” after the host cue “Okay. Rico over.” LSU is away so YES; event exists; not a restage of cowherd. Capsule omits: “High on LSU” restates the pick and “Does not restage cowherd” is routing. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "isaiah-stanback",
+    "rowId": "8528fdc420ebfd94",
+    "verdict": "fail",
+    "auditedAt": "2026-09-18T17:52:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named GMFB co-host on a roster factory (episode open: Jamie Erdahl, Manti Te'o, Isaiah Stanback in Los Angeles). Independent national NFL voice, not a team analyst. This row's pick is not his.",
+    "note": "Omny published transcript of Apple i=1000790532511 at 31:47 is Kyle Brandt (Speaker 1 / “Mr. Bills”): “I think Chicago will win because they're more talented.” Staged “because I'm more talented” is not on the page. Isaiah is cued later at 32:42 for Bengals–Texans and does not give a Bears SU. Speaker mismatch plus inexact quote. Overflow Minnesota at Chicago (2026) is not a missing-slug fail. photoUrl=needed. Do not invent a brandt replacement. Do not roster from this row."
+  }
+]
