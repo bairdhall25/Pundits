@@ -2263,5 +2263,41 @@
     "sourceLocator": {
       "timestamp": "1:31:48"
     }
+  },
+  {
+    "id": "bigcat-lsu-at-ole-miss-20260915",
+    "punditId": "bigcat",
+    "claim": "I'm gonna take LSU in this game.",
+    "source": "Barstool Pick Em Week 3",
+    "sourceUrl": "https://www.youtube.com/watch?v=N_FQfjwVVhk",
+    "sourceDate": "2026-09-15",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "pending",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "1:05:16–1:05:19"
+    }
+  },
+  {
+    "id": "portnoy-lsu-at-ole-miss-20260915",
+    "punditId": "portnoy",
+    "claim": "I think Miss finds a way to win this game. So I'm taking Old Miss.",
+    "source": "Barstool Pick Em Week 3",
+    "sourceUrl": "https://www.youtube.com/watch?v=N_FQfjwVVhk",
+    "sourceDate": "2026-09-15",
+    "kind": "hard",
+    "subject": "Ole Miss",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "pending",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "1:08:02–1:08:04"
+    }
   }
 ]

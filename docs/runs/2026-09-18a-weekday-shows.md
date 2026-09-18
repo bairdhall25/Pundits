@@ -106,6 +106,6 @@ none
 | bets | 8 |
 | approved hunt hits | 0 (slate empty; factory overflow) |
 | audit | fail |
-| promoted | false |
+| promoted | true |
 
-Day-level `audit=fail` from Big Cat Texas Tech withdrawal; mapped `bigcat` LSU YES and `portnoy` Ole Miss NO remain ready to promote. Did not touch `data/`. Empty approved slate. Coordinator still owes next 2–4.
+Day-level `audit=fail` from Big Cat Texas Tech withdrawal did not block mapped `bigcat` LSU YES and `portnoy` Ole Miss NO (promoted). Overflow unmapped, Candidates, and Bets left out. Empty approved slate. Coordinator still owes next 2–4.
