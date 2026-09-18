@@ -16,5 +16,50 @@
     "eligibility": "uncertain",
     "eligibilityReason": "Named St. Jude Cover 3 Tailgate charity-auction guest and longtime chat member on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a fan-guest appearance counts as association.",
     "note": "YouTube ASR on hclgQtj0YH8 at 52:12 preserves first-person “So give me Bama” after he fades Florida State. Overflow Florida State at Alabama (2026). Angry / writing-on-the-wall capsule is supported. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "aj-hawk",
+    "rowId": "cdc8bd4d58c753e1",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T01:26:54Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named Pat McAfee Show regular and already rostered as hawk. Independent national NFL voice, not a team analyst. Do not create a second id.",
+    "note": "YouTube ASR on sph-Ri7vsrI at 3:07:42–3:07:45 preserves first-person Bills −5.5. Overflow Lions at Bills (2026). Capsule omits: three factors listed. Already live at /pundits/hawk/. Do not roster again."
+  },
+  {
+    "proposedId": "chuck-pagano",
+    "rowId": "055883b780845747",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T01:26:54Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named guest coach on The Pat McAfee Show's recurring What the Chuck segment, a roster factory. Independent analysis guest, not a team-show host.",
+    "note": "YouTube ASR on sph-Ri7vsrI at 3:11:36 preserves the final Bills −5.5 after the costume-change fake Lions card. Overflow Lions at Bills (2026). Capsule omits: bit/routing copy. NEW TNF identity, not Rams row 786bcffde5c8bb1d. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "97c0bf31b96bd394",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T01:26:54Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost of Chris Simms Unbuttoned / NFL on NBC. Independent national NFL voice, not a team analyst.",
+    "note": "YouTube ASR on 97GLiHzVueE at 57:44–57:47 preserves first-person Bills winner by a touchdown. Overflow Lions at Bills (2026). Capsule omits: cover-routing restatement. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "liam-blutman",
+    "rowId": "e6070263121c13d8",
+    "verdict": "fail",
+    "auditedAt": "2026-09-18T01:26:54Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst.",
+    "note": "YouTube QdvGRQpvLIU captions are disabled; timedtext empty. Staged Georgia −24.5 is not on the page. Whisper-only fails closed. NEW Week 3 identity, not Louisville 9127a975e0666385. Do not roster from this row."
+  },
+  {
+    "proposedId": "liam-blutman",
+    "rowId": "ab4ec313e36a694a",
+    "verdict": "fail",
+    "auditedAt": "2026-09-18T01:26:54Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named cohost / ball-watcher on the Brandon Walker College Football Show, a roster factory. Independent national CFB voice, not a team analyst.",
+    "note": "Same BFW source. Staged Houston winner is not independently recoverable. Do not roster from this row."
   }
 ]

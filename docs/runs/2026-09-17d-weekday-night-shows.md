@@ -107,7 +107,7 @@ none (overflow / candidates need Audit + operator mint before freeze)
 | candidates | 5 |
 | bets | 9 |
 | approved hunt hits | 0 (slate empty; factory overflow) |
-| audit | pending |
+| audit | fail |
 | promoted | false |
 
-ready to audit **7 hard rows · 5 candidates**. Did not touch `data/`. Empty approved slate.
+TNF/Pate Intake **4 ok-unmapped-no-reasoning / 0 fail**. BFW walker **3 fail** (captions disabled). Candidates hawk/pagano/rogers **ok-unmapped-no-reasoning**; Liam BFW **2 fail**. Ready to promote **0** mapped. Did not touch `data/`. Empty approved slate.
