@@ -1,0 +1,109 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-michael-snowden-9f41d54df249eaee",
+      "kind": "roster-candidate",
+      "proposedId": "michael-snowden",
+      "rowId": "9f41d54df249eaee",
+      "sourceRun": "docs/runs/2026-09-17c-weekday-afternoon-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 41,
+        "pass": "Shows pass 2026-09-17 afternoon (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "michael-snowden",
+        "name": "Michael Snowden",
+        "group": "other",
+        "outlet": "Cover 3 Tailgate / St. Jude charity auction guest",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "And I'm not even going to worry about the spread. Give me the plus 150 money line outright. MSU gets it done.",
+        "reasoning": "Kamario Taylor + Fluff Bothwell; MSU will take it at South Carolina.",
+        "note": "Overflow Candidate. Charity-auction guest on Cover 3 LOCKS (~53:03). Not roster Intake.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+        "sourceDate": "2026-09-17",
+        "photoUrl": "needed",
+        "association": "St. Jude Cover 3 Tailgate guest / longtime chat member",
+        "associationUrl": "https://www.youtube.com/watch?v=hclgQtj0YH8",
+        "factory": "cover3",
+        "targetId": "",
+        "matchup": "Mississippi State at South Carolina (2026)"
+      },
+      "audit": {
+        "proposedId": "michael-snowden",
+        "rowId": "9f41d54df249eaee",
+        "verdict": "ok-unmapped-no-reasoning",
+        "auditedAt": "2026-09-18T00:52:33Z",
+        "eligibility": "uncertain",
+        "eligibilityReason": "Named St. Jude Cover 3 Tailgate charity-auction guest and longtime chat member on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a fan-guest appearance counts as association.",
+        "note": "YouTube ASR on hclgQtj0YH8 at 53:16–53:20 preserves first-person “Give me the plus 150 money line outright. MSU gets it done.” Overflow Mississippi State at South Carolina (2026). Capsule omits: “MSU will take it at South Carolina” restates the pick. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-michael-snowden-cf5d8153f8471728",
+      "kind": "roster-candidate",
+      "proposedId": "michael-snowden",
+      "rowId": "cf5d8153f8471728",
+      "sourceRun": "docs/runs/2026-09-17c-weekday-afternoon-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 42,
+        "pass": "Shows pass 2026-09-17 afternoon (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "michael-snowden",
+        "name": "Michael Snowden",
+        "group": "other",
+        "outlet": "Cover 3 Tailgate / St. Jude charity auction guest",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "So give me Bama.",
+        "reasoning": "Bama angry; writing on the wall for Noles.",
+        "note": "Overflow Candidate. Same guest segment (~52:12). FSU at Alabama. Also had Alabama team-total Bets.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+        "sourceDate": "2026-09-17",
+        "photoUrl": "needed",
+        "association": "St. Jude Cover 3 Tailgate guest",
+        "associationUrl": "https://www.youtube.com/watch?v=hclgQtj0YH8",
+        "factory": "cover3",
+        "targetId": "",
+        "matchup": "Florida State at Alabama (2026)"
+      },
+      "audit": {
+        "proposedId": "michael-snowden",
+        "rowId": "cf5d8153f8471728",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-09-18T00:52:33Z",
+        "eligibility": "uncertain",
+        "eligibilityReason": "Named St. Jude Cover 3 Tailgate charity-auction guest and longtime chat member on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a fan-guest appearance counts as association.",
+        "note": "YouTube ASR on hclgQtj0YH8 at 52:12 preserves first-person “So give me Bama” after he fades Florida State. Overflow Florida State at Alabama (2026). Angry / writing-on-the-wall capsule is supported. photoUrl=needed. Do not roster."
+      },
+      "missing": [
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ]
+}

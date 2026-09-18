@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-16",
+  "updated": "2026-09-18",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -206,6 +206,16 @@
       "sourceRun": "docs/runs/2026-09-15c-weekday-night-shows.md",
       "owner": "Audit",
       "note": "Night Shows 2026-09-15. Association via NFL Daily / Hot Fresh Takes (GMFB factory). photoUrl=needed. Overflow unmapped Lions at Bills. Bets -4.5 stays out of JSON. 2026-09-15-audit.md covered the cowherd Intake row only."
+    },
+    {
+      "id": "candidate-michael-snowden",
+      "kind": "roster-candidate",
+      "needed": "Operator eligibility + photo decision for Michael Snowden Cover 3 Tailgate SUs (Audit ok-unmapped / ok-unmapped-no-reasoning, eligibility uncertain). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-17c-weekday-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-09-17-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "St. Jude charity-auction / longtime tailgate chat guest. Not a public sports voice. Overflow MSU ML and Bama SU. photoUrl=needed. Do not mint unpublished matchups this pass."
     }
   ]
 }

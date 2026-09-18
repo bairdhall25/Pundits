@@ -400,8 +400,8 @@ describe("json-ld", () => {
     const events = loadEvents();
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
-    expect(teamLastModified("north-carolina", events, calls)).toBe("2026-09-14");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-16");
+    expect(teamLastModified("north-carolina", events, calls)).toBe("2026-09-18");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-18");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {
@@ -642,6 +642,6 @@ describe("take page copy is additive", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (row) => row.event.slug === "lsu-at-ole-miss-2026" && row.pundit.id === "cowherd"
     )!;
-    expect(receiptSnapshotTape(take.event)).toBe("LSU 59¢ (≈ -144) / Ole Miss 42¢ (≈ +138)");
+    expect(receiptSnapshotTape(take.event)).toBe("LSU 58¢ (≈ -138) / Ole Miss 42¢ (≈ +138)");
   });
 });

@@ -370,7 +370,7 @@ describe("Editorial social-card resolvers", () => {
     expect(card).toMatchObject({ archetype: "editorial", mode: "team" });
     expect(card.groups.map((group) => [group.label, group.count])).toEqual([
       ["With", 3],
-      ["Against", 10],
+      ["Against", 12],
     ]);
     expect(card.feature).toMatchObject({
       kicker: "George Wrighster",

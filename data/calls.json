@@ -2209,5 +2209,59 @@
     "side": "yes",
     "firstPublishedAt": "2026-09-16",
     "reasoning": "Coaching advantage for LSU with Lane on the other sideline; player advantage — Ole Miss not showing anything after watching their last game's first half."
+  },
+  {
+    "id": "fornelli-north-carolina-at-clemson-20260917",
+    "punditId": "fornelli",
+    "claim": "I don't even want the damn points. Just give me North Carolina plus 145.",
+    "source": "Cover 3 LOCKS",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "pending",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "1:29:56"
+    }
+  },
+  {
+    "id": "patterson-north-carolina-at-clemson-20260917",
+    "punditId": "patterson",
+    "claim": "Tom, I'm with you with the Tarheelss. Uh Hark the Sound plus 145.",
+    "source": "Cover 3 LOCKS",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "pending",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "1:32:07"
+    }
+  },
+  {
+    "id": "kanell-lsu-at-ole-miss-20260917",
+    "punditId": "kanell",
+    "claim": "He's just backing up his other bet. He's taking Old Miss plus 115 at home against LSU.",
+    "source": "Cover 3 LOCKS",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000790384951",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Ole Miss",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "pending",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-18",
+    "sourceLocator": {
+      "timestamp": "1:31:48"
+    }
   }
 ]

@@ -106,7 +106,7 @@ none (overflow / mapped faces need Audit + operator mint before freeze)
 | candidates | 2 |
 | bets | 7 |
 | approved hunt hits | 0 (slate empty; factory overflow) |
-| audit | pending |
-| promoted | false |
+| audit | fail |
+| promoted | true |
 
-ready to audit **18 hard rows · 2 candidates**. Did not touch `data/`. Empty approved slate. Cover 3 W3 LOCKS hit.
+promoted **3 mapped ok rows**. Elliott Florida speaker-mismatch fail did not block Fornelli/Patterson/Kanell mapped rows. Overflow not minted. Candidate michael-snowden not rostered. Bets not shipped. Empty approved slate. Cover 3 W3 LOCKS hit.

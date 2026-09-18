@@ -1,0 +1,20 @@
+[
+  {
+    "proposedId": "michael-snowden",
+    "rowId": "9f41d54df249eaee",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-18T00:52:33Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named St. Jude Cover 3 Tailgate charity-auction guest and longtime chat member on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a fan-guest appearance counts as association.",
+    "note": "YouTube ASR on hclgQtj0YH8 at 53:16–53:20 preserves first-person “Give me the plus 150 money line outright. MSU gets it done.” Overflow Mississippi State at South Carolina (2026). Capsule omits: “MSU will take it at South Carolina” restates the pick. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "michael-snowden",
+    "rowId": "cf5d8153f8471728",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-18T00:52:33Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named St. Jude Cover 3 Tailgate charity-auction guest and longtime chat member on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a fan-guest appearance counts as association.",
+    "note": "YouTube ASR on hclgQtj0YH8 at 52:12 preserves first-person “So give me Bama” after he fades Florida State. Overflow Florida State at Alabama (2026). Angry / writing-on-the-wall capsule is supported. photoUrl=needed. Do not roster."
+  }
+]
