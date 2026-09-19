@@ -48,6 +48,85 @@ Empty approved Dispatch. Factory overflow: Unbuttoned Fri Week 2 (`simms` + Cand
 | connor-rogers | Connor Rogers | nbc | Chris Simms Unbuttoned | | | I still think the Chargers win. | Ashen Jente worry but picks LA. | Overflow Candidate SU — Raiders at Chargers (2026). | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 | needed | Unbuttoned co-host | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | unbuttoned | | Las Vegas at Los Angeles Chargers (2026) |
 | connor-rogers | Connor Rogers | nbc | Chris Simms Unbuttoned | | | high confidence pick for me and the Chiefs. … They're not gonna win this one | No Colts D confidence. | Overflow Candidate SU — Colts at Chiefs (2026). | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 | needed | Unbuttoned co-host | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | unbuttoned | | Indianapolis at Kansas City (2026) |
 | chris-doering | Chris Doering | espn | Finebaum Show | | | I think A&M wins. I think it's probably more competitive than what people imagine it'll be. | Better lines of scrimmage. | Overflow Candidate SU — Kentucky at Texas A&M (2026). Finebaum H4 guest; never finebaum. | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | 2026-09-18 | needed | Finebaum / SEC Network guest | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | finebaum | | Kentucky at Texas A&M (2026) |
-| chris-doering | Chris Doering | espn | Finebaum Show | | | I think they get the win and give Mississippi State their first loss of the season. | Beamer statement; pressure Taylor. | Overflow Candidate SU — Mississippi State at South Carolina (2026). | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | 2026-09-18 | needed | Finebaum / SEC Network guest | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | finebaum | | Florida at Auburn (2026) |
+| chris-doering | Chris Doering | espn | Finebaum Show | | | I think they get the win and give Mississippi State their first loss of the season. | Beamer statement; pressure Taylor. | Overflow Candidate SU — Mississippi State at South Carolina (2026). | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | 2026-09-18 | needed | Finebaum / SEC Network guest | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | finebaum | | Mississippi State at South Carolina (2026) |
+| chris-doering | Chris Doering | espn | Finebaum Show | | | I just don't see anybody stopping Buster Faulkner's offense. … I think Florida walks out of there with a close victory. | Florida outscores Auburn. | Overflow Candidate SU — Florida at Auburn (2026). | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | 2026-09-18 | needed | Finebaum / SEC Network guest | https://podcasts.apple.com/us/podcast/id687989405?i=1000790597458 | finebaum | | Florida at Auburn (2026) |
 
-WAIT_FIX_DOERING3
+### Bets
+
+| pundit | eventSlug | bet | verbatim quote | sourceUrl | sourceDate |
+|---|---|---|---|---|---|
+| simms | | Vikings / Bears: Over ~48.5 | I really like I'm going with the over. … 58 points | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Saints / Ravens: Ravens −7.5 | Baltimore 31-21, covering the spread. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Eagles / Titans: Eagles −7 | I'm picking the Eagles to cover the seven points. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Commanders / Cowboys: Cowboys −3.5 + Over | Dallas to win and cover … going with the over again. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Dolphins / 49ers: 49ers −12.5 | make it 34 to 20 … have them cover. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Raiders / Chargers: Chargers −6.5 | winning 28-20 so they're going to cover | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Colts / Chiefs: Colts +6.5 | Chiefs win 23-21 … Colts covering | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simms | | Giants / Rams: Giants +7 | Rams win in 28, 24 … Giants covered. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Bengals / Texans: Bengals +points | I went with the Bengals getting points here. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Vikings / Bears: Bears −4.5 | Bears … cover the four and a half | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Steelers / Patriots: Steelers +5.5 | Steelers getting five and a half. … don't know if the Steelers win | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Saints / Ravens: Saints +7.5 | I went with the Saints to cover | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Seahawks / Cardinals: Cardinals +3.5 | Arizona covering this game. | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| connor-rogers | | Dolphins / 49ers: Dolphins +12.5 | Miami to get a backdoor cover | https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043 | 2026-09-18 |
+| simmons | | Steelers / Patriots: Patriots −4.5 | Patriots minus four and a half at home. | https://podcasts.apple.com/us/podcast/id1043699613?i=1000790462029 | 2026-09-18 |
+| simmons | | Eagles / Titans: Eagles −1 tease + Under 45.5 | win outright minus one and under 45 and a half. | https://podcasts.apple.com/us/podcast/id1043699613?i=1000790462029 | 2026-09-18 |
+| simmons | | Jaguars / Broncos: Broncos −2.5 | laying the two and a half with the Broncos | https://podcasts.apple.com/us/podcast/id1043699613?i=1000790462029 | 2026-09-18 |
+| kapadia | | Saints / Ravens: Saints +8.5 (dog — Bets only) | Saints here plus eight and a half. | https://podcasts.apple.com/us/podcast/id1109282822?i=1000790595713 | 2026-09-18 |
+
+### Radio coverage
+
+| eventSlug / target | programs opened | outcome | notes |
+|---|---|---|---|
+| *(none — empty approved hunt)* | n/a | n/a | No under-dense approved game → no radio fallback. |
+
+### Episode coverage
+
+| episodeId | factory | published | inspected | outcome | locator | next check |
+|---|---|---|---|---|---|---|
+| apple:1000790570043 | unbuttoned | 2026-09-18T19:33Z (~3:33 PM ET) | completed | **hit** — Simms×15 + Connor×4 | ASR picks ~15–75 min | flip only |
+| apple:1000790462029 | bill-simmons | 2026-09-18T06:14Z (~2:14 AM ET) | completed | **hit** — Simmons×4 | ~1:07:43 Ringer 107 | next week |
+| apple:1000790595713 | ringer-nfl | 2026-09-18T22:35Z (~6:35 PM ET) | completed | **hit** — Kapadia×4; Saints Bets | ~57:12 Ringer 107 | Mon |
+| apple:1000790588101 | finebaum | 2026-09-18T21:14Z | completed | **dry** SU Paul | H2 ASR | |
+| apple:1000790593388 | finebaum | 2026-09-18T22:06Z | completed | **dry** SU Paul | H3 ASR | |
+| apple:1000790597458 | finebaum | 2026-09-18T22:49Z | completed | **hit** Candidate Doering×3 | H4 Upset Watch | Mon |
+| apple:1000790581037 | finebaum | Fri H1 | skip reopen | afternoon dry | | |
+| see-ball W3 PICKS | see-ball | — | waiting | Who Are They still | | PICKS title |
+| cover3 / bfw / pate | Thu | | skip reopen | no Fri drop | | Sat BFW |
+| nightcap Deebo Fri PM | nightcap | Fri PM | skip / recap | TNF Parts | | |
+| against-all-odds | sal | dormant | skip | | | |
+| clay Fri | clay | Fri | skip / off-topic | politics | | |
+| herd/mcafee/eisen/gmfb/pft/pick-em/3&Out | prior | | skip reopen | already hit | | |
+
+### Dropped
+
+- Empty approved Dispatch — factory overflow only.
+- Finebaum H2–H3: no Paul named who-wins.
+- Finebaum Get Up LSU: News-lane.
+- Kapadia Saints +8.5: dog → Bets only.
+- Connor Packers/Steelers: ATS-only language.
+- Joe House: ASR unclear.
+- Nightcap / See Ball / Cover3 / BFW / Pate / Clay / Sal dormant.
+- Do not restage morning/afternoon boards.
+
+### Freeze
+
+none
+
+### Stories this would mint
+
+- Overflow unmapped only — mint ask before events exist.
+- No mapped upcoming restage.
+
+### Shows summary (this pass)
+
+| metric | value |
+|---|---|
+| hard | 23 |
+| candidates | 7 |
+| bets | 18 |
+| approved hunt hits | 0 (slate empty; factory overflow) |
+| audit | pending |
+| promoted | false |
+
+ASR-verified Apple URLs. Empty approved slate.
