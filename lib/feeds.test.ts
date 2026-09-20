@@ -66,7 +66,7 @@ describe("editorial feeds", () => {
   });
 
   it("keeps a quiet-period news sitemap empty rather than aging sourceDate rows", () => {
-    const xml = newsSitemap(loadCalls(), loadEvents(), loadPundits(), new Date("2026-09-20T12:00:00Z"));
+    const xml = newsSitemap(loadCalls(), loadEvents(), loadPundits(), new Date("2026-09-23T12:00:00Z"));
     expect(xml).toContain("xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\"");
     expect(xml).not.toContain("<url>");
   });
@@ -125,7 +125,7 @@ describe("editorial feeds", () => {
     expect(ordinary).toContain("https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/");
     expect(ordinary.some((url) => url.includes("/picks/"))).toBe(true);
 
-    const afterLiveReceiptsExpire = new Date("2026-09-20T10:30:00Z");
+    const afterLiveReceiptsExpire = new Date("2026-09-23T10:30:00Z");
     const liveNews = newsSitemap(loadCalls(), loadEvents(), loadPundits(), afterLiveReceiptsExpire);
     expect(liveNews).not.toContain("<url>");
     expect(assertNewsSitemapFresh(liveNews, afterLiveReceiptsExpire)).toEqual({ urls: 0, empty: true });

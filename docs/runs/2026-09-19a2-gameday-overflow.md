@@ -1,3 +1,12 @@
+<!-- sidecar for docs/runs/2026-09-19.md — day file owns hard=/candidates= header -->
+## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-19 ~12:45 PM ET | See day file |
+| X | not-run | | |
+| News | not-run | | |
+
 ## Shows pass 2026-09-19a2 — GameDay Cole Week 3 overflow (Grok Bot)
 
 Part of Saturday Shows hard=42. Mapped rows live in [`2026-09-19a-saturday-shows.md`](./2026-09-19a-saturday-shows.md). These are unpublished overflow (blank eventSlug/side). Source: Cole W3 https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/ dated 2026-09-19. Recap labels.

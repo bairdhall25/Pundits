@@ -1,3 +1,12 @@
+<!-- sidecar for docs/runs/2026-09-19.md — day file owns hard=/candidates= header -->
+## Lane status
+
+| lane | status | asOf | note |
+|---|---|---|---|
+| Shows | completed | 2026-09-19 ~12:45 PM ET | See day file |
+| X | not-run | | |
+| News | not-run | | |
+
 ## Shows pass 2026-09-19 Saturday Shows + radio (Grok Bot)
 
 hard=42 candidates=10 bets=15. Did not touch data/. Never mint ids. Never tweet.

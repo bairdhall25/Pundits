@@ -984,7 +984,10 @@
       "kickoffDate": "2026-09-19",
       "awayTeamId": "north-carolina",
       "homeTeamId": "clemson",
-      "week": 3
+      "week": 3,
+      "awayScore": 20,
+      "homeScore": 28,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858229/north-carolina-clemson"
     },
     {
       "slug": "lsu-at-ole-miss-2026",
@@ -1007,7 +1010,10 @@
       "kickoffDate": "2026-09-19",
       "awayTeamId": "lsu",
       "homeTeamId": "ole-miss",
-      "week": 3
+      "week": 3,
+      "awayScore": 24,
+      "homeScore": 32,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856688/lsu-ole-miss"
     }
   ]
 }

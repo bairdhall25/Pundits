@@ -2189,10 +2189,11 @@
     "kind": "hard",
     "subject": "Clemson",
     "paysOn": "North Carolina at Clemson (Week 3)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "north-carolina-at-clemson-2026",
     "side": "no",
-    "firstPublishedAt": "2026-09-14"
+    "firstPublishedAt": "2026-09-14",
+    "gradedAt": "2026-09-19"
   },
   {
     "id": "cowherd-lsu-at-ole-miss-20260915",
@@ -2204,11 +2205,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Ole Miss (Week 3)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-ole-miss-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-16",
-    "reasoning": "Coaching advantage for LSU with Lane on the other sideline; player advantage — Ole Miss not showing anything after watching their last game's first half."
+    "reasoning": "Coaching advantage for LSU with Lane on the other sideline; player advantage — Ole Miss not showing anything after watching their last game's first half.",
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "fornelli-north-carolina-at-clemson-20260917",
@@ -2220,13 +2222,14 @@
     "kind": "hard",
     "subject": "North Carolina",
     "paysOn": "North Carolina at Clemson (Week 3)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-carolina-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-18",
     "sourceLocator": {
       "timestamp": "1:29:56"
-    }
+    },
+    "gradedAt": "2026-09-19"
   },
   {
     "id": "patterson-north-carolina-at-clemson-20260917",
@@ -2238,13 +2241,14 @@
     "kind": "hard",
     "subject": "North Carolina",
     "paysOn": "North Carolina at Clemson (Week 3)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-carolina-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-18",
     "sourceLocator": {
       "timestamp": "1:32:07"
-    }
+    },
+    "gradedAt": "2026-09-19"
   },
   {
     "id": "kanell-lsu-at-ole-miss-20260917",
@@ -2256,13 +2260,14 @@
     "kind": "hard",
     "subject": "Ole Miss",
     "paysOn": "LSU at Ole Miss (Week 3)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "lsu-at-ole-miss-2026",
     "side": "no",
     "firstPublishedAt": "2026-09-18",
     "sourceLocator": {
       "timestamp": "1:31:48"
-    }
+    },
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "bigcat-lsu-at-ole-miss-20260915",
@@ -2274,13 +2279,14 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Ole Miss (Week 3)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-ole-miss-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-18",
     "sourceLocator": {
       "timestamp": "1:05:16–1:05:19"
-    }
+    },
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "portnoy-lsu-at-ole-miss-20260915",
@@ -2292,12 +2298,167 @@
     "kind": "hard",
     "subject": "Ole Miss",
     "paysOn": "LSU at Ole Miss (Week 3)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "lsu-at-ole-miss-2026",
     "side": "no",
     "firstPublishedAt": "2026-09-18",
     "sourceLocator": {
       "timestamp": "1:08:02–1:08:04"
+    },
+    "gradedAt": "2026-09-20"
+  },
+  {
+    "id": "howard-lsu-at-ole-miss-20260919",
+    "punditId": "howard",
+    "claim": "Ole Miss over LSU",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "Ole Miss",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "hit",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "mcafee-lsu-at-ole-miss-20260919",
+    "punditId": "mcafee",
+    "claim": "Ole Miss over LSU",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "Ole Miss",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "hit",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "saban-lsu-at-ole-miss-20260919",
+    "punditId": "saban",
+    "claim": "LSU over Ole Miss",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "miss",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "walker-lsu-at-ole-miss-20260917",
+    "punditId": "walker",
+    "claim": "I think LSU wins the game.",
+    "source": "Barstool College Football Show Week 3",
+    "sourceUrl": "https://www.youtube.com/watch?v=cyerOySH9MM",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "LSU",
+    "paysOn": "LSU at Ole Miss (Week 3)",
+    "status": "miss",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "lsu-at-ole-miss-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-20",
+    "sourceLocator": {
+      "timestamp": "19:38–19:40"
     }
+  },
+  {
+    "id": "herbstreit-north-carolina-at-clemson-20260919",
+    "punditId": "herbstreit",
+    "claim": "North Carolina over Clemson",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "miss",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "howard-north-carolina-at-clemson-20260919",
+    "punditId": "howard",
+    "claim": "North Carolina over Clemson",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "miss",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "mcafee-north-carolina-at-clemson-20260919",
+    "punditId": "mcafee",
+    "claim": "North Carolina over Clemson",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "North Carolina",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "miss",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "saban-north-carolina-at-clemson-20260919",
+    "punditId": "saban",
+    "claim": "Clemson over North Carolina",
+    "source": "Cole's GameDay Blog Week 3",
+    "sourceUrl": "https://gamedaycole.com/2026/09/19/week-3-2026-saturday-morning-college-gameday-picks/",
+    "sourceDate": "2026-09-19",
+    "kind": "hard",
+    "subject": "Clemson",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "hit",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-20",
+    "evidenceKind": "reported-selection"
+  },
+  {
+    "id": "fallica-north-carolina-at-clemson-20260917",
+    "punditId": "fallica",
+    "claim": "Fallica's Pick: Clemson -3.5",
+    "source": "Bear Bets / FOX Sports",
+    "sourceUrl": "https://www.foxsports.com/stories/college-football/chris-the-bear-fallicas-college-football-week-3-expert-picks-best-bets",
+    "sourceDate": "2026-09-17",
+    "kind": "hard",
+    "subject": "Clemson",
+    "paysOn": "North Carolina at Clemson (Week 3)",
+    "status": "hit",
+    "gradedAt": "2026-09-20",
+    "eventSlug": "north-carolina-at-clemson-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-09-20"
   }
 ]

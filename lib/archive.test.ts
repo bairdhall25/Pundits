@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/nfl/2026/week-1/");
+    expect(recap!.href).toBe("/ncaaf/2026/week-3/");
     expect(recap!.line).toBe(
-      "Week 1: experts went 10–11. A.J. Hawk, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Nick Wright, and Pat McAfee hit on Bills."
+      "Week 3: experts went 7–9. Chris \"The Bear\" Fallica, Danny Kanell, Dave Portnoy, Desmond Howard, Josh Pate, Nick Saban, and Pat McAfee hit on Clemson."
     );
   });
 

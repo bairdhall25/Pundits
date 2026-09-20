@@ -40,14 +40,15 @@ assert.match(home, /Get new picks — with the receipt\.|Never miss a verified p
 assert.match(home, /Join the early list/);
 assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
-assert.match(home, /North Carolina at Clemson/);
-assert.match(home, /LSU at Ole Miss/);
 assert.match(home, /Week 3 · Sep 19/);
 assert.match(home, /Week 2 is final/);
+assert.match(home, /Week 3: experts went 7–9/);
+assert.match(home, /href="\/ncaaf\/2026\/week-3\/"/);
+assert.match(home, /hit on Clemson/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
 assert.doesNotMatch(home, /regular season, not preseason/);
 assert.doesNotMatch(home, /Final · 49ers 27/);
-assert.match(home, /event-title-link/);
+assert.match(home, /event-title/);
 assert.match(home, /Most on record/);
 assert.match(home, /More site navigation/);
 for (const href of [
@@ -74,6 +75,26 @@ assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>Yes</);
 assert.doesNotMatch(home, /class="scan-name[^"]*"[^>]*>No</);
 assert.doesNotMatch(home, /Email signup is temporarily unavailable\./);
 assert(!home.includes("/Pundits/"), "production output must not contain the GitHub Pages base path");
+
+const week3 = await readFile(path.join(out, "ncaaf/2026/week-3/index.html"), "utf8");
+assert.match(week3, /North Carolina at Clemson/);
+assert.match(week3, /LSU at Ole Miss/);
+assert.match(week3, /Clemson beat North Carolina/);
+assert.match(week3, /Ole Miss beat LSU/);
+
+const uncClemson = await readFile(
+  path.join(out, "picks/north-carolina-at-clemson-2026/index.html"),
+  "utf8"
+);
+assert.match(uncClemson, /North Carolina at Clemson/);
+assert.match(uncClemson, /Final: Clemson 28, North Carolina 20/);
+
+const lsuOleMiss = await readFile(
+  path.join(out, "picks/lsu-at-ole-miss-2026/index.html"),
+  "utf8"
+);
+assert.match(lsuOleMiss, /LSU at Ole Miss/);
+assert.match(lsuOleMiss, /Final: Ole Miss 32, LSU 24/);
 
 const story = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/finebaum/index.html"),
@@ -171,7 +192,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 2–3/);
+assert.match(herbstreitProfile, /2026 tracked record: 2–4/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -402,7 +423,7 @@ assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 3: who picked whom/);
+assert.match(ncaafSlate, /College football Week 3: who called it/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-1\//);
 

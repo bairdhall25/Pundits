@@ -307,7 +307,7 @@ describe("Quote social-card resolvers", () => {
     const fallica = pundits.find((pundit) => pundit.id === "fallica")!;
     const longName = resolvePunditSocialCard(fallica, calls);
     expect(longName.headline).toBe('Chris "The Bear" Fallica');
-    expect(longName.metrics.find((metric) => metric.label === "2026 record")?.value).toBe("1–0");
+    expect(longName.metrics.find((metric) => metric.label === "2026 record")?.value).toBe("2–0");
 
     const missingPhoto = resolvePunditSocialCard(
       { ...fallica, id: "no-photo", photo: "" },
@@ -369,8 +369,8 @@ describe("Editorial social-card resolvers", () => {
     const card = resolveTeamSocialCard(team, events, calls, pundits);
     expect(card).toMatchObject({ archetype: "editorial", mode: "team" });
     expect(card.groups.map((group) => [group.label, group.count])).toEqual([
-      ["With", 3],
-      ["Against", 12],
+      ["With", 5],
+      ["Against", 15],
     ]);
     expect(card.feature).toMatchObject({
       kicker: "George Wrighster",
