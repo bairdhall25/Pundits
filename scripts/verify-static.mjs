@@ -42,9 +42,9 @@ assert.match(home, /Chip Patterson/);
 assert.match(home, /Chip Patterson|Greg McElroy/);
 assert.match(home, /Week 3 · Sep 19/);
 assert.match(home, /Week 2 is final/);
-assert.match(home, /Week 3: experts went 7–9/);
+assert.match(home, /Week 3: experts went 30–24/);
 assert.match(home, /href="\/ncaaf\/2026\/week-3\/"/);
-assert.match(home, /hit on Clemson/);
+assert.match(home, /hit on Louisville/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
 assert.doesNotMatch(home, /regular season, not preseason/);
 assert.doesNotMatch(home, /Final · 49ers 27/);
@@ -192,7 +192,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 2–4/);
+assert.match(herbstreitProfile, /2026 tracked record: 7–7/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -381,7 +381,7 @@ const teamEmptySide = await readFile(
   "utf8"
 );
 assert.match(teamEmptySide, /No scheduled game on the board for Virginia/);
-assert.match(teamEmptySide, /No captured pick on Virginia/);
+assert.match(teamEmptySide, /West Virginia beat Virginia/);
 assert.match(teamEmptySide, /Virginia beat NC State/);
 
 const teamNoGame = await readFile(

@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/ncaaf/2026/week-3/");
     expect(recap!.line).toBe(
-      "Week 3: experts went 7–9. Chris \"The Bear\" Fallica, Danny Kanell, Dave Portnoy, Desmond Howard, Josh Pate, Nick Saban, and Pat McAfee hit on Clemson."
+      "Week 3: experts went 30–24. Brandon Walker, Chris \"The Bear\" Fallica, Danny Kanell, Dave Portnoy, Desmond Howard, Josh Pate, Kirk Herbstreit, Nick Saban, and Pat McAfee hit on Louisville."
     );
   });
 

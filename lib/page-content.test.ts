@@ -219,13 +219,14 @@ describe("team page contract", () => {
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
     expect(content.noScheduledGame).toBe(true);
     expect(content.lede).toContain("No scheduled game on the board for Virginia");
-    expect(content.lede).toContain("Virginia beat NC State");
-    expect(content.lede).toContain("No captured pick on Virginia");
-    expect(content.historical[0]?.noCapturedPick).toBe(true);
-    expect(content.historical[0]?.noCapturedPickOnGame).toBe(false);
-    expect(content.historical[0]?.emptyFor).toBe("No captured pick on Virginia.");
-    expect(content.historical[0]?.emptyFor).not.toContain("Kanell");
-    expect(content.historical[0]?.emptyFor).not.toContain("Patterson");
+    expect(content.historical[0]?.event.slug).toBe("west-virginia-vs-virginia-2026");
+    const ncsu = content.historical.find((row) => row.event.slug === "ncsu-at-uva-2026");
+    expect(ncsu?.noCapturedPick).toBe(true);
+    expect(ncsu?.noCapturedPickOnGame).toBe(false);
+    expect(ncsu?.emptyFor).toBe("No captured pick on Virginia.");
+    expect(ncsu?.emptyFor).not.toContain("Kanell");
+    expect(ncsu?.emptyFor).not.toContain("Patterson");
+    expect(ncsu?.beatLine).toMatch(/Virginia beat NC State/);
   });
 
   it("does not say yet on a graded empty against side", () => {
@@ -257,7 +258,7 @@ describe("team page contract", () => {
       loadEvents(),
       loadCalls(),
       loadPundits()
-    ).historical[0];
+    ).historical.find((row) => row.event.slug === "ncsu-at-uva-2026");
     expect(ncsu?.lede).toMatch(/Nobody on Virginia\./);
     expect(ncsu?.lede).not.toMatch(/Nobody on Virginia yet/);
     expect(ncsu?.emptyAgainst).toBe("Nobody on Virginia.");

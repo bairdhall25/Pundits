@@ -76,8 +76,21 @@ describe("mapped takes", () => {
     const pundit = fixturePundit("fixture", { name: "A Long Named Expert" });
     const event = fixtureGame("fixture-2026", { awayTeam: "North Carolina", homeTeam: "Michigan State" });
     const call = fixturePick({ eventSlug: event.slug, punditId: pundit.id, side: "yes", status: "miss" });
-    expect(takeMetaTitle(pundit, event, call)).toBe("A Long Named Expert: North Carolina over Michigan State — Miss");
-    expect(takeMetaTitle(pundit, event, { ...call, side: "no", status: "hit" })).toBe("A Long Named Expert: Michigan State over North Carolina — Hit");
+    expect(takeMetaTitle(pundit, event, call)).toBe("A Long Named Expert: N. Carolina over Michigan State — Miss");
+    expect(takeMetaTitle(pundit, event, { ...call, side: "no", status: "hit" })).toBe("A Long Named Expert: Michigan State over N. Carolina — Hit");
+    const longEvent = fixtureGame("long-2026", {
+      awayTeam: "Mississippi State",
+      homeTeam: "South Carolina",
+    });
+    const longCall = fixturePick({
+      eventSlug: longEvent.slug,
+      punditId: pundit.id,
+      side: "no",
+      status: "miss",
+    });
+    const longTitle = takeMetaTitle(pundit, longEvent, longCall);
+    expect(longTitle).toBe("A Long Named Expert: S. Carolina over Miss. State — Miss");
+    expect(`${longTitle} · ${SITE_NAME}`.length).toBeLessThanOrEqual(70);
     expect(takeHeadline(pundit, event, call)).toContain("and missed (Michigan State won)");
   });
 

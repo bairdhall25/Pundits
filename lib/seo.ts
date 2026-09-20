@@ -174,14 +174,30 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
   return `${pundit.name} ${verb} ${outcomePhrase(event.title)}${verdict}`;
 }
 
+function withinTitleBudget(title: string): boolean {
+  return `${title} · ${SITE_NAME}`.length <= 70;
+}
+
+function compactTeamName(name: string): string {
+  if (name === "Mississippi State") return "Miss. State";
+  if (name === "South Carolina") return "S. Carolina";
+  if (name === "North Carolina") return "N. Carolina";
+  if (name === "Virginia Tech") return "Va. Tech";
+  return name;
+}
+
 /** Compact search/social title; the full editorial headline stays on the page. */
 export function takeMetaTitle(pundit: Pundit, event: Event, call: Call): string {
   const headline = takeHeadline(pundit, event, call);
-  if (`${headline} · ${SITE_NAME}`.length <= 70) return headline;
+  if (withinTitleBudget(headline)) return headline;
   const graded = call.status === "hit" || call.status === "miss";
   const verdict = graded ? ` — ${call.status === "hit" ? "Hit" : "Miss"}` : "";
   const game = gamePick(event, call);
-  if (game) return `${pundit.name}: ${game.picked} over ${game.other}${verdict}`;
+  if (game) {
+    const compact = `${pundit.name}: ${game.picked} over ${game.other}${verdict}`;
+    if (withinTitleBudget(compact)) return compact;
+    return `${pundit.name}: ${compactTeamName(game.picked)} over ${compactTeamName(game.other)}${verdict}`;
+  }
 
   const title = event.title.replace(/the national title/i, "national title");
   const outcome = title.match(/^(.+?) (wins|makes) (.+)$/i);
