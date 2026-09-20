@@ -1,0 +1,102 @@
+[
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "8239f09d4b4a8ead",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Virginia over West Virginia”. Recap-table label. Overflow Virginia at West Virginia (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "ee62a218add05bed",
+    "verdict": "ok",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Ole Miss over LSU”. Recap-table label. Ole Miss home = NO; event exists. photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "43789dd266fba6d2",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Virginia Tech over Maryland”. Recap-table label. Overflow Virginia Tech at Maryland (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "9fe49082e5dfdf52",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Florida over Auburn”. Recap-table label. Overflow Florida at Auburn (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "8e90eae65272801b",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Mississippi State over South Carolina”. Recap-table label. Overflow Mississippi State at South Carolina (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "3bf160abcac7f969",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Texas A&M over Kentucky”. Recap-table label. Overflow Texas A&M at Kentucky (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "83ca02d293028c8e",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Louisville over SMU”. Recap-table label. Overflow SMU at Louisville (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "28c343cd75285a1c",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Alabama over Florida State”. Recap-table label. Overflow Florida State at Alabama (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "b630203ed7d700d8",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “Vanderbilt over NC State”. Recap-table label. Overflow NC State at Vanderbilt (2026). photoUrl=needed. Do not roster."
+  },
+  {
+    "proposedId": "morgan-freeman",
+    "rowId": "b9969fe80d0e118e",
+    "verdict": "ok",
+    "auditedAt": "2026-09-20T12:38:13Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Named College GameDay Week 3 celebrity guest on a roster factory. He is not a public sports voice and not a team analyst. Operator must decide whether a celebrity-guest appearance counts as association.",
+    "evidenceKind": "reported-selection",
+    "note": "Cole W3 Freeman list preserves “North Carolina over Clemson”. Recap-table label. UNC away = YES; event exists. photoUrl=needed. Do not roster."
+  }
+]

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-18",
+  "updated": "2026-09-20",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -243,7 +243,26 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "owner": "Promote",
-      "note": "New Pate SU. Not a restage of pate Clemson/Ole Miss/Auburn/Miss St/Texas Tech. Louisville home would map NO. Cover −3 is Bets only. 2026-09-18 also: portnoy rowId f8011193f8fa73a7 (ok-unmapped-no-reasoning) and rico-bosco rowId 005f1ab567862087 (Candidate; do not roster)."
+      "note": "New Pate SU. Not a restage of pate Clemson/Ole Miss/Auburn/Miss St/Texas Tech. Louisville home would map NO. Cover −3 is Bets only. 2026-09-18 also: portnoy rowId f8011193f8fa73a7 (ok-unmapped-no-reasoning) and rico-bosco rowId 005f1ab567862087 (Candidate; do not roster). 2026-09-19 also: walker Barstool CFB rowId b65d8025350e6ca4 (ok-unmapped, ASR 17:26–17:38)."
+    },
+    {
+      "id": "candidate-morgan-freeman",
+      "kind": "roster-candidate",
+      "needed": "Photo + association review for GameDay Week 3 celebrity guest picker. Not Intake. Operator must decide whether a celebrity-guest appearance counts as association. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-19a-saturday-shows.md",
+      "proposalFile": "docs/runs/2026-09-19-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-20T12:38:13Z. 10 Cole recap-table rows, eligibility=uncertain. Mapped Ole Miss NO rowId ee62a218add05bed and UNC YES rowId b9969fe80d0e118e wait on roster. photoUrl=needed."
+    },
+    {
+      "id": "overflow-gameday-w3-cole",
+      "kind": "overflow-mint",
+      "needed": "Operator mint-or-discard for 32 Audit ok-unmapped GameDay Cole Week 3 desk SUs (Virginia/WVU, VT/Maryland, Florida/Auburn, MissSt/SC, A&M/Kentucky, Louisville/SMU, Alabama/FSU, Vandy/NC State). Do not invent slugs here. Mapped UNC–Clemson and LSU–Ole Miss desks are Intake, not this item.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-19a2-gameday-overflow.md",
+      "owner": "Promote",
+      "note": "Audit 2026-09-20T12:38:13Z. Recap-table labels, evidenceKind=reported-selection. Games are already final — freeze would be resolved 99/1 if minted now. Prefer mint-or-discard, not a post-game freeze."
     },
     {
       "id": "candidate-rico-bosco",
