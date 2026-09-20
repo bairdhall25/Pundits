@@ -1,0 +1,47 @@
+[
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "6e960b1f8325b872",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T14:09:31Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named host of NFL Daily, which rides the GMFB Apple factory. Independent national NFL voice (NFL.com / NFL Network), not a team analyst. Association URL https://www.nfl.com/author/gregg-rosenthal-09000d5d827ba779 loads (HTTP 200) and identifies NFL Daily Host.",
+    "note": "Omny transcript of clip a6c4fb30-6731-4e55-9046-b4c70156b6ef at 3:00–3:29 preserves host Greg “I would take the Steelers straight up. The line doesn't even matter to me in this game.” Dog SU. Overflow Pittsburgh at New England (2026); Steelers away would be YES if minted. Week-1-defense / Patriots-without-AJ-Brown capsule is Greg's in this episode. photoUrl is an official X avatar; usage permission is operator review, not Audit. Do not restage the unaudited TNF Bills candidate. Do not roster."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "eebc7af5600dd967",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-20T14:09:31Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named host of NFL Daily, which rides the GMFB Apple factory. Independent national NFL voice (NFL.com / NFL Network), not a team analyst. Association URL https://www.nfl.com/author/gregg-rosenthal-09000d5d827ba779 loads (HTTP 200) and identifies NFL Daily Host.",
+    "note": "Omny transcript at 18:31–18:42 preserves “Ultimately, I just think they're a better team. And that's where my gut is going right now as my third pick. Houston minus two and a half.” Favorite laying points is SU. Overflow Cincinnati at Houston (2026); Texans home would be NO if minted. Capsule omits: “does not buy an even line” is SU/ATS routing. Same association. Do not roster."
+  },
+  {
+    "proposedId": "nick-shook",
+    "rowId": "94771e0fdac00c2d",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T14:09:31Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named NFL Daily guest picker on a GMFB factory episode hosted by Greg Rosenthal. Independent national NFL.com writer (Around The NFL), not a team analyst. Association URL https://www.nfl.com/author/nick-shook-0ap3000000923713 loads (HTTP 200).",
+    "note": "Omny transcript at 6:23–6:53 preserves Nick “I think that they have the formula to beat this team. … I would probably take them straight up, even though they're going to mile high.” Dog SU. Overflow Jacksonville at Denver (2026); Jaguars away would be YES if minted. Missed-tackles / matching-pressure-rates capsule is in the same Jags turn. Never Rosenthal. NFL.com author headshot loads. Do not roster."
+  },
+  {
+    "proposedId": "nick-shook",
+    "rowId": "3f1fe42d322f53aa",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-20T14:09:31Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named NFL Daily guest picker on a GMFB factory episode hosted by Greg Rosenthal. Independent national NFL.com writer (Around The NFL), not a team analyst. Association URL https://www.nfl.com/author/nick-shook-0ap3000000923713 loads (HTTP 200).",
+    "note": "Omny transcript at 14:52–15:39 is one Nick Panthers turn; ellipsis is the middle of that turn. Favorite laying 2.5 is SU. Overflow Carolina at Atlanta (2026); Panthers away would be YES if minted. Capsule omits: “Bryce Young just had his best game” is not on the page. Same association. Do not roster."
+  },
+  {
+    "proposedId": "nick-shook",
+    "rowId": "4bd410451fd5072b",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-09-20T14:09:31Z",
+    "eligibility": "association",
+    "eligibilityReason": "Named NFL Daily guest picker on a GMFB factory episode hosted by Greg Rosenthal. Independent national NFL.com writer (Around The NFL), not a team analyst. Association URL https://www.nfl.com/author/nick-shook-0ap3000000923713 loads (HTTP 200).",
+    "note": "Omny transcript at 20:45–21:14 preserves “it's going to be Buccaneers eight and a half against the Browns because this is Baker Mayfield's second opportunity to play his old team.” Favorite laying 8.5 is SU. Overflow Cleveland at Tampa Bay (2026); Buccaneers home would be NO if minted. Baker-vs-old-club / Bucs-moved-it-on-Cincinnati capsule is in the same turn. Same association. Do not roster."
+  }
+]

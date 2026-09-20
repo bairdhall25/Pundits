@@ -370,7 +370,8 @@ assert.doesNotMatch(teamPage, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const teamPending = await readFile(path.join(out, "teams/49ers/index.html"), "utf8");
 assert.match(teamPending, /data-page-type="team"/);
-assert.match(teamPending, /No scheduled game on the board for 49ers/);
+assert.match(teamPending, /who is picking them vs Dolphins/);
+assert.match(teamPending, /Next covered matchup: Dolphins at 49ers/);
 assert.match(teamPending, /49ers beat Rams/);
 assert.match(teamPending, /href="\/picks\/49ers-vs-rams-2026\/brandt/);
 assert.doesNotMatch(teamPending, /name="robots" content="noindex, follow"/);
@@ -384,11 +385,11 @@ assert.match(teamEmptySide, /No captured pick on Virginia/);
 assert.match(teamEmptySide, /Virginia beat NC State/);
 
 const teamNoGame = await readFile(
-  path.join(out, "teams/chargers/index.html"),
+  path.join(out, "teams/lions/index.html"),
   "utf8"
 );
 assert.match(teamNoGame, /name="robots" content="noindex, follow"/);
-assert.match(teamNoGame, /No scheduled game on the board for Chargers/);
+assert.match(teamNoGame, /No scheduled game on the board for Lions/);
 assert.match(teamNoGame, /No captured pick yet/);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
@@ -415,8 +416,10 @@ assert.match(weekNfl, /49ers vs Rams/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 1: who called it/);
-assert.match(nflSlate, /Week 1 archive/);
+assert.match(nflSlate, /NFL Week 2: who picked whom/);
+assert.match(nflSlate, /Week 2 archive/);
+assert.match(nflSlate, /Week 1 is final/);
+assert.match(nflSlate, /href="\/nfl\/2026\/week-2\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
 assert.doesNotMatch(nflSlate, /best experts/i);
 assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);

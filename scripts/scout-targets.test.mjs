@@ -17,15 +17,17 @@ describe("loadCaptureTargets", () => {
   it("loads the live versioned queue and includes approved college staging targets", () => {
     const doc = loadCaptureTargets(live);
     expect(doc.version).toBe(1);
-    expect(approvedHuntSlugs(doc, { now: Date.parse("2026-09-08T16:00:00Z") })).toEqual([
-      "49ers-vs-rams-2026",
-      "bills-at-texans-2026",
-      "oklahoma-at-michigan-2026",
-      "ohio-state-at-texas-2026",
-      "arizona-state-at-texas-am-2026",
-      "alabama-at-kentucky-2026",
+    expect(approvedHuntSlugs(doc, { now: Date.parse("2026-09-20T16:00:00Z") })).toEqual([
+      "texas-at-tennessee-2026",
+      "oklahoma-at-georgia-2026",
+      "texas-am-at-lsu-2026",
+      "oregon-at-usc-2026",
+      "falcons-at-packers-2026",
+      "bengals-at-steelers-2026",
+      "ravens-at-cowboys-2026",
+      "chargers-at-bills-2026",
     ]);
-    expect(approvedHuntTargets(doc, { now: Date.parse("2026-09-08T16:00:00Z") }).filter(row => row.sport === "ncaaf")).toHaveLength(4);
+    expect(approvedHuntTargets(doc, { now: Date.parse("2026-09-20T16:00:00Z") }).filter(row => row.sport === "ncaaf")).toHaveLength(4);
     expect(flagProposedCap(doc)).toEqual([]);
   });
 

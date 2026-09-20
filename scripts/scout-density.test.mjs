@@ -420,11 +420,25 @@ describe("live capture-target Dispatch", () => {
       calls,
       bringOntoHome: [],
       targets,
-      now: Date.parse("2026-09-08T16:00:00Z"),
+      now: Date.parse("2026-09-20T16:00:00Z"),
     });
+    const nflHunt = rows.filter(
+      (row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip"
+    );
+    expect(nflHunt.map((row) => row.eventSlug)).toEqual(["", "", "", ""]);
+    expect(nflHunt.map((row) => row.targetId)).toEqual([
+      "nfl-w3-falcons-at-packers",
+      "nfl-w3-bengals-at-steelers",
+      "nfl-w3-ravens-at-cowboys",
+      "nfl-w3-chargers-at-bills",
+    ]);
     expect(
-      rows.filter((row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip").map((row) => row.eventSlug)
-    ).toEqual([]);
+      rows.filter((row) =>
+        ["patriots-at-seahawks-2026", "49ers-vs-rams-2026", "bills-at-texans-2026"].includes(
+          row.eventSlug
+        )
+      ).every((row) => row.queue === "grader-flag" || row.queue === "skip")
+    ).toBe(true);
   });
 });
 

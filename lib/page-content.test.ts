@@ -186,19 +186,19 @@ describe("team page contract", () => {
     const team = getTeam("49ers", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("49ers");
-    expect(content.title).toBe("49ers: tracked picks and results");
-    expect(content.noScheduledGame).toBe(true);
-    expect(content.nextMatchup).toBeNull();
-    expect(content.lede).toContain("No scheduled game on the board for 49ers");
-    expect(content.lede).toContain("49ers beat Rams");
+    expect(content.title).toBe("49ers: who is picking them vs Dolphins");
+    expect(content.noScheduledGame).toBe(false);
+    expect(content.nextMatchup?.event.slug).toBe("dolphins-at-49ers-2026");
+    expect(content.lede).toContain("Next covered matchup: Dolphins at 49ers");
     expect(content.disclaimer).toBe(TRACKED_SUBSET_DISCLAIMER);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.contextLinks.some((link) => link.href === "/nfl/")).toBe(true);
-    expect(content.contextLinks.some((link) => link.href === "/picks/49ers-vs-rams-2026")).toBe(
+    expect(content.contextLinks.some((link) => link.href === "/picks/dolphins-at-49ers-2026")).toBe(
       true
     );
     expect(content.historical[0]?.event.slug).toBe("49ers-vs-rams-2026");
+    expect(content.historical[0]?.beatLine).toMatch(/49ers beat Rams/);
   });
 
   it("says no scheduled game on TCU and keeps the Dublin result", () => {
@@ -293,10 +293,10 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 1: who called it");
-    expect(content.currentWeek?.week).toBe(1);
-    expect(content.currentWeek?.href).toBe("/nfl/2026/week-1/");
-    expect(content.lede).toContain("Week 1");
+    expect(content.title).toBe("NFL Week 2: who picked whom");
+    expect(content.currentWeek?.week).toBe(2);
+    expect(content.currentWeek?.href).toBe("/nfl/2026/week-2/");
+    expect(content.lede).toContain("Week 2");
     expect(content.lede).toMatch(/archive is the permanent record/);
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);

@@ -201,11 +201,12 @@
     {
       "id": "candidate-greg-rosenthal",
       "kind": "roster-candidate",
-      "needed": "Operator photo + roster yes for Greg Rosenthal Bills SU (Lions at Bills TNF). Candidate Audit has not run. Do not auto-roster.",
+      "needed": "Operator photo + roster yes for Gregg Rosenthal. 2026-09-20 W2 Steelers SU (rowId 6e960b1f8325b872, ok-unmapped) and Texans SU (rowId eebc7af5600dd967, ok-unmapped-no-reasoning) are association. TNF Bills SU from 2026-09-15c remains unaudited — do not roster from that row. Do not auto-roster.",
       "status": "pending",
-      "sourceRun": "docs/runs/2026-09-15c-weekday-night-shows.md",
-      "owner": "Audit",
-      "note": "Night Shows 2026-09-15. Association via NFL Daily / Hot Fresh Takes (GMFB factory). photoUrl=needed. Overflow unmapped Lions at Bills. Bets -4.5 stays out of JSON. 2026-09-15-audit.md covered the cowherd Intake row only."
+      "sourceRun": "docs/runs/2026-09-20.md",
+      "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-20T14:09:31Z. NFL Daily host on GMFB factory; association URL loads. Official X avatar present; usage permission is operator review. Overflow Pittsburgh at New England / Cincinnati at Houston. Do not restage TNF Bills. Do not mint unpublished matchups this pass."
     },
     {
       "id": "candidate-michael-snowden",
@@ -310,6 +311,16 @@
       "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
       "owner": "Promote",
       "note": "Pick Em Week 3. Auburn home would map NO. Not a restage of pate Auburn. rico-bosco Florida (rowId 09991ff3c1382ad6) is Candidate on the other side. Do not invent a slug here."
+    },
+    {
+      "id": "candidate-nick-shook",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Nick Shook after three Audit-ok-unmapped / ok-unmapped-no-reasoning W2 SUs (rowIds 94771e0fdac00c2d, 3f1fe42d322f53aa, 4bd410451fd5072b). Association guest on NFL Daily / GMFB factory. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-20.md",
+      "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass."
     }
   ]
 }
