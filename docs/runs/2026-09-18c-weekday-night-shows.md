@@ -126,7 +126,7 @@ none
 | candidates | 7 |
 | bets | 18 |
 | approved hunt hits | 0 (slate empty; factory overflow) |
-| audit | pending |
+| audit | fail |
 | promoted | false |
 
 ASR-verified Apple URLs. Empty approved slate.
