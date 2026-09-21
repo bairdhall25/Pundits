@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/ncaaf/2026/week-3/");
+    expect(recap!.href).toBe("/nfl/2026/week-2/");
     expect(recap!.line).toBe(
-      "Week 3: experts went 30–24. Brandon Walker, Chris \"The Bear\" Fallica, Danny Kanell, Dave Portnoy, Desmond Howard, Josh Pate, Kirk Herbstreit, Nick Saban, and Pat McAfee hit on Louisville."
+      "Week 2: experts went 15–16. Chris Simms, Mike Florio, and Nick Wright hit on Packers."
     );
   });
 

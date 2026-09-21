@@ -2467,7 +2467,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-bengals-at-texans-20260918",
     "claim": "I'm taking the Texans here. I'm going to take them 23 to 20.",
@@ -2475,7 +2475,8 @@
     "paysOn": "Bengals at Texans (Week 2)",
     "eventSlug": "bengals-at-texans-2026",
     "side": "no",
-    "reasoning": "Houston home bounce-back."
+    "reasoning": "Houston home bounce-back.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2483,14 +2484,15 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-vikings-at-bears-20260918",
     "claim": "I'm going with the Bears here 3127 to win the game but they're not covering.",
     "subject": "Bears",
     "paysOn": "Vikings at Bears (Week 2)",
     "eventSlug": "vikings-at-bears-2026",
-    "side": "no"
+    "side": "no",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2498,7 +2500,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-steelers-at-patriots-20260918",
     "claim": "This is going to be one of my upsets of the week here. I'm going to take the Steelers to win this for outright win. … I got the Steelers winning this one 23 21",
@@ -2506,7 +2508,8 @@
     "paysOn": "Steelers at Patriots (Week 2)",
     "eventSlug": "steelers-at-patriots-2026",
     "side": "yes",
-    "reasoning": "Steelers offense upside; Graham knows McDaniels."
+    "reasoning": "Steelers offense upside; Graham knows McDaniels.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2514,7 +2517,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-packers-at-jets-20260918",
     "claim": "I'm going to go with the Packers to win the game. … I am going to take the Packers 24 to 20",
@@ -2522,7 +2525,8 @@
     "paysOn": "Packers at Jets (Week 2)",
     "eventSlug": "packers-at-jets-2026",
     "side": "yes",
-    "reasoning": "Rain lowers score; Packers still win."
+    "reasoning": "Rain lowers score; Packers still win.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2530,7 +2534,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-saints-at-ravens-20260918",
     "claim": "That's the only reason I'm going Baltimore 31-21, you know, covering the spread.",
@@ -2538,7 +2542,8 @@
     "paysOn": "Saints at Ravens (Week 2)",
     "eventSlug": "saints-at-ravens-2026",
     "side": "no",
-    "reasoning": "Faith in Ravens coordinators."
+    "reasoning": "Faith in Ravens coordinators.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2546,7 +2551,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-browns-at-buccaneers-20260918",
     "claim": "I have the … Bucks winning 27 to 17. … I certainly think they're going to win the game",
@@ -2554,7 +2559,8 @@
     "paysOn": "Browns at Buccaneers (Week 2)",
     "eventSlug": "browns-at-buccaneers-2026",
     "side": "no",
-    "reasoning": "Baker bounce-back; Watson Browns."
+    "reasoning": "Baker bounce-back; Watson Browns.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2562,7 +2568,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-panthers-at-falcons-20260918",
     "claim": "I got the Panthers winning the football game … 21 to 17. … I don't think the Falcons can win this",
@@ -2570,7 +2576,8 @@
     "paysOn": "Panthers at Falcons (Week 2)",
     "eventSlug": "panthers-at-falcons-2026",
     "side": "yes",
-    "reasoning": "Bryce form; Falcons QB mess."
+    "reasoning": "Bryce form; Falcons QB mess.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2578,7 +2585,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-jaguars-at-broncos-20260918",
     "claim": "I'm going with the Jaguars. … flat out when the game, I'm going to go 27 24.",
@@ -2586,7 +2593,8 @@
     "paysOn": "Jaguars at Broncos (Week 2)",
     "eventSlug": "jaguars-at-broncos-2026",
     "side": "yes",
-    "reasoning": "Jags OL/run; Denver not trusted."
+    "reasoning": "Jags OL/run; Denver not trusted.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2594,7 +2602,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-seahawks-at-cardinals-20260918",
     "claim": "I'm going to go Seattle winning the game. … I picked the Seahawks only win by a field goal.",
@@ -2602,7 +2610,8 @@
     "paysOn": "Seahawks at Cardinals (Week 2)",
     "eventSlug": "seahawks-at-cardinals-2026",
     "side": "yes",
-    "reasoning": "Seattle D makes a play."
+    "reasoning": "Seattle D makes a play.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2610,7 +2619,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-dolphins-at-49ers-20260918",
     "claim": "I originally picked the 49ers 31 to 20 … make it 34 to 20. … 49ers kind of control this game throughout.",
@@ -2618,7 +2627,8 @@
     "paysOn": "Dolphins at 49ers (Week 2)",
     "eventSlug": "dolphins-at-49ers-2026",
     "side": "no",
-    "reasoning": "Shanahan vs thin Dolphins."
+    "reasoning": "Shanahan vs thin Dolphins.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2626,7 +2636,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-raiders-at-chargers-20260918",
     "claim": "I'm having the Chargers win the game here and I'm going to have them winning 28-20",
@@ -2634,7 +2644,8 @@
     "paysOn": "Raiders at Chargers (Week 2)",
     "eventSlug": "raiders-at-chargers-2026",
     "side": "no",
-    "reasoning": "Late TD pulls away."
+    "reasoning": "Late TD pulls away.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "simms",
@@ -2642,7 +2653,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-colts-at-chiefs-20260918",
     "claim": "I'm going to have the the Chiefs winning this game. … Chiefs win 23-21",
@@ -2650,7 +2661,8 @@
     "paysOn": "Colts at Chiefs (Week 2)",
     "eventSlug": "colts-at-chiefs-2026",
     "side": "no",
-    "reasoning": "Needs Chiefs again at home."
+    "reasoning": "Needs Chiefs again at home.",
+    "gradedAt": "2026-09-21"
   },
   {
     "punditId": "simms",
@@ -2678,11 +2690,12 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Steelers at Patriots (Week 2)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "steelers-at-patriots-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-20",
-    "reasoning": "Pittsburgh defense solid; New England weapons thin with AJ Brown out and Dobbs untrusted."
+    "reasoning": "Pittsburgh defense solid; New England weapons thin with AJ Brown out and Dobbs untrusted.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2690,7 +2703,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-panthers-at-falcons-20260917",
     "claim": "Panthers 24, Falcons 14.",
@@ -2698,7 +2711,8 @@
     "paysOn": "Panthers at Falcons (Week 2)",
     "eventSlug": "panthers-at-falcons-2026",
     "side": "yes",
-    "reasoning": "Atlanta's offense has more quarterback questions than quarterbacks on the roster after Carolina's defense no-showed Week 1."
+    "reasoning": "Atlanta's offense has more quarterback questions than quarterbacks on the roster after Carolina's defense no-showed Week 1.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2706,7 +2720,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-saints-at-ravens-20260917",
     "claim": "Ravens 30, Saints 24.",
@@ -2714,7 +2728,8 @@
     "paysOn": "Saints at Ravens (Week 2)",
     "eventSlug": "saints-at-ravens-2026",
     "side": "no",
-    "reasoning": "Baltimore can still move the ball with Lamar Jackson and Derrick Henry even if Zay Flowers sits, and the defense can slam the door."
+    "reasoning": "Baltimore can still move the ball with Lamar Jackson and Derrick Henry even if Zay Flowers sits, and the defense can slam the door.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2722,7 +2737,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-vikings-at-bears-20260917",
     "claim": "Bears 34, Vikings 31.",
@@ -2730,7 +2745,8 @@
     "paysOn": "Vikings at Bears (Week 2)",
     "eventSlug": "vikings-at-bears-2026",
     "side": "no",
-    "reasoning": "Home edge at Soldier Field as Chicago tries to snap a six-game home losing streak to Minnesota in a game that may come down to one stop."
+    "reasoning": "Home edge at Soldier Field as Chicago tries to snap a six-game home losing streak to Minnesota in a game that may come down to one stop.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2738,7 +2754,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-bengals-at-texans-20260917",
     "claim": "Texans 23, Bengals 20.",
@@ -2746,7 +2762,8 @@
     "paysOn": "Bengals at Texans (Week 2)",
     "eventSlug": "bengals-at-texans-2026",
     "side": "no",
-    "reasoning": "Burrow's back tightness will get worse against Houston's pass rush, and C.J. Stroud has to finish after failing with the game on the line Week 1."
+    "reasoning": "Burrow's back tightness will get worse against Houston's pass rush, and C.J. Stroud has to finish after failing with the game on the line Week 1.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2754,14 +2771,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-steelers-at-patriots-20260917",
     "claim": "Patriots 16, Steelers 13.",
     "subject": "Patriots",
     "paysOn": "Steelers at Patriots (Week 2)",
     "eventSlug": "steelers-at-patriots-2026",
-    "side": "no"
+    "side": "no",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2769,14 +2787,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-packers-at-jets-20260917",
     "claim": "Packers 24, Jets 13.",
     "subject": "Packers",
     "paysOn": "Packers at Jets (Week 2)",
     "eventSlug": "packers-at-jets-2026",
-    "side": "yes"
+    "side": "yes",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2784,14 +2803,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-browns-at-buccaneers-20260917",
     "claim": "Buccaneers 41, Browns 14.",
     "subject": "Buccaneers",
     "paysOn": "Browns at Buccaneers (Week 2)",
     "eventSlug": "browns-at-buccaneers-2026",
-    "side": "no"
+    "side": "no",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2799,7 +2819,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-eagles-at-titans-20260917",
     "claim": "Eagles 27, Titans 17.",
@@ -2807,7 +2827,8 @@
     "paysOn": "Eagles at Titans (Week 2)",
     "eventSlug": "eagles-at-titans-2026",
     "side": "yes",
-    "reasoning": "Philadelphia may not be as good as it has been, but Tennessee looks as bad as it has been, possibly worse."
+    "reasoning": "Philadelphia may not be as good as it has been, but Tennessee looks as bad as it has been, possibly worse.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2815,7 +2836,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-jaguars-at-broncos-20260917",
     "claim": "Jaguars 27, Broncos 20.",
@@ -2823,7 +2844,8 @@
     "paysOn": "Jaguars at Broncos (Week 2)",
     "eventSlug": "jaguars-at-broncos-2026",
     "side": "yes",
-    "reasoning": "Denver is on a short week after getting manhandled in Kansas City, and Jacksonville is overlooked again after stunning the Broncos in Denver last year."
+    "reasoning": "Denver is on a short week after getting manhandled in Kansas City, and Jacksonville is overlooked again after stunning the Broncos in Denver last year.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2831,7 +2853,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-raiders-at-chargers-20260917",
     "claim": "Chargers 20, Raiders 16.",
@@ -2839,7 +2861,8 @@
     "paysOn": "Raiders at Chargers (Week 2)",
     "eventSlug": "raiders-at-chargers-2026",
     "side": "no",
-    "reasoning": "After a home loss to Arizona, Los Angeles has a must-win against a Raiders team still more popular in L.A. than the Chargers."
+    "reasoning": "After a home loss to Arizona, Los Angeles has a must-win against a Raiders team still more popular in L.A. than the Chargers.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2847,7 +2870,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-seahawks-at-cardinals-20260917",
     "claim": "Seahawks 23, Cardinals 20.",
@@ -2855,7 +2878,8 @@
     "paysOn": "Seahawks at Cardinals (Week 2)",
     "eventSlug": "seahawks-at-cardinals-2026",
     "side": "yes",
-    "reasoning": "Extra preparation time should help Seattle with Drew Lock replacing Sam Darnold, even after Arizona gave them all they could handle last year."
+    "reasoning": "Extra preparation time should help Seattle with Drew Lock replacing Sam Darnold, even after Arizona gave them all they could handle last year.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2863,7 +2887,7 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-commanders-at-cowboys-20260917",
     "claim": "Cowboys 30, Commanders 17.",
@@ -2871,7 +2895,8 @@
     "paysOn": "Commanders at Cowboys (Week 2)",
     "eventSlug": "commanders-at-cowboys-2026",
     "side": "no",
-    "reasoning": "Dallas should get off the field more easily at home against a Washington team that probably is not as good as the Giants."
+    "reasoning": "Dallas should get off the field more easily at home against a Washington team that probably is not as good as the Giants.",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2879,14 +2904,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-dolphins-at-49ers-20260917",
     "claim": "49ers 38, Dolphins 16.",
     "subject": "49ers",
     "paysOn": "Dolphins at 49ers (Week 2)",
     "eventSlug": "dolphins-at-49ers-2026",
-    "side": "no"
+    "side": "no",
+    "gradedAt": "2026-09-20"
   },
   {
     "punditId": "florio",
@@ -2894,14 +2920,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-colts-at-chiefs-20260917",
     "claim": "Chiefs 27, Colts 10.",
     "subject": "Chiefs",
     "paysOn": "Colts at Chiefs (Week 2)",
     "eventSlug": "colts-at-chiefs-2026",
-    "side": "no"
+    "side": "no",
+    "gradedAt": "2026-09-21"
   },
   {
     "punditId": "florio",
@@ -2928,11 +2955,12 @@
     "kind": "hard",
     "subject": "Panthers",
     "paysOn": "Panthers at Falcons (Week 2)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "panthers-at-falcons-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-20",
-    "reasoning": "Falcons have no settled quarterback. Bryce is as confident as he's been."
+    "reasoning": "Falcons have no settled quarterback. Bryce is as confident as he's been.",
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "nick-wright-jaguars-at-broncos-20260918",
@@ -2944,11 +2972,12 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Jaguars at Broncos (Week 2)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "jaguars-at-broncos-2026",
     "side": "yes",
     "firstPublishedAt": "2026-09-20",
-    "reasoning": "Denver is shaken on a short week. Jacksonville's offensive line and Trevor Lawrence are rolling."
+    "reasoning": "Denver is shaken on a short week. Jacksonville's offensive line and Trevor Lawrence are rolling.",
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "nick-wright-seahawks-at-cardinals-20260918",
@@ -2960,10 +2989,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "Seahawks at Cardinals (Week 2)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "seahawks-at-cardinals-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-09-20"
+    "firstPublishedAt": "2026-09-20",
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "brandt-vikings-at-bears-20260918",
@@ -2975,10 +3005,11 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Vikings at Bears (Week 2)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "vikings-at-bears-2026",
     "side": "no",
-    "firstPublishedAt": "2026-09-20"
+    "firstPublishedAt": "2026-09-20",
+    "gradedAt": "2026-09-20"
   },
   {
     "id": "herbstreit-west-virginia-vs-virginia-20260919",
