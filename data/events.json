@@ -1348,7 +1348,10 @@
       "kickoffDate": "2026-09-21",
       "awayTeamId": "giants",
       "homeTeamId": "rams",
-      "week": 2
+      "week": 2,
+      "awayScore": 6,
+      "homeScore": 28,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
     },
     {
       "slug": "eagles-at-titans-2026",

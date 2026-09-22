@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-2/");
     expect(recap!.line).toBe(
-      "Week 2: experts went 15–16. Chris Simms, Mike Florio, and Nick Wright hit on Packers."
+      "Week 2: experts went 16–17. Chris Simms, Mike Florio, and Nick Wright hit on Packers."
     );
   });
 

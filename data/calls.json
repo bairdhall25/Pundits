@@ -2670,7 +2670,7 @@
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000790570043",
     "sourceDate": "2026-09-18",
     "kind": "hard",
-    "status": "pending",
+    "status": "hit",
     "firstPublishedAt": "2026-09-20",
     "id": "simms-giants-at-rams-20260918",
     "claim": "I'm gonna have the Rams win. … Rams win in 28, 24",
@@ -2678,7 +2678,8 @@
     "paysOn": "Giants at Rams (Week 2)",
     "eventSlug": "giants-at-rams-2026",
     "side": "no",
-    "reasoning": "Rams bounce-back."
+    "reasoning": "Rams bounce-back.",
+    "gradedAt": "2026-09-21"
   },
   {
     "id": "john-middlekauff-steelers-at-patriots-20260918",
@@ -2936,14 +2937,15 @@
     "sourceUrl": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/pfts-week-2-2026-nfl-picks",
     "sourceDate": "2026-09-17",
     "kind": "hard",
-    "status": "pending",
+    "status": "miss",
     "firstPublishedAt": "2026-09-20",
     "id": "florio-giants-at-rams-20260917",
     "claim": "Giants 24, Rams 21.",
     "subject": "Giants",
     "paysOn": "Giants at Rams (Week 2)",
     "eventSlug": "giants-at-rams-2026",
-    "side": "yes"
+    "side": "yes",
+    "gradedAt": "2026-09-21"
   },
   {
     "id": "nick-wright-panthers-at-falcons-20260918",
