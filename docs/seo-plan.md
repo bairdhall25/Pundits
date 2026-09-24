@@ -3,11 +3,20 @@
 Status: Operational. The latest dated SEO/AEO audit and approved fix plan may supersede individual priorities.
 
 Status as of 2026-08-29. Done: sitemap + news-sitemap + RSS, canonical URLs,
-JSON-LD (NewsArticle/Person/SportsEvent), legacy-slug 301s, noindex gating for
+JSON-LD (NewsArticle, Person, WebPage, SportsTeam, CollectionPage, and related
+site entities), legacy-slug 301s, noindex gating for
 zero-call pundit profiles, outcome-aware titles after grading, and the
 append-only permalink ledger (`docs/seo/permalinks.txt`, enforced by
 `verify:static` — see RUNBOOK "URL permanence"). Weekly archive pages and
 team pages are also shipped, with earned-indexing gates.
+
+`Event` / `SportsEvent` markup is intentionally excluded from pick pages.
+Search Console previously classified a future-market page as an event and
+required physical-event fields that did not truthfully apply. Game and future
+aggregation pages use `WebPage` with accurate `SportsTeam` or `Thing` entities;
+individual pick receipts retain `NewsArticle` markup. Do not restore
+Event-family markup without a game-only data contract for authoritative start
+times, time zones, venues, and addresses, followed by Rich Results validation.
 
 Remaining items, in priority order. Each is independent; pick up any of them.
 

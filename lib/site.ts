@@ -89,6 +89,7 @@ export function pageMeta(
     description: snippet,
     alternates: url ? { canonical: url } : undefined,
     openGraph: {
+      type: "website",
       title: `${title} · ${SITE_NAME}`,
       description: snippet,
       url,
