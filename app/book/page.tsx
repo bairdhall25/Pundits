@@ -3,6 +3,10 @@ import { CallCard } from "@/components/CallCard";
 import { PunditAvatar } from "@/components/PunditAvatar";
 import { loadCalls, loadPundits } from "@/lib/data";
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export default function BookPage() {
   const pundits = Object.fromEntries(loadPundits().map((p) => [p.id, p]));
   const calls = [...loadCalls()].sort((a, b) =>
