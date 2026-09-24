@@ -38,7 +38,10 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /College football and NFL picks from named analysts and commentators/);
+assert.match(home, /Josh Pate picks USC\. Nobody on Oregon yet\./);
+assert.match(home, /href="\/picks\/oregon-at-usc-2026\/"/);
+assert.match(home, /href="\/picks\/texas-am-at-lsu-2026\/"/);
+assert.match(home, /Week 4 · Sep 26 · Week 3 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
@@ -431,7 +434,9 @@ assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 3: who called it/);
+assert.match(ncaafSlate, /College football Week 4: who picked whom/);
+assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-4\//);
+assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-3\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-1\//);
 

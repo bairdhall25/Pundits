@@ -65,10 +65,12 @@ describe("editorial feeds", () => {
     expect(xml).not.toContain("/picks/older-2026/voice/");
   });
 
-  it("keeps a quiet-period news sitemap empty rather than aging sourceDate rows", () => {
+  it("keeps aged sourceDate rows out of the news sitemap while a same-day publish stays in", () => {
     const xml = newsSitemap(loadCalls(), loadEvents(), loadPundits(), new Date("2026-09-23T12:00:00Z"));
     expect(xml).toContain("xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\"");
-    expect(xml).not.toContain("<url>");
+    expect(xml).toContain("/picks/texas-am-at-lsu-2026/pate/");
+    expect(xml).toContain("/picks/oregon-at-usc-2026/pate/");
+    expect(xml).not.toContain("/picks/clemson-at-lsu-2026/finebaum/");
   });
 
   it("rebuilds a valid empty news sitemap after eligible receipts expire without dropping ordinary URLs", () => {
@@ -125,7 +127,7 @@ describe("editorial feeds", () => {
     expect(ordinary).toContain("https://pundits.pro/picks/unc-vs-tcu-2026/finebaum/");
     expect(ordinary.some((url) => url.includes("/picks/"))).toBe(true);
 
-    const afterLiveReceiptsExpire = new Date("2026-09-23T10:30:00Z");
+    const afterLiveReceiptsExpire = new Date("2026-09-25T10:30:00Z");
     const liveNews = newsSitemap(loadCalls(), loadEvents(), loadPundits(), afterLiveReceiptsExpire);
     expect(liveNews).not.toContain("<url>");
     expect(assertNewsSitemapFresh(liveNews, afterLiveReceiptsExpire)).toEqual({ urls: 0, empty: true });

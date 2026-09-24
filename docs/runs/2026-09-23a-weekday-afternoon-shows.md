@@ -82,6 +82,6 @@ none (unpublished — no public card)
 | approved hunt hits | 2 mapped roster unpublished (`pate` LSU + `pate` USC) |
 | overflow hard | 0 |
 | audit | ok |
-| promoted | false |
+| promoted | true |
 
 ASR-verified Apple/Omny URL. Empty public eventSlug slate — blank slug/side on Intake.
