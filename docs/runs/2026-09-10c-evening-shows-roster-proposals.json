@@ -1,0 +1,55 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-chuck-pagano-476b8187a103083c",
+      "kind": "roster-candidate",
+      "proposedId": "chuck-pagano",
+      "rowId": "476b8187a103083c",
+      "sourceRun": "docs/runs/2026-09-10c-evening-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 16,
+        "pass": "Shows pass 2026-09-10 Thursday evening (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "chuck-pagano",
+        "name": "Chuck Pagano",
+        "group": "other",
+        "outlet": "The Pat McAfee Show (What the Chuck)",
+        "eventSlug": "49ers-vs-rams-2026",
+        "side": "no",
+        "verbatimQuote": "I'm going with the Rams. They're going to beat the 49ers in Australia down under.",
+        "reasoning": "Matchup graphics landslide for LA; projects 28-20.",
+        "note": "Association guest coach. Official pick ~1:44:49 + “28-20 Rams.” photoUrl=needed. rowId `0c28592f538d8015`.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000788909142",
+        "sourceDate": "2026-09-10",
+        "photoUrl": "needed",
+        "targetId": "",
+        "matchup": ""
+      },
+      "audit": {
+        "proposedId": "chuck-pagano",
+        "rowId": "476b8187a103083c",
+        "verdict": "ok-no-reasoning",
+        "auditedAt": "2026-09-11T01:38:07Z",
+        "eligibility": "association",
+        "eligibilityReason": "The official Pat McAfee Show episode metadata identifies Chuck Pagano as the returning What the Chuck guest and attributes the 49ers-Rams pick to him, establishing an eligible guest association with the McAfee factory.",
+        "note": "The published episode and official clip preserve Pagano's Rams winner and 28-20 score. The capsule is an operator summary and score/category restatement, so omit it. The Scout note's legacy rowId does not match the current parsed evidence-v2 identity. The row also omits association and associationUrl fields, factory, X handle, and usable photo evidence. No roster or photo approval."
+      },
+      "missing": [
+        "Association role and source URL",
+        "Verified official X handle",
+        "Future Scout source/factory",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

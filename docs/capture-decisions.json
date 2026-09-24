@@ -73,6 +73,26 @@
       "note": "Audit ok-no-reasoning rowId 7b1d6f6451bf7e96. Not shipped 2026-09-10 Simms promote."
     },
     {
+      "id": "candidate-taylor-lewan",
+      "kind": "roster-candidate",
+      "needed": "Promote must add association fields, factory, verified X handle, and proposed photo/provenance before operator roster + photo review. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-10b-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-09-10b-afternoon-shows-roster-proposals.json",
+      "owner": "Promote",
+      "note": "Audit ok rowId 1682d09397c726f9; association verified from official Locker Room metadata. Candidate is unmapped and still requires operator mint separately."
+    },
+    {
+      "id": "candidate-chuck-pagano",
+      "kind": "roster-candidate",
+      "needed": "Promote must add association fields, factory, verified X handle, and proposed photo/provenance before operator roster + photo review. Omit the audited capsule. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-10c-evening-shows.md",
+      "proposalFile": "docs/runs/2026-09-10c-evening-shows-roster-proposals.json",
+      "owner": "Promote",
+      "note": "Audit ok-no-reasoning rowId 476b8187a103083c; association verified from official McAfee metadata. Scout's printed legacy rowId is stale."
+    },
+    {
       "id": "overflow-walker-indiana",
       "kind": "overflow-mint",
       "needed": "Operator mint-or-discard for Audit-ok unmapped Walker Indiana SU (North Texas at Indiana).",
