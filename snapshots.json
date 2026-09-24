@@ -1,0 +1,22 @@
+{
+  "branches/archive/pre-integration-main-20260829": "ed0cb01e4a4b1177f71ad42647ffabcfe21ad9df",
+  "branches/codex/community-tip-wip": "620ab4779e33bc65efa84034363f767064a27f04",
+  "branches/codex/ncsu-uva-grade-20260829-220641": "1938ef5a0d1249b102fa1865df6eb0beedbab855",
+  "branches/codex/promote-20260918-tnf-louisville": "40da184dcb53c3d5ae688074501e2e8ff1301aaf",
+  "branches/codex/pundits-audit-20260831T225632Z": "b4315756862b26ac53b85a704d458b68bd6e3d99",
+  "branches/codex/pundits-audit-20260910T203158847Z": "89e682889e8a173189548526d491e49e9db27b73",
+  "branches/codex/pundits-audit-20260911T003805209Z": "333693dd283ef09acf02ca8989f5f3f4905fe97a",
+  "branches/wip/pundit-profile-mobile-20260901": "7e4366c283a59a3f8924b408324e09fae6f0d89e",
+  "branches/worktree-social-engine": "fe3d4127ca0953450d15cf3a1db2c81b372d83d9",
+  "worktrees/workspace": "9b27086b3c5d316881de8627b142b166921b9468",
+  "worktrees/pundits-trust-release-be9db97": "e4813578280d11f19a343279e2a8f11f2459c0d7",
+  "worktrees/social-engine": "fe3d4127ca0953450d15cf3a1db2c81b372d83d9",
+  "worktrees/community-tip-fixes": "620ab4779e33bc65efa84034363f767064a27f04",
+  "worktrees/pundits-prototype": "bb333c35a798bc0d4eb141d48a96213e4d5b3f93",
+  "worktrees/ncsu-uva-grade-20260829-220641": "a1f4a29eb2d3f46f7a6f51b6e1ade1c301e640ed",
+  "worktrees/promote-20260918-tnf-louisville": "40da184dcb53c3d5ae688074501e2e8ff1301aaf",
+  "worktrees/pundits-audit-20260831T225632Z": "c4a9ab6c1c02851a087a99fd05469399ccffb10e",
+  "worktrees/pundits-audit-20260910T203158847Z": "5157858f709ea5616a8432fb412ae38f9cc36fea",
+  "worktrees/pundits-audit-20260911T003805209Z": "c041f3f6dc9f84b5300adf149f1d51002bd24aec",
+  "worktrees/social-card-system": "8b053ca653efde08b4f0c36bc07f8912215776e3"
+}
