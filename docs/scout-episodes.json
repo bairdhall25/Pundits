@@ -733,8 +733,85 @@
       "inspectedAt": "2026-09-23T21:50:03-04:00",
       "outcome": "dry",
       "note": "TNF preview; defers picks to Friday Ringer 107"
+    },
+    {
+      "id": "cover3:1000791501134",
+      "factoryId": "cover3",
+      "title": "Week 4 LOCKS Best Bets, Against The Spread Picks, Moneyline Sprinkles & More! | Cover 3",
+      "published": "2026-09-24T17:07:53Z",
+      "url": "https://podcasts.apple.com/us/podcast/week-4-locks-best-bets-against-the-spread-picks/id1257913963?i=1000791501134",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "hit",
+      "note": "Afternoon Shows 2026-09-24: Intake patterson/kanell Tennessee ML; patterson Oregon-3; kanell LSU-8.5; patterson Georgia-13.5; overflow kanell Florida-3. YT b9wA-xvjXcI."
+    },
+    {
+      "id": "see-ball:1000791405331",
+      "factoryId": "see-ball",
+      "title": "Texas-Tennessee, Ole Miss-Florida, Oklahoma-Georgia and MORE CFB Week 4 Picks",
+      "published": "2026-09-24T05:05:18Z",
+      "url": "https://podcasts.apple.com/us/podcast/texas-tennessee-ole-miss-florida-oklahoma-georgia-and/id1769665459?i=1000791405331",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "hit",
+      "note": "Afternoon Shows 2026-09-24: Intake pollack Texas+USC+Georgia+LSU; Candidates brent-rollins Texas+Oregon. YT lPe0-NvtSIM."
+    },
+    {
+      "id": "mcafee:TNkpri5ATMU",
+      "factoryId": "mcafee",
+      "title": "The Pat McAfee Show Makes Their TNF Picks: Packers vs Falcons",
+      "published": "2026-09-24",
+      "url": "https://www.youtube.com/watch?v=TNkpri5ATMU",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "hit",
+      "note": "Afternoon Shows 2026-09-24: Intake mcafee+hawk Packers-4.5; Candidates chuck-pagano/ty-schmidt/connor-rogers Packers."
+    },
+    {
+      "id": "gmfb:1000791478279",
+      "factoryId": "gmfb",
+      "title": "GMFB Thursday Hour 1: Buying Cowboys or Ravens?! Falcons vs. Packers! Bears QB Plan?",
+      "published": "2026-09-24T15:04:04Z",
+      "url": "https://podcasts.apple.com/us/podcast/gmfb-thursday-hour-1-buying-cowboys-or-ravens-falcons/id1171438277?i=1000791478279",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "dry",
+      "note": "Afternoon Shows 2026-09-24: Omny ASR preview/analysis; no first-person roster SU."
+    },
+    {
+      "id": "gmfb:1000791489914",
+      "factoryId": "gmfb",
+      "title": "GMFB Thursday Hour 2: Bills or Chiefs? Payton or McVay? Who Will FIGHT?!!",
+      "published": "2026-09-24T15:43:19Z",
+      "url": "https://podcasts.apple.com/us/podcast/gmfb-thursday-hour-2-bills-or-chiefs-payton-or-mcvay/id1171438277?i=1000791489914",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "dry",
+      "note": "Afternoon Shows 2026-09-24: Throwdown fight bit; no Dispatch SU."
+    },
+    {
+      "id": "clay:1000791456048",
+      "factoryId": "clay",
+      "title": "Clay Travis Show: Trump Heads to Texas-Tennessee as Clay Makes His Pick",
+      "published": "2026-09-23T20:12:26Z",
+      "url": "https://podcasts.apple.com/us/podcast/clay-travis-show-trump-heads-to-texas-tennessee-as/id1498106610?i=1000791456048",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "bets",
+      "note": "Afternoon Shows 2026-09-24: Tennessee cover+under Bets only; 21-17 implies Texas wins."
+    },
+    {
+      "id": "eisen:aVIZwbR2kK8",
+      "factoryId": "eisen",
+      "title": "For Real or Fugazi??? Which 1-1 NFL Teams are Good or and Which are Bad?",
+      "published": "2026-09-24",
+      "url": "https://www.youtube.com/watch?v=aVIZwbR2kK8",
+      "inspected": true,
+      "inspectedAt": "2026-09-24T16:24:00-04:00",
+      "outcome": "dry",
+      "note": "Afternoon Shows 2026-09-24: team quality board; not TNF who-wins."
     }
   ],
   "note": "Restored after accidental empty write (759a025). Night 2026-09-22 Finebaum/Sharp/GMFB added. Old coverage stubs trimmed \u2014 full prior coverage in git history before 759a025; full draft at /workspace/scout-2026-09-22-night/scout-episodes.FULL_RESTORE.json.",
-  "updated": "2026-09-23T21:50:03-04:00"
+  "updated": "2026-09-24"
 }
