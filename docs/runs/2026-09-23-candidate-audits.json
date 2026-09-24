@@ -1,0 +1,11 @@
+[
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "c040bd9d18757335",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-09-24T15:18:28Z",
+    "eligibility": "association",
+    "eligibilityReason": "Co-host of The Locker Room with Will Compton on the Josh Pate show factory. National podcast voice, not a Tennessee or Texas beat writer. Episode page names him and says he and Compton split Texas vs Tennessee.",
+    "note": "Omny transcript spk0 at 67:05-68:48 is one Taylor turn, identified because that speaker spells T-A-Y-L-O-R-L-E-W-A-N as his FanDuel picks. Ellipsis is the middle of the turn. Favorite laying 4.5 is SU. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Do not roster. Do not invent a slug."
+  }
+]

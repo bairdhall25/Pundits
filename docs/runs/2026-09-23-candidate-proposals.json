@@ -1,0 +1,54 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-taylor-lewan-c040bd9d18757335",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "c040bd9d18757335",
+      "sourceRun": "docs/runs/2026-09-23b-weekday-night-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 25,
+        "pass": "Shows pass 2026-09-23 night (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "ncaaf",
+        "outlet": "The Locker Room / Bussin' With The Boys",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I see Arch Manning going in and dominating the Vols. Dominating. … this is Texas minus four and a half. I hate it. because I love my boys over here, but I got four units on that.",
+        "reasoning": "Texas LOS/run game + Arch; Ohio State “fluke”; four units on road favorite.",
+        "note": "Approved unpublished — Texas at Tennessee (2026). Favorite laying ~4.5 → SU+Bets. Blank slug/side. Implied side YES (away Texas). Title: Lewan/Compton SPLIT. Never invent slug. targetId ncaaf-w4-texas-at-tennessee. Omny ASR ~66:52 / ~69:40.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/the-locker-room-cfb-week-4-picks-taylor-lewan-will/id1485905502?i=1000791362364",
+        "sourceDate": "2026-09-23",
+        "photoUrl": "needed",
+        "association": "Co-host The Locker Room with Will Compton; former NFL OT; regular Pate guest",
+        "associationUrl": "https://omny.fm/shows/the-locker-room/cfb-week-4-picks-taylor-lewan-will-compton-split-on-texas-vs-tennessee-josh-pate-rides-w-usc",
+        "factory": "pate"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "c040bd9d18757335",
+        "verdict": "ok-unmapped-no-reasoning",
+        "auditedAt": "2026-09-24T15:18:28Z",
+        "eligibility": "association",
+        "eligibilityReason": "Co-host of The Locker Room with Will Compton on the Josh Pate show factory. National podcast voice, not a Tennessee or Texas beat writer. Episode page names him and says he and Compton split Texas vs Tennessee.",
+        "note": "Omny transcript spk0 at 67:05-68:48 is one Taylor turn, identified because that speaker spells T-A-Y-L-O-R-L-E-W-A-N as his FanDuel picks. Ellipsis is the middle of the turn. Favorite laying 4.5 is SU. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Do not roster. Do not invent a slug."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ]
+}

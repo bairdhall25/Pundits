@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-20",
+  "updated": "2026-09-24",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -321,6 +321,16 @@
       "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
       "owner": "Promote",
       "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass."
+    },
+    {
+      "id": "candidate-taylor-lewan",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Taylor Lewan Texas SU (Audit ok-unmapped-no-reasoning, association, rowId c040bd9d18757335). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-09-23b-weekday-night-shows.md",
+      "proposalFile": "docs/runs/2026-09-23-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate."
     }
   ]
 }

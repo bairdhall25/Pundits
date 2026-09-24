@@ -93,7 +93,7 @@ none for unpublished blank-slug rows; minted `texas-am-at-lsu-2026` Intake ready
 | bets | 4 |
 | approved hunt hits | 1 mapped minted (`compton` LSU) + 1 mapped unpublished (`compton` Tennessee) |
 | overflow hard | 0 |
-| audit | pending |
+| audit | fail |
 | promoted | false |
 
 ASR-verified Omny URL for Locker Room. Empty slug only on still-unpublished Texas@Tennessee Candidate/Intake.
