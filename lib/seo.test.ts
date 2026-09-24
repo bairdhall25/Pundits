@@ -64,14 +64,14 @@ describe("mapped takes", () => {
     );
   });
 
-  it("includes Kanell on NC State at Virginia", () => {
+  it("includes Kanell's graded NC State call at Virginia", () => {
     const takes = mappedTakes(loadCalls(), loadEvents(), loadPundits());
     const ncsu = takes.find(
       (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "kanell"
     );
     expect(ncsu).toBeTruthy();
     expect(takeHeadline(ncsu!.pundit, ncsu!.event, ncsu!.call)).toBe(
-      "Danny Kanell picks NC State over Virginia"
+      "Danny Kanell picked NC State over Virginia — and missed (Virginia won)"
     );
     expect(takePath("ncsu-at-uva-2026", "kanell")).toBe(
       "/picks/ncsu-at-uva-2026/kanell"
@@ -135,13 +135,15 @@ describe("pick stories", () => {
     expect(story.paragraphs.join(" ")).not.toMatch(/McAfee|SMU/i);
   });
 
-  it("announces Kanell on NC State from the ledger only", () => {
+  it("announces Kanell's NC State miss from the ledger only", () => {
     const take = mappedTakes(loadCalls(), loadEvents(), loadPundits()).find(
       (t) => t.event.slug === "ncsu-at-uva-2026" && t.pundit.id === "kanell"
     );
     expect(take).toBeTruthy();
     const story = pickStory(take!, loadCalls(), loadPundits());
-    expect(story.headline).toBe("Danny Kanell picks NC State over Virginia");
+    expect(story.headline).toBe(
+      "Danny Kanell picked NC State over Virginia — and missed (Virginia won)"
+    );
     expect(story.dek).toContain("NC State as the underdog at 34¢");
     expect(story.paragraphs.join(" ")).toContain("give me the Wolfpack");
     expect(story.paragraphs.join(" ")).toContain(

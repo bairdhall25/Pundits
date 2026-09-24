@@ -734,7 +734,8 @@
     "kind": "hard",
     "subject": "NC State",
     "paysOn": "NC State at Virginia (Week 0)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-08-29",
     "eventSlug": "ncsu-at-uva-2026",
     "side": "yes"
   },
@@ -796,7 +797,8 @@
     "kind": "hard",
     "subject": "NC State",
     "paysOn": "NC State at Virginia (Week 0)",
-    "status": "pending",
+    "status": "miss",
+    "gradedAt": "2026-08-29",
     "eventSlug": "ncsu-at-uva-2026",
     "side": "yes"
   }
