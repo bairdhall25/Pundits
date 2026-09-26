@@ -708,7 +708,7 @@
       "inspected": true,
       "inspectedAt": "2026-09-23T21:50:03-04:00",
       "outcome": "dry",
-      "note": "Packers upset alert \u2260 Falcons SU"
+      "note": "Packers upset alert ≠ Falcons SU"
     },
     {
       "id": "mcafee:1000791353510",
@@ -810,8 +810,151 @@
       "inspectedAt": "2026-09-24T16:24:00-04:00",
       "outcome": "dry",
       "note": "Afternoon Shows 2026-09-24: team quality board; not TNF who-wins."
+    },
+    {
+      "id": "gamedaycole:2026-09-26-w4",
+      "factoryId": "gameday",
+      "title": "Week 4 2026: Saturday morning College Gameday picks!",
+      "published": "2026-09-26",
+      "url": "https://gamedaycole.com/2026/09/26/week-4-2026-saturday-morning-college-gameday-picks/",
+      "locator": "https://gamedaycole.com/2026/09/26/week-4-2026-saturday-morning-college-gameday-picks/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-09-26T12:55:00-04:00",
+      "coverage": [
+        {
+          "targetId": "ncaaf-w4-oregon-at-usc",
+          "locator": "Cole GameDay desk Oregon/USC",
+          "status": "completed"
+        },
+        {
+          "targetId": "ncaaf-w4-texas-am-at-lsu",
+          "locator": "Cole GameDay desk A&M/LSU",
+          "status": "completed"
+        },
+        {
+          "targetId": "ncaaf-w4-oklahoma-at-georgia",
+          "locator": "Cole GameDay desk Georgia/Oklahoma",
+          "status": "completed"
+        },
+        {
+          "targetId": "ncaaf-w4-texas-at-tennessee",
+          "locator": "Cole desk present; skipped past KO",
+          "status": "blocked"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-09-26T12:55:00-04:00",
+          "coverage": [
+            {
+              "targetId": "ncaaf-w4-oregon-at-usc",
+              "locator": "Cole GameDay desk Oregon/USC",
+              "status": "completed"
+            },
+            {
+              "targetId": "ncaaf-w4-texas-am-at-lsu",
+              "locator": "Cole GameDay desk A&M/LSU",
+              "status": "completed"
+            },
+            {
+              "targetId": "ncaaf-w4-oklahoma-at-georgia",
+              "locator": "Cole GameDay desk Georgia/Oklahoma",
+              "status": "completed"
+            },
+            {
+              "targetId": "ncaaf-w4-texas-at-tennessee",
+              "locator": "Cole desk present; skipped past KO",
+              "status": "blocked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barstool-cfb:XIUjuc0CoHk",
+      "factoryId": "barstool-cfb",
+      "title": "Brandon Walker Finally Has A Good College Football Team? | Barstool College Football Show Week 4",
+      "published": "2026-09-24",
+      "url": "https://www.youtube.com/watch?v=XIUjuc0CoHk",
+      "locator": "https://www.youtube.com/watch?v=XIUjuc0CoHk",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-09-26T12:55:00-04:00",
+      "coverage": [
+        {
+          "targetId": "ncaaf-w4-oregon-at-usc",
+          "locator": "YT captions ~17:14–21:40",
+          "status": "completed"
+        },
+        {
+          "targetId": "ncaaf-w4-texas-am-at-lsu",
+          "locator": "hosts explicitly skipped A&M@LSU",
+          "status": "dry"
+        },
+        {
+          "targetId": "ncaaf-w4-texas-at-tennessee",
+          "locator": "YT ~21:42–25:00 skipped past KO",
+          "status": "blocked"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-09-26T12:55:00-04:00",
+          "coverage": [
+            {
+              "targetId": "ncaaf-w4-oregon-at-usc",
+              "locator": "YT captions ~17:14–21:40",
+              "status": "completed"
+            },
+            {
+              "targetId": "ncaaf-w4-texas-am-at-lsu",
+              "locator": "hosts explicitly skipped A&M@LSU",
+              "status": "dry"
+            },
+            {
+              "targetId": "ncaaf-w4-texas-at-tennessee",
+              "locator": "YT ~21:42–25:00 skipped past KO",
+              "status": "blocked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cole-fallica:2026-09-26-w4",
+      "factoryId": "bear-bets",
+      "title": "Week 4 2026: CFB Picks from Chris The Bear Fallica",
+      "published": "2026-09-26",
+      "url": "https://gamedaycole.com/2026/09/26/week-4-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "locator": "https://gamedaycole.com/2026/09/26/week-4-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-09-26T12:55:00-04:00",
+      "coverage": [
+        {
+          "targetId": "ncaaf-w4-texas-am-at-lsu",
+          "locator": "LSU-8.5 card",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-09-26T12:55:00-04:00",
+          "coverage": [
+            {
+              "targetId": "ncaaf-w4-texas-am-at-lsu",
+              "locator": "LSU-8.5 card",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
     }
   ],
-  "note": "Restored after accidental empty write (759a025). Night 2026-09-22 Finebaum/Sharp/GMFB added. Old coverage stubs trimmed \u2014 full prior coverage in git history before 759a025; full draft at /workspace/scout-2026-09-22-night/scout-episodes.FULL_RESTORE.json.",
-  "updated": "2026-09-24"
+  "note": "Restored after accidental empty write (759a025). Night 2026-09-22 Finebaum/Sharp/GMFB added. Old coverage stubs trimmed — full prior coverage in git history before 759a025; full draft at /workspace/scout-2026-09-22-night/scout-episodes.FULL_RESTORE.json.",
+  "updated": "2026-09-26"
 }
