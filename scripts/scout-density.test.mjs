@@ -425,16 +425,8 @@ describe("live capture-target Dispatch", () => {
     const nflHunt = rows.filter(
       (row) => row.sport === "nfl" && row.queue !== "grader-flag" && row.queue !== "skip"
     );
-    expect(nflHunt.map((row) => row.eventSlug)).toEqual([
-      "bengals-at-steelers-2026",
-      "chargers-at-bills-2026",
-      "ravens-at-cowboys-2026",
-    ]);
-    expect(nflHunt.map((row) => row.targetId)).toEqual([
-      "nfl-w3-bengals-at-steelers",
-      "nfl-w3-chargers-at-bills",
-      "nfl-w3-ravens-at-cowboys",
-    ]);
+    expect(nflHunt.map((row) => row.eventSlug)).toEqual([]);
+    expect(nflHunt.map((row) => row.targetId)).toEqual([]);
     expect(
       rows
         .filter((row) => row.eventSlug === "falcons-at-packers-2026")

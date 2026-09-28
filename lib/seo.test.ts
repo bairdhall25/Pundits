@@ -159,7 +159,7 @@ describe("grade sheet", () => {
     expect(rows.map((r) => r.label)).toEqual(["Result", "Grading", "Record"]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toMatch(/straight-up winner/);
-    expect(rows[2].value).toContain("3–3");
+    expect(rows[2].value).toContain("5–4");
     expect(rows[2]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
   });
 
@@ -414,7 +414,7 @@ describe("json-ld", () => {
     const calls = loadCalls();
     expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
     expect(teamLastModified("north-carolina", events, calls)).toBe("2026-09-20");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-26");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-27");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {
@@ -619,7 +619,7 @@ describe("take page copy is additive", () => {
     expect(rows.map((row) => row.label)).toEqual(["Result", "Grading", "Record"]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toMatch(/straight-up winner/);
-    expect(rows[2].value).toContain("3–3");
+    expect(rows[2].value).toContain("5–4");
   });
 
   it("puts the graded result in articleBody instead of restating the pick in paragraphs", () => {

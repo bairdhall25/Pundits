@@ -197,6 +197,11 @@ export default function HomePage() {
           captured yet.
         </p>
       </HowItWorks>
+      {recap && !showCollege && !showNfl ? (
+        <p className="week-recap">
+          <a href={recap.href}>{recap.line}</a>
+        </p>
+      ) : null}
       <nav className="board-jump" aria-label="Jump to section">
         <span className="board-jump-label">Jump to</span>
         {showCollege ? <a href="#ncaaf">College</a> : null}

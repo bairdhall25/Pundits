@@ -1634,7 +1634,10 @@
       "kickoffDate": "2026-09-26",
       "awayTeamId": "texas-am",
       "homeTeamId": "lsu",
-      "week": 4
+      "week": 4,
+      "awayScore": 6,
+      "homeScore": 35,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856702/texas-am-lsu"
     },
     {
       "slug": "oregon-at-usc-2026",
@@ -1657,7 +1660,10 @@
       "kickoffDate": "2026-09-26",
       "awayTeamId": "oregon",
       "homeTeamId": "usc",
-      "week": 4
+      "week": 4,
+      "awayScore": 41,
+      "homeScore": 27,
+      "resultUrl": "https://www.cbssports.com/college-football/gametracker/boxscore/NCAAF_20260926_OREG@USC/"
     },
     {
       "slug": "texas-at-tennessee-2026",
@@ -1680,7 +1686,10 @@
       "kickoffDate": "2026-09-26",
       "awayTeamId": "texas",
       "homeTeamId": "tennessee",
-      "week": 4
+      "week": 4,
+      "awayScore": 20,
+      "homeScore": 17,
+      "resultUrl": "https://texaslonghorns.com/news/2026/9/26/no-1-1-football-secures-first-conference-win-over-no-14-13-tennessee"
     },
     {
       "slug": "oklahoma-at-georgia-2026",
@@ -1703,7 +1712,10 @@
       "kickoffDate": "2026-09-26",
       "awayTeamId": "oklahoma",
       "homeTeamId": "georgia",
-      "week": 4
+      "week": 4,
+      "awayScore": 13,
+      "homeScore": 41,
+      "resultUrl": "https://georgiadogs.com/news/2026/9/26/football-defense-leads-bulldogs-past-sooners"
     },
     {
       "slug": "falcons-at-packers-2026",
@@ -1752,7 +1764,10 @@
       "kickoffDate": "2026-09-27",
       "awayTeamId": "bengals",
       "homeTeamId": "steelers",
-      "week": 3
+      "week": 3,
+      "awayScore": 27,
+      "homeScore": 30,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872950/bengals-steelers"
     },
     {
       "slug": "ravens-at-cowboys-2026",
@@ -1775,7 +1790,10 @@
       "kickoffDate": "2026-09-27",
       "awayTeamId": "ravens",
       "homeTeamId": "cowboys",
-      "week": 3
+      "week": 3,
+      "awayScore": 34,
+      "homeScore": 31,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872960/ravens-cowboys"
     },
     {
       "slug": "chargers-at-bills-2026",
@@ -1798,7 +1816,10 @@
       "kickoffDate": "2026-09-27",
       "awayTeamId": "chargers",
       "homeTeamId": "bills",
-      "week": 3
+      "week": 3,
+      "awayScore": 16,
+      "homeScore": 24,
+      "resultUrl": "https://www.buffalobills.com/news/bills-24-chargers-16-final-score-recap-highlights"
     }
   ]
 }

@@ -38,10 +38,9 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Danny Kanell and Chip Patterson pick Tennessee\. David Pollack and Colin Cowherd pick Texas\./);
-assert.match(home, /href="\/picks\/oregon-at-usc-2026\/"/);
-assert.match(home, /href="\/picks\/texas-am-at-lsu-2026\/"/);
-assert.match(home, /Week 4 · Sep 26 · Week 3 is final/);
+assert.match(home, /College football and NFL picks from named analysts and commentators\./);
+assert.match(home, /Week 3: experts went 3–4\. Chris Simms and Jason McIntyre hit on Ravens\./);
+assert.match(home, /href="\/nfl\/2026\/week-3\/"/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
@@ -191,7 +190,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 7–7/);
+assert.match(herbstreitProfile, /2026 tracked record: 9–7/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -424,7 +423,8 @@ assert.match(weekNfl2, /Rams beat Giants/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 3: who picked whom/);
+assert.match(nflSlate, /NFL Week 3: who called it/);
+assert.match(nflSlate, /Week 3 is final on this NFL board/);
 assert.match(nflSlate, /Week 2 is final/);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-3\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-2\//);
@@ -432,9 +432,26 @@ assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
 assert.doesNotMatch(nflSlate, /best experts/i);
 assert.doesNotMatch(nflSlate, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
+const weekNfl3 = await readFile(path.join(out, "nfl/2026/week-3/index.html"), "utf8");
+assert.match(weekNfl3, /who got them right/);
+assert.match(weekNfl3, /Tracked Week 3 record: 3–4/);
+assert.match(weekNfl3, /Final · Falcons 35–14/);
+assert.match(weekNfl3, /Final · Steelers 30–27/);
+assert.match(weekNfl3, /Final · Bills 24–16/);
+assert.match(weekNfl3, /Final · Ravens 34–31/);
+
+const weekCfb4 = await readFile(path.join(out, "ncaaf/2026/week-4/index.html"), "utf8");
+assert.match(weekCfb4, /who got them right/);
+assert.match(weekCfb4, /Tracked Week 4 record: 18–8/);
+assert.match(weekCfb4, /Texas beat Tennessee/);
+assert.match(weekCfb4, /Final · Georgia 41–13/);
+assert.match(weekCfb4, /LSU beat Texas A&amp;M/);
+assert.match(weekCfb4, /Oregon beat USC/);
+
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 4: who picked whom/);
+assert.match(ncaafSlate, /College football Week 4: who called it/);
+assert.match(ncaafSlate, /Week 4 is final on this College football board/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-4\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-3\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);

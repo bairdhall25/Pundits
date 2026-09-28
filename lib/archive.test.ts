@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/nfl/2026/week-2/");
+    expect(recap!.href).toBe("/nfl/2026/week-3/");
     expect(recap!.line).toBe(
-      "Week 2: experts went 16–17. Chris Simms, Mike Florio, and Nick Wright hit on Packers."
+      "Week 3: experts went 3–4. Chris Simms and Jason McIntyre hit on Ravens."
     );
   });
 
