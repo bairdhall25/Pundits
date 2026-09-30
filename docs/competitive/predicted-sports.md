@@ -10,11 +10,11 @@ X: [@predictedsports](https://x.com/predictedsports)
 
 ## Current assessment
 
-Predicted Sports is building public, graded pick boards whose primary players are frontier AI models. It also grades some human/expert sources (the site claims ESPN BPI and CBS Sports staff appear in head-to-head pages). As of 2026-09-16 the CFB board continues through Week 3 and the **NFL board is live** with Week 1 field consensus (no longer scaffolded).
+Predicted Sports was building public, graded AI pick boards (CFB + NFL) as a "lock the pick, grade it in public" cousin. As of **2026-09-30** the entire site is **owner-suspended on Render**: homepage, `/cfb/board`, `/nfl/board`, and `/leaderboard` all return HTTP 503 with body "This service has been suspended by its owner" and response header `x-render-routing: suspend-by-user`. Public CFB/NFL board surfaces that were live through the 2026-09-16 / 2026-09-23 radar windows are not reachable.
 
-This is a real "lock the pick, grade it in public, never quietly edit" cousin. The core object is a model call, not a named pundit's quote. Watch it for SEO collision on game pages and for whether human experts become more than a comparison foil. Do not copy its feature set or change the Pundits roadmap based on NFL going live alone.
+The core object remains a model call, not a named pundit's quote — and while offline there is no SEO collision or graded NFL/CFB board to watch week-to-week. Do not copy its feature set. No Pundits roadmap change from the suspension alone.
 
-Threat: Medium on the public-ledger/SEO story (slightly more concrete now that NFL consensus is public). Partnership potential: Possible later if they want quote receipts; not a 2026 priority.
+Threat: **Low** while suspended (was Medium when boards were live). Partnership potential: deferred until the product returns; not a 2026 priority. Re-score immediately if boards come back with denser human-expert or quote surfaces.
 
 ## Baseline signals
 
@@ -31,14 +31,15 @@ Threat: Medium on the public-ledger/SEO story (slightly more concrete now that N
 
 - Same loop Pundits needs: lock before, grade after, show losses.
 - Event pages and H2H URLs are built for search ("Claude vs ChatGPT sports predictions").
-- CFB board already on the same Week 0/1 games Pundits is covering; NFL Week 1 consensus is now public too.
+- (Historical, pre-suspension) CFB/NFL boards covered the same weeks Pundits cares about when live.
 - Human expert records are already in the comparison set, even if they are not the hero.
 - Explicit $9/mo Pro funnel with audited strategy claims on the homepage.
 
 ### Weaknesses
 
 - Models are not named people fans argue about in a bar.
-- Almost no X distribution (`@predictedsports` still 8 followers as of 2026-09-16).
+- Almost no X distribution (`@predictedsports` **9** followers as of 2026-09-30; was 8 on 2026-09-16).
+- **Site currently offline** (Render suspend-by-user as of 2026-09-30) — no public board or Pro funnel to evaluate until restored.
 - Pro paywall on the interesting split ("which model picked what").
 - No verbatim quote or source URL as the object.
 - Frozen Kalshi context is not the product; they show a sportsbook line beside AI consensus.
@@ -56,9 +57,9 @@ Possible later: they have model boards; Pundits has named-quote receipts. Only i
 
 ## Monitoring checklist
 
-- CFB/NFL board density and whether human experts get first-class pages.
-- Whether NFL Week 1 grades publish cleanly in public after the slate settles.
-- X growth from 8 followers.
+- Whether the Render suspension lifts and CFB/NFL boards return.
+- If restored: board density, Week progression beyond the last-seen NFL Week 1 / CFB Week 4 window, and whether human experts get first-class pages.
+- X growth from ~9 followers.
 - Pricing / what stays free.
 - Whether they start quoting analysts rather than staff consensus blobs.
 
@@ -70,7 +71,8 @@ Possible later: they have model boards; Pundits has named-quote receipts. Only i
 - https://predictedsports.com/vs
 - https://predictedsports.com/p/claude-vs-chatgpt-sports-predictions
 - https://x.com/predictedsports
-- https://api.fxtwitter.com/predictedsports (followers snapshot 2026-09-16)
+- https://api.fxtwitter.com/predictedsports (followers snapshot 2026-09-16; re-checked 2026-09-30 → 9)
+- Render response headers on 2026-09-30 (`x-render-routing: suspend-by-user`)
 
 ## Observations
 
@@ -81,3 +83,7 @@ Possible later: they have model boards; Pundits has named-quote receipts. Only i
 - 2026-09-09 (weekly radar): No material change vs 2026-09-02. CFB board at Week 2 consensus (continuation). NFL `/nfl/board` still scaffolded with "Field projects picks land game week" for the Week 1 slate. `@predictedsports` still ~8 followers.
 
 - 2026-09-16 (weekly radar): **Material.** NFL board at https://predictedsports.com/nfl/board is live as "NFL Week 1" with field consensus for the Sep 13–14 slate (CHI at CAR through DEN at KC): projected margins/totals, ATS vote counts (e.g. 7/7, 4/8), Pro-gated per-model projected scores. Scaffold / "picks land game week" placeholder is gone. CFB board at Week 3 FBS consensus (continuation). Homepage still pitches verified betting performance (+$12,000 at $100/play, +120.0 units, 56.8% win rate on 710–541 / 1251 plays), $9/mo Pro, and featured strategies. `@predictedsports` still **8 followers** (fxtwitter). Threat stays **Medium** (NFL surface now real; still not named-pundit + Kalshi). Partnership call unchanged. No Pundits roadmap change.
+
+- 2026-09-23 (weekly radar): No material change vs 2026-09-16. CFB Week 4 continuation; NFL `/nfl/board` still Week 1 field consensus (no Week 2/3 board observed). `@predictedsports` still ~8 followers. Threat Medium unchanged. (No PR — quiet week.)
+
+- 2026-09-30 (weekly radar): **Material.** Entire https://predictedsports.com/ surface is **suspended by owner** on Render. Verified HTTP **503** on `/`, `/cfb/board`, `/nfl/board`, `/leaderboard`; HTML title "Service Suspended"; body "This service has been suspended by its owner."; response header `x-render-routing: suspend-by-user`. Prior live CFB (through Week 4 continuum) and NFL Week 1 boards are unreachable. `@predictedsports` **9 followers** / 7 posts (fxtwitter). Threat moves **Medium → Low** while offline; partnership deferred. Still not named-pundit + quote + Kalshi. **No Pundits roadmap change.** Watch for restore.

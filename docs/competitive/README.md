@@ -28,7 +28,7 @@ Each profile should answer:
 
 ## Current radar
 
-Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on a monthly checklist; this pass did not re-audit it. Predicted Sports NFL board went live 2026-09-16 (see profile).
+Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on a monthly checklist; this pass did not re-audit it. Predicted Sports NFL board went live 2026-09-16; **site owner-suspended on Render as of 2026-09-30** (see profile).
 
 | Product | Category | Current threat | Partnership potential | Profile |
 |---|---|---:|---:|---|
@@ -37,7 +37,7 @@ Researched 2026-08-29 unless a profile says otherwise. Pundit Ledger remains on 
 | Tallysight | Expert-consensus Pulse + Kalshi creator network | Highest distribution overlap of "who experts are taking" | Possible; they already route to Kalshi | [Profile](./tallysight.md) |
 | Pickwatch | Commercial expert-consensus + betting tools | Medium-high as the scaled "hottest expert" product | Unlikely; different customer | [Profile](./pickwatch.md) |
 | BettingPros | Handicapper consensus + accuracy app | Medium; betting writers not TV pundits | Low | Radar only |
-| Predicted Sports | AI pick board that also grades some human experts | Medium on public-ledger/SEO (NFL board live 2026-09-16; still not named-pundit+Kalshi) | Possible if they want quote receipts | [Profile](./predicted-sports.md) |
+| Predicted Sports | AI pick board that also grades some human experts | **Low while site suspended** (was Medium; Render suspend-by-user 2026-09-30; boards unreachable) | Deferred until product returns | [Profile](./predicted-sports.md) |
 | Freezing Cold Takes | X receipts account (misses only) | High for X attention; low as a substitute product | Possible sourcing, not a product merge | [Profile](./freezing-cold-takes.md) |
 | College Football Zone | CFB score-prediction cards on X | Medium for feed format / replies; low as a product | Reply surface, not a partner | [Profile](./college-fb-on-x.md) |
 | StreetCred | Editorial accountability Substack | Low | Methodology conversation only | [Profile](./streetcred.md) |
@@ -57,7 +57,7 @@ Accounts that compete for the same Saturday attention as `@Pundits_`, measured 2
 | `@gamedaycole` | 3,489 | Live pick-tracking account for the closest product analog | Profiled |
 | `@Pickwatch` | 5,411 | Official account for the commercial expert tracker | Profiled |
 | `@tallysight` | 4,202 | Creator-network / Pulse account | Profiled |
-| `@predictedsports` | 8 | AI ledger, almost no X yet | Profiled |
+| `@predictedsports` | 9 (2026-09-30) | AI ledger; site suspended; almost no X | Profiled |
 | `@whosebetcashes` | 0 | Receipt product, X unused | Profiled |
 | `@Kalshi` | 457,758 | Market numbers Pundits freezes; tag, do not compete | Distribution partner candidate |
 | `@Cover3Podcast` | 119,194 | Source of named picks Pundits harvests | Talent / source, not a tracker |
