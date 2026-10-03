@@ -953,6 +953,210 @@
           ]
         }
       ]
+    },
+    {
+      "id": "gamedaycole:2026-10-03-w5",
+      "factoryId": "gameday",
+      "title": "Week 5 2026: Saturday morning College Gameday picks!",
+      "published": "2026-10-03",
+      "url": "https://gamedaycole.com/2026/10/03/week-5-2026-saturday-morning-college-gameday-picks-stanford-steves-board-celebrity-guests-super-dog-picks-and-more/",
+      "locator": "https://gamedaycole.com/2026/10/03/week-5-2026-saturday-morning-college-gameday-picks-stanford-steves-board-celebrity-guests-super-dog-picks-and-more/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-03T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow-w5-osu-at-iowa",
+          "locator": "Cole GameDay desk OSU/Iowa",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-florida-at-missouri",
+          "locator": "Cole GameDay desk Florida/Missouri",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-miami-at-clemson",
+          "locator": "Cole GameDay desk Miami/Clemson",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-washington-at-usc",
+          "locator": "Cole GameDay desk Washington/USC",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-cincinnati-at-arizona",
+          "locator": "Cole GameDay desk Cincinnati/Arizona",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-alabama-at-missst",
+          "locator": "Cole desk present; skipped past noon KO",
+          "status": "blocked"
+        },
+        {
+          "targetId": "overflow-w5-michigan-at-minnesota",
+          "locator": "Cole desk present; skipped past noon KO",
+          "status": "blocked"
+        },
+        {
+          "targetId": "overflow-w5-wvu-at-iowastate",
+          "locator": "Cole desk present; skipped past noon KO",
+          "status": "blocked"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-03T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow-w5-osu-at-iowa",
+              "locator": "Cole GameDay desk OSU/Iowa",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-florida-at-missouri",
+              "locator": "Cole GameDay desk Florida/Missouri",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-miami-at-clemson",
+              "locator": "Cole GameDay desk Miami/Clemson",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-washington-at-usc",
+              "locator": "Cole GameDay desk Washington/USC",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-cincinnati-at-arizona",
+              "locator": "Cole GameDay desk Cincinnati/Arizona",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-alabama-at-missst",
+              "locator": "Cole desk present; skipped past noon KO",
+              "status": "blocked"
+            },
+            {
+              "targetId": "overflow-w5-michigan-at-minnesota",
+              "locator": "Cole desk present; skipped past noon KO",
+              "status": "blocked"
+            },
+            {
+              "targetId": "overflow-w5-wvu-at-iowastate",
+              "locator": "Cole desk present; skipped past noon KO",
+              "status": "blocked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cole-fallica:2026-10-03-w5",
+      "factoryId": "bear-bets",
+      "title": "Week 5 2026: CFB picks from Chris The Bear Fallica",
+      "published": "2026-10-03",
+      "url": "https://gamedaycole.com/2026/10/03/week-5-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "locator": "https://gamedaycole.com/2026/10/03/week-5-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-03T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow-w5-osu-at-iowa",
+          "locator": "OSU-14 card",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-miami-at-clemson",
+          "locator": "Miami-16.5 card",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-03T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow-w5-osu-at-iowa",
+              "locator": "OSU-14 card",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-miami-at-clemson",
+              "locator": "Miami-16.5 card",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klatt-fox:2026-10-01-w5",
+      "factoryId": "big-noon",
+      "title": "Joel Klatt Week 5 CFB Picks (FOX)",
+      "published": "2026-10-01",
+      "url": "https://www.foxsports.com/stories/college-football/joel-klatt-show-michigan-wolverines-usc-trojans-week-5-picks",
+      "locator": "https://www.foxsports.com/stories/college-football/joel-klatt-show-michigan-wolverines-usc-trojans-week-5-picks",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-03T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow-w5-osu-at-iowa",
+          "locator": "Klatt SU Ohio State",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-w5-alabama-at-missst",
+          "locator": "Klatt Alabama SU present; skipped past noon KO",
+          "status": "blocked"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-03T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow-w5-osu-at-iowa",
+              "locator": "Klatt SU Ohio State",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-w5-alabama-at-missst",
+              "locator": "Klatt Alabama SU present; skipped past noon KO",
+              "status": "blocked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barstool-cfb:YVWjIhDPnQc",
+      "factoryId": "barstool-cfb",
+      "title": "Barstool CFB's Newest Co-Host?!?! | Barstool College Football Show Week 5",
+      "published": "2026-10-01",
+      "url": "https://www.youtube.com/watch?v=YVWjIhDPnQc",
+      "locator": "https://www.youtube.com/watch?v=YVWjIhDPnQc",
+      "inspected": true,
+      "outcome": "partial",
+      "inspectedAt": "2026-10-03T12:45:00-04:00",
+      "note": "Captions 429/bot blocked; Mux stream only — no hard staged this pass.",
+      "coverage": [],
+      "inspections": [
+        {
+          "outcome": "partial",
+          "inspectedAt": "2026-10-03T12:45:00-04:00",
+          "coverage": [],
+          "note": "Captions 429/bot blocked; Mux stream only — no hard staged this pass."
+        }
+      ]
     }
   ],
   "note": "Restored after accidental empty write (759a025). Night 2026-09-22 Finebaum/Sharp/GMFB added. Old coverage stubs trimmed — full prior coverage in git history before 759a025; full draft at /workspace/scout-2026-09-22-night/scout-episodes.FULL_RESTORE.json.",
