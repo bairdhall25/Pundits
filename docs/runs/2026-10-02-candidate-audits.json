@@ -1,0 +1,299 @@
+[
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "33e35ec68ba013e0",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NBC/PFT Unbuttoned co-host with Chris Simms.",
+    "note": "Connor at ~79:24: \"I put 200 Sims bucks on the bills, 200 Sims bucks on the Cardinals, 175 on the Bears.\" Favorite spread bet maps to SU. Bills home NO. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "90706e61f52b895c",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NBC/PFT Unbuttoned co-host with Chris Simms.",
+    "note": "Same Connor best-bets line; Cardinals favored, away YES. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "e376bae030123507",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NBC/PFT Unbuttoned co-host with Chris Simms.",
+    "note": "Same Connor best-bets line; Bears favored at home, NO. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "6c0813ed6dce601d",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NBC/PFT Unbuttoned co-host with Chris Simms.",
+    "note": "Connor's Commanders pick is \"the commanders getting three and a half points\" (~32:38): a dog spread pick, not straight-up. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "740303da2b6dce56",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NBC/PFT Unbuttoned co-host with Chris Simms.",
+    "note": "Connor's Bucs pick is against the spread; at ~50:41 he says \"I think Green Bay does win the game.\" Not a Bucs SU pick. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "nick-shook",
+    "rowId": "370fbffb4ce950d2",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com analyst; GMFB picks-against-the-spread segment guest.",
+    "note": "Omny Speaker 3 = Shook carries the Commanders quote. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "f4aafe9689786e7d",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com analyst on the GMFB picks factory.",
+    "note": "Omny Speaker 1 = Rosenthal. Staged \"statement when\" should read \"statement win\"; noted, not repaired. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "298532162244d696",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com analyst on the GMFB picks factory.",
+    "note": "Omny Speaker 1 = Rosenthal. Seattle -7 is SU. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "0762b8996e65afff",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com analyst on the GMFB picks factory.",
+    "note": "Omny Speaker 1 = Rosenthal. Cardinals pick. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "32b0bf1ac08a86af",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com analyst on the GMFB picks factory.",
+    "note": "The Saints quote is Speaker 3 (Shook), not Rosenthal. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "adam-chernoff",
+    "rowId": "9d380c2b25eb43a5",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Betting analyst on The Herd factory segment.",
+    "note": "Opening words are not on the transcript. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "adam-chernoff",
+    "rowId": "03286e2577ce5702",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Betting analyst on The Herd factory segment.",
+    "note": "Quote stitches in a Speaker 11 line. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "adam-chernoff",
+    "rowId": "19ba8ceeafadff3f",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Betting analyst on The Herd factory segment.",
+    "note": "Wording mismatch: transcript says \"better quarterback and they're laying\". Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "e6e95596138da92e",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "910eca2dfc1a516c",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "4a5f85ebdd21b031",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "1f9efeb957ff4c07",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "446979a1d86b8335",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "62cefcd443999ace",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "cc791111e81d73cf",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "7f2b6d8165f264b3",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "21c14c1b5d5956b8",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "71728e28da4ac1a5",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL CB; hosts The Richard Sherman Podcast on The Herd/iHeart factory feed.",
+    "note": "Apple sourceUrl loads and the episode transcript turn matches. Omny associationUrl returns 404; replace during roster prep. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "6fa456a1b5cfb790",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "b4fc9eb7ce4451f3",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "390675c876ddae19",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "47c5fa66d6207354",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "73eeb883134118ba",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "be8c913372aa4dd0",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "80f5f89288ef2ca9",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "c640cf8032b09dcd",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "8c2c7cebab49174b",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "mitch-eisenstein",
+    "rowId": "fa380620b8fa4b51",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "uncertain",
+    "eligibilityReason": "Producer/co-host on The Richard Sherman Podcast; pundit status unclear.",
+    "note": "Transcript turn matches. Do not roster. Overflow; do not invent a slug. Do not roster."
+  }
+]

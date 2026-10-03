@@ -38,9 +38,10 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /College football and NFL picks from named analysts and commentators\./);
-assert.match(home, /Week 3: experts went 3–4\. Chris Simms and Jason McIntyre hit on Ravens\./);
-assert.match(home, /href="\/nfl\/2026\/week-3\/"/);
+assert.match(home, /Will Compton, David Pollack, Chip Patterson, Tom Fornelli, Desmond Howard, Nick Saban, Pat McAfee, Kirk Herbstreit, and Joel Klatt pick Florida\./);
+assert.match(home, /href="\/picks\/florida-at-missouri-2026\/"/);
+assert.match(home, /href="\/picks\/ohio-state-at-iowa-2026\/"/);
+assert.match(home, /Week 5 · Oct 3 · Week 4 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
@@ -360,7 +361,7 @@ assert.match(
 assert.match(teamPage, /"@type":"SportsTeam"/);
 assert.match(teamPage, /"@type":"WebPage"/);
 assert.match(teamPage, /data-page-type="team"/);
-assert.match(teamPage, /No scheduled game on the board for TCU/);
+assert.match(teamPage, /Next covered matchup: BYU at TCU/);
 assert.match(teamPage, /North Carolina beat TCU/);
 assert.match(teamPage, /not a survey of all experts/);
 assert.doesNotMatch(teamPage, /best experts/i);
@@ -379,7 +380,7 @@ const teamEmptySide = await readFile(
   path.join(out, "teams/virginia/index.html"),
   "utf8"
 );
-assert.match(teamEmptySide, /No scheduled game on the board for Virginia/);
+assert.match(teamEmptySide, /Next covered matchup: Virginia at Florida State/);
 assert.match(teamEmptySide, /West Virginia beat Virginia/);
 assert.match(teamEmptySide, /Virginia beat NC State/);
 
@@ -387,9 +388,9 @@ const teamNoGame = await readFile(
   path.join(out, "teams/lions/index.html"),
   "utf8"
 );
-assert.match(teamNoGame, /name="robots" content="noindex, follow"/);
-assert.match(teamNoGame, /No scheduled game on the board for Lions/);
-assert.match(teamNoGame, /No captured pick yet/);
+assert.doesNotMatch(teamNoGame, /name="robots" content="noindex, follow"/);
+assert.match(teamNoGame, /Next covered matchup: Lions at Panthers/);
+assert.match(teamNoGame, /href="\/picks\/lions-at-panthers-2026\//);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
 assert.match(
@@ -423,9 +424,9 @@ assert.match(weekNfl2, /Rams beat Giants/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 3: who called it/);
-assert.match(nflSlate, /Week 3 is final on this NFL board/);
-assert.match(nflSlate, /Week 2 is final/);
+assert.match(nflSlate, /NFL Week 4: who picked whom/);
+assert.match(nflSlate, /Week 3 is final/);
+assert.match(nflSlate, /href="\/nfl\/2026\/week-4\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-3\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-2\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-1\//);
@@ -450,8 +451,8 @@ assert.match(weekCfb4, /Oregon beat USC/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 4: who called it/);
-assert.match(ncaafSlate, /Week 4 is final on this College football board/);
+assert.match(ncaafSlate, /College football Week 5: who picked whom/);
+assert.match(ncaafSlate, /Week 4 is final/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-4\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-3\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-2\//);

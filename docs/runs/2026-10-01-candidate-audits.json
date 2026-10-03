@@ -1,0 +1,47 @@
+[
+  {
+    "proposedId": "brent-rollins",
+    "rowId": "cedda527c2c69fba",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "See Ball Get Ball scheme/data analyst co-host with David Pollack.",
+    "note": "Captions plus diarization put the Alabama 31-27 quote on Rollins. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "brent-rollins",
+    "rowId": "e1e658bb639ab51b",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "See Ball Get Ball scheme/data analyst co-host with David Pollack.",
+    "note": "Diarization puts Florida 34-27 on Rollins. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "brent-rollins",
+    "rowId": "410702eb5a6b2ac5",
+    "verdict": "fail",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "See Ball Get Ball scheme/data analyst co-host with David Pollack.",
+    "note": "Diarization puts this 27-13 line on Pollack, not Rollins. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "brent-rollins",
+    "rowId": "176fdd536417f993",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "See Ball Get Ball scheme/data analyst co-host with David Pollack.",
+    "note": "Diarization puts Pitt 27-24 on Rollins. Game final. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "chuck-pagano",
+    "rowId": "7c57761db2c22afe",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL head coach; regular Pat McAfee Show Thunderdome contributor.",
+    "note": "Captions ~17:20-17:35 Chuck Pagano turn: \"I'm thinking Steelers tonight\" ... \"I don't see it happening tonight for them.\" Ellipsis skips a \"Wow\" interjection. Capsule factor Watt/Highsmith not in his turn. Game final. Overflow; do not invent a slug. Do not roster."
+  }
+]

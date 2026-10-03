@@ -1,0 +1,29 @@
+[
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "5e03ba7f04c390fd",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+    "note": "Omny Locker Room Speaker 1 turn carries the Florida quote. Away YES. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "d63a023ead2302cd",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+    "note": "Omny Speaker 1 turn carries the Miami quote. Away YES. Do not roster. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "taylor-lewan",
+    "rowId": "0606ed24419e1349",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+    "note": "Omny Speaker 1 turn carries the VT quote. Home NO. Game final. Do not roster. Overflow; do not invent a slug. Do not roster."
+  }
+]

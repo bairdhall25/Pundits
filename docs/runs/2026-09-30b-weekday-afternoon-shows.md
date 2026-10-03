@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-09-30 ~4:25 PM ET | Weekday after-afternoon **opened/hit** (this_pass hard=3 candidates=0 bets=5). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW open: Pate Week 5 Predictions Apple i=1000792295666 / YT zJUjJ4I2TWA / Omny week-5-predictions-jp-poll-updated-sec-qb-ratings — **stage** overflow pate Alabama@MissSt (favorite −5.5), OhioSt@Iowa (I'll take OSU), Pitt@VT (VT will win). Title-skips: Cover3 Recruiting; Cover3 BGB; SeeBall CFP12; BFW Hires/Fleck; Clay Sep30 politics; Herd/GMFB/McAfee Tue reaction/recap; Eisen Wed MLB/Power Rankings; Finebaum Tue guests title-only; What's Wright W3 Reaction (prior). Radio skipped (no under-dense approved). Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-09-30 weekday afternoon (Grok Bot)
 

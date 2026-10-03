@@ -206,14 +206,14 @@ describe("team page contract", () => {
     ).toMatch(/49ers beat Rams/);
   });
 
-  it("says no scheduled game on TCU and keeps the Dublin result", () => {
+  it("points TCU at the BYU game and keeps the Dublin result", () => {
     const team = getTeam("tcu", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
-    expect(content.noScheduledGame).toBe(true);
-    expect(content.nextMatchup).toBeNull();
-    expect(content.title).toBe("TCU: tracked picks and results");
-    expect(content.lede).toContain("No scheduled game on the board for TCU");
-    expect(content.lede).toContain("North Carolina beat TCU");
+    expect(content.noScheduledGame).toBe(false);
+    expect(content.nextMatchup?.event.slug).toBe("byu-at-tcu-2026");
+    expect(content.title).toBe("TCU: who is picking them vs BYU");
+    expect(content.lede).toContain("Next covered matchup: BYU at TCU");
+    expect(content.lede).toContain("pick BYU");
     expect(content.lede).not.toContain("No captured pick yet.");
     expect(content.historical[0]?.event.slug).toBe("unc-vs-tcu-2026");
     expect(content.historical[0]?.noCapturedPick).toBe(false);
@@ -222,8 +222,8 @@ describe("team page contract", () => {
   it("keeps Virginia's empty side distinct from a missing game", () => {
     const team = getTeam("virginia", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
-    expect(content.noScheduledGame).toBe(true);
-    expect(content.lede).toContain("No scheduled game on the board for Virginia");
+    expect(content.noScheduledGame).toBe(false);
+    expect(content.lede).toContain("Next covered matchup: Virginia at Florida State");
     expect(content.historical[0]?.event.slug).toBe("west-virginia-vs-virginia-2026");
     const ncsu = content.historical.find((row) => row.event.slug === "ncsu-at-uva-2026");
     expect(ncsu?.noCapturedPick).toBe(true);
@@ -299,11 +299,11 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 3: who called it");
-    expect(content.currentWeek?.week).toBe(3);
-    expect(content.currentWeek?.href).toBe("/nfl/2026/week-3/");
-    expect(content.previous?.href).toBe("/nfl/2026/week-2/");
-    expect(content.lede).toContain("Week 3 is final on this NFL board. 4 tracked games.");
+    expect(content.title).toBe("NFL Week 4: who picked whom");
+    expect(content.currentWeek?.week).toBe(4);
+    expect(content.currentWeek?.href).toBe("/nfl/2026/week-4/");
+    expect(content.previous?.href).toBe("/nfl/2026/week-3/");
+    expect(content.lede).toContain("9 open games in Week 4");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
@@ -311,10 +311,10 @@ describe("league page contract", () => {
   it("treats an open college week as who picked whom and still links the previous archive", () => {
     const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("College football");
-    expect(content.title).toBe("College football Week 4: who called it");
-    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-4/");
-    expect(content.lede).toContain("Week 4");
-    expect(content.previous?.href).toBe("/ncaaf/2026/week-3/");
+    expect(content.title).toBe("College football Week 5: who picked whom");
+    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-5/");
+    expect(content.lede).toContain("Week 5");
+    expect(content.previous?.href).toBe("/ncaaf/2026/week-4/");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
   });
 

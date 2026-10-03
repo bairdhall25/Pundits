@@ -135,7 +135,10 @@ describe("landscape social renderer", () => {
     )!;
     const kanell = pundits.find((candidate) => candidate.id === "kanell")!;
     const landscapeTake = resolveTakeSocialCard(take, calls, pundits, teams);
-    const landscapeProfile = resolvePunditSocialCard(kanell, calls);
+    const landscapeProfile = resolvePunditSocialCard(
+      kanell,
+      calls.filter((call) => call.evidenceKind !== "reported-selection")
+    );
     const storyTake = takeOgCard(take, calls, pundits, teams);
 
     const landscapeHtml = renderToStaticMarkup(landscapeSocialTree(landscapeTake));

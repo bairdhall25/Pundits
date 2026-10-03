@@ -1,0 +1,152 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-taylor-lewan-5e03ba7f04c390fd",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "5e03ba7f04c390fd",
+      "sourceRun": "docs/runs/2026-09-30c-weekday-night-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 28,
+        "pass": "Shows pass 2026-09-30 weekday night (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "ncaaf",
+        "outlet": "The Locker Room / Bussin' With The Boys",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I love Florida in this position. I love four and a half. I'm going to take Florida minus four and a half. I'll go three units on that.",
+        "reasoning": "Florida OL / Buster Faulkner wide-zone + duo; complete team vs Mizzou.",
+        "note": "Overflow unlisted — Florida at Missouri (2026). Favorite laying −4.5 → SU+Bets. Away Florida → Implied YES. Blank slug/side. Title: Lewan & Compton CONFIDENT In Florida. Never invent slug. Omny ~35:24.",
+        "sourceUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "sourceDate": "2026-09-30",
+        "photoUrl": "needed",
+        "association": "Co-host The Locker Room with Will Compton; former NFL OT; regular Pate guest",
+        "associationUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "factory": "pate"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "5e03ba7f04c390fd",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-10-03T16:45:00Z",
+        "eligibility": "association",
+        "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+        "note": "Omny Locker Room Speaker 1 turn carries the Florida quote. Away YES. Do not roster. Overflow; do not invent a slug. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-taylor-lewan-d63a023ead2302cd",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "d63a023ead2302cd",
+      "sourceRun": "docs/runs/2026-09-30c-weekday-night-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 29,
+        "pass": "Shows pass 2026-09-30 weekday night (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "ncaaf",
+        "outlet": "The Locker Room / Bussin' With The Boys",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I see Miami and Cristobal running away with this one. I see them running away. So I'm going to take minus 16.5 on Miami, and I'm going to put three units on that.",
+        "reasoning": "Miami skill / Mensah vs Clemson freshman QB and depleted offense.",
+        "note": "Overflow unlisted — Miami at Clemson (2026). Favorite laying −16.5 → SU+Bets. Away Miami → Implied YES. Blank slug/side. Omny ~42:46.",
+        "sourceUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "sourceDate": "2026-09-30",
+        "photoUrl": "needed",
+        "association": "Co-host The Locker Room with Will Compton; former NFL OT; regular Pate guest",
+        "associationUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "factory": "pate"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "d63a023ead2302cd",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-10-03T16:45:00Z",
+        "eligibility": "association",
+        "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+        "note": "Omny Speaker 1 turn carries the Miami quote. Away YES. Do not roster. Overflow; do not invent a slug. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-taylor-lewan-0606ed24419e1349",
+      "kind": "roster-candidate",
+      "proposedId": "taylor-lewan",
+      "rowId": "0606ed24419e1349",
+      "sourceRun": "docs/runs/2026-09-30c-weekday-night-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 30,
+        "pass": "Shows pass 2026-09-30 weekday night (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "taylor-lewan",
+        "name": "Taylor Lewan",
+        "group": "ncaaf",
+        "outlet": "The Locker Room / Bussin' With The Boys",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I'm going to take Virginia Tech to win this game. I'm also going to take him to cover three and a half. … I'll put three units on that.",
+        "reasoning": "Gronkmeyer / James Franklin ACC form; home Hokies more dependable.",
+        "note": "Overflow unlisted — Pittsburgh at Virginia Tech (2026). Explicit VT win + favorite cover → SU+Bets. Home VT → Implied NO. Blank slug/side. Omny ~64:17.",
+        "sourceUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "sourceDate": "2026-09-30",
+        "photoUrl": "needed",
+        "association": "Co-host The Locker Room with Will Compton; former NFL OT; regular Pate guest",
+        "associationUrl": "https://omny.fm/shows/the-locker-room/cfb-week-5-picks-taylor-lewan-will-compton-confident-in-florida-vs-miz-josh-pate-loves-miami",
+        "factory": "pate"
+      },
+      "audit": {
+        "proposedId": "taylor-lewan",
+        "rowId": "0606ed24419e1349",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-10-03T16:45:00Z",
+        "eligibility": "association",
+        "eligibilityReason": "Former NFL OT; Locker Room co-host with Compton on the Josh Pate factory.",
+        "note": "Omny Speaker 1 turn carries the VT quote. Home NO. Game final. Do not roster. Overflow; do not invent a slug. Do not roster."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ]
+}

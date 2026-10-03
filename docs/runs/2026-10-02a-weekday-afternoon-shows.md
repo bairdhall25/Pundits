@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-10-02 ~4:31 PM ET | Weekday after-afternoon **opened/hit** (this_pass hard=20 candidates=5 bets=14). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW open: (1) Josh Pate Week 5 Upset Alerts Apple i=1000792675479 / Omny 1d5905fb / YT 8dXEH2hmgsY — overflow pate Indiana + Georgia + Auburn (do **not** restage Miami win+cover already Locker Room); (2) Clay Travis CFB Picks Apple i=1000792565012 — clay-travis Nebraska crush Maryland; (3) What's Wright Week 4 Predictions Apple i=1000792862641 — nick-wright ×4; (4) Unbuttoned Week 4 Picks Apple i=1000792881030 / YT lT5l9c11jDI — simms ×12 + Candidates connor-rogers ×5. Do **not** restage Cover3 LOCKS / See Ball / pate Predictions+Locker Room / McAfee PMS 1636. Title-skips: Finebaum Thu guests (no Fri yet); Cover3 Recruiting; BFW Preview dry; Clay Fri politics hours; Herd BEST OF; Eisen Fri Right&Wrong/reaction; GMFB Thu desk (no Fri yet); McAfee 1637 LIVE Iowa (not picks card); Nightcap TNF reaction. Radio skipped. Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-10-02 weekday afternoon (Grok Bot)
 

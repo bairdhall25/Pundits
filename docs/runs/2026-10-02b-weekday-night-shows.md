@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-10-02 ~9:45 PM ET | Weekday after-night **opened/hit** (this_pass hard=0 candidates=28 bets=16). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW open: (1) GMFB/NFL Daily Week 4 ATS Apple i=1000792877444 / Omny nfl-daily — Candidates nick-shook Commanders + greg-rosenthal Jags/SEA/Cards/Saints; (2) Herd Fri H2 i=1000792889465 — Candidate adam-chernoff Bengals/Rams/Cards (+ Broncos ATS); (3) Sherman W4 Predictions i=1000792733811 — Candidates richard-sherman ×10 + mitch-eisenstein ×10; (4) 3&Out i=1000792739221 — Bets-only john-middlekauff Dolphins/Bucs/Titans ATS. Do **not** restage afternoon Pate/Clay/Wright/Unbuttoned or prior Cover3/SeeBall/pate Locker+Predictions/McAfee 1636. Title-skips/dry: Finebaum Fri Starkville (opened sample — guests/campus, no who-wins card); Eisen Fri reaction; McAfee 1637 Iowa; Nightcap TNF reaction; Clay politics; BFW Preview dry; AAO ended 2025; Ringer NFL analysis. Radio skipped. Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-10-02 weekday night (Grok Bot)
 
@@ -13,7 +15,7 @@ Friday ~9:20–9:45 PM ET after-night. Re-ran `node scripts/scout-feeds.mjs` (~9
 
 | pundit | eventSlug | side | verbatim quote | reasoning | note | source | sourceUrl | sourceDate | hard/soft | targetId | matchup |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| *(none this pass — no new mapped roster hard; overflow is Candidates)* | | | | | | | | | | | |
+| *(empty)* | | | | | | | | | | | none this pass — no new mapped roster hard; overflow is Candidates |
 
 ### Candidates
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-24",
+  "updated": "2026-10-03",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -61,7 +61,7 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-09d-pregame-shows.md",
       "owner": "Promote",
-      "note": "Audit ok rowId 0794be4d98f1acee. Empty Bills YES. Not shipped 2026-09-10 Simms promote."
+      "note": "Audit ok rowId 0794be4d98f1acee. Empty Bills YES. Not shipped 2026-09-10 Simms promote. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): ten W4 rows ok-unmapped. Omny associationUrl 404s; replace during roster prep."
     },
     {
       "id": "candidate-julian-edelman",
@@ -88,7 +88,7 @@
       "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
       "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 1682d09397c726f9 is a different identity. Keep visible; do not auto-roster."
+      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 1682d09397c726f9 is a different identity. Keep visible; do not auto-roster. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster."
     },
     {
       "id": "candidate-chuck-pagano",
@@ -98,7 +98,7 @@
       "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
       "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Rams packet: Restage Audit 2026-09-11T20:01:35Z rowId 786bcffde5c8bb1d. NEW TNF overflow 2026-09-17d rowId 055883b780845747 (Bills −5.5, ok-unmapped-no-reasoning). Do not auto-roster. Do not mint Lions at Bills unless asked."
+      "note": "Rams packet: Restage Audit 2026-09-11T20:01:35Z rowId 786bcffde5c8bb1d. NEW TNF overflow 2026-09-17d rowId 055883b780845747 (Bills −5.5, ok-unmapped-no-reasoning). Do not auto-roster. Do not mint Lions at Bills unless asked. W4/W5 packet docs/runs/2026-10-01-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): W4 TNF Steelers row 7c57761db2c22afe Audit ok-unmapped-no-reasoning (association; game final)."
     },
     {
       "id": "candidate-liam-blutman",
@@ -206,7 +206,7 @@
       "sourceRun": "docs/runs/2026-09-20.md",
       "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-20T14:09:31Z. NFL Daily host on GMFB factory; association URL loads. Official X avatar present; usage permission is operator review. Overflow Pittsburgh at New England / Cincinnati at Houston. Do not restage TNF Bills. Do not mint unpublished matchups this pass."
+      "note": "Audit 2026-09-20T14:09:31Z. NFL Daily host on GMFB factory; association URL loads. Official X avatar present; usage permission is operator review. Overflow Pittsburgh at New England / Cincinnati at Houston. Do not restage TNF Bills. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Jaguars, Seattle, Cardinals ok-unmapped; Saints failed (quote is Shook)."
     },
     {
       "id": "candidate-michael-snowden",
@@ -226,7 +226,7 @@
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "proposalFile": "docs/runs/2026-09-17-night-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Simms Unbuttoned co-host. Overflow Lions at Bills (2026). Capsule omitted. photoUrl=needed."
+      "note": "Simms Unbuttoned co-host. Overflow Lions at Bills (2026). Capsule omitted. photoUrl=needed. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Unbuttoned W4 Bills, Cardinals, Bears ok-unmapped-no-reasoning; Commanders and Bucs fail (spread picks, not SU)."
     },
     {
       "id": "overflow-lions-at-bills",
@@ -320,7 +320,7 @@
       "sourceRun": "docs/runs/2026-09-20.md",
       "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass."
+      "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): W4 Commanders row 370fbffb4ce950d2 ok-unmapped (Omny Speaker 3)."
     },
     {
       "id": "candidate-taylor-lewan",
@@ -330,7 +330,47 @@
       "sourceRun": "docs/runs/2026-09-23b-weekday-night-shows.md",
       "proposalFile": "docs/runs/2026-09-23-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate."
+      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster."
+    },
+    {
+      "id": "candidate-brent-rollins",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Brent Rollins (See Ball Get Ball co-host) after three Audit-ok-unmapped W5 SUs. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-01b-weekday-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-10-01-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-10-03T16:45:00Z: Alabama, Florida, Pitt ok-unmapped; Miami row failed (diarizes as Pollack). Association."
+    },
+    {
+      "id": "candidate-adam-chernoff",
+      "kind": "roster-candidate",
+      "needed": "None; all three W4 rows failed Audit (rejected).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-02b-weekday-night-shows.md",
+      "proposalFile": "docs/runs/2026-10-02-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Rejected. Audit 2026-10-03T16:45:00Z: Bengals, Rams, Cardinals rows fail (wording/stitch). Retain evidence; do not roster."
+    },
+    {
+      "id": "candidate-mitch-eisenstein",
+      "kind": "roster-candidate",
+      "needed": "Operator eligibility call (producer/co-host) before any roster work. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-02b-weekday-night-shows.md",
+      "proposalFile": "docs/runs/2026-10-02-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-10-03T16:45:00Z: ten W4 rows ok-unmapped; eligibility uncertain."
+    },
+    {
+      "id": "candidate-caitlin-clark",
+      "kind": "roster-candidate",
+      "needed": "None. Celebrity GameDay guest picker; never roster (rejected).",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-03a-saturday-shows.md",
+      "proposalFile": "docs/runs/2026-10-03-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Rejected/ineligible. Audit 2026-10-03T16:45:00Z: seven Cole W5 labels verified; association only. Never roster or ship."
     }
   ]
 }

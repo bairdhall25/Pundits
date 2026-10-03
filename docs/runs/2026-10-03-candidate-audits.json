@@ -1,0 +1,65 @@
+[
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "1678fa966e0cb265",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 lists the guest picker's Iowa label verbatim. Association verified only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "a767036927e1cc9c",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "54bea6d2d630f747",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "9e5848b7cd37bcb1",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "0a860aa101a9b7c0",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "92524a057937da0b",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  },
+  {
+    "proposedId": "caitlin-clark",
+    "rowId": "47bd3473b60cf6c4",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-03T16:45:00Z",
+    "eligibility": "ineligible",
+    "eligibilityReason": "Celebrity GameDay guest picker (WNBA). Not a pundit voice; never roster.",
+    "note": "Cole W5 label verified. Association only. Overflow; do not invent a slug. Do not roster."
+  }
+]

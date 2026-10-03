@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-10-01 ~4:35 PM ET | Weekday after-afternoon **opened/hit** (this_pass hard=36 candidates=4 bets=18). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW open: (1) Cover 3 Week 5 LOCKS Apple i=1000792605513 / YT tCdDrdgpIHk — ML sprinkles + favorite ATS→SU for patterson/kanell/fornelli/elliott; (2) See Ball Get Ball Week 5 Picks Apple i=1000792577844 / YT NCsPfpqNw7k / RSS.com — pollack overflow ×11 + Candidates brent-rollins ×4. Do **not** restage 9/30 pate Predictions / Locker Room overflow. Title-skips: Cover3 Recruiting/BGB (prior); Clay politics (no PICKS); Herd BEST OF Blazing 5; Finebaum Wed guests; BFW W5 Preview (night dry); Pate Locker Room/Predictions (staged); GMFB/Eisen Wed preview/power; McAfee MNF recap; Sharp-or-Square W4 betting title. Radio skipped (no under-dense approved). Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-10-01 weekday afternoon (Grok Bot)
 

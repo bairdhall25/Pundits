@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-10-01 ~9:30 PM ET | Weekday after-night **opened/hit** (this_pass hard=2 candidates=1 bets=3). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW open: Pat McAfee Show PMS 2.0 1636 TNF Preview/Picks Apple i=1000792633691 / YT a2Nx-De1n_Q — Intake overflow `hawk` + `mcafee` Steelers@Browns YES; Candidate `chuck-pagano` Steelers. Do **not** restage afternoon Cover3 LOCKS / See Ball or 9/30 pate Locker Room. Title-skips: Finebaum Thu guests; Eisen Thu trade/MLB/Higher Register; GMFB Thu desk (no brandt SU cue); Herd BEST OF (afternoon skip); Nightcap Hours (analysis/trade); Unbuttoned/Wright/Wise Guys (no new); BFW Preview dry; Clay politics. Radio skipped. Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-10-01 weekday night (Grok Bot)
 

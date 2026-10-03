@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-09-28 ~4:45 PM ET | Weekday after-afternoon **opened/hit** (this_pass hard=1 candidates=0 bets=1). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO / expired). NEW opens: What's Wright W3 Predictions i=1000791727585 (nick-wright **stay-away** Eagles@Bears); McAfee PMS 1633 OVERREACTION / MNF Preview i=1000792077215 YT ZXid7hY4em4 (opened MNF windows — no clean desk SU). Reopened Herd Fri Blazin 5 i=1000791672559 — **stage** cowherd Eagles overflow (prior Sep 25 night bounded-off; MNF still pre-KO; empty slate). Skipped feed `recap`: Cover 3 / BFW / See Ball / McAfee feed-class. Clay today politics. Eisen/GMFB Monday reaction. Pate W4 Reaction. Sharp FINAL W3 past KO. Radio skipped (no under-dense approved target). Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-09-28 weekday afternoon (Grok Bot)
 

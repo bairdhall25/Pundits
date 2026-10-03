@@ -412,9 +412,9 @@ describe("json-ld", () => {
   it("moves team and hub freshness with the latest grade", () => {
     const events = loadEvents();
     const calls = loadCalls();
-    expect(teamLastModified("tcu", events, calls)).toBe("2026-08-29");
+    expect(teamLastModified("tcu", events, calls)).toBe("2026-10-03");
     expect(teamLastModified("north-carolina", events, calls)).toBe("2026-09-20");
-    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-09-27");
+    expect(callsLastModified(calls, "2026-08-26")).toBe("2026-10-03");
   });
 
   it("publishes methodology questions as FAQPage schema", () => {

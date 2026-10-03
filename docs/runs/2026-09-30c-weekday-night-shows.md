@@ -4,6 +4,8 @@
 | lane | status | asOf | note |
 |---|---|---|---|
 | Shows | completed | 2026-09-30 ~9:35 PM ET | Weekday after-night **opened/hit** (this_pass hard=5 candidates=3 bets=9). Empty approved Dispatch (W4 NCAAF + W3 NFL past KO). NEW open: Pate/Locker Room Week 5 Picks Apple i=1000792472733 / Omny 4a43a51e — Intake overflow `compton` Florida@Mizzou + Alabama@MissSt + Pitt@VT + Miami@Clemson; `pate` Miami@Clemson; Candidates `taylor-lewan` Florida + Miami + VT. Do **not** restage afternoon pate Alabama/OSU/VT Predictions. BFW Week 5 Preview opened/dry SU. Ringer Wise Guys Week 4 leans title-opened ATS-only. Radio skipped (no under-dense approved). Did not touch `data/`. |
+| X | not-run | | |
+| News | not-run | | |
 
 ## Shows pass 2026-09-30 weekday night (Grok Bot)
 
