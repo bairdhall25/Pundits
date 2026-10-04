@@ -209,14 +209,16 @@ describe("team page contract", () => {
   it("points TCU at the BYU game and keeps the Dublin result", () => {
     const team = getTeam("tcu", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
-    expect(content.noScheduledGame).toBe(false);
-    expect(content.nextMatchup?.event.slug).toBe("byu-at-tcu-2026");
-    expect(content.title).toBe("TCU: who is picking them vs BYU");
-    expect(content.lede).toContain("Next covered matchup: BYU at TCU");
-    expect(content.lede).toContain("pick BYU");
-    expect(content.lede).not.toContain("No captured pick yet.");
-    expect(content.historical[0]?.event.slug).toBe("unc-vs-tcu-2026");
-    expect(content.historical[0]?.noCapturedPick).toBe(false);
+    expect(content.noScheduledGame).toBe(true);
+    expect(content.nextMatchup).toBeNull();
+    expect(content.title).toBe("TCU: tracked picks and results");
+    expect(content.lede).toContain("No scheduled game on the board for TCU");
+    expect(content.lede).toContain("BYU beat TCU");
+    expect(content.lede).toContain("picked BYU");
+    expect(content.historical[0]?.event.slug).toBe("byu-at-tcu-2026");
+    expect(content.historical[0]?.beatLine).toMatch(/BYU beat TCU/);
+    const dublin = content.historical.find((row) => row.event.slug === "unc-vs-tcu-2026");
+    expect(dublin?.noCapturedPick).toBe(false);
   });
 
   it("keeps Virginia's empty side distinct from a missing game", () => {

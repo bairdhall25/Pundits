@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/ncaaf/2026/week-5/");
     expect(recap!.line).toBe(
-      "Week 5: experts went 13–18. Bud Elliott, Chris \"The Bear\" Fallica, Clay Travis, Danny Kanell, David Pollack, Joel Klatt, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, and Tom Fornelli hit on Bowling Green."
+      "Week 5: experts went 31–22. Bud Elliott, Chris \"The Bear\" Fallica, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Joel Klatt, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, Tom Fornelli, and Will Compton hit on Bowling Green."
     );
   });
 

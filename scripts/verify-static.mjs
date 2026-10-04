@@ -38,9 +38,9 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Will Compton, David Pollack, Chip Patterson, Tom Fornelli, Desmond Howard, Nick Saban, Pat McAfee, Kirk Herbstreit, and Joel Klatt pick Florida\./);
-assert.match(home, /href="\/picks\/florida-at-missouri-2026\/"/);
-assert.match(home, /href="\/picks\/ohio-state-at-iowa-2026\/"/);
+assert.match(home, /Danny Kanell, Desmond Howard, and Nick Saban pick Arizona\. David Pollack, Chip Patterson, Pat McAfee, and Kirk Herbstreit pick Cincinnati\./);
+assert.match(home, /href="\/picks\/cincinnati-at-arizona-2026\/"/);
+assert.match(home, /href="\/picks\/texas-state-at-san-diego-state-2026\/"/);
 assert.match(home, /Week 5 · Oct 3 · Week 4 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
@@ -191,7 +191,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 9–7/);
+assert.match(herbstreitProfile, /2026 tracked record: 11–10/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -361,7 +361,8 @@ assert.match(
 assert.match(teamPage, /"@type":"SportsTeam"/);
 assert.match(teamPage, /"@type":"WebPage"/);
 assert.match(teamPage, /data-page-type="team"/);
-assert.match(teamPage, /Next covered matchup: BYU at TCU/);
+assert.match(teamPage, /No scheduled game on the board for TCU/);
+assert.match(teamPage, /BYU beat TCU/);
 assert.match(teamPage, /North Carolina beat TCU/);
 assert.match(teamPage, /not a survey of all experts/);
 assert.doesNotMatch(teamPage, /best experts/i);
@@ -380,7 +381,8 @@ const teamEmptySide = await readFile(
   path.join(out, "teams/virginia/index.html"),
   "utf8"
 );
-assert.match(teamEmptySide, /Next covered matchup: Virginia at Florida State/);
+assert.match(teamEmptySide, /No scheduled game on the board for Virginia/);
+assert.match(teamEmptySide, /Florida State beat Virginia/);
 assert.match(teamEmptySide, /West Virginia beat Virginia/);
 assert.match(teamEmptySide, /Virginia beat NC State/);
 
