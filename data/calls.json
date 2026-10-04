@@ -4220,11 +4220,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Jeremiah Smith expected to go off; Iowa not getting vintage pass-rush / run-game pressure."
+    "reasoning": "Jeremiah Smith expected to go off; Iowa not getting vintage pass-rush / run-game pressure.",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "pollack-ohio-state-at-iowa-20261001",
@@ -4236,11 +4237,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Iowa offense not enough vs slanted board toward Jeremiah Smith."
+    "reasoning": "Iowa offense not enough vs slanted board toward Jeremiah Smith.",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "howard-ohio-state-at-iowa-20261003",
@@ -4252,11 +4254,12 @@
     "kind": "hard",
     "subject": "Iowa",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "saban-ohio-state-at-iowa-20261003",
@@ -4268,11 +4271,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "mcafee-ohio-state-at-iowa-20261003",
@@ -4284,11 +4288,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "herbstreit-ohio-state-at-iowa-20261003",
@@ -4300,11 +4305,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fallica-ohio-state-at-iowa-20261003",
@@ -4316,11 +4322,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "klatt-ohio-state-at-iowa-20261001",
@@ -4332,11 +4339,12 @@
     "kind": "hard",
     "subject": "Ohio State",
     "paysOn": "Ohio State at Iowa (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ohio-state-at-iowa-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "compton-florida-at-missouri-20260930",
@@ -4348,11 +4356,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Florida run game / answers on the perimeter; Mizzou missed tackles and thin run game."
+    "reasoning": "Florida run game / answers on the perimeter; Mizzou missed tackles and thin run game.",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "pollack-florida-at-missouri-20261001",
@@ -4364,11 +4373,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Trusts Florida road after big win; more bullets than Mizzou."
+    "reasoning": "Trusts Florida road after big win; more bullets than Mizzou.",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "patterson-florida-at-missouri-20261001",
@@ -4380,10 +4390,11 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fornelli-florida-at-missouri-20261001",
@@ -4395,10 +4406,11 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "howard-florida-at-missouri-20261003",
@@ -4410,11 +4422,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "saban-florida-at-missouri-20261003",
@@ -4426,11 +4439,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "mcafee-florida-at-missouri-20261003",
@@ -4442,11 +4456,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "herbstreit-florida-at-missouri-20261003",
@@ -4458,11 +4473,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fallica-florida-at-missouri-20261003",
@@ -4474,11 +4490,12 @@
     "kind": "hard",
     "subject": "Missouri",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "florida-at-missouri-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "klatt-florida-at-missouri-20261001",
@@ -4490,11 +4507,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "Florida at Missouri (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "florida-at-missouri-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "pollack-auburn-at-tennessee-20261001",
@@ -4506,11 +4524,12 @@
     "kind": "hard",
     "subject": "Tennessee",
     "paysOn": "Auburn at Tennessee (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "auburn-at-tennessee-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Tennessee DL / bounce-back vs Auburn."
+    "reasoning": "Tennessee DL / bounce-back vs Auburn.",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fallica-auburn-at-tennessee-20261003",
@@ -4522,11 +4541,12 @@
     "kind": "hard",
     "subject": "Auburn",
     "paysOn": "Auburn at Tennessee (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "auburn-at-tennessee-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "kanell-california-at-unlv-20261001",
@@ -4538,11 +4558,12 @@
     "kind": "hard",
     "subject": "California",
     "paysOn": "California at UNLV (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "california-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "elliott-california-at-unlv-20261001",
@@ -4554,10 +4575,11 @@
     "kind": "hard",
     "subject": "California",
     "paysOn": "California at UNLV (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "california-at-unlv-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "kanell-virginia-at-florida-state-20261001",
@@ -4569,11 +4591,12 @@
     "kind": "hard",
     "subject": "Florida State",
     "paysOn": "Virginia at Florida State (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "virginia-at-florida-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "elliott-bowling-green-at-miami-oh-20261001",
@@ -4585,10 +4608,11 @@
     "kind": "hard",
     "subject": "Bowling Green",
     "paysOn": "Bowling Green at Miami (OH) (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bowling-green-at-miami-oh-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "howard-eastern-michigan-at-umass-20261003",
@@ -4600,11 +4624,12 @@
     "kind": "hard",
     "subject": "UMass",
     "paysOn": "Eastern Michigan at UMass (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "eastern-michigan-at-umass-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "saban-eastern-michigan-at-umass-20261003",
@@ -4616,11 +4641,12 @@
     "kind": "hard",
     "subject": "UMass",
     "paysOn": "Eastern Michigan at UMass (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "eastern-michigan-at-umass-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "mcafee-eastern-michigan-at-umass-20261003",
@@ -4632,11 +4658,12 @@
     "kind": "hard",
     "subject": "UMass",
     "paysOn": "Eastern Michigan at UMass (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "eastern-michigan-at-umass-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "herbstreit-eastern-michigan-at-umass-20261003",
@@ -4648,11 +4675,12 @@
     "kind": "hard",
     "subject": "UMass",
     "paysOn": "Eastern Michigan at UMass (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "eastern-michigan-at-umass-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "clay-travis-maryland-at-nebraska-20261001",
@@ -4664,10 +4692,11 @@
     "kind": "hard",
     "subject": "Nebraska",
     "paysOn": "Maryland at Nebraska (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "maryland-at-nebraska-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "elliott-maryland-at-nebraska-20261001",
@@ -4679,10 +4708,11 @@
     "kind": "hard",
     "subject": "Maryland",
     "paysOn": "Maryland at Nebraska (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "maryland-at-nebraska-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fornelli-purdue-at-illinois-20261001",
@@ -4694,10 +4724,11 @@
     "kind": "hard",
     "subject": "Purdue",
     "paysOn": "Purdue at Illinois (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "purdue-at-illinois-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "howard-byu-at-tcu-20261003",
@@ -4709,11 +4740,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "BYU at TCU (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "byu-at-tcu-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "saban-byu-at-tcu-20261003",
@@ -4725,11 +4757,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "BYU at TCU (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "byu-at-tcu-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "mcafee-byu-at-tcu-20261003",
@@ -4741,11 +4774,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "BYU at TCU (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "byu-at-tcu-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "herbstreit-byu-at-tcu-20261003",
@@ -4757,11 +4791,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "BYU at TCU (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "byu-at-tcu-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "fallica-arkansas-at-texas-am-20261003",
@@ -4773,11 +4808,12 @@
     "kind": "hard",
     "subject": "Texas A&M",
     "paysOn": "Arkansas at Texas A&M (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "arkansas-at-texas-am-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "elliott-utsa-at-rice-20261001",
@@ -4789,10 +4825,11 @@
     "kind": "hard",
     "subject": "Rice",
     "paysOn": "UTSA at Rice (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "utsa-at-rice-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "elliott-georgia-southern-at-coastal-carolina-20261001",
@@ -4804,10 +4841,11 @@
     "kind": "hard",
     "subject": "Coastal Carolina",
     "paysOn": "Georgia Southern at Coastal Carolina (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-southern-at-coastal-carolina-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-03"
   },
   {
     "id": "pate-miami-at-clemson-20260930",
@@ -4819,11 +4857,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Miami roster gap vs Clemson; home field empties once game not in question."
+    "reasoning": "Miami roster gap vs Clemson; home field empties once game not in question.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "compton-miami-at-clemson-20260930",
@@ -4835,11 +4874,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Clemson offense 125th/127th; Miami should handle business despite OL concerns."
+    "reasoning": "Clemson offense 125th/127th; Miami should handle business despite OL concerns.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "howard-miami-at-clemson-20261003",
@@ -4851,11 +4891,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "saban-miami-at-clemson-20261003",
@@ -4867,11 +4908,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "mcafee-miami-at-clemson-20261003",
@@ -4883,11 +4925,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "fallica-miami-at-clemson-20261003",
@@ -4899,11 +4942,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "klatt-miami-at-clemson-20261001",
@@ -4915,11 +4959,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Miami at Clemson (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "miami-at-clemson-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "pollack-washington-at-usc-20261001",
@@ -4931,11 +4976,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "washington-at-usc-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "USC outscores Washington despite Riley noise."
+    "reasoning": "USC outscores Washington despite Riley noise.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "patterson-washington-at-usc-20261001",
@@ -4947,10 +4993,11 @@
     "kind": "hard",
     "subject": "Washington",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "washington-at-usc-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "howard-washington-at-usc-20261003",
@@ -4962,11 +5009,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "washington-at-usc-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "saban-washington-at-usc-20261003",
@@ -4978,11 +5026,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "washington-at-usc-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "mcafee-washington-at-usc-20261003",
@@ -4994,11 +5043,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "washington-at-usc-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "herbstreit-washington-at-usc-20261003",
@@ -5010,11 +5060,12 @@
     "kind": "hard",
     "subject": "Washington",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "washington-at-usc-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "klatt-washington-at-usc-20261001",
@@ -5026,11 +5077,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "Washington at USC (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "washington-at-usc-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "pate-indiana-at-rutgers-20261001",
@@ -5042,10 +5094,11 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "Indiana at Rutgers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "indiana-at-rutgers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "elliott-texas-state-at-san-diego-state-20261001",
