@@ -1,0 +1,36 @@
+name: Deploy W5 grades
+on:
+  push:
+    paths:
+      - "scripts/_TRIGGER_W5_DEPLOY"
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Check CF secret presence
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "CLOUDFLARE_API_TOKEN secret missing"
+            exit 1
+          fi
+          echo "CLOUDFLARE_API_TOKEN present (len=${#CLOUDFLARE_API_TOKEN})"
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          unset GITHUB_PAGES
+          npm run check
+          npm run deploy:upload
+          npm run verify:deployed || true
