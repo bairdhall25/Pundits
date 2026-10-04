@@ -1,0 +1,23 @@
+name: Restore W5 grade publish
+on:
+  workflow_dispatch:
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: node scripts/_restore-w5-grade-data.cjs
+      - run: node scripts/_restore-w5-grade-tests.cjs
+      - run: |
+          git config user.name "Baird Hall"
+          git config user.email "bairdhall25@gmail.com"
+          rm -f scripts/_restore-w5-grade-data.cjs scripts/_restore-w5-grade-tests.cjs scripts/_restore-w5-grade-publish.cjs .github/workflows/restore-w5-grade-publish.yml
+          git add -A data/calls.json data/events.json lib/archive.test.ts lib/page-content.test.ts lib/seo.test.ts lib/social-card/resolver.test.ts scripts/verify-static.mjs
+          git add -u scripts/_restore-w5-grade-data.cjs scripts/_restore-w5-grade-tests.cjs scripts/_restore-w5-grade-publish.cjs .github/workflows/restore-w5-grade-publish.yml || true
+          git commit -m "Publish Week 5 Saturday grades (31 hit / 22 miss across 16 CFB finals)." || echo "nothing to commit"
+          git push origin HEAD:main
