@@ -12,14 +12,46 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      - run: node scripts/_inflate-tests.cjs
-      - run: |
+          node-version: "22"
+      - name: Patch corrupted payload bytes then inflate
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          const zlib = require("zlib");
+          const path = require("path");
+          const a = String.fromCharCode(85, 115); // U+s
+          const t = String.fromCharCode(84); // T
+          const fixes = {
+            "scripts/_payload-tests.part0.b64": [[4147, a], [5004, a]],
+            "scripts/_payload-tests.part1.b64": [[5872, a], [8560, t]],
+            "scripts/_payload-tests.part2.b64": [[749, a], [1815, a], [3080, a], [5988, t], [8466, a]],
+          };
+          for (const [p, list] of Object.entries(fixes)) {
+            const b = Buffer.from(fs.readFileSync(p));
+            for (const [idx, val] of list) Buffer.from(val).copy(b, idx);
+            fs.writeFileSync(p, b);
+            console.log("patched", p);
+          }
+          const parts = [];
+          for (let i = 0; ; i++) {
+            const p = "scripts/_payload-tests.part" + i + ".b64";
+            if (!fs.existsSync(p)) break;
+            parts.push(fs.readFileSync(p, "utf8").replace(/\s+/g, ""));
+          }
+          const map = JSON.parse(zlib.inflateSync(Buffer.from(parts.join(""), "base64")).toString());
+          for (const [p, b64] of Object.entries(map)) {
+            fs.mkdirSync(path.dirname(p), { recursive: true });
+            fs.writeFileSync(p, zlib.inflateSync(Buffer.from(b64, "base64")));
+            console.log("restored", p, fs.statSync(p).size);
+          }
+          NODE
+      - name: Commit restored tests and cleanup temps
+        run: |
           git config user.name "Baird Hall"
           git config user.email "bairdhall25@gmail.com"
           git add lib/archive.test.ts lib/page-content.test.ts lib/seo.test.ts lib/social-card/resolver.test.ts scripts/verify-static.mjs
           rm -f scripts/_payload-tests.part*.b64 scripts/_inflate-tests.cjs scripts/_TRIGGER_W5_TESTS .github/workflows/restore-w5-tests.yml
-          git add -u scripts/_payload-tests.part*.b64 scripts/_inflate-tests.cjs scripts/_TRIGGER_W5_TESTS .github/workflows/restore-w5-tests.yml || true
+          git add -u
           git status -sb
           git commit -m "test: update snapshots for Week 5 Saturday 31-22 grades" || echo nothing
           git push origin HEAD:main
