@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/ncaaf/2026/week-5/");
+    expect(recap!.href).toBe("/nfl/2026/week-4/");
     expect(recap!.line).toBe(
-      "Week 5: experts went 31–22. Bud Elliott, Chris \"The Bear\" Fallica, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Joel Klatt, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, Tom Fornelli, and Will Compton hit on Bowling Green."
+      "Week 4: experts went 4–2. Chris Simms and Nick Wright hit on Jaguars."
     );
   });
 

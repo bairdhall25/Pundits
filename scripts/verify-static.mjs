@@ -38,10 +38,9 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Danny Kanell, Desmond Howard, and Nick Saban pick Arizona\. David Pollack, Chip Patterson, Pat McAfee, and Kirk Herbstreit pick Cincinnati\./);
-assert.match(home, /href="\/picks\/cincinnati-at-arizona-2026\/"/);
-assert.match(home, /href="\/picks\/texas-state-at-san-diego-state-2026\/"/);
-assert.match(home, /Week 5 · Oct 3 · Week 4 is final/);
+assert.match(home, /Nick Wright picks Vikings\. Nobody on Dolphins yet\./);
+assert.match(home, /href="\/picks\/dolphins-at-vikings-2026\/"/);
+assert.match(home, /Week 4 · Oct 4 · Week 3 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
@@ -191,7 +190,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 11–10/);
+assert.match(herbstreitProfile, /2026 tracked record: 11–11/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 
@@ -453,7 +452,7 @@ assert.match(weekCfb4, /Oregon beat USC/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 5: who picked whom/);
+assert.match(ncaafSlate, /College football Week 5: who called it/);
 assert.match(ncaafSlate, /Week 4 is final/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-4\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-3\//);

@@ -5110,10 +5110,11 @@
     "kind": "hard",
     "subject": "San Diego State",
     "paysOn": "Texas State at San Diego State (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texas-state-at-san-diego-state-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "pollack-cincinnati-at-arizona-20261001",
@@ -5125,11 +5126,12 @@
     "kind": "hard",
     "subject": "Cincinnati",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Cincinnati OL/physicality travels to Arizona."
+    "reasoning": "Cincinnati OL/physicality travels to Arizona.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "patterson-cincinnati-at-arizona-20261001",
@@ -5141,10 +5143,11 @@
     "kind": "hard",
     "subject": "Cincinnati",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "kanell-cincinnati-at-arizona-20261001",
@@ -5156,11 +5159,12 @@
     "kind": "hard",
     "subject": "Arizona",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "howard-cincinnati-at-arizona-20261003",
@@ -5172,11 +5176,12 @@
     "kind": "hard",
     "subject": "Arizona",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "saban-cincinnati-at-arizona-20261003",
@@ -5188,11 +5193,12 @@
     "kind": "hard",
     "subject": "Arizona",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "mcafee-cincinnati-at-arizona-20261003",
@@ -5204,11 +5210,12 @@
     "kind": "hard",
     "subject": "Cincinnati",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "herbstreit-cincinnati-at-arizona-20261003",
@@ -5220,11 +5227,12 @@
     "kind": "hard",
     "subject": "Cincinnati",
     "paysOn": "Cincinnati at Arizona (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "cincinnati-at-arizona-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "nick-wright-patriots-at-bills-20261002",
@@ -5236,10 +5244,11 @@
     "kind": "hard",
     "subject": "Bills",
     "paysOn": "Patriots at Bills (Week 4)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "patriots-at-bills-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "nick-wright-jaguars-at-bengals-20261002",
@@ -5251,10 +5260,11 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Jaguars at Bengals (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "jaguars-at-bengals-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "simms-jaguars-at-bengals-20261002",
@@ -5266,10 +5276,11 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Jaguars at Bengals (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "jaguars-at-bengals-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "nick-wright-dolphins-at-vikings-20261002",
@@ -5312,11 +5323,12 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Rams at Eagles (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "rams-at-eagles-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Rams 31–21; Eagles offense/Devonta doubt."
+    "reasoning": "Rams 31–21; Eagles offense/Devonta doubt.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "simms-cardinals-at-giants-20261002",
@@ -5328,10 +5340,11 @@
     "kind": "hard",
     "subject": "Cardinals",
     "paysOn": "Cardinals at Giants (Week 4)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "cardinals-at-giants-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "simms-chargers-at-seahawks-20261002",
@@ -5373,9 +5386,10 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Jets at Bears (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "jets-at-bears-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   }
 ]

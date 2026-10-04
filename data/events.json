@@ -2245,7 +2245,10 @@
       "kickoffDate": "2026-10-03",
       "awayTeamId": "texas-state",
       "homeTeamId": "san-diego-state",
-      "week": 5
+      "week": 5,
+      "awayScore": 29,
+      "homeScore": 31,
+      "resultUrl": "https://www.espn.com/college-football/recap?gameId=401860900"
     },
     {
       "slug": "cincinnati-at-arizona-2026",
@@ -2267,7 +2270,10 @@
       "kickoffDate": "2026-10-03",
       "awayTeamId": "cincinnati",
       "homeTeamId": "arizona",
-      "week": 5
+      "week": 5,
+      "awayScore": 7,
+      "homeScore": 34,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856820/cincinnati-arizona"
     },
     {
       "slug": "patriots-at-bills-2026",
@@ -2289,7 +2295,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "patriots",
       "homeTeamId": "bills",
-      "week": 4
+      "week": 4,
+      "awayScore": 29,
+      "homeScore": 26,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872971/patriots-bills"
     },
     {
       "slug": "jaguars-at-bengals-2026",
@@ -2311,7 +2320,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "jaguars",
       "homeTeamId": "bengals",
-      "week": 4
+      "week": 4,
+      "awayScore": 22,
+      "homeScore": 17,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872969/jaguars-bengals"
     },
     {
       "slug": "rams-at-eagles-2026",
@@ -2333,7 +2345,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "rams",
       "homeTeamId": "eagles",
-      "week": 4
+      "week": 4,
+      "awayScore": 24,
+      "homeScore": 20,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872970/rams-eagles"
     },
     {
       "slug": "cardinals-at-giants-2026",
@@ -2355,7 +2370,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "cardinals",
       "homeTeamId": "giants",
-      "week": 4
+      "week": 4,
+      "awayScore": 24,
+      "homeScore": 36,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872966/cardinals-giants"
     },
     {
       "slug": "jets-at-bears-2026",
@@ -2377,7 +2395,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "jets",
       "homeTeamId": "bears",
-      "week": 4
+      "week": 4,
+      "awayScore": 12,
+      "homeScore": 23,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872972/jets-bears"
     },
     {
       "slug": "dolphins-at-vikings-2026",
