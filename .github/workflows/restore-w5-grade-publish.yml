@@ -14,14 +14,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Inflate events
-        run: node scripts/_inflate-events.cjs
+      - name: Inflate events (optional)
+        run: |
+          node scripts/_inflate-events.cjs || echo "events inflate failed — continuing with calls only"
       - name: Inflate calls
         run: node scripts/_inflate-calls.cjs
-      - name: Inflate tests (optional if parts missing)
+      - name: Inflate tests (optional)
         run: |
           if [ -f scripts/_payload-tests.part0.b64 ]; then
-            node scripts/_inflate-tests.cjs
+            node scripts/_inflate-tests.cjs || echo "tests inflate failed"
           else
             echo "tests payload missing — publishing grades only"
           fi
@@ -36,8 +37,11 @@ jobs:
             console.log('graded since Oct3', s.length, 'hit', s.filter(x=>x.status==='hit').length, 'miss', s.filter(x=>x.status==='miss').length);
             if (s.length < 50) { console.error('too few grades'); process.exit(1); }
           "
-          git add data/calls.json data/events.json
-          if [ -f lib/archive.test.ts ]; then
+          git add data/calls.json
+          if node -e "JSON.parse(require('fs').readFileSync('data/events.json','utf8'))" 2>/dev/null; then
+            git add data/events.json
+          fi
+          if [ -f lib/archive.test.ts ] && ! grep -q PLACEHOLDER lib/seo.test.ts 2>/dev/null; then
             git add lib/archive.test.ts lib/page-content.test.ts lib/seo.test.ts lib/social-card/resolver.test.ts scripts/verify-static.mjs || true
           fi
           rm -f scripts/_payload-* scripts/_inflate-*.cjs scripts/_restore-w5-* scripts/_TRIGGER_W5_RESTORE .github/workflows/restore-w5-grade-publish.yml
