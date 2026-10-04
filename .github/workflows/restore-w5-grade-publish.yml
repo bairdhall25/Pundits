@@ -11,14 +11,33 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: node scripts/_inflate-events.cjs
-      - run: node scripts/_inflate-calls.cjs
-      - run: node scripts/_inflate-tests.cjs
-      - run: |
+      - name: Inflate events
+        run: node scripts/_inflate-events.cjs
+      - name: Inflate calls
+        run: node scripts/_inflate-calls.cjs
+      - name: Inflate tests (optional if parts missing)
+        run: |
+          if [ -f scripts/_payload-tests.part0.b64 ]; then
+            node scripts/_inflate-tests.cjs
+          else
+            echo "tests payload missing — publishing grades only"
+          fi
+      - name: Commit and push restored data
+        run: |
           git config user.name "Baird Hall"
           git config user.email "bairdhall25@gmail.com"
+          node -e "
+            const c=require('./data/calls.json');
+            const g=c.filter(x=>x.status==='hit'||x.status==='miss');
+            const s=g.filter(x=>String(x.gradedAt||'').startsWith('2026-10-0'));
+            console.log('graded since Oct3', s.length, 'hit', s.filter(x=>x.status==='hit').length, 'miss', s.filter(x=>x.status==='miss').length);
+            if (s.length < 50) { console.error('too few grades'); process.exit(1); }
+          "
+          git add data/calls.json data/events.json
+          if [ -f lib/archive.test.ts ]; then
+            git add lib/archive.test.ts lib/page-content.test.ts lib/seo.test.ts lib/social-card/resolver.test.ts scripts/verify-static.mjs || true
+          fi
           rm -f scripts/_payload-* scripts/_inflate-*.cjs scripts/_restore-w5-* .github/workflows/restore-w5-grade-publish.yml
-          git add -A data/calls.json data/events.json lib/archive.test.ts lib/page-content.test.ts lib/seo.test.ts lib/social-card/resolver.test.ts scripts/verify-static.mjs
           git add -u scripts/_payload-* scripts/_inflate-*.cjs scripts/_restore-w5-* .github/workflows/restore-w5-grade-publish.yml || true
           git status -sb
           git commit -m "Publish Week 5 Saturday grades (31 hit / 22 miss across 16 CFB finals)." || echo "nothing to commit"
