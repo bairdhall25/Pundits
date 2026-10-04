@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/nfl/2026/week-3/");
+    expect(recap!.href).toBe("/ncaaf/2026/week-5/");
     expect(recap!.line).toBe(
-      "Week 3: experts went 3–4. Chris Simms and Jason McIntyre hit on Ravens."
+      "Week 5: experts went 13–18. Bud Elliott, Chris \"The Bear\" Fallica, Clay Travis, Danny Kanell, David Pollack, Joel Klatt, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, and Tom Fornelli hit on Bowling Green."
     );
   });
 
