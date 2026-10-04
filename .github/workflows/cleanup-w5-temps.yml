@@ -1,0 +1,21 @@
+name: Cleanup W5 temps
+on:
+  push:
+    paths:
+      - "scripts/_TRIGGER_W5_CLEANUP"
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "Baird Hall"
+          git config user.email "bairdhall25@gmail.com"
+          rm -f scripts/_payload-* scripts/_inflate-* scripts/_TRIGGER_W5_* scripts/_apply-grades-from-run.cjs \
+            .github/workflows/restore-w5-grade-publish.yml .github/workflows/cleanup-w5-temps.yml
+          git add -A
+          git status -sb
+          git commit -m "chore: remove W5 restore temp scripts and workflows" || echo nothing
+          git push origin HEAD:main
