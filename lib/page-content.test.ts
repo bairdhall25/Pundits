@@ -222,9 +222,11 @@ describe("team page contract", () => {
   it("keeps Virginia's empty side distinct from a missing game", () => {
     const team = getTeam("virginia", loadTeams())!;
     const content = teamContent(team, loadEvents(), loadCalls(), loadPundits());
-    expect(content.noScheduledGame).toBe(false);
-    expect(content.lede).toContain("Next covered matchup: Virginia at Florida State");
-    expect(content.historical[0]?.event.slug).toBe("west-virginia-vs-virginia-2026");
+    expect(content.noScheduledGame).toBe(true);
+    expect(content.nextMatchup).toBeNull();
+    expect(content.lede).toContain("No scheduled game on the board for Virginia");
+    expect(content.lede).toContain("Florida State beat Virginia");
+    expect(content.historical[0]?.event.slug).toBe("virginia-at-florida-state-2026");
     const ncsu = content.historical.find((row) => row.event.slug === "ncsu-at-uva-2026");
     expect(ncsu?.noCapturedPick).toBe(true);
     expect(ncsu?.noCapturedPickOnGame).toBe(false);
