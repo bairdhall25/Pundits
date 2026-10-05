@@ -307,7 +307,7 @@ describe("league page contract", () => {
     expect(content.currentWeek?.week).toBe(4);
     expect(content.currentWeek?.href).toBe("/nfl/2026/week-4/");
     expect(content.previous?.href).toBe("/nfl/2026/week-3/");
-    expect(content.lede).toContain("4 open games in Week 4");
+    expect(content.lede).toContain("1 open game in Week 4");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });

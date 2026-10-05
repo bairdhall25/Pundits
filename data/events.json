@@ -2420,7 +2420,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "dolphins",
       "homeTeamId": "vikings",
-      "week": 4
+      "week": 4,
+      "awayScore": 10,
+      "homeScore": 15,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872974/dolphins-vikings"
     },
     {
       "slug": "chiefs-at-raiders-2026",
@@ -2442,7 +2445,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "chiefs",
       "homeTeamId": "raiders",
-      "week": 4
+      "week": 4,
+      "awayScore": 30,
+      "homeScore": 27,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872976/chiefs-raiders"
     },
     {
       "slug": "chargers-at-seahawks-2026",
@@ -2464,7 +2470,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "chargers",
       "homeTeamId": "seahawks",
-      "week": 4
+      "week": 4,
+      "awayScore": 23,
+      "homeScore": 30,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872977/chargers-seahawks"
     },
     {
       "slug": "lions-at-panthers-2026",

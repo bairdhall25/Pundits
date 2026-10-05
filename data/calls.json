@@ -5292,11 +5292,12 @@
     "kind": "hard",
     "subject": "Vikings",
     "paysOn": "Dolphins at Vikings (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "dolphins-at-vikings-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-03",
-    "reasoning": "Miami dog-walked three straight; Flores blitz vs no Achane."
+    "reasoning": "Miami dog-walked three straight; Flores blitz vs no Achane.",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "nick-wright-chiefs-at-raiders-20261002",
@@ -5308,10 +5309,11 @@
     "kind": "hard",
     "subject": "Chiefs",
     "paysOn": "Chiefs at Raiders (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "chiefs-at-raiders-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "simms-rams-at-eagles-20261002",
@@ -5356,10 +5358,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "Chargers at Seahawks (Week 4)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "chargers-at-seahawks-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-04"
   },
   {
     "id": "simms-lions-at-panthers-20261002",
