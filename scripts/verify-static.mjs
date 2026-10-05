@@ -38,9 +38,9 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Chris Simms picks Lions\. Nobody on Panthers yet\./);
-assert.match(home, /href="\/picks\/lions-at-panthers-2026\/"/);
-assert.match(home, /Week 4 · Oct 4 · Week 3 is final/);
+assert.match(home, /Week 4: experts went 7–3\. Chris Simms and Nick Wright hit on Jaguars\./);
+assert.match(home, /href="\/nfl\/2026\/week-4\/"/);
+assert.match(home, /College football and NFL picks from named analysts and commentators\./);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
 assert.doesNotMatch(home, /Week 1 Sep 3–7/);
@@ -390,7 +390,7 @@ const teamNoGame = await readFile(
   "utf8"
 );
 assert.doesNotMatch(teamNoGame, /name="robots" content="noindex, follow"/);
-assert.match(teamNoGame, /Next covered matchup: Lions at Panthers/);
+assert.match(teamNoGame, /Last tracked result: Panthers beat Lions/);
 assert.match(teamNoGame, /href="\/picks\/lions-at-panthers-2026\//);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
@@ -425,8 +425,8 @@ assert.match(weekNfl2, /Rams beat Giants/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 4: who picked whom/);
-assert.match(nflSlate, /Week 3 is final/);
+assert.match(nflSlate, /NFL Week 4: who called it/);
+assert.match(nflSlate, /Week 4 is final on this NFL board/);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-4\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-3\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-2\//);

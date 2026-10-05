@@ -5374,10 +5374,11 @@
     "kind": "hard",
     "subject": "Lions",
     "paysOn": "Lions at Panthers (Week 4)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lions-at-panthers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-03"
+    "firstPublishedAt": "2026-10-03",
+    "gradedAt": "2026-10-05"
   },
   {
     "id": "simms-jets-at-bears-20261002",

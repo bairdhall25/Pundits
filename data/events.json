@@ -2495,7 +2495,10 @@
       "kickoffDate": "2026-10-04",
       "awayTeamId": "lions",
       "homeTeamId": "panthers",
-      "week": 4
+      "week": 4,
+      "awayScore": 26,
+      "homeScore": 32,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872978/lions-panthers"
     }
   ]
 }

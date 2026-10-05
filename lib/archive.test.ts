@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-4/");
     expect(recap!.line).toBe(
-      "Week 4: experts went 7–2. Chris Simms and Nick Wright hit on Jaguars."
+      "Week 4: experts went 7–3. Chris Simms and Nick Wright hit on Jaguars."
     );
   });
 

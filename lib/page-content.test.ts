@@ -303,11 +303,11 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 4: who picked whom");
+    expect(content.title).toBe("NFL Week 4: who called it");
     expect(content.currentWeek?.week).toBe(4);
     expect(content.currentWeek?.href).toBe("/nfl/2026/week-4/");
     expect(content.previous?.href).toBe("/nfl/2026/week-3/");
-    expect(content.lede).toContain("1 open game in Week 4");
+    expect(content.lede).toContain("Week 4 is final on this NFL board");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
