@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -381,6 +381,26 @@
       "proposalFile": "docs/runs/2026-10-06-candidate-proposals.json",
       "owner": "Audit",
       "note": "Audit 2026-10-07T02:25:00Z: five Hard Count W6 rows verified (Georgia, Indiana, LSU, Oregon ok-unmapped; Texas ok-unmapped-no-reasoning). Association: On3 national analyst/host of The Hard Count. Do not roster or ship."
+    },
+    {
+      "id": "candidate-simon-hunter",
+      "kind": "roster-candidate",
+      "needed": "None. Operator directive 2026-10-07: verify association only; never roster or ship Simon Hunter.",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-07b-weekday-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-10-07-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Audit 2026-10-07T20:55:00Z: eight Sharp or Square NFL W5 rows verified as continuous Simon turns (resemblyzer per-utterance vs Chad/Simon refs). Atlanta ok-unmapped; Bears (mapped) ok-no-reasoning; Dallas, Jaguars, Texans, Denver, Seattle, Detroit ok-unmapped-no-reasoning (capsule defects). Association: professional gambler / Sharp or Square co-host (iHeartPodcasts and The Volume). Do not roster or ship. NFL W5 overflow games not minted."
+    },
+    {
+      "id": "candidate-chad-millman",
+      "kind": "roster-candidate",
+      "needed": "None. Operator directive 2026-10-07: verify association only; never roster or ship Chad Millman.",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-07b-weekday-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-10-07-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Audit 2026-10-07T20:55:00Z: Chad's choice Seattle −2.5 (host wrap, own continuous turn) ok-unmapped-no-reasoning (capsule carried an operator note / >2 factors). Association: betting expert / Sharp or Square host (iHeartPodcasts and The Volume). Do not roster or ship."
     }
   ]
 }

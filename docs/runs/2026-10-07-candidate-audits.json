@@ -1,0 +1,83 @@
+[
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "30e9f63c9d71dddf",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Bucs at Cowboys (TNF). \"if I had to make a pick on it, I'll pick Dallas. But I don't feel great about it\" re-heard at audio 14:50.6–14:57 (Omny ~11:27; dynamic-ad offset). Every utterance 14:41–15:07 labels Simon (resemblyzer margin +0.32 to +0.35), so the quote is one continuous turn. Explicit pick → SU (Dallas favorite). Capsule defect: three factors (out of range). Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "f679c024d287d2c5",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Eagles vs Jaguars (London). \"People know what I like to do here. I like to take the favorites in England. … So I'll be patient. I'll take the six and a half\" re-heard at audio 18:02.8–18:30. The ellipsis elides Simon's own lines (18:08–18:27). Every utterance 17:55–18:31 labels Simon (+0.29 to +0.35) with no Chad interjection, so it is one continuous turn. Side: Jaguars −6.5, the favorite in England (Chad's set-up: \"Jags are now six and a half point favorites\"). Favorite laying → SU + Bets. Capsule defect: three factors. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "64b4c7d73757081f",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Texans at Titans. Quote fragments re-heard at audio 32:24–32:28, 33:58–34:05 and 34:17.6. Every utterance from 32:20.6 to 34:17.6 labels Simon (+0.23 to +0.37). Chad's turns sit at 32:17 and 34:20 and fall outside the quote, so the ellipses elide only Simon's own turn. Explicit Texans win → SU. The quote matches the Omny transcript text. The audio says \"So I just I look at them\" where Omny renders \"So I look at Zimmer\"; this is a transcript artifact and does not change the pick. Capsule defect: three factors, and \"out-gaining opponents\" is unsupported. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "5af0429e37693ac7",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Mapped bears-at-packers-2026 YES. Re-heard at audio 64:43–64:59: \"if it's still two and a half at your shop, I'm still gonna put a bet here on this Bears team because I still think there's potential of Caleb coming back here.\" All utterances 64:36–65:04 label Simon (+0.26 to +0.31), so it is one continuous turn. Bears −2.5 favorite → SU + Bets. Capsule defect: three factors. Candidate, so it is never promoted. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Mapped Candidate row, not Intake."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "196dfcffddce022a",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Broncos at Chargers. Re-heard at audio 69:12–69:24, ending \"That's why I'm taking a position on Denver\". All utterances 69:05–69:28 label Simon (+0.26 to +0.34), so it is one continuous turn. Chad's \"He's not him\" comes after, at 69:31. The quote matches the Omny text; the audio says \"they can't go 0-5 against the spread\" where Omny has \"over five\". Broncos favorite → SU + Bets. Capsule defect: speaker-mixed. The Slater injury detail is Chad's (67:15, Chad −0.28), while Simon's own factors are backup OL vs the Denver defensive line and Herbert's regression. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "8da37a24d25b25ca",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "49ers at Seahawks. Re-heard at audio 80:54.9–81:06, including the vocative \"I totally agree with you, Chad\". All utterances 80:49–81:04 label Simon (+0.24 to +0.32), and Chad takes over at 81:06 (\"Detroit is visiting Arizona\"), so it is one continuous turn. Seattle −2.5 home favorite → SU + Bets. Capsule defect: three factors, and the Juszczyk injury point is speaker-mixed (Chad raises it in his Chad's choice segment ~76:47). Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "7d422d8179041e49",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Lions at Cardinals. Re-heard at audio 82:08–83:23: it opens \"Yeah, and I can't believe I'm on another favorite, but I think you're right\" right after Chad's Arizona turn ends at 82:06 (Chad −0.25 to −0.30) and ends \"Arizona, they'll lose this game, and it'll be by seven\". Every utterance 82:08–83:28 labels Simon (+0.22 to +0.39), including the ASR-garbled 82:16–82:43 stretch that Omny transcribes as Simon's continuous speech. One continuous turn. Detroit favorite → SU. Capsule defect: three factors. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "aeac6a34596ee3b9",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"professional gambler Simon Hunter\", co-host of Sharp or Square with Chad Millman. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Ravens at Falcons (SNF). Re-heard at audio 84:34.8–86:13: it opens \"Well, not me\" after Chad's \"it's a pass\" (84:28–84:30, Chad) and ends \"I still think the right side is take the Falcons\" at 86:10. All utterances 84:34–86:12 label Simon (+0.23 to +0.41), and Chad resumes at 86:13 (\"Last game on the board\"), so it is one continuous turn. Falcons −2.5 home favorite → SU + Bets. Capsule (Lamar's ankle; books underrate Penix/Falcons) is two factors, both from Simon's own turn (85:02, 85:59). Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  },
+  {
+    "proposedId": "chad-millman",
+    "rowId": "b5a519598e6c4739",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T20:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (productionCompany iHeartPodcasts and The Volume) describes him as \"Betting expert Chad Millman\", host of Sharp or Square. Independent sports-betting media host, not a team employee, team analyst, or caller.",
+    "note": "49ers at Seahawks. Host wrap re-heard at audio 89:08–89:14: \"Simon says was New Orleans plus two and a half. Chad's choice was Seattle minus two and a half\". Chad's own continuous turn (89:01–89:19 all Chad, −0.11 to −0.20). The self-labeled Chad's choice is Seattle −2.5, home favorite → SU + Bets. Capsule defect: it carries an operator note (\"his ~01:03:20 turn\") and bundles more than two factors. Speaker refs: Chad = 81:21–82:04 (his Arizona set-up), Simon = 42:34–43:40 (Browns/Jets turn). Operator directive 2026-10-07: verify association only; never roster or ship. Overflow; no slug invented; NFL W5 overflow games not minted."
+  }
+]

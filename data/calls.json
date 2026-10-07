@@ -5709,5 +5709,35 @@
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
     "reasoning": "Bears are just better than the Packers talent-wise (with Caleb Williams expected back)."
+  },
+  {
+    "id": "staples-texas-vs-oklahoma-20261007",
+    "punditId": "staples",
+    "claim": "Listen, this is a tough spot because Oklahoma needs this so badly and I'm just not sure how it happens. Give me Texas to cover.",
+    "source": "Andy & Ari On3 — PICKING College Football Week 6",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/picking-college-football-week-6-indiana-nebraska-oklahoma/id1695325427?i=1000793309514",
+    "sourceDate": "2026-10-05",
+    "kind": "hard",
+    "subject": "Texas",
+    "paysOn": "Texas vs Oklahoma (Week 6)",
+    "status": "pending",
+    "eventSlug": "texas-vs-oklahoma-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-10-07"
+  },
+  {
+    "id": "staples-iowa-state-at-byu-20261007",
+    "punditId": "staples",
+    "claim": "he's very easy to believe in, but so is Kalani Sitake, which is why I'm taking BYU.",
+    "source": "Andy & Ari On3 — PICKING College Football Week 6",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/picking-college-football-week-6-indiana-nebraska-oklahoma/id1695325427?i=1000793309514",
+    "sourceDate": "2026-10-05",
+    "kind": "hard",
+    "subject": "BYU",
+    "paysOn": "Iowa State at BYU (Week 6)",
+    "status": "pending",
+    "eventSlug": "iowa-state-at-byu-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-07"
   }
 ]
