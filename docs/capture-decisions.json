@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-03",
+  "updated": "2026-10-06",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -371,6 +371,16 @@
       "proposalFile": "docs/runs/2026-10-03-candidate-proposals.json",
       "owner": "Audit",
       "note": "Rejected/ineligible. Audit 2026-10-03T16:45:00Z: seven Cole W5 labels verified; association only. Never roster or ship."
+    },
+    {
+      "id": "candidate-jd-pickell",
+      "kind": "roster-candidate",
+      "needed": "None. Operator directive 2026-10-06: verify association only; never roster or ship J.D. PicKell.",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-06c-weekday-night-shows.md",
+      "proposalFile": "docs/runs/2026-10-06-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Audit 2026-10-07T02:25:00Z: five Hard Count W6 rows verified (Georgia, Indiana, LSU, Oregon ok-unmapped; Texas ok-unmapped-no-reasoning). Association: On3 national analyst/host of The Hard Count. Do not roster or ship."
     }
   ]
 }

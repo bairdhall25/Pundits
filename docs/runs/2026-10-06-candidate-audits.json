@@ -1,0 +1,47 @@
+[
+  {
+    "proposedId": "jd-pickell",
+    "rowId": "2e4fa71f8eba60a2",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-07T02:25:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "On3 national college football analyst and host of The Hard Count (Apple show page: channel/creator On3). Independent media analyst, not a team employee, analyst, or caller.",
+    "note": "Georgia outright ('I'll take Georgia outright … Dogs 30, Tide 27') re-heard ~19:24–19:35 in the Apple/Simplecast audio. Operator directive 2026-10-06: verify association only; never roster or ship. Overflow; no slug invented."
+  },
+  {
+    "proposedId": "jd-pickell",
+    "rowId": "3f1c48f77628ed43",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-07T02:25:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "On3 national college football analyst and host of The Hard Count (Apple show page: channel/creator On3). Independent media analyst, not a team employee, analyst, or caller.",
+    "note": "Texas wins + covers 24–10 re-heard ~32:48–33:05. Capsule defect: three factors (out of range). Operator directive 2026-10-06: verify association only; never roster or ship. Overflow; no slug invented."
+  },
+  {
+    "proposedId": "jd-pickell",
+    "rowId": "e49105ebd48c0aee",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-07T02:25:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "On3 national college football analyst and host of The Hard Count (Apple show page: channel/creator On3). Independent media analyst, not a team employee, analyst, or caller.",
+    "note": "'I will take Indiana to win' re-heard ~46:31–46:51. Operator directive 2026-10-06: verify association only; never roster or ship. Overflow; no slug invented."
+  },
+  {
+    "proposedId": "jd-pickell",
+    "rowId": "a05ea44249d1012a",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-07T02:25:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "On3 national college football analyst and host of The Hard Count (Apple show page: channel/creator On3). Independent media analyst, not a team employee, analyst, or caller.",
+    "note": "'I think LSU wins … still LSU wins' re-heard ~57:14–57:31 (Kentucky +10.5 cover is Bets). Operator directive 2026-10-06: verify association only; never roster or ship. Overflow; no slug invented."
+  },
+  {
+    "proposedId": "jd-pickell",
+    "rowId": "29ea83d679f66007",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-07T02:25:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "On3 national college football analyst and host of The Hard Count (Apple show page: channel/creator On3). Independent media analyst, not a team employee, analyst, or caller.",
+    "note": "'I think Oregon wins. I think Oregon covers' re-heard ~66:59–67:10. Operator directive 2026-10-06: verify association only; never roster or ship. Overflow; no slug invented."
+  }
+]

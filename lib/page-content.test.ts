@@ -303,22 +303,22 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 4: who called it");
-    expect(content.currentWeek?.week).toBe(4);
-    expect(content.currentWeek?.href).toBe("/nfl/2026/week-4/");
-    expect(content.previous?.href).toBe("/nfl/2026/week-3/");
-    expect(content.lede).toContain("Week 4 is final on this NFL board");
+    expect(content.title).toBe("NFL Week 5: who picked whom");
+    expect(content.currentWeek?.week).toBe(5);
+    expect(content.currentWeek?.href).toBe("/nfl/2026/week-5/");
+    expect(content.previous?.href).toBe("/nfl/2026/week-4/");
+    expect(content.lede).toContain("Week 5");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
 
-  it("treats a graded college week as who called it and still links the previous archive", () => {
+  it("treats an open college week as who picked whom and still links the previous archive", () => {
     const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("College football");
-    expect(content.title).toBe("College football Week 5: who called it");
-    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-5/");
-    expect(content.lede).toContain("Week 5");
-    expect(content.previous?.href).toBe("/ncaaf/2026/week-4/");
+    expect(content.title).toBe("College football Week 6: who picked whom");
+    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-6/");
+    expect(content.lede).toContain("Week 6");
+    expect(content.previous?.href).toBe("/ncaaf/2026/week-5/");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
   });
 

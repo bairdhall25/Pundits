@@ -893,8 +893,8 @@ describe("leagueWhenLine", () => {
     const line = leagueWhenLine(
       getLeagueSlate("ncaaf", loadEvents(), loadCalls(), loadPundits())
     );
-    expect(line).toContain("Week 5");
-    expect(line).toContain("Week 4 is final");
+    expect(line).toContain("Week 6");
+    expect(line).toContain("Week 5 is final");
     expect(line).not.toMatch(/Week 1 Sep 3/);
   });
 });
