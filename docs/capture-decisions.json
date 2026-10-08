@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -330,7 +330,7 @@
       "sourceRun": "docs/runs/2026-09-23b-weekday-night-shows.md",
       "proposalFile": "docs/runs/2026-09-23-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster."
+      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster. Locker Room W6 packet docs/runs/2026-10-07c-candidate-proposals.json (Audit 2026-10-08T01:50:00Z; audits in docs/runs/2026-10-07-candidate-audits.json): Texas, Oregon, Georgia, Florida (mapped) ok-no-reasoning; Houston (overflow, now minted as houston-at-kansas-state-2026) ok-unmapped-no-reasoning; all five verified as Lewan's voice. Association re-verified (Locker Room co-host per Apple episode page). Operator directive 2026-10-07: verify association only; never roster or ship."
     },
     {
       "id": "candidate-brent-rollins",

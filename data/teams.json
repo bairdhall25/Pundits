@@ -102,5 +102,7 @@
   { "id": "cincinnati", "name": "Cincinnati", "abbr": "CIN", "primary": "#E00122", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "arizona", "name": "Arizona", "abbr": "ARIZ", "primary": "#CC0033", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "iowa-state", "name": "Iowa State", "abbr": "ISU", "primary": "#C8102E", "ink": "#F1BE48", "sport": "ncaaf" },
-  { "id": "penn-state", "name": "Penn State", "abbr": "PSU", "primary": "#041E42", "ink": "#FFFFFF", "sport": "ncaaf" }
+  { "id": "penn-state", "name": "Penn State", "abbr": "PSU", "primary": "#041E42", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "houston", "name": "Houston", "abbr": "HOU", "primary": "#C8102E", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "kansas-state", "name": "Kansas State", "abbr": "KSU", "primary": "#512888", "ink": "#FFFFFF", "sport": "ncaaf" }
 ]
