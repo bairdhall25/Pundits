@@ -1309,13 +1309,23 @@
       "url": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000793897036",
       "locator": "i=1000793897036",
       "inspected": true,
-      "outcome": "opened",
-      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T16:45:00-04:00",
       "coverage": [
         {
           "targetId": "cover3-w6-locks-board",
           "locator": "chapters + ML sprinkles ~1:20:51; ATS ASR incomplete",
           "status": "partial"
+        },
+        {
+          "targetId": "cover3-w6-ml-sprinkles",
+          "locator": "YT 1XrExuvf44s captions ~01:20:51–01:26:30 + Chip recap",
+          "status": "completed"
+        },
+        {
+          "targetId": "cover3-w6-locks-board",
+          "locator": "ATS board captions lack speaker labels — Bets/unattributed",
+          "status": "completed"
         }
       ],
       "inspections": [
@@ -1329,9 +1339,25 @@
               "status": "partial"
             }
           ]
+        },
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "cover3-w6-ml-sprinkles",
+              "locator": "YT 1XrExuvf44s captions ~01:20:51–01:26:30 + Chip recap",
+              "status": "completed"
+            },
+            {
+              "targetId": "cover3-w6-locks-board",
+              "locator": "ATS board captions lack speaker labels — Bets/unattributed",
+              "status": "completed"
+            }
+          ],
+          "reopenReason": "locks-board-asr"
         }
-      ],
-      "reopenReason": "locks-board-asr"
+      ]
     },
     {
       "id": "herd:1000793971130",
@@ -1436,7 +1462,68 @@
         }
       ],
       "reopenReason": "tnf-asr-incomplete"
+    },
+    {
+      "id": "clay-travis:1000793859695",
+      "factoryId": "clay-travis",
+      "title": "Clay Travis Show: Trump’s Lamar Jackson Shoutout Breaks the Internet + Clay’s CFB Picks",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/clay-travis-show-trumps-lamar-jackson-shoutout-breaks/id1498106610?i=1000793859695&uo=4",
+      "locator": "i=1000793859695",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "clay-w6-picks",
+          "locator": "Omny 8bb2fc4a ~00:03:00–00:05:10; NFL ~00:14:00",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "clay-w6-picks",
+              "locator": "Omny 8bb2fc4a ~00:03:00–00:05:10; NFL ~00:14:00",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000793775510",
+      "factoryId": "herd",
+      "title": "The Richard Sherman Podcast - NFL Week 5 PREDICTIONS: 49ers-Seahawks, Bills-Rams, Cowboys-Bucs, Lions-Cardinals",
+      "published": "2026-10-07",
+      "url": "https://podcasts.apple.com/us/podcast/the-richard-sherman-podcast-nfl-week-5-predictions/id1042368254?i=1000793775510&uo=4",
+      "locator": "i=1000793775510",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "sherman-w5-predictions",
+          "locator": "Omny f565d731 full episode",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "sherman-w5-predictions",
+              "locator": "Omny f565d731 full episode",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
     }
-  ],
-  "updated": "2026-10-08T23:20:00-04:00"
+  ]
 }
