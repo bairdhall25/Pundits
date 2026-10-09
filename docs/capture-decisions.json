@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -83,12 +83,12 @@
     {
       "id": "candidate-taylor-lewan",
       "kind": "roster-candidate",
-      "needed": "Operator photo + roster yes for Taylor Lewan Michigan ML (Audit ok-unmapped-no-reasoning, association, rowId 2cd056d99d34debb). Do not auto-roster.",
-      "status": "pending",
+      "needed": "None. Operator directive 2026-10-08: verify association only; never roster or ship Taylor Lewan.",
+      "status": "closed",
       "sourceRun": "docs/runs/2026-09-11c-candidate-restage.md",
       "proposalFile": "docs/runs/2026-09-11-candidate-proposals.json",
-      "owner": "Promote",
-      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 1682d09397c726f9 is a different identity. Keep visible; do not auto-roster. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster."
+      "owner": "Audit",
+      "note": "Restage Audit 2026-09-11T20:01:35Z. Prior fail 1682d09397c726f9 is a different identity. Keep visible; do not auto-roster. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster. Closed 2026-10-08 by operator directive (same disposition as candidate-jd-pickell): never roster or ship."
     },
     {
       "id": "candidate-chuck-pagano",
@@ -325,12 +325,12 @@
     {
       "id": "candidate-taylor-lewan",
       "kind": "roster-candidate",
-      "needed": "Operator photo + roster yes for Taylor Lewan Texas SU (Audit ok-unmapped-no-reasoning, association, rowId c040bd9d18757335). Do not auto-roster.",
-      "status": "pending",
+      "needed": "None. Operator directive 2026-10-08: verify association only; never roster or ship Taylor Lewan.",
+      "status": "closed",
       "sourceRun": "docs/runs/2026-09-23b-weekday-night-shows.md",
       "proposalFile": "docs/runs/2026-09-23-candidate-proposals.json",
-      "owner": "Promote",
-      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster. Locker Room W6 packet docs/runs/2026-10-07c-candidate-proposals.json (Audit 2026-10-08T01:50:00Z; audits in docs/runs/2026-10-07-candidate-audits.json): Texas, Oregon, Georgia, Florida (mapped) ok-no-reasoning; Houston (overflow, now minted as houston-at-kansas-state-2026) ok-unmapped-no-reasoning; all five verified as Lewan's voice. Association re-verified (Locker Room co-host per Apple episode page). Operator directive 2026-10-07: verify association only; never roster or ship."
+      "owner": "Audit",
+      "note": "Audit 2026-09-24T15:18:28Z. Locker Room co-host. Overflow Texas at Tennessee (2026). Capsule omitted. photoUrl=needed. Compton Tennessee and Compton LSU Intake rows failed speaker stitch and were not promoted. Do not mint from this candidate. W4/W5 packet docs/runs/2026-09-30-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Florida, Miami, VT rows ok-unmapped (association). Do not auto-roster. Locker Room W6 packet docs/runs/2026-10-07c-candidate-proposals.json (Audit 2026-10-08T01:50:00Z; audits in docs/runs/2026-10-07-candidate-audits.json): Texas, Oregon, Georgia, Florida (mapped) ok-no-reasoning; Houston (overflow, now minted as houston-at-kansas-state-2026) ok-unmapped-no-reasoning; all five verified as Lewan's voice. Association re-verified (Locker Room co-host per Apple episode page). Operator directive 2026-10-07: verify association only; never roster or ship. Closed 2026-10-08 by operator directive (same disposition as candidate-jd-pickell): never roster or ship."
     },
     {
       "id": "candidate-brent-rollins",
@@ -390,7 +390,7 @@
       "sourceRun": "docs/runs/2026-10-07b-weekday-afternoon-shows.md",
       "proposalFile": "docs/runs/2026-10-07-candidate-proposals.json",
       "owner": "Audit",
-      "note": "Audit 2026-10-07T20:55:00Z: eight Sharp or Square NFL W5 rows verified as continuous Simon turns (resemblyzer per-utterance vs Chad/Simon refs). Atlanta ok-unmapped; Bears (mapped) ok-no-reasoning; Dallas, Jaguars, Texans, Denver, Seattle, Detroit ok-unmapped-no-reasoning (capsule defects). Association: professional gambler / Sharp or Square co-host (iHeartPodcasts and The Volume). Do not roster or ship. NFL W5 overflow games not minted."
+      "note": "Audit 2026-10-07T20:55:00Z: eight Sharp or Square NFL W5 rows verified as continuous Simon turns (resemblyzer per-utterance vs Chad/Simon refs). Atlanta ok-unmapped; Bears (mapped) ok-no-reasoning; Dallas, Jaguars, Texans, Denver, Seattle, Detroit ok-unmapped-no-reasoning (capsule defects). Association: professional gambler / Sharp or Square co-host (iHeartPodcasts and The Volume). Do not roster or ship. NFL W5 overflow games not minted. Audit 2026-10-09T03:45:00Z: W5 Bets closing-card row f4d3b37dbf81a9fe (docs/runs/2026-10-08c-weekday-night-shows.md; audits docs/runs/2026-10-08-candidate-audits.json; proposals docs/runs/2026-10-08-candidate-proposals.json) fail — Scout reversed home/away (real game is Lions at Cardinals). Stays closed; never roster or ship."
     },
     {
       "id": "candidate-chad-millman",
@@ -400,7 +400,7 @@
       "sourceRun": "docs/runs/2026-10-07b-weekday-afternoon-shows.md",
       "proposalFile": "docs/runs/2026-10-07-candidate-proposals.json",
       "owner": "Audit",
-      "note": "Audit 2026-10-07T20:55:00Z: Chad's choice Seattle −2.5 (host wrap, own continuous turn) ok-unmapped-no-reasoning (capsule carried an operator note / >2 factors). Association: betting expert / Sharp or Square host (iHeartPodcasts and The Volume). Do not roster or ship."
+      "note": "Audit 2026-10-07T20:55:00Z: Chad's choice Seattle −2.5 (host wrap, own continuous turn) ok-unmapped-no-reasoning (capsule carried an operator note / >2 factors). Association: betting expert / Sharp or Square host (iHeartPodcasts and The Volume). Do not roster or ship. Audit 2026-10-09T03:45:00Z: W5 Bets closing-card row debfa93505bc3af2 (docs/runs/2026-10-08c-weekday-night-shows.md; audits docs/runs/2026-10-08-candidate-audits.json; proposals docs/runs/2026-10-08-candidate-proposals.json) fail — Scout reversed home/away (real game is Texans at Titans). Stays closed; never roster or ship."
     }
   ]
 }

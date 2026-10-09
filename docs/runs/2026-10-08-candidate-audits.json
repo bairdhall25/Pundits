@@ -1,0 +1,20 @@
+[
+  {
+    "proposedId": "chad-millman",
+    "rowId": "debfa93505bc3af2",
+    "verdict": "fail",
+    "auditedAt": "2026-10-09T03:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; Chad Millman is the show's host/betting expert. Independent betting-media host, not a team employee, team analyst, or caller.",
+    "note": "Sharp or Square W5 Bets (Apple i=1000793971130; Omny 53d92e73-e0f0-437f-b3d8-b4dd0116a740). Quote matches the publisher's Omny Speaker 1 turn (host who self-IDs as Chad) and is re-heard in audio ~71:37–71:51 (small.en: \"they gotta win this. They can't be 0-4, they gotta dominate. So I'm gonna go with Houston. I guess I'm taking minus seven and a half\"); Simon later says \"I take Chad's [Houston]\". Pick/speaker otherwise fine (Houston −7.5 favorite → SU). FAIL: matchup mapping is reversed. The note says \"Tennessee at Houston … Home Houston → Implied NO\", but the real game is Houston Texans AT Tennessee Titans (Sun Oct 11, 1:00 PM ET, CBS; NFL.com/NFL ops schedule; hosts also say \"Texans big favorites on the road\"). Correct implied side would be away Houston = YES. Operator directive: verify association only; never roster or ship. Closed. NFL overflow not minted."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "f4d3b37dbf81a9fe",
+    "verdict": "fail",
+    "auditedAt": "2026-10-09T03:45:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; professional gambler / Sharp or Square co-host. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "Sharp or Square W5 Bets closing card. Quote matches the Omny Speaker 2 turn right after Chad's Houston pick and is re-heard in audio ~71:59–72:07 (\"I'll join you on the chalk. I'll go, give me Detroit. I'll go Lions.\"). In-episode resemblyzer refs did not separate the hosts cleanly (ref-to-ref 0.85), so attribution rests on Omny diarization + turn order. Explicit pick → SU (Lions favorite). FAIL: matchup mapping is reversed. The note says \"Arizona at Detroit … Home Lions → Implied NO\", but the real game is Detroit Lions AT Arizona Cardinals (Sun Oct 11, 4:25 PM ET, FOX; NFL.com/NFL ops schedule). Correct implied side would be away Detroit = YES. Operator directive: verify association only; never roster or ship. Closed. NFL overflow not minted."
+  }
+]
