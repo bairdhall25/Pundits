@@ -104,5 +104,16 @@
   { "id": "iowa-state", "name": "Iowa State", "abbr": "ISU", "primary": "#C8102E", "ink": "#F1BE48", "sport": "ncaaf" },
   { "id": "penn-state", "name": "Penn State", "abbr": "PSU", "primary": "#041E42", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "houston", "name": "Houston", "abbr": "HOU", "primary": "#C8102E", "ink": "#FFFFFF", "sport": "ncaaf" },
-  { "id": "kansas-state", "name": "Kansas State", "abbr": "KSU", "primary": "#512888", "ink": "#FFFFFF", "sport": "ncaaf" }
+  { "id": "kansas-state", "name": "Kansas State", "abbr": "KSU", "primary": "#512888", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "marshall", "name": "Marshall", "abbr": "MRSH", "primary": "#00B140", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "navy", "name": "Navy", "abbr": "NAVY", "primary": "#00205B", "ink": "#C5B783", "sport": "ncaaf" },
+  { "id": "duke", "name": "Duke", "abbr": "DUKE", "primary": "#003087", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "georgia-tech", "name": "Georgia Tech", "abbr": "GT", "primary": "#B3A369", "ink": "#003057", "sport": "ncaaf" },
+  { "id": "fresno-state", "name": "Fresno State", "abbr": "FRES", "primary": "#DB0032", "ink": "#002E6D", "sport": "ncaaf" },
+  { "id": "north-dakota-state", "name": "North Dakota State", "abbr": "NDSU", "primary": "#0A5640", "ink": "#FFC72A", "sport": "ncaaf" },
+  { "id": "pitt", "name": "Pitt", "abbr": "PITT", "primary": "#003594", "ink": "#FFB81C", "sport": "ncaaf" },
+  { "id": "uconn", "name": "UConn", "abbr": "CONN", "primary": "#000E2F", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "temple", "name": "Temple", "abbr": "TEM", "primary": "#9D2235", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "air-force", "name": "Air Force", "abbr": "AFA", "primary": "#003087", "ink": "#8A8D8F", "sport": "ncaaf" },
+  { "id": "northern-illinois", "name": "Northern Illinois", "abbr": "NIU", "primary": "#BA0C2F", "ink": "#000000", "sport": "ncaaf" }
 ]

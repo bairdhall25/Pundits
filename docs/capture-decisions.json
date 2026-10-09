@@ -61,7 +61,7 @@
       "status": "pending",
       "sourceRun": "docs/runs/2026-09-09d-pregame-shows.md",
       "owner": "Promote",
-      "note": "Audit ok rowId 0794be4d98f1acee. Empty Bills YES. Not shipped 2026-09-10 Simms promote. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): ten W4 rows ok-unmapped. Omny associationUrl 404s; replace during roster prep."
+      "note": "Audit ok rowId 0794be4d98f1acee. Empty Bills YES. Not shipped 2026-09-10 Simms promote. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): ten W4 rows ok-unmapped. Omny associationUrl 404s; replace during roster prep. W5 packet docs/runs/2026-10-09-candidate-proposals.json (Audit 2026-10-09T20:50:00Z; audits docs/runs/2026-10-09-candidate-audits.json): 11 rows all verified as Sherman (not Mitchell) by voice; Bears (mapped) ok; Jaguars, Raiders, Falcons, Broncos, Texans ok-unmapped; 49ers, Lions, Rams, Browns, Giants ok-unmapped-no-reasoning. Operator directive 2026-10-09: stay on this item; never roster or ship Richard Sherman."
     },
     {
       "id": "candidate-julian-edelman",

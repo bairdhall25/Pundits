@@ -1,0 +1,101 @@
+[
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "cd6fda99ad10b03a",
+    "verdict": "ok",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Bears at Packers (mapped bears-at-packers-2026, away Bears = YES). Audio 80:36–80:47 (S0.87–0.96); Mitchell's \"Your thoughts?\" precedes the quote and is excluded. Capsule: two factors (Bears D 9/7/12 since Week 1; Green Bay not playing well enough defensively), both from the same Sherman turn. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "66842c672490196a",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "49ers at Seahawks; implied away 49ers YES. Audio 14:37–14:46 + 16:08–16:16 (S0.79–0.95); the ellipsis spans only Sherman's own lines. The audio has a self-correcting stumble (\"I think the San Francisco win this, 49ers win this game 24 to 21\"); the quote follows the publisher's Omny wording. Capsule defect: more than two factors (Warner, Greenlaw, Kittle/Trent Williams, O-line). Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "7ee4cf83a3b19d47",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Lions at Cardinals; implied away Lions YES. Audio 44:27–44:33 (S0.85–0.90). Capsule defect: more than two factors. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "1d411e74373fba64",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Eagles vs Jaguars (London); Sherman picks Jacksonville. Audio 47:03–47:15 (S0.93–0.95), after Mitchell's question at 46:58 (M0.92). Capsule: two factors, both Sherman's (Eagles offense question marks; nothing in the Bears game gave offensive confidence). Neutral-site side left to mint time (Kalshi KXNFLGAME-26OCT11PHIJAC lists PHI first). Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "b7aa2bd8173de0f2",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Raiders at Patriots; implied away Raiders YES. Audio 62:50–63:19 (S0.91–0.95); medium.en word timing ends the quote at \"game\" (63:18.9) before \"Polymarket favors…\". Capsule: two factors from the same turn. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "528f4218ca2d8332",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Ravens at Falcons; implied home Falcons NO. Audio 70:55–71:03 (S0.87–0.93). Capsule: two factors (Ravens missing Humphrey/Hendrickson; Falcons playing with confidence), both Sherman's. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "49ee82b780edc56c",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Bills at Rams (MNF); implied home Rams NO. Audio 78:10–79:47; every utterance in the ellipsis is Sherman (S0.88–0.95); medium.en ends the quote at 79:47.0 before Mitchell's \"This NFC West is about to heat up here, Richard\" (79:48.7). Capsule defect: three factors. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "464756dcd4cd0210",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Broncos at Chargers; implied away Broncos YES. Audio 84:39 (S0.85); Mitchell's \"I like Denver as well\" follows (M0.80). Capsule: two factors (Chargers' season is over; Payton could take back play-calling), both Sherman's. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "45312d9f3c99ca0e",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Browns at Jets; implied away Browns YES. Audio 86:55–87:01 (S0.83–0.89); Mitchell's \"Give me Cleveland as well\" follows. Capsule defect: three factors (momentum, Monken belief, man-coverage defense). Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "211b33f2b8f7d306",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Texans at Titans; implied away Texans YES. Audio 89:01–89:06 (S0.79–0.89). The preceding \"I think the Houston Texans lose this game\" is the conditional half of \"win this game or there's going to be some changes\"; the pick is Houston. Capsule: two factors (Tennessee lacks enough; not bought in on Cam Ward), both Sherman's. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  },
+  {
+    "proposedId": "richard-sherman",
+    "rowId": "43774c8b325a3b96",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-09T20:50:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Host of The Richard Sherman Podcast (The Volume); former NFL cornerback and FOX/Volume NFL analyst, not a current team employee, team analyst, or caller. Self-IDs as host in the episode open (\"Welcome back to the Richard Sherman podcast\") and is addressed as \"Richard\" by co-host Mitchell.",
+    "note": "Giants at Commanders; implied away Giants YES. Audio 90:45–90:55 (S0.77–0.91); Mitchell's wrap starts at 90:55. Capsule defect: three factors. Richard Sherman Podcast NFL Week 5 Predictions (Apple i=1000793775510; Omny f565d731-bc05-4d1e-9129-b4db0183b67a). Omny Speaker 1 = Sherman (host self-ID; addresses co-host as \"Mitchell\"); quote matches the Omny transcript verbatim and was re-heard in the publisher audio (small.en full-episode ASR; audio runs ~+2:07 ahead of Omny because of dynamic ads). resemblyzer per-utterance labels vs a Sherman ref (audio 3:54–4:36, his \"I expect it to be electric\" turn) and a Mitchell ref (3:05–3:35, \"Richard, it is the Sherman Bowl\"), ref-to-ref 0.78: every quoted utterance is Sherman and no Mitchell line sits inside the quote or ellipsis. Operator directive 2026-10-09: stay on candidate-richard-sherman; never roster or ship."
+  }
+]
