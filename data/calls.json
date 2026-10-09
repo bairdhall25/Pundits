@@ -5876,5 +5876,53 @@
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-09"
+  },
+  {
+    "id": "pollack-georgia-at-alabama-20261008",
+    "punditId": "pollack",
+    "claim": "I'm going to go Georgia. I'm going to go 31, 28 Georgia wins by a field goal.",
+    "source": "See Ball Get Ball with David Pollack — Georgia-Alabama, UCLA-Oregon, LSU-Kentucky and MORE Week 6 CFB Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000793934135",
+    "sourceDate": "2026-10-08",
+    "kind": "hard",
+    "subject": "Georgia",
+    "paysOn": "Georgia at Alabama (Week 6)",
+    "status": "pending",
+    "eventSlug": "georgia-at-alabama-2026",
+    "side": "yes",
+    "firstPublishedAt": "2026-10-09",
+    "reasoning": "Trusts Kirby and the Georgia defense to make life harder on Keelan Russell than he's had it; thinks Russell will look more like a freshman than he has."
+  },
+  {
+    "id": "pollack-ucla-at-oregon-20261008",
+    "punditId": "pollack",
+    "claim": "At home, at home, like with everything on the line for them, they've already been humbled. They've already got all the motivation. Like I'm going to go Oregon. I'm going 34 27.",
+    "source": "See Ball Get Ball with David Pollack — Georgia-Alabama, UCLA-Oregon, LSU-Kentucky and MORE Week 6 CFB Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000793934135",
+    "sourceDate": "2026-10-08",
+    "kind": "hard",
+    "subject": "Oregon",
+    "paysOn": "UCLA at Oregon (Week 6)",
+    "status": "pending",
+    "eventSlug": "ucla-at-oregon-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-09",
+    "reasoning": "Oregon is at home with everything on the line; Oregon has already been humbled and has all the motivation."
+  },
+  {
+    "id": "pollack-houston-at-kansas-state-20261008",
+    "punditId": "pollack",
+    "claim": "I think Kansas State's going to win on the road or at home against Houston. … but I think Kansas state, Colin Klein, they get their first dub, like first really good dub for them at home.",
+    "source": "See Ball Get Ball with David Pollack — Georgia-Alabama, UCLA-Oregon, LSU-Kentucky and MORE Week 6 CFB Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000793934135",
+    "sourceDate": "2026-10-08",
+    "kind": "hard",
+    "subject": "Kansas State",
+    "paysOn": "Houston at Kansas State (Week 6)",
+    "status": "pending",
+    "eventSlug": "houston-at-kansas-state-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-09",
+    "reasoning": "Kansas State has been playing solid and takes care of the football; Houston has been playing with its food a little bit."
   }
 ]

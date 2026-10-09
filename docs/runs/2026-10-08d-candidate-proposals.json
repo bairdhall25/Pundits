@@ -1,0 +1,103 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-chad-millman-31380183e3eb1a60",
+      "kind": "roster-candidate",
+      "proposedId": "chad-millman",
+      "rowId": "31380183e3eb1a60",
+      "sourceRun": "docs/runs/2026-10-08d-restage.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 26,
+        "pass": "Shows pass 2026-10-08 restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "chad-millman",
+        "name": "Chad Millman",
+        "group": "nfl",
+        "outlet": "Sharp or Square (Volume)",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "They got to win this. It can't be 0-4. They got to dominate. So I'm going to go with Houston.",
+        "reasoning": "",
+        "note": "**Direction fix** of 08c row debfa93505bc3af2 (Audit fail: home/away reversed). Overflow unlisted: **Houston Texans at Tennessee Titans** (2026, NFL Week 5, Sun Oct 11 1:00 PM ET, CBS). Away Houston → Implied **YES**. Blank slug/side (no event in `data/events.json`). Pick is Houston at −7.5 (road favorite, \"Texans big favorites on the road\"), so a favorite laying points counts as SU. Quote now ends on \"So I'm going to go with Houston.\" The trailing price read (\"I guess I'm taking minus seven and a half…\") moved to Bets only. Omny Speaker 1 = Millman (self-ID, \"I get to go first\"), Omny 01:00:14; audio ~71:37–71:51 per Audit. Reasoning left blank: Millman gives only one factor (must-win). Verify association only; do not auto-roster.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793971130",
+        "sourceDate": "2026-10-08",
+        "photoUrl": "needed",
+        "association": "Sharp or Square co-host with Simon Hunter (Apple episode page names \"NFL experts Chad Millman and Simon Hunter\")",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793971130",
+        "factory": "herd / sharp-or-square"
+      },
+      "audit": {
+        "proposedId": "chad-millman",
+        "rowId": "31380183e3eb1a60",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-10-09T04:05:00Z",
+        "eligibility": "association",
+        "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; Chad Millman is the show's host/betting expert. Independent betting-media host, not a team employee, team analyst, or caller.",
+        "note": "08d direction fix of fail debfa93505bc3af2. Houston Texans at Tennessee Titans (Sun Oct 11 1:00 PM ET, CBS); away Houston = implied YES (verified NFL.com schedule; hosts: \"Texans big favorites on the road\"). Quote matches the publisher's Omny Speaker 1 turn verbatim (Chad, self-ID \"I get to go first\") and the audio ~71:37–71:50; small.en hears \"They can't be 0-4\" where Omny has \"It can't be 0-4\" (pronoun-level ASR/transcript variance, pick unaffected; follows Omny as in the 10-07 precedent). Now ends on \"So I'm going to go with Houston.\" (price read split to Bets). Houston −7.5 road favorite → SU. Blank capsule valid. Operator directive: verify association only; never roster or ship. Stays closed."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    },
+    {
+      "id": "candidate-simon-hunter-375f4cdca2a27cb5",
+      "kind": "roster-candidate",
+      "proposedId": "simon-hunter",
+      "rowId": "375f4cdca2a27cb5",
+      "sourceRun": "docs/runs/2026-10-08d-restage.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 27,
+        "pass": "Shows pass 2026-10-08 restage (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "simon-hunter",
+        "name": "Simon Hunter",
+        "group": "nfl",
+        "outlet": "Sharp or Square (Volume)",
+        "eventSlug": "",
+        "side": "",
+        "verbatimQuote": "I'll join you on the chalk. I'll go. Give me Detroit. I'll go Lions.",
+        "reasoning": "",
+        "note": "**Direction fix** of 08c row f4d3b37dbf81a9fe (Audit fail: home/away reversed). Overflow unlisted: **Detroit Lions at Arizona Cardinals** (2026, NFL Week 5, Sun Oct 11 4:25 PM ET, FOX). Away Detroit → Implied **YES**. Blank slug/side (no event in `data/events.json`). Explicit \"Give me Detroit / I'll go Lions\" on the chalk (favorite), so SU. Omny Speaker 2, 01:00:46; audio ~71:59–72:07 per Audit. Attribution rests on Omny diarization and turn order (voice refs inconclusive per Audit). Reasoning left blank: no factor in the same speaker's turn. Verify association only; do not auto-roster.",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793971130",
+        "sourceDate": "2026-10-08",
+        "photoUrl": "needed",
+        "association": "Sharp or Square co-host / professional bettor (Apple episode page names \"NFL experts Chad Millman and Simon Hunter\")",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793971130",
+        "factory": "herd / sharp-or-square"
+      },
+      "audit": {
+        "proposedId": "simon-hunter",
+        "rowId": "375f4cdca2a27cb5",
+        "verdict": "ok-unmapped",
+        "auditedAt": "2026-10-09T04:05:00Z",
+        "eligibility": "association",
+        "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; professional gambler / Sharp or Square co-host. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+        "note": "08d direction fix of fail f4d3b37dbf81a9fe. Detroit Lions at Arizona Cardinals (Sun Oct 11 4:25 PM ET, FOX); away Detroit = implied YES. Quote matches Omny Speaker 2 and medium.en word timing at audio 71:59.5–72:07.7 (\"I'll join you on the chalk. I'll go, give me Detroit. I'll go Lions.\"); next words \"Interesting. Interesting.\" are the other host. Attribution rests on Omny diarization + turn order (voice refs inconclusive). Lions favorite → SU. Blank capsule valid. Operator directive: verify association only; never roster or ship. Stays closed."
+      },
+      "missing": [
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": true
+    }
+  ]
+}

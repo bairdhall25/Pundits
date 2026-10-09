@@ -16,5 +16,23 @@
     "eligibility": "association",
     "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; professional gambler / Sharp or Square co-host. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
     "note": "Sharp or Square W5 Bets closing card. Quote matches the Omny Speaker 2 turn right after Chad's Houston pick and is re-heard in audio ~71:59–72:07 (\"I'll join you on the chalk. I'll go, give me Detroit. I'll go Lions.\"). In-episode resemblyzer refs did not separate the hosts cleanly (ref-to-ref 0.85), so attribution rests on Omny diarization + turn order. Explicit pick → SU (Lions favorite). FAIL: matchup mapping is reversed. The note says \"Arizona at Detroit … Home Lions → Implied NO\", but the real game is Detroit Lions AT Arizona Cardinals (Sun Oct 11, 4:25 PM ET, FOX; NFL.com/NFL ops schedule). Correct implied side would be away Detroit = YES. Operator directive: verify association only; never roster or ship. Closed. NFL overflow not minted."
+  },
+  {
+    "proposedId": "chad-millman",
+    "rowId": "31380183e3eb1a60",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T04:05:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; Chad Millman is the show's host/betting expert. Independent betting-media host, not a team employee, team analyst, or caller.",
+    "note": "08d direction fix of fail debfa93505bc3af2. Houston Texans at Tennessee Titans (Sun Oct 11 1:00 PM ET, CBS); away Houston = implied YES (verified NFL.com schedule; hosts: \"Texans big favorites on the road\"). Quote matches the publisher's Omny Speaker 1 turn verbatim (Chad, self-ID \"I get to go first\") and the audio ~71:37–71:50; small.en hears \"They can't be 0-4\" where Omny has \"It can't be 0-4\" (pronoun-level ASR/transcript variance, pick unaffected; follows Omny as in the 10-07 precedent). Now ends on \"So I'm going to go with Houston.\" (price read split to Bets). Houston −7.5 road favorite → SU. Blank capsule valid. Operator directive: verify association only; never roster or ship. Stays closed."
+  },
+  {
+    "proposedId": "simon-hunter",
+    "rowId": "375f4cdca2a27cb5",
+    "verdict": "ok-unmapped",
+    "auditedAt": "2026-10-09T04:05:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Apple episode page (Sharp or Square, iHeartPodcasts and The Volume) names \"NFL experts Chad Millman and Simon Hunter\"; professional gambler / Sharp or Square co-host. Independent media/bettor co-host, not a team employee, team analyst, or caller.",
+    "note": "08d direction fix of fail f4d3b37dbf81a9fe. Detroit Lions at Arizona Cardinals (Sun Oct 11 4:25 PM ET, FOX); away Detroit = implied YES. Quote matches Omny Speaker 2 and medium.en word timing at audio 71:59.5–72:07.7 (\"I'll join you on the chalk. I'll go, give me Detroit. I'll go Lions.\"); next words \"Interesting. Interesting.\" are the other host. Attribution rests on Omny diarization + turn order (voice refs inconclusive). Lions favorite → SU. Blank capsule valid. Operator directive: verify association only; never roster or ship. Stays closed."
   }
 ]
