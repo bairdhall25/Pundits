@@ -1157,8 +1157,286 @@
           "note": "Captions 429/bot blocked; Mux stream only — no hard staged this pass."
         }
       ]
+    },
+    {
+      "id": "pate:1000793748829",
+      "factoryId": "pate",
+      "title": "The Locker Room Week 6 Picks",
+      "published": "2026-10-07",
+      "url": "https://podcasts.apple.com/us/podcast/id1485905502?i=1000793748829",
+      "locator": "i=1000793748829",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow-compton-texas-restage",
+          "locator": "Omny Texas ~00:15:43–00:17:02",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow-compton-texas-restage",
+              "locator": "Omny Texas ~00:15:43–00:17:02",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pate:1000793959018",
+      "factoryId": "pate",
+      "title": "Week 6 Upset Alerts + Commissioner’s Poll Top 25",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1485905502?i=1000793959018",
+      "locator": "i=1000793959018",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "texas-am-at-missouri-2026",
+          "locator": "Missouri −3.5 pick segment",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-ole-miss-at-vandy",
+          "locator": "Ole Miss take",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-lsu-at-kentucky",
+          "locator": "LSU double-digit win",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "texas-am-at-missouri-2026",
+              "locator": "Missouri −3.5 pick segment",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-ole-miss-at-vandy",
+              "locator": "Ole Miss take",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-lsu-at-kentucky",
+              "locator": "LSU double-digit win",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "see-ball:1000793934135",
+      "factoryId": "see-ball",
+      "title": "Week 6 CFB Picks Georgia-Alabama UCLA-Oregon",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000793934135",
+      "locator": "i=1000793934135",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "georgia-at-alabama-2026",
+          "locator": "YT captions ~12:55 Georgia choose",
+          "status": "completed"
+        },
+        {
+          "targetId": "ucla-at-oregon-2026",
+          "locator": "YT captions ~22:01 Oregon choose",
+          "status": "completed"
+        },
+        {
+          "targetId": "houston-at-kansas-state-2026",
+          "locator": "K-State will win at home",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-lsu-at-kentucky",
+          "locator": "LSU 31-20 bet",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "georgia-at-alabama-2026",
+              "locator": "YT captions ~12:55 Georgia choose",
+              "status": "completed"
+            },
+            {
+              "targetId": "ucla-at-oregon-2026",
+              "locator": "YT captions ~22:01 Oregon choose",
+              "status": "completed"
+            },
+            {
+              "targetId": "houston-at-kansas-state-2026",
+              "locator": "K-State will win at home",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-lsu-at-kentucky",
+              "locator": "LSU 31-20 bet",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cover3:1000793897036",
+      "factoryId": "cover3",
+      "title": "Week 6 LOCKS",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000793897036",
+      "locator": "i=1000793897036",
+      "inspected": true,
+      "outcome": "opened",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "cover3-w6-locks-board",
+          "locator": "chapters + ML sprinkles ~1:20:51; ATS ASR incomplete",
+          "status": "partial"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "opened",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "cover3-w6-locks-board",
+              "locator": "chapters + ML sprinkles ~1:20:51; ATS ASR incomplete",
+              "status": "partial"
+            }
+          ]
+        }
+      ],
+      "reopenReason": "locks-board-asr"
+    },
+    {
+      "id": "herd:1000793971130",
+      "factoryId": "herd",
+      "title": "Sharp or Square NFL Week 5 Bets",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793971130",
+      "locator": "i=1000793971130",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow-titans-at-texans",
+          "locator": "Millman Houston SU ~01:00:14",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow-cardinals-at-lions",
+          "locator": "Hunter Lions SU ~01:00:46",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow-titans-at-texans",
+              "locator": "Millman Houston SU ~01:00:14",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow-cardinals-at-lions",
+              "locator": "Hunter Lions SU ~01:00:46",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000793952997",
+      "factoryId": "herd",
+      "title": "What's Wright",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000793952997",
+      "locator": "i=1000793952997",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "whats-wright-w5",
+          "locator": "full Omny transcript",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "whats-wright-w5",
+              "locator": "full Omny transcript",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mcafee:1000793924584",
+      "factoryId": "mcafee",
+      "title": "PMS 2.0 1641 TNF Preview/Picks",
+      "published": "2026-10-08",
+      "url": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000793924584",
+      "locator": "i=1000793924584",
+      "inspected": true,
+      "outcome": "opened",
+      "inspectedAt": "2026-10-08T23:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "tnf-bucs-cowboys",
+          "locator": "Apple page; ASR incomplete",
+          "status": "partial"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "opened",
+          "inspectedAt": "2026-10-08T23:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "tnf-bucs-cowboys",
+              "locator": "Apple page; ASR incomplete",
+              "status": "partial"
+            }
+          ]
+        }
+      ],
+      "reopenReason": "tnf-asr-incomplete"
     }
   ],
-  "note": "Restored after accidental empty write (759a025). Night 2026-09-22 Finebaum/Sharp/GMFB added. Old coverage stubs trimmed — full prior coverage in git history before 759a025; full draft at /workspace/scout-2026-09-22-night/scout-episodes.FULL_RESTORE.json.",
-  "updated": "2026-09-26"
+  "updated": "2026-10-08T23:20:00-04:00"
 }
