@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -273,7 +273,7 @@
       "sourceRun": "docs/runs/2026-09-18a-weekday-shows.md",
       "proposalFile": "docs/runs/2026-09-18-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-18T17:52:00Z. photoUrl=needed. Mapped LSU YES rowId d4e363f3532b26d8 waits on roster. Overflow ASU London / Louisville / Florida wait on roster plus mint. Do not mint unpublished matchups this pass."
+      "note": "Audit 2026-09-18T17:52:00Z. photoUrl=needed. Mapped LSU YES rowId d4e363f3532b26d8 waits on roster. Overflow ASU London / Louisville / Florida wait on roster plus mint. Do not mint unpublished matchups this pass. 2026-10-10 (2026-10-10T16:39:00Z): Pick Em W6 Florida / Ole Miss / Penn State mortals failed on attribution. The publisher audio has no name cue tying them to Rico, and the Ole Miss / Penn State lines follow other name cues ('Kennedy', 'Jack'). See docs/runs/2026-10-10-audit.md."
     },
     {
       "id": "candidate-isaiah-stanback",
@@ -411,6 +411,26 @@
       "proposalFile": "docs/runs/2026-10-09c-candidate-proposals.json",
       "owner": "Promote",
       "note": "Good Morning Football (NFL Network) co-host, former NFL safety. Voice-verified in GMFB Fri Hour 1/2 against Jamie Erdahl and Kyle Brandt refs. photoUrl=needed. Never roster or ship without operator yes."
+    },
+    {
+      "id": "candidate-bryce-young",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + association review for Bryce Young, College GameDay Week 6 celebrity guest picker. Audit 2026-10-10T16:39:00Z: 8 Cole W6 labels ok (association, reported-selection). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-10a-saturday-shows.md",
+      "proposalFile": "docs/runs/2026-10-10-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Panthers QB, Alabama alum. Celebrity guest on a roster factory (Glen Powell / Caitlin Clark precedent). photoUrl=needed. Never roster or ship without operator yes."
+    },
+    {
+      "id": "candidate-scott-van-pelt",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster decision for Scott Van Pelt (ESPN SportsCenter 'Winners'). Audit 2026-10-10T16:39:00Z: Penn State -1.5 (SU Penn State, NO) ok, association. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-10a-saturday-shows.md",
+      "proposalFile": "docs/runs/2026-10-10-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "National ESPN host with a weekly picks segment, not a team analyst. Most Winners rows are dog ATS (Bets only). Cole recap labels = reported-selection. photoUrl=needed."
     }
   ]
 }

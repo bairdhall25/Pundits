@@ -4,7 +4,7 @@ import { TakesViews } from "@/components/TakesViews";
 import { loadCalls, loadEvents, loadPundits } from "@/lib/data";
 import { collectionPageJsonLd } from "@/lib/seo";
 import { socialPageMeta } from "@/lib/social-card/metadata";
-import type { Event } from "@/lib/types";
+import type { Call, Event } from "@/lib/types";
 
 export const metadata = socialPageMeta(
   "book",
@@ -13,12 +13,36 @@ export const metadata = socialPageMeta(
 );
 
 export default function BookPage() {
-  const calls = [...loadCalls()].sort((a, b) =>
-    a.sourceDate < b.sourceDate ? 1 : a.sourceDate > b.sourceDate ? -1 : 0
-  );
   // BookLedger is a client component, so every prop is serialized into the
-  // page payload. Ship only the events the ledger links to, and only the
-  // fields CallCard reads, to keep /book/ under Apple's 1 MB preview limit.
+  // page payload. Ship only the call fields the ledger, its search, and
+  // CallCard read; only the events the ledger links to, with the fields
+  // CallCard reads; to keep /book/ under Apple's 1 MB preview limit.
+  const calls = [...loadCalls()]
+    .sort((a, b) =>
+      a.sourceDate < b.sourceDate ? 1 : a.sourceDate > b.sourceDate ? -1 : 0
+    )
+    .map(
+      (c) =>
+        ({
+          id: c.id,
+          punditId: c.punditId,
+          claim: c.claim,
+          // subject only feeds search; when the claim already contains it,
+          // the claim matches the same queries.
+          ...(c.subject &&
+          !c.claim.toLowerCase().includes(c.subject.toLowerCase())
+            ? { subject: c.subject }
+            : {}),
+          source: c.source,
+          sourceUrl: c.sourceUrl,
+          sourceDate: c.sourceDate,
+          kind: c.kind,
+          status: c.status,
+          // Omit unset keys: an explicit undefined still costs bytes.
+          ...(c.eventSlug ? { eventSlug: c.eventSlug } : {}),
+          ...(c.side ? { side: c.side } : {}),
+        }) as Call
+    );
   const linked = new Set(calls.map((c) => c.eventSlug).filter(Boolean));
   const events = loadEvents()
     .filter((e) => linked.has(e.slug))

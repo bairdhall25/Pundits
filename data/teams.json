@@ -115,5 +115,9 @@
   { "id": "uconn", "name": "UConn", "abbr": "CONN", "primary": "#000E2F", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "temple", "name": "Temple", "abbr": "TEM", "primary": "#9D2235", "ink": "#FFFFFF", "sport": "ncaaf" },
   { "id": "air-force", "name": "Air Force", "abbr": "AFA", "primary": "#003087", "ink": "#8A8D8F", "sport": "ncaaf" },
-  { "id": "northern-illinois", "name": "Northern Illinois", "abbr": "NIU", "primary": "#BA0C2F", "ink": "#000000", "sport": "ncaaf" }
+  { "id": "northern-illinois", "name": "Northern Illinois", "abbr": "NIU", "primary": "#BA0C2F", "ink": "#000000", "sport": "ncaaf" },
+  { "id": "akron", "name": "Akron", "abbr": "AKR", "primary": "#041E42", "ink": "#A89968", "sport": "ncaaf" },
+  { "id": "ohio", "name": "Ohio", "abbr": "OHIO", "primary": "#00694E", "ink": "#FFFFFF", "sport": "ncaaf" },
+  { "id": "central-michigan", "name": "Central Michigan", "abbr": "CMU", "primary": "#6A0032", "ink": "#FFC82E", "sport": "ncaaf" },
+  { "id": "hawaii", "name": "Hawai'i", "abbr": "HAW", "primary": "#024731", "ink": "#FFFFFF", "sport": "ncaaf" }
 ]
