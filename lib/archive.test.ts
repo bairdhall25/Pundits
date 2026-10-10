@@ -188,7 +188,7 @@ describe("latestGradedWeekRecap", () => {
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/ncaaf/2026/week-6/");
     expect(recap!.line).toBe(
-      "Week 6: experts went 1–0. Bud Elliott hit on Louisville."
+      "Week 6: experts went 4–0. Andy Staples, Bud Elliott, Chip Patterson, and Danny Kanell hit."
     );
   });
 

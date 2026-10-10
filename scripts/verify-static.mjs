@@ -386,12 +386,12 @@ assert.match(teamEmptySide, /West Virginia beat Virginia/);
 assert.match(teamEmptySide, /Virginia beat NC State/);
 
 const teamNoGame = await readFile(
-  path.join(out, "teams/lions/index.html"),
+  path.join(out, "teams/buccaneers/index.html"),
   "utf8"
 );
 assert.doesNotMatch(teamNoGame, /name="robots" content="noindex, follow"/);
-assert.match(teamNoGame, /Last tracked result: Panthers beat Lions/);
-assert.match(teamNoGame, /href="\/picks\/lions-at-panthers-2026\//);
+assert.match(teamNoGame, /Last tracked result: Browns beat Buccaneers/);
+assert.match(teamNoGame, /href="\/picks\/browns-at-buccaneers-2026\//);
 
 const week0 = await readFile(path.join(out, "ncaaf/2026/week-0/index.html"), "utf8");
 assert.match(

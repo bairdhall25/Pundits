@@ -159,7 +159,7 @@ describe("grade sheet", () => {
     expect(rows.map((r) => r.label)).toEqual(["Result", "Grading", "Record"]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toMatch(/straight-up winner/);
-    expect(rows[2].value).toContain("5–7");
+    expect(rows[2].value).toContain("6–7");
     expect(rows[2]).toMatchObject({ href: "/pundits/patterson", hrefLabel: "Full record →" });
   });
 
@@ -619,7 +619,7 @@ describe("take page copy is additive", () => {
     expect(rows.map((row) => row.label)).toEqual(["Result", "Grading", "Record"]);
     expect(rows[0].value).toBe("Virginia won 34–8.");
     expect(rows[1].value).toMatch(/straight-up winner/);
-    expect(rows[2].value).toContain("5–7");
+    expect(rows[2].value).toContain("6–7");
   });
 
   it("puts the graded result in articleBody instead of restating the pick in paragraphs", () => {

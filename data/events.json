@@ -2611,7 +2611,10 @@
       "kickoffDate": "2026-10-09",
       "awayTeamId": "iowa-state",
       "homeTeamId": "byu",
-      "week": 6
+      "week": 6,
+      "awayScore": 10,
+      "homeScore": 24,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856826/iowa-state-byu"
     },
     {
       "slug": "south-carolina-at-florida-2026",
@@ -3249,6 +3252,50 @@
       "kickoffDate": "2026-10-12",
       "awayTeamId": "bills",
       "homeTeamId": "rams",
+      "week": 5
+    },
+    {
+      "slug": "raiders-at-patriots-2026",
+      "kind": "game",
+      "title": "Raiders at Patriots",
+      "contractName": "LV vs NE — moneyline",
+      "awayTeam": "Raiders",
+      "homeTeam": "Patriots",
+      "kickoff": "Sun 1:00 ET",
+      "network": "CBS",
+      "yesCents": 38,
+      "noCents": 63,
+      "ticker": "KXNFLGAME-26OCT11LVNE",
+      "sourceUrl": "https://kalshi.com/markets/kxnflgame/nfl-game/kxnflgame-26oct11lvne",
+      "sourcedAt": "2026-10-10",
+      "onHome": false,
+      "sport": "nfl",
+      "season": 2026,
+      "kickoffDate": "2026-10-11",
+      "awayTeamId": "raiders",
+      "homeTeamId": "patriots",
+      "week": 5
+    },
+    {
+      "slug": "lions-at-cardinals-2026",
+      "kind": "game",
+      "title": "Lions at Cardinals",
+      "contractName": "DET vs ARI — moneyline",
+      "awayTeam": "Lions",
+      "homeTeam": "Cardinals",
+      "kickoff": "Sun 4:25 ET",
+      "network": "FOX",
+      "yesCents": 70,
+      "noCents": 31,
+      "ticker": "KXNFLGAME-26OCT11DETARI",
+      "sourceUrl": "https://kalshi.com/markets/kxnflgame/nfl-game/kxnflgame-26oct11detari",
+      "sourcedAt": "2026-10-10",
+      "onHome": false,
+      "sport": "nfl",
+      "season": 2026,
+      "kickoffDate": "2026-10-11",
+      "awayTeamId": "lions",
+      "homeTeamId": "cardinals",
       "week": 5
     }
   ]

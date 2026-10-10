@@ -166,11 +166,14 @@ export function latestGradedWeekRecap(
       (r) => r.status === "hit"
     );
     const hitNames = [...new Set(hits.map((r) => r.pundit.name))];
-    const hitTeam = hits[0]?.pickLabel.split(" over ")[0];
-    const who =
-      hitNames.length && hitTeam
-        ? ` ${listNames(hitNames)} hit on ${hitTeam}.`
-        : "";
+    const hitTeams = [...new Set(hits.map((r) => r.pickLabel.split(" over ")[0]))];
+    // Name the team only when every hit was on the same side; otherwise the
+    // line would credit pundits with a team they did not pick.
+    const who = !hitNames.length
+      ? ""
+      : hitTeams.length === 1
+        ? ` ${listNames(hitNames)} hit on ${hitTeams[0]}.`
+        : ` ${listNames(hitNames)} hit.`;
     return {
       sport: candidate.sport,
       season: candidate.season,

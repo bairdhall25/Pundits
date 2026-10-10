@@ -5487,11 +5487,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "Iowa State at BYU (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "iowa-state-at-byu-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "BYU run game/physicality edge; Iowa State won't match last week's points."
+    "reasoning": "BYU run game/physicality edge; Iowa State won't match last week's points.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "patterson-iowa-state-at-byu-20261006",
@@ -5503,11 +5504,12 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "Iowa State at BYU (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "iowa-state-at-byu-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Iowa State fights but loses talent/size battle over four quarters."
+    "reasoning": "Iowa State fights but loses talent/size battle over four quarters.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "wasserman-indiana-at-nebraska-20261006",
@@ -5736,10 +5738,11 @@
     "kind": "hard",
     "subject": "BYU",
     "paysOn": "Iowa State at BYU (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "iowa-state-at-byu-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "compton-georgia-at-alabama-20261007",
@@ -5959,7 +5962,7 @@
   {
     "id": "kanell-houston-at-kansas-state-20261009",
     "punditId": "kanell",
-    "claim": "Give me Houston on the road against",
+    "claim": "Give me Houston on the road against Kansas State plus 127.",
     "source": "Cover 3 Podcast — Week 6 LOCKS (Moneyline Sprinkles)",
     "sourceUrl": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000793897036",
     "sourceDate": "2026-10-08",
@@ -5969,7 +5972,8 @@
     "status": "pending",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "updatedAt": "2026-10-10"
   },
   {
     "id": "kanell-south-carolina-at-florida-20261009",
@@ -6676,5 +6680,97 @@
     "side": "no",
     "firstPublishedAt": "2026-10-10",
     "reasoning": "Falcons playing well right now; Lamar Jackson out."
+  },
+  {
+    "id": "clay-travis-texas-am-at-missouri-20261009",
+    "punditId": "clay-travis",
+    "claim": "Like Missouri to take care of Texas A&M and the over to hit.",
+    "source": "Clay Travis Show — Trump's Lamar Jackson Shoutout + Clay's CFB Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000793859695",
+    "sourceDate": "2026-10-08",
+    "kind": "hard",
+    "subject": "Missouri",
+    "paysOn": "Texas A&M at Missouri (Week 6)",
+    "status": "pending",
+    "eventSlug": "texas-am-at-missouri-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10"
+  },
+  {
+    "id": "john-middlekauff-eagles-vs-jaguars-20261009",
+    "punditId": "john-middlekauff",
+    "claim": "I'm taking the Jags … I can see the Jags blowing this game … I'd be stunned if this thing is close.",
+    "source": "3 & Out with John Middlekauff — Week 5 Instant Reaction",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000794031245",
+    "sourceDate": "2026-10-09",
+    "kind": "hard",
+    "subject": "Jaguars",
+    "paysOn": "Eagles vs Jaguars (Week 5, London)",
+    "status": "pending",
+    "eventSlug": "eagles-vs-jaguars-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10"
+  },
+  {
+    "id": "simms-raiders-at-patriots-20261009",
+    "punditId": "simms",
+    "claim": "I'm going Patriots 31 to 13 here.",
+    "source": "Chris Simms Unbuttoned — NFL Week 5 Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000794503038",
+    "sourceDate": "2026-10-09",
+    "kind": "hard",
+    "subject": "Patriots",
+    "paysOn": "Raiders at Patriots (Week 5)",
+    "status": "pending",
+    "eventSlug": "raiders-at-patriots-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10",
+    "reasoning": "The Raiders aren't very good at stopping the run, which lets McDaniels and Vrabel run the football; New England's defense is very good."
+  },
+  {
+    "id": "simms-lions-at-cardinals-20261009",
+    "punditId": "simms",
+    "claim": "I'm gonna play that the Lions make a too aggressive a mistake late in the game and the Cardinals win by a field goal.",
+    "source": "Chris Simms Unbuttoned — NFL Week 5 Picks",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000794503038",
+    "sourceDate": "2026-10-09",
+    "kind": "hard",
+    "subject": "Cardinals",
+    "paysOn": "Lions at Cardinals (Week 5)",
+    "status": "pending",
+    "eventSlug": "lions-at-cardinals-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10",
+    "reasoning": "The Cardinals bounce back and get their mojo going after a rough loss in New York; the Lions make a too-aggressive mistake late in the game."
+  },
+  {
+    "id": "coughlin-ravens-at-falcons-20261009",
+    "punditId": "coughlin",
+    "claim": "I loved what I saw from the Falcons. … Give me the Falcons.",
+    "source": "The Pat McAfee Show — PMS 2.0 1642 (Week 5 picks)",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000794524037",
+    "sourceDate": "2026-10-09",
+    "kind": "hard",
+    "subject": "Falcons",
+    "paysOn": "Ravens at Falcons (Week 5)",
+    "status": "pending",
+    "eventSlug": "ravens-at-falcons-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10"
+  },
+  {
+    "id": "hawk-eagles-vs-jaguars-20261009",
+    "punditId": "hawk",
+    "claim": "I'm gonna ride with Stanford Steve on this, and I like Jacksonville minus seven and a half at home.",
+    "source": "The Pat McAfee Show — PMS 2.0 1642 (Week 5 picks)",
+    "sourceUrl": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000794524037",
+    "sourceDate": "2026-10-09",
+    "kind": "hard",
+    "subject": "Jaguars",
+    "paysOn": "Eagles vs Jaguars (Week 5, London)",
+    "status": "pending",
+    "eventSlug": "eagles-vs-jaguars-2026",
+    "side": "no",
+    "firstPublishedAt": "2026-10-10"
   }
 ]
