@@ -131,3 +131,16 @@ Do not pursue a partnership until several of these signals are present:
 ## Monthly observations
 
 Add dated monitoring results below. Record material changes and partnership implications; avoid repeating an unchanged baseline.
+
+### 2026-09-02 (monthly)
+
+**Facts**
+- Homepage https://cap-alpha.co/ still shows **2,373 claims**, **46 pundits**, **137 resolved**, **Last updated: July 30, 2026**; still **Early access** / **Join Waitlist**. Homepage "Recently resolved" list was empty.
+- Status https://cap-alpha.co/status (checked ~9:12 AM ET): **Partial degradation**. API, Ledger, Authentication = Operational; Payments (Stripe billing & subscriptions) = **Unknown / HTTP 404**. Unchanged vs 2026-08-28 baseline.
+- Public API base `https://pundit-ledger-api-wvhvx2muna-uc.a.run.app`: health `{"status":"ok","service":"pundit-prediction-ledger","version":"1.0.0"}`; `/v1/*` returns **401** without `X-API-Key`; `/docs` and OpenAPI reachable (info version 1.0.0). No verified public schema break vs prior checklist.
+- GitHub `cap-alpha/cap-alpha-protocol`: **main atom last updated 2026-07-30**; latest main commit is scheduled snapshot regen documenting `pundits=46 predictions=2373 resolved=137`. No substantive main-branch product release observed since the Aug 28 baseline. Closed PR activity after baseline was Dependabot-only. Open issues still include #1167 (zero resolutions since 2026-06-02), #1193 (inconsistent resolved totals), #1194 (P0 extract timeouts / Resolve skipped), #1195 (extraction poison pill), #1197 (llm_judge CI 0 resolved), #1185 (resolution-stats fallback to 0). Issue #941 showed bot/automation updates including 2026-09-02 — not a meaningful product fix.
+- Pricing page still publishes Free $0 → Pro $9 → API Starter $49 → API Growth $199 → Agent Standard $199 → Agent Pro $299. `/checkout` and `/upgrade` returned **404**. No verified customers, paid checkout completion, revenue, funding, new team, company formation, press, or partnership signals.
+- In Play (`/api/ledger/in-play`): 50 PENDING rows with ingest timestamps **2026-09-01–2026-09-02 UTC**, but all 50 attributed to **"The Athletic NBA Staff"**, spanning CFB/cricket/soccer/etc.; categories include contract/trade/`fa_signing` and retrospective-looking statements mixed with futures. Feed-quality problems noted 2026-08-28 remain. Light search/social: site meta still cites `@punditled`; no credible new traction found.
+
+**Interpretation**
+Public ledger counters and homepage freshness remain frozen at the July 30 snapshot. Some ingestion/extraction noise may still be landing (fresh In Play timestamps), but grading cadence and public resolution totals have not moved, core reliability issues stay open, and monetization is still planned-not-proven. Commercial threat stays weak; partnership case is **unchanged** (pipeline still fails the "reliable 60 days + reconciled totals" bar).
