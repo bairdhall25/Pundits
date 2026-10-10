@@ -1524,6 +1524,502 @@
           ]
         }
       ]
+    },
+    {
+      "id": "herd:1000794082224",
+      "factoryId": "herd",
+      "title": "What's Wright - NFL Week 5 Predictions: Bills-Rams, 49ers-Seahawks, Eagles…",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1612694726?i=1000794082224",
+      "locator": "i=1000794082224",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794082224; Omny c1de3b3c-b00c-49d6-b3c4-b4de00ff3667",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794082224; Omny c1de3b3c-b00c-49d6-b3c4-b4de00ff3667",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000794526356",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 2 – Blazing 5: Bears at Packers, 49ers at…",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000794526356",
+      "locator": "i=1000794526356",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794526356; Omny 2ece9c83-ae01-4eef-8418-b4de014b197b ~00:02–00:07",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794526356; Omny 2ece9c83-ae01-4eef-8418-b4de014b197b ~00:02–00:07",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000794031245",
+      "factoryId": "herd",
+      "title": "3 & Out - INSTANT REACTION: Cowboys upset by Buccaneers",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000794031245",
+      "locator": "i=1000794031245",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794031245; Omny ae7d345b-bb6c-48a5-8d8e-b4de0096aaf2 ~01:02–01:05",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794031245; Omny ae7d345b-bb6c-48a5-8d8e-b4de0096aaf2 ~01:02–01:05",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000794567542",
+      "factoryId": "clay-travis",
+      "title": "Clay Travis Show: Dak Prescott EMBARRASSED, Cowboys collapse",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000794567542",
+      "locator": "i=1000794567542",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794567542; Omny a6358c7e-d7a6-4ad9-87c3-b4de01128511 ~00:08",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794567542; Omny a6358c7e-d7a6-4ad9-87c3-b4de01128511 ~00:08",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000794503482",
+      "factoryId": "gmfb",
+      "title": "GMFB Friday Hour 1: Bucs over Cowboys, Raiders-Patriots",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000794503482",
+      "locator": "i=1000794503482",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794503482; Omny 3a4d98d2-37dc-41f1-9fff-b4de00adb896 ~00:22–00:30",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794503482; Omny 3a4d98d2-37dc-41f1-9fff-b4de00adb896 ~00:22–00:30",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000794513547",
+      "factoryId": "gmfb",
+      "title": "GMFB Friday Hour 2: Bears/Packers, London preview, Terron Armstead",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000794513547",
+      "locator": "i=1000794513547",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794513547; Omny 8ef1725e-84ac-4c31-8db8-b4de00af391d ~00:32–00:35",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794513547; Omny 8ef1725e-84ac-4c31-8db8-b4de00af391d ~00:32–00:35",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000794516750",
+      "factoryId": "gmfb",
+      "title": "Week 5 Picks Against the Spread with Nick Shook",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000794516750",
+      "locator": "i=1000794516750",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794516750; Omny 21f51a8d-7106-4473-b2b6-b4dc014f1b1c",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794516750; Omny 21f51a8d-7106-4473-b2b6-b4dc014f1b1c",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simms:1000794503038",
+      "factoryId": "simms",
+      "title": "NFL Week 5 Picks; Buccaneers shock Cowboys",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1454809704?i=1000794503038",
+      "locator": "i=1000794503038",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794503038; local ASR small.en ~00:41–01:21",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794503038; local ASR small.en ~00:41–01:21",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mcafee:1000794524037",
+      "factoryId": "mcafee",
+      "title": "PMS 2.0 1642 - TNF Recap, NFL Week 5 Preview/Picks",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000794524037",
+      "locator": "i=1000794524037",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794524037; local ASR ~01:17–01:42",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794524037; local ASR ~01:17–01:42",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000794562884",
+      "factoryId": "finebaum",
+      "title": "Hour 4: Live from Dallas",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000794562884",
+      "locator": "i=1000794562884",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794562884; local ASR small.en ~00:11:52–00:24:41",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794562884; local ASR small.en ~00:11:52–00:24:41",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000794530403",
+      "factoryId": "finebaum",
+      "title": "Hour 1: Live from Dallas",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000794530403",
+      "locator": "i=1000794530403",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794530403; local ASR",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794530403; local ASR",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000794544697",
+      "factoryId": "finebaum",
+      "title": "Hour 2: Live from Dallas",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000794544697",
+      "locator": "i=1000794544697",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794544697; local ASR small.en",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794544697; local ASR small.en",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000794546727",
+      "factoryId": "finebaum",
+      "title": "Hour 3: Live from Dallas",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id687989405?i=1000794546727",
+      "locator": "i=1000794546727",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794546727; local ASR small.en",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794546727; local ASR small.en",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eisen:1000794526424",
+      "factoryId": "eisen",
+      "title": "Hour 3: NFL Week 5's Top Matchups",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id926642601?i=1000794526424",
+      "locator": "i=1000794526424",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794526424; local ASR",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794526424; local ASR",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000794526318",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 1 – Dallas Cowboys disaster vs Buccaneers",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000794526318",
+      "locator": "i=1000794526318",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794526318; Omny",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794526318; Omny",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000794560951",
+      "factoryId": "herd",
+      "title": "The Richard Sherman Podcast - NFL Week 5 49ers-Seahawks",
+      "published": "2026-10-09",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000794560951",
+      "locator": "i=1000794560951",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-09T22:20:00-04:00",
+      "coverage": [
+        {
+          "targetId": "night-1009c",
+          "locator": "Apple i=1000794560951; Omny",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-09T22:20:00-04:00",
+          "coverage": [
+            {
+              "targetId": "night-1009c",
+              "locator": "Apple i=1000794560951; Omny",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
