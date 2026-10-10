@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/nfl/2026/week-4/");
+    expect(recap!.href).toBe("/ncaaf/2026/week-6/");
     expect(recap!.line).toBe(
-      "Week 4: experts went 7–3. Chris Simms and Nick Wright hit on Jaguars."
+      "Week 6: experts went 1–0. Bud Elliott hit on Louisville."
     );
   });
 

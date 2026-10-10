@@ -369,8 +369,8 @@ assert.doesNotMatch(teamPage, /"@type":"SportsEvent"|"@type":"FAQPage"/);
 
 const teamPending = await readFile(path.join(out, "teams/49ers/index.html"), "utf8");
 assert.match(teamPending, /data-page-type="team"/);
-assert.match(teamPending, /tracked picks and results/);
-assert.match(teamPending, /No scheduled game on the board for 49ers/);
+assert.match(teamPending, /Next covered matchup/);
+assert.match(teamPending, /href="\/picks\/49ers-at-seahawks-2026\//);
 assert.match(teamPending, /49ers beat Dolphins/);
 assert.match(teamPending, /49ers beat Rams/);
 assert.match(teamPending, /href="\/picks\/49ers-vs-rams-2026\/brandt/);

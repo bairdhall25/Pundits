@@ -1,0 +1,164 @@
+[
+  {
+    "proposedId": "nick-shook",
+    "rowId": "4dd68758bcf42b3e",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com writer and NFL Daily picks co-host; self-identified in-show by Rosenthal's intro.",
+    "note": "Mapped browns-at-jets-2026 YES. Audio 2:45; voice Shook 0.97 vs Rosenthal 0.78. Explicit 'win straight up'."
+  },
+  {
+    "proposedId": "nick-shook",
+    "rowId": "1d0193bd91bb3a30",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL.com writer and NFL Daily picks co-host; self-identified in-show by Rosenthal's intro.",
+    "note": "Colts at Steelers (Steelers NO). Audio 19:22; Shook 0.94."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "51cbe637790bbc83",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL Daily host / NFL.com; self-ID 'I'm Greg Rosenthal'.",
+    "note": "Mapped bears-at-packers-2026 YES. Audio 7:28; Rosenthal 0.86 (self-ID 'I'm Greg Rosenthal')."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "a4826907c104be37",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL Daily host / NFL.com; self-ID 'I'm Greg Rosenthal'.",
+    "note": "Bills at Rams (Rams NO). Audio 9:21."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "232436ccfe9cb624",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL Daily host / NFL.com; self-ID 'I'm Greg Rosenthal'.",
+    "note": "Colts at Steelers (Steelers NO). Audio 20:11; ASR hears 'Pittsburgh minus two' then crosstalk; Omny 'two and a half'. Rosenthal 0.88."
+  },
+  {
+    "proposedId": "greg-rosenthal",
+    "rowId": "07ec038536a8cd50",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "NFL Daily host / NFL.com; self-ID 'I'm Greg Rosenthal'.",
+    "note": "49ers at Seahawks (Seahawks NO). Audio 16:44; Rosenthal 0.87; he later lists Seattle among his four picks."
+  },
+  {
+    "proposedId": "jahleel-addae",
+    "rowId": "5faf90e4949df050",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Good Morning Football co-host (NFL Network), former NFL safety; named in the Apple description and addressed as 'Jaleel' by Jamie Erdahl.",
+    "note": "Raiders at Patriots (Raiders YES). Audio 29:21; voice Jahleel 0.89 after Jamie's 'Jaleel' cue."
+  },
+  {
+    "proposedId": "jahleel-addae",
+    "rowId": "546c549e90f4cc90",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Good Morning Football co-host (NFL Network), former NFL safety; named in the Apple description and addressed as 'Jaleel' by Jamie Erdahl.",
+    "note": "49ers at Seahawks (49ers YES). Audio 33:04–33:25 after cue 'So Jaleel, what do you make of this game'."
+  },
+  {
+    "proposedId": "jahleel-addae",
+    "rowId": "6151d8db9c1f977b",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Good Morning Football co-host (NFL Network), former NFL safety; named in the Apple description and addressed as 'Jaleel' by Jamie Erdahl.",
+    "note": "Bills at Rams (Bills YES). Audio 41:13; voice Jahleel 0.94 (cross-checked with Hour 1 refs)."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "ec623bd56ea084f6",
+    "verdict": "ok-unmapped-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Chris Simms Unbuttoned co-host / NBC Sports analyst; self-recaps his picks in-show.",
+    "note": "Colts at Steelers (Colts YES). Audio 48:52; voice Connor 0.90."
+  },
+  {
+    "proposedId": "connor-rogers",
+    "rowId": "44b5ba22f9a47f76",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Chris Simms Unbuttoned co-host / NBC Sports analyst; self-recaps his picks in-show.",
+    "note": "Mapped browns-at-jets-2026 NO. Audio 54:40; voice Connor 0.90."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "abd226f4bbc525ee",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped tennessee-at-arkansas-2026 YES. Audio 14:50; Doering 0.93 vs Paul 0.64."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "5ebdef22af43dd8b",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped texas-am-at-missouri-2026 YES. Audio 16:58; Doering 0.85."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "b28a80be9f22a575",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped south-carolina-at-florida-2026 NO. Audio 18:39; Doering 0.89. Flag: one small.en pass has no 'but' ('I think Florida wins. I think it's a dogfight')."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "c6afb3777e62eb99",
+    "verdict": "ok",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped ole-miss-at-vanderbilt-2026 YES. Audio 19:28–19:46; capsule's two factors are both Doering's in that turn."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "ddd12ce644607023",
+    "verdict": "ok-no-reasoning",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped lsu-at-kentucky-2026 YES. Audio 21:06."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "fa37ca31326215ac",
+    "verdict": "fail",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Wording: audio 22:27 is 'I'm taking OU outright' (small.en + medium.en), not 'I'm going to take an OU out right'. Restage hint: 'I'm taking OU outright … I think they go in there knock the number one team in the country off'."
+  },
+  {
+    "proposedId": "chris-doering",
+    "rowId": "9f62354e9e1a0c3f",
+    "verdict": "ok",
+    "auditedAt": "2026-10-10T02:55:00Z",
+    "eligibility": "association",
+    "eligibilityReason": "Former Florida WR, SEC Network analyst; introduced by Paul Finebaum as Chris Doering.",
+    "note": "Mapped georgia-at-alabama-2026 YES. Audio 24:03–24:12; Doering 0.92; capsule factors (Alabama 7.6 YPA allowed; Stockton completes what Taylor missed) are his."
+  }
+]

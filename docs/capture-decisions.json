@@ -138,7 +138,7 @@
       "sourceRun": "docs/runs/2026-09-11e-night-shows.md",
       "proposalFile": "docs/runs/2026-09-11-night-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-12T02:40:14Z. Valid rowIds 87d97b874717c1b0 and 3aa44fddb7e3bc46; rejected rowId faf4b023d14d5cb0. Association independently verified through official SEC evidence."
+      "note": "Audit 2026-09-12T02:40:14Z. Valid rowIds 87d97b874717c1b0 and 3aa44fddb7e3bc46; rejected rowId faf4b023d14d5cb0. Association independently verified through official SEC evidence. 09c packet docs/runs/2026-10-09c-candidate-proposals.json (Audit 2026-10-10T02:55:00Z): Finebaum H4 Tennessee, A&M, Florida, LSU ok-no-reasoning; Ole Miss, Georgia ok; Oklahoma fail (wording)."
     },
     {
       "id": "candidate-simon-hunter",
@@ -206,7 +206,7 @@
       "sourceRun": "docs/runs/2026-09-20.md",
       "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-20T14:09:31Z. NFL Daily host on GMFB factory; association URL loads. Official X avatar present; usage permission is operator review. Overflow Pittsburgh at New England / Cincinnati at Houston. Do not restage TNF Bills. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Jaguars, Seattle, Cardinals ok-unmapped; Saints failed (quote is Shook)."
+      "note": "Audit 2026-09-20T14:09:31Z. NFL Daily host on GMFB factory; association URL loads. Official X avatar present; usage permission is operator review. Overflow Pittsburgh at New England / Cincinnati at Houston. Do not restage TNF Bills. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Jaguars, Seattle, Cardinals ok-unmapped; Saints failed (quote is Shook). 09c packet docs/runs/2026-10-09c-candidate-proposals.json (Audit 2026-10-10T02:55:00Z): NFL Daily W5 Bears ok-no-reasoning; Rams, Steelers, Seahawks ok-unmapped-no-reasoning."
     },
     {
       "id": "candidate-michael-snowden",
@@ -226,7 +226,7 @@
       "sourceRun": "docs/runs/2026-09-17d-weekday-night-shows.md",
       "proposalFile": "docs/runs/2026-09-17-night-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Simms Unbuttoned co-host. Overflow Lions at Bills (2026). Capsule omitted. photoUrl=needed. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Unbuttoned W4 Bills, Cardinals, Bears ok-unmapped-no-reasoning; Commanders and Bucs fail (spread picks, not SU)."
+      "note": "Simms Unbuttoned co-host. Overflow Lions at Bills (2026). Capsule omitted. photoUrl=needed. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): Unbuttoned W4 Bills, Cardinals, Bears ok-unmapped-no-reasoning; Commanders and Bucs fail (spread picks, not SU). 09c packet docs/runs/2026-10-09c-candidate-proposals.json (Audit 2026-10-10T02:55:00Z): Unbuttoned W5 Jets ok-no-reasoning; Colts ok-unmapped-no-reasoning."
     },
     {
       "id": "overflow-lions-at-bills",
@@ -320,7 +320,7 @@
       "sourceRun": "docs/runs/2026-09-20.md",
       "proposalFile": "docs/runs/2026-09-20-candidate-proposals.json",
       "owner": "Promote",
-      "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): W4 Commanders row 370fbffb4ce950d2 ok-unmapped (Omny Speaker 3)."
+      "note": "Audit 2026-09-20T14:09:31Z. NFL.com writer / NFL Daily guest; association URL and NFL.com headshot load. Overflow Jacksonville at Denver, Carolina at Atlanta, Cleveland at Tampa Bay. Panthers capsule omitted. Never Rosenthal. Do not mint unpublished matchups this pass. W4/W5 packet docs/runs/2026-10-02-candidate-proposals.json (Audit 2026-10-03T16:45:00Z): W4 Commanders row 370fbffb4ce950d2 ok-unmapped (Omny Speaker 3). 09c packet docs/runs/2026-10-09c-candidate-proposals.json (Audit 2026-10-10T02:55:00Z): NFL Daily W5 Browns ok-no-reasoning; Steelers ok-unmapped-no-reasoning."
     },
     {
       "id": "candidate-taylor-lewan",
@@ -401,6 +401,16 @@
       "proposalFile": "docs/runs/2026-10-07-candidate-proposals.json",
       "owner": "Audit",
       "note": "Audit 2026-10-07T20:55:00Z: Chad's choice Seattle −2.5 (host wrap, own continuous turn) ok-unmapped-no-reasoning (capsule carried an operator note / >2 factors). Association: betting expert / Sharp or Square host (iHeartPodcasts and The Volume). Do not roster or ship. Audit 2026-10-09T03:45:00Z: W5 Bets closing-card row debfa93505bc3af2 (docs/runs/2026-10-08c-weekday-night-shows.md; audits docs/runs/2026-10-08-candidate-audits.json; proposals docs/runs/2026-10-08-candidate-proposals.json) fail — Scout reversed home/away (real game is Texans at Titans). Stays closed; never roster or ship. Audit 2026-10-09T04:05:00Z: 08d direction-fixed row 31380183e3eb1a60 (docs/runs/2026-10-08d-restage.md; proposals docs/runs/2026-10-08d-candidate-proposals.json) ok-unmapped (association). Stays closed; never roster or ship."
+    },
+    {
+      "id": "candidate-jahleel-addae",
+      "kind": "roster-candidate",
+      "needed": "Operator photo + roster yes for Jahleel Addae (GMFB co-host). Audit 2026-10-10T02:55:00Z: Raiders, 49ers, Bills ok-unmapped-no-reasoning (association). Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-09c-weekday-night-shows.md",
+      "proposalFile": "docs/runs/2026-10-09c-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Good Morning Football (NFL Network) co-host, former NFL safety. Voice-verified in GMFB Fri Hour 1/2 against Jamie Erdahl and Kyle Brandt refs. photoUrl=needed. Never roster or ship without operator yes."
     }
   ]
 }
