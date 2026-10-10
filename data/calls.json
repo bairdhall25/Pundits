@@ -5454,11 +5454,12 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "Indiana at Nebraska (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "indiana-at-nebraska-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Indiana way better; Nebraska's SOS ranks 128th."
+    "reasoning": "Indiana way better; Nebraska's SOS ranks 128th.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "elliott-florida-state-at-louisville-20261006",
@@ -5521,10 +5522,11 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "Indiana at Nebraska (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "indiana-at-nebraska-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "staples-indiana-at-nebraska-20261006",
@@ -5536,11 +5538,12 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "Indiana at Nebraska (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "indiana-at-nebraska-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Cignetti's teams rise to big moments; Indiana's defense keeps the offense in good field position."
+    "reasoning": "Cignetti's teams rise to big moments; Indiana's defense keeps the offense in good field position.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-indiana-at-nebraska-20261006",
@@ -5552,10 +5555,11 @@
     "kind": "hard",
     "subject": "Indiana",
     "paysOn": "Indiana at Nebraska (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "indiana-at-nebraska-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "wasserman-south-carolina-at-florida-20261006",
@@ -5567,10 +5571,11 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "South Carolina at Florida (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "south-carolina-at-florida-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "staples-south-carolina-at-florida-20261006",
@@ -5582,11 +5587,12 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "South Carolina at Florida (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "south-carolina-at-florida-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "South Carolina can't keep coming back fired up after tough losses; expects Florida to bounce back."
+    "reasoning": "South Carolina can't keep coming back fired up after tough losses; expects Florida to bounce back.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "wasserman-texas-vs-oklahoma-20261006",
@@ -5769,10 +5775,11 @@
     "kind": "hard",
     "subject": "Nebraska",
     "paysOn": "Indiana at Nebraska (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "indiana-at-nebraska-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-08"
+    "firstPublishedAt": "2026-10-08",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "compton-houston-at-kansas-state-20261007",
@@ -5799,10 +5806,11 @@
     "kind": "hard",
     "subject": "Missouri",
     "paysOn": "Texas A&M at Missouri (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texas-am-at-missouri-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-08"
+    "firstPublishedAt": "2026-10-08",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-ucla-at-oregon-20261007",
@@ -5845,10 +5853,11 @@
     "kind": "hard",
     "subject": "Missouri",
     "paysOn": "Texas A&M at Missouri (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texas-am-at-missouri-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-ole-miss-at-vanderbilt-20261008",
@@ -5985,10 +5994,11 @@
     "kind": "hard",
     "subject": "South Carolina",
     "paysOn": "South Carolina at Florida (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "south-carolina-at-florida-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "clay-travis-texas-vs-oklahoma-20261009",
@@ -6030,10 +6040,11 @@
     "kind": "hard",
     "subject": "Florida",
     "paysOn": "South Carolina at Florida (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "south-carolina-at-florida-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "clay-travis-tennessee-at-arkansas-20261009",
@@ -6075,10 +6086,11 @@
     "kind": "hard",
     "subject": "West Virginia",
     "paysOn": "Arizona at West Virginia (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "arizona-at-west-virginia-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "elliott-coastal-carolina-at-marshall-20261009",
@@ -6120,10 +6132,11 @@
     "kind": "hard",
     "subject": "West Virginia",
     "paysOn": "Arizona at West Virginia (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "arizona-at-west-virginia-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "patterson-duke-at-georgia-tech-20261009",
@@ -6180,10 +6193,11 @@
     "kind": "hard",
     "subject": "West Virginia",
     "paysOn": "Arizona at West Virginia (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "arizona-at-west-virginia-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-coastal-carolina-at-marshall-20261009",
@@ -6240,10 +6254,11 @@
     "kind": "hard",
     "subject": "North Carolina",
     "paysOn": "North Carolina at Pitt (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "north-carolina-at-pitt-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-uconn-at-temple-20261009",
@@ -6691,10 +6706,11 @@
     "kind": "hard",
     "subject": "Missouri",
     "paysOn": "Texas A&M at Missouri (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texas-am-at-missouri-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "john-middlekauff-eagles-vs-jaguars-20261009",

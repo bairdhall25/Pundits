@@ -2564,7 +2564,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "indiana",
       "homeTeamId": "nebraska",
-      "week": 6
+      "week": 6,
+      "awayScore": 20,
+      "homeScore": 17,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858481/indiana-nebraska"
     },
     {
       "slug": "florida-state-at-louisville-2026",
@@ -2636,7 +2639,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "south-carolina",
       "homeTeamId": "florida",
-      "week": 6
+      "week": 6,
+      "awayScore": 38,
+      "homeScore": 19,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856714/south-carolina-florida"
     },
     {
       "slug": "usc-at-penn-state-2026",
@@ -2746,7 +2752,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "texas-am",
       "homeTeamId": "missouri",
-      "week": 6
+      "week": 6,
+      "awayScore": 6,
+      "homeScore": 27,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856716/texas-am-missouri"
     },
     {
       "slug": "ole-miss-at-vanderbilt-2026",
@@ -2856,7 +2865,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "arizona",
       "homeTeamId": "west-virginia",
-      "week": 6
+      "week": 6,
+      "awayScore": 52,
+      "homeScore": 31,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856823/arizona-west-virginia"
     },
     {
       "slug": "coastal-carolina-at-marshall-2026",
@@ -2988,7 +3000,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "north-carolina",
       "homeTeamId": "pitt",
-      "week": 6
+      "week": 6,
+      "awayScore": 21,
+      "homeScore": 17,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401858256/north-carolina-pittsburgh"
     },
     {
       "slug": "uconn-at-temple-2026",
