@@ -13,12 +13,16 @@ const SIZE_PX = {
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+export function avatarHref(src: string): string {
+  return src.startsWith("http")
+    ? src
+    : `${basePath}${src.startsWith("/") ? src : `/${src}`}`;
+}
+
 export function PunditAvatar({ src, alt, size }: PunditAvatarProps) {
   const dim = SIZE_PX[size];
   const hero = size === "hero";
-  const href = src.startsWith("http")
-    ? src
-    : `${basePath}${src.startsWith("/") ? src : `/${src}`}`;
+  const href = avatarHref(src);
 
   return (
     <span

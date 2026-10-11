@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -431,6 +431,16 @@
       "proposalFile": "docs/runs/2026-10-10-candidate-proposals.json",
       "owner": "Promote",
       "note": "National ESPN host with a weekly picks segment, not a team analyst. Most Winners rows are dog ATS (Bets only). Cole recap labels = reported-selection. photoUrl=needed."
+    },
+    {
+      "id": "candidate-domonique-foxworth",
+      "kind": "roster-candidate",
+      "needed": "None. Operator directive 2026-10-11: verify association only; never roster or ship Domonique Foxworth.",
+      "status": "closed",
+      "sourceRun": "docs/runs/2026-10-11a-sunday-nfl-pregame.md",
+      "proposalFile": "docs/runs/2026-10-11-candidate-proposals.json",
+      "owner": "Audit",
+      "note": "Audit 2026-10-11T12:44:00Z: four Mina Kimes Show W5 rows (Raiders, Bears, Chargers, Ravens) verified as Foxworth's own turns in the publisher audio (resemblyzer + pitch vs Mina/Foxworth refs); all ok, eligibility ineligible by operator directive (audits docs/runs/2026-10-11-candidate-audits.json). Never roster or ship."
     }
   ]
 }

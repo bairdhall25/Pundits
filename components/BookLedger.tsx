@@ -4,7 +4,7 @@ import { Drawer } from "@base-ui/react/drawer";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CallCard } from "@/components/CallCard";
-import { PunditAvatar } from "@/components/PunditAvatar";
+import { avatarHref } from "@/components/PunditAvatar";
 import { filterUseParams, trackEvent } from "@/lib/analytics";
 import { emptyBookFilter, filterBook } from "@/lib/book-filter";
 import type { BookFilter } from "@/lib/book-filter";
@@ -200,11 +200,22 @@ export function BookLedger({
           if (!p) return null;
           return (
             <div key={c.id} className="mb-2">
-              <Link
-                href={`/pundits/${p.id}`}
-                className="mb-1 flex items-center gap-3 px-1"
-              >
-                <PunditAvatar src={p.photo} alt="" size="row" />
+              {/* Same look as PunditAvatar size="row", with the utility
+                  classes moved into .book-who / .book-avatar CSS: one row per
+                  take, so per-row bytes keep /book/ under Apple's 1 MB
+                  preview limit. */}
+              <Link href={`/pundits/${p.id}`} className="book-who">
+                <span className="pundit-avatar book-avatar">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={avatarHref(p.photo)}
+                    alt=""
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
                 <div>
                   <div className="type-broadcast text-xl">{p.name}</div>
                   <div className="lb-outlet">{p.outlet}</div>
