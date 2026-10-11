@@ -2989,7 +2989,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "boise-state",
       "homeTeamId": "fresno-state",
-      "week": 6
+      "week": 6,
+      "awayScore": 38,
+      "homeScore": 31,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401860901/boise-state-fresno-state"
     },
     {
       "slug": "north-dakota-state-at-unlv-2026",
@@ -3450,7 +3453,10 @@
       "kickoffDate": "2026-10-10",
       "awayTeamId": "hawaii",
       "homeTeamId": "arizona-state",
-      "week": 6
+      "week": 6,
+      "awayScore": 12,
+      "homeScore": 30,
+      "resultUrl": "https://www.espn.com/college-football/game/_/gameId/401856808/hawaii-arizona-state"
     }
   ]
 }

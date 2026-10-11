@@ -6192,10 +6192,11 @@
     "kind": "hard",
     "subject": "Fresno State",
     "paysOn": "Boise State at Fresno State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "boise-state-at-fresno-state-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kanell-north-dakota-state-at-unlv-20261009",
@@ -6255,10 +6256,11 @@
     "kind": "hard",
     "subject": "Fresno State",
     "paysOn": "Boise State at Fresno State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "boise-state-at-fresno-state-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "fornelli-north-dakota-state-at-unlv-20261009",
@@ -7309,11 +7311,12 @@
     "kind": "hard",
     "subject": "Arizona State",
     "paysOn": "Hawai'i at Arizona State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "hawaii-at-arizona-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "klatt-georgia-at-alabama-20261008",
@@ -7458,11 +7461,12 @@
     "kind": "hard",
     "subject": "Boise State",
     "paysOn": "Boise State at Fresno State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "boise-state-at-fresno-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "pate-central-michigan-at-ohio-20261009",
