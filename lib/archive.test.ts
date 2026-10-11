@@ -186,9 +186,9 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
-    expect(recap!.href).toBe("/ncaaf/2026/week-6/");
+    expect(recap!.href).toBe("/nfl/2026/week-5/");
     expect(recap!.line).toBe(
-      "Week 6: experts went 40–55. Andy Staples, Ari Wasserman, Bud Elliott, Chip Patterson, Clay Travis, Danny Kanell, David Pollack, Desmond Howard, Joel Klatt, Josh Pate, Kirk Herbstreit, Nick Saban, Pat McAfee, Stanford Steve Coughlin, Tom Fornelli, and Will Compton hit."
+      "Week 5: experts went 32–24. A.J. Hawk, Chris Simms, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Mike Florio, Mina Kimes, Nick Wright, Sheil Kapadia, and Stanford Steve Coughlin hit."
     );
   });
 

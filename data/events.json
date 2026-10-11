@@ -2720,7 +2720,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "bears",
       "homeTeamId": "packers",
-      "week": 5
+      "week": 5,
+      "awayScore": 7,
+      "homeScore": 31,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872990/bears-packers"
     },
     {
       "slug": "houston-at-kansas-state-2026",
@@ -2867,7 +2870,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "browns",
       "homeTeamId": "jets",
-      "week": 5
+      "week": 5,
+      "awayScore": 12,
+      "homeScore": 17,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872983/browns-jets"
     },
     {
       "slug": "arizona-at-west-virginia-2026",
@@ -3114,7 +3120,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "texans",
       "homeTeamId": "titans",
-      "week": 5
+      "week": 5,
+      "awayScore": 26,
+      "homeScore": 3,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872984/texans-titans"
     },
     {
       "slug": "giants-at-commanders-2026",
@@ -3158,7 +3167,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "colts",
       "homeTeamId": "steelers",
-      "week": 5
+      "week": 5,
+      "awayScore": 22,
+      "homeScore": 34,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872985/colts-steelers"
     },
     {
       "slug": "vikings-at-saints-2026",
@@ -3180,7 +3192,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "vikings",
       "homeTeamId": "saints",
-      "week": 5
+      "week": 5,
+      "awayScore": 23,
+      "homeScore": 13,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872987/vikings-saints"
     },
     {
       "slug": "bengals-at-dolphins-2026",
@@ -3202,7 +3217,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "bengals",
       "homeTeamId": "dolphins",
-      "week": 5
+      "week": 5,
+      "awayScore": 31,
+      "homeScore": 24,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872982/bengals-dolphins"
     },
     {
       "slug": "eagles-vs-jaguars-2026",
@@ -3224,7 +3242,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "eagles",
       "homeTeamId": "jaguars",
-      "week": 5
+      "week": 5,
+      "awayScore": 17,
+      "homeScore": 19,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872981/eagles-jaguars"
     },
     {
       "slug": "broncos-at-chargers-2026",
@@ -3246,7 +3267,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "broncos",
       "homeTeamId": "chargers",
-      "week": 5
+      "week": 5,
+      "awayScore": 23,
+      "homeScore": 17,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872989/broncos-chargers"
     },
     {
       "slug": "49ers-at-seahawks-2026",
@@ -3268,7 +3292,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "49ers",
       "homeTeamId": "seahawks",
-      "week": 5
+      "week": 5,
+      "awayScore": 32,
+      "homeScore": 29,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872992/49ers-seahawks"
     },
     {
       "slug": "ravens-at-falcons-2026",
@@ -3290,7 +3317,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "ravens",
       "homeTeamId": "falcons",
-      "week": 5
+      "week": 5,
+      "awayScore": 30,
+      "homeScore": 23,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872993/ravens-falcons"
     },
     {
       "slug": "bills-at-rams-2026",
@@ -3334,7 +3364,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "raiders",
       "homeTeamId": "patriots",
-      "week": 5
+      "week": 5,
+      "awayScore": 17,
+      "homeScore": 45,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872986/raiders-patriots"
     },
     {
       "slug": "lions-at-cardinals-2026",
@@ -3356,7 +3389,10 @@
       "kickoffDate": "2026-10-11",
       "awayTeamId": "lions",
       "homeTeamId": "cardinals",
-      "week": 5
+      "week": 5,
+      "awayScore": 45,
+      "homeScore": 21,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872991/lions-cardinals"
     },
     {
       "slug": "eastern-michigan-at-akron-2026",

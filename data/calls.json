@@ -5723,11 +5723,12 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Bears are just better than the Packers talent-wise (with Caleb Williams expected back)."
+    "reasoning": "Bears are just better than the Packers talent-wise (with Caleb Williams expected back).",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "staples-texas-vs-oklahoma-20261007",
@@ -6097,10 +6098,11 @@
     "kind": "hard",
     "subject": "Browns",
     "paysOn": "Browns at Jets (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "browns-at-jets-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "elliott-arizona-at-west-virginia-20261009",
@@ -6336,10 +6338,11 @@
     "kind": "hard",
     "subject": "Texans",
     "paysOn": "Texans at Titans (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texans-at-titans-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "nick-wright-49ers-at-seahawks-20261009",
@@ -6351,10 +6354,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "nick-wright-bills-at-rams-20261009",
@@ -6381,10 +6385,11 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "cowherd-giants-at-commanders-20261009",
@@ -6411,10 +6416,11 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Colts at Steelers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "colts-at-steelers-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "cowherd-49ers-at-seahawks-20261009",
@@ -6426,10 +6432,11 @@
     "kind": "hard",
     "subject": "49ers",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "cowherd-bills-at-rams-20261009",
@@ -6456,10 +6463,11 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "clay-travis-ravens-at-falcons-20261009",
@@ -6471,10 +6479,11 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "brandt-49ers-at-seahawks-20261009",
@@ -6486,10 +6495,11 @@
     "kind": "hard",
     "subject": "49ers",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "brandt-bills-at-rams-20261009",
@@ -6516,10 +6526,11 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-vikings-at-saints-20261009",
@@ -6531,10 +6542,11 @@
     "kind": "hard",
     "subject": "Saints",
     "paysOn": "Vikings at Saints (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "vikings-at-saints-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-colts-at-steelers-20261009",
@@ -6546,10 +6558,11 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Colts at Steelers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "colts-at-steelers-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-giants-at-commanders-20261009",
@@ -6576,10 +6589,11 @@
     "kind": "hard",
     "subject": "Jets",
     "paysOn": "Browns at Jets (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "browns-at-jets-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-bengals-at-dolphins-20261009",
@@ -6591,10 +6605,11 @@
     "kind": "hard",
     "subject": "Bengals",
     "paysOn": "Bengals at Dolphins (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bengals-at-dolphins-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-49ers-at-seahawks-20261009",
@@ -6606,10 +6621,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-broncos-at-chargers-20261009",
@@ -6621,10 +6637,11 @@
     "kind": "hard",
     "subject": "Broncos",
     "paysOn": "Broncos at Chargers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "broncos-at-chargers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-ravens-at-falcons-20261009",
@@ -6636,10 +6653,11 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-bills-at-rams-20261009",
@@ -6666,10 +6684,11 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Eagles vs Jaguars (Week 5, London)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "eagles-vs-jaguars-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "coughlin-49ers-at-seahawks-20261009",
@@ -6681,10 +6700,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "hawk-vikings-at-saints-20261009",
@@ -6696,10 +6716,11 @@
     "kind": "hard",
     "subject": "Vikings",
     "paysOn": "Vikings at Saints (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "vikings-at-saints-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "hawk-49ers-at-seahawks-20261009",
@@ -6711,10 +6732,11 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "hawk-ravens-at-falcons-20261009",
@@ -6726,11 +6748,12 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Falcons playing well right now; Lamar Jackson out."
+    "reasoning": "Falcons playing well right now; Lamar Jackson out.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "clay-travis-texas-am-at-missouri-20261009",
@@ -6758,10 +6781,11 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Eagles vs Jaguars (Week 5, London)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "eagles-vs-jaguars-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-raiders-at-patriots-20261009",
@@ -6773,11 +6797,12 @@
     "kind": "hard",
     "subject": "Patriots",
     "paysOn": "Raiders at Patriots (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "raiders-at-patriots-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "The Raiders aren't very good at stopping the run, which lets McDaniels and Vrabel run the football; New England's defense is very good."
+    "reasoning": "The Raiders aren't very good at stopping the run, which lets McDaniels and Vrabel run the football; New England's defense is very good.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simms-lions-at-cardinals-20261009",
@@ -6789,11 +6814,12 @@
     "kind": "hard",
     "subject": "Cardinals",
     "paysOn": "Lions at Cardinals (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lions-at-cardinals-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "The Cardinals bounce back and get their mojo going after a rough loss in New York; the Lions make a too-aggressive mistake late in the game."
+    "reasoning": "The Cardinals bounce back and get their mojo going after a rough loss in New York; the Lions make a too-aggressive mistake late in the game.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "coughlin-ravens-at-falcons-20261009",
@@ -6805,10 +6831,11 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "hawk-eagles-vs-jaguars-20261009",
@@ -6820,10 +6847,11 @@
     "kind": "hard",
     "subject": "Jaguars",
     "paysOn": "Eagles vs Jaguars (Week 5, London)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "eagles-vs-jaguars-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "herbstreit-texas-vs-oklahoma-20261010",
@@ -7495,11 +7523,12 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says the Bears have the better team even without Caleb Williams, and their head coach needs to back up his big talk about Chicago's top rival."
+    "reasoning": "Florio says the Bears have the better team even without Caleb Williams, and their head coach needs to back up his big talk about Chicago's top rival.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-bengals-at-dolphins-20261008",
@@ -7511,11 +7540,12 @@
     "kind": "hard",
     "subject": "Bengals",
     "paysOn": "Bengals at Dolphins (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bengals-at-dolphins-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says Miami isn't good enough on either side of the ball, and the Bengals can't afford a third straight loss in a game they absolutely should win."
+    "reasoning": "Florio says Miami isn't good enough on either side of the ball, and the Bengals can't afford a third straight loss in a game they absolutely should win.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-raiders-at-patriots-20261008",
@@ -7527,11 +7557,12 @@
     "kind": "hard",
     "subject": "Patriots",
     "paysOn": "Raiders at Patriots (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "raiders-at-patriots-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says the Patriots rediscovered their swagger at Buffalo, and they (and Vrabel) will remember the Raiders beating them at Gillette last year."
+    "reasoning": "Florio says the Patriots rediscovered their swagger at Buffalo, and they (and Vrabel) will remember the Raiders beating them at Gillette last year.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-vikings-at-saints-20261008",
@@ -7543,11 +7574,12 @@
     "kind": "hard",
     "subject": "Vikings",
     "paysOn": "Vikings at Saints (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "vikings-at-saints-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says the Vikings' strong 2025 finish has carried over while the Saints' has not."
+    "reasoning": "Florio says the Vikings' strong 2025 finish has carried over while the Saints' has not.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-browns-at-jets-20261008",
@@ -7559,10 +7591,11 @@
     "kind": "hard",
     "subject": "Browns",
     "paysOn": "Browns at Jets (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "browns-at-jets-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-colts-at-steelers-20261008",
@@ -7574,11 +7607,12 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Colts at Steelers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "colts-at-steelers-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says the Steelers get three extra days to prepare while the Colts had to fly back from London."
+    "reasoning": "Florio says the Steelers get three extra days to prepare while the Colts had to fly back from London.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-texans-at-titans-20261008",
@@ -7590,10 +7624,11 @@
     "kind": "hard",
     "subject": "Texans",
     "paysOn": "Texans at Titans (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texans-at-titans-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-giants-at-commanders-20261008",
@@ -7620,10 +7655,11 @@
     "kind": "hard",
     "subject": "Broncos",
     "paysOn": "Broncos at Chargers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "broncos-at-chargers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-lions-at-cardinals-20261008",
@@ -7635,10 +7671,11 @@
     "kind": "hard",
     "subject": "Lions",
     "paysOn": "Lions at Cardinals (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "lions-at-cardinals-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-49ers-at-seahawks-20261008",
@@ -7650,11 +7687,12 @@
     "kind": "hard",
     "subject": "Seahawks",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Florio says the Seahawks can't afford to fall two games behind the 49ers, and Seattle vividly remembers losing at home to San Francisco last year."
+    "reasoning": "Florio says the Seahawks can't afford to fall two games behind the 49ers, and Seattle vividly remembers losing at home to San Francisco last year.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-ravens-at-falcons-20261008",
@@ -7666,10 +7704,11 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "florio-bills-at-rams-20261008",
@@ -7696,10 +7735,11 @@
     "kind": "hard",
     "subject": "Texans",
     "paysOn": "Texans at Titans (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texans-at-titans-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "jmac-colts-at-steelers-20261009",
@@ -7711,10 +7751,11 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Colts at Steelers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "colts-at-steelers-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "jmac-broncos-at-chargers-20261009",
@@ -7726,11 +7767,12 @@
     "kind": "hard",
     "subject": "Broncos",
     "paysOn": "Broncos at Chargers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "broncos-at-chargers-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "McIntyre cites the Chargers' injury report — both tackles out and Derwin James out."
+    "reasoning": "McIntyre cites the Chargers' injury report — both tackles out and Derwin James out.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "jmac-bears-at-packers-20261009",
@@ -7742,10 +7784,11 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "jmac-bengals-at-dolphins-20261009",
@@ -7757,10 +7800,11 @@
     "kind": "hard",
     "subject": "Bengals",
     "paysOn": "Bengals at Dolphins (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bengals-at-dolphins-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "jmac-lions-at-cardinals-20261009",
@@ -7772,11 +7816,12 @@
     "kind": "hard",
     "subject": "Lions",
     "paysOn": "Lions at Cardinals (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "lions-at-cardinals-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "McIntyre expects a Lions bounce back, and with Cardinals left tackle Paris Johnson out for the season he says Aidan Hutchinson could have a field day."
+    "reasoning": "McIntyre expects a Lions bounce back, and with Cardinals left tackle Paris Johnson out for the season he says Aidan Hutchinson could have a field day.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kapadia-texans-at-titans-20261009",
@@ -7788,11 +7833,12 @@
     "kind": "hard",
     "subject": "Texans",
     "paysOn": "Texans at Titans (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texans-at-titans-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Kapadia calls the Titans a terrible, terribly coached team that scored 13 points in two games against the Texans defense last year, and says the Texans aren't as bad as 0-4 after facing Burrow, Josh Allen and Dak Prescott."
+    "reasoning": "Kapadia calls the Titans a terrible, terribly coached team that scored 13 points in two games against the Texans defense last year, and says the Texans aren't as bad as 0-4 after facing Burrow, Josh Allen and Dak Prescott.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-browns-at-jets-20261008",
@@ -7804,11 +7850,12 @@
     "kind": "hard",
     "subject": "Browns",
     "paysOn": "Browns at Jets (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "browns-at-jets-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Kimes says the Browns' defense is what you hang your hat on in this game, and the Jets were bad on both sides against Chicago."
+    "reasoning": "Kimes says the Browns' defense is what you hang your hat on in this game, and the Jets were bad on both sides against Chicago.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-bengals-at-dolphins-20261008",
@@ -7820,10 +7867,11 @@
     "kind": "hard",
     "subject": "Bengals",
     "paysOn": "Bengals at Dolphins (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bengals-at-dolphins-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-colts-at-steelers-20261008",
@@ -7835,11 +7883,12 @@
     "kind": "hard",
     "subject": "Steelers",
     "paysOn": "Colts at Steelers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "colts-at-steelers-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Kimes says the Steelers are a good running team facing a dismal Colts run defense, and Daniel Jones has been off target under pressure against a good Steelers pass rush."
+    "reasoning": "Kimes says the Steelers are a good running team facing a dismal Colts run defense, and Daniel Jones has been off target under pressure against a good Steelers pass rush.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-texans-at-titans-20261008",
@@ -7851,10 +7900,11 @@
     "kind": "hard",
     "subject": "Texans",
     "paysOn": "Texans at Titans (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "texans-at-titans-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-raiders-at-patriots-20261008",
@@ -7866,10 +7916,11 @@
     "kind": "hard",
     "subject": "Raiders",
     "paysOn": "Raiders at Patriots (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "raiders-at-patriots-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-giants-at-commanders-20261008",
@@ -7896,10 +7947,11 @@
     "kind": "hard",
     "subject": "Broncos",
     "paysOn": "Broncos at Chargers (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "broncos-at-chargers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-49ers-at-seahawks-20261008",
@@ -7911,11 +7963,12 @@
     "kind": "hard",
     "subject": "49ers",
     "paysOn": "49ers at Seahawks (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "49ers-at-seahawks-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-11",
-    "reasoning": "Kimes says Purdy has avoided hits and sacks this season behind a strong line, and Seattle can't run the ball to exploit the 49ers' run defense."
+    "reasoning": "Kimes says Purdy has avoided hits and sacks this season behind a strong line, and Seattle can't run the ball to exploit the 49ers' run defense.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-ravens-at-falcons-20261008",
@@ -7927,10 +7980,11 @@
     "kind": "hard",
     "subject": "Falcons",
     "paysOn": "Ravens at Falcons (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ravens-at-falcons-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-vikings-at-saints-20261008",
@@ -7942,10 +7996,11 @@
     "kind": "hard",
     "subject": "Vikings",
     "paysOn": "Vikings at Saints (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "vikings-at-saints-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kimes-bears-at-packers-20261008",
@@ -7957,9 +8012,10 @@
     "kind": "hard",
     "subject": "Bears",
     "paysOn": "Bears at Packers (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bears-at-packers-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-11"
   }
 ]
