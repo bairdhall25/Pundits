@@ -38,8 +38,8 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Bud Elliott, Danny Kanell, Josh Pate, David Pollack, Desmond Howard, Pat McAfee, Nick Saban, and Joel Klatt pick Oregon\. Kirk Herbstreit picks UCLA\./);
-assert.match(home, /href="\/picks\/ucla-at-oregon-2026\/"/);
+assert.match(home, /Danny Kanell and Tom Fornelli pick Fresno State\. Josh Pate picks Boise State\./);
+assert.match(home, /href="\/picks\/boise-state-at-fresno-state-2026\/"/);
 assert.match(home, /Week 6 · Oct 9–10 · Week 5 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
@@ -190,7 +190,7 @@ const herbstreitProfile = await readFile(
   path.join(out, "pundits/herbstreit/index.html"),
   "utf8"
 );
-assert.match(herbstreitProfile, /2026 tracked record: 11–11/);
+assert.match(herbstreitProfile, /2026 tracked record: 13–15/);
 assert.doesNotMatch(herbstreitProfile, /No graded picks yet/);
 assert.doesNotMatch(herbstreitProfile, />0–0</);
 

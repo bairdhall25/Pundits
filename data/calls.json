@@ -5406,11 +5406,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Oregon front controls UCLA run game; UCLA hasn't faced a real defense."
+    "reasoning": "Oregon front controls UCLA run game; UCLA hasn't faced a real defense.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "kanell-ucla-at-oregon-20261006",
@@ -5422,11 +5423,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Picked Oregon for the title; expects Ducks to control the line of scrimmage at home."
+    "reasoning": "Picked Oregon for the title; expects Ducks to control the line of scrimmage at home.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "patterson-texas-vs-oklahoma-20261006",
@@ -5438,11 +5440,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Texas defense; Oklahoma hasn't scored a TD on Texas since 2023."
+    "reasoning": "Texas defense; Oklahoma hasn't scored a TD on Texas since 2023.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "elliott-indiana-at-nebraska-20261006",
@@ -5604,11 +5607,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Doubts Oklahoma can play mistake-free for four quarters or score enough against Texas."
+    "reasoning": "Doubts Oklahoma can play mistake-free for four quarters or score enough against Texas.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-texas-vs-oklahoma-20261006",
@@ -5620,11 +5624,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Model makes Texas −10.5 vs the −7.5 market; can't count on Oklahoma's offense suddenly working."
+    "reasoning": "Model makes Texas −10.5 vs the −7.5 market; can't count on Oklahoma's offense suddenly working.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "wasserman-usc-at-penn-state-20261006",
@@ -5636,10 +5641,11 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "staples-usc-at-penn-state-20261006",
@@ -5651,11 +5657,12 @@
     "kind": "hard",
     "subject": "Penn State",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "USC struggles in the Eastern time zone; the market is signaling Penn State."
+    "reasoning": "USC struggles in the Eastern time zone; the market is signaling Penn State.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "pate-usc-at-penn-state-20261006",
@@ -5667,10 +5674,11 @@
     "kind": "hard",
     "subject": "Penn State",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "wasserman-georgia-at-alabama-20261006",
@@ -5682,10 +5690,11 @@
     "kind": "hard",
     "subject": "Alabama",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "pate-georgia-at-alabama-20261006",
@@ -5697,11 +5706,12 @@
     "kind": "hard",
     "subject": "Alabama",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-07",
-    "reasoning": "Alabama is the better team right now and has home field."
+    "reasoning": "Alabama is the better team right now and has home field.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "simmons-bears-at-packers-20261006",
@@ -5729,10 +5739,11 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-07"
+    "firstPublishedAt": "2026-10-07",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "staples-iowa-state-at-byu-20261007",
@@ -5760,10 +5771,11 @@
     "kind": "hard",
     "subject": "Georgia",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-08"
+    "firstPublishedAt": "2026-10-08",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "compton-indiana-at-nebraska-20261007",
@@ -5791,10 +5803,11 @@
     "kind": "hard",
     "subject": "Kansas State",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-08"
+    "firstPublishedAt": "2026-10-08",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "compton-texas-am-at-missouri-20261007",
@@ -5822,10 +5835,11 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-08"
+    "firstPublishedAt": "2026-10-08",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "compton-texas-vs-oklahoma-20261008",
@@ -5837,11 +5851,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-09",
-    "reasoning": "Texas defense is for real; Mateer must make tight throws vs Texas DBs on third down."
+    "reasoning": "Texas defense is for real; Mateer must make tight throws vs Texas DBs on third down.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-texas-am-at-missouri-20261008",
@@ -5869,11 +5884,12 @@
     "kind": "hard",
     "subject": "Ole Miss",
     "paysOn": "Ole Miss at Vanderbilt (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ole-miss-at-vanderbilt-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-09",
-    "reasoning": "Vandy can't run the ball; Ole Miss must-win out of the bye."
+    "reasoning": "Vandy can't run the ball; Ole Miss must-win out of the bye.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-lsu-at-kentucky-20261008",
@@ -5885,10 +5901,11 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "pollack-georgia-at-alabama-20261008",
@@ -5900,11 +5917,12 @@
     "kind": "hard",
     "subject": "Georgia",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-09",
-    "reasoning": "Trusts Kirby and the Georgia defense to make life harder on Keelan Russell than he's had it; thinks Russell will look more like a freshman than he has."
+    "reasoning": "Trusts Kirby and the Georgia defense to make life harder on Keelan Russell than he's had it; thinks Russell will look more like a freshman than he has.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "pollack-ucla-at-oregon-20261008",
@@ -5916,11 +5934,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-09",
-    "reasoning": "Oregon is at home with everything on the line; Oregon has already been humbled and has all the motivation."
+    "reasoning": "Oregon is at home with everything on the line; Oregon has already been humbled and has all the motivation.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pollack-houston-at-kansas-state-20261008",
@@ -5932,11 +5951,12 @@
     "kind": "hard",
     "subject": "Kansas State",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-09",
-    "reasoning": "Kansas State has been playing solid and takes care of the football; Houston has been playing with its food a little bit."
+    "reasoning": "Kansas State has been playing solid and takes care of the football; Houston has been playing with its food a little bit.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "patterson-georgia-at-alabama-20261009",
@@ -5948,10 +5968,11 @@
     "kind": "hard",
     "subject": "Georgia",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "patterson-lsu-at-kentucky-20261009",
@@ -5963,10 +5984,11 @@
     "kind": "hard",
     "subject": "Kentucky",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "kanell-houston-at-kansas-state-20261009",
@@ -5978,11 +6000,12 @@
     "kind": "hard",
     "subject": "Houston",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-09",
-    "updatedAt": "2026-10-10"
+    "updatedAt": "2026-10-10",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "kanell-south-carolina-at-florida-20261009",
@@ -6010,10 +6033,11 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "clay-travis-georgia-at-alabama-20261009",
@@ -6025,10 +6049,11 @@
     "kind": "hard",
     "subject": "Alabama",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "clay-travis-south-carolina-at-florida-20261009",
@@ -6056,10 +6081,11 @@
     "kind": "hard",
     "subject": "Tennessee",
     "paysOn": "Tennessee at Arkansas (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "tennessee-at-arkansas-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "clay-travis-browns-at-jets-20261009",
@@ -6102,10 +6128,11 @@
     "kind": "hard",
     "subject": "Coastal Carolina",
     "paysOn": "Coastal Carolina at Marshall (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "coastal-carolina-at-marshall-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "elliott-tulsa-at-navy-20261009",
@@ -6117,10 +6144,11 @@
     "kind": "hard",
     "subject": "Tulsa",
     "paysOn": "Tulsa at Navy (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "tulsa-at-navy-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "patterson-arizona-at-west-virginia-20261009",
@@ -6148,10 +6176,11 @@
     "kind": "hard",
     "subject": "Georgia Tech",
     "paysOn": "Duke at Georgia Tech (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "duke-at-georgia-tech-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "kanell-boise-state-at-fresno-state-20261009",
@@ -6178,10 +6207,11 @@
     "kind": "hard",
     "subject": "UNLV",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-arizona-at-west-virginia-20261009",
@@ -6209,10 +6239,11 @@
     "kind": "hard",
     "subject": "Coastal Carolina",
     "paysOn": "Coastal Carolina at Marshall (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "coastal-carolina-at-marshall-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-boise-state-at-fresno-state-20261009",
@@ -6239,10 +6270,11 @@
     "kind": "hard",
     "subject": "UNLV",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-north-carolina-at-pitt-20261009",
@@ -6270,10 +6302,11 @@
     "kind": "hard",
     "subject": "UConn",
     "paysOn": "UConn at Temple (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "uconn-at-temple-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fornelli-air-force-at-northern-illinois-20261009",
@@ -6285,10 +6318,11 @@
     "kind": "hard",
     "subject": "Northern Illinois",
     "paysOn": "Air Force at Northern Illinois (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "air-force-at-northern-illinois-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-09"
+    "firstPublishedAt": "2026-10-09",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "nick-wright-texans-at-titans-20261009",
@@ -6799,11 +6833,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "herbstreit-ucla-at-oregon-20261010",
@@ -6815,11 +6850,12 @@
     "kind": "hard",
     "subject": "UCLA",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "herbstreit-houston-at-kansas-state-20261010",
@@ -6831,11 +6867,12 @@
     "kind": "hard",
     "subject": "Kansas State",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "herbstreit-lsu-at-kentucky-20261010",
@@ -6847,11 +6884,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "herbstreit-north-dakota-state-at-unlv-20261010",
@@ -6863,11 +6901,12 @@
     "kind": "hard",
     "subject": "North Dakota State",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "herbstreit-usc-at-penn-state-20261010",
@@ -6879,11 +6918,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "howard-texas-vs-oklahoma-20261010",
@@ -6895,11 +6935,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "howard-ucla-at-oregon-20261010",
@@ -6911,11 +6952,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "howard-houston-at-kansas-state-20261010",
@@ -6927,11 +6969,12 @@
     "kind": "hard",
     "subject": "Houston",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "howard-lsu-at-kentucky-20261010",
@@ -6943,11 +6986,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "howard-north-dakota-state-at-unlv-20261010",
@@ -6959,11 +7003,12 @@
     "kind": "hard",
     "subject": "North Dakota State",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "howard-georgia-at-alabama-20261010",
@@ -6975,11 +7020,12 @@
     "kind": "hard",
     "subject": "Alabama",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "howard-usc-at-penn-state-20261010",
@@ -6991,11 +7037,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "mcafee-texas-vs-oklahoma-20261010",
@@ -7007,11 +7054,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "mcafee-ucla-at-oregon-20261010",
@@ -7023,11 +7071,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "mcafee-houston-at-kansas-state-20261010",
@@ -7039,11 +7088,12 @@
     "kind": "hard",
     "subject": "Houston",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "mcafee-lsu-at-kentucky-20261010",
@@ -7055,11 +7105,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "mcafee-north-dakota-state-at-unlv-20261010",
@@ -7071,11 +7122,12 @@
     "kind": "hard",
     "subject": "North Dakota State",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "mcafee-georgia-at-alabama-20261010",
@@ -7087,11 +7139,12 @@
     "kind": "hard",
     "subject": "Georgia",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "mcafee-usc-at-penn-state-20261010",
@@ -7103,11 +7156,12 @@
     "kind": "hard",
     "subject": "Penn State",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "saban-texas-vs-oklahoma-20261010",
@@ -7119,11 +7173,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "saban-ucla-at-oregon-20261010",
@@ -7135,11 +7190,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "saban-houston-at-kansas-state-20261010",
@@ -7151,11 +7207,12 @@
     "kind": "hard",
     "subject": "Houston",
     "paysOn": "Houston at Kansas State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "houston-at-kansas-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "saban-lsu-at-kentucky-20261010",
@@ -7167,11 +7224,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "saban-north-dakota-state-at-unlv-20261010",
@@ -7183,11 +7241,12 @@
     "kind": "hard",
     "subject": "North Dakota State",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "saban-georgia-at-alabama-20261010",
@@ -7199,11 +7258,12 @@
     "kind": "hard",
     "subject": "Alabama",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "saban-usc-at-penn-state-20261010",
@@ -7215,11 +7275,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "coughlin-north-dakota-state-at-unlv-20261010",
@@ -7231,11 +7292,12 @@
     "kind": "hard",
     "subject": "North Dakota State",
     "paysOn": "North Dakota State at UNLV (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "north-dakota-state-at-unlv-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "coughlin-hawaii-at-arizona-state-20261010",
@@ -7263,11 +7325,12 @@
     "kind": "hard",
     "subject": "Georgia",
     "paysOn": "Georgia at Alabama (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "georgia-at-alabama-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Klatt points to Georgia's No. 1 defense in yards per play needing to pressure Keelon Russell, and says the worse the weather, the better for Kirby Smart and Georgia."
+    "reasoning": "Klatt points to Georgia's No. 1 defense in yards per play needing to pressure Keelon Russell, and says the worse the weather, the better for Kirby Smart and Georgia.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "klatt-texas-vs-oklahoma-20261008",
@@ -7279,11 +7342,12 @@
     "kind": "hard",
     "subject": "Texas",
     "paysOn": "Texas vs Oklahoma (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "texas-vs-oklahoma-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Klatt expects a low-scoring game: Oklahoma ranks 112th in yards per play on offense, and he has few worries about the Texas defense."
+    "reasoning": "Klatt expects a low-scoring game: Oklahoma ranks 112th in yards per play on offense, and he has few worries about the Texas defense.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "klatt-ucla-at-oregon-20261008",
@@ -7295,11 +7359,12 @@
     "kind": "hard",
     "subject": "Oregon",
     "paysOn": "UCLA at Oregon (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "ucla-at-oregon-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Klatt doesn't trust a UCLA defense that allowed 38 points to Purdue, and expects Oregon to match and exceed UCLA's scoring."
+    "reasoning": "Klatt doesn't trust a UCLA defense that allowed 38 points to Purdue, and expects Oregon to match and exceed UCLA's scoring.",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "klatt-usc-at-penn-state-20261008",
@@ -7311,11 +7376,12 @@
     "kind": "hard",
     "subject": "USC",
     "paysOn": "USC at Penn State (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "usc-at-penn-state-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Klatt says USC should run the ball on a Penn State defense that can't tackle, and Penn State's offense has struggled since losing WR Koby Howard."
+    "reasoning": "Klatt says USC should run the ball on a Penn State defense that can't tackle, and Penn State's offense has struggled since losing WR Koby Howard.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "klatt-lsu-at-kentucky-20261008",
@@ -7327,11 +7393,12 @@
     "kind": "hard",
     "subject": "LSU",
     "paysOn": "LSU at Kentucky (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "lsu-at-kentucky-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-10",
-    "reasoning": "Klatt calls LSU's pass-rushing defense one of the best in America, and doesn't expect Kentucky to back up last week's emotional win."
+    "reasoning": "Klatt calls LSU's pass-rushing defense one of the best in America, and doesn't expect Kentucky to back up last week's emotional win.",
+    "gradedAt": "2026-10-11"
   },
   {
     "id": "fallica-tulsa-at-navy-20261009",
@@ -7343,10 +7410,11 @@
     "kind": "hard",
     "subject": "Tulsa",
     "paysOn": "Tulsa at Navy (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "tulsa-at-navy-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fallica-eastern-michigan-at-akron-20261009",
@@ -7358,10 +7426,11 @@
     "kind": "hard",
     "subject": "Akron",
     "paysOn": "Eastern Michigan at Akron (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "eastern-michigan-at-akron-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "fallica-miami-oh-at-umass-20261009",
@@ -7373,10 +7442,11 @@
     "kind": "hard",
     "subject": "UMass",
     "paysOn": "Miami (OH) at UMass (Week 6)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "miami-oh-at-umass-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-10"
   },
   {
     "id": "pate-boise-state-at-fresno-state-20261009",
@@ -7404,10 +7474,11 @@
     "kind": "hard",
     "subject": "Ohio",
     "paysOn": "Central Michigan at Ohio (Week 6)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "central-michigan-at-ohio-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-10",
-    "evidenceKind": "reported-selection"
+    "evidenceKind": "reported-selection",
+    "gradedAt": "2026-10-10"
   }
 ]
