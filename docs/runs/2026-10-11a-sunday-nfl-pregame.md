@@ -3,7 +3,7 @@
 
 | lane | status | asOf | note |
 |---|---|---|---|
-| Shows | completed | 2026-10-11 ~7:57–8:16 AM ET | Sunday NFL pregame bounded pass this_pass hard=35 candidates=4 bets=9 NEW=true (sidecar `docs/runs/2026-10-11a-sunday-nfl-pregame.md`). Empty approved Dispatch; NFL Week 5 events exist (onHome=false) so roster SUs map. NEW: Florio PFT Week 5 column (14 mapped SUs), Jason McIntyre Straight Fire best bets (7 mapped SUs, 9 Bets incl. Kapadia), Mina Kimes Show W5 every-game picks (kimes 13 mapped SUs; Domonique Foxworth ×4 Candidates), Ringer Wise Guys/NFL Show Kapadia pre-tape (kapadia Texans). London (9:30 AM ET KO): florio + jmac Jaguars NO pushed 8:01/8:03 AM ET; kimes Jaguars NO in the ~8:2x push, still before KO. Single-call games now covered: texans-at-titans (florio, jmac, kapadia, kimes), bengals-at-dolphins (florio, jmac, kimes), broncos-at-chargers (florio, jmac, kimes; Foxworth Chargers candidate), raiders-at-patriots (florio NO vs kimes YES; Foxworth Raiders candidate), lions-at-cardinals (florio, jmac, kimes; Simms 09e restage pending on Cardinals). Did not touch `data/`. |
+| Shows | completed | 2026-10-11 ~7:57–8:14 AM ET | Sunday NFL pregame bounded pass this_pass hard=35 candidates=4 bets=9 NEW=true (sidecar `docs/runs/2026-10-11a-sunday-nfl-pregame.md`). Empty approved Dispatch; NFL Week 5 events exist (onHome=false) so roster SUs map. NEW: Florio PFT Week 5 column (14 mapped SUs), Jason McIntyre Straight Fire best bets (7 mapped SUs, 9 Bets incl. Kapadia), Mina Kimes Show W5 every-game picks (kimes 13 mapped SUs; Domonique Foxworth ×4 Candidates), Ringer Wise Guys/NFL Show Kapadia pre-tape (kapadia Texans). London (9:30 AM ET KO): florio + jmac Jaguars NO pushed 8:01/8:03 AM ET; kimes Jaguars NO pushed 8:12 AM ET. Single-call games now covered: texans-at-titans (florio, jmac, kapadia, kimes), bengals-at-dolphins (florio, jmac, kimes), broncos-at-chargers (florio, jmac, kimes; Foxworth Chargers candidate), raiders-at-patriots (florio NO vs kimes YES; Foxworth Raiders candidate), lions-at-cardinals (florio, jmac, kimes; Simms 09e restage pending on Cardinals). Did not touch `data/`. |
 | X | not-run | | |
 | News | not-run | | |
 
@@ -162,6 +162,6 @@ Mapped roster hard rows, if Audit ok: florio pick pages on all 14 Week 5 Sunday/
 |---|---|
 | ready-to-audit | **35 hard** (+ **4 candidates**) |
 | mapped vs overflow | mapped roster hard: **35**; overflow blank-slug: **0**; Candidates: **4** |
-| London | florio + jmac eagles-vs-jaguars-2026 NO pushed 8:01/8:03 AM ET; kimes NO in the follow-up push — all before the 9:30 AM ET KO |
+| London | florio + jmac eagles-vs-jaguars-2026 NO pushed 8:01/8:03 AM ET; kimes NO pushed 8:12 AM ET — all before the 9:30 AM ET KO |
 | sidecar | https://github.com/bairdhall25/Pundits/blob/main/docs/runs/2026-10-11a-sunday-nfl-pregame.md |
 | day | https://github.com/bairdhall25/Pundits/blob/main/docs/runs/2026-10-11.md |
