@@ -1,0 +1,55 @@
+{
+  "needsAudit": true,
+  "proposals": [
+    {
+      "id": "candidate-ty-schmit-d3d6c53cf58f3f39",
+      "kind": "roster-candidate",
+      "proposedId": "ty-schmit",
+      "rowId": "d3d6c53cf58f3f39",
+      "sourceRun": "docs/runs/2026-10-12a-weekday-afternoon-shows.md",
+      "status": "needs-evidence",
+      "owner": "Promote",
+      "candidate": {
+        "line": 31,
+        "pass": "Shows pass 2026-10-12 weekday after-afternoon (Grok Bot)",
+        "section": "Candidates",
+        "hasNoteColumn": true,
+        "noteAfterReasoning": true,
+        "proposedId": "ty-schmit",
+        "name": "Ty Schmit",
+        "group": "nfl",
+        "outlet": "The Pat McAfee Show (ESPN)",
+        "eventSlug": "bills-at-rams-2026",
+        "side": "no",
+        "verbatimQuote": "I kinda like just a 38, 34 Rams victory.",
+        "reasoning": "",
+        "note": "Pat McAfee Show Mon Oct 12 picks segment, Toxic Table (published 2026-10-12 3:55 PM ET). Pat: 'Sorry, Ty, go ahead, pal.' immediately before this turn; earlier host intro names the toxic table ('Boston Connor and Ty Schmit[?]', ASR 'Schmidt'). Name/association MEDIUM (first name cue in-turn; surname from ASR). Eligibility uncertain — show crew member (Toxic Table/producer), compare candidate-mitch-eisenstein. Also says 'the over is what I am going to confidently hammer tonight' (Bets). Publisher download small.en ~2:01:06–2:01:16. photoUrl=needed. Do not auto-roster. Bills at Rams (MNF Mon Oct 12), 8:15 PM ET; Rams home = NO; YES = away/listed-first team. Not one of the five existing calls (nick-wright, cowherd, brandt, simms, florio).",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/pms-2-0-1643-overreaction-monday-nfl-week-5-recap-mnf/id1435183458?i=1000796006943&uo=4",
+        "sourceDate": "2026-10-12",
+        "photoUrl": "needed",
+        "association": "Toxic Table / crew, The Pat McAfee Show (ESPN)",
+        "associationUrl": "https://podcasts.apple.com/us/podcast/pms-2-0-1643-overreaction-monday-nfl-week-5-recap-mnf/id1435183458?i=1000796006943&uo=4",
+        "factory": "mcafee"
+      },
+      "audit": {
+        "proposedId": "ty-schmit",
+        "rowId": "d3d6c53cf58f3f39",
+        "verdict": "ok",
+        "auditedAt": "2026-10-12T21:10:00Z",
+        "eligibility": "uncertain",
+        "eligibilityReason": "Pat McAfee Show crew member (Toxic Table / production), not an independent analyst or guest; same open question as candidate-mitch-eisenstein. Surname spelling ('Schmit' vs ASR 'Schmidt') not verified against an official source.",
+        "note": "PMS 2.0 1643 publisher audio 2:01:04 Pat 'Sorry, Ty. Go ahead.'; 2:01:05-2:01:16 '...I kind of like just a thirty eight thirty four Rams victory.' Rams home = NO. Over is Bets only."
+      },
+      "missing": [
+        "Independent-pundit association verified",
+        "Verified official X handle",
+        "Proposed usable photo URL",
+        "Photo provenance / permission basis for review"
+      ],
+      "nextAction": "Promote prepares missing identity/photo/source material; Audit owns evidence verification",
+      "rosterApproved": false,
+      "photoApproved": false,
+      "mintRequired": false
+    }
+  ]
+}

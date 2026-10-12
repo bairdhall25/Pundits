@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "reviewCadence": "Operator reviews this queue at least twice weekly (Tuesday and Friday ET) before midweek pick shows publish. Coordinator surfaces it in Dispatch. This is not a new bot. No auto-roster, photo-approval bypass, or team-analyst eligibility.",
   "items": [
     {
@@ -441,6 +441,16 @@
       "proposalFile": "docs/runs/2026-10-11-candidate-proposals.json",
       "owner": "Audit",
       "note": "Audit 2026-10-11T12:44:00Z: four Mina Kimes Show W5 rows (Raiders, Bears, Chargers, Ravens) verified as Foxworth's own turns in the publisher audio (resemblyzer + pitch vs Mina/Foxworth refs); all ok, eligibility ineligible by operator directive (audits docs/runs/2026-10-11-candidate-audits.json). Never roster or ship."
+    },
+    {
+      "id": "candidate-ty-schmit",
+      "kind": "roster-candidate",
+      "needed": "Operator eligibility call (Pat McAfee Show crew / Toxic Table) before any roster work; surname spelling and photo also unverified. Do not auto-roster.",
+      "status": "pending",
+      "sourceRun": "docs/runs/2026-10-12a-weekday-afternoon-shows.md",
+      "proposalFile": "docs/runs/2026-10-12-candidate-proposals.json",
+      "owner": "Promote",
+      "note": "Audit 2026-10-12T21:10:00Z: Bills at Rams Rams NO (rowId d3d6c53cf58f3f39) ok in PMS 2.0 1643 publisher audio (Pat: 'Sorry, Ty. Go ahead.'); eligibility uncertain (crew member, compare candidate-mitch-eisenstein). Game kicks off tonight — roster packet only."
     }
   ]
 }

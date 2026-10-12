@@ -38,7 +38,7 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Nick Wright, Colin Cowherd, Kyle Brandt, Chris Simms, and Mike Florio pick Rams\. Nobody on Bills yet\./);
+assert.match(home, /Nick Wright, Colin Cowherd, Kyle Brandt, Chris Simms, Mike Florio, Jason McIntyre, A\.J\. Hawk, Darius Butler, Pat McAfee, and Dan Orlovsky pick Rams\. John Middlekauff picks Bills\./);
 assert.match(home, /href="\/picks\/bills-at-rams-2026\/"/);
 // Weekly record lines: college keeps its line; NFL weeks render too, pushes excluded.
 assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-6\/">Week 6: experts went 40–55\./);
