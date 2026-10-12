@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadCalls, loadEvents, loadTeams, settledSide } from "./data";
+import { eventScanStatus, eventStatusLine, loadCalls, loadEvents, loadTeams, settledSide } from "./data";
 import { formatGameWhen, seasonLabel, seasonSpan } from "./format";
 import { isKalshiUrl } from "./kalshi";
 
@@ -115,12 +115,28 @@ describe("kalshi freeze", () => {
     for (const e of scored) {
       expect(typeof e.awayScore, e.slug).toBe("number");
       expect(typeof e.homeScore, e.slug).toBe("number");
-      expect(e.awayScore, e.slug).not.toBe(e.homeScore);
       expect(e.resultUrl, e.slug).toMatch(/^https:\/\//);
+      if (e.awayScore === e.homeScore) {
+        // A tie settles no side; its mapped picks grade push, never hit or miss.
+        expect(settledSide(e, calls), e.slug).toBeNull();
+        for (const c of calls.filter((c) => c.eventSlug === e.slug && c.kind === "hard")) {
+          expect(["pending", "push"], c.id).toContain(c.status);
+        }
+        continue;
+      }
       const side = settledSide(e, calls);
       if (side == null) continue;
       expect(side === "yes", e.slug).toBe(e.awayScore! > e.homeScore!);
     }
+  });
+
+  it("shows a tied game as final with every pick a push, outside records", () => {
+    const calls = loadCalls();
+    const tie = loadEvents().find((e) => e.slug === "giants-at-commanders-2026")!;
+    expect(eventScanStatus(tie, calls)).toBe("final");
+    expect(eventStatusLine(tie, calls)).toBe("Final · Tie 27–27");
+    const mine = calls.filter((c) => c.eventSlug === tie.slug);
+    expect(mine.map((c) => c.status)).toEqual(["push", "push", "push", "push"]);
   });
 
   it("stores a game ticker even when the freeze is still empty", () => {

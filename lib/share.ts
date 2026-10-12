@@ -1,4 +1,4 @@
-import { settledSide, sidesForCard } from "./data";
+import { gameTied, settledSide, sidesForCard } from "./data";
 import { quotedEvidenceText } from "./evidence";
 import { formatAsOf, formatCents, formatGameDate, seasonSpan } from "./format";
 import type { ActivityRecord, Call, Event, Pundit } from "./types";
@@ -83,7 +83,11 @@ export function eventShare(
     const pendingTitle = when
       ? `${event.title}: who picked whom · ${when}`
       : `${event.title}: who picked whom`;
-    const settledTitle = winner ? `${winner} beat ${loser}: who called it` : pendingTitle;
+    const settledTitle = winner
+      ? `${winner} beat ${loser}: who called it`
+      : gameTied(event)
+        ? `${event.awayTeam} and ${event.homeTeam} tied: who picked whom`
+        : pendingTitle;
     const who = [
       picksLine(noNames, event.homeTeam, Boolean(winner)),
       picksLine(yesNames, event.awayTeam, Boolean(winner)),

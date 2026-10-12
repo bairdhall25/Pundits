@@ -382,7 +382,7 @@ export function rankStories(index: SocialIndex, now: Date = new Date()): RankedS
         eventSlug: event.slug,
         pageUrl: take.pageUrl,
         cardUrl: take.ogCard,
-        state: take.status === "pending" ? "pending" : take.status,
+        state: take.status === "hit" || take.status === "miss" ? take.status : "pending",
         takePageUrl: take.pageUrl,
         punditId: take.punditId,
         reason,

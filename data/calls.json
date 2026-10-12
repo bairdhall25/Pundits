@@ -6401,10 +6401,11 @@
     "kind": "hard",
     "subject": "Giants",
     "paysOn": "Giants at Commanders (Week 5)",
-    "status": "pending",
+    "status": "push",
     "eventSlug": "giants-at-commanders-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "cowherd-colts-at-steelers-20261009",
@@ -6574,10 +6575,11 @@
     "kind": "hard",
     "subject": "Giants",
     "paysOn": "Giants at Commanders (Week 5)",
-    "status": "pending",
+    "status": "push",
     "eventSlug": "giants-at-commanders-2026",
     "side": "yes",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "simms-browns-at-jets-20261009",
@@ -7640,10 +7642,11 @@
     "kind": "hard",
     "subject": "Commanders",
     "paysOn": "Giants at Commanders (Week 5)",
-    "status": "pending",
+    "status": "push",
     "eventSlug": "giants-at-commanders-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "florio-broncos-at-chargers-20261008",
@@ -7932,10 +7935,11 @@
     "kind": "hard",
     "subject": "Commanders",
     "paysOn": "Giants at Commanders (Week 5)",
-    "status": "pending",
+    "status": "push",
     "eventSlug": "giants-at-commanders-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "kimes-broncos-at-chargers-20261008",

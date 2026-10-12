@@ -58,13 +58,15 @@ export function gamesForWeek(
 export function weekRecord(
   games: Event[],
   calls: Call[]
-): { hits: number; misses: number; pending: number } {
+): { hits: number; misses: number; pending: number; pushes: number } {
   const slugs = new Set(games.map((e) => e.slug));
-  const record = { hits: 0, misses: 0, pending: 0 };
+  // A push (tied game) is neither a hit nor a miss and stays out of the record.
+  const record = { hits: 0, misses: 0, pending: 0, pushes: 0 };
   for (const c of mappedCalls(calls)) {
     if (!c.eventSlug || !slugs.has(c.eventSlug)) continue;
     if (c.status === "hit") record.hits += 1;
     else if (c.status === "miss") record.misses += 1;
+    else if (c.status === "push") record.pushes += 1;
     else record.pending += 1;
   }
   return record;
@@ -123,10 +125,16 @@ export function weekResults(
 export function latestGradedWeekRecap(
   events: Event[],
   calls: Call[],
-  pundits: Pundit[]
+  pundits: Pundit[],
+  sport?: Sport
 ): { sport: Sport; season: number; week: number; href: string; line: string } | null {
   const complete = events.filter(
-    (e) => eventKind(e) === "game" && e.season != null && e.week != null && gameComplete(e)
+    (e) =>
+      eventKind(e) === "game" &&
+      e.season != null &&
+      e.week != null &&
+      gameComplete(e) &&
+      (sport == null || e.sport === sport)
   );
   if (!complete.length) return null;
 
@@ -179,7 +187,7 @@ export function latestGradedWeekRecap(
       season: candidate.season,
       week: candidate.week,
       href: weekArchivePath(candidate.sport, candidate.season, candidate.week),
-      line: `Week ${candidate.week}: experts went ${record.hits}–${record.misses}.${who}`,
+      line: `${candidate.sport === "nfl" ? "NFL " : ""}Week ${candidate.week}: experts went ${record.hits}–${record.misses}.${who}`,
     };
   }
   return null;

@@ -38,8 +38,11 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Mike Florio and Mina Kimes pick Commanders\. Colin Cowherd and Chris Simms pick Giants\./);
-assert.match(home, /href="\/picks\/giants-at-commanders-2026\/"/);
+assert.match(home, /Nick Wright, Colin Cowherd, Kyle Brandt, Chris Simms, and Mike Florio pick Rams\. Nobody on Bills yet\./);
+assert.match(home, /href="\/picks\/bills-at-rams-2026\/"/);
+// Weekly record lines: college keeps its line; NFL weeks render too, pushes excluded.
+assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-6\/">Week 6: experts went 40–55\./);
+assert.match(home, /class="week-recap"><a href="\/nfl\/2026\/week-5\/">NFL Week 5: experts went 32–24\./);
 assert.match(home, /Week 5 · Oct 11–12 · Week 4 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);

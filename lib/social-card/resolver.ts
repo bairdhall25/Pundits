@@ -248,15 +248,16 @@ export function resolveTakeSocialCard(
     take.call.status === "pending"
       ? null
       : {
-          label: take.call.status === "hit" ? "Hit" : "Miss",
+          label:
+            take.call.status === "hit" ? "Hit" : take.call.status === "push" ? "Push" : "Miss",
           ...(score ? { detail: score } : {}),
-          tone: take.call.status,
+          tone: take.call.status === "push" ? "neutral" : take.call.status,
         } satisfies SocialResult;
   return {
     archetype: "quote",
     mode: "take",
     format,
-    state: take.call.status,
+    state: take.call.status === "push" ? "final" : take.call.status,
     kicker: take.pundit.outlet,
     headline: takeHeadline(take.pundit, take.event, take.call),
     context: formatGameWhen(take.event),

@@ -74,11 +74,13 @@ describe("weekRecord", () => {
       call({ eventSlug: "unc-vs-tcu-2026", side: "no", status: "hit" }),
       call({ id: "c2", punditId: "patterson", eventSlug: "unc-vs-tcu-2026", side: "yes", status: "miss" }),
       call({ id: "c3", eventSlug: "clemson-at-lsu-2026", side: "no", status: "pending" }),
+      call({ id: "c4", punditId: "staples", eventSlug: "unc-vs-tcu-2026", side: "yes", status: "push" }),
     ];
     expect(weekRecord(gamesForWeek("ncaaf", 2026, 0, events), calls)).toEqual({
       hits: 1,
       misses: 1,
       pending: 0,
+      pushes: 1,
     });
   });
 });
@@ -187,9 +189,16 @@ describe("latestGradedWeekRecap", () => {
     );
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-5/");
+    // NFL lines name the league; Giants-Commanders 27-27 pushes stay out of 32–24.
     expect(recap!.line).toBe(
-      "Week 5: experts went 32–24. A.J. Hawk, Chris Simms, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Mike Florio, Mina Kimes, Nick Wright, Sheil Kapadia, and Stanford Steve Coughlin hit."
+      "NFL Week 5: experts went 32–24. A.J. Hawk, Chris Simms, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Mike Florio, Mina Kimes, Nick Wright, Sheil Kapadia, and Stanford Steve Coughlin hit."
     );
+  });
+
+  it("keeps the college line when asked for college football", () => {
+    const recap = latestGradedWeekRecap(loadEvents(), loadCalls(), loadPundits(), "ncaaf");
+    expect(recap!.href).toBe("/ncaaf/2026/week-6/");
+    expect(recap!.line).toMatch(/^Week 6: experts went 40–55\. /);
   });
 
   it("recaps graded week 0 when a newer complete week has no grades", () => {

@@ -1,24 +1,26 @@
-import type { PunditSport, Sport } from "./types";
+import type { CallStatus, PunditSport, Sport } from "./types";
 
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
-export function statusLabel(status: "pending" | "hit" | "miss"): string {
+export function statusLabel(status: CallStatus): string {
   if (status === "hit") return "Hit";
   if (status === "miss") return "Miss";
+  if (status === "push") return "Push";
   return "Open";
 }
 
-export function verdictClass(status: "pending" | "hit" | "miss"): "hit" | "miss" | "open" {
+export function verdictClass(status: CallStatus): "hit" | "miss" | "push" | "open" {
   return status === "pending" ? "open" : status;
 }
 
 /** Verdict chips pair a glyph with the word so color is never the only signal. */
-export function statusChipText(status: "pending" | "hit" | "miss"): string {
+export function statusChipText(status: CallStatus): string {
   if (status === "hit") return "✓ Hit";
   if (status === "miss") return "✗ Miss";
+  if (status === "push") return "= Push";
   return "Open";
 }
 

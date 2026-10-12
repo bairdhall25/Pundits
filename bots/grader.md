@@ -1,6 +1,6 @@
 # Grader
 
-After games (or futures) settle, propose hit/miss on mapped hard calls. Do not hunt new takes.
+After games (or futures) settle, propose hit/miss/push on mapped hard calls. Do not hunt new takes.
 
 Also follow `bots/README.md` house rules and its Scheduled Git handoff.
 
@@ -10,7 +10,7 @@ From https://github.com/bairdhall25/Pundits (main):
 
 - `data/calls.json` — grade only `kind: hard` rows with `eventSlug` + `side` and `status: pending`
 - `data/events.json` — `kind`, teams, YES = away on games
-- `lib/data.ts` — `seasonFromCalls` is wins = `hit`, losses = `miss`, pending = `pending` (hard calls only)
+- `lib/data.ts` — `seasonFromCalls` is wins = `hit`, losses = `miss`, pending = `pending` (hard calls only); `push` counts in none of them
 
 ## Do
 
@@ -18,10 +18,11 @@ From https://github.com/bairdhall25/Pundits (main):
 2. Confirm the result from an authoritative primary source (league, school, official box score, or equivalent) **and** the Kalshi resolution when the contract exists. If they disagree, stop and report the contract terms and both sources; do not grade automatically. A data-provider error or misunderstood contract must not silently override the real-world result.
 3. Map the result onto the event's side:
    - Game: away win → `yes` hits, `no` misses. Home win → the reverse. Neutral-site still uses the event's `awayTeam` / `homeTeam` fields.
+   - Game tie (final scores equal, including an NFL overtime tie): every mapped call on the slug grades `push`, whichever side it picked. A push is neither a hit nor a miss and is excluded from records, recaps, and hit rates (operator decision 2026-10-12). Publish `awayScore`/`homeScore`/`resultUrl` as usual; a Kalshi game market on a tie may resolve differently, so note the contract outcome but grade the real-world tie as push.
    - Future: contract Yes resolved → `yes` hits. Else `no` hits.
 4. Soft and unmapped calls stay `pending`. They are speech, not a record.
 5. One event grades every mapped call on that slug. Do not grade one pundit and leave the collision uncleared.
-6. Whenever proposing `status: hit` or `status: miss`, also propose `gradedAt`
+6. Whenever proposing `status: hit`, `status: miss`, or `status: push`, also propose `gradedAt`
    as the Eastern Time calendar date of grading. Pending calls do not get a
    `gradedAt` value.
 7. If a game event reached kickoff with **zero mapped calls**, do not grade it
@@ -35,7 +36,7 @@ From https://github.com/bairdhall25/Pundits (main):
 | call id | punditId | eventSlug | side | result | proposed status | gradedAt | evidence URL |
 ```
 
-Then a one-line tally: `N hit / M miss / still pending`.
+Then a one-line tally: `N hit / M miss / P push / still pending` (omit `P push` when zero).
 
 If you can write to the repo, append that table under a dated heading in `docs/runs/YYYY-MM-DD-grade.md`. Never touch `data/`.
 

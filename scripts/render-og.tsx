@@ -355,7 +355,7 @@ function TakeMarkup({ card }: { card: TakeOgCard }) {
   return (
     <Shell>
       <Wordmark right={card.when} />
-      {card.status !== "pending" ? (
+      {card.status === "hit" || card.status === "miss" ? (
         <Stamp status={card.status} top={88} right={56} />
       ) : null}
       <div
@@ -878,7 +878,7 @@ function TakeStoryMarkup({ card }: { card: TakeOgCard }) {
         >
           <StoryWordmark right={card.when?.split(" · ")[0] ?? card.when} />
         </div>
-        {card.status !== "pending" ? (
+        {card.status === "hit" || card.status === "miss" ? (
           <Stamp status={card.status} scale={1.6} top={150} right={64} />
         ) : null}
       </div>

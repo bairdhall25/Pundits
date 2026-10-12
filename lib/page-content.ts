@@ -10,6 +10,7 @@ import {
   eventScanStatus,
   finalScoreLine,
   finalScoreParts,
+  gameTied,
   getTeam,
   isMapped,
   otherTakes,
@@ -323,7 +324,7 @@ export function receiptDisagreement(
     else opposite.push(name);
   }
   if (!same.length && !opposite.length) return null;
-  const past = call.status === "hit" || call.status === "miss";
+  const past = call.status === "hit" || call.status === "miss" || call.status === "push";
   const picked =
     event.awayTeam && event.homeTeam
       ? call.side === "yes"
@@ -394,7 +395,9 @@ export function profileContent(
     });
   const mapped = mine.filter(isMapped);
   const current = mapped.filter((c) => c.status === "pending");
-  const historical = mapped.filter((c) => c.status === "hit" || c.status === "miss");
+  const historical = mapped.filter(
+    (c) => c.status === "hit" || c.status === "miss" || c.status === "push"
+  );
   const unmapped = otherTakes(pundit.id, calls);
   const gradedSample = pundit.season2026.wins + pundit.season2026.losses;
   const recordLine =
@@ -447,7 +450,10 @@ function teamSideFor(teamId: string, event: Event): Side | null {
 
 function beatLine(event: Event, calls: Call[]): string | null {
   const parts = finalScoreParts(event, calls);
-  return parts ? `${parts.winner} beat ${parts.loser}` : null;
+  if (!parts) return null;
+  return gameTied(event)
+    ? `${event.awayTeam} and ${event.homeTeam} tied`
+    : `${parts.winner} beat ${parts.loser}`;
 }
 
 export type TeamMatchup = {
@@ -759,7 +765,9 @@ function weekDisagreement(
     eventScanStatus(event, calls) === "grading";
   const winner = finalScoreParts(event, calls);
   let line = comparison.disagreement;
-  if (past && winner) {
+  if (past && winner && gameTied(event)) {
+    line = `${event.awayTeam} and ${event.homeTeam} tied ${winner.winnerScore}–${winner.loserScore}. Every pick on this game graded a push.`;
+  } else if (past && winner) {
     const hitNames = comparison.entries
       .filter((entry) => entry.status === "hit")
       .map((entry) => entry.name);

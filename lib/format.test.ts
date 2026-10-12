@@ -21,12 +21,15 @@ describe("verdicts", () => {
     expect(statusChipText("hit")).toBe("✓ Hit");
     expect(statusChipText("miss")).toBe("✗ Miss");
     expect(statusChipText("pending")).toBe("Open");
+    expect(statusChipText("push")).toBe("= Push");
+    expect(statusLabel("push")).toBe("Push");
   });
 
   it("maps status to a css verdict class", () => {
     expect(verdictClass("hit")).toBe("hit");
     expect(verdictClass("miss")).toBe("miss");
     expect(verdictClass("pending")).toBe("open");
+    expect(verdictClass("push")).toBe("push");
   });
 });
 

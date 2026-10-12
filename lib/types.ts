@@ -1,6 +1,7 @@
 export type CallKind = "hard" | "soft";
 
-export type CallStatus = "pending" | "hit" | "miss";
+/** "push": the game ended tied; neither hit nor miss, excluded from records. */
+export type CallStatus = "pending" | "hit" | "miss" | "push";
 
 /** How the stored claim should be presented. Absent means infer from evidence. */
 export type EvidenceKind = "spoken-quote" | "reported-selection";

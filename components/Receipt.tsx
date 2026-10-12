@@ -10,7 +10,7 @@ import type { Call } from "@/lib/types";
 
 export function Receipt({ take, calls }: { take: MappedTake; calls: Call[] }) {
   const { pundit, event, call } = take;
-  const graded = call.status === "hit" || call.status === "miss";
+  const graded = call.status !== "pending";
   const day = formatShortDate(call.sourceDate);
   const gradedDay = formatShortDate(call.gradedAt);
   const asOf = formatAsOf(event.sourcedAt);

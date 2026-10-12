@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadCalls } from "./data";
+import { loadCalls, loadEvents } from "./data";
 
 describe("2026 book", () => {
   it("gives each NFL voice at least one mapped Super Bowl lean", () => {
@@ -21,10 +21,22 @@ describe("2026 book", () => {
   it("only uses live statuses, and keeps speech ungraded", () => {
     const calls = loadCalls();
     for (const c of calls) {
-      expect(["pending", "hit", "miss"], c.id).toContain(c.status);
+      expect(["pending", "hit", "miss", "push"], c.id).toContain(c.status);
       if (c.kind !== "hard" || !c.eventSlug) {
         expect(c.status, c.id).toBe("pending");
       }
+    }
+  });
+
+  it("grades push only on mapped hard calls whose game ended tied", () => {
+    const events = new Map(loadEvents().map((e) => [e.slug, e]));
+    for (const c of loadCalls()) {
+      if (c.status !== "push") continue;
+      const e = events.get(c.eventSlug ?? "");
+      expect(c.kind, c.id).toBe("hard");
+      expect(e?.awayScore, c.id).not.toBeUndefined();
+      expect(e?.awayScore, c.id).toBe(e?.homeScore);
+      expect(c.gradedAt, c.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });
 

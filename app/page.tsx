@@ -138,6 +138,8 @@ export default function HomePage() {
   const byId = Object.fromEntries(pundits.map((p) => [p.id, p]));
   const stories = mappedTakes(calls, events, pundits).slice(0, 8);
   const recap = latestGradedWeekRecap(events, calls, pundits);
+  const ncaafRecap = latestGradedWeekRecap(events, calls, pundits, "ncaaf");
+  const nflRecap = latestGradedWeekRecap(events, calls, pundits, "nfl");
   const marquee = featured.hero;
   const ncaafCards = featured.ncaaf;
   const nflCards = featured.nfl;
@@ -145,11 +147,12 @@ export default function HomePage() {
     ncaafCards.length > 0 ||
     featured.ncaafCompact.length > 0 ||
     featured.ncaafFinal.length > 0 ||
-    recap?.sport === "ncaaf";
+    ncaafRecap != null;
   const showNfl =
     nflCards.length > 0 ||
     featured.nflCompact.length > 0 ||
-    featured.nflFinal.length > 0;
+    featured.nflFinal.length > 0 ||
+    nflRecap != null;
   const heroLede = marquee
     ? homeHeroLede(marquee, calls, pundits)
     : "College football and NFL picks from named analysts and commentators.";
@@ -220,7 +223,7 @@ export default function HomePage() {
         finals={featured.ncaafFinal}
         calls={calls}
         pundits={pundits}
-        recap={recap?.sport === "ncaaf" ? recap : null}
+        recap={ncaafRecap}
       />
       <Weekend
         id="nfl"
@@ -233,6 +236,7 @@ export default function HomePage() {
         finals={featured.nflFinal}
         calls={calls}
         pundits={pundits}
+        recap={nflRecap}
       />
 
       <section id="futures" className="board">

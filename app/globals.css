@@ -1076,6 +1076,8 @@ a.empty.event-price-link { color: var(--muted); }
 .verdict-hit { color: var(--green); }
 .verdict-miss { color: var(--red); }
 .verdict-open { color: var(--muted); }
+.verdict-push { color: var(--muted); }
+.result-chip.push { color: var(--muted); }
 .see-why {
   align-items: center;
   display: flex;

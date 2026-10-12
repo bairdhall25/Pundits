@@ -145,12 +145,26 @@ export function settledSide(event: Event, calls: Call[]): Side | null {
   if (!mapped.length || mapped.some((c) => c.status === "pending")) return null;
   const inferred = new Set<Side>();
   for (const c of mapped) {
-    if (!c.side) continue;
+    if (!c.side || c.status === "push") continue;
     if (c.status === "hit") inferred.add(c.side);
     else inferred.add(c.side === "yes" ? "no" : "yes");
   }
   if (inferred.size !== 1) return null;
   return [...inferred][0];
+}
+
+/** A tied game: every mapped call graded push. */
+export function settledTie(event: Event, calls: Call[]): boolean {
+  const mapped = callsForEvent(event.slug, calls);
+  return mapped.length > 0 && mapped.every((c) => c.status === "push");
+}
+
+export function gameTied(event: Event): boolean {
+  return (
+    event.awayScore != null &&
+    event.homeScore != null &&
+    event.awayScore === event.homeScore
+  );
 }
 
 export function settledLabel(event: Event, calls: Call[]): string | null {
@@ -196,7 +210,7 @@ export function gameComplete(event: Event): boolean {
 }
 
 export function picksFinished(event: Event, calls: Call[]): boolean {
-  return settledSide(event, calls) != null;
+  return settledSide(event, calls) != null || settledTie(event, calls);
 }
 
 export function eventScanStatus(event: Event, calls: Call[]): EventScanStatus {
@@ -211,7 +225,11 @@ export function eventScanStatus(event: Event, calls: Call[]): EventScanStatus {
 export function eventStatusLine(event: Event, calls: Call[]): string {
   const status = eventScanStatus(event, calls);
   const score = finalScoreParts(event, calls);
-  const scoreBit = score ? `${score.winner} ${score.winnerScore}–${score.loserScore}` : null;
+  const scoreBit = score
+    ? gameTied(event)
+      ? `Tie ${score.winnerScore}–${score.loserScore}`
+      : `${score.winner} ${score.winnerScore}–${score.loserScore}`
+    : null;
   if (status === "open") return "Open";
   if (status === "grading") {
     return scoreBit ? `Final · Grading · ${scoreBit}` : "Final · Grading";

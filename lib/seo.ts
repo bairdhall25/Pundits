@@ -1,5 +1,5 @@
 import { takesOnTeam } from "./archive";
-import { finalScoreParts, isMapped, seasonFromCalls } from "./data";
+import { finalScoreParts, gameTied, isMapped, seasonFromCalls } from "./data";
 import {
   evidenceKindFor,
   presentEvidence,
@@ -95,6 +95,7 @@ export function receiptSnapshotTape(event: Event): string {
 
 function resultLine(take: MappedTake): string | null {
   const { event, call } = take;
+  if (call.status === "push") return "Result: the game ended in a tie. This pick graded a push.";
   const graded = call.status === "hit" || call.status === "miss";
   if (!graded) return null;
   const game = gamePick(event, call);
@@ -163,6 +164,9 @@ export function takeHeadline(pundit: Pundit, event: Event, call: Call): string {
   const graded = call.status === "hit" || call.status === "miss";
   const game = gamePick(event, call);
   if (game) {
+    if (call.status === "push") {
+      return `${pundit.name} picked ${game.picked} over ${game.other} — a push (tie)`;
+    }
     if (!graded) return `${pundit.name} picks ${game.picked} over ${game.other}`;
     const verdict =
       call.status === "hit" ? " — and hit" : ` — and missed (${game.other} won)`;
@@ -191,7 +195,11 @@ export function takeMetaTitle(pundit: Pundit, event: Event, call: Call): string 
   const headline = takeHeadline(pundit, event, call);
   if (withinTitleBudget(headline)) return headline;
   const graded = call.status === "hit" || call.status === "miss";
-  const verdict = graded ? ` — ${call.status === "hit" ? "Hit" : "Miss"}` : "";
+  const verdict = graded
+    ? ` — ${call.status === "hit" ? "Hit" : "Miss"}`
+    : call.status === "push"
+      ? " — Push"
+      : "";
   const game = gamePick(event, call);
   if (game) {
     const compact = `${pundit.name}: ${game.picked} over ${game.other}${verdict}`;
@@ -264,12 +272,14 @@ export function pickStory(
 
   const dek = game
     ? [
-        graded
-          ? `Result: ${call.status === "hit" ? game.picked : game.other} won — this pick ${
-              call.status === "hit" ? "hit" : "missed"
-            }.`
-          : null,
-        `${pundit.name} ${graded ? "picked" : "picks"} ${game.picked} over ${game.other}.`,
+        call.status === "push"
+          ? "Result: the game ended in a tie — this pick graded a push."
+          : graded
+            ? `Result: ${call.status === "hit" ? game.picked : game.other} won — this pick ${
+                call.status === "hit" ? "hit" : "missed"
+              }.`
+            : null,
+        `${pundit.name} ${graded || call.status === "push" ? "picked" : "picks"} ${game.picked} over ${game.other}.`,
         dog,
         evidence.kind === "reported-selection"
           ? "Here is the reported selection and the snapshot context."
@@ -292,9 +302,21 @@ export function gradeSheet(take: MappedTake, calls: Call[], pundits: Pundit[]): 
   const game = gamePick(event, call);
   const rows: GradeRow[] = [];
 
+  if (call.status === "push") {
+    const score = finalScoreParts(event, calls);
+    rows.push({
+      label: "Result",
+      value: score
+        ? `Tied ${score.winnerScore}–${score.loserScore}. Graded a push: not a hit or a miss, and left out of records.`
+        : "Tie. Graded a push: not a hit or a miss, and left out of records.",
+    });
+  }
+
   if (graded) {
     const score = finalScoreParts(event, calls);
-    if (score) {
+    if (score && gameTied(event)) {
+      rows.push({ label: "Result", value: `Tied ${score.winnerScore}–${score.loserScore}.` });
+    } else if (score) {
       rows.push({
         label: "Result",
         value: `${score.winner} won ${score.winnerScore}–${score.loserScore}.`,

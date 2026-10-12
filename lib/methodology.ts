@@ -17,7 +17,7 @@ export const METHODOLOGY_FAQ = [
   {
     question: "How are picks graded?",
     answer:
-      "A mapped hard pick stays pending until the game or contract settles. Then it becomes a hit or miss against the event's objective result. On games, that tracked result is the straight-up winner, not a spread cover. Soft and unmapped takes stay out of the record.",
+      "A mapped hard pick stays pending until the game or contract settles. Then it becomes a hit or miss against the event's objective result. On games, that tracked result is the straight-up winner, not a spread cover. A game that ends in a tie grades every pick on it as a push: neither a hit nor a miss, and left out of records. Soft and unmapped takes stay out of the record.",
   },
   {
     question: "What does hypothetical $100 mean?",
