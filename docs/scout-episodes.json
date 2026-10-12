@@ -2020,6 +2020,595 @@
           ]
         }
       ]
+    },
+    {
+      "id": "herd:1000796006882",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 1 – 49ers HUGE Win Over Seahawks | Jordan Love’s MASSIVE Day vs Bears",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000796006882",
+      "locator": "i=1000796006882",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; Colin only (Cowherd Bills–Rams already carded)",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; Colin only (Cowherd Bills–Rams already carded)",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796006883",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 2 – Colin Was Right About Eagles & Nick Sirianni | Eagles EPIC Collapse AGAIN",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000796006883",
+      "locator": "i=1000796006883",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; no MNF pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; no MNF pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796006711",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 3 – Brock Purdy Is The MVP",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000796006711",
+      "locator": "i=1000796006711",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny + small.en; Herdline News J Mac Rams 31-27 (corroborates Straight Fire jmac row; diarization split); no Bets row (over line speaker split)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny + small.en; Herdline News J Mac Rams 31-27 (corroborates Straight Fire jmac row; diarization split); no Bets row (over line speaker split)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000795871018",
+      "factoryId": "herd",
+      "title": "Colin Cowherd Podcast - Reaction to: 49ers-Seahawks, Bears-Packers, Eagles-Jaguars, Broncos-Chargers",
+      "published": "2026-10-11",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000795871018",
+      "locator": "i=1000795871018",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny ~1:29:51 / audio ~1:39:45; john-middlekauff Bills YES",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny ~1:29:51 / audio ~1:39:45; john-middlekauff Bills YES",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000795929608",
+      "factoryId": "herd",
+      "title": "3 & Out - NFL Week 5 Reaction",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1042368254?i=1000795929608",
+      "locator": "i=1000795929608",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; no Bills–Rams pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; no Bills–Rams pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eisen:1000795996912",
+      "factoryId": "eisen",
+      "title": "Hour 1: NFC East Comedy of Errors, plus 49ers-Seahawks Slugfest & Packers Rout Bears",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id926642601?i=1000795996912",
+      "locator": "i=1000795996912",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "base.en full; no Eisen MNF winner",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "base.en full; no Eisen MNF winner",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eisen:1000795997668",
+      "factoryId": "eisen",
+      "title": "Hour 2: ESPN’s Marcus Spears Talks NFC East, 49ers & More, plus Rich’s NFC North Takeaways",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id926642601?i=1000795997668",
+      "locator": "i=1000795997668",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "small.en 25:50–28:40; Spears conditional only ('If James Cook is not the MVP… Buffalo won't win'; 'real shot') — not a pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "small.en 25:50–28:40; Spears conditional only ('If James Cook is not the MVP… Buffalo won't win'; 'real shot') — not a pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mcafee:1000796006943",
+      "factoryId": "mcafee",
+      "title": "PMS 2.0 1643 - OVERREACTION MONDAY, NFL Week 5 Recap, MNF Preview/Picks",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1435183458?i=1000796006943",
+      "locator": "i=1000796006943",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "base.en full + small.en 1:53–1:54, 1:56:40–2:02; hawk/butler/mcafee Rams NO; Ty Schmit candidate; Orlovsky guest analysis only",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "base.en full + small.en 1:53–1:54, 1:56:40–2:02; hawk/butler/mcafee Rams NO; Ty Schmit candidate; Orlovsky guest analysis only",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000795971219",
+      "factoryId": "gmfb",
+      "title": "GMFB Monday Hour 1: Week 5 Highlights, First Tie, and Chase Daniel",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000795971219",
+      "locator": "i=1000795971219",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; MNF promo only",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; MNF promo only",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000795979816",
+      "factoryId": "gmfb",
+      "title": "GMFB Monday Hour 2: Steelers win, Packers Impress, Mendoza debut, and Game Balls!",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1171438277?i=1000795979816",
+      "locator": "i=1000795979816",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; Kyle 'Bills win by 14' joke to Mariachi band — not a pick/flip",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; Kyle 'Bills win by 14' joke to Mariachi band — not a pick/flip",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796003160",
+      "factoryId": "clay-travis",
+      "title": "Daily Review with Clay and Buck - Oct 12 2026",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000796003160",
+      "locator": "i=1000796003160",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; ad read only",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; ad read only",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796003135",
+      "factoryId": "clay-travis",
+      "title": "Hour 1 - Fool Us Once with Talarico",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000796003135",
+      "locator": "i=1000796003135",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; politics",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; politics",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796002054",
+      "factoryId": "clay-travis",
+      "title": "Hour 2 - Dougie & Donors Don't Want Kamala",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000796002054",
+      "locator": "i=1000796002054",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; politics",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; politics",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796002055",
+      "factoryId": "clay-travis",
+      "title": "Hour 3 - Girls Gone Wild at the Gym?",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1498106610?i=1000796002055",
+      "locator": "i=1000796002055",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcript; Bets only — Clay over 54.5 Bills–Rams (Hard Rock ad read)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcript; Bets only — Clay over 54.5 Bills–Rams (Hard Rock ad read)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "straight-fire:1000795918355",
+      "factoryId": "straight-fire",
+      "title": "Straight Fire - 49ers Peaking Too Early, Nick Sirianni on the Hot Seat, Changes Coming to the Chargers & More!",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1523353907?i=1000795918355",
+      "locator": "i=1000795918355",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny ~31:04; jmac Rams NO + Bets; co-host 'Rob' Rams (surname not stated) dropped",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny ~31:04; jmac Rams NO + Bets; co-host 'Rob' Rams (surname not stated) dropped",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first-take:1000795976940",
+      "factoryId": "first-take",
+      "title": "Hour 2: Which NFC East team has been the most Disappointing?",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id428989929?i=1000795976940",
+      "locator": "i=1000795976940",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "small.en 36:40–37:45; orlovsky Rams NO ('Dan, who you take')",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "small.en 36:40–37:45; orlovsky Rams NO ('Dan, who you take')",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first-take:1000795971886",
+      "factoryId": "first-take",
+      "title": "Hour 1: Who is more to blame for the Commanders blunder: Jayden Daniels or Dan Quinn?",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id428989929?i=1000795971886",
+      "locator": "i=1000795971886",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "base.en full; no MNF pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "base.en full; no MNF pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nightcap:1000795908297",
+      "factoryId": "nightcap",
+      "title": "Nightcap Hour 1/2/3 (Mon 2026-10-12 drops)",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1706534198?i=1000795908297",
+      "locator": "i=1000795908297",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "Omny transcripts H1–H3 + Deebo & Joe P1/P2; no Bills–Rams pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "Omny transcripts H1–H3 + Deebo & Joe P1/P2; no Bills–Rams pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simmons:1000795905108",
+      "factoryId": "simmons",
+      "title": "The Unflappable 49ers, Bad Coaching Galore… Guess the Lines With Cousin Sal",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1043699613?i=1000795905108",
+      "locator": "i=1000795905108",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-12T16:50:00-04:00",
+      "coverage": [
+        {
+          "targetId": "bills-at-rams-2026",
+          "locator": "base.en full + small.en 72:30–74:00; 'they'll probably lose to the Rams' unattributed (Bill vs Sal) in line-guessing — not staged",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-12T16:50:00-04:00",
+          "coverage": [
+            {
+              "targetId": "bills-at-rams-2026",
+              "locator": "base.en full + small.en 72:30–74:00; 'they'll probably lose to the Rams' unattributed (Bill vs Sal) in line-guessing — not staged",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
