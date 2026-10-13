@@ -6370,10 +6370,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "cowherd-bears-at-packers-20261009",
@@ -6449,10 +6450,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "john-middlekauff-bears-at-packers-20261009",
@@ -6512,10 +6514,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "simms-bears-at-packers-20261009",
@@ -6671,10 +6674,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-10"
+    "firstPublishedAt": "2026-10-10",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "coughlin-eagles-vs-jaguars-20261009",
@@ -7723,10 +7727,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-11"
+    "firstPublishedAt": "2026-10-11",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "jmac-texans-at-titans-20261009",
@@ -8032,11 +8037,12 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-12",
-    "reasoning": "McIntyre says he likes the Rams' secondary matchups and doubts Josh Allen is 100 percent, noting Allen ran only twice last week and was limping after the Chargers game."
+    "reasoning": "McIntyre says he likes the Rams' secondary matchups and doubts Josh Allen is 100 percent, noting Allen ran only twice last week and was limping after the Chargers game.",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "john-middlekauff-bills-at-rams-20261011",
@@ -8048,11 +8054,12 @@
     "kind": "hard",
     "subject": "Bills",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "bills-at-rams-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-12",
-    "reasoning": "Middlekauff says the Bills can still get after the Rams' secondary, and with Matthew Stafford unable to move, a Bills pass rush that gets to him could make it a long night."
+    "reasoning": "Middlekauff says the Bills can still get after the Rams' secondary, and with Matthew Stafford unable to move, a Bills pass rush that gets to him could make it a long night.",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "hawk-bills-at-rams-20261012",
@@ -8064,11 +8071,12 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-12",
-    "reasoning": "Hawk says he likes the Rams' defense more than the Bills' defense right now and thinks Matthew Stafford is going to have a magical night."
+    "reasoning": "Hawk says he likes the Rams' defense more than the Bills' defense right now and thinks Matthew Stafford is going to have a magical night.",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "butler-bills-at-rams-20261012",
@@ -8080,11 +8088,12 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-12",
-    "reasoning": "Butler says the Rams' healthy receivers, Davante Adams and Puka Nacua, face Buffalo cornerbacks who have not been great this year, and DJ Moore getting banged up has him more worried about the Bills offense."
+    "reasoning": "Butler says the Rams' healthy receivers, Davante Adams and Puka Nacua, face Buffalo cornerbacks who have not been great this year, and DJ Moore getting banged up has him more worried about the Bills offense.",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "mcafee-bills-at-rams-20261012",
@@ -8096,10 +8105,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
-    "firstPublishedAt": "2026-10-12"
+    "firstPublishedAt": "2026-10-12",
+    "gradedAt": "2026-10-12"
   },
   {
     "id": "orlovsky-bills-at-rams-20261012",
@@ -8111,10 +8121,11 @@
     "kind": "hard",
     "subject": "Rams",
     "paysOn": "Bills at Rams (Week 5)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "bills-at-rams-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-12",
-    "reasoning": "Orlovsky says the Rams' pass catchers, Davante Adams and Puka Nacua, have the edge over a Buffalo cornerback group that has struggled lately, and the Bills offense hasn't been very good the last two weeks."
+    "reasoning": "Orlovsky says the Rams' pass catchers, Davante Adams and Puka Nacua, have the edge over a Buffalo cornerback group that has struggled lately, and the Bills offense hasn't been very good the last two weeks.",
+    "gradedAt": "2026-10-12"
   }
 ]

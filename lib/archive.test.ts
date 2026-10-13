@@ -189,9 +189,9 @@ describe("latestGradedWeekRecap", () => {
     );
     expect(recap).not.toBeNull();
     expect(recap!.href).toBe("/nfl/2026/week-5/");
-    // NFL lines name the league; Giants-Commanders 27-27 pushes stay out of 32–24.
+    // NFL lines name the league; Giants-Commanders 27-27 pushes stay out of 33–34 after MNF.
     expect(recap!.line).toBe(
-      "NFL Week 5: experts went 32–24. A.J. Hawk, Chris Simms, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Mike Florio, Mina Kimes, Nick Wright, Sheil Kapadia, and Stanford Steve Coughlin hit."
+      "NFL Week 5: experts went 33–34. A.J. Hawk, Chris Simms, Colin Cowherd, Jason McIntyre, John Middlekauff, Kyle Brandt, Mike Florio, Mina Kimes, Nick Wright, Sheil Kapadia, and Stanford Steve Coughlin hit."
     );
   });
 

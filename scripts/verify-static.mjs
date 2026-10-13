@@ -38,11 +38,12 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-assert.match(home, /Nick Wright, Colin Cowherd, Kyle Brandt, Chris Simms, Mike Florio, Jason McIntyre, A\.J\. Hawk, Darius Butler, Pat McAfee, and Dan Orlovsky pick Rams\. John Middlekauff picks Bills\./);
-assert.match(home, /href="\/picks\/bills-at-rams-2026\/"/);
+// MNF Bills at Rams is final — no open featured hero; default lede.
+// Homepage Final rows only list kickoffDate===today, so after midnight ET the receipt may leave home.
+assert.match(home, /College football and NFL picks from named analysts and commentators\./);
 // Weekly record lines: college keeps its line; NFL weeks render too, pushes excluded.
 assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-6\/">Week 6: experts went 40–55\./);
-assert.match(home, /class="week-recap"><a href="\/nfl\/2026\/week-5\/">NFL Week 5: experts went 32–24\./);
+assert.match(home, /class="week-recap"><a href="\/nfl\/2026\/week-5\/">NFL Week 5: experts went 33–34\./);
 assert.match(home, /Week 5 · Oct 11–12 · Week 4 is final/);
 assert.match(home, /Biggest disagreements/);
 assert.match(home, /Indiana wins the national title/);
@@ -96,6 +97,13 @@ const lsuOleMiss = await readFile(
 );
 assert.match(lsuOleMiss, /LSU at Ole Miss/);
 assert.match(lsuOleMiss, /Final: Ole Miss 32, LSU 24/);
+
+const billsRams = await readFile(
+  path.join(out, "picks/bills-at-rams-2026/index.html"),
+  "utf8"
+);
+assert.match(billsRams, /Bills at Rams/);
+assert.match(billsRams, /Final: Bills 37, Rams 34|Final · Bills 37–34/);
 
 const story = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/finebaum/index.html"),
@@ -430,7 +438,7 @@ assert.match(weekNfl2, /Rams beat Giants/);
 
 const nflSlate = await readFile(path.join(out, "nfl/index.html"), "utf8");
 assert.match(nflSlate, /data-page-type="league"/);
-assert.match(nflSlate, /NFL Week 5: who picked whom/);
+assert.match(nflSlate, /NFL Week 5: who called it/);
 assert.match(nflSlate, /Week 4 is final/);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-5\//);
 assert.match(nflSlate, /href="\/nfl\/2026\/week-4\//);

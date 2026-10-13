@@ -3345,7 +3345,10 @@
       "kickoffDate": "2026-10-12",
       "awayTeamId": "bills",
       "homeTeamId": "rams",
-      "week": 5
+      "week": 5,
+      "awayScore": 37,
+      "homeScore": 34,
+      "resultUrl": "https://www.espn.com/nfl/game/_/gameId/401872994/bills-rams"
     },
     {
       "slug": "raiders-at-patriots-2026",

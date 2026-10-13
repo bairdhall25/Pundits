@@ -305,7 +305,7 @@ describe("league page contract", () => {
   it("keeps the NFL live week and points at the permanent archive", () => {
     const content = leagueContent("nfl", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("NFL");
-    expect(content.title).toBe("NFL Week 5: who picked whom");
+    expect(content.title).toBe("NFL Week 5: who called it");
     expect(content.currentWeek?.week).toBe(5);
     expect(content.currentWeek?.href).toBe("/nfl/2026/week-5/");
     expect(content.previous?.href).toBe("/nfl/2026/week-4/");
