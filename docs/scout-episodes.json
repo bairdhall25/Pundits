@@ -2609,6 +2609,68 @@
           ]
         }
       ]
+    },
+    {
+      "id": "see-ball:1000796074799",
+      "factoryId": "see-ball",
+      "title": "David Pollack's CFP 12 | Nico Iamaleava OUT for UCLA | Auburn Missing Key Piece vs. Georgia",
+      "published": "2026-10-13",
+      "url": "https://podcasts.apple.com/us/podcast/id1769665459?i=1000796074799",
+      "locator": "i=1000796074799",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-13T16:40:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en 7:36–15:12 (Auburn–Georgia, CFP 12) + 27:30–34:45 (ND–BYU, OSU–Indiana); preview analysis only, no winner pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-13T16:40:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en 7:36–15:12 (Auburn–Georgia, CFP 12) + 27:30–34:45 (ND–BYU, OSU–Indiana); preview analysis only, no winner pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bfw:1000796041472",
+      "factoryId": "bfw",
+      "title": "Brandon Gives His Playoff Long shot + 1 on 1 with Bob Chesney & Billy Liucci | The BFW Show 10.12.26",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1375714621?i=1000796041472",
+      "locator": "i=1000796041472",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-13T16:40:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en 'Drafting the best games from Week 7' chapter (YT W0dzGQhHCiM 58:17–1:04:49); games-to-watch draft, no winner pick",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-13T16:40:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en 'Drafting the best games from Week 7' chapter (YT W0dzGQhHCiM 58:17–1:04:49); games-to-watch draft, no winner pick",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
