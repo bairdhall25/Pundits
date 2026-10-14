@@ -3,6 +3,126 @@
   "windowDays": 3,
   "episodes": [
     {
+      "id": "eisen:1000796370612",
+      "factoryId": "eisen",
+      "title": "Hour 3: ESPN CFB Analyst Josh Pate Talks Ohio State-Indiana, UCLA’s Bob Chesney & More",
+      "published": "2026-10-14T19:24:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-3-espn-cfb-analyst-josh-pate-talks-ohio-state/id926642601?i=1000796370612&uo=4",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-14T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "full/pick-windows",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-14T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "full/pick-windows",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nfl-daily:1000796223010",
+      "factoryId": "gmfb",
+      "title": "Would You Rather: Trade Herbert... + Seahawks-Broncos TNF Preview",
+      "published": "2026-10-13T23:33:09Z",
+      "url": "https://podcasts.apple.com/us/podcast/would-you-rather-trade-herbert-eagles-fandom-qb-or/id680904259?i=1000796223010&uo=4",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-14T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "full/pick-windows",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-14T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "full/pick-windows",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharp-or-square:1000796223603",
+      "factoryId": "herd",
+      "title": "Sharp or Square - NFL WEEK 6 BETS: Seahawks-Broncos, Bears-Falcons and more",
+      "published": "2026-10-13T23:25:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/sharp-or-square-nfl-week-6-bets-seahawks-broncos-bears/id1042368254?i=1000796223603&uo=4",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-14T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "full/pick-windows",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-14T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "full/pick-windows",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pate:1000796237740",
+      "factoryId": "pate",
+      "title": "Week 7 Predictions + New JP Poll & Big Overreactions",
+      "published": "2026-10-14T02:02:49Z",
+      "url": "https://podcasts.apple.com/us/podcast/week-7-predictions-new-jp-poll-big-overreactions/id1485905502?i=1000796237740&uo=4",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-14T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "full/pick-windows",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-14T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "full/pick-windows",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "bfw:QdvGRQpvLIU",
       "factoryId": "bfw",
       "title": "Week 3 Preview + 1 on 1 Geoff Collins & Brooks Austin | The BFW Show 9.17.26",
