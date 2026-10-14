@@ -2671,6 +2671,130 @@
           ]
         }
       ]
+    },
+    {
+      "id": "andy-ari:1000796000479",
+      "factoryId": "andy-ari",
+      "title": "PICKING College Football Week 7: Ohio State-Indiana, Alabama-Tennessee, FSU-Miami, Notre Dame-BYU",
+      "published": "2026-10-12",
+      "url": "https://podcasts.apple.com/us/podcast/id1695325427?i=1000796000479",
+      "locator": "i=1000796000479",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-13T22:10:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en ~1:17:01–1:18:26 (FSU–Miami: wasserman + staples Miami) and ~1:26:37–1:27:50 (ND–BYU: staples Notre Dame); all 8 pick chapters windowed; ATS dogs → Bets",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-13T22:10:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en ~1:17:01–1:18:26 (FSU–Miami: wasserman + staples Miami) and ~1:26:37–1:27:50 (ND–BYU: staples Notre Dame); all 8 pick chapters windowed; ATS dogs → Bets",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "andy-ari:1000796190890",
+      "factoryId": "andy-ari",
+      "title": "Picking MORE of Week 7 in CFB: Wisconsin-UCLA, Auburn-Georgia, Oklahoma St-Houston, Nebraska-Oregon",
+      "published": "2026-10-13",
+      "url": "https://podcasts.apple.com/us/podcast/id1695325427?i=1000796190890",
+      "locator": "i=1000796190890",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-13T22:10:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en windows on 5 pick chapters; favorite picks lack same-turn name cue (UCLA, Georgia, Oregon); Wisconsin/Kentucky dogs → not staged",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-13T22:10:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en windows on 5 pick chapters; favorite picks lack same-turn name cue (UCLA, Georgia, Oregon); Wisconsin/Kentucky dogs → not staged",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cover3:1000796176808",
+      "factoryId": "cover3",
+      "title": "Week 7 College Football Previews & Predictions | BIG GAME BREAKDOWN",
+      "published": "2026-10-13",
+      "url": "https://podcasts.apple.com/us/podcast/id1257913963?i=1000796176808",
+      "locator": "i=1000796176808",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-13T22:10:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en full 0:00–1:28:50 + no-VAD gap fill; preview analysis only, LOCKS Thursday",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-13T22:10:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en full 0:00–1:28:50 + no-VAD gap fill; preview analysis only, LOCKS Thursday",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hard-count:1000796153345",
+      "factoryId": "hard-count",
+      "title": "College Football Week 7 PREDICTIONS",
+      "published": "2026-10-13",
+      "url": "https://podcasts.apple.com/us/podcast/id1634039449?i=1000796153345",
+      "locator": "i=1000796153345",
+      "inspected": true,
+      "outcome": "opened",
+      "inspectedAt": "2026-10-13T22:10:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en no-VAD full; five J.D. PicKell SUs ~16:20/33:39/47:47/1:01:42/1:16:45 not staged (candidate-jd-pickell closed)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "opened",
+          "inspectedAt": "2026-10-13T22:10:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en no-VAD full; five J.D. PicKell SUs ~16:20/33:39/47:47/1:01:42/1:16:45 not staged (candidate-jd-pickell closed)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
