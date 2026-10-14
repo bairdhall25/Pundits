@@ -314,13 +314,13 @@ describe("league page contract", () => {
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
 
-  it("treats a fully graded college week as who called it and still links the previous archive", () => {
+  it("treats an open college week as who picked whom and still links the previous archive", () => {
     const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("College football");
-    expect(content.title).toBe("College football Week 6: who called it");
-    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-6/");
-    expect(content.lede).toContain("Week 6");
-    expect(content.previous?.href).toBe("/ncaaf/2026/week-5/");
+    expect(content.title).toBe("College football Week 7: who picked whom");
+    expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-7/");
+    expect(content.lede).toContain("Week 7");
+    expect(content.previous?.href).toBe("/ncaaf/2026/week-6/");
     expect(content.title).not.toMatch(/best experts|expert picks/i);
   });
 

@@ -38,9 +38,8 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-// MNF Bills at Rams is final — no open featured hero; default lede.
-// Homepage Final rows only list kickoffDate===today, so after midnight ET the receipt may leave home.
-assert.match(home, /College football and NFL picks from named analysts and commentators\./);
+// Week 7 minted (2026-10-13 night): Florida State at Miami is the open featured hero.
+assert.match(home, /Ari Wasserman and Andy Staples pick Miami\. Nobody on Florida State yet\./);
 // Weekly record lines: college keeps its line; NFL weeks render too, pushes excluded.
 assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-6\/">Week 6: experts went 40–55\./);
 assert.match(home, /class="week-recap"><a href="\/nfl\/2026\/week-5\/">NFL Week 5: experts went 33–34\./);
@@ -466,8 +465,8 @@ assert.match(weekCfb4, /Oregon beat USC/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 6: who called it/);
-assert.match(ncaafSlate, /Week 5 is final/);
+assert.match(ncaafSlate, /College football Week 7: who picked whom/);
+assert.match(ncaafSlate, /Week 6 is final/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-6\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-5\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-4\//);
