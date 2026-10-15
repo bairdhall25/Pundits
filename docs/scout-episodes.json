@@ -2915,6 +2915,161 @@
           ]
         }
       ]
+    },
+    {
+      "id": "pate:1000796394355",
+      "factoryId": "pate",
+      "title": "The Locker Room - CFB Week 7 Picks: Josh Pate, Will Compton DISAGREE On Ohio State-Indiana + Taylor Lewan LOVES Bama",
+      "published": "2026-10-14T22:45:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-locker-room-cfb-week-7-picks-josh-pate-will/id1485905502?i=1000796394355&uo=4",
+      "locator": "i=1000796394355",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-14T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny 1:09:45 compton Ohio State −3.5 (audio ~76:55); Omny 46:09–47:10 compton Oklahoma −6.5 (audio ~53:41–54:22); all pick chapters read; Lewan SUs not staged (candidate closed); compton ND moved to under",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-14T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny 1:09:45 compton Ohio State −3.5 (audio ~76:55); Omny 46:09–47:10 compton Oklahoma −6.5 (audio ~53:41–54:22); all pick chapters read; Lewan SUs not staged (candidate closed); compton ND moved to under",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796395807",
+      "factoryId": "herd",
+      "title": "The Richard Sherman Podcast - NFL Week 6 PREDICTIONS: Seahawks-Broncos, 49ers-Commanders, Cowboys-Packers, & Chiefs",
+      "published": "2026-10-14T23:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-richard-sherman-podcast-nfl-week-6-predictions/id1042368254?i=1000796395807&uo=4",
+      "locator": "i=1000796395807",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-14T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~17:32 Seahawks TNF (audio ~22:14); rest of Week 6 slate ~23:54–56:32 not staged (Sunday/Monday unminted)",
+          "status": "partial"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-14T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~17:32 Seahawks TNF (audio ~22:14); rest of Week 6 slate ~23:54–56:32 not staged (Sunday/Monday unminted)",
+              "status": "partial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pick-em:1000796395344",
+      "factoryId": "pick-em",
+      "title": "RICO BOSCO VS. ED BROWN PICKS CHALLENGE | Pick Em - Week 7",
+      "published": "2026-10-14T23:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/rico-bosco-vs-ed-brown-picks-challenge-pick-em-week-7/id1277969212?i=1000796395344&uo=4",
+      "locator": "i=1000796395344",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-14T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "base.en full; small.en 73:40–78:18 ND–BYU; cards ~79:02–86:00 ATS; BYU outright lean unattributed",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-14T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "base.en full; small.en 73:40–78:18 ND–BYU; cards ~79:02–86:00 ATS; BYU outright lean unattributed",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796399236",
+      "factoryId": "gmfb",
+      "title": "2026 Week 6 Early Games Preview: Ravens-Browns and Patriots-Jets Rivalry Games, Panthers Statement Game and more!",
+      "published": "2026-10-14T23:29:07Z",
+      "url": "https://podcasts.apple.com/us/podcast/2026-week-6-early-games-preview-ravens-browns-and/id680904259?i=1000796399236&uo=4",
+      "locator": "i=1000796399236",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-14T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript scan full; preview analysis, no named winners",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-14T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript scan full; preview analysis, no named winners",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796397209",
+      "factoryId": "gmfb",
+      "title": "2026 Week 6 Standalone and Late Games Preview: Cowboys-Packers on SNF, Texans-Jaguars in London, Chargers-Chiefs Rivalry and more!",
+      "published": "2026-10-14T23:19:31Z",
+      "url": "https://podcasts.apple.com/us/podcast/2026-week-6-standalone-and-late-games-preview-cowboys/id680904259?i=1000796397209&uo=4",
+      "locator": "i=1000796397209",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-14T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript scan full; preview analysis, no named winners",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-14T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript scan full; preview analysis, no named winners",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
