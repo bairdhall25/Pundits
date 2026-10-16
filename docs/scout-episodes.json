@@ -3070,6 +3070,99 @@
           ]
         }
       ]
+    },
+    {
+      "id": "simms:1000796534534",
+      "factoryId": "simms",
+      "title": "John Lynch on 49ers injuries; Seahawks Broncos TNF pick",
+      "published": "2026-10-15T18:54:02Z",
+      "url": "https://podcasts.apple.com/us/podcast/john-lynch-on-49ers-injuries-seahawks-broncos-tnf-pick/id1454809704?i=1000796534534&uo=4",
+      "locator": "i=1000796534534",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-15T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en TNF preview ~31:23 + props/pick ~39:24; no-VAD tight; simms + connor-rogers Seahawks",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-15T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en TNF preview ~31:23 + props/pick ~39:24; no-VAD tight; simms + connor-rogers Seahawks",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "whats-wright:1000796531142",
+      "factoryId": "whats-wright",
+      "title": "Broncos Bo Nix PROBLEM, Cowboys-Packers BLOCKBUSTER SHOWDOWN, Caleb Williams RETURN to Bears? | NFL",
+      "published": "2026-10-15T18:16:57Z",
+      "url": "https://podcasts.apple.com/us/podcast/broncos-bo-nix-problem-cowboys-packers-blockbuster/id1612694726?i=1000796531142&uo=4",
+      "locator": "i=1000796531142",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-15T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en 0–20 + 15–40; nick-wright Seahawks ~23:36",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-15T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en 0–20 + 15–40; nick-wright Seahawks ~23:36",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wise-guys:1000796523942",
+      "factoryId": "wise-guys",
+      "title": "Are the Dodgers Done? Plus, Seahawks-Broncos Preview and NBA Win Totals. | Ringer Wise Guys",
+      "published": "2026-10-15T17:12:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/are-the-dodgers-done-plus-seahawks-broncos-preview/id1583806760?i=1000796523942&uo=4",
+      "locator": "i=1000796523942",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-15T21:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en TNF ~2:50–16:35; Seahawks lean unattributed among Sal/Bundle/Raheem",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-15T21:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en TNF ~2:50–16:35; Seahawks lean unattributed among Sal/Bundle/Raheem",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
