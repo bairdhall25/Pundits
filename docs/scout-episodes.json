@@ -3163,6 +3163,68 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bfw:1000796420565",
+      "factoryId": "bfw",
+      "title": "Week 7 Preview + Mid Season Awards + 1 on 1 with Will Stein & Jordan Davis | The BFW Show 10.14.26",
+      "published": "2026-10-15T03:01:37Z",
+      "url": "https://podcasts.apple.com/us/podcast/week-7-preview-mid-season-awards-1-on-1-with-will/id1375714621?i=1000796420565&uo=4",
+      "locator": "i=1000796420565",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T11:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "slate 18:40–45:00; walker ND YES mapped + OSU/Ole Miss/Texas overflow; Candidate liam-blutman Alabama",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T11:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "slate 18:40–45:00; walker ND YES mapped + OSU/Ole Miss/Texas overflow; Candidate liam-blutman Alabama",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cover3:1000796520885",
+      "factoryId": "cover3",
+      "title": "Week 7 LOCKS 🔒 Best Bets, Against The Spread Picks, Moneyline Sprinkles & More! | Cover 3",
+      "published": "2026-10-15T16:54:33Z",
+      "url": "https://podcasts.apple.com/us/podcast/week-7-locks-best-bets-against-the-spread-picks/id1257913963?i=1000796520885&uo=4",
+      "locator": "i=1000796520885",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T11:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "ML sprinkles ~78:31–86:32; 15 ML-dog SU overflow (fornelli/elliott/patterson/kanell); 10-15a lock board ~41:38 elliott ND",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T11:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "ML sprinkles ~78:31–86:32; 15 ML-dog SU overflow (fornelli/elliott/patterson/kanell); 10-15a lock board ~41:38 elliott ND",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
