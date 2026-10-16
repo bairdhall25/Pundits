@@ -3225,6 +3225,471 @@
           ]
         }
       ]
+    },
+    {
+      "id": "herd:1000796718063",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 2 – Blazing 5: Bears at Falcons, Panthers at Eagles & Cowboys at Packers",
+      "published": "2026-10-16T19:34:03Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-herd-hour-2-blazing-5-bears-at-falcons-panthers/id1042368254?i=1000796718063&uo=4",
+      "locator": "i=1000796718063",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:01–00:04:24 Blazing 5 cowherd Jags/Falcons/Colts/Panthers/Cowboys; ~00:18 Park it for Parkins (candidate danny-parkins Colts)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:01–00:04:24 Blazing 5 cowherd Jags/Falcons/Colts/Panthers/Cowboys; ~00:18 Park it for Parkins (candidate danny-parkins Colts)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796718175",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 1 – Broncos Finding A Way To Win | Seahawks Fall Again | College Football Playoff Expansion",
+      "published": "2026-10-16T19:33:58Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-herd-hour-1-broncos-finding-a-way-to-win/id1042368254?i=1000796718175&uo=4",
+      "locator": "i=1000796718175",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:26:02 cowherd Ohio State (OSU at Indiana)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:26:02 cowherd Ohio State (OSU at Indiana)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796718119",
+      "factoryId": "herd",
+      "title": "THE HERD – HOUR 3 – Ryan Day on Facing #5 Indiana",
+      "published": "2026-10-16T19:34:33Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-herd-hour-3-ryan-day-on-facing-5-indiana/id1042368254?i=1000796718119&uo=4",
+      "locator": "i=1000796718119",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:24–00:30 Tomorrow's Headlines Today jmac Texans/Steelers/Rams/Cowboys (Speaker 6)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:24–00:30 Tomorrow's Headlines Today jmac Texans/Steelers/Rams/Cowboys (Speaker 6)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796641470",
+      "factoryId": "herd",
+      "title": "3 & Out - Broncos Beat Seahawks Reaction, 24-Team College Football Playoff, NFL Week 7 Predictions & Ohio State-Indiana Preview",
+      "published": "2026-10-16T10:01:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/3-out-broncos-beat-seahawks-reaction-24-team-college/id1042368254?i=1000796641470&uo=4",
+      "locator": "i=1000796641470",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:40–00:47 Polymarket predictions: middlekauff Panthers/Steelers SU + Browns +3.5 Bets",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:40–00:47 Polymarket predictions: middlekauff Panthers/Steelers SU + Browns +3.5 Bets",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pate:1000796571413",
+      "factoryId": "pate",
+      "title": "CFP Expanding 24 Teams + Week 7 Upset Alerts & New Top 25",
+      "published": "2026-10-16T00:21:11Z",
+      "url": "https://podcasts.apple.com/us/podcast/cfp-expanding-24-teams-week-7-upset-alerts-new-top-25/id1485905502?i=1000796571413&uo=4",
+      "locator": "i=1000796571413",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:36:45 pate Texas (Florida at Texas); ~00:49:06 pate Oklahoma State (at Houston); upset meters not SU",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:36:45 pate Texas (Florida at Texas); ~00:49:06 pate Oklahoma State (at Houston); upset meters not SU",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "simms:1000796711432",
+      "factoryId": "simms",
+      "title": "NFL Week 6 Picks; Did Broncos win or did Seahawks lose?",
+      "published": "2026-10-16T18:42:13Z",
+      "url": "https://podcasts.apple.com/us/podcast/nfl-week-6-picks-did-broncos-win-or-did-seahawks-lose/id1454809704?i=1000796711432&uo=4",
+      "locator": "i=1000796711432",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en 43:40–95:40; simms Jags/Ravens/Patriots/Falcons/Eagles/Giants ~48–66 min; late games speaker-ambiguous not staged",
+          "status": "partial"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en 43:40–95:40; simms Jags/Ravens/Patriots/Falcons/Eagles/Giants ~48–66 min; late games speaker-ambiguous not staged",
+              "status": "partial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796565029",
+      "factoryId": "gmfb",
+      "title": "NFL Pro Week 6 Preview",
+      "published": "2026-10-15T23:11:42Z",
+      "url": "https://podcasts.apple.com/us/podcast/nfl-pro-week-6-preview/id1171438277?i=1000796565029&uo=4",
+      "locator": "i=1000796565029",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny confidence pool; candidates brett-kollmann Texans ~00:49 / 49ers ~01:15, trevor-sikkema Jaguars ~00:51 / Rams ~01:07; other picks bounded",
+          "status": "partial"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny confidence pool; candidates brett-kollmann Texans ~00:49 / 49ers ~01:15, trevor-sikkema Jaguars ~00:51 / Rams ~01:07; other picks bounded",
+              "status": "partial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796717393",
+      "factoryId": "clay-travis",
+      "title": "Hour 2 - Katie Zacharia is Already Out",
+      "published": "2026-10-16T19:15:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-2-katie-zacharia-is-already-out/id1498106610?i=1000796717393&uo=4",
+      "locator": "i=1000796717393",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny ~00:15:35 Arkansas–Vanderbilt over (Bets only)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny ~00:15:35 Arkansas–Vanderbilt over (Bets only)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796717451",
+      "factoryId": "clay-travis",
+      "title": "Hour 1 - Good Guy with a Gun ",
+      "published": "2026-10-16T19:20:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-1-good-guy-with-a-gun/id1498106610?i=1000796717451&uo=4",
+      "locator": "i=1000796717451",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; political, no picks",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; political, no picks",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clay-travis:1000796715159",
+      "factoryId": "clay-travis",
+      "title": "Hour 3 - El-Sayed is NOT a Doctor",
+      "published": "2026-10-16T19:10:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-3-el-sayed-is-not-a-doctor/id1498106610?i=1000796715159&uo=4",
+      "locator": "i=1000796715159",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; political, no picks",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; political, no picks",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796685464",
+      "factoryId": "gmfb",
+      "title": "GMFB Friday Hour 1: Broncos Win, Hurts injury, and Ravens' Malaki Starks",
+      "published": "2026-10-16T15:29:38Z",
+      "url": "https://podcasts.apple.com/us/podcast/gmfb-friday-hour-1-broncos-win-hurts-injury-and/id1171438277?i=1000796685464&uo=4",
+      "locator": "i=1000796685464",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; TNF recap / injuries, no first-person Sunday SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; TNF recap / injuries, no first-person Sunday SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796694278",
+      "factoryId": "gmfb",
+      "title": "GMFB Friday Hour 2: Caleb Williams Injury, Bills/Raiders, Cowboys/Packers, and Mad Minute",
+      "published": "2026-10-16T16:30:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/gmfb-friday-hour-2-caleb-williams-injury-bills-raiders/id1171438277?i=1000796694278&uo=4",
+      "locator": "i=1000796694278",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; previews / Mad Minute, no first-person SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; previews / Mad Minute, no first-person SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nightcap:1000796702098",
+      "factoryId": "nightcap",
+      "title": "Deebo & Joe - Part 1: Seahawks FOLD vs. Broncos + JuJu Smith-Schuster back to Pittsburgh?",
+      "published": "2026-10-16T17:27:31Z",
+      "url": "https://podcasts.apple.com/us/podcast/deebo-joe-part-1-seahawks-fold-vs-broncos-juju-smith/id1706534198?i=1000796702098&uo=4",
+      "locator": "i=1000796702098",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; banter, speakers ambiguous, no named SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; banter, speakers ambiguous, no named SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nightcap:1000796702014",
+      "factoryId": "nightcap",
+      "title": "Deebo & Joe - Part 2: When Deebo Lost His Hair + Cowboys Season Over Already?",
+      "published": "2026-10-16T17:26:52Z",
+      "url": "https://podcasts.apple.com/us/podcast/deebo-joe-part-2-when-deebo-lost-his-hair-cowboys-season/id1706534198?i=1000796702014&uo=4",
+      "locator": "i=1000796702014",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny scan full; banter, no named SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny scan full; banter, no named SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mcafee:1000796717580",
+      "factoryId": "mcafee",
+      "title": "PMS 2.0 1647 - TNF Recap, NFL Week 6 Preview/Picks, Utah Jazz and Mammoth Owner Ryan Smith, Nick Saban, Ian Rapoport, Stanford Steve, & AJ Hawk",
+      "published": "2026-10-16T19:27:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/pms-2-0-1647-tnf-recap-nfl-week-6-preview-picks-utah/id1435183458?i=1000796717580&uo=4",
+      "locator": "i=1000796717580",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T16:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "base.en ~33–62 min Saban analysis; ~110–115 min ATS round-robin Pat/Hawk/Stanford Steve, no diarization",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T16:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "base.en ~33–62 min Saban analysis; ~110–115 min ATS round-robin Pat/Hawk/Stanford Steve, no diarization",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
