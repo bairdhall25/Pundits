@@ -3690,6 +3690,347 @@
           ]
         }
       ]
+    },
+    {
+      "id": "whats-wright:1000796687987",
+      "factoryId": "whats-wright",
+      "title": "NFL Week 6 Predictions: Chargers-Chiefs, Cowboys-Packers, Bills-Raiders, Bears-Falcons, Texans-Jags",
+      "published": "2026-10-16T16:00:03Z",
+      "url": "https://podcasts.apple.com/us/podcast/nfl-week-6-predictions-chargers-chiefs-cowboys-packers/id1612694726?i=1000796687987&uo=4",
+      "locator": "i=1000796687987",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript full; Nick's Picks ~00:14–00:22 (nick-wright Jaguars, Patriots + 5 Bets)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript full; Nick's Picks ~00:14–00:22 (nick-wright Jaguars, Patriots + 5 Bets)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796748675",
+      "factoryId": "herd",
+      "title": "The Richard Sherman Podcast - Week in Review: 49ers Make a Statement, Vikings Earn Respect & Chargers in Crisis",
+      "published": "2026-10-17T01:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-richard-sherman-podcast-week-in-review-49ers-make/id1042368254?i=1000796748675&uo=4",
+      "locator": "i=1000796748675",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript full; Sherman W6 preview ~00:40:52/00:46:26/00:55:56/01:01:55 (Candidates richard-sherman ×4)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript full; Sherman W6 preview ~00:40:52/00:46:26/00:55:56/01:01:55 (Candidates richard-sherman ×4)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796741806",
+      "factoryId": "gmfb",
+      "title": "Week 6 Picks Against the Spread with Nick Shook",
+      "published": "2026-10-16T19:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/week-6-picks-against-the-spread-with-nick-shook/id1171438277?i=1000796741806&uo=4",
+      "locator": "i=1000796741806",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript full; NFL Daily W6 ATS (Candidate nick-shook Giants ~00:01:03; Bets shook/rosenthal)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript full; NFL Daily W6 ATS (Candidate nick-shook Giants ~00:01:03; Bets shook/rosenthal)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gmfb:1000796743005",
+      "factoryId": "gmfb",
+      "title": "The NFL Report: Time to Panic for Seahawks? + Eagles Hire QB Joe Milton III",
+      "published": "2026-10-16T23:41:55Z",
+      "url": "https://podcasts.apple.com/us/podcast/the-nfl-report-time-to-panic-for-seahawks-eagles-hire/id1171438277?i=1000796743005&uo=4",
+      "locator": "i=1000796743005",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript full; NFL Report — matchup talk, no named winner",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript full; NFL Report — matchup talk, no named winner",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000796738134",
+      "factoryId": "finebaum",
+      "title": "Hour 4: More from Rocky Top",
+      "published": "2026-10-16T22:50:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-4-more-from-rocky-top/id687989405?i=1000796738134&uo=4",
+      "locator": "i=1000796738134",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en VAD full + beam 5 windows; Doering picks ~00:12:44–00:22:12, Bratton ~00:26:45–00:29:33 (Candidates)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en VAD full + beam 5 windows; Doering picks ~00:12:44–00:22:12, Bratton ~00:26:45–00:29:33 (Candidates)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000796721803",
+      "factoryId": "finebaum",
+      "title": "Hour 1: Live from Knoxville",
+      "published": "2026-10-16T20:15:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-1-live-from-knoxville/id687989405?i=1000796721803&uo=4",
+      "locator": "i=1000796721803",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "base.en full; Finebaum analysis, no first-person winner",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "base.en full; Finebaum analysis, no first-person winner",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finebaum:1000796730230",
+      "factoryId": "finebaum",
+      "title": "Hour 2: Tim Tebow, SEC Network",
+      "published": "2026-10-16T21:29:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/hour-2-tim-tebow-sec-network/id687989405?i=1000796730230&uo=4",
+      "locator": "i=1000796730230",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "base.en full; Tebow segment analysis, callers excluded",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "base.en full; Tebow segment analysis, callers excluded",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hard-count:1000796344333",
+      "factoryId": "hard-count",
+      "title": "MORE College Football Week 7 PREDICTIONS",
+      "published": "2026-10-14T16:51:49Z",
+      "url": "https://podcasts.apple.com/us/podcast/more-college-football-week-7-predictions/id1634039449?i=1000796344333&uo=4",
+      "locator": "i=1000796344333",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "small.en VAD full + beam 5 windows; JD PicKell Oregon/LSU/Georgia/Miami ~00:14:22/00:23:01/00:34:25/00:45:38 (Candidates)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "small.en VAD full + beam 5 windows; JD PicKell Oregon/LSU/Georgia/Miami ~00:14:22/00:23:01/00:34:25/00:45:38 (Candidates)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wise-guys:1000796712372",
+      "factoryId": "wise-guys",
+      "title": "NFL Week 6 Mega-Preview! | Ringer Wise Guys",
+      "published": "2026-10-16T18:41:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/nfl-week-6-mega-preview-ringer-wise-guys/id1583806760?i=1000796712372&uo=4",
+      "locator": "i=1000796712372",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "base.en full; ATS/teasers/props, Rams ML lean ~01:20:40 without in-turn name cue",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "base.en full; ATS/teasers/props, Rams ML lean ~01:20:40 without in-turn name cue",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nightcap:1000796613704",
+      "factoryId": "nightcap",
+      "title": "Nightcap Hour 1: Unc SOUNDS OFF on Bo Nix + Jalen Hurts OUT with BLOOD CLOT + BRONCOS Defeat Seahawks in OVERTIME",
+      "published": "2026-10-16T06:53:16Z",
+      "url": "https://podcasts.apple.com/us/podcast/nightcap-hour-1-unc-sounds-off-on-bo-nix-jalen-hurts/id1706534198?i=1000796613704&uo=4",
+      "locator": "i=1000796613704",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript scan; TNF recap/news, no named Sunday SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript scan; TNF recap/news, no named Sunday SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nightcap:1000796613336",
+      "factoryId": "nightcap",
+      "title": "Nightcap Hour 2: Caleb Williams Calls INJURY REPORT FALSE + Bradley Chubb WANTED BACKUP",
+      "published": "2026-10-16T06:48:20Z",
+      "url": "https://podcasts.apple.com/us/podcast/nightcap-hour-2-caleb-williams-calls-injury-report/id1706534198?i=1000796613336&uo=4",
+      "locator": "i=1000796613336",
+      "inspected": true,
+      "outcome": "dry",
+      "inspectedAt": "2026-10-16T22:30:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow (no approved Dispatch)",
+          "locator": "Omny transcript scan; TNF recap/news, no named Sunday SU",
+          "status": "dry"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "dry",
+          "inspectedAt": "2026-10-16T22:30:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow (no approved Dispatch)",
+              "locator": "Omny transcript scan; TNF recap/news, no named Sunday SU",
+              "status": "dry"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
