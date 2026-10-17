@@ -4031,6 +4031,274 @@
           ]
         }
       ]
+    },
+    {
+      "id": "gamedaycole:2026-10-17-w7",
+      "factoryId": "gameday",
+      "title": "Week 7 2026: Saturday morning College Gameday picks!",
+      "published": "2026-10-17",
+      "url": "https://gamedaycole.com/2026/10/17/week-7-2026-saturday-morning-college-gameday-picks-stanford-steves-board-super-dog-picks-celebrity-guests-and-more/",
+      "locator": "https://gamedaycole.com/2026/10/17/week-7-2026-saturday-morning-college-gameday-picks-stanford-steves-board-super-dog-picks-celebrity-guests-and-more/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "notre-dame-at-byu-2026",
+          "locator": "Cole GameDay desk ND/BYU",
+          "status": "completed"
+        },
+        {
+          "targetId": "florida-state-at-miami-2026",
+          "locator": "Cole GameDay desk FSU/Miami",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow",
+          "locator": "Cole GameDay W7 desk (past-noon KO games skipped)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "notre-dame-at-byu-2026",
+              "locator": "Cole GameDay desk ND/BYU",
+              "status": "completed"
+            },
+            {
+              "targetId": "florida-state-at-miami-2026",
+              "locator": "Cole GameDay desk FSU/Miami",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow",
+              "locator": "Cole GameDay W7 desk (past-noon KO games skipped)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "klatt-fox:2026-10-15-w7",
+      "factoryId": "big-noon",
+      "title": "Joel Klatt Week 7 CFB Picks (FOX)",
+      "published": "2026-10-15",
+      "url": "https://www.foxsports.com/stories/college-football/joel-klatt-show-week-7-picks-alabama-notre-dame-ole-miss",
+      "locator": "https://www.foxsports.com/stories/college-football/joel-klatt-show-week-7-picks-alabama-notre-dame-ole-miss",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "notre-dame-at-byu-2026",
+          "locator": "Klatt SU Notre Dame",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow",
+          "locator": "Klatt SU x6 (OSU-IU past KO)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "notre-dame-at-byu-2026",
+              "locator": "Klatt SU Notre Dame",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow",
+              "locator": "Klatt SU x6 (OSU-IU past KO)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fallica-fox:2026-10-16-w7",
+      "factoryId": "bear-bets",
+      "title": "Chris 'The Bear' Fallica's College Football Week 7 Expert Picks, Best Bets (FOX)",
+      "published": "2026-10-16",
+      "url": "https://www.foxsports.com/stories/college-football/chris-the-bear-fallicas-college-football-week-7-expert-picks-best-bets",
+      "locator": "https://www.foxsports.com/stories/college-football/chris-the-bear-fallicas-college-football-week-7-expert-picks-best-bets",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "Fallica's Pick lines + ML dogs",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "Fallica's Pick lines + ML dogs",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cole-fallica:2026-10-17-w7",
+      "factoryId": "bear-bets",
+      "title": "Week 7 2026: CFB picks from Chris The Bear Fallica",
+      "published": "2026-10-17",
+      "url": "https://gamedaycole.com/2026/10/17/week-7-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "locator": "https://gamedaycole.com/2026/10/17/week-7-2026-cfb-picks-from-chris-the-bear-fallica/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "notre-dame-at-byu-2026",
+          "locator": "ND-10.5 card",
+          "status": "completed"
+        },
+        {
+          "targetId": "overflow",
+          "locator": "Houston-4.5 card",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "notre-dame-at-byu-2026",
+              "locator": "ND-10.5 card",
+              "status": "completed"
+            },
+            {
+              "targetId": "overflow",
+              "locator": "Houston-4.5 card",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cole-pate:2026-10-16-w7",
+      "factoryId": "pate",
+      "title": "Week 7 2026: CFB picks from Josh Pate's Ramen Noodle Express",
+      "published": "2026-10-16",
+      "url": "https://gamedaycole.com/2026/10/16/week-7-2026-cfb-picks-from-josh-pates-ramen-noodle-express/",
+      "locator": "https://gamedaycole.com/2026/10/16/week-7-2026-cfb-picks-from-josh-pates-ramen-noodle-express/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "SJSU-6.5 card; dogs to Bets",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "SJSU-6.5 card; dogs to Bets",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cole-svp:2026-10-16-w7",
+      "factoryId": "gameday",
+      "title": "Week 7 2026: WINNERS from Scott Van Pelt",
+      "published": "2026-10-16",
+      "url": "https://gamedaycole.com/2026/10/16/week-7-2026-winners-from-scott-van-pelt/",
+      "locator": "https://gamedaycole.com/2026/10/16/week-7-2026-winners-from-scott-van-pelt/",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "SVP Winners card (Candidate)",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "SVP Winners card (Candidate)",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herd:1000796800499",
+      "factoryId": "herd",
+      "title": "Colin Cowherd Podcast Prime Cuts - Week 6 Preview With Eli Manning, Texas Upset By Oklahoma",
+      "published": "2026-10-17T11:00:00Z",
+      "url": "https://podcasts.apple.com/us/podcast/colin-cowherd-podcast-prime-cuts-week-6-preview-with/id1042368254?i=1000796800499&uo=4",
+      "locator": "https://podcasts.apple.com/us/podcast/colin-cowherd-podcast-prime-cuts-week-6-preview-with/id1042368254?i=1000796800499&uo=4",
+      "inspected": true,
+      "outcome": "hit",
+      "inspectedAt": "2026-10-17T12:45:00-04:00",
+      "coverage": [
+        {
+          "targetId": "overflow",
+          "locator": "Omny ~00:45:23-00:49:52 Week six predictions",
+          "status": "completed"
+        }
+      ],
+      "inspections": [
+        {
+          "outcome": "hit",
+          "inspectedAt": "2026-10-17T12:45:00-04:00",
+          "coverage": [
+            {
+              "targetId": "overflow",
+              "locator": "Omny ~00:45:23-00:49:52 Week six predictions",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barstool-cfb:1VbbRqt2CIg",
+      "factoryId": "barstool-cfb",
+      "title": "Who Knows Football Better: Fans Or Players? | Barstool College Football Show Week 7",
+      "published": "2026-10-15",
+      "url": "https://www.youtube.com/watch?v=1VbbRqt2CIg",
+      "locator": "https://www.youtube.com/watch?v=1VbbRqt2CIg",
+      "inspected": false,
+      "outcome": "discovered",
+      "note": "Captions HTTP 429 on 2026-10-17 12:30 PM ET pass — blocked, not dry. Retry captions."
     }
   ]
 }
