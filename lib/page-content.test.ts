@@ -314,10 +314,11 @@ describe("league page contract", () => {
     expect(content.description).toContain(TRACKED_SUBSET_DISCLAIMER);
   });
 
-  it("treats an open college week as who picked whom and still links the previous archive", () => {
+  it("treats a graded college week as who called it and still links the previous archive", () => {
     const content = leagueContent("ncaaf", loadEvents(), loadCalls(), loadPundits());
     expect(content.h1).toBe("College football");
-    expect(content.title).toBe("College football Week 7: who picked whom");
+    // Week 7's two tracked games (FSU-Miami, ND-BYU) are final after Sat Oct 17 night.
+    expect(content.title).toBe("College football Week 7: who called it");
     expect(content.currentWeek?.href).toBe("/ncaaf/2026/week-7/");
     expect(content.lede).toContain("Week 7");
     expect(content.previous?.href).toBe("/ncaaf/2026/week-6/");

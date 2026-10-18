@@ -188,6 +188,15 @@ describe("latestGradedWeekRecap", () => {
       loadPundits()
     );
     expect(recap).not.toBeNull();
+    // Sat Oct 17 night finals (FSU 35-43 Miami 2OT, ND 24-28 BYU) make college Week 7 the latest graded week.
+    expect(recap!.href).toBe("/ncaaf/2026/week-7/");
+    expect(recap!.line).toBe(
+      "Week 7: experts went 2–1. Andy Staples and Ari Wasserman hit on Miami."
+    );
+  });
+
+  it("keeps the NFL line when asked for the NFL", () => {
+    const recap = latestGradedWeekRecap(loadEvents(), loadCalls(), loadPundits(), "nfl");
     expect(recap!.href).toBe("/nfl/2026/week-5/");
     // NFL lines name the league; Giants-Commanders 27-27 pushes stay out of 33–34 after MNF.
     expect(recap!.line).toBe(
@@ -197,8 +206,8 @@ describe("latestGradedWeekRecap", () => {
 
   it("keeps the college line when asked for college football", () => {
     const recap = latestGradedWeekRecap(loadEvents(), loadCalls(), loadPundits(), "ncaaf");
-    expect(recap!.href).toBe("/ncaaf/2026/week-6/");
-    expect(recap!.line).toMatch(/^Week 6: experts went 40–55\. /);
+    expect(recap!.href).toBe("/ncaaf/2026/week-7/");
+    expect(recap!.line).toMatch(/^Week 7: experts went 2–1\. /);
   });
 
   it("recaps graded week 0 when a newer complete week has no grades", () => {

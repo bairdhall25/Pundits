@@ -8138,11 +8138,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Florida State at Miami (Week 7)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "florida-state-at-miami-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-14",
-    "reasoning": "Florida State's Friday-night collapse at Louisville felt like the turning point and final straw; he is done holding any hope that FSU performs."
+    "reasoning": "Florida State's Friday-night collapse at Louisville felt like the turning point and final straw; he is done holding any hope that FSU performs.",
+    "gradedAt": "2026-10-17"
   },
   {
     "id": "staples-florida-state-at-miami-20261012",
@@ -8154,11 +8155,12 @@
     "kind": "hard",
     "subject": "Miami",
     "paysOn": "Florida State at Miami (Week 7)",
-    "status": "pending",
+    "status": "hit",
     "eventSlug": "florida-state-at-miami-2026",
     "side": "no",
     "firstPublishedAt": "2026-10-14",
-    "reasoning": "Expects a changed Mario Cristobal who learned his lesson from last year's midseason slide; Miami will not take its foot off the gas and will try to embarrass Florida State."
+    "reasoning": "Expects a changed Mario Cristobal who learned his lesson from last year's midseason slide; Miami will not take its foot off the gas and will try to embarrass Florida State.",
+    "gradedAt": "2026-10-17"
   },
   {
     "id": "staples-notre-dame-at-byu-20261012",
@@ -8170,10 +8172,11 @@
     "kind": "hard",
     "subject": "Notre Dame",
     "paysOn": "Notre Dame at BYU (Week 7)",
-    "status": "pending",
+    "status": "miss",
     "eventSlug": "notre-dame-at-byu-2026",
     "side": "yes",
     "firstPublishedAt": "2026-10-14",
-    "reasoning": "Asking too much of Bear Bachmeier to beat this Notre Dame defense single-handedly; another BYU back has to step up since LJ Martin went out."
+    "reasoning": "Asking too much of Bear Bachmeier to beat this Notre Dame defense single-handedly; another BYU back has to step up since LJ Martin went out.",
+    "gradedAt": "2026-10-17"
   }
 ]

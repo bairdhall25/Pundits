@@ -38,10 +38,13 @@ assert.match(home, /"legalName":"Indie Labs LLC"/);
 assert.match(home, /"sameAs":\["https:\/\/x\.com\/Pundits_"\]/);
 assert.match(home, /Get new picks — with the receipt\.|Never miss a verified pick\./);
 assert.match(home, /Join the early list/);
-// Week 7 minted (2026-10-13 night): Florida State at Miami is the open featured hero.
-assert.match(home, /Ari Wasserman and Andy Staples pick Miami\. Nobody on Florida State yet\./);
+// Grades-only ship (Sun 2026-10-18): FSU-Miami and ND-BYU are final, no open featured game — default lede.
+// Homepage Final rows only list kickoffDate===today, so after midnight ET the Saturday receipts leave home.
+assert.match(home, /College football and NFL picks from named analysts and commentators\./);
+assert.doesNotMatch(home, /Nobody on Florida State yet/);
 // Weekly record lines: college keeps its line; NFL weeks render too, pushes excluded.
-assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-6\/">Week 6: experts went 40–55\./);
+// Sat Oct 17 night finals (FSU 35-43 Miami 2OT, ND 24-28 BYU) grade college Week 7: 2–1.
+assert.match(home, /class="week-recap"><a href="\/ncaaf\/2026\/week-7\/">Week 7: experts went 2–1\./);
 assert.match(home, /class="week-recap"><a href="\/nfl\/2026\/week-5\/">NFL Week 5: experts went 33–34\./);
 assert.match(home, /Week 5 · Oct 11–12 · Week 4 is final/);
 assert.match(home, /Biggest disagreements/);
@@ -103,6 +106,20 @@ const billsRams = await readFile(
 );
 assert.match(billsRams, /Bills at Rams/);
 assert.match(billsRams, /Final: Bills 37, Rams 34|Final · Bills 37–34/);
+
+const fsuMiami = await readFile(
+  path.join(out, "picks/florida-state-at-miami-2026/index.html"),
+  "utf8"
+);
+assert.match(fsuMiami, /Florida State at Miami/);
+assert.match(fsuMiami, /Final: Miami 43, Florida State 35|Final · Miami 43–35/);
+
+const ndByu = await readFile(
+  path.join(out, "picks/notre-dame-at-byu-2026/index.html"),
+  "utf8"
+);
+assert.match(ndByu, /Notre Dame at BYU/);
+assert.match(ndByu, /Final: BYU 28, Notre Dame 24|Final · BYU 28–24/);
 
 const story = await readFile(
   path.join(out, "picks/unc-vs-tcu-2026/finebaum/index.html"),
@@ -465,7 +482,7 @@ assert.match(weekCfb4, /Oregon beat USC/);
 
 const ncaafSlate = await readFile(path.join(out, "ncaaf/index.html"), "utf8");
 assert.match(ncaafSlate, /data-page-type="league"/);
-assert.match(ncaafSlate, /College football Week 7: who picked whom/);
+assert.match(ncaafSlate, /College football Week 7: who called it/);
 assert.match(ncaafSlate, /Week 6 is final/);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-6\//);
 assert.match(ncaafSlate, /href="\/ncaaf\/2026\/week-5\//);
